@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Base Presupuestal Calculada - IPSO</title>
+
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+  <link href="assets/css/minimal-theme.css" rel="stylesheet">
+  <link href="assets/css/shadow-theme.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .radius-10 {
+      border-radius: 10px;
+    }
+
+    /* TreeGrid Styles */
+    .matrix-table th {
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 14px 10px;
+      vertical-align: middle;
+    }
+
+    .matrix-table td {
+      font-size: 0.82rem;
+      padding: 10px 10px;
+      vertical-align: middle;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .group-row {
+      cursor: pointer;
+      transition: background-color 0.1s ease;
+    }
+
+    .group-row:hover {
+      background-color: #f1f5f9 !important;
+    }
+
+    .toggle-icon {
+      transition: transform 0.2s ease;
+      display: inline-block;
+      width: 22px;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .collapsed .toggle-icon {
+      transform: rotate(-90deg);
+    }
+
+    /* ========================================================= */
+    /* INDENTACIÓN MODO AGRUPADO (Con Clasificaciones Activas)   */
+    /* ========================================================= */
+    .table-grouped tr[data-level="pais"] td:first-child {
+      padding-left: 1rem;
+      font-weight: 700;
+      background-color: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .table-grouped tr[data-level="pais-lam"] td:first-child {
+      padding-left: 2.5rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      background-color: #f8fafc;
+    }
+
+    .table-grouped tr[data-level="c4"] td:first-child {
+      padding-left: 4rem;
+      color: #0f766e;
+      font-weight: 600;
+    }
+
+    .table-grouped tr[data-level="c5"] td:first-child {
+      padding-left: 5.5rem;
+      color: #b45309;
+      font-weight: 600;
+    }
+
+    .table-grouped tr[data-level="c6"] td:first-child {
+      padding-left: 7rem;
+      color: #4338ca;
+      font-weight: 600;
+    }
+
+    .table-grouped tr[data-level="c7"] td:first-child {
+      padding-left: 8.5rem;
+      color: #6d28d9;
+      font-weight: 600;
+    }
+
+    .table-grouped tr[data-level="c8"] td:first-child {
+      padding-left: 10rem;
+      color: #be185d;
+      font-weight: 600;
+    }
+
+    .table-grouped tr[data-level="c9"] td:first-child {
+      padding-left: 11.5rem;
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .table-grouped tr[data-level="ceco"] td:first-child {
+      padding-left: 13rem;
+      font-weight: 700;
+      color: #0f172a;
+      border-left: 4px solid #4f46e5;
+    }
+
+    .table-grouped tr[data-level="campana"] td:first-child {
+      padding-left: 14.5rem;
+      color: #db2777;
+      font-weight: 600;
+    }
+
+    .table-grouped tr[data-level="cuenta"] td:first-child {
+      padding-left: 16rem;
+      color: #475569;
+      font-style: italic;
+    }
+
+    /* ========================================================= */
+    /* INDENTACIÓN MODO APLANADO (CeCo -> Campaña -> Cuenta)     */
+    /* ========================================================= */
+    .table-flat tr[data-level="ceco"] td:first-child {
+      padding-left: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+      border-left: 4px solid #4f46e5;
+      background-color: #f8fafc;
+    }
+
+    .table-flat tr[data-level="campana"] td:first-child {
+      padding-left: 3.5rem;
+      color: #db2777;
+      font-weight: 600;
+    }
+
+    .table-flat tr[data-level="cuenta"] td:first-child {
+      padding-left: 5.5rem;
+      color: #475569;
+      font-style: italic;
+    }
+
+    /* Botones Menú Lateral */
+    .btn-check:checked+.btn-outline-indigo {
+      background-color: #4f46e5;
+      border-color: #4f46e5;
+      color: white;
+    }
+
+    .btn-check:not(:checked)+.btn-outline-indigo .bi-check-circle-fill {
+      display: none;
+    }
+
+    .btn-outline-indigo {
+      border-color: #cbd5e1;
+      color: #475569;
+      background-color: #ffffff;
+    }
+
+    .btn-outline-indigo:hover {
+      background-color: #f1f5f9;
+      color: #0f172a;
+    }
+
+    /* Scroll Dropdowns */
+    .dropdown-menu-custom::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .dropdown-menu-custom::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="top-header">
+    <nav class="navbar navbar-expand justify-content-between">
+      <div class="btn-toggle-menu"><span class="material-symbols-outlined">menu</span></div>
+      <ul class="navbar-nav top-right-menu gap-2 ms-auto">
+        <li class="nav-item dark-mode"><a class="nav-link dark-mode-icon" href="javascript:;"><span
+              class="material-symbols-outlined">dark_mode</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside class="sidebar-wrapper">
+    <div class="sidebar-header">
+      <div class="logo-name flex-grow-1">
+        <h5 class="mb-0">IPSO</h5>
+      </div>
+    </div>
+    <div class="sidebar-nav" data-simplebar="true">
+      <ul class="metismenu" id="menu">
+        <li class="menu-label mb-0 text-light">Gestión de Presupuestos</li>
+        <li>
+          <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><span class="material-symbols-outlined">apps</span></div>
+            <div class="menu-title">Planeación Presupuestal</div>
+          </a>
+          <ul>
+            <li><a href="#"><span class="material-symbols-outlined">arrow_right</span>Parámetros</a></li>
+            <li><a href="#"><span class="material-symbols-outlined">arrow_right</span>Base Presupuestal</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="page-content">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h4 class="fw-bold text-dark mb-0"><i class="bi bi-wallet2 text-primary me-2"></i>Base Presupuestal</h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb small mb-0 mt-1">
+            <li class="breadcrumb-item"><a href="#" class="text-muted text-decoration-none">Planeación Presupuestal</a>
+            </li>
+            <li class="breadcrumb-item"><a href="#" class="text-muted text-decoration-none">Registro de Bases de
+                Presupuesto</a></li>
+            <li class="breadcrumb-item active fw-bold text-primary" aria-current="page">Base Presupuestal 2026</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="card shadow-sm border-0 radius-10">
+      <div class="card-body p-4">
+
+        <ul class="nav nav-pills mb-4" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link fw-bold px-4 active" data-bs-toggle="pill" href="#primary-pills-home" role="tab">
+              <div class="d-flex align-items-center">
+                <div class="tab-icon"><i class="bi bi-diagram-3 fs-5 me-2"></i></div>
+                <div class="tab-title fs-6">Base Activa</div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link fw-bold px-4" data-bs-toggle="pill" href="#primary-pills-profile" role="tab"
+              tabindex="-1">
+              <div class="d-flex align-items-center">
+                <div class="tab-icon"><i class="bi bi-clock-history fs-5 me-2"></i></div>
+                <div class="tab-title fs-6">Control de Versiones</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+
+          <div class="tab-pane fade active show" id="primary-pills-home" role="tabpanel">
+
+            <div class="row">
+              <div class="col-12 col-lg-3 d-flex flex-column gap-3">
+
+                <div class="card w-100 shadow-sm border radius-10">
+                  <div class="card-header bg-white py-3 border-bottom text-center">
+                    <h6 class="mb-0 fw-bold text-dark text-uppercase"><i
+                        class="bi bi-gear-fill me-2 text-primary"></i>Parámetros del Ejercicio</h6>
+                  </div>
+                  <ul class="list-group list-group-flush small">
+                    <li class="list-group-item d-flex justify-content-between align-items-center"><span
+                        class="text-muted fw-bold">Año Ejercicio:</span><span class="text-dark fw-bold">2026</span></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center"><span
+                        class="text-muted fw-bold">Temporalidad:</span><span class="text-dark fw-bold">9 Real + 3
+                        Plan</span></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center"><span
+                        class="text-muted fw-bold">Divisas:</span><span class="text-dark fw-bold">MXN, USD, GTQ,
+                        HNL</span></li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center"><span
+                        class="text-muted fw-bold">% Tope Aplicado:</span><span
+                        class="text-primary fw-bold">5.00%</span></li>
+                  </ul>
+                  <div class="card-body bg-light text-center py-3">
+                    <button class="btn btn-dark fw-bold shadow-sm w-100"><i class="bi bi-arrow-repeat me-2"></i>Generar
+                      Nueva Base</button>
+                  </div>
+                </div>
+
+                <div class="card w-100 shadow-sm border radius-10 sticky-top" style="top: 20px;">
+                  <div class="card-header bg-white py-3 border-bottom text-center">
+                    <h6 class="mb-0 fw-bold text-dark text-uppercase"><i
+                        class="bi bi-list-nested me-2 text-primary"></i>Agrupadores de Vista</h6>
+                  </div>
+                  <div class="card-body p-3">
+                    <p class="small text-muted mb-3 lh-sm">Apaga las clasificaciones para ver la estructura base (CeCo
+                      -> Campaña -> Cuenta).</p>
+                    <div class="d-flex flex-column gap-2" id="agrupadores-container">
+                      <input type="checkbox" class="btn-check level-toggle" id="btn-c4" value="c4" checked
+                        autocomplete="off">
+                      <label
+                        class="btn btn-outline-indigo text-start d-flex justify-content-between align-items-center fw-bold shadow-sm py-2 px-3"
+                        for="btn-c4"><span class="small">Clasificación 4</span> <i
+                          class="bi bi-check-circle-fill text-primary"></i></label>
+
+                      <input type="checkbox" class="btn-check level-toggle" id="btn-c5" value="c5" checked
+                        autocomplete="off">
+                      <label
+                        class="btn btn-outline-indigo text-start d-flex justify-content-between align-items-center fw-bold shadow-sm py-2 px-3"
+                        for="btn-c5"><span class="small">Clasificación 5</span> <i
+                          class="bi bi-check-circle-fill text-primary"></i></label>
+
+                      <input type="checkbox" class="btn-check level-toggle" id="btn-c6" value="c6" checked
+                        autocomplete="off">
+                      <label
+                        class="btn btn-outline-indigo text-start d-flex justify-content-between align-items-center fw-bold shadow-sm py-2 px-3"
+                        for="btn-c6"><span class="small">Clasificación 6</span> <i
+                          class="bi bi-check-circle-fill text-primary"></i></label>
+
+                      <input type="checkbox" class="btn-check level-toggle" id="btn-c7" value="c7" checked
+                        autocomplete="off">
+                      <label
+                        class="btn btn-outline-indigo text-start d-flex justify-content-between align-items-center fw-bold shadow-sm py-2 px-3"
+                        for="btn-c7"><span class="small">Clasificación 7</span> <i
+                          class="bi bi-check-circle-fill text-primary"></i></label>
+
+                      <input type="checkbox" class="btn-check level-toggle" id="btn-c8" value="c8" checked
+                        autocomplete="off">
+                      <label
+                        class="btn btn-outline-indigo text-start d-flex justify-content-between align-items-center fw-bold shadow-sm py-2 px-3"
+                        for="btn-c8"><span class="small">Clasificación 8</span> <i
+                          class="bi bi-check-circle-fill text-primary"></i></label>
+
+                      <input type="checkbox" class="btn-check level-toggle" id="btn-c9" value="c9" checked
+                        autocomplete="off">
+                      <label
+                        class="btn btn-outline-indigo text-start d-flex justify-content-between align-items-center fw-bold shadow-sm py-2 px-3"
+                        for="btn-c9"><span class="small">Clasificación 9</span> <i
+                          class="bi bi-check-circle-fill text-primary"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-9 d-flex flex-column gap-3">
+
+                <div class="card w-100 border shadow-sm radius-10">
+                  <div class="card-body p-3">
+                    <h6 class="mb-3 fw-bold text-dark text-uppercase"><i
+                        class="bi bi-bar-chart-line-fill text-primary me-2"></i>Indicadores Generales</h6>
+                    <div class="row g-3 align-items-stretch">
+                      <div class="col-12 col-md-4">
+                        <div class="d-flex align-items-center p-3 radius-10 bg-white border h-100 shadow-sm">
+                          <div class="p-2 radius-10 bg-secondary bg-opacity-10 text-dark me-3"><i
+                              class="bi bi-shield-check fs-3"></i></div>
+                          <div class="w-100">
+                            <span class="d-block text-uppercase fw-bold text-muted lh-1 mb-2"
+                              style="font-size: 0.72rem;">Límite de Carga Total</span>
+                            <div class="d-flex justify-content-between align-items-baseline">
+                              <span class="fw-bolder text-dark fs-4 lh-1 mb-0">433,500,000</span>
+                              <span class="badge bg-primary rounded-pill small">100%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-4">
+                        <div class="d-flex align-items-center p-3 radius-10 bg-white border h-100 shadow-sm">
+                          <div class="p-2 radius-10 bg-warning bg-opacity-10 text-warning me-3"><i
+                              class="bi bi-bar-chart-steps fs-3"></i></div>
+                          <div class="w-100">
+                            <span class="d-block text-uppercase fw-bold text-muted lh-1 mb-2"
+                              style="font-size: 0.72rem;">Presupuesto Asignado</span>
+                            <div class="d-flex justify-content-between align-items-baseline">
+                              <span class="fw-bolder text-dark fs-4 lh-1 mb-0">0</span>
+                              <span class="fw-bolder text-warning-emphasis fs-5 lh-1">0%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-4">
+                        <div class="d-flex align-items-center p-3 radius-10 bg-white border h-100 shadow-sm">
+                          <div class="p-2 radius-10 bg-success bg-opacity-10 text-success me-3"><i
+                              class="bi bi-wallet2 fs-3"></i></div>
+                          <div class="w-100">
+                            <span class="d-block text-uppercase fw-bold text-muted lh-1 mb-2"
+                              style="font-size: 0.72rem;">Disponible</span>
+                            <div class="d-flex justify-content-between align-items-baseline">
+                              <span class="fw-bolder text-dark fs-4 lh-1 mb-0">433,500,000</span>
+                              <span class="fw-bolder text-success fs-5 lh-1">100%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card w-100 border shadow-sm radius-10 bg-white">
+                  <div class="card-body p-3">
+                    <h6 class="mb-3 fw-bold text-dark text-uppercase"><i
+                        class="bi bi-funnel-fill text-primary me-2"></i>Filtros y Búsqueda</h6>
+
+                    <div class="row g-2 align-items-end mb-2">
+                      <div class="col-lg-2 col-md-3 mb-2">
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                          <input class="form-check-input m-0 shadow-none" type="checkbox" id="grp_pais" checked="">
+                          <label class="form-label small fw-bold text-muted mb-0" for="grp_pais">País</label>
+                        </div>
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-light form-control-sm w-100 text-start d-flex justify-content-between align-items-center border border-secondary border-opacity-25 shadow-none radius-10 bg-light"
+                            type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                            <span class="text-dark small text-truncate">Todos</span><i
+                              class="bi bi-chevron-down text-muted"></i>
+                          </button>
+                          <div class="dropdown-menu w-100 p-2 shadow-sm border-0 radius-10 dropdown-menu-custom"
+                            style="max-height: 200px; overflow-y: auto;">
+                            <div class="form-check border-bottom mb-2 pb-1">
+                              <input class="form-check-input shadow-none" type="checkbox" id="p_all" checked="">
+                              <label class="form-check-label small fw-bold" for="p_all">Seleccionar Todos</label>
+                            </div>
+                            <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox"
+                                id="p1" checked=""><label class="form-check-label small" for="p1">México</label></div>
+                            <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox"
+                                id="p2" checked=""><label class="form-check-label small" for="p2">Guatemala</label>
+                            </div>
+                            <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox"
+                                id="p3" checked=""><label class="form-check-label small" for="p3">Honduras</label></div>
+                            <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox"
+                                id="p4" checked=""><label class="form-check-label small" for="p4">Panamá</label></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3 col-md-4 mb-2">
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                          <input class="form-check-input m-0 shadow-none" type="checkbox" id="grp_tipo" checked="">
+                          <label class="form-label small fw-bold text-muted mb-0" for="grp_tipo">Tipo de Gasto</label>
+                        </div>
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-light form-control-sm w-100 text-start d-flex justify-content-between align-items-center border border-secondary border-opacity-25 shadow-none radius-10 bg-light"
+                            type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                            <span class="text-dark small text-truncate">Todos</span><i
+                              class="bi bi-chevron-down text-muted"></i>
+                          </button>
+                          <div class="dropdown-menu w-100 p-2 shadow-sm border-0 radius-10 dropdown-menu-custom">
+                            <div class="form-check border-bottom mb-2 pb-1">
+                              <input class="form-check-input shadow-none" type="checkbox" id="t_all" checked>
+                              <label class="form-check-label small fw-bold" for="t_all">Seleccionar Todos</label>
+                            </div>
+                            <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox"
+                                id="t1" checked><label class="form-check-label small" for="t1">Campaña
+                                Transversal</label></div>
+                            <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox"
+                                id="t2" checked><label class="form-check-label small" for="t2">Gasto Ordinario</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3 col-md-4 mb-2">
+                        <div class="d-flex align-items-center gap-2 mb-1">
+                          <input class="form-check-input m-0 shadow-none" type="checkbox" id="grp_cta" checked="">
+                          <label class="form-label small fw-bold text-muted mb-0" for="grp_cta">Cuenta Contable</label>
+                        </div>
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-light form-control-sm w-100 text-start d-flex justify-content-between align-items-center border border-secondary border-opacity-25 shadow-none radius-10 bg-light"
+                            type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                            <span class="text-dark small text-truncate">Todas</span><i
+                              class="bi bi-chevron-down text-muted"></i>
+                          </button>
+                          <div class="dropdown-menu w-100 p-2 shadow-sm border-0 radius-10 dropdown-menu-custom"
+                            style="max-height: 200px; overflow-y: auto;">
+                            <div class="form-check border-bottom mb-2 pb-1">
+                              <input class="form-check-input shadow-none" type="checkbox" id="cta_all" checked>
+                              <label class="form-check-label small fw-bold" for="cta_all">Seleccionar Todas</label>
+                            </div>
+                            <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox"
+                                id="cta1" checked><label class="form-check-label small" for="cta1">609011 -
+                                Televisión</label></div>
+                            <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox"
+                                id="cta2" checked><label class="form-check-label small" for="cta2">609013 - MPV</label>
+                            </div>
+                            <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox"
+                                id="cta3" checked><label class="form-check-label small" for="cta3">609028 -
+                                Digital</label></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-4 col-md-12 mb-2 text-end mt-3 mt-lg-0">
+                        <button class="btn btn-sm btn-success fw-bold w-100 py-1.5 shadow-sm radius-10"><i
+                            class="bi bi-file-earmark-excel me-2"></i>Exportar Excel</button>
+                      </div>
+                    </div>
+
+                    <div class="row g-2 align-items-center pt-2 border-top mt-1">
+                      <div class="col-12 col-md-6">
+                        <label class="form-label small fw-bold text-muted mb-1">Buscar Centro de Costos</label>
+                        <div class="position-relative">
+                          <input type="text"
+                            class="form-control form-control-sm ps-4 radius-10 bg-light border-secondary border-opacity-25 shadow-none"
+                            placeholder="Buscar CeCo (No. o Nombre)...">
+                          <span class="position-absolute top-50 translate-middle-y ms-2 text-muted small"><i
+                              class="bi bi-search"></i></span>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label class="form-label small fw-bold text-muted mb-1">Buscar Campaña</label>
+                        <div class="position-relative">
+                          <input type="text"
+                            class="form-control form-control-sm ps-4 radius-10 bg-light border-secondary border-opacity-25 shadow-none"
+                            placeholder="Buscar Campaña (Clave o Nombre)...">
+                          <span class="position-absolute top-50 translate-middle-y ms-2 text-muted small"><i
+                              class="bi bi-search"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card w-100 border shadow-sm radius-10 bg-white">
+                  <div class="card-body p-0">
+                    <div class="table-responsive" style="max-height: 650px; overflow-y: auto;">
+                      <table class="table align-middle mb-0 matrix-table text-nowrap table-grouped" id="budgetTable">
+                        <thead class="table-light text-center sticky-top z-1 shadow-sm">
+                          <tr>
+                            <th class="border-end border-bottom text-start ps-4 text-dark fs-6" id="tree-header-title">
+                              Base Presupuestal Calculada</th>
+                            <th class="border-end border-bottom table-secondary text-dark" style="width: 140px;">
+                              Estático</th>
+                            <th colspan="3" class="border-bottom table-warning text-dark">Control de Carga Presupuestal
+                            </th>
+                          </tr>
+                          <tr>
+                            <th class="text-start ps-4 border-end">Estructura / Agrupador</th>
+                            <th class="text-end border-end table-secondary text-dark">Límite Base</th>
+                            <th class="text-end table-warning text-dark" style="width: 130px;">Asignado</th>
+                            <th class="text-end table-warning text-dark" style="width: 130px;">Disponible</th>
+                            <th class="text-end table-warning text-dark pe-4" style="width: 100px;">% Consumo</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+                          <tr class="group-row" data-node="mx" data-level="pais" data-ancestors="">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-danger"></i><i
+                                class="bi bi-geo-alt-fill text-danger me-2"></i>MÉXICO</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">350,000,000</td>
+                            <td class="text-end fw-bold text-warning-emphasis">0</td>
+                            <td class="text-end fw-bold text-success">350,000,000</td>
+                            <td class="text-end fw-bold text-muted pe-4">0%</td>
+                          </tr>
+
+                          <tr class="group-row" data-node="mx_c4_mas" data-level="c4" data-ancestors="mx">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i><i
+                                class="bi bi-diagram-2 me-2"></i>SECTOR MERCADO MASIVO</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">290,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">290,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+
+                          <tr class="group-row" data-node="mx_c5_udn" data-level="c5" data-ancestors="mx,mx_c4_mas">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i><i
+                                class="bi bi-folder2 me-2"></i>UNIDADES DE NEGOCIO</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">210,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">210,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+
+                          <tr class="group-row" data-node="mx_c6_prest" data-level="c6"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i><i
+                                class="bi bi-folder2-open me-2"></i>PRESTAMOS Y COBRANZA</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">85,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">85,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+
+                          <tr class="group-row" data-node="mx_c7_centro" data-level="c7"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i>ZONA CENTRO</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">85,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">85,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+
+                          <tr class="group-row" data-node="mx_c8_cdmx" data-level="c8"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i>REGION CDMX Y AREA
+                              METROPOLITANA</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">85,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">85,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+
+                          <tr class="group-row" data-node="mx_c9_sur" data-level="c9"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i>SUCURSALES SUR</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">85,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">85,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+
+                          <tr class="group-row" data-node="ceco_100901" data-level="ceco"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx,mx_c9_sur">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-primary"></i> <i
+                                class="bi bi-building me-1 text-primary"></i> 100901 - DIR GRAL CONECTIVIDAD</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">5,000,000</td>
+                            <td class="text-end fw-bold text-warning-emphasis">0</td>
+                            <td class="text-end fw-bold text-success">5,000,000</td>
+                            <td class="text-end fw-bold text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="camp_100901_a" data-level="campana"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx,mx_c9_sur,ceco_100901">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-secondary"></i>
+                              Campaña: Estrategia Always On</td>
+                            <td class="text-end fw-bold text-secondary border-end bg-light">5,000,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+                          <tr data-node="cta_100901_a_1" data-level="cuenta"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx,mx_c9_sur,ceco_100901,camp_100901_a">
+                            <td class="border-end"><i class="bi bi-dot"></i> 609013 - Material Punto Venta</td>
+                            <td class="text-end text-muted border-end bg-light">3,500,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+                          <tr data-node="cta_100901_a_2" data-level="cuenta"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx,mx_c9_sur,ceco_100901,camp_100901_a">
+                            <td class="border-end"><i class="bi bi-dot"></i> 609015 - Inves. de Mercados</td>
+                            <td class="text-end text-muted border-end bg-light">1,500,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+
+                          <tr class="group-row" data-node="ceco_109220" data-level="ceco"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx,mx_c9_sur">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-primary"></i> <i
+                                class="bi bi-building me-1 text-primary"></i> 109220 - PUBLICIDAD CONECTIVIDAD</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">80,000,000</td>
+                            <td class="text-end fw-bold text-warning-emphasis">0</td>
+                            <td class="text-end fw-bold text-success">80,000,000</td>
+                            <td class="text-end fw-bold text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="camp_109220_bf" data-level="campana"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx,mx_c9_sur,ceco_109220">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-secondary"></i>
+                              Campaña: Buen Fin 2026</td>
+                            <td class="text-end fw-bold text-secondary border-end bg-light">45,000,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+                          <tr data-node="cta_109220_bf_1" data-level="cuenta"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx,mx_c9_sur,ceco_109220,camp_109220_bf">
+                            <td class="border-end"><i class="bi bi-dot"></i> 609011 - Televisión</td>
+                            <td class="text-end text-muted border-end bg-light">30,000,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+                          <tr data-node="cta_109220_bf_2" data-level="cuenta"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx,mx_c9_sur,ceco_109220,camp_109220_bf">
+                            <td class="border-end"><i class="bi bi-dot"></i> 609013 - Material Punto Venta</td>
+                            <td class="text-end text-muted border-end bg-light">15,000,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+                          <tr class="group-row" data-node="camp_109220_m" data-level="campana"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx,mx_c9_sur,ceco_109220">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-secondary"></i>
+                              Campaña: Mundial</td>
+                            <td class="text-end fw-bold text-secondary border-end bg-light">35,000,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+                          <tr data-node="cta_109220_m_1" data-level="cuenta"
+                            data-ancestors="mx,mx_c4_mas,mx_c5_udn,mx_c6_prest,mx_c7_centro,mx_c8_cdmx,mx_c9_sur,ceco_109220,camp_109220_m">
+                            <td class="border-end"><i class="bi bi-dot"></i> 609011 - Televisión</td>
+                            <td class="text-end text-muted border-end bg-light">35,000,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+
+
+                          <tr class="group-row" data-node="mx_c4_corp" data-level="c4" data-ancestors="mx">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i><i
+                                class="bi bi-diagram-2 me-2"></i>SECTOR CORPORATIVO</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">60,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">60,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="mx_c5_big" data-level="c5" data-ancestors="mx,mx_c4_corp">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i><i
+                                class="bi bi-folder2 me-2"></i>BANCA INSTITUCIONAL Y DE GOBIERNO</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">60,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">60,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="mx_c6_big" data-level="c6"
+                            data-ancestors="mx,mx_c4_corp,mx_c5_big">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i><i
+                                class="bi bi-folder2-open me-2"></i>MKT CORPORATIVO BIG</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">60,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">60,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="ceco_226654" data-level="ceco"
+                            data-ancestors="mx,mx_c4_corp,mx_c5_big,mx_c6_big">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-primary"></i> <i
+                                class="bi bi-building me-1 text-primary"></i> 226654 - PUBLICIDAD BANCA EMPRESAS BIG
+                            </td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">60,000,000</td>
+                            <td class="text-end fw-bold text-warning-emphasis">0</td>
+                            <td class="text-end fw-bold text-success">60,000,000</td>
+                            <td class="text-end fw-bold text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="camp_226654_b2b" data-level="campana"
+                            data-ancestors="mx,mx_c4_corp,mx_c5_big,mx_c6_big,ceco_226654">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-secondary"></i>
+                              Campaña: Atracción B2B</td>
+                            <td class="text-end fw-bold text-secondary border-end bg-light">60,000,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+                          <tr data-node="cta_226654_b2b_1" data-level="cuenta"
+                            data-ancestors="mx,mx_c4_corp,mx_c5_big,mx_c6_big,ceco_226654,camp_226654_b2b">
+                            <td class="border-end"><i class="bi bi-dot"></i> 609028 - Digital</td>
+                            <td class="text-end text-muted border-end bg-light">60,000,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+
+
+                          <tr class="group-row" data-node="lam" data-level="pais" data-ancestors="">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-danger"></i><i
+                                class="bi bi-globe-americas text-primary me-2"></i>LAM (Latinoamérica)</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">83,500,000</td>
+                            <td class="text-end fw-bold text-warning-emphasis">0</td>
+                            <td class="text-end fw-bold text-success">83,500,000</td>
+                            <td class="text-end fw-bold text-muted pe-4">0%</td>
+                          </tr>
+
+                          <tr class="group-row" data-node="lam_gtq" data-level="pais-lam" data-ancestors="lam">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i>Guatemala</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">30,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">30,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="gtq_c4" data-level="c4" data-ancestors="lam,lam_gtq">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i>OPERACIÓN REGIONAL
+                              NORTE</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">30,000,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">30,000,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="ceco_180169" data-level="ceco"
+                            data-ancestors="lam,lam_gtq,gtq_c4">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-primary"></i> <i
+                                class="bi bi-building me-1 text-primary"></i> 180169 - MKT OPERATIVO GUATEMALA</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">30,000,000</td>
+                            <td class="text-end fw-bold text-warning-emphasis">0</td>
+                            <td class="text-end fw-bold text-success">30,000,000</td>
+                            <td class="text-end fw-bold text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="camp_gtq" data-level="campana"
+                            data-ancestors="lam,lam_gtq,gtq_c4,ceco_180169">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-secondary"></i>
+                              Campaña: Apertura de Tiendas</td>
+                            <td class="text-end fw-bold text-secondary border-end bg-light">30,000,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+                          <tr data-node="cta_gtq" data-level="cuenta"
+                            data-ancestors="lam,lam_gtq,gtq_c4,ceco_180169,camp_gtq">
+                            <td class="border-end"><i class="bi bi-dot"></i> 609013 - Material Punto Venta</td>
+                            <td class="text-end text-muted border-end bg-light">30,000,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+
+                          <tr class="group-row" data-node="lam_hnd" data-level="pais-lam" data-ancestors="lam">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i>Honduras</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">53,500,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">53,500,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="hnd_c4" data-level="c4" data-ancestors="lam,lam_hnd">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon"></i>OPERACIÓN REGIONAL
+                              CENTRO</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">53,500,000</td>
+                            <td class="text-end text-warning-emphasis">0</td>
+                            <td class="text-end text-success">53,500,000</td>
+                            <td class="text-end text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="ceco_616528" data-level="ceco"
+                            data-ancestors="lam,lam_hnd,hnd_c4">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-primary"></i> <i
+                                class="bi bi-building me-1 text-primary"></i> 616528 - PUBLICIDAD PRESTA PRENDA</td>
+                            <td class="text-end fw-bold text-dark border-end bg-light">53,500,000</td>
+                            <td class="text-end fw-bold text-warning-emphasis">0</td>
+                            <td class="text-end fw-bold text-success">53,500,000</td>
+                            <td class="text-end fw-bold text-muted pe-4">0%</td>
+                          </tr>
+                          <tr class="group-row" data-node="camp_hnd" data-level="campana"
+                            data-ancestors="lam,lam_hnd,hnd_c4,ceco_616528">
+                            <td class="border-end"><i class="bi bi-chevron-down toggle-icon text-secondary"></i>
+                              Campaña: Promoción Prendaria</td>
+                            <td class="text-end fw-bold text-secondary border-end bg-light">53,500,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+                          <tr data-node="cta_hnd" data-level="cuenta"
+                            data-ancestors="lam,lam_hnd,hnd_c4,ceco_616528,camp_hnd">
+                            <td class="border-end"><i class="bi bi-dot"></i> 609011 - Televisión</td>
+                            <td class="text-end text-muted border-end bg-light">53,500,000</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted font-monospace">-</td>
+                            <td class="text-end text-muted pe-4 font-monospace">-</td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="primary-pills-profile" role="tabpanel">
+          <div class="card border border-secondary-subtle shadow-sm radius-10 mb-4 bg-white">
+            <div
+              class="card-header bg-white border-bottom border-secondary-subtle px-4 py-3 d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="fw-bold text-dark mb-0">
+                  <i class="bi bi-clock-history text-primary me-2"></i>Control de Versiones
+                </h6>
+                <span class="text-muted" style="font-size: 0.8rem;">Historial de cálculos y ajustes de la Base
+                  Presupuestal del ejercicio activo.</span>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                  <thead class="table-light">
+                    <tr>
+                      <th class="ps-4 text-dark fw-bold">Versión</th>
+                      <th class="text-dark fw-bold">Usuario</th>
+                      <th class="text-dark fw-bold">Fecha</th>
+                      <th class="text-dark fw-bold">Motivo del Cambio</th>
+                      <th class="text-dark fw-bold text-end">Límite de Carga de la Base</th>
+                      <th class="text-dark fw-bold text-center">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="ps-4">
+                        <span class="fw-bold text-primary text-decoration-none d-block">Versión 2</span>
+                        <span class="text-muted" style="font-size: 0.75rem;">Base Origen: Versión 1</span>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-3">
+                          <div
+                            class="bg-light border border-secondary-subtle rounded-circle d-flex align-items-center justify-content-center text-secondary"
+                            style="width: 40px; height: 40px;">
+                            <i class="bi bi-person fs-5"></i>
+                          </div>
+                          <p class="mb-0 fw-bold">Karla Castillón</p>
+                        </div>
+                      </td>
+                      <td>
+                        <span class="d-block text-dark fw-medium">Oct 12, 2026</span>
+                        <span class="text-muted" style="font-size: 0.75rem;">14:30 PM</span>
+                      </td>
+                      <td class="text-wrap text-dark" style="min-width: 250px;">
+                        Ajuste Extraordinario. Se redujo el % de tope al 3% por instrucción directiva.
+                      </td>
+                      <td class="fw-bold text-dark text-end">
+                        $130,500,000.00
+                      </td>
+                      <td class="text-center">
+                        <button class="btn btn-light border shadow-none" title="Descargar Excel"
+                          data-bs-toggle="tooltip">
+                          <i class="bi bi-file-earmark-excel text-success"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="ps-4">
+                        <span class="fw-bold text-dark text-decoration-none d-block">Versión 1</span>
+                        <span class="text-muted" style="font-size: 0.75rem;">Forecast: FC-2027-V1</span>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center gap-3">
+                          <div
+                            class="bg-light border border-secondary-subtle rounded-circle d-flex align-items-center justify-content-center text-secondary"
+                            style="width: 40px; height: 40px;">
+                            <i class="bi bi-person fs-5"></i>
+                          </div>
+                          <p class="mb-0 fw-bold">Edgar Grande</p>
+                        </div>
+                      </td>
+                      <td>
+                        <span class="d-block text-dark fw-medium">Oct 01, 2026</span>
+                        <span class="text-muted" style="font-size: 0.75rem;">09:15 AM</span>
+                      </td>
+                      <td class="text-wrap text-dark" style="min-width: 250px;">
+                        Carga inicial del presupuesto operativo del año con tope al 5%.
+                      </td>
+                      <td class="fw-bold text-dark text-end">
+                        $145,000,000.00
+                      </td>
+                      <td class="text-center">
+                        <button class="btn btn-light border shadow-none" title="Descargar Excel"
+                          data-bs-toggle="tooltip">
+                          <i class="bi bi-file-earmark-excel text-success"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+
+  </main>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Estado de los nodos expandidos (Por defecto, expandimos raíces y primera capa para que no se vea vacío)
+      let expandedNodes = new Set(['mx', 'mx_c4_masivo', 'mx_c5_udn', 'mx_c6_prest', 'lam', 'lam_gtq', 'lam_hnd']);
+
+      function renderTree() {
+        const toggles = document.querySelectorAll('.level-toggle');
+        // Si no hay ningún checkbox seleccionado, pasamos a modo Plano (Operativo)
+        const isFlatMode = Array.from(toggles).every(t => !t.checked);
+
+        document.querySelectorAll('#budgetTable tbody tr').forEach(row => {
+          const node = row.getAttribute('data-node');
+          const level = row.getAttribute('data-level');
+          const ancestorsStr = row.getAttribute('data-ancestors');
+          const ancestors = ancestorsStr ? ancestorsStr.split(',') : [];
+
+          if (isFlatMode) {
+            // MODO PLANO: Muestra CeCo -> Campaña -> Cuenta (Oculta País y Clasificaciones)
+            if (!['ceco', 'campana', 'cuenta'].includes(level)) {
+              row.style.display = 'none';
+              return;
+            }
+
+            // Un nodo es visible si TODOS sus ancestros del modo plano (ceco o campana) están expandidos
+            let isVisible = true;
+            for (const anc of ancestors) {
+              const ancRow = document.querySelector(`tr[data-node="${anc}"]`);
+              if (ancRow && ['ceco', 'campana'].includes(ancRow.getAttribute('data-level'))) {
+                if (!expandedNodes.has(anc)) {
+                  isVisible = false;
+                  break;
+                }
+              }
+            }
+            row.style.display = isVisible ? '' : 'none';
+          } else {
+            // MODO AGRUPADO (Corporativo): Muestra País -> C4 a C9 -> CeCo -> Campaña -> Cuenta
+
+            // Verificamos si el nivel de la fila está apagado en los filtros de la izquierda
+            if (level.startsWith('c') && !['ceco', 'campana', 'cuenta'].includes(level)) {
+              const cb = document.getElementById(`btn-${level}`);
+              if (cb && !cb.checked) {
+                row.style.display = 'none'; // El nodo se oculta (Aplanamiento)
+                return;
+              }
+            }
+
+            // Para que una fila se muestre, TODOS sus ancestros "Activos" deben estar expandidos
+            let isVisible = true;
+            for (const anc of ancestors) {
+              const ancRow = document.querySelector(`tr[data-node="${anc}"]`);
+              if (ancRow) {
+                const ancLevel = ancRow.getAttribute('data-level');
+                let ancIsActive = true;
+
+                // Determinamos si el ancestro está activo en los filtros
+                if (ancLevel.startsWith('c') && !['ceco', 'campana', 'cuenta'].includes(ancLevel)) {
+                  const cb = document.getElementById(`btn-${ancLevel}`);
+                  if (cb && !cb.checked) ancIsActive = false;
+                }
+
+                // Si el ancestro está activo pero no está en la lista de nodos expandidos, la fila se oculta
+                if (ancIsActive) {
+                  if (!expandedNodes.has(anc)) {
+                    isVisible = false;
+                    break;
+                  }
+                }
+              }
+            }
+            row.style.display = isVisible ? '' : 'none';
+          }
+
+          // Actualizar icono de expansión/colapso en la interfaz
+          if (node) {
+            if (expandedNodes.has(node)) {
+              row.classList.remove('collapsed');
+            } else {
+              row.classList.add('collapsed');
+            }
+          }
+        });
+
+        // Actualizar Cabecera y Estilos de la tabla
+        const table = document.getElementById('budgetTable');
+        const treeHeaderTitle = document.getElementById('tree-header-title');
+        if (isFlatMode) {
+          table.classList.add('table-flat');
+          table.classList.remove('table-grouped');
+          treeHeaderTitle.textContent = "Centro de Costos / Campaña / Cuenta";
+        } else {
+          table.classList.add('table-grouped');
+          table.classList.remove('table-flat');
+          treeHeaderTitle.textContent = "Estructura / Agrupador";
+        }
+      }
+
+      // 1. Escuchar cambios en los agrupadores de la izquierda
+      document.querySelectorAll('.level-toggle').forEach(t => {
+        t.addEventListener('change', renderTree);
+      });
+
+      // 2. Escuchar clics en las filas para colapsar/expandir
+      document.getElementById('budgetTable').addEventListener('click', function (e) {
+        const row = e.target.closest('.group-row');
+        if (!row || e.target.closest('button')) return; // Ignora clics en botones
+
+        const nodeId = row.getAttribute('data-node');
+        if (!nodeId) return;
+
+        if (expandedNodes.has(nodeId)) {
+          expandedNodes.delete(nodeId);
+        } else {
+          expandedNodes.add(nodeId);
+        }
+        renderTree();
+      });
+
+      // Render Inicial
+      renderTree();
+    });
+  </script>
+</body>
+
+</html>

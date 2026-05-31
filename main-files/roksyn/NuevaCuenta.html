@@ -1,0 +1,1045 @@
+<html lang="es" data-bs-theme="semi-dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nueva Relación de Usuario | IPSO</title>
+
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+  <link href="assets/css/minimal-theme.css" rel="stylesheet">
+  <link href="assets/css/shadow-theme.css" rel="stylesheet">
+
+  <style>
+    .dual-listbox-container select {
+      height: 320px !important;
+    }
+  </style>
+</head>
+
+<body>
+<!--start header-->
+  <header class="top-header">
+    <nav class="navbar navbar-expand justify-content-between">
+      <div class="btn-toggle-menu">
+        <span class="material-symbols-outlined">menu</span>
+      </div>
+      <div class="position-relative search-bar d-lg-block d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <input class="form-control form-control-sm rounded-5 px-5" disabled="" type="search" placeholder="Search">
+        <span class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+      </div>
+      <ul class="navbar-nav top-right-menu gap-2">
+        <li class="nav-item d-lg-none d-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <a class="nav-link" href="javascript:;"><span class="material-symbols-outlined">
+              search
+            </span></a>
+        </li>
+        <li class="nav-item dark-mode">
+          <a class="nav-link dark-mode-icon" href="javascript:;"><span
+              class="material-symbols-outlined">light_mode</span></a>
+        </li>
+        <li class="nav-item dropdown dropdown-app">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown"
+            href="javascript:;"><span class="material-symbols-outlined">
+              apps
+            </span></a>
+          <div class="dropdown-menu dropdown-menu-end mt-lg-2 p-0">
+            <div class="app-container p-2 my-2 ps">
+              <div class="row gx-0 gy-2 row-cols-3 justify-content-center p-2">
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/slack.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Slack</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/behance.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Behance</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/google-drive.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Dribble</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/outlook.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Outlook</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/github.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">GitHub</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/stack-overflow.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Stack</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/figma.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Stack</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/twitter.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Twitter</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/google-calendar.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Calendar</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/spotify.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Spotify</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/google-photos.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Photos</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/pinterest.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Photos</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/linkedin.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">linkedin</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/dribble.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Dribble</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/youtube.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">YouTube</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/google.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">News</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/envato.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Envato</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div class="col">
+                  <a href="javascript:;">
+                    <div class="app-box text-center">
+                      <div class="app-icon">
+                        <img src="assets/images/icons/safari.png" width="30" alt="">
+                      </div>
+                      <div class="app-name">
+                        <p class="mb-0 mt-1">Safari</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+              </div><!--end row-->
+
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item dropdown dropdown-large">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+            <div class="position-relative">
+              <span class="notify-badge">8</span>
+              <span class="material-symbols-outlined">
+                notifications_none
+              </span>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end mt-lg-2">
+            <a href="javascript:;">
+              <div class="msg-header">
+                <p class="msg-header-title">Notifications</p>
+                <p class="msg-header-clear ms-auto">Marks all as read</p>
+              </div>
+            </a>
+            <div class="header-notifications-list ps">
+              <a class="dropdown-item" href="javascript:;">
+                <div class="d-flex align-items-center">
+                  <div class="notify text-dark border">
+                    <span class="material-symbols-outlined">
+                      add_shopping_cart
+                    </span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="msg-name">New Orders <span class="msg-time float-end">2 min
+                        ago</span></h6>
+                    <p class="msg-info">You have recived new orders</p>
+                  </div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="javascript:;">
+                <div class="d-flex align-items-center">
+                  <div class="notify text-danger border">
+                    <span class="material-symbols-outlined">
+                      account_circle
+                    </span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec
+                        ago</span></h6>
+                    <p class="msg-info">5 new user registered</p>
+                  </div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="javascript:;">
+                <div class="d-flex align-items-center">
+                  <div class="notify text-success border">
+                    <span class="material-symbols-outlined">
+                      picture_as_pdf
+                    </span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="msg-name">24 PDF File<span class="msg-time float-end">19 min
+                        ago</span></h6>
+                    <p class="msg-info">The pdf files generated</p>
+                  </div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="javascript:;">
+                <div class="d-flex align-items-center">
+                  <div class="notify text-info border">
+                    <span class="material-symbols-outlined">
+                      store
+                    </span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="msg-name">New Product Approved <span class="msg-time float-end">2 hrs ago</span></h6>
+                    <p class="msg-info">Your new product has approved</p>
+                  </div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="javascript:;">
+                <div class="d-flex align-items-center">
+                  <div class="notify text-warning border">
+                    <span class="material-symbols-outlined">
+                      event_available
+                    </span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="msg-name">Time Response <span class="msg-time float-end">28 min
+                        ago</span></h6>
+                    <p class="msg-info">5.1 min avarage time response</p>
+                  </div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="javascript:;">
+                <div class="d-flex align-items-center">
+                  <div class="notify text-danger border">
+                    <span class="material-symbols-outlined">
+                      forum
+                    </span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="msg-name">New Comments <span class="msg-time float-end">4 hrs
+                        ago</span></h6>
+                    <p class="msg-info">New customer comments recived</p>
+                  </div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="javascript:;">
+                <div class="d-flex align-items-center">
+                  <div class="notify text-dark border">
+                    <span class="material-symbols-outlined">
+                      local_florist
+                    </span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="msg-name">New 24 authors<span class="msg-time float-end">1 day
+                        ago</span></h6>
+                    <p class="msg-info">24 new authors joined last week</p>
+                  </div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="javascript:;">
+                <div class="d-flex align-items-center">
+                  <div class="notify text-success border">
+                    <span class="material-symbols-outlined">
+                      park
+                    </span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="msg-name">Your item is shipped <span class="msg-time float-end">5 hrs
+                        ago</span></h6>
+                    <p class="msg-info">Successfully shipped your item</p>
+                  </div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="javascript:;">
+                <div class="d-flex align-items-center">
+                  <div class="notify text-warning border">
+                    <span class="material-symbols-outlined">
+                      elevation
+                    </span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="msg-name">Defense Alerts <span class="msg-time float-end">2 weeks
+                        ago</span></h6>
+                    <p class="msg-info">45% less alerts last 4 weeks</p>
+                  </div>
+                </div>
+              </a>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+              <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+              <div class="ps__rail-y" style="top: 0px; right: 0px;">
+                <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+              </div>
+            </div>
+            <a href="javascript:;">
+              <div class="text-center msg-footer">View All</div>
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="offcanvas" href="#ThemeCustomizer"><span
+              class="material-symbols-outlined">
+              settings
+            </span></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <!--end header-->
+
+
+  <!--start sidebar-->
+  <aside class="sidebar-wrapper">
+    <div class="sidebar-header">
+      <div class="logo-icon">
+        <img src="assets/images/logo-icon.png" class="logo-img" alt="">
+      </div>
+      <div class="logo-name flex-grow-1">
+        <h5 class="mb-0">IPSO</h5>
+      </div>
+      <div class="sidebar-close ">
+        <span class="material-symbols-outlined">close</span>
+      </div>
+    </div>
+    <div class="sidebar-nav" data-simplebar="init">
+      <div class="simplebar-wrapper" style="margin: 0px;">
+        <div class="simplebar-height-auto-observer-wrapper">
+          <div class="simplebar-height-auto-observer"></div>
+        </div>
+        <div class="simplebar-mask">
+          <div class="simplebar-offset mm-active" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper mm-show" style="height: 100%; overflow: hidden;">
+              <div class="simplebar-content mm-active" style="padding: 0px;">
+
+                <!--navigation-->
+                <ul class="metismenu mm-show" id="menu">
+                  <li>
+                    <a href="index.html" aria-expanded="false">
+                      <div class="parent-icon"><span class="material-symbols-outlined">home</span>
+                      </div>
+                      <div class="menu-title">Home</div>
+                    </a>
+                  </li>
+                  <li class="">
+                    <a href="SIPRES.html" aria-expanded="false">
+                      <div class="parent-icon"><span class="material-symbols-outlined">redeem</span>
+                      </div>
+                      <div class="menu-title">Forecast</div>
+                    </a>
+                  </li>
+                  <li class="menu-label mb-0 text-light">Gestion de Presupuestos</li>
+                  <li class="">
+                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                      <div class="parent-icon"><span class="material-symbols-outlined">apps</span>
+                      </div>
+                      <div class="menu-title">Planeacion<br>Presupuestal</div>
+                    </a>
+                    <ul class="mm-collapse" style="height: 0px;">
+                      <li class=""><a href="Parametros.html" aria-expanded="false"><span
+                            class="material-symbols-outlined">arrow_right</span>Parametros</a>
+                      </li>
+                      <li class="">
+                        <a class="has-arrow" href="javascript:;" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Base Presupuestal
+                        </a>
+                        <ul class="mm-collapse" style="height: 0px;">
+                          <li>
+                            <a href="BPresupuestal.html"><span class="material-symbols-outlined">arrow_right</span>Base
+                              del Ejercicio Activo</a>
+                          </li>
+                          <li>
+                            <a href="BPRegistros.html"><span
+                                class="material-symbols-outlined">arrow_right</span>Registro de
+                              Bases<br> Presupuestales</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li> <a href="AEjercicio.html" aria-expanded="true"><span
+                            class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a>
+                      </li>
+
+
+
+
+
+
+                      <li> <a href="Autorizaciones.html" aria-expanded="false"><span
+                            class="material-symbols-outlined">arrow_right</span>Autorizaciones</a>
+                      </li>
+                      <li> <a href="Liberaciones.html" aria-expanded="true"><span
+                            class="material-symbols-outlined">arrow_right</span>Liberaciones</a>
+                      </li>
+
+                    </ul>
+                  </li>
+
+                  <li class="">
+                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                      <div class="parent-icon"><span class="material-symbols-outlined">widgets</span>
+                      </div>
+                      <div class="menu-title">Ejercicio Presupuestal</div>
+                    </a>
+                    <ul class="mm-collapse" style="height: 0px;">
+                      <li> <a href=" SCarga.html"><span class="material-symbols-outlined">arrow_right</span>Movimientos
+                          Presupuestales</a>
+                      </li>
+
+                      <li> <a href="Reportes.html"><span
+                            class="material-symbols-outlined">arrow_right</span>Reportes</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="menu-label mb-0 text-light">Configuracion General</li>
+                  <li class="mm-active">
+                    <a href="javascript:;" class="has-arrow" aria-expanded="true">
+                      <div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span>
+                      </div>
+                      <div class="menu-title">Sistema</div>
+                    </a>
+                    <ul class="mm-collapse mm-show" style="">
+
+                      <li> <a href="PUsuarios.html"><span
+                            class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a>
+                      </li>
+                      <li> <a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de
+                          Costos</a>
+                      </li>
+                      <li class="mm-active"> <a href="GCuentas.html" aria-expanded="true"><span
+                            class="material-symbols-outlined">arrow_right</span>Cuentas Presupuestales</a>
+                      </li>
+                      <li> <a href="CTransversal.html"><span
+                            class="material-symbols-outlined">arrow_right</span>Campañas
+                          Transversales</a>
+                      </li>
+                      <li> <a href="PFondo.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos</a>
+                      </li>
+                    </ul>
+                  </li>
+
+
+
+
+
+
+                </ul>
+                <!--end navigation-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="simplebar-placeholder" style="width: auto; height: 369px;"></div>
+      </div>
+      <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+        <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+      </div>
+      <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+        <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;">
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-bottom dropdown dropup-center dropup">
+      <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
+        <div class="user-img">
+          <img src="assets/images/avatars/01.png" alt="">
+        </div>
+        <div class="user-info">
+          <h5 class="mb-0 user-name">Edgar Grande</h5>
+          <p class="mb-0 user-designation">P2</p>
+        </div>
+      </div>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
+              account_circle
+            </span><span>Profile</span></a>
+        </li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
+              tune
+            </span><span>Settings</span></a>
+        </li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
+              dashboard
+            </span><span>Dashboard</span></a>
+        </li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
+              account_balance
+            </span><span>Earnings</span></a>
+        </li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
+              cloud_download
+            </span><span>Downloads</span></a>
+        </li>
+        <li>
+          <div class="dropdown-divider mb-0"></div>
+        </li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
+              logout
+            </span><span>Logout</span></a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <!--end sidebar-->
+
+  <main class="page-content">
+
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-4">
+      <div>
+        <h4 class="fw-bold text-dark mb-0">
+          <i class="bi bi-wallet2 text-primary me-2"></i>Nueva Cuenta
+        </h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb small mb-0 mt-1">
+            <li class="breadcrumb-item"><a href="javascript:;" class="text-decoration-none text-muted">Configuración del
+                sistema</a></li>
+            <li class="breadcrumb-item"><a href="GCuentas.html" class="text-decoration-none text-muted">Cuentas
+                Presupuestales</a></li>
+            <li class="breadcrumb-item active fw-bold" aria-current="page">Nueva Cuenta</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-12 col-lg-3 d-flex">
+        <div class="card w-100 h-100 shadow-sm border-0">
+          <div class="card-body p-4 d-flex flex-column">
+
+            <div class="text-start flex-grow-1">
+              <h5 class="fw-bold text-dark mb-4"><i class="bi bi-info-circle me-2 text-primary"></i>Datos de Cuenta</h5>
+
+              <div class="mb-4">
+                <label class="form-label fw-bold text-dark">Número de cuenta <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputNumeroCuenta" placeholder="Ej. 609010" maxlength="6"
+                  pattern="\d{6}" required="">
+                <div class="form-text small mt-1">Obligatoriamente 6 dígitos numéricos (sin letras, espacios ni
+                  guiones).</div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-bold text-dark">Nombre de cuenta <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputNombreCuenta"
+                  placeholder="Ej. Radio, Prensa, Televisión..." maxlength="100" required="">
+                <div class="form-text small mt-1">El nombre debe ser único, sin importar si la clave es diferente.</div>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-bold text-dark">Rubro de cuenta <span class="text-danger">*</span></label>
+                <select class="form-select shadow-sm" id="selectRubroCuenta" required="">
+                  <option selected="" disabled="" value="">Seleccione la categoría...</option>
+                  <option value="Operativo">Operativo</option>
+                  <option value="Administrativo">Administrativo</option>
+                  <option value="Capital">Capital</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-9 d-flex">
+        <div class="card w-100 h-100 shadow-sm border-0">
+
+          <div class="card-header bg-white pt-4 pb-3 border-bottom-0 d-flex justify-content-between align-items-center">
+            <h5 class="fw-bold text-dark mb-0"><i class="bi bi-diagram-3 me-2 text-primary"></i>Vincular Centros de
+              Costos</h5>
+            <span class="text-danger small fw-bold" id="txt-validacion-cecos">Debe seleccionar al menos un Centro de
+              Costos.</span>
+          </div>
+
+          <div class="card-body px-4 pb-4 pt-0">
+
+            <div class="row g-2 align-items-end mb-2">
+
+              <div class="col-lg-3 col-md-4 mt-2 mt-lg-0">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <label class="form-label small fw-bold text-muted mb-0">Centro de Costos </label>
+                </div>
+                <div class="position-relative">
+                  <input type="text"
+                    class="form-control  ps-4 radius-10 bg-light shadow-none border-secondary border-opacity-25"
+                    placeholder="Buscar CeCo (No. o Nombre)...">
+                  <span class="position-absolute top-50 translate-middle-y ms-2 text-muted"><i
+                      class="bi bi-search"></i></span>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-md-4 mt-2 mt-lg-0">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <label class="form-label small fw-bold text-muted mb-0">División</label>
+                </div>
+                <div class="dropdown">
+                  <button
+                    class="btn btn-light form-control-sm w-100 text-start d-flex justify-content-between align-items-center border border-secondary border-opacity-25 shadow-none radius-10 bg-light"
+                    type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                    <span class="text-dark small text-truncate">Todos</span><i
+                      class="bi bi-chevron-down text-muted"></i>
+                  </button>
+                  <div class="dropdown-menu w-100 p-2 shadow-sm border-0 radius-10"
+                    style="max-height: 200px; overflow-y: auto;">
+                    <div class="form-check border-bottom mb-2 pb-1">
+                      <input class="form-check-input shadow-none" type="checkbox" id="p_all" checked="">
+                      <label class="form-check-label small fw-bold" for="p_all">Seleccionar Todos</label>
+                    </div>
+                    <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox" id="p1"
+                        checked=""><label class="form-check-label small" for="p1">Marca</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox" id="p2"
+                        checked=""><label class="form-check-label small" for="p2">Oferteo</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox" id="p3"
+                        checked=""><label class="form-check-label small" for="p3">Estrategia</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox" id="p4"
+                        checked=""><label class="form-check-label small" for="p4">Sin División</label></div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <div class="col-lg-3 col-md-4 mt-2 mt-lg-0">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <label class="form-label small fw-bold text-muted mb-0">Pais</label>
+                </div>
+                <div class="dropdown">
+                  <button
+                    class="btn btn-light form-control-sm w-100 text-start d-flex justify-content-between align-items-center border border-secondary border-opacity-25 shadow-none radius-10 bg-light"
+                    type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                    <span class="text-dark small text-truncate">Todos</span><i
+                      class="bi bi-chevron-down text-muted"></i>
+                  </button>
+                  <div class="dropdown-menu w-100 p-2 shadow-sm border-0 radius-10"
+                    style="max-height: 200px; overflow-y: auto;">
+                    <div class="form-check border-bottom mb-2 pb-1">
+                      <input class="form-check-input shadow-none" type="checkbox" id="p_all" checked="">
+                      <label class="form-check-label small fw-bold" for="p_all">Seleccionar Todos</label>
+                    </div>
+                    <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox" id="p1"
+                        checked=""><label class="form-check-label small" for="p1">México</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox" id="p2"
+                        checked=""><label class="form-check-label small" for="p2">Guatemala</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox" id="p3"
+                        checked=""><label class="form-check-label small" for="p3">Honduras</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input shadow-none" type="checkbox" id="p4"
+                        checked=""><label class="form-check-label small" for="p4">Panamá</label></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row align-items-center dual-listbox-container mb-4">
+
+              <div class="col-md-5">
+                <label class="small fw-bold mb-2 text-muted">CeCos Disponibles en el Sistema</label>
+                <select multiple="" class="form-select shadow-sm" id="cecos-disponibles"
+                  style="height: 320px !important;">
+                  <option value="616528">616528 - Presta prenda (Oferteo)</option>
+                  <option value="618201">618201 - Campañas de Lealtad (Oferteo)</option>
+                  <option value="618204">618204 - Marketing Directo (Oferteo)</option>
+                  <option value="616786">616786 - Publicidad Presta Prenda Marca (Marca)</option>
+                  <option value="618200">618200 - Medios Impresos Regional (Marca)</option>
+                  <option value="617001">617001 - Estrategia Digital Nacional (Estrategia)</option>
+                  <option value="618202">618202 - Patrocinios y Eventos (Estrategia)</option>
+                  <option value="617005">617005 - Publicidad Corporativa (Sin división)</option>
+                  <option value="618203">618203 - Relaciones Públicas (Sin división)</option>
+                </select>
+              </div>
+
+              <div class="col-md-2 text-center d-grid gap-2 px-3">
+                <button type="button" id="btn-agregar-ceco" class="btn btn-outline-primary btn-sm shadow-none"
+                  title="Asignar seleccionados">
+                  Agregar <i class="bi bi-chevron-right fw-bold"></i>
+                </button>
+                <button type="button" id="btn-quitar-ceco" class="btn btn-outline-danger btn-sm shadow-none mt-2"
+                  title="Retirar seleccionados">
+                  <i class="bi bi-chevron-left fw-bold"></i> Quitar
+                </button>
+              </div>
+
+              <div class="col-md-5">
+                <label class="small fw-bold mb-2 text-muted">CeCos relacionados a la nueva Cuenta</label>
+                <select multiple="" class="form-select border-primary border-opacity-50 shadow-sm" id="cecos-asignados"
+                  style="height: 320px !important;">
+                </select>
+              </div>
+            </div>
+
+            <hr class="opacity-25 mb-4">
+
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="GCuentas.html" class="btn btn-light px-4 text-dark fw-bold shadow-sm">Cancelar</a>
+              <button type="button" class="btn btn-primary px-5 fw-bold shadow-sm" id="btnDispararGuardado">
+                Registrar Cuenta <i class="bi bi-save ms-2"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalConfirmarCuenta" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg radius-10">
+          <div class="modal-header bg-light border-bottom-0 pb-0">
+            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body text-center pb-4 px-4">
+            <i class="bi bi-question-circle-fill text-primary mb-3" style="font-size: 4rem;"></i>
+            <h4 class="fw-bold text-dark mt-2">¿Guardar la cuenta presupuestal?</h4>
+            <p class="text-secondary mt-3">Al confirmar, el sistema validará la unicidad de los datos, registrará la
+              cuenta con estatus **Activo** y guardará la configuración en la bitácora de auditoría.</p>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+              <button type="button" class="btn btn-outline-secondary px-4 fw-bold radius-30 shadow-sm"
+                data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary px-4 fw-bold radius-30 shadow-sm"
+                onclick="ejecutarGuardadoFinal()">
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer" aria-labelledby="ThemeCustomizerLable">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="ThemeCustomizerLable">Theme Customizer</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h6 class="mb-0">Theme Variation</h6>
+      <hr>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1">
+        <label class="form-check-label" for="LightTheme">Light</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2">
+        <label class="form-check-label" for="DarkTheme">Dark</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" value="option3"
+          checked="">
+        <label class="form-check-label" for="SemiDarkTheme">Semi Dark</label>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      // 1. Inicializar el buscador avanzado Select2 en el selector de usuarios
+      $('#selectUserSearch').select2({
+        theme: 'bootstrap-5',
+        placeholder: 'Buscar empleado por nombre o número...',
+        width: '100%',
+        allowClear: true
+      });
+
+      // 2. Lógica del Dual Listbox segura (Evita errores de deselección)
+      $('#btn-agregar-ceco').on('click', function () {
+        let seleccionados = $('#cecos-disponibles option:selected');
+        if (seleccionados.length > 0) {
+          // Transferencia física de nodos en el DOM
+          $('#cecos-asignados').append(seleccionados);
+          // Limpieza del estado de selección visual
+          seleccionados.prop('selected', false);
+          evaluarEstadoCecos();
+        }
+      });
+
+      $('#btn-quitar-ceco').on('click', function () {
+        let seleccionados = $('#cecos-asignados option:selected');
+        if (seleccionados.length > 0) {
+          // Retorno físico de nodos en el DOM
+          $('#cecos-disponibles').append(seleccionados);
+          // Limpieza del estado de selección visual
+          seleccionados.prop('selected', false);
+          evaluarEstadoCecos();
+        }
+      });
+
+      // 3. Función Evaluadora de Reglas de Negocio (Campos requeridos)
+      function evaluarEstadoCecos() {
+        let conteoAsignados = $('#cecos-asignados option').length;
+
+        if (conteoAsignados > 0) {
+          // Si tiene elementos, cambia el estado a exitoso (Verde)
+          $('#txt-validacion-cecos').removeClass('text-danger').addClass('text-success').html('<i class="bi bi-check-circle-fill me-1"></i> Centros de costo seleccionados correctamente.');
+        } else {
+          // Si la lista queda vacía, regresa el estado de advertencia (Rojo obligatorio)
+          $('#txt-validacion-cecos').removeClass('text-success').addClass('text-danger').text('Debe seleccionar al menos un Centro de Costos.');
+        }
+      }
+
+      // Ejecución inicial para pintar la alerta obligatoria al cargar por primera vez
+      evaluarEstadoCecos();
+    });
+  </script>
+
+
+</body>
+
+</html>

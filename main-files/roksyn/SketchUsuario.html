@@ -1,0 +1,543 @@
+<html lang="en" data-bs-theme="light1">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sketch Usuarios</title>
+
+  <!--plugins-->
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <!-- loader-->
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+  <!--Styles-->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+  <link href="assets/css/minimal-theme.css" rel="stylesheet">
+  <link href="assets/css/shadow-theme.css" rel="stylesheet">
+
+</head>
+
+<body class="pace-done" style="">
+  <div class="pace  pace-inactive">
+    <div class="pace-progress" data-progress-text="100%" data-progress="99"
+      style="transform: translate3d(100%, 0px, 0px);">
+      <div class="pace-progress-inner"></div>
+    </div>
+    <div class="pace-activity"></div>
+  </div>
+  <div class="pace  pace-inactive">
+    <div class="pace-progress" data-progress-text="100%" data-progress="99"
+      style="transform: translate3d(100%, 0px, 0px);">
+      <div class="pace-progress-inner"></div>
+    </div>
+    <div class="pace-activity"></div>
+  </div>
+
+
+
+  <!--start header-->
+  <header class="top-header">
+    <nav class="navbar navbar-expand justify-content-between">
+      <div class="btn-toggle-menu">
+        <span class="fw-bold text-dark fs-5">[≡]</span>
+      </div>
+
+
+    </nav>
+  </header>
+  <!--end header-->
+
+
+  <!--start sidebar-->
+  <aside class="sidebar-wrapper border-end border-secondary bg-light">
+    <div class="sidebar-header border-bottom border-secondary">
+      <div class="logo-icon">
+        <div class="bg-light border border-secondary d-flex justify-content-center align-items-center fw-bold"
+          style="width: 30px; height: 30px;">X</div>
+      </div>
+      <div class="logo-name flex-grow-1">
+        <h5 class="mb-0 fw-bold text-dark">IPSO</h5>
+      </div>
+      <div class="sidebar-close">
+        <span class="fw-bold text-dark">[Cerrar]</span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav" data-simplebar="init">
+      <div class="simplebar-wrapper" style="margin: 0px;">
+        <div class="simplebar-height-auto-observer-wrapper">
+          <div class="simplebar-height-auto-observer"></div>
+        </div>
+        <div class="simplebar-mask">
+          <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden;">
+              <div class="simplebar-content mm-active" style="padding: 0px;">
+
+                <ul class="metismenu mm-show" id="menu">
+
+                  <li class="mm-active">
+                    <a href="javascript:;"
+                      class="has-arrow text-dark fw-bold border-bottom border-secondary border-opacity-25"
+                      aria-expanded="true">
+
+                      <div class="menu-title">Forecast</div>
+                    </a>
+                    <ul class="mm-collapse mm-show" style="">
+
+
+                      <li>
+                        <a href="SketchForecast.html" class="text-dark"><span class="fw-bold">[-]</span>Registro de
+                          Forecast</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="mm-active mt-2">
+                    <a href="javascript:;"
+                      class="has-arrow text-dark fw-bold border-bottom border-secondary border-opacity-25"
+                      aria-expanded="true">
+
+                      <div class="menu-title">Planeación Presupuestal</div>
+                    </a>
+                    <ul class="mm-collapse mm-show" style="">
+                      <li>
+                        <a href="SketchParametros.html" class="text-dark"><span class="fw-bold">[-]</span> Parámetros de
+                          Carga</a>
+                      </li>
+                      <li>
+                        <a href="SketchBase.html" class="text-dark"><span class="fw-bold">[-]</span> Base
+                          Presupuestal</a>
+                      </li>
+                      <li>
+                        <a href="SketchCarga.html" class="text-dark"><span class="fw-bold">[-]</span> Carga
+                          Presupuestal</a>
+                      </li>
+                      <li>
+                        <a href="SketchAutor.html" class="text-dark"><span class="fw-bold">[-]</span> Autorización de
+                          Carga</a>
+                      </li>
+                      <li>
+                        <a href="SketchLibera.html" class="text-dark"><span class="fw-bold">[-]</span> Liberación de
+                          Carga</a>
+                      </li>
+
+                      <li class="mm-active">
+                        <a href="javascript:;" class="has-arrow text-dark fw-bold" aria-expanded="true">
+                          <span class="fw-bold">[-]</span> Configuración
+                        </a>
+                        <ul class="mm-collapse mm-show ms-3 border-start border-secondary" style="">
+                          <li><a href="SketchUsuario.html" class="text-dark"><span class="fw-bold">[+]</span> Usuarios /
+                              Perfiles</a></li>
+                          <li><a href="SketchCeCo.html" class="text-dark"><span class="fw-bold">[+]</span> Centros de
+                              Costos</a></li>
+                          <li><a href="SketchCuentas.html" class="text-dark"><span class="fw-bold">[+]</span>
+                              Cuentas</a></li>
+                          <li><a href="SketchProyecto.html" class="text-dark"><span class="fw-bold">[+]</span>
+                              Proyectos</a>
+                          </li>
+                          <li><a href="SketchCampañas.html:;" class="text-dark"><span class="fw-bold">[+]</span>
+                              Campañas
+                              Transversales</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="mt-2">
+                    <a href="javascript:;" class="text-dark fw-bold border-bottom border-secondary border-opacity-25"
+                      aria-expanded="false">
+
+                      <div class="menu-title">Ejercicio Presupuestal</div>
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="simplebar-placeholder" style="width: auto; height: 660px;"></div>
+      </div>
+      <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+        <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+      </div>
+      <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+        <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;">
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-bottom dropdown dropup-center dropup border-top border-secondary">
+      <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
+        <div class="user-img">
+          <div class="bg-light border border-secondary d-flex justify-content-center align-items-center fw-bold"
+            style="width: 40px; height: 40px; border-radius: 0;">X</div>
+        </div>
+        <div class="user-info text-start">
+          <h5 class="mb-0 user-name fw-bold text-dark">Edgar Grande</h5>
+          <p class="mb-0 user-designation text-dark small">P2</p>
+        </div>
+      </div>
+      <ul class="dropdown-menu dropdown-menu-end border border-secondary rounded-0">
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Perfil]</span><span>Profile</span></a></li>
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Ajustes]</span><span>Settings</span></a></li>
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Tablero]</span><span>Dashboard</span></a></li>
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Pagos]</span><span>Earnings</span></a></li>
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Descargas]</span><span>Downloads</span></a></li>
+        <li>
+          <div class="dropdown-divider mb-0 border-secondary"></div>
+        </li>
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Salir]</span><span>Logout</span></a></li>
+      </ul>
+    </div>
+  </aside>
+  <!--end sidebar-->
+
+
+  <!--start main content-->
+  <main class="page-content bg-light p-4">
+
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-4 border-bottom border-secondary pb-3">
+      <div class="breadcrumb-title pe-3 fw-bold text-dark border-end border-secondary">Configuracion</div>
+      <div class="ps-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0 p-0">
+            <li class="breadcrumb-item"><a href="javascript:;" class="text-dark fw-bold text-decoration-none">[Usuarios
+                y Perfiles]</a></li>
+          </ol>
+        </nav>
+      </div>
+      <div class="ms-auto">
+
+      </div>
+    </div>
+
+
+
+    <div class="row mt-2">
+      <div class="col-12">
+
+        <div class="border-bottom border-dark pb-2 mb-4">
+          <h3 class="fw-bold m-0">[Usuarios y Perfiles] </h3>
+        </div>
+
+        <div class="border border-secondary bg-white p-4 mb-4 rounded-0 shadow-none">
+          <div class="row mb-4">
+            <div class="col-12">
+              <h5 class="fw-bold m-0">Realiza una búsqueda o utiliza el filtro</h5>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-3">
+              <label class="fw-bold mb-2">Buscar usuario</label>
+              <div class="d-flex">
+                <input type="text" class="form-control rounded-0 border-dark" placeholder="Nombre o número...">
+                <button class="btn btn-light rounded-0 border border-dark text-dark ms-2 fw-bold">[Buscar]</button>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="fw-bold mb-2">País</label>
+              <select class="form-select rounded-0 border-dark">
+                <option selected="selected" value="0">-- TODOS --</option>
+                <option value="MX">México</option>
+                <option value="HN">Honduras</option>
+                <option value="GT">Guatemala</option>
+                <option value="PA">Panamá</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="fw-bold mb-2">Perfil</label>
+              <select class="form-select rounded-0 border-dark">
+                <option selected="selected" value="0">-- TODOS --</option>
+                <option value="80">Carga/Autoriza Responsable</option>
+                <option value="79">Carga/Autoriza Mkt Presupuesto</option>
+                <option value="73">Carga Presupuesto</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="fw-bold mb-2">Centro de costos</label>
+              <select class="form-select rounded-0 border-dark">
+                <option selected="selected" value="0">-- TODOS --</option>
+                <option value="1749">230463 - 0</option>
+                <option value="47">100116 - 100116</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="border border-secondary bg-white p-4 rounded-0 shadow-none">
+          <div class="row mb-4 align-items-center">
+            <div class="col-md-6">
+              <h5 class="fw-bold m-0">Listado de usuarios</h5>
+            </div>
+            <div class="col-md-6 text-md-end">
+              <div class="mb-4">
+                <a href="SketchNuevoUsuario.html" type="button"
+                  class="btn btn-light rounded-0 border border-dark text-dark fw-bold px-4 py-2">
+                  [+] Nueva relación de usuario
+                </a>
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered border-dark mb-0">
+              <thead class="bg-light border-dark">
+                <tr>
+                  <th scope="col" class="fw-bold">Usuario</th>
+                  <th scope="col" class="fw-bold">Nombre</th>
+                  <th scope="col" class="fw-bold">Perfil</th>
+                  <th scope="col" style="width:250px;" class="text-center fw-bold">ACCIONES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="align-middle">CI871851</td>
+                  <td class="align-middle">ADALBERTO GOMEZ DE JAUREGUI POCEROS</td>
+                  <td class="align-middle">Autorizador MKT</td>
+                  <td align="center">
+                    <a href="SketchEditUsuario.html"
+                      class="btn btn-sm btn-light rounded-0 border border-dark text-dark me-1">[Editar]</a>
+                    <a href="SketchDupUsuario.html"
+                      class="btn btn-sm btn-light rounded-0 border border-dark text-dark me-1">[Duplicar]</a>
+                    <button type="button" class="btn btn-sm btn-light rounded-0 border border-dark text-dark"
+                      data-bs-toggle="modal" data-bs-target="#modalConfirmarEliminacion">
+                      [X]
+                    </button>
+
+                    <div class="modal fade" id="modalConfirmarEliminacion" tabindex="-1"
+                      aria-labelledby="modalEliminarLabel" style="display: none;" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content border border-dark rounded-0 shadow-none bg-white">
+
+                          <div class="modal-header border-bottom border-dark rounded-0 bg-light py-3 px-4">
+                            <h5 class="modal-title fw-bold text-dark m-0" id="modalEliminarLabel">Confirmar eliminación
+                            </h5>
+                            <button type="button"
+                              class="btn btn-sm btn-light border border-dark fw-bold text-dark rounded-0 px-2"
+                              data-bs-dismiss="modal" aria-label="Close">
+                              [X]
+                            </button>
+                          </div>
+
+                          <div class="modal-body p-4 bg-white text-start text-left">
+                            <p class="fw-bold text-dark m-0">Esta acción borrará la relación del usuario de forma
+                              permanente así como sus centros de costos asociados.
+                            </p>
+                          </div>
+
+                          <div
+                            class="modal-footer border-top border-dark rounded-0 bg-white justify-content-center py-3">
+                            <button type="button"
+                              class="btn btn-light rounded-0 border border-dark text-dark fw-bold px-4 mx-2"
+                              data-bs-dismiss="modal">
+                              Cancelar
+                            </button>
+                            <button type="button"
+                              class="btn btn-dark rounded-0 border border-dark fw-bold px-4 mx-2">Eliminar</button>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle">1157704</td>
+                  <td class="align-middle">NERI CERVANTES ORIBIO</td>
+                  <td class="align-middle">Carga/Autoriza Mkt Presupuesto</td>
+                  <td align="center">
+                    <a hrefhref="SketchEditUsuario.html"
+                      class="btn btn-sm btn-light rounded-0 border border-dark text-dark me-1">[Editar]</a>
+                    <a href="SketchDupUsuario.html"
+                      class="btn btn-sm btn-light rounded-0 border border-dark text-dark me-1">[Duplicar]</a>
+                    <button type="button" class="btn btn-sm btn-light rounded-0 border border-dark text-dark"
+                      data-bs-toggle="modal" data-bs-target="#modalConfirmarEliminacion">
+                      [X]
+                    </button>
+
+
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle">1200153</td>
+                  <td class="align-middle">NOEMÍ ROBLES SÁNCHEZ</td>
+                  <td class="align-middle">Carga Presupuesto</td>
+                  <td align="center">
+                    <a hrefhref="SketchEditUsuario.html"
+                      class="btn btn-sm btn-light rounded-0 border border-dark text-dark me-1">[Editar]</a>
+                    <a href="SketchDupUsuario.html"
+                      class="btn btn-sm btn-light rounded-0 border border-dark text-dark me-1">[Duplicar]</a>
+                    <button type="button" class="btn btn-sm btn-light rounded-0 border border-dark text-dark"
+                      data-bs-toggle="modal" data-bs-target="#modalConfirmarEliminacion">
+                      [X]
+                    </button>
+
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="d-flex mt-3">
+            <span class="border border-dark px-3 py-1 me-2 fw-bold bg-light">1</span>
+            <span class="border border-dark px-3 py-1 me-2 bg-white">2</span>
+            <span class="border border-dark px-3 py-1 me-2 bg-white">3</span>
+            <span class="border border-dark px-3 py-1 me-2 bg-white">4</span>
+            <span class="border border-dark px-3 py-1 bg-white">...</span>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </main>
+
+
+
+  <!--start overlay-->
+  <div class="overlay btn-toggle-menu"></div>
+  <!--end overlay-->
+
+  <!-- Search Modal -->
+  <div class="modal" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header gap-2">
+          <div class="position-relative popup-search w-100">
+            <input class="form-control form-control-lg ps-5 border border-3 border-primary" type="search"
+              placeholder="Search">
+            <span
+              class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+          </div>
+          <button type="button" class="btn-close d-xl-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="search-list">
+            <p class="mb-1">Html Templates</p>
+            <div class="list-group">
+              <a href="javascript:;"
+                class="list-group-item list-group-item-action active align-items-center d-flex gap-2"><i
+                  class="bi bi-filetype-html fs-5"></i>Best Html Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-award fs-5"></i>Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-box2-heart fs-5"></i>Responsive Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-camera-video fs-5"></i>eCommerce Html Templates</a>
+            </div>
+            <p class="mb-1 mt-3">Web Designe Company</p>
+            <div class="list-group">
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-chat-right-text fs-5"></i>Best Html Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-cloud-arrow-down fs-5"></i>Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-columns-gap fs-5"></i>Responsive Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-collection-play fs-5"></i>eCommerce Html Templates</a>
+            </div>
+            <p class="mb-1 mt-3">Software Development</p>
+            <div class="list-group">
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-cup-hot fs-5"></i>Best Html Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-droplet fs-5"></i>Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-exclamation-triangle fs-5"></i>Responsive Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-eye fs-5"></i>eCommerce Html Templates</a>
+            </div>
+            <p class="mb-1 mt-3">Online Shoping Portals</p>
+            <div class="list-group">
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-facebook fs-5"></i>Best Html Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-flower2 fs-5"></i>Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-geo-alt fs-5"></i>Responsive Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-github fs-5"></i>eCommerce Html Templates</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--start theme customization-->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer" aria-labelledby="ThemeCustomizerLable">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="ThemeCustomizerLable">Theme Customizer</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h6 class="mb-0">Theme Variation</h6>
+      <hr>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1">
+        <label class="form-check-label" for="LightTheme">Light</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2"
+          checked="">
+        <label class="form-check-label" for="DarkTheme">Dark</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" value="option3">
+        <label class="form-check-label" for="SemiDarkTheme">Semi Dark</label>
+      </div>
+      <hr>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="MinimalTheme" value="option3">
+        <label class="form-check-label" for="MinimalTheme">Minimal Theme</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ShadowTheme" value="option4">
+        <label class="form-check-label" for="ShadowTheme">Shadow Theme</label>
+      </div>
+
+    </div>
+  </div>
+  <!--end theme customization-->
+  <!--plugins-->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+
+  <!--BS Scripts-->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+
+</html>

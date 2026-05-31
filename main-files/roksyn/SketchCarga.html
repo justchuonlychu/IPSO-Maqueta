@@ -1,0 +1,968 @@
+<html lang="en" data-bs-theme="light1">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sketch Carga Presupuestal</title>
+
+  <!--plugins-->
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <!-- loader-->
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+  <!--Styles-->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+  <link href="assets/css/minimal-theme.css" rel="stylesheet">
+  <link href="assets/css/shadow-theme.css" rel="stylesheet">
+
+</head>
+
+<body class="    pace-done">
+  <div class="pace  pace-inactive">
+    <div class="pace-progress" data-progress-text="100%" data-progress="99"
+      style="transform: translate3d(100%, 0px, 0px);">
+      <div class="pace-progress-inner"></div>
+    </div>
+    <div class="pace-activity"></div>
+  </div>
+  <div class="pace  pace-inactive">
+    <div class="pace-progress" data-progress-text="100%" data-progress="99"
+      style="transform: translate3d(100%, 0px, 0px);">
+      <div class="pace-progress-inner"></div>
+    </div>
+    <div class="pace-activity"></div>
+  </div>
+
+
+
+  <!--start header-->
+  <header class="top-header">
+    <nav class="navbar navbar-expand justify-content-between">
+      <div class="btn-toggle-menu">
+        <span class="fw-bold text-dark fs-5">[≡]</span>
+      </div>
+
+
+    </nav>
+  </header>
+  <!--end header-->
+
+
+  <!--start sidebar-->
+  <aside class="sidebar-wrapper border-end border-secondary bg-light">
+    <div class="sidebar-header border-bottom border-secondary">
+      <div class="logo-icon">
+        <div class="bg-light border border-secondary d-flex justify-content-center align-items-center fw-bold"
+          style="width: 30px; height: 30px;"><a href="SketchHome.html">X</a></div>
+      </div>
+      <div class="logo-name flex-grow-1">
+        <h5 class="mb-0 fw-bold text-dark">IPSO</h5>
+      </div>
+      <div class="sidebar-close">
+        <span class="fw-bold text-dark">[Cerrar]</span>
+      </div>
+    </div>
+
+    <div class="sidebar-nav" data-simplebar="init">
+      <div class="simplebar-wrapper" style="margin: 0px;">
+        <div class="simplebar-height-auto-observer-wrapper">
+          <div class="simplebar-height-auto-observer"></div>
+        </div>
+        <div class="simplebar-mask">
+          <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden;">
+              <div class="simplebar-content mm-active" style="padding: 0px;">
+
+                <ul class="metismenu mm-show" id="menu">
+
+                  <li class="mm-active">
+                    <a href="javascript:;"
+                      class="has-arrow text-dark fw-bold border-bottom border-secondary border-opacity-25"
+                      aria-expanded="true">
+
+                      <div class="menu-title">Forecast</div>
+                    </a>
+                    <ul class="mm-collapse mm-show" style="">
+
+
+                      <li>
+                        <a href="SketchForecast.html" class="text-dark"><span class="fw-bold">[-]</span>Registro de
+                          Forecast</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="mm-active mt-2">
+                    <a href="javascript:;"
+                      class="has-arrow text-dark fw-bold border-bottom border-secondary border-opacity-25"
+                      aria-expanded="true">
+
+                      <div class="menu-title">Planeación Presupuestal</div>
+                    </a>
+                    <ul class="mm-collapse mm-show" style="">
+                      <li>
+                        <a href="SketchParametros.html" class="text-dark"><span class="fw-bold">[-]</span> Parámetros de
+                          Carga</a>
+                      </li>
+                      <li>
+                        <a href="SketchBase.html" class="text-dark"><span class="fw-bold">[-]</span> Base
+                          Presupuestal</a>
+                      </li>
+                      <li>
+                        <a href="SketchCarga.html" class="text-dark"><span class="fw-bold">[-]</span> Carga
+                          Presupuestal</a>
+                      </li>
+                      <li>
+                        <a href="SketchAutor.html" class="text-dark"><span class="fw-bold">[-]</span> Autorización de
+                          Carga</a>
+                      </li>
+                      <li>
+                        <a href="SketchLibera.html" class="text-dark"><span class="fw-bold">[-]</span> Liberación de
+                          Carga</a>
+                      </li>
+
+                      <li class="mm-active">
+                        <a href="javascript:;" class="has-arrow text-dark fw-bold" aria-expanded="true">
+                          <span class="fw-bold">[-]</span> Configuración
+                        </a>
+                        <ul class="mm-collapse mm-show ms-3 border-start border-secondary" style="">
+                          <li><a href="SketchUsuario.html" class="text-dark"><span class="fw-bold">[+]</span> Usuarios /
+                              Perfiles</a></li>
+                          <li><a href="SketchCeCo.html" class="text-dark"><span class="fw-bold">[+]</span> Centros de
+                              Costos</a></li>
+                          <li><a href="SketchCuentas.html" class="text-dark"><span class="fw-bold">[+]</span>
+                              Cuentas</a></li>
+                          <li><a href="SketchProyecto.html" class="text-dark"><span class="fw-bold">[+]</span>
+                              Proyectos</a>
+                          </li>
+                          <li><a href="SketchCampañas.html:;" class="text-dark"><span class="fw-bold">[+]</span>
+                              Campañas
+                              Transversales</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="mt-2">
+                    <a href="javascript:;" class="text-dark fw-bold border-bottom border-secondary border-opacity-25"
+                      aria-expanded="false">
+
+                      <div class="menu-title">Ejercicio Presupuestal</div>
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="simplebar-placeholder" style="width: auto; height: 660px;"></div>
+      </div>
+      <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+        <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+      </div>
+      <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+        <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;">
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-bottom dropdown dropup-center dropup border-top border-secondary">
+      <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
+        <div class="user-img">
+          <div class="bg-light border border-secondary d-flex justify-content-center align-items-center fw-bold"
+            style="width: 40px; height: 40px; border-radius: 0;">X</div>
+        </div>
+        <div class="user-info text-start">
+          <h5 class="mb-0 user-name fw-bold text-dark">Edgar Grande</h5>
+          <p class="mb-0 user-designation text-dark small">P2</p>
+        </div>
+      </div>
+      <ul class="dropdown-menu dropdown-menu-end border border-secondary rounded-0">
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Perfil]</span><span>Profile</span></a></li>
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Ajustes]</span><span>Settings</span></a></li>
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Tablero]</span><span>Dashboard</span></a></li>
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Pagos]</span><span>Earnings</span></a></li>
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Descargas]</span><span>Downloads</span></a></li>
+        <li>
+          <div class="dropdown-divider mb-0 border-secondary"></div>
+        </li>
+        <li><a class="dropdown-item text-dark" href="javascript:;"><span
+              class="fw-bold me-2">[Salir]</span><span>Logout</span></a></li>
+      </ul>
+    </div>
+  </aside>
+  <!--end sidebar-->
+
+
+  <!--start main content-->
+  <main class="page-content">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+      <div>
+        <h4 class="fw-bold text-dark mb-0">
+          Carga Presupuestal
+        </h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb small mb-0 mt-1">
+            <li class="breadcrumb-item"><a href="javascript:;" class="text-decoration-none text-dark">Carga
+                Presupuestal</a></li>
+            <li class="breadcrumb-item active fw-bold text-dark" aria-current="page">Mi Carga de Presupuesto</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div>
+
+      </div>
+    </div>
+
+    <div class="card border border-dark rounded-0 bg-light">
+      <div class="card-header bg-transparent border-bottom border-dark pt-3 pb-0 px-4">
+        <ul class="nav nav-tabs border-0" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link fw-bold text-dark active" data-bs-toggle="tab" href="#tab-solicitudes" role="tab"
+              aria-selected="true">
+              Mis Solicitudes
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link fw-bold text-dark" data-bs-toggle="tab" href="#tab-mi-forecast" role="tab"
+              aria-selected="false" tabindex="-1">
+              Base Presupuestal</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link fw-bold text-dark" data-bs-toggle="tab" href="#tab-resumen-carga" role="tab"
+              aria-selected="false" tabindex="-1">
+              Resumen de Carga</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-body p-4 bg-light">
+        <div class="tab-content">
+
+          <div class="tab-pane fade active show" id="tab-solicitudes" role="tabpanel">
+            <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
+              <div>
+                <h5 class="mb-0 text-dark fw-bold">Mis Solicitudes de Carga Presupuestal y Gasto Publicitario</h5>
+              </div>
+
+              <div class="d-flex gap-2">
+                <a class="btn btn-sm btn-light border border-dark text-dark px-4 fw-bold rounded-0"
+                  href="NuevaSol.html">Nueva Solicitud</a>
+                <button class="btn btn-light border border-dark btn-sm fw-bold text-dark rounded-0"
+                  data-bs-toggle="modal" data-bs-target="#modalEstrategiaAuth">
+                  <span class="fw-bold me-1">[Reporte]</span>Descargar Reporte
+                </button>
+
+                <div class="modal fade" id="modalEstrategiaAuth" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border border-dark rounded-0">
+                      <div class="modal-header bg-light border-bottom border-dark px-4 py-3">
+                        <h5 class="modal-title fw-bold text-dark mb-0">
+                          <span class="fw-bold text-dark me-2">[Doc]</span>Descargar Reporte de Solicitudes
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body p-4 bg-white">
+                        <div class="row g-3">
+                          <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Fecha Desde <span
+                                class="text-dark">*</span></label>
+                            <input type="date" class="form-control bg-light border-dark rounded-0 text-dark"
+                              value="2026-01-01">
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label small fw-bold text-dark">Fecha Hasta <span
+                                class="text-dark">*</span></label>
+                            <input type="date" class="form-control bg-light border-dark rounded-0 text-dark"
+                              value="2026-04-20">
+                          </div>
+                          <div class="col-12">
+                            <label class="form-label small fw-bold text-dark mb-1">ESTATUS</label>
+                            <div class="dropdown">
+                              <button
+                                class="btn form-control form-control-sm bg-light border-dark text-start d-flex justify-content-between align-items-center w-100 rounded-0 text-dark"
+                                type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                                <span class="small text-truncate">Cualquier Estatus...</span>
+                                <span class="fw-bold">[v]</span>
+                              </button>
+                              <div class="dropdown-menu w-100 p-2 border border-dark rounded-0">
+                                <div class="form-check border-bottom border-secondary mb-2 pb-1">
+                                  <input class="form-check-input border-dark" type="checkbox" id="st_all" checked="">
+                                  <label class="form-check-label small fw-bold text-dark" for="st_all">Cualquier
+                                    Estatus</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                  <input class="form-check-input border-dark" type="checkbox" id="st1" checked="">
+                                  <label class="form-check-label small text-dark" for="st1">Borrador</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                  <input class="form-check-input border-dark" type="checkbox" id="st2" checked="">
+                                  <label class="form-check-label small text-dark" for="st2">Pendiente
+                                    Autorización</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer bg-light border-top border-dark px-4 py-3">
+                        <button class="btn btn-light border border-dark fw-bold rounded-0 px-4 text-dark"
+                          data-bs-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-light border border-dark fw-bold rounded-0 px-4 text-dark"><span
+                            class="fw-bold me-1">[DL]</span> Descargar Excel</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card border border-dark bg-white mb-4 rounded-0">
+              <div class="card-body p-3">
+                <div class="row g-2 align-items-end">
+                  <div class="col-md-4">
+                    <label class="form-label small fw-bold text-dark mb-1">Buscar Folio o Campaña</label>
+                    <div class="position-relative">
+                      <input type="text"
+                        class="form-control form-control-sm ps-4 rounded-0 bg-light border-dark text-dark"
+                        placeholder="Ej. F-26001NMX, Madres...">
+                      <span class="position-absolute top-50 translate-middle-y ms-2 text-dark fw-bold">[S]</span>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="form-label small fw-bold text-dark mb-1">División</label>
+                    <div class="dropdown">
+                      <button
+                        class="btn btn-light form-control-sm w-100 text-start d-flex justify-content-between align-items-center border border-dark rounded-0 text-dark"
+                        type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <span class="small text-truncate">Todas</span><span class="fw-bold">[v]</span>
+                      </button>
+                      <div class="dropdown-menu w-100 p-2 border border-dark rounded-0" style="">
+                        <div class="form-check border-bottom border-secondary mb-2 pb-1">
+                          <input class="form-check-input border-dark" type="checkbox" id="div_all" checked="">
+                          <label class="form-check-label small fw-bold text-dark" for="div_all">Seleccionar
+                            Todas</label>
+                        </div>
+                        <div class="form-check mb-1">
+                          <input class="form-check-input border-dark" type="checkbox" id="div1" checked="">
+                          <label class="form-check-label small text-dark" for="div1">Marca</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="form-label small fw-bold text-dark mb-1">Estatus</label>
+                    <div class="dropdown">
+                      <button
+                        class="btn btn-light form-control-sm w-100 text-start d-flex justify-content-between align-items-center border border-dark rounded-0 text-dark"
+                        type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <span class="small text-truncate">Todos</span><span class="fw-bold">[v]</span>
+                      </button>
+                      <div class="dropdown-menu w-100 p-2 border border-dark rounded-0" style="">
+                        <div class="form-check border-bottom border-secondary mb-2 pb-1">
+                          <input class="form-check-input border-dark" type="checkbox" id="st_all2" checked="">
+                          <label class="form-check-label small fw-bold text-dark" for="st_all2">Seleccionar
+                            Todos</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 d-flex gap-2">
+                    <button class="btn btn-light border border-dark btn-sm rounded-0 fw-bold w-100 text-dark"
+                      type="button">
+                      <span class="fw-bold me-1">[L]</span> Limpiar
+                    </button>
+                    <button class="btn btn-light border border-dark btn-sm rounded-0 fw-bold w-100 text-dark"
+                      type="button">
+                      <span class="fw-bold me-1">[F]</span> Filtrar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive border border-dark rounded-0 bg-white">
+              <table class="table table-bordered align-middle mb-0 text-dark" style="font-size: 0.85rem;">
+                <thead class="bg-light fw-bold">
+                  <tr>
+                    <th>Folio <span class="fw-bold ms-1">[v]</span></th>
+                    <th>Nombre de Campaña<span class="fw-bold ms-1">[v]</span></th>
+                    <th>Usuario<span class="fw-bold ms-1">[v]</span></th>
+                    <th>División<span class="fw-bold ms-1">[v]</span></th>
+                    <th>Vigencia</th>
+                    <th class="text-end">Monto Total <span class="fw-bold ms-1">[v]</span></th>
+                    <th>Estatus<span class="fw-bold ms-1">[v]</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="NuevaCarga.html" class="fw-bold text-dark text-decoration-underline">F-26001</a></td>
+                    <td>Campaña Navidad</td>
+                    <td>Juan Pérez</td>
+                    <td>Marca</td>
+                    <td>Nov-Dic</td>
+                    <td class="text-end fw-bold">1,400,000</td>
+                    <td><span
+                        class="badge bg-light text-dark border border-dark rounded-0 fw-normal px-2 py-1">Borrador</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="VerSolicitud.html" class="fw-bold text-dark text-decoration-underline">F-26002</a></td>
+                    <td>Lanzamiento App</td>
+                    <td>Ana López</td>
+                    <td>Estrategia</td>
+                    <td>Abr-Jun</td>
+                    <td class="text-end fw-bold">850,000</td>
+                    <td><span
+                        class="badge bg-light text-dark border border-dark rounded-0 fw-normal px-2 py-1">Pendiente
+                        Autorización</span></td>
+                  </tr>
+                  <tr>
+                    <td><a href="AjusteSol.html" class="fw-bold text-dark text-decoration-underline">F-26003</a></td>
+                    <td>Buen Fin 2026</td>
+                    <td>Edgar Grande</td>
+                    <td>Oferteo</td>
+                    <td>Oct-Nov</td>
+                    <td class="text-end fw-bold">2,150,000</td>
+                    <td><span class="badge bg-light text-dark border border-dark rounded-0 fw-normal px-2 py-1">En
+                        Ajustes</span></td>
+                  </tr>
+                  <tr>
+                    <td><a href="SolAprob.html" class="fw-bold text-dark text-decoration-underline">F-26004</a></td>
+                    <td>Rueda Inteligente</td>
+                    <td>Norma Hernández</td>
+                    <td>Sin División</td>
+                    <td>Mar-May</td>
+                    <td class="text-end fw-bold">430,000</td>
+                    <td><span
+                        class="badge bg-light text-dark border border-dark rounded-0 fw-normal px-2 py-1">Aprobada</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="small text-dark">Mostrando 1 a 4 de 85 registros</span>
+              <ul class="pagination pagination-sm mb-0">
+                <li class="page-item disabled"><a class="page-link text-dark border-dark rounded-0"
+                    href="#">Anterior</a></li>
+                <li class="page-item active"><a class="page-link bg-light text-dark border-dark rounded-0 fw-bold"
+                    href="#">1</a></li>
+                <li class="page-item"><a class="page-link text-dark border-dark rounded-0" href="#">2</a></li>
+                <li class="page-item"><a class="page-link text-dark border-dark rounded-0" href="#">Siguiente</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="tab-mi-forecast" role="tabpanel">
+            <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
+              <div>
+                <h5 class="fw-bold mb-1 text-dark">Mi Base Presupuestal Asignada</h5>
+                <p class="text-dark small mb-0">Consulta los topes y la disponibilidad actual.</p>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-light border border-dark btn-sm fw-bold rounded-0 text-dark">
+                  <span class="fw-bold me-1">[DL]</span>Descargar Base</button>
+              </div>
+            </div>
+
+            <div class="card border border-dark rounded-0 mb-4 bg-white">
+              <div class="card-body p-2 py-3">
+                <div class="row g-2 align-items-center">
+                  <div class="col-12 col-md-6 col-lg-3 border-lg-end border-dark px-3">
+                    <div class="d-flex align-items-center">
+                      <span class="fs-4 me-3 fw-bold">[M1]</span>
+                      <div>
+                        <span class="text-dark fw-bold text-uppercase d-block lh-1 mb-1" style="font-size: 0.6rem;">Base
+                          Presupuestal</span>
+                        <span class="text-dark fw-bold lh-1 d-block fs-5">2,092,500</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3 border-lg-end border-dark px-3">
+                    <div class="d-flex align-items-center">
+                      <span class="fs-4 me-3 fw-bold">[M2]</span>
+                      <div>
+                        <span class="text-dark fw-bold text-uppercase d-block lh-1 mb-1"
+                          style="font-size: 0.6rem;">Presupuesto Asignado</span>
+                        <span class="text-dark fw-bold lh-1 d-block fs-5">1,835,000</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3 border-lg-end border-dark px-3">
+                    <div class="d-flex align-items-center">
+                      <span class="fs-4 me-3 fw-bold">[M3]</span>
+                      <div>
+                        <span class="text-dark fw-bold text-uppercase d-block lh-1 mb-1"
+                          style="font-size: 0.6rem;">Total Disponible</span>
+                        <span class="text-dark fw-bold lh-1 d-block fs-5">257,500</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3 px-3">
+                    <div class="d-flex align-items-center">
+                      <span class="fs-4 me-3 fw-bold">[M4]</span>
+                      <div>
+                        <span class="text-dark fw-bold text-uppercase d-block lh-1 mb-1"
+                          style="font-size: 0.6rem;">Presupuesto Adicional</span>
+                        <span class="text-dark fw-bold lh-1 d-block fs-5">100,000</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <style>
+              .table-forecast tr[data-bs-toggle="collapse"] {
+                cursor: pointer;
+              }
+
+              .ps-lvl-1 {
+                padding-left: 1rem !important;
+              }
+
+              .ps-lvl-2 {
+                padding-left: 2.5rem !important;
+              }
+
+              .ps-lvl-3 {
+                padding-left: 4rem !important;
+              }
+
+              .ps-detail {
+                padding-left: 5.5rem !important;
+              }
+
+              /* Wireframe Grayscales */
+              .bg-unidad {
+                background-color: #e2e2e2 !important;
+                border-bottom: 2px solid #999;
+              }
+
+              .bg-subunidad {
+                background-color: #f4f4f4 !important;
+                border-bottom: 1px solid #ccc;
+              }
+
+              .bg-ceco {
+                background-color: #ffffff !important;
+                border-bottom: 1px solid #ccc;
+              }
+
+              .detail-row td {
+                background-color: #ffffff;
+                border-bottom: 1px dashed #ccc;
+              }
+
+              .table-forecast th {
+                vertical-align: middle;
+                white-space: nowrap;
+              }
+            </style>
+
+            <div class="table-responsive border border-dark rounded-0 bg-white pb-2">
+              <table class="table table-bordered table-sm table-forecast align-middle mb-0 text-nowrap text-dark"
+                style="font-size: 0.75rem;">
+                <thead class="text-center bg-light border-bottom border-dark">
+                  <tr class="text-uppercase" style="font-size: 0.65rem;">
+                    <th rowspan="2" class="text-start ps-4" style="min-width: 280px;">Estructura / CeCo</th>
+                    <th rowspan="2" style="min-width: 140px;">Campaña</th>
+                    <th rowspan="2" style="min-width: 150px;">Cuenta SAP</th>
+                    <th colspan="9" class="bg-light border-dark py-2">Meses Real</th>
+                    <th colspan="3" class="bg-light border-dark py-2">Meses Plan</th>
+                    <th rowspan="2" class="text-end fw-bold pe-4" style="min-width: 110px;">TOPE ASIGNADO</th>
+                  </tr>
+                  <tr class="bg-light">
+                    <th>Ene</th>
+                    <th>Feb</th>
+                    <th>Mar</th>
+                    <th>Abr</th>
+                    <th>May</th>
+                    <th>Jun</th>
+                    <th>Jul</th>
+                    <th>Ago</th>
+                    <th>Sep</th>
+                    <th class="border-start border-dark">Oct</th>
+                    <th>Nov</th>
+                    <th>Dic</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-unidad" data-bs-toggle="collapse" data-bs-target=".group-unidad1" aria-expanded="true">
+                    <td class="ps-lvl-1 fw-bold"><span class="fw-bold me-2">[v]</span><span
+                        class="fw-bold me-2">[Dir]</span>Sector Masivo</td>
+                    <td colspan="14"></td>
+                    <td class="text-end pe-4 fs-6 fw-bold">2,092,500</td>
+                  </tr>
+                </tbody>
+                <tbody class="group-unidad1 collapse show">
+                  <tr class="bg-subunidad collapsed" data-bs-toggle="collapse" data-bs-target=".group-subunidad1"
+                    aria-expanded="false">
+                    <td class="ps-lvl-2 fw-bold"><span class="fw-bold me-2">[&gt;]</span><span
+                        class="fw-bold me-2">[Sub]</span>Préstamos y Cobranza</td>
+                    <td colspan="14"></td>
+                    <td class="text-end pe-4 fw-bold">2,092,500</td>
+                  </tr>
+                </tbody>
+                <tbody class="group-unidad1 group-subunidad1 collapse">
+                  <tr class="bg-ceco collapsed" data-bs-toggle="collapse" data-bs-target=".ceco-100901"
+                    aria-expanded="false">
+                    <td class="ps-lvl-3 fw-bold"><span class="fw-bold me-2">[&gt;]</span><span
+                        class="fw-bold me-2">[CeCo]</span>100901 - DIR GRAL CONECTIVIDAD</td>
+                    <td colspan="14"></td>
+                    <td class="text-end pe-4 fs-6 fw-bold">892,500</td>
+                  </tr>
+                </tbody>
+                <tbody class="group-unidad1 group-subunidad1 ceco-100901 collapse">
+                  <tr class="detail-row">
+                    <td class="ps-detail small"><span class="fw-bold me-2">[-&gt;]</span>Detalle de Gasto</td>
+                    <td class="fw-bold">394 - Madres</td>
+                    <td class="small">609011 - Televisión</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end fw-bold">40,000</td>
+                    <td class="text-end fw-bold">40,000</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end border-start border-dark">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end pe-4 fw-bold bg-light border-start border-dark">80,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="tab-resumen-carga" role="tabpanel">
+            <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
+              <div>
+                <h5 class="fw-bold mb-1 text-dark">Resumen de Carga</h5>
+                <p class="text-dark small mb-0">Consulta las solicitudes <span class="fw-bold">Aprobadas</span></p>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-light border border-dark btn-sm fw-bold rounded-0 text-dark"
+                  data-bs-toggle="modal" data-bs-target="#modalReporteCarga">
+                  <span class="fw-bold me-1">[Doc]</span> Descargar Reporte
+                </button>
+              </div>
+
+              <div class="modal fade" id="modalReporteCarga" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content border border-dark rounded-0">
+                    <div class="modal-header bg-light border-bottom border-dark px-4 py-3">
+                      <h5 class="modal-title fw-bold text-dark mb-0 d-flex align-items-center">
+                        <span class="fw-bold me-2">[Doc]</span> Reporte de Carga Sincronizada
+                      </h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4 bg-white">
+                      <div class="row g-3">
+                        <div class="col-12 mb-2">
+                          <label class="form-label fw-bold text-dark small mb-1">
+                            <span class="fw-bold me-1">[Clock]</span>Versión de Liberación a SIPRES *
+                          </label>
+                          <select class="form-select border-dark bg-light fw-bold text-dark rounded-0">
+                            <option value="vivo" selected="">Presupuesto Vivo (Actual)</option>
+                            <option value="v1.5">Histórico: V1.5</option>
+                          </select>
+                        </div>
+                        <div class="col-12 mt-4">
+                          <div class="d-flex align-items-center p-3 border border-dark bg-light rounded-0">
+                            <span class="fw-bold fs-3 me-3">[Lock]</span>
+                            <span class="small text-dark lh-1" style="font-size: 0.75rem;">
+                              <strong>Seguridad Aplicada:</strong> El reporte respetará los permisos de tu perfil.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer bg-light border-top border-dark px-4 py-3">
+                      <button class="btn btn-light border border-dark px-4 fw-bold rounded-0 text-dark"
+                        data-bs-dismiss="modal">Cancelar</button>
+                      <button class="btn btn-light border border-dark px-4 fw-bold rounded-0 text-dark">
+                        <span class="fw-bold me-1">[DL]</span> Generar Excel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card border border-dark rounded-0 mb-4 bg-white">
+              <div class="card-body p-2 py-3">
+                <div class="row g-2 align-items-center">
+                  <div class="col-12 col-md-6 col-lg-3 border-lg-end border-dark px-3">
+                    <div class="d-flex align-items-center">
+                      <span class="fs-4 me-3 fw-bold">[M1]</span>
+                      <div>
+                        <span class="text-dark fw-bold text-uppercase d-block lh-1 mb-1"
+                          style="font-size: 0.6rem;">Carga Aprobada</span>
+                        <span class="text-dark fw-bold lh-1 d-block fs-5">5,500,000</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3 border-lg-end border-dark px-3">
+                    <div class="d-flex align-items-center">
+                      <span class="fs-4 me-3 fw-bold">[M2]</span>
+                      <div>
+                        <span class="text-dark fw-bold text-uppercase d-block lh-1 mb-1"
+                          style="font-size: 0.6rem;">Liberado a SIPRES</span>
+                        <span class="text-dark fw-bold lh-1 d-block fs-5">4,200,000</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3 px-3">
+                    <div class="d-flex align-items-center">
+                      <span class="fs-4 me-3 fw-bold">[M3]</span>
+                      <div>
+                        <span class="text-dark fw-bold text-uppercase d-block lh-1 mb-1"
+                          style="font-size: 0.6rem;">Asignado Pendiente</span>
+                        <span class="text-dark fw-bold lh-1 d-block fs-5">1,300,000</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-responsive border border-dark rounded-0 bg-white pb-2">
+              <table class="table table-bordered table-sm table-forecast align-middle mb-0 text-nowrap text-dark"
+                style="font-size: 0.75rem;">
+                <thead class="text-center bg-light border-bottom border-dark">
+                  <tr class="text-uppercase" style="font-size: 0.65rem;">
+                    <th rowspan="2" class="text-start ps-4" style="min-width: 280px;">Estructura / CeCo</th>
+                    <th rowspan="2" style="min-width: 140px;">Campaña</th>
+                    <th rowspan="2" style="min-width: 150px;">Estatus SIPRES</th>
+                    <th colspan="9" class="bg-light border-dark py-2">Meses Real</th>
+                    <th colspan="3" class="bg-light border-dark py-2">Meses Plan</th>
+                    <th rowspan="2" class="text-end fw-bold pe-4" style="min-width: 110px;">MONTO APROBADO</th>
+                  </tr>
+                  <tr class="bg-light">
+                    <th>Ene</th>
+                    <th>Feb</th>
+                    <th>Mar</th>
+                    <th>Abr</th>
+                    <th>May</th>
+                    <th>Jun</th>
+                    <th>Jul</th>
+                    <th>Ago</th>
+                    <th>Sep</th>
+                    <th class="border-start border-dark">Oct</th>
+                    <th>Nov</th>
+                    <th>Dic</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-unidad collapsed" data-bs-toggle="collapse" data-bs-target=".group-unidad-rc"
+                    aria-expanded="false">
+                    <td class="ps-lvl-1 fw-bold"><span class="fw-bold me-2">[&gt;]</span><span
+                        class="fw-bold me-2">[Dir]</span> Sector Masivo</td>
+                    <td colspan="14"></td>
+                    <td class="text-end pe-4 fs-6 fw-bold">717,140</td>
+                  </tr>
+                </tbody>
+                <tbody class="group-unidad-rc collapse show">
+                  <tr class="bg-subunidad collapsed" data-bs-toggle="collapse" data-bs-target=".group-subunidad-rc"
+                    aria-expanded="false">
+                    <td class="ps-lvl-2 fw-bold"><span class="fw-bold me-2">[&gt;]</span><span
+                        class="fw-bold me-2">[Sub]</span> Préstamos y Cobranza</td>
+                    <td colspan="14"></td>
+                    <td class="text-end pe-4 fw-bold">717,140</td>
+                  </tr>
+                </tbody>
+                <tbody class="group-unidad-rc group-subunidad-rc collapse">
+                  <tr class="bg-ceco collapsed" data-bs-toggle="collapse" data-bs-target=".ceco-rc-100901"
+                    aria-expanded="false">
+                    <td class="ps-lvl-3 fw-bold"><span class="fw-bold me-2">[&gt;]</span><span
+                        class="fw-bold me-2">[CeCo]</span> 100901 - DIR GRAL CONECTIVIDAD</td>
+                    <td colspan="14"></td>
+                    <td class="text-end pe-4 fs-6 fw-bold">717,140</td>
+                  </tr>
+                </tbody>
+                <tbody class="group-unidad-rc group-subunidad-rc ceco-rc-100901 collapse">
+                  <tr class="detail-row">
+                    <td class="ps-detail small">
+                      <a href="SolAprob.html" class="text-dark fw-bold text-decoration-underline me-1">GP-2027-014</a>
+                      <span class="fw-bold me-2">[-&gt;]</span>Detalle de Gasto
+                    </td>
+                    <td class="fw-bold">394 - Madres</td>
+                    <td class="text-center">
+                      <span class="badge bg-light text-dark border border-dark rounded-0 fw-normal">Enviado a
+                        SIPRES</span>
+                    </td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end fw-bold">40,000</td>
+                    <td class="text-end fw-bold">40,000</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end border-start border-dark">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end">0</td>
+                    <td class="text-end pe-4 fw-bold bg-light border-start border-dark">80,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <!--start overlay-->
+  <div class="overlay btn-toggle-menu"></div>
+  <!--end overlay-->
+
+  <!-- Search Modal -->
+  <div class="modal" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header gap-2">
+          <div class="position-relative popup-search w-100">
+            <input class="form-control form-control-lg ps-5 border border-3 border-primary" type="search"
+              placeholder="Search">
+            <span
+              class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+          </div>
+          <button type="button" class="btn-close d-xl-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="search-list">
+            <p class="mb-1">Html Templates</p>
+            <div class="list-group">
+              <a href="javascript:;"
+                class="list-group-item list-group-item-action active align-items-center d-flex gap-2"><i
+                  class="bi bi-filetype-html fs-5"></i>Best Html Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-award fs-5"></i>Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-box2-heart fs-5"></i>Responsive Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-camera-video fs-5"></i>eCommerce Html Templates</a>
+            </div>
+            <p class="mb-1 mt-3">Web Designe Company</p>
+            <div class="list-group">
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-chat-right-text fs-5"></i>Best Html Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-cloud-arrow-down fs-5"></i>Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-columns-gap fs-5"></i>Responsive Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-collection-play fs-5"></i>eCommerce Html Templates</a>
+            </div>
+            <p class="mb-1 mt-3">Software Development</p>
+            <div class="list-group">
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-cup-hot fs-5"></i>Best Html Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-droplet fs-5"></i>Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-exclamation-triangle fs-5"></i>Responsive Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-eye fs-5"></i>eCommerce Html Templates</a>
+            </div>
+            <p class="mb-1 mt-3">Online Shoping Portals</p>
+            <div class="list-group">
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-facebook fs-5"></i>Best Html Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-flower2 fs-5"></i>Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-geo-alt fs-5"></i>Responsive Html5 Templates</a>
+              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
+                  class="bi bi-github fs-5"></i>eCommerce Html Templates</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--start theme customization-->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer" aria-labelledby="ThemeCustomizerLable">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="ThemeCustomizerLable">Theme Customizer</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h6 class="mb-0">Theme Variation</h6>
+      <hr>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1">
+        <label class="form-check-label" for="LightTheme">Light</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2"
+          checked="">
+        <label class="form-check-label" for="DarkTheme">Dark</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" value="option3">
+        <label class="form-check-label" for="SemiDarkTheme">Semi Dark</label>
+      </div>
+      <hr>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="MinimalTheme" value="option3">
+        <label class="form-check-label" for="MinimalTheme">Minimal Theme</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ShadowTheme" value="option4">
+        <label class="form-check-label" for="ShadowTheme">Shadow Theme</label>
+      </div>
+
+    </div>
+  </div>
+  <!--end theme customization-->
+  <!--plugins-->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+
+  <!--BS Scripts-->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+
+
+
+
+
+
+</body>
+
+</html>

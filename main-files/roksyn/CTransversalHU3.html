@@ -1,0 +1,437 @@
+<html lang="en" data-bs-theme="light1">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campañas Transversales - IPSO</title>
+
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+  <link href="assets/css/minimal-theme.css" rel="stylesheet">
+  <link href="assets/css/shadow-theme.css" rel="stylesheet">
+</head>
+
+<body class="pace-done" style="">
+  <div class="pace  pace-inactive">
+    <div class="pace-progress" data-progress-text="100%" data-progress="99"
+      style="transform: translate3d(100%, 0px, 0px);">
+      <div class="pace-progress-inner"></div>
+    </div>
+    <div class="pace-activity"></div>
+  </div>
+
+  <header class="top-header">
+    <nav class="navbar navbar-expand justify-content-between">
+      <div class="btn-toggle-menu">
+        <span class="material-symbols-outlined">menu</span>
+      </div>
+      <div class="position-relative search-bar d-lg-block d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <input class="form-control form-control-sm rounded-5 px-5" disabled="" type="search" placeholder="Search">
+        <span class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+      </div>
+      <ul class="navbar-nav top-right-menu gap-2">
+        <li class="nav-item dark-mode">
+          <a class="nav-link dark-mode-icon" href="javascript:;"><span
+              class="material-symbols-outlined">light_mode</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="offcanvas" href="#ThemeCustomizer"><span
+              class="material-symbols-outlined">settings</span></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  <aside class="sidebar-wrapper">
+    <div class="sidebar-header">
+      <div class="logo-icon">
+        <img src="assets/images/logo-icon.png" class="logo-img" alt="">
+      </div>
+      <div class="logo-name flex-grow-1">
+        <h5 class="mb-0">IPSO</h5>
+      </div>
+      <div class="sidebar-close ">
+        <span class="material-symbols-outlined">close</span>
+      </div>
+    </div>
+    <div class="sidebar-nav" data-simplebar="init">
+      <div class="simplebar-wrapper" style="margin: 0px;">
+        <div class="simplebar-height-auto-observer-wrapper">
+          <div class="simplebar-height-auto-observer"></div>
+        </div>
+        <div class="simplebar-mask">
+          <div class="simplebar-offset mm-active" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper mm-show" style="height: 100%; overflow: hidden;">
+              <div class="simplebar-content mm-active" style="padding: 0px;">
+                <ul class="metismenu mm-show" id="menu">
+                  <li>
+                    <a href="index.html" aria-expanded="false">
+                      <div class="parent-icon"><span class="material-symbols-outlined">home</span>
+                      </div>
+                      <div class="menu-title">Home</div>
+                    </a>
+                  </li>
+                  <li class="menu-label mb-0 text-dark">Configuracion General</li>
+                  <li class="mm-active">
+                    <a href="javascript:;" class="has-arrow" aria-expanded="true">
+                      <div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span>
+                      </div>
+                      <div class="menu-title">Sistema</div>
+                    </a>
+                    <ul class="mm-collapse mm-show" style="">
+                      <li> <a href="PUsuarios.html"><span
+                            class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a>
+                      </li>
+                      <li> <a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de Costos</a>
+                      </li>
+                      <li class="mm-active"> <a href="CTransversal.html" aria-expanded="true"><span
+                            class="material-symbols-outlined">arrow_right</span>Campañas Transversales</a>
+                      </li>
+                      <li> <a href="PFondo.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-bottom dropdown dropup-center dropup">
+      <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
+        <div class="user-img">
+          <img src="assets/images/avatars/01.png" alt="">
+        </div>
+        <div class="user-info">
+          <h5 class="mb-0 user-name">Edgar Grande</h5>
+          <p class="mb-0 user-designation">P2</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="page-content">
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-4">
+      <div class="breadcrumb-title pe-3">Configuración</div>
+      <div class="ps-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0 p-0">
+            <li class="breadcrumb-item"><a href="javascript:;"><i class="bi bi-folder-fill"></i></a></li>
+            <li class="breadcrumb-item active" aria-current="page">Campañas Transversales</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="ms-auto d-flex align-items-center gap-3">
+        <button type="button" class="btn btn-outline-dark btn-sm" data-bs-container="body" data-bs-toggle="popover"
+          data-bs-placement="left" data-bs-trigger="hover focus"
+          data-bs-content="Abre el formulario para registrar una nueva campaña. Solo requiere Nombre y País (Sin CeCos). El sistema generará automáticamente la clave."
+          data-bs-original-title="HU1: Alta de Campaña">
+          <i class="bi bi-arrow-right-circle-fill me-1"></i> HU1 - Alta
+        </button>
+
+        <button type="button" class="btn btn-primary px-4 shadow-sm fw-bold" data-bs-toggle="modal"
+          data-bs-target="#modalAltaCampana">
+          <i class="bi bi-plus-lg me-2"></i>Nueva Campaña
+        </button>
+      </div>
+    </div>
+
+    <div class="card border-0 shadow-sm radius-10 position-relative bg-white">
+      <div class="card-body p-4">
+
+        <div class="mb-4">
+          <div class="d-flex align-items-center mb-3">
+            <h6 class="fw-bold mb-0 text-dark me-3">Catálogo de Campañas Transversales</h6>
+            <button type="button" class="btn btn-outline-dark btn-sm" data-bs-container="body" data-bs-toggle="popover"
+              data-bs-placement="right" data-bs-trigger="hover focus"
+              data-bs-content="Permite filtrar por País y buscar por Nombre o Clave. Incluye campañas activas e inactivas de años anteriores."
+              data-bs-original-title="HU2: Filtros Globales">
+              <i class="bi bi-arrow-down-circle-fill me-1"></i> HU2 - Filtros
+            </button>
+          </div>
+
+          <div class="row align-items-end g-2">
+            <div class="col-md-3">
+              <label class="form-label small text-muted fw-bold">País</label>
+              <select class="form-select shadow-sm border-start-0">
+                <option selected="">Todos los países</option>
+                <option>México (MX)</option>
+                <option>Honduras (HN)</option>
+                <option>Panamá (PA)</option>
+                <option>Guatemala (GT)</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label small text-muted fw-bold">Nombre o Clave de Campaña</label>
+              <div class="input-group shadow-sm">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" class="form-control border-start-0" placeholder="Ej: Madres, 001TMX...">
+              </div>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-outline-primary w-100 fw-bold">Buscar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive border rounded">
+          <table class="table table-hover align-middle mb-0" style="font-size: 0.85rem;">
+            <thead class="table-light text-muted small text-uppercase">
+              <tr>
+                <th style="width: 15%; cursor: pointer;" class="ps-3 text-nowrap">Clave Campaña</th>
+                <th style="width: 35%; cursor: pointer;" class="text-nowrap">
+                  Nombre
+                  &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-dark btn-sm"
+                    style="font-size: 0.65rem;" data-bs-container="body" data-bs-toggle="popover"
+                    data-bs-placement="top" data-bs-trigger="hover focus"
+                    data-bs-content="El listado se ordena por defecto de forma ascendente por Nombre de la campaña y País."
+                    data-bs-original-title="HU2: Ordenamiento"><i class="bi bi-arrow-down"></i> HU2</button>
+                </th>
+                <th style="width: 15%; cursor: pointer;" class="text-nowrap text-center">País</th>
+                <th style="width: 15%;" class="text-center text-nowrap">Estado</th>
+                <th class="text-center" style="width: 20%;">Acciones (Popovers)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="ps-3"><span class="fw-bold text-primary">001TMX</span></td>
+                <td><span class="fw-bold text-dark">Día de las Madres 2026</span></td>
+                <td class="text-center"><span class="badge bg-light text-dark border">México</span></td>
+                <td class="text-center"><span class="badge bg-success-subtle text-success border border-success-subtle px-2">Activo</span></td>
+                <td class="text-center">
+                  <div class="d-flex align-items-center justify-content-center gap-1">
+                    
+                    <button class="btn btn-sm btn-light text-success border" title="Editar" data-bs-toggle="modal"
+                      data-bs-target="#modalEditarCampana">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-dark btn-sm" style="font-size: 0.65rem;"
+                      data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top"
+                      data-bs-trigger="hover focus"
+                      data-bs-content="Permite editar Nombre y reactivar campañas cambiando su estado. Clave y País son inmutables."
+                      data-bs-original-title="HU3: Edición y Reactivación"><i class="bi bi-arrow-left"></i> HU3</button>
+
+                    <button class="btn btn-sm btn-light text-danger border" title="Eliminar" data-bs-toggle="modal"
+                      data-bs-target="#modalEliminarCampana">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              
+              <tr>
+                <td class="ps-3"><span class="fw-bold text-muted">002TMX</span></td>
+                <td><span class="fw-bold text-muted">Mundial de Fútbol 2022</span></td>
+                <td class="text-center"><span class="badge bg-light text-muted border">México</span></td>
+                <td class="text-center"><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2">Inactivo</span></td>
+                <td class="text-center">
+                  <div class="d-flex align-items-center justify-content-center gap-1">
+                    <button class="btn btn-sm btn-light text-success border" title="Editar/Reactivar" data-bs-toggle="modal"
+                      data-bs-target="#modalEditarCampana">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button class="btn btn-sm btn-light text-danger border" title="Eliminar" data-bs-toggle="modal"
+                      data-bs-target="#modalEliminarCampana">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalEliminarCampana" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title fw-bold"><i class="bi bi-exclamation-triangle-fill me-2"></i>Eliminar Campaña
+              Transversal</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4 text-center bg-white position-relative">
+            <button type="button" class="btn btn-outline-dark btn-sm" data-bs-container="body" data-bs-toggle="popover"
+              data-bs-placement="bottom" data-bs-trigger="hover focus"
+              data-bs-content="Si hay presupuesto cambia a 'Inactiva'. Si hay borradores, bloquea. Si no hay nada, elimina definitivamente y libera la clave."
+              data-bs-original-title="HU4: Reglas de Eliminación">
+              HU4 - Reglas <i class="bi bi-arrow-down-circle-fill ms-1"></i>
+            </button>
+
+            <i class="bi bi-trash3 text-danger display-1 mb-3 mt-4 d-block opacity-75"></i>
+            <h4 class="fw-bold text-dark mb-3">Se eliminará la campaña seleccionada.</h4>
+            <p class="text-muted mb-0 fs-6">
+              Estás a punto de eliminar la campaña <br>
+              <span class="fw-bold text-dark fs-5">001TMX - Día de las Madres 2026</span> <br>
+            </p>
+          </div>
+          <div class="modal-footer bg-light border-top-0 justify-content-center">
+            <button type="button" class="btn btn-outline-secondary px-4 fw-bold"
+              data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger px-4 fw-bold shadow-sm"><i
+                class="bi bi-trash-fill me-2"></i>Confirmar acción</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalAltaCampana" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title fw-bold"><i class="bi bi-megaphone me-2"></i>Alta de Campaña Transversal</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4 bg-white">
+            <div class="row g-3">
+              <div class="col-md-8">
+                <label class="form-label fw-bold small mb-0">Nombre de la campaña <span
+                    class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Ingrese nombre descriptivo" maxlength="50"
+                  required="">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label fw-bold small mb-0">País <span class="text-danger">*</span></label>
+                <select class="form-select" required="">
+                  <option selected="" disabled="">Seleccione un país...</option>
+                  <option value="MX">México (MX)</option>
+                  <option value="HN">Honduras (HN)</option>
+                  <option value="PA">Panamá (PA)</option>
+                  <option value="GT">Guatemala (GT)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="alert alert-info mt-4 mb-0 border-0 shadow-sm d-flex align-items-center justify-content-between"
+              style="font-size: 0.75rem;">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-envelope-paper-fill fs-4 me-3 text-primary"></i>
+                <div>
+                  <strong>Notificación Automática Activa:</strong> Se enviará correo al guardar.
+                </div>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-dark rounded-pill fw-bold" data-bs-container="body"
+                data-bs-toggle="popover" data-bs-placement="left" data-bs-trigger="hover focus"
+                data-bs-content="Al guardar exitosamente, envía un correo a Sistemas e IPSO MKT notificando la creación."
+                data-bs-original-title="HU5: Notificación de Alta">
+                HU5 - Correo <i class="bi bi-arrow-down ms-1"></i>
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer bg-light border-top-0 d-flex justify-content-between">
+            <small class="text-muted fst-italic">El sistema validará que el nombre sea único</small>
+            <div>
+              <button type="button" class="btn btn-outline-secondary btn-sm px-4"
+                data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary btn-sm px-4 fw-bold"><i class="bi bi-save me-2"></i>Guardar
+                Campaña</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalEditarCampana" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title fw-bold"><i class="bi bi-pencil-square me-2"></i>Edición de Campaña Transversal</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body p-4 bg-white position-relative">
+            <button type="button"
+              class="btn btn-sm btn-outline-dark rounded-pill fw-bold shadow-sm position-absolute top-0 end-0 mt-3 me-4"
+              data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-trigger="hover focus"
+              data-bs-content="Los campos Clave y País son inmutables (solo lectura). Permite editar Nombre y el Estado para Reactivar campañas históricas."
+              data-bs-original-title="HU3: Edición y Reactivación">
+              HU3 <i class="bi bi-arrow-left-circle-fill ms-1"></i>
+            </button>
+
+            <div class="row g-3 mt-1">
+              <div class="col-md-3">
+                <label class="form-label fw-bold small text-muted">Clave <i class="bi bi-lock-fill"></i></label>
+                <input type="text" class="form-control bg-light text-muted fw-bold" value="001TMX" readonly="">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label fw-bold small text-muted">País <i class="bi bi-lock-fill"></i></label>
+                <input type="text" class="form-control bg-light text-muted fw-bold" value="México (MX)" readonly="">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold small">Nombre de la Campaña <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" value="Día de las Madres 2026" maxlength="50">
+              </div>
+              
+              <div class="col-md-12 mt-4 pt-3 border-top">
+                <label class="form-label fw-bold small text-primary"><i class="bi bi-power me-2"></i>Estado Operativo de la Campaña</label>
+                <select class="form-select w-50 shadow-sm border-primary">
+                  <option value="activo" selected>Activo (Disponible para carga presupuestal)</option>
+                  <option value="inactivo">Inactivo (Oculto para carga presupuestal)</option>
+                </select>
+                <div class="form-text mt-2"><i class="bi bi-info-circle me-1"></i>Para <strong>Reactivar</strong> una campaña de un año anterior, cambie su estado a Activo. La campaña conservará su clave original.</div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer bg-light border-top-0 d-flex justify-content-between">
+            <small class="text-muted fst-italic">El nombre debe ser único</small>
+            <div>
+              <button type="button" class="btn btn-outline-secondary btn-sm px-4" data-bs-dismiss="modal">Cerrar sin guardar</button>
+              <button type="button" class="btn btn-success btn-sm px-4 fw-bold"><i class="bi bi-save me-2"></i>Confirmar Cambios</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer" aria-labelledby="ThemeCustomizerLable">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="ThemeCustomizerLable">Theme Customizer</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h6 class="mb-0">Theme Variation</h6>
+      <hr>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1"
+          checked="">
+        <label class="form-check-label" for="LightTheme">Light</label>
+      </div>
+    </div>
+  </div>
+  
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl, {
+          container: 'body'
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>

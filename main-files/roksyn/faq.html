@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es" data-bs-theme="semi-dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nueva Relación de Usuario | IPSO</title>
+
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <link href="assets/plugins/bs-stepper/css/bs-stepper.css" rel="stylesheet">
+  
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .bs-stepper .step-trigger { padding: 1.5rem 1rem; }
+    .dual-listbox-container select { height: 320px !important; }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    
+    <main class="page-content">
+      
+      <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-4">
+        <div>
+          <h4 class="fw-bold text-dark mb-0">
+            <i class="bi bi-person-plus-fill text-primary me-2"></i>Gestión de Usuarios
+          </h4>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb small mb-0 mt-1">
+              <li class="breadcrumb-item"><a href="Inicio.html" class="text-decoration-none text-muted">Configuración del sistema</a></li>
+              <li class="breadcrumb-item"><a href="PUsuarios.html" class="text-decoration-none text-muted">Usuarios y Perfiles</a></li>
+              <li class="breadcrumb-item active fw-bold" aria-current="page">Nueva Relación</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+      <div class="card shadow-sm border-0 radius-10">
+        <div class="card-body p-4">
+          
+          <div id="stepperAltaUsuario" class="bs-stepper">
+            
+            <div class="card-header bg-transparent border-bottom-0 p-0 mb-4">
+              <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist">
+                
+                <div class="step" data-target="#step-general">
+                  <div class="step-trigger" role="tab" id="step1trigger" aria-controls="step-general">
+                    <div class="bs-stepper-circle">1</div>
+                    <div>
+                      <h5 class="mb-0 steper-title">Información General</h5>
+                      <p class="mb-0 steper-sub-title">Usuario y Perfil operativo</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="bs-stepper-line"></div>
+                
+                <div class="step" data-target="#step-cecos">
+                  <div class="step-trigger" role="tab" id="step2trigger" aria-controls="step-cecos">
+                    <div class="bs-stepper-circle">2</div>
+                    <div>
+                      <h5 class="mb-0 steper-title">Centros de Costo</h5>
+                      <p class="mb-0 steper-sub-title">Asignación de CeCos (Dual Listbox)</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="bs-stepper-line"></div>
+                
+                <div class="step" data-target="#step-confirmacion">
+                  <div class="step-trigger" role="tab" id="step3trigger" aria-controls="step-confirmacion">
+                    <div class="bs-stepper-circle"><i class="bi bi-check-lg"></i></div>
+                    <div>
+                      <h5 class="mb-0 steper-title">Confirmación</h5>
+                      <p class="mb-0 steper-sub-title">Verificación y alta</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="bs-stepper-content p-0">
+              <form id="formAltaUsuario" onsubmit="return false">
+                
+                <div id="step-general" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="step1trigger">
+                  <h5 class="fw-bold text-dark mb-4"><i class="bi bi-person-badge me-2 text-primary"></i>Datos de la Relación</h5>
+                  
+                  <div class="row g-4">
+                    <div class="col-md-6">
+                      <label for="single-select-usuario" class="form-label fw-bold text-dark">Selección de usuario <span class="text-danger">*</span></label>
+                      <select class="form-select" id="single-select-usuario" data-placeholder="Buscar empleado por nombre o número..." required>
+                        <option></option> 
+                        <option value="1">134845 - Nohemi Cordoba</option>
+                        <option value="2">362715 - Edgar Grande Arteaga</option>
+                        <option value="3">1200153 - Noeve Robles Sanchez</option>
+                      </select>
+                      <div class="form-text mt-2">Muestra la lista de usuarios disponibles registrados en Datasec que no tienen un perfil previo.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="select-perfil" class="form-label fw-bold text-dark">Perfil a asignar <span class="text-danger">*</span></label>
+                      <select class="form-select shadow-sm" id="select-perfil" required>
+                        <option selected disabled value="">Seleccione el nivel de acceso presupuestal...</option>
+                        <option value="carga">Carga de presupuesto</option>
+                        <option value="auth_mkt">Autorizador de Marketing</option>
+                        <option value="auth_marca">Autorizador de marca</option>
+                        <option value="auth_estrategia">Autorizador de Estrategia</option>
+                        <option value="auth_oferteo">Autorizador de oferteo</option>
+                        <option value="auth_mkt_sd">Autorizador Mkt (Sin división)</option>
+                        <option value="carga_auth_mkt">Carga / autoriza Marketing</option>
+                        <option value="carga_auth_mkt_sd">Carga / autoriza Mkt</option>
+                        <option value="admin_presupuesto">Administración de presupuesto</option>
+                        <option value="auth_ayf">Autorizador de administración y finanzas Mkt</option>
+                      </select>
+                    </div>
+
+                    <div class="col-12 text-end mt-5">
+                      <a href="PUsuarios.html" class="btn btn-light px-4 me-2">Cancelar</a>
+                      <button type="button" class="btn btn-primary px-5" onclick="stepperAltaUsuario.next()">Siguiente <i class="bi bi-arrow-right ms-2"></i></button>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="step-cecos" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="step2trigger">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold text-dark mb-0"><i class="bi bi-diagram-3 me-2 text-primary"></i>Centros de Costos Relacionados</h5>
+                    <span class="text-danger small fw-bold" id="txt-validacion-cecos">Debe seleccionar al menos un Centro de Costos.</span>
+                  </div>
+                  
+                  <div class="row g-2 mb-4 bg-light p-3 rounded border border-secondary border-opacity-10">
+                    <div class="col-md-4">
+                      <input type="text" id="buscar-ceco" class="form-control form-control-sm" placeholder="Buscar por número o nombre...">
+                    </div>
+                    <div class="col-md-4">
+                      <select class="form-select form-select-sm">
+                        <option selected>Todos los países</option>
+                        <option>México</option>
+                        <option>LAM</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <select class="form-select form-select-sm">
+                        <option selected>Todas las divisiones</option>
+                        <option>Oferteo</option>
+                        <option>Marca</option>
+                        <option>Estrategia</option>
+                        <option>Sin división</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row align-items-center dual-listbox-container">
+                    <div class="col-md-5">
+                      <label class="small fw-bold mb-2 text-muted">CeCos Disponibles según Perfil</label>
+                      <select multiple class="form-select shadow-sm" id="cecos-disponibles" size="12">
+                        <option value="616528">616528 - Presta prenda</option>
+                        <option value="616786">616786 - Publicidad Presta Prenda Marca</option>
+                        <option value="617001">617001 - Estrategia Digital Nacional</option>
+                        <option value="617005">617005 - Publicidad Corporativa</option>
+                        <option value="618200">618200 - Medios Impresos Regional</option>
+                      </select>
+                    </div>
+                    
+                    <div class="col-md-2 text-center d-grid gap-2 px-3">
+                      <button type="button" id="btn-agregar-ceco" class="btn btn-outline-primary btn-sm shadow-none" title="Agregar seleccionado">
+                        <i class="bi bi-chevron-right fw-bold"></i>
+                      </button>
+                      <button type="button" id="btn-quitar-ceco" class="btn btn-outline-danger btn-sm shadow-none mt-2" title="Quitar seleccionado">
+                        <i class="bi bi-chevron-left fw-bold"></i>
+                      </button>
+                    </div>
+                    
+                    <div class="col-md-5">
+                      <label class="small fw-bold mb-2 text-muted">CeCos Asignados al Usuario</label>
+                      <select multiple class="form-select border-primary border-opacity-50 shadow-sm" id="cecos-asignados" size="12">
+                        </select>
+                    </div>
+                  </div>
+
+                  <div class="col-12 text-end mt-5">
+                    <button type="button" class="btn btn-outline-secondary px-4 me-2" onclick="stepperAltaUsuario.previous()">Regresar</button>
+                    <button type="button" class="btn btn-primary px-5" onclick="stepperAltaUsuario.next()">Siguiente <i class="bi bi-arrow-right ms-2"></i></button>
+                  </div>
+                </div>
+
+                <div id="step-confirmacion" role="tabpanel" class="bs-stepper-pane fade text-center" aria-labelledby="step3trigger">
+                  <div class="py-4">
+                    <i class="bi bi-exclamation-circle-fill text-primary" style="font-size: 4rem;"></i>
+                    <h4 class="fw-bold text-dark mt-4">¿Deseas guardar la relación de perfil-centros de costos?</h4>
+                    <p class="text-secondary">Al confirmar se registrará la actividad en el historial del usuario y se enviará la notificación automatizada de alta.</p>
+                    
+                    <div class="card bg-light border border-secondary border-opacity-10 radius-10 mt-4 mx-auto text-start" style="max-width: 550px;">
+                      <div class="card-body p-4">
+                        <div class="mb-3">
+                          <span class="small text-muted text-uppercase fw-bold d-block mb-1">Usuario Destino</span>
+                          <div class="fw-bold text-dark fs-6" id="resumen-usuario">Ninguno seleccionado</div>
+                        </div>
+                        <hr class="my-3 opacity-25">
+                        <div>
+                          <span class="small text-muted text-uppercase fw-bold d-block mb-1">Perfil Operativo Asignado</span>
+                          <div class="fw-bold text-dark fs-6" id="resumen-perfil">Ninguno seleccionado</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-12 text-center mt-4">
+                    <button type="button" class="btn btn-outline-secondary px-4 me-2" onclick="stepperAltaUsuario.previous()">Regresar</button>
+                    <button type="button" class="btn btn-success px-5 fw-bold" onclick="alert('Usuario registrado con éxito'); window.location.href='PUsuarios.html'">
+                      <i class="bi bi-check-circle me-2"></i> Confirmar y Registrar alta
+                    </button>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="assets/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Variable global para controlar el Stepper
+    var stepperAltaUsuario;
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1. Inicialización de bs-stepper
+      stepperAltaUsuario = new Stepper(document.querySelector('#stepperAltaUsuario'), {
+        linear: true, // Modo lineal obligatorio según Reglas de Negocio
+        animation: true
+      });
+    });
+
+    $(document).ready(function() {
+      
+      // 2. Inicialización limpia de Select2 para el buscador de usuarios
+      $('#single-select-usuario').select2({
+        theme: 'bootstrap-5',
+        placeholder: 'Buscar empleado por nombre o número...',
+        width: '100%',
+        allowClear: true
+      });
+
+      // 3. Lógica Funcional del Dual Listbox utilizando selectores nativos de Bootstrap
+      
+      // Botón de Transferencia: Mueve de Disponibles a Asignados
+      $('#btn-agregar-ceco').click(function() {
+        $('#cecos-disponibles option:selected').appendTo('#cecos-asignados');
+        evaluarEstadoCecos();
+      });
+
+      // Botón de Retorno: Mueve de Asignados a Disponibles
+      $('#btn-quitar-ceco').click(function() {
+        $('#cecos-asignados option:selected').appendTo('#cecos-disponibles');
+        evaluarEstadoCecos();
+      });
+
+      // 4. Función de Programación para Validaciones y actualización del Resumen Final
+      function evaluarEstadoCecos() {
+        let conteoAsignados = $('#cecos-asignados option').length;
+        
+        // Modificación visual del mensaje de error según la regla de campos obligatorios
+        if (conteoAsignados > 0) {
+          $('#txt-validacion-cecos').removeClass('text-danger').addClass('text-success').html('<i class="bi bi-check-circle-fill me-1"></i> Centros de costo seleccionados correctamente.');
+        } else {
+          $('#txt-validacion-cecos').removeClass('text-success').addClass('text-danger').text('Debe seleccionar al menos un Centro de Costos.');
+        }
+      }
+
+      // 5. Vincular cambios de inputs para actualizar la pantalla de Confirmación automáticamente
+      $('#single-select-usuario').change(function() {
+        let textoUsuario = $("#single-select-usuario option:selected").text();
+        $('#resumen-usuario').text(textoUsuario || "Ninguno seleccionado");
+      });
+
+      $('#select-perfil').change(function() {
+        let textoPerfil = $("#select-perfil option:selected").text();
+        $('#resumen-perfil').text(textoPerfil || "Ninguno seleccionado");
+      });
+
+    });
+  </script>
+</body>
+
+</html>
