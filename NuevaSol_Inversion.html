@@ -360,6 +360,8 @@
         ════════════════════════════════════════ -->
         <div id="paso-1">
 
+          <!-- ── Sub-vista A: Selección de proyecto ── -->
+          <div id="vistaSeleccionProyecto">
           <div class="row g-4 justify-content-center">
             <div class="col-12 col-lg-8">
               <div class="card border-0 shadow-sm">
@@ -381,21 +383,21 @@
                   <div class="input-group input-group-sm shadow-sm mb-3">
                     <span class="input-group-text bg-white border-secondary border-opacity-50"><i class="bi bi-search text-muted"></i></span>
                     <input type="text" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none py-2"
-                      placeholder="Buscar por nombre o clave de proyecto..."
+                      placeholder="Buscar por nombre o número de proyecto..."
                       oninput="filtrarProyectos(this.value)">
                   </div>
 
                   <!-- Lista de proyectos -->
                   <div id="listaProyectos" style="max-height:420px; overflow-y:auto;">
 
-                    <div class="proyecto-item" data-id="PI-2026-001" data-nombre="Transformación Digital 2026" onclick="seleccionarProyecto(this)">
+                    <div class="proyecto-item" data-id="134845" data-nombre="Transformación Digital 2026" onclick="seleccionarProyecto(this)">
                       <div class="proy-icon"><i class="bi bi-cpu text-primary"></i></div>
                       <div class="flex-grow-1">
                         <div class="fw-bold text-dark" style="font-size:.88rem;">Transformación Digital 2026</div>
                         <div class="text-muted" style="font-size:.75rem;">
-                          <span class="me-3"><i class="bi bi-hash me-1"></i>PI-2026-001</span>
-                          <span class="me-3"><i class="bi bi-building me-1"></i>DIR GRAL CONECTIVIDAD</span>
-                          <span><i class="bi bi-calendar3 me-1"></i>Ene – Dic 2026</span>
+                          <span class="me-3"><i class="bi bi-hash me-1"></i>134845</span>
+                          <span class="me-3"><i class="bi bi-building me-1"></i>DIR GRAL CONECTIVIDAD · DIR MKT DIGITAL</span>
+                          <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: 2 años</span>
                         </div>
                       </div>
                       <div class="flex-shrink-0 text-end">
@@ -403,14 +405,14 @@
                       </div>
                     </div>
 
-                    <div class="proyecto-item" data-id="PI-2026-002" data-nombre="Expansión Red Fibra Óptica" onclick="seleccionarProyecto(this)">
+                    <div class="proyecto-item" data-id="219033" data-nombre="Expansión Red Fibra Óptica" onclick="seleccionarProyecto(this)">
                       <div class="proy-icon"><i class="bi bi-diagram-3 text-primary"></i></div>
                       <div class="flex-grow-1">
                         <div class="fw-bold text-dark" style="font-size:.88rem;">Expansión Red Fibra Óptica</div>
                         <div class="text-muted" style="font-size:.75rem;">
-                          <span class="me-3"><i class="bi bi-hash me-1"></i>PI-2026-002</span>
+                          <span class="me-3"><i class="bi bi-hash me-1"></i>219033</span>
                           <span class="me-3"><i class="bi bi-building me-1"></i>TOTALPLAY PUBLICIDAD</span>
-                          <span><i class="bi bi-calendar3 me-1"></i>Mar – Nov 2026</span>
+                          <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: 3 años</span>
                         </div>
                       </div>
                       <div class="flex-shrink-0 text-end">
@@ -418,14 +420,14 @@
                       </div>
                     </div>
 
-                    <div class="proyecto-item" data-id="PI-2026-003" data-nombre="Plataforma CRM Retención" onclick="seleccionarProyecto(this)">
+                    <div class="proyecto-item" data-id="305812" data-nombre="Plataforma CRM Retención" onclick="seleccionarProyecto(this)">
                       <div class="proy-icon"><i class="bi bi-person-lines-fill text-primary"></i></div>
                       <div class="flex-grow-1">
                         <div class="fw-bold text-dark" style="font-size:.88rem;">Plataforma CRM Retención</div>
                         <div class="text-muted" style="font-size:.75rem;">
-                          <span class="me-3"><i class="bi bi-hash me-1"></i>PI-2026-003</span>
+                          <span class="me-3"><i class="bi bi-hash me-1"></i>305812</span>
                           <span class="me-3"><i class="bi bi-building me-1"></i>DIR ESTRATEGIA COMERCIAL</span>
-                          <span><i class="bi bi-calendar3 me-1"></i>Ene – Jun 2026</span>
+                          <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: 1 año</span>
                         </div>
                       </div>
                       <div class="flex-shrink-0 text-end">
@@ -433,14 +435,14 @@
                       </div>
                     </div>
 
-                    <div class="proyecto-item" data-id="PI-2026-004" data-nombre="Lanzamiento App Móvil 2.0" onclick="seleccionarProyecto(this)">
+                    <div class="proyecto-item" data-id="412760" data-nombre="Lanzamiento App Móvil 2.0" onclick="seleccionarProyecto(this)">
                       <div class="proy-icon"><i class="bi bi-phone text-primary"></i></div>
                       <div class="flex-grow-1">
                         <div class="fw-bold text-dark" style="font-size:.88rem;">Lanzamiento App Móvil 2.0</div>
                         <div class="text-muted" style="font-size:.75rem;">
-                          <span class="me-3"><i class="bi bi-hash me-1"></i>PI-2026-004</span>
+                          <span class="me-3"><i class="bi bi-hash me-1"></i>412760</span>
                           <span class="me-3"><i class="bi bi-building me-1"></i>DIR MKT DIGITAL</span>
-                          <span><i class="bi bi-calendar3 me-1"></i>Abr – Sep 2026</span>
+                          <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: 2 años</span>
                         </div>
                       </div>
                       <div class="flex-shrink-0 text-end">
@@ -448,18 +450,18 @@
                       </div>
                     </div>
 
-                    <div class="proyecto-item" data-id="PI-2025-011" data-nombre="Infraestructura Cloud Marketing" onclick="seleccionarProyecto(this)" style="opacity:.6;">
+                    <div class="proyecto-item" data-id="098341" data-nombre="Infraestructura Cloud Marketing" onclick="seleccionarProyecto(this)" style="opacity:.65; pointer-events:none;">
                       <div class="proy-icon"><i class="bi bi-cloud text-secondary"></i></div>
                       <div class="flex-grow-1">
                         <div class="fw-bold text-dark" style="font-size:.88rem;">Infraestructura Cloud Marketing</div>
                         <div class="text-muted" style="font-size:.75rem;">
-                          <span class="me-3"><i class="bi bi-hash me-1"></i>PI-2025-011</span>
+                          <span class="me-3"><i class="bi bi-hash me-1"></i>098341</span>
                           <span class="me-3"><i class="bi bi-building me-1"></i>DIR GRAL CONECTIVIDAD</span>
-                          <span><i class="bi bi-calendar3 me-1"></i>Jul 2025 – Mar 2026</span>
+                          <span><i class="bi bi-hourglass-split me-1"></i>Vigencia expirada</span>
                         </div>
                       </div>
                       <div class="flex-shrink-0 text-end">
-                        <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-2 py-1" style="font-size:.68rem;">Cierre</span>
+                        <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2 py-1" style="font-size:.68rem;">Expirado</span>
                       </div>
                     </div>
 
@@ -479,6 +481,179 @@
               </div>
             </div>
           </div>
+          </div><!-- /vistaSeleccionProyecto -->
+
+          <!-- ── Sub-vista B: Asignación de CeCos al nuevo proyecto ── -->
+          <div id="vistaAsignacionCecos" style="display:none;">
+            <div class="card border-0 shadow-sm">
+              <div class="card-header bg-white border-bottom py-3 px-4">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="fw-bold text-dark mb-0">
+                      <i class="bi bi-building text-primary me-2"></i>Asignación de Centros de Costo
+                    </h6>
+                    <p class="text-muted small mb-0 mt-1">
+                      Proyecto: <strong id="npResumenNombre" class="text-dark">—</strong>
+                      &nbsp;·&nbsp; Núm: <strong id="npResumenNumero" class="text-dark">—</strong>
+                      &nbsp;·&nbsp; Vigencia: <strong id="npResumenVigencia" class="text-dark">—</strong>
+                    </p>
+                  </div>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-secondary btn-sm" onclick="volverASeleccionProyecto()">
+                      <i class="bi bi-arrow-left me-1"></i>Regresar
+                    </button>
+                    <button class="btn btn-primary fw-bold btn-sm px-4 shadow-sm" onclick="confirmarAsignacionCecos()">
+                      <i class="bi bi-floppy me-1"></i>Guardar proyecto
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-body p-4">
+
+                <!-- Barra de herramientas: búsqueda + filtros -->
+                <div class="row g-2 mb-3 align-items-end">
+                  <div class="col-12 col-md-5">
+                    <div class="input-group input-group-sm shadow-sm">
+                      <span class="input-group-text bg-white border-secondary border-opacity-50"><i class="bi bi-search text-muted"></i></span>
+                      <input type="text" id="buscarCecoNP" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none"
+                        placeholder="Buscar por número o nombre de CeCo..."
+                        oninput="filtrarCecosNP(this.value)">
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <label class="form-label small fw-bold text-dark mb-1">División</label>
+                    <div class="d-flex gap-2" id="divChipsNP">
+                      <button type="button" class="div-chip active" data-div="Marca" onclick="toggleDivNP(this)">Marca</button>
+                      <button type="button" class="div-chip active" data-div="Oferteo" onclick="toggleDivNP(this)">Oferteo</button>
+                      <button type="button" class="div-chip active" data-div="Estrategia" onclick="toggleDivNP(this)">Estrategia</button>
+                      <button type="button" class="div-chip active" data-div="Sin División" onclick="toggleDivNP(this)">Sin División</button>
+                    </div>
+                  </div>
+                  <div class="col-auto ms-auto d-flex align-items-end">
+                    <span class="small text-muted">
+                      <span id="npCecoSelCount" class="fw-bold text-primary">0</span> CeCo(s) seleccionado(s)
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Tabla de CeCos -->
+                <div class="border border-secondary border-opacity-25 rounded shadow-sm" style="max-height:460px; overflow-y:auto;">
+                  <table class="table table-hover align-middle mb-0" style="font-size:.82rem;" id="tablaCecosNP">
+                    <thead class="sticky-top z-1 bg-white shadow-sm">
+                      <tr>
+                        <th class="ps-3 border-bottom" style="width:40px;">
+                          <input class="form-check-input shadow-none border-secondary" type="checkbox" id="chkTodosCecosNP" onchange="seleccionarTodosCecosNP(this)">
+                        </th>
+                        <th class="text-dark fw-bold border-bottom" style="min-width:90px;">Número</th>
+                        <th class="text-dark fw-bold border-bottom">Nombre del Centro de Costo</th>
+                        <th class="text-dark fw-bold border-bottom text-center" style="width:110px;">División</th>
+                        <th class="text-dark fw-bold border-bottom text-center" style="width:90px;">País</th>
+                      </tr>
+                    </thead>
+                    <tbody id="bodyCecosNP">
+
+                      <tr class="ceco-np-row" data-div="Marca">
+                        <td class="ps-3">
+                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
+                        </td>
+                        <td class="fw-semibold text-dark">100901</td>
+                        <td class="text-dark">DIR GRAL CONECTIVIDAD</td>
+                        <td class="text-center"><span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2" style="font-size:.68rem;">Marca</span></td>
+                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
+                      </tr>
+
+                      <tr class="ceco-np-row" data-div="Oferteo">
+                        <td class="ps-3">
+                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
+                        </td>
+                        <td class="fw-semibold text-dark">291374</td>
+                        <td class="text-dark">DIR MKT DIGITAL</td>
+                        <td class="text-center"><span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 px-2" style="font-size:.68rem;">Oferteo</span></td>
+                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
+                      </tr>
+
+                      <tr class="ceco-np-row" data-div="Estrategia">
+                        <td class="ps-3">
+                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
+                        </td>
+                        <td class="fw-semibold text-dark">182310</td>
+                        <td class="text-dark">DIR ESTRATEGIA COMERCIAL</td>
+                        <td class="text-center"><span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-2" style="font-size:.68rem;">Estrategia</span></td>
+                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
+                      </tr>
+
+                      <tr class="ceco-np-row" data-div="Estrategia">
+                        <td class="ps-3">
+                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
+                        </td>
+                        <td class="fw-semibold text-dark">109220</td>
+                        <td class="text-dark">PUBLICIDAD CONECTIVIDAD</td>
+                        <td class="text-center"><span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-2" style="font-size:.68rem;">Estrategia</span></td>
+                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
+                      </tr>
+
+                      <tr class="ceco-np-row" data-div="Sin División">
+                        <td class="ps-3">
+                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
+                        </td>
+                        <td class="fw-semibold text-dark">330100</td>
+                        <td class="text-dark">TOTALPLAY PUBLICIDAD</td>
+                        <td class="text-center"><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2" style="font-size:.68rem;">Sin Div.</span></td>
+                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
+                      </tr>
+
+                      <tr class="ceco-np-row" data-div="Marca">
+                        <td class="ps-3">
+                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
+                        </td>
+                        <td class="fw-semibold text-dark">240090</td>
+                        <td class="text-dark">PUBLICIDAD TELEFONIA</td>
+                        <td class="text-center"><span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2" style="font-size:.68rem;">Marca</span></td>
+                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
+                      </tr>
+
+                      <tr class="ceco-np-row" data-div="Oferteo">
+                        <td class="ps-3">
+                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
+                        </td>
+                        <td class="fw-semibold text-dark">381205</td>
+                        <td class="text-dark">CAMPAÑAS OFERTA MASIVA</td>
+                        <td class="text-center"><span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 px-2" style="font-size:.68rem;">Oferteo</span></td>
+                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
+                      </tr>
+
+                      <tr class="ceco-np-row" data-div="Estrategia">
+                        <td class="ps-3">
+                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
+                        </td>
+                        <td class="fw-semibold text-dark">490118</td>
+                        <td class="text-dark">DIR MARKETING CLIENTE</td>
+                        <td class="text-center"><span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-2" style="font-size:.68rem;">Estrategia</span></td>
+                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
+                      </tr>
+
+                      <tr class="ceco-np-row" data-div="Sin División">
+                        <td class="ps-3">
+                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
+                        </td>
+                        <td class="fw-semibold text-dark">512044</td>
+                        <td class="text-dark">EVENTOS CORPORATIVOS MKT</td>
+                        <td class="text-center"><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2" style="font-size:.68rem;">Sin Div.</span></td>
+                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
+                <div id="errCecosNP" class="text-danger small mt-3" style="display:none;">
+                  <i class="bi bi-exclamation-triangle-fill me-1"></i>Debes seleccionar al menos un Centro de Costo para guardar el proyecto.
+                </div>
+
+              </div>
+            </div>
+          </div><!-- /vistaAsignacionCecos -->
 
         </div><!-- /paso-1 -->
 
@@ -1029,15 +1204,16 @@
 
 
   <!-- ── Modal Registrar Nuevo Proyecto ──────────────────── -->
+  <!-- ── Modal Nuevo Proyecto (campos generales — sin CeCos) ── -->
   <div class="modal fade" id="modalNuevoProyecto" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:440px;">
       <div class="modal-content border-0 shadow-lg" style="border-radius:14px; overflow:hidden;">
 
         <div class="px-4 pt-4 pb-3" style="background: linear-gradient(135deg,#0d6efd 0%,#0a58ca 100%);">
           <div class="d-flex justify-content-between align-items-start">
             <div>
-              <h5 class="fw-bold text-white mb-0">Registrar nuevo Proyecto de Inversión</h5>
-              <p class="text-white opacity-75 mb-0" style="font-size:.8rem;">Al guardarse, quedará disponible para seleccionarlo en esta solicitud.</p>
+              <h5 class="fw-bold text-white mb-0">Nuevo Proyecto de Inversión</h5>
+              <p class="text-white opacity-75 mb-0" style="font-size:.78rem;">Paso 1 de 2 — datos generales</p>
             </div>
             <button type="button" class="btn-close btn-close-white opacity-75" data-bs-dismiss="modal"></button>
           </div>
@@ -1045,54 +1221,48 @@
 
         <div class="modal-body p-4">
           <div class="row g-3">
-            <div class="col-md-8">
-              <label class="form-label small fw-bold text-dark">Nombre del Proyecto <span class="text-danger">*</span></label>
-              <input type="text" class="form-control form-control-sm border-secondary border-opacity-50 shadow-none" id="npNombre" placeholder="Nombre descriptivo del proyecto...">
-            </div>
-            <div class="col-md-4">
-              <label class="form-label small fw-bold text-dark">Clave / Código <span class="text-danger">*</span></label>
-              <input type="text" class="form-control form-control-sm border-secondary border-opacity-50 shadow-none" placeholder="Ej. PI-2026-005">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label small fw-bold text-dark">Fecha Inicio <span class="text-danger">*</span></label>
-              <input type="date" class="form-control form-control-sm border-secondary border-opacity-50 shadow-none">
-            </div>
-            <div class="col-md-6">
-              <label class="form-label small fw-bold text-dark">Fecha Fin <span class="text-danger">*</span></label>
-              <input type="date" class="form-control form-control-sm border-secondary border-opacity-50 shadow-none">
-            </div>
+
             <div class="col-12">
-              <label class="form-label small fw-bold text-dark">Descripción / Objetivo <span class="text-danger">*</span></label>
-              <textarea class="form-control form-control-sm border-secondary border-opacity-50 shadow-none" rows="3" placeholder="Mínimo 50 caracteres..."></textarea>
+              <label class="form-label small fw-bold text-dark">Número de Proyecto <span class="text-danger">*</span></label>
+              <input type="number" class="form-control form-control-sm border-secondary border-opacity-50 shadow-none" id="npNumero"
+                placeholder="Dato numérico único, ej. 134846" min="1">
+              <div id="errNpNumero" class="text-danger small mt-1" style="display:none;"></div>
             </div>
+
             <div class="col-12">
-              <label class="form-label small fw-bold text-dark">CeCos asociados al proyecto <span class="text-danger">*</span></label>
-              <div class="border border-secondary border-opacity-25 rounded p-3 bg-light" style="font-size:.82rem;">
-                <div class="form-check mb-1">
-                  <input class="form-check-input shadow-none" type="checkbox" id="np-ceco1">
-                  <label class="form-check-label text-dark" for="np-ceco1">100901 – DIR GRAL CONECTIVIDAD</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input shadow-none" type="checkbox" id="np-ceco2">
-                  <label class="form-check-label text-dark" for="np-ceco2">291374 – DIR MKT DIGITAL</label>
-                </div>
-                <div class="form-check mb-1">
-                  <input class="form-check-input shadow-none" type="checkbox" id="np-ceco3">
-                  <label class="form-check-label text-dark" for="np-ceco3">182310 – DIR ESTRATEGIA COMERCIAL</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input shadow-none" type="checkbox" id="np-ceco4">
-                  <label class="form-check-label text-dark" for="np-ceco4">330100 – TOTALPLAY PUBLICIDAD</label>
-                </div>
-              </div>
+              <label class="form-label small fw-bold text-dark">
+                Nombre <span class="text-danger">*</span>
+                <span id="npNombreCount" class="fw-normal text-muted ms-1" style="font-size:.7rem;">(0/50)</span>
+              </label>
+              <input type="text" class="form-control form-control-sm border-secondary border-opacity-50 shadow-none" id="npNombre"
+                maxlength="50" placeholder="Máximo 50 caracteres"
+                oninput="document.getElementById('npNombreCount').textContent='('+this.value.length+'/50)'">
             </div>
+
+            <div class="col-12">
+              <label class="form-label small fw-bold text-dark">Años de vigencia <span class="text-danger">*</span></label>
+              <select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none" id="npVigencia">
+                <option value="" selected disabled>Seleccione...</option>
+                <option value="1">1 año</option>
+                <option value="2">2 años</option>
+                <option value="3">3 años</option>
+                <option value="4">4 años</option>
+                <option value="5">5 años</option>
+              </select>
+            </div>
+
           </div>
+
+          <p class="text-muted mt-3 mb-0" style="font-size:.75rem;">
+            <i class="bi bi-arrow-right-circle me-1 text-primary"></i>
+            En el siguiente paso asignarás los Centros de Costo que usará este proyecto.
+          </p>
         </div>
 
-        <div class="px-4 pb-4 d-flex gap-2 justify-content-end">
-          <button class="btn btn-light fw-semibold border px-4" data-bs-dismiss="modal" style="border-radius:10px;">Cancelar</button>
-          <button class="btn btn-primary fw-bold px-5 shadow-sm" onclick="guardarNuevoProyecto()" style="border-radius:10px;">
-            <i class="bi bi-floppy me-1"></i> Guardar proyecto
+        <div class="px-4 pb-4 d-flex gap-2">
+          <button class="btn btn-light fw-semibold flex-fill border" data-bs-dismiss="modal" style="border-radius:10px;">Cancelar</button>
+          <button class="btn btn-primary fw-bold flex-fill shadow-sm" onclick="continuarRegistroProyecto()" style="border-radius:10px;">
+            Continuar <i class="bi bi-arrow-right ms-1"></i>
           </button>
         </div>
 
@@ -1297,37 +1467,133 @@
       });
     }
 
+    // IDs de proyectos existentes (mock para validar duplicados)
+    const numerosProyectosExistentes = new Set(['134845','219033','305812','412760','098341']);
+
     function abrirModalNuevoProyecto() {
+      // Limpiar campos
+      document.getElementById('npNumero').value = '';
+      document.getElementById('npNombre').value = '';
+      document.getElementById('npVigencia').value = '';
+      document.getElementById('npNombreCount').textContent = '(0/50)';
+      document.getElementById('errNpNumero').style.display = 'none';
       new bootstrap.Modal(document.getElementById('modalNuevoProyecto')).show();
     }
 
-    function guardarNuevoProyecto() {
+    function continuarRegistroProyecto() {
+      const numero = document.getElementById('npNumero').value.trim();
       const nombre = document.getElementById('npNombre').value.trim();
-      if (!nombre) return;
+      const vigencia = document.getElementById('npVigencia').value;
+      const errNum = document.getElementById('errNpNumero');
 
-      // Agregar proyecto a la lista (mock)
+      errNum.style.display = 'none';
+      if (!numero || !nombre || !vigencia) return;
+
+      // Validar duplicado (E4 CA02)
+      if (numerosProyectosExistentes.has(numero)) {
+        errNum.textContent = 'Proyecto existente. Contacta a Administración MKT.';
+        errNum.style.display = 'block';
+        return;
+      }
+
+      // Guardar datos temporales y mostrar sección de CeCos
+      bootstrap.Modal.getInstance(document.getElementById('modalNuevoProyecto')).hide();
+      document.getElementById('npResumenNumero').textContent = numero;
+      document.getElementById('npResumenNombre').textContent = nombre;
+      document.getElementById('npResumenVigencia').textContent = vigencia + ' año(s)';
+
+      // Resetear selección de CeCos
+      document.querySelectorAll('.ceco-np-check').forEach(c => c.checked = false);
+      document.getElementById('chkTodosCecosNP').checked = false;
+      updateNPCecoCount();
+
+      // Mostrar sección de asignación
+      document.getElementById('vistaSeleccionProyecto').style.display = 'none';
+      document.getElementById('vistaAsignacionCecos').style.display = 'block';
+    }
+
+    function volverASeleccionProyecto() {
+      document.getElementById('vistaAsignacionCecos').style.display = 'none';
+      document.getElementById('vistaSeleccionProyecto').style.display = 'block';
+    }
+
+    function confirmarAsignacionCecos() {
+      const seleccionados = document.querySelectorAll('.ceco-np-check:checked');
+      const err = document.getElementById('errCecosNP');
+      if (seleccionados.length === 0) { err.style.display = 'block'; return; }
+      err.style.display = 'none';
+
+      const numero = document.getElementById('npResumenNumero').textContent;
+      const nombre = document.getElementById('npResumenNombre').textContent;
+      const vigencia = document.getElementById('npResumenVigencia').textContent;
+
+      // Recopilar CeCos elegidos para el label
+      const cecosNombres = [...seleccionados].map(c => c.closest('tr').querySelector('td:nth-child(3)').textContent.trim());
+      const cecosLabel = cecosNombres.slice(0,2).join(', ') + (cecosNombres.length > 2 ? ` y ${cecosNombres.length - 2} más` : '');
+
+      // Registrar en catálogo (mock)
+      numerosProyectosExistentes.add(numero);
+
+      // Agregar a la lista de proyectos
       const lista = document.getElementById('listaProyectos');
-      const newId = 'PI-2026-00' + (document.querySelectorAll('.proyecto-item').length + 1);
       const div = document.createElement('div');
       div.className = 'proyecto-item';
-      div.dataset.id = newId;
+      div.dataset.id = numero;
       div.dataset.nombre = nombre;
       div.setAttribute('onclick', 'seleccionarProyecto(this)');
       div.innerHTML = `
         <div class="proy-icon"><i class="bi bi-folder-plus text-primary"></i></div>
         <div class="flex-grow-1">
           <div class="fw-bold text-dark" style="font-size:.88rem;">${nombre}</div>
-          <div class="text-muted" style="font-size:.75rem;"><span class="me-3"><i class="bi bi-hash me-1"></i>${newId}</span><span>Recién registrado</span></div>
+          <div class="text-muted" style="font-size:.75rem;">
+            <span class="me-3"><i class="bi bi-hash me-1"></i>${numero}</span>
+            <span class="me-3"><i class="bi bi-building me-1"></i>${cecosLabel}</span>
+            <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: ${vigencia}</span>
+          </div>
         </div>
         <div class="flex-shrink-0">
           <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:.68rem;">Activo</span>
         </div>`;
-      lista.appendChild(div);
+      lista.insertBefore(div, lista.firstChild); // insertar al inicio
 
-      bootstrap.Modal.getInstance(document.getElementById('modalNuevoProyecto')).hide();
-      // Auto-seleccionar el recién creado
+      // Volver a la lista y auto-seleccionar
+      document.getElementById('vistaAsignacionCecos').style.display = 'none';
+      document.getElementById('vistaSeleccionProyecto').style.display = 'block';
       seleccionarProyecto(div);
-      document.getElementById('npNombre').value = '';
+    }
+
+    // ── Filtros de la tabla de CeCos en asignación de proyecto ──
+    function updateNPCecoCount() {
+      const n = document.querySelectorAll('.ceco-np-check:checked').length;
+      document.getElementById('npCecoSelCount').textContent = n;
+      if (n > 0) document.getElementById('errCecosNP').style.display = 'none';
+    }
+
+    function seleccionarTodosCecosNP(chk) {
+      document.querySelectorAll('.ceco-np-check').forEach(c => {
+        if (c.closest('tr').style.display !== 'none') c.checked = chk.checked;
+      });
+      updateNPCecoCount();
+    }
+
+    function filtrarCecosNP(q) {
+      const term = q.toLowerCase().trim();
+      document.querySelectorAll('#bodyCecosNP .ceco-np-row').forEach(row => {
+        const txt = row.textContent.toLowerCase();
+        row.style.display = (!term || txt.includes(term)) ? '' : 'none';
+      });
+    }
+
+    function toggleDivNP(btn) {
+      btn.classList.toggle('active');
+      const activas = [...document.querySelectorAll('#divChipsNP .div-chip.active')].map(b => b.dataset.div);
+      document.querySelectorAll('#bodyCecosNP .ceco-np-row').forEach(row => {
+        const divRow = row.dataset.div;
+        const visible = activas.length === 0 || activas.includes(divRow);
+        row.style.display = visible ? '' : 'none';
+        if (!visible) { const c = row.querySelector('.ceco-np-check'); if(c) c.checked = false; }
+      });
+      updateNPCecoCount();
     }
 
     // ── División chips ────────────────────────────────────
