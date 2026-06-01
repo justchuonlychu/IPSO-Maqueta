@@ -364,7 +364,7 @@
                     <span class="fw-normal text-dark ms-1" style="font-size:0.7rem;">(filtra los CeCos disponibles)</span>
                   </label>
                   <div class="d-flex flex-wrap gap-2" id="divChips">
-                    <button type="button" class="div-chip active" data-div="Marca" onclick="toggleDiv(this)">Marca</button>
+                    <button type="button" class="div-chip" data-div="Marca" onclick="toggleDiv(this)">Marca</button>
                     <button type="button" class="div-chip" data-div="Oferteo" onclick="toggleDiv(this)">Oferteo</button>
                     <button type="button" class="div-chip" data-div="Estrategia" onclick="toggleDiv(this)">Estrategia</button>
                     <button type="button" class="div-chip" data-div="Sin División" onclick="toggleDiv(this)">Sin División</button>
@@ -456,8 +456,14 @@
                   <input type="text" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none py-2" placeholder="Buscar por nombre o número de CeCo...">
                 </div>
 
-                <!-- Tabla CeCos -->
-                <div class="border border-secondary border-opacity-25 rounded bg-white shadow-sm" style="max-height:380px; overflow-y:auto;">
+                <!-- Estado vacío: sin división seleccionada -->
+                <div id="ceco-empty-state" class="border border-secondary border-opacity-25 rounded bg-white shadow-sm text-center py-5">
+                  <i class="bi bi-diagram-3 text-secondary mb-2" style="font-size:2rem; display:block;"></i>
+                  <p class="text-muted mb-0 small">Selecciona una División para ver los centros de costo disponibles.</p>
+                </div>
+
+                <!-- Tabla CeCos (oculta hasta elegir División) -->
+                <div id="ceco-tabla-wrap" class="border border-secondary border-opacity-25 rounded bg-white shadow-sm" style="max-height:380px; overflow-y:auto; display:none;">
                   <table class="table align-middle mb-0" style="font-size:0.82rem;">
                     <thead class="sticky-top z-1 bg-white shadow-sm">
                       <tr>
@@ -468,11 +474,11 @@
                     </thead>
                     <tbody>
 
-                      <!-- CeCo 100901 -->
-                      <tr class="ceco-row selected" style="background:#e8f0fe;" id="tr-ceco1">
+                      <!-- CeCo 100901 · División: Marca, Sin División -->
+                      <tr class="ceco-row ceco-group" data-divs="Marca,Sin División" id="tr-ceco1">
                         <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco1')">
                           <div class="d-flex align-items-center">
-                            <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" checked="" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco1">
+                            <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco1">
                             <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco1" style="font-size:.75rem;"></i>
                             <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>
                             100901 – DIR GRAL CONECTIVIDAD
@@ -481,11 +487,10 @@
                         <td class="text-end fw-bold text-dark">1,892,500</td>
                         <td class="text-end fw-bold text-success">1,892,500</td>
                       </tr>
-                      <tr style="background: rgb(238, 242, 255);" id="bar-ceco1">
+                      <tr class="ceco-child-ceco1" style="background:rgb(238,242,255);" id="bar-ceco1">
                         <td colspan="3" class="py-1 px-4"></td>
                       </tr>
-                      <!-- Campañas hijo CeCo1 -->
-                      <tr class="child-ceco1" style="background: rgb(248, 249, 255);">
+                      <tr class="ceco-child-ceco1 child-ceco1" style="background:rgb(248,249,255);">
                         <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco1-A', this)">
                           <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
                           <i class="bi bi-tag text-primary me-1"></i>
@@ -494,19 +499,19 @@
                         <td class="text-end text-dark" style="font-size:.78rem;">900,000</td>
                         <td></td>
                       </tr>
-                      <tr class="cu-ceco1-A d-none" style="background:#f0f4ff;">
+                      <tr class="ceco-child-ceco1 cu-ceco1-A d-none" style="background:#f0f4ff;">
                         <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
                           <i class="bi bi-dot me-1"></i>609023 – Promociones &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
                         </td>
                         <td class="text-end text-dark" style="font-size:.75rem;">500,000</td><td></td>
                       </tr>
-                      <tr class="cu-ceco1-A d-none" style="background:#f0f4ff;">
+                      <tr class="ceco-child-ceco1 cu-ceco1-A d-none" style="background:#f0f4ff;">
                         <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
                           <i class="bi bi-dot me-1"></i>609011 – Televisión &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
                         </td>
                         <td class="text-end text-dark" style="font-size:.75rem;">400,000</td><td></td>
                       </tr>
-                      <tr class="child-ceco1" style="background: rgb(248, 249, 255);">
+                      <tr class="ceco-child-ceco1 child-ceco1" style="background:rgb(248,249,255);">
                         <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco1-B', this)">
                           <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
                           <i class="bi bi-tag text-primary me-1"></i>
@@ -515,15 +520,15 @@
                         <td class="text-end text-dark" style="font-size:.78rem;">992,500</td>
                         <td></td>
                       </tr>
-                      <tr class="cu-ceco1-B d-none" style="background:#f0f4ff;">
+                      <tr class="ceco-child-ceco1 cu-ceco1-B d-none" style="background:#f0f4ff;">
                         <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
                           <i class="bi bi-dot me-1"></i>609011 – Televisión &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 21328 – Originación</span>
                         </td>
                         <td class="text-end text-dark" style="font-size:.75rem;">992,500</td><td></td>
                       </tr>
 
-                      <!-- CeCo 291374 -->
-                      <tr class="ceco-row" id="tr-ceco2" style="border-top:2px solid #dee2e6;">
+                      <!-- CeCo 291374 · División: Oferteo, Estrategia -->
+                      <tr class="ceco-row ceco-group" data-divs="Oferteo,Estrategia" id="tr-ceco2" style="border-top:2px solid #dee2e6;">
                         <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco2')">
                           <div class="d-flex align-items-center">
                             <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco2">
@@ -535,7 +540,7 @@
                         <td class="text-end fw-bold text-dark">1,200,000</td>
                         <td class="text-end fw-bold text-dark">1,200,000</td>
                       </tr>
-                      <tr class="child-ceco2" style="background: rgb(248, 249, 255);">
+                      <tr class="ceco-child-ceco2 child-ceco2" style="background:rgb(248,249,255);">
                         <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco2-A', this)">
                           <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
                           <i class="bi bi-tag text-dark me-1"></i>
@@ -543,13 +548,13 @@
                         </td>
                         <td class="text-end text-dark" style="font-size:.78rem;">400,000</td><td></td>
                       </tr>
-                      <tr class="cu-ceco2-A d-none" style="background:#f0f4ff;">
+                      <tr class="ceco-child-ceco2 cu-ceco2-A d-none" style="background:#f0f4ff;">
                         <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
                           <i class="bi bi-dot me-1"></i>609028 – Pub. Internet &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
                         </td>
                         <td class="text-end text-dark" style="font-size:.75rem;">400,000</td><td></td>
                       </tr>
-                      <tr class="child-ceco2" style="background: rgb(248, 249, 255);">
+                      <tr class="ceco-child-ceco2 child-ceco2" style="background:rgb(248,249,255);">
                         <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco2-B', this)">
                           <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
                           <i class="bi bi-tag text-dark me-1"></i>
@@ -558,8 +563,8 @@
                         <td class="text-end text-dark" style="font-size:.78rem;">800,000</td><td></td>
                       </tr>
 
-                      <!-- CeCo agotado (ejemplo visual) -->
-                      <tr class="ceco-row" style="border-top:2px solid #dee2e6; opacity:.7;">
+                      <!-- CeCo 109220 · División: Marca, Estrategia (agotado) -->
+                      <tr class="ceco-row ceco-group" data-divs="Marca,Estrategia" style="border-top:2px solid #dee2e6; opacity:.7;">
                         <td class="ps-3 fw-bold text-dark">
                           <div class="d-flex align-items-center">
                             <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" disabled="">
@@ -903,6 +908,47 @@
       const activas = [...document.querySelectorAll('#divChips .div-chip.active')].map(b => b.dataset.div);
       const label = document.getElementById('labelDivisionActiva');
       if (label) label.textContent = activas.length ? activas.join(', ') : '—';
+      filtrarCecosPorDivision(activas);
+    }
+
+    function filtrarCecosPorDivision(activas) {
+      const wrap = document.getElementById('ceco-tabla-wrap');
+      const empty = document.getElementById('ceco-empty-state');
+
+      if (!activas.length) {
+        wrap.style.display = 'none';
+        empty.style.display = '';
+        // desmarcar todos los CeCos al quitar divisiones
+        document.querySelectorAll('[id^="chk-ceco"]').forEach(c => { c.checked = false; });
+        updateCecoCount();
+        return;
+      }
+
+      wrap.style.display = '';
+      empty.style.display = 'none';
+
+      // mostrar/ocultar filas de cada grupo
+      document.querySelectorAll('.ceco-group').forEach(parentRow => {
+        const divsCeco = parentRow.dataset.divs.split(',');
+        const visible = divsCeco.some(d => activas.includes(d));
+        const cecoId = parentRow.id.replace('tr-', ''); // ej. "ceco1"
+
+        // toggle del parent row
+        parentRow.style.display = visible ? '' : 'none';
+
+        // toggle de todas las filas hijo de ese CeCo
+        document.querySelectorAll(`.ceco-child-${cecoId}`).forEach(r => {
+          r.style.display = visible ? '' : 'none';
+        });
+
+        // si se oculta, desmarcar su checkbox
+        if (!visible) {
+          const chk = parentRow.querySelector('input[type="checkbox"]');
+          if (chk) chk.checked = false;
+        }
+      });
+
+      updateCecoCount();
     }
 
     // ── Combos dinámicos ──────────────────────────────
