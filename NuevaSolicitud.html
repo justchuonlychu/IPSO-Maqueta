@@ -448,6 +448,21 @@
                   </div>
                 </div>
 
+                <!-- Tipo de proyecto (solo si es Proyecto Especial Mkt) -->
+                <div class="col-12" id="bloque-tipo-proyecto" style="display:none;">
+                  <label class="form-label small fw-bold text-dark">Tipo de Proyecto <span class="text-danger">*</span></label>
+                  <div class="d-flex gap-3">
+                    <div class="form-check">
+                      <input class="form-check-input shadow-none" type="radio" name="tipoProyecto" id="rbProyTransversal" value="Transversal" onchange="actualizarNombreProyecto()">
+                      <label class="form-check-label small text-dark" for="rbProyTransversal">Transversal</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input shadow-none" type="radio" name="tipoProyecto" id="rbProyNegocio" value="Negocio" onchange="actualizarNombreProyecto()">
+                      <label class="form-check-label small text-dark" for="rbProyNegocio">Negocio</label>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- Nombre -->
                 <div class="col-12" id="bloque-nombre" style="display:none;">
                   <label class="form-label small fw-bold text-dark">Nombre <span class="text-danger">*</span></label>
@@ -1309,15 +1324,18 @@
 
       if (tipo === 'Campana') {
         show('bloque-tipo-campana');
+        hide('bloque-tipo-proyecto');
         hide('bloque-nombre');
+        document.querySelectorAll('input[name="tipoCampana"]').forEach(r => r.checked = false);
       } else if (tipo === 'Proyecto') {
         hide('bloque-tipo-campana');
-        show('bloque-nombre');
-        document.getElementById('selectNombreTransversal').style.display = 'block';
-        document.getElementById('inputNombreManual').style.display = 'none';
-        document.getElementById('inputNombreOrdinario').style.display = 'none';
+        show('bloque-tipo-proyecto');
+        hide('bloque-nombre');
+        // limpiar selección previa para que el usuario elija de nuevo
+        document.querySelectorAll('input[name="tipoProyecto"]').forEach(r => r.checked = false);
       } else {
         hide('bloque-tipo-campana');
+        hide('bloque-tipo-proyecto');
         show('bloque-nombre');
         document.getElementById('selectNombreTransversal').style.display = 'none';
         document.getElementById('inputNombreManual').style.display = 'none';
@@ -1330,6 +1348,16 @@
       if (!tc) return;
       document.getElementById('bloque-nombre').style.display = 'block';
       const esT = tc.value === 'Transversal';
+      document.getElementById('selectNombreTransversal').style.display = esT ? 'block' : 'none';
+      document.getElementById('inputNombreManual').style.display = esT ? 'none' : 'block';
+      document.getElementById('inputNombreOrdinario').style.display = 'none';
+    }
+
+    function actualizarNombreProyecto() {
+      const tp = document.querySelector('input[name="tipoProyecto"]:checked');
+      if (!tp) return;
+      document.getElementById('bloque-nombre').style.display = 'block';
+      const esT = tp.value === 'Transversal';
       document.getElementById('selectNombreTransversal').style.display = esT ? 'block' : 'none';
       document.getElementById('inputNombreManual').style.display = esT ? 'none' : 'block';
       document.getElementById('inputNombreOrdinario').style.display = 'none';
