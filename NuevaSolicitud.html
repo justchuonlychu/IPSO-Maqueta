@@ -286,16 +286,39 @@
         </nav>
       </div>
       <div class="d-flex align-items-center gap-2">
-        <span class="text-muted small fw-bold me-1">Ejercicio Activo:
-          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">2026</span>
-        </span>
-        <button class="btn btn-outline-secondary btn-sm shadow-sm" onclick="confirmarAccion('borrador')">
+        <button class="btn btn-warning btn-sm fw-bold text-dark shadow-sm" onclick="confirmarAccion('borrador')">
           <i class="bi bi-floppy me-1"></i> Guardar borrador
         </button>
         <button class="btn btn-success btn-sm fw-bold shadow-sm" onclick="confirmarAccion('enviar')">
           <i class="bi bi-send-fill me-1"></i> Enviar a autorización
         </button>
-        <a href="AEjercicio.html" class="btn btn-outline-dark btn-sm shadow-sm"><i class="bi bi-x-lg me-1"></i> Cancelar</a>
+        <button class="btn btn-primary btn-sm shadow-sm" onclick="confirmarAccion('cancelar')">
+          <i class="bi bi-x-lg me-1"></i> Cancelar
+        </button>
+      </div>
+    </div>
+
+    <!-- Card de identificación de la solicitud -->
+    <div class="card shadow-sm border-0 mb-3">
+      <div class="card-body px-4 py-3">
+        <div class="d-flex flex-wrap align-items-center gap-4">
+          <div>
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Categoría</div>
+            <div class="fw-bold text-dark">Presupuesto Ordinario</div>
+          </div>
+          <div class="border-start ps-4">
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Folio</div>
+            <div class="text-muted fst-italic" style="font-size:.85rem;">Se asignará al guardar</div>
+          </div>
+          <div class="border-start ps-4">
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Ejercicio Activo</div>
+            <div><span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">2026</span></div>
+          </div>
+          <div class="border-start ps-4">
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Estatus</div>
+            <div><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2 py-1">Nueva</span></div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -310,8 +333,8 @@
           <div class="d-flex align-items-center flex-shrink-0">
             <span class="step-circle active" id="sc-1">1</span>
             <div class="ms-2 d-none d-md-block">
-              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Cabecera y CeCos</div>
-              <div class="text-muted" style="font-size:0.7rem;">Datos generales</div>
+              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Información General</div>
+              <div class="text-muted" style="font-size:0.7rem;">Selección de CeCos</div>
             </div>
           </div>
 
@@ -332,8 +355,8 @@
           <div class="d-flex align-items-center flex-shrink-0">
             <span class="step-circle pending" id="sc-3">3</span>
             <div class="ms-2 d-none d-md-block">
-              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Matriz y Resumen</div>
-              <div class="text-muted" style="font-size:0.7rem;">Distribución de importes</div>
+              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Asignación de Presupuesto</div>
+              <div class="text-muted" style="font-size:0.7rem;">Distribución mensual</div>
             </div>
           </div>
 
@@ -341,7 +364,7 @@
       </div>
       <!-- /stepper header -->
 
-      <div class="card-body p-4 bg-light">
+      <div class="card-body p-4" style="background:#f3f4f6;">
 
         <!-- ════════════════════════════════════════
              PASO 1 – Cabecera y CeCos
@@ -857,22 +880,22 @@
                         <div class="d-flex gap-4 align-items-center">
                           <div class="text-end">
                             <div class="paso-label text-dark">Límite de Carga</div>
-                            <div class="fw-bold text-dark" style="font-size:.9rem;">$900,000</div>
+                            <div class="fw-bold text-dark" style="font-size:.9rem;">900,000</div>
                           </div>
                           <div class="text-end border-start ps-3">
                             <div class="paso-label text-dark">Asignado</div>
-                            <div class="fw-bold text-primary ceco-asignado" id="asignado-100901" style="font-size:.9rem;">$450,000</div>
+                            <div class="fw-bold text-primary ceco-asignado" id="asignado-100901" style="font-size:.9rem;">0</div>
                           </div>
                           <div class="text-end border-start ps-3">
                             <div class="paso-label text-dark">Disponible</div>
-                            <div class="fw-bold ceco-disponible text-success" id="disp-100901" style="font-size:.9rem;">$450,000</div>
+                            <div class="fw-bold ceco-disponible text-success" id="disp-100901" style="font-size:.9rem;">900,000</div>
                           </div>
                           <div class="text-end border-start ps-3" style="min-width:90px;">
                             <div class="paso-label text-dark mb-1">Consumo</div>
                             <div class="progress bg-white border" style="height:6px; width:80px;">
-                              <div class="progress-bar bg-success" id="barra-100901" style="width:50%;"></div>
+                              <div class="progress-bar bg-success" id="barra-100901" style="width:0%;"></div>
                             </div>
-                            <div class="paso-label text-dark mt-1 ceco-pct" id="pct-100901">50.0%</div>
+                            <div class="paso-label text-dark mt-1 ceco-pct" id="pct-100901">0%</div>
                           </div>
                         </div>
                       </div>
@@ -913,8 +936,6 @@
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                              <td><input type="text" class="matrix-input has-value" value="200,000" oninput="recalcularCeco('100901')"></td>
-                              <td><input type="text" class="matrix-input has-value" value="250,000" oninput="recalcularCeco('100901')"></td>
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
@@ -922,7 +943,9 @@
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                              <td class="fw-bold text-dark bg-light fila-total">$450,000</td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td class="fw-bold text-dark bg-light fila-total">0</td>
                             </tr>
                           </tbody>
                           <tfoot>
@@ -952,15 +975,15 @@
                         <div class="d-flex gap-4 align-items-center">
                           <div class="text-end">
                             <div class="paso-label text-dark">Límite de Carga</div>
-                            <div class="fw-bold text-dark" style="font-size:.9rem;">$400,000</div>
+                            <div class="fw-bold text-dark" style="font-size:.9rem;">1,200,000</div>
                           </div>
                           <div class="text-end border-start ps-3">
                             <div class="paso-label text-dark">Asignado</div>
-                            <div class="fw-bold text-primary ceco-asignado" id="asignado-291374" style="font-size:.9rem;">$0</div>
+                            <div class="fw-bold text-primary ceco-asignado" id="asignado-291374" style="font-size:.9rem;">0</div>
                           </div>
                           <div class="text-end border-start ps-3">
                             <div class="paso-label text-dark">Disponible</div>
-                            <div class="fw-bold text-success ceco-disponible" id="disp-291374" style="font-size:.9rem;">$400,000</div>
+                            <div class="fw-bold text-success ceco-disponible" id="disp-291374" style="font-size:.9rem;">1,200,000</div>
                           </div>
                           <div class="text-end border-start ps-3" style="min-width:90px;">
                             <div class="paso-label text-dark mb-1">Consumo</div>
@@ -1016,7 +1039,7 @@
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
                               <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
-                              <td class="fw-bold text-dark bg-light fila-total">$0</td>
+                              <td class="fw-bold text-dark bg-light fila-total">0</td>
                             </tr>
                           </tbody>
                           <tfoot>
@@ -1083,25 +1106,25 @@
                   <div class="mb-4">
                     <div class="d-flex justify-content-between align-items-center mb-1">
                       <span class="small text-muted">% Consumo Global</span>
-                      <span class="badge fw-bold bg-success bg-opacity-10 text-success border border-success border-opacity-25" id="badgePct">34.6%</span>
+                      <span class="badge fw-bold bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25" id="badgePct">0%</span>
                     </div>
                     <div class="progress" style="height:10px; border-radius:6px;">
-                      <div class="progress-bar bg-success" id="barraGlobal" style="width:34.6%;"></div>
+                      <div class="progress-bar bg-success" id="barraGlobal" style="width:0%;"></div>
                     </div>
                   </div>
 
-                  <div class="bg-light border border-secondary border-opacity-25 rounded p-3">
+                  <div class="border border-secondary border-opacity-25 rounded p-3" style="background:#f8f9fa;">
                     <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
                       <span class="small fw-semibold text-dark">Límite de Carga</span>
-                      <span class="fw-bold text-dark">$1,300,000</span>
+                      <span class="fw-bold text-dark">2,100,000</span>
                     </div>
                     <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
                       <span class="small fw-semibold text-dark">Total Asignado</span>
-                      <span class="fw-bold text-primary" id="panelAsignado">$450,000</span>
+                      <span class="fw-bold text-primary" id="panelAsignado">0</span>
                     </div>
                     <div class="d-flex justify-content-between py-2">
                       <span class="small fw-semibold text-dark">Disponible</span>
-                      <span class="fw-bold text-success" id="panelDisponible">$850,000</span>
+                      <span class="fw-bold text-success" id="panelDisponible">2,100,000</span>
                     </div>
                   </div>
 
@@ -1128,7 +1151,44 @@
           <p class="small text-muted mb-4">La solicitud quedará guardada como borrador. Podrás retomar y completarla en otro momento.</p>
           <div class="d-flex justify-content-center gap-3">
             <button class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
-            <button class="btn btn-warning fw-bold px-4" onclick="ejecutarBorrador()"><i class="bi bi-floppy me-1"></i> Guardar</button>
+            <button class="btn btn-warning fw-bold text-dark px-4" onclick="ejecutarBorrador()"><i class="bi bi-floppy me-1"></i> Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Borrador Exitoso -->
+  <div class="modal fade" id="modalBorradorExito" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-5">
+          <i class="bi bi-floppy-fill text-warning mb-3" style="font-size:4rem;"></i>
+          <h5 class="fw-bold text-dark mb-1">Solicitud guardada en Borrador</h5>
+          <div class="my-3">
+            <span class="text-muted small">Folio asignado:</span>
+            <h4 class="fw-bold text-dark mt-1 mb-0">SOL-BORR-26001</h4>
+          </div>
+          <p class="small text-muted mb-4">Puedes retomar y completar esta solicitud desde el listado de Carga Presupuestal.</p>
+          <a href="AEjercicio.html" class="btn btn-warning fw-bold text-dark px-5 shadow-sm">
+            <i class="bi bi-list-ul me-1"></i> Ir al listado
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Confirmar Cancelar -->
+  <div class="modal fade" id="modalCancelar" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-5">
+          <i class="bi bi-exclamation-triangle-fill text-warning mb-3" style="font-size:3rem;"></i>
+          <h5 class="fw-bold text-dark mb-2">¿Cancelar la solicitud?</h5>
+          <p class="small text-muted mb-4">Si cancelas ahora, se perderán todos los cambios realizados y serás redirigido al listado de solicitudes.</p>
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Seguir editando</button>
+            <a href="AEjercicio.html" class="btn btn-primary fw-bold px-4"><i class="bi bi-x-lg me-1"></i> Sí, cancelar</a>
           </div>
         </div>
       </div>
@@ -1359,8 +1419,8 @@
     }
 
     // ── Asignación de Presupuesto ─────────────────────
-    const limites = { '100901': 900000, '291374': 400000 };
-    const LIMITE_GLOBAL = 1300000;
+    const limites = { '100901': 900000, '291374': 1200000 };
+    const LIMITE_GLOBAL = 2100000;
 
     function parseNum(v) {
       return parseFloat(v.replace(/,/g, '')) || 0;
@@ -1385,6 +1445,9 @@
       const disp = lim - total;
       const pct = Math.min(100, total / lim * 100);
       const over = disp < 0;
+
+      const asigEl = document.getElementById(`asignado-${ceco}`);
+      if (asigEl) asigEl.textContent = total.toLocaleString('es-MX', { maximumFractionDigits: 0 });
 
       const dispEl = document.getElementById(`disp-${ceco}`);
       if (dispEl) {
@@ -1417,8 +1480,12 @@
       const fmtN = n => n.toLocaleString('es-MX', { maximumFractionDigits: 0 });
       const pa = document.getElementById('panelAsignado');
       const pd = document.getElementById('panelDisponible');
+      const bg = document.getElementById('badgePct');
+      const bg2 = document.getElementById('barraGlobal');
       if (pa) pa.textContent = fmtN(totalAsig);
-      if (pd) { pd.textContent = fmtN(Math.abs(disp)) + (over ? ' (excedido)' : ''); pd.className = 'fw-bold fs-5 ' + (over ? 'text-danger' : 'text-success'); }
+      if (pd) { pd.textContent = fmtN(Math.abs(disp)) + (over ? ' (excedido)' : ''); pd.className = 'fw-bold ' + (over ? 'text-danger' : 'text-success'); }
+      if (bg) { bg.textContent = pct.toFixed(1) + '%'; bg.className = 'badge fw-bold border ' + (over ? 'bg-danger bg-opacity-10 text-danger border-danger border-opacity-25' : pct > 80 ? 'bg-warning bg-opacity-10 text-warning border-warning border-opacity-25' : 'bg-success bg-opacity-10 text-success border-success border-opacity-25'); }
+      if (bg2) { bg2.style.width = pct + '%'; bg2.className = 'progress-bar ' + (over ? 'bg-danger' : pct > 80 ? 'bg-warning' : 'bg-success'); }
 
       document.getElementById('bloqueExcedente').style.display = over ? 'block' : 'none';
     }
@@ -1451,25 +1518,20 @@
 
     // ── Modales de confirmación ───────────────────────
     function confirmarAccion(tipo) {
-      const id = tipo === 'borrador' ? 'modalBorrador' : 'modalConfirmarEnvio';
-      new bootstrap.Modal(document.getElementById(id)).show();
+      const map = { borrador: 'modalBorrador', enviar: 'modalConfirmarEnvio', cancelar: 'modalCancelar' };
+      new bootstrap.Modal(document.getElementById(map[tipo])).show();
     }
     function ejecutarBorrador() {
       bootstrap.Modal.getInstance(document.getElementById('modalBorrador')).hide();
-      // lógica guardar borrador...
-      alert('Borrador guardado. (Demo)');
+      setTimeout(() => new bootstrap.Modal(document.getElementById('modalBorradorExito')).show(), 300);
     }
     function ejecutarEnvio() {
       bootstrap.Modal.getInstance(document.getElementById('modalConfirmarEnvio')).hide();
       new bootstrap.Modal(document.getElementById('modalEnvio')).show();
     }
-    function simularEnvio() {
-      confirmarAccion('enviar');
-    }
 
     // Inicializar
     irPaso(1);
-    recalcularCeco('100901');
   </script>
 
 </body>
