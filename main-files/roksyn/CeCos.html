@@ -1398,113 +1398,165 @@
   <!-- ── Datos de CeCos + lógica de detalle ── -->
   <script>
     const CECOS = {
-      '100901': {
-        numero: '100901', nombre: 'Campañas Prime Time', estatus: 'activo', habCarga: true,
-        padre_num: '6864', padre_nombre: 'TV Azteca',
-        moneda: 'MXN – Peso Mexicano', division: 'Oferteo', pais: 'México',
-        fecha: '10/01/2026', responsable: '801245 – Carlos Mendoza', grupo: 'Grupo Salinas',
-        clases: ['TV Azteca','Azteca Uno','Marketing','Medios Masivos','Televisión','Prime Time','—','—','—'],
-        cuentas: [
-          { num:'609010', nombre:'Radio', rubro:'Medios Tradicionales', estatus:'activo', hab:true },
-          { num:'609015', nombre:'Televisión Abierta', rubro:'Medios Tradicionales', estatus:'activo', hab:true },
-          { num:'620100', nombre:'Producción Audiovisual', rubro:'Producción', estatus:'inactivo', hab:false }
+      '290020': {
+        numero:'290020', nombre:'Dirección General Ecommerce', estatus:'activo', habCarga:true,
+        padre_num:'EU', padre_nombre:'Elektra Digital',
+        moneda:'MXN', division:'Área Central', pais:'México',
+        fecha:'03/05/2008', responsable:'Juan Carlos Arroyo Torres', grupo:'Grupo Elektra', entidad:'Elektra',
+        clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Elektra Digital','—','—','—'],
+        cuentas:[
+          {num:'700010',nombre:'Publicidad Digital',rubro:'Digital',estatus:'activo',hab:true},
+          {num:'700020',nombre:'Pauta Programática',rubro:'Digital',estatus:'activo',hab:true},
+          {num:'700030',nombre:'Producción de Contenido',rubro:'Producción',estatus:'activo',hab:false}
         ]
       },
-      '100888': {
-        numero: '100888', nombre: 'Patrocinios Azteca Uno', estatus: 'inactivo', habCarga: false,
-        padre_num: '6864', padre_nombre: 'TV Azteca',
-        moneda: 'MXN – Peso Mexicano', division: 'Marca', pais: 'México',
-        fecha: '05/06/2024', responsable: '801200 – Ana Rodríguez', grupo: 'Grupo Salinas',
-        clases: ['TV Azteca','Azteca Uno','Marca','Patrocinios','—','—','—','—','—'],
-        cuentas: [
-          { num:'609020', nombre:'Patrocinios Deportivos', rubro:'Eventos y BTL', estatus:'activo', hab:false }
+      '185784': {
+        numero:'185784', nombre:'Publicidad Elektra Digital', estatus:'activo', habCarga:true,
+        padre_num:'290020', padre_nombre:'Dirección General Ecommerce',
+        moneda:'MXN', division:'Área Central', pais:'México',
+        fecha:'05/11/2025', responsable:'Daniel de Jesús Quirós Cordero', grupo:'Grupo Elektra', entidad:'Elektra',
+        clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Elektra Digital','—','—','—'],
+        cuentas:[
+          {num:'700010',nombre:'Publicidad Digital',rubro:'Digital',estatus:'activo',hab:true},
+          {num:'700025',nombre:'Redes Sociales',rubro:'Digital',estatus:'activo',hab:true}
         ]
       },
-      '291374': {
-        numero: '291374', nombre: 'Mercadotecnia Digital', estatus: 'activo', habCarga: true,
-        padre_num: '6864', padre_nombre: 'TV Azteca',
-        moneda: 'MXN – Peso Mexicano', division: 'Marca', pais: 'México',
-        fecha: '15/03/2025', responsable: '801310 – Luis Torres', grupo: 'Grupo Salinas',
-        clases: ['TV Azteca','ADN 40','Marketing Digital','Redes Sociales','—','—','—','—','—'],
-        cuentas: [
-          { num:'609030', nombre:'Redes Sociales', rubro:'Digital', estatus:'activo', hab:true },
-          { num:'609031', nombre:'Pauta Programática', rubro:'Digital', estatus:'activo', hab:true }
+      '291365': {
+        numero:'291365', nombre:'Seller Center y Logística', estatus:'activo', habCarga:true,
+        padre_num:'290020', padre_nombre:'Dirección General Ecommerce',
+        moneda:'MXN', division:'Área Central', pais:'México',
+        fecha:'05/02/2019', responsable:'Amir Falah Assadi Carrera', grupo:'Grupo Elektra', entidad:'Elektra',
+        clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Elektra Digital','—','—','—'],
+        cuentas:[
+          {num:'700040',nombre:'Logística y Distribución',rubro:'Operaciones',estatus:'activo',hab:true},
+          {num:'700041',nombre:'Costo de Plataforma',rubro:'Tecnología',estatus:'activo',hab:true}
         ]
       },
-      '100905': {
-        numero: '100905', nombre: 'Pauta Radio Nacional', estatus: 'activo', habCarga: true,
-        padre_num: '6864', padre_nombre: 'TV Azteca',
-        moneda: 'MXN – Peso Mexicano', division: 'Oferteo', pais: 'México',
-        fecha: '10/01/2026', responsable: '801245 – Carlos Mendoza', grupo: 'Grupo Salinas',
-        clases: ['TV Azteca','Azteca Uno','Marketing','Medios Masivos','Radio','—','—','—','—'],
-        cuentas: [
-          { num:'609010', nombre:'Radio', rubro:'Medios Tradicionales', estatus:'activo', hab:true }
+      '291371': {
+        numero:'291371', nombre:'Growth Elektra Digital', estatus:'activo', habCarga:true,
+        padre_num:'290020', padre_nombre:'Dirección General Ecommerce',
+        moneda:'MXN', division:'Área Central', pais:'México',
+        fecha:'27/08/2024', responsable:'David Fierro Villavicencio', grupo:'Grupo Elektra', entidad:'Elektra',
+        clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Elektra Digital','—','—','—'],
+        cuentas:[
+          {num:'700010',nombre:'Publicidad Digital',rubro:'Digital',estatus:'activo',hab:true},
+          {num:'700050',nombre:'Pruebas A/B',rubro:'Digital',estatus:'activo',hab:false}
         ]
       },
-      '100500': {
-        numero: '100500', nombre: 'Finanzas Retail', estatus: 'activo', habCarga: true,
-        padre_num: '6863', padre_nombre: 'Grupo Elektra',
-        moneda: 'MXN – Peso Mexicano', division: 'Estrategia', pais: 'México',
-        fecha: '20/02/2025', responsable: '802100 – Roberto Castillo', grupo: 'Grupo Elektra',
-        clases: ['Grupo Elektra','Tiendas Elektra','Estrategia','Retail','—','—','—','—','—'],
-        cuentas: [
-          { num:'615000', nombre:'Medios BTL', rubro:'Eventos y BTL', estatus:'activo', hab:true },
-          { num:'615010', nombre:'Publicidad en Tienda', rubro:'Eventos y BTL', estatus:'activo', hab:true }
+      '240025': {
+        numero:'240025', nombre:'Cerrado Ecommerce', estatus:'inactivo', habCarga:false,
+        padre_num:'290020', padre_nombre:'Dirección General Ecommerce',
+        moneda:'MXN', division:'Área Central', pais:'México',
+        fecha:'06/04/2004', responsable:'Responsable de Baja CeCo', grupo:'Grupo Elektra', entidad:'Elektra',
+        clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Elektra Digital','—','—','—'],
+        cuentas:[]
+      },
+      '237065': {
+        numero:'237065', nombre:'Banca Digital', estatus:'activo', habCarga:true,
+        padre_num:'EU', padre_nombre:'Banca Digital',
+        moneda:'MXN', division:'Área Central', pais:'México',
+        fecha:'23/09/2016', responsable:'Juan Carlos Arroyo Torres', grupo:'Grupo Elektra', entidad:'Banco Azteca',
+        clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Banca Digital','—','—','—'],
+        cuentas:[
+          {num:'800010',nombre:'Publicidad Medios Digitales',rubro:'Digital',estatus:'activo',hab:true},
+          {num:'800020',nombre:'Marketing App Banco Azteca',rubro:'Digital',estatus:'activo',hab:true}
+        ]
+      },
+      '239755': {
+        numero:'239755', nombre:'Pagos Digitales', estatus:'activo', habCarga:true,
+        padre_num:'EU', padre_nombre:'Código QR',
+        moneda:'MXN', division:'Área Central', pais:'México',
+        fecha:'14/10/2020', responsable:'José Luis Bustamante Bustamante', grupo:'Grupo Elektra', entidad:'Banco Azteca',
+        clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Banca Digital','—','—','—'],
+        cuentas:[
+          {num:'800030',nombre:'Publicidad Código QR',rubro:'Digital',estatus:'activo',hab:true},
+          {num:'800031',nombre:'Activaciones Digitales',rubro:'Marketing',estatus:'activo',hab:true}
+        ]
+      },
+      '237084': {
+        numero:'237084', nombre:'Publicidad Marketing Banca Digital', estatus:'activo', habCarga:false,
+        padre_num:'EU', padre_nombre:'Publicidad Banca Digital',
+        moneda:'MXN', division:'Área Central', pais:'México',
+        fecha:'21/10/2016', responsable:'Karla Dolores Castillón y Herrera', grupo:'Grupo Elektra', entidad:'Banco Azteca',
+        clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Banca Digital','—','—','—'],
+        cuentas:[
+          {num:'800010',nombre:'Publicidad Medios Digitales',rubro:'Digital',estatus:'activo',hab:false},
+          {num:'800040',nombre:'Campañas Marca Banco Azteca',rubro:'Marca',estatus:'activo',hab:false}
+        ]
+      },
+      '230222': {
+        numero:'230222', nombre:'Dirección Internet Banco Azteca', estatus:'activo', habCarga:true,
+        padre_num:'237065', padre_nombre:'Banca Digital',
+        moneda:'MXN', division:'Área Central con Operación', pais:'México',
+        fecha:'19/02/2004', responsable:'Pablo José Alcántara Quilantán', grupo:'Grupo Elektra', entidad:'Banco Azteca',
+        clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Banca Digital','—','—','—'],
+        cuentas:[
+          {num:'800050',nombre:'Servicios Internet Banca',rubro:'Tecnología',estatus:'activo',hab:true},
+          {num:'800060',nombre:'Publicidad Banca por Internet',rubro:'Digital',estatus:'inactivo',hab:false}
+        ]
+      },
+      '238002': {
+        numero:'238002', nombre:'Pagos Digitales OP', estatus:'activo', habCarga:true,
+        padre_num:'EU', padre_nombre:'Código QR',
+        moneda:'MXN', division:'Área Central con Operación', pais:'México',
+        fecha:'29/06/2022', responsable:'Rafael Villanueva Campos', grupo:'Grupo Elektra', entidad:'Banco Azteca',
+        clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Banca Digital','—','—','—'],
+        cuentas:[
+          {num:'800030',nombre:'Publicidad Código QR',rubro:'Digital',estatus:'activo',hab:true},
+          {num:'800070',nombre:'Operaciones Pagos Digitales',rubro:'Operaciones',estatus:'activo',hab:true}
         ]
       }
     };
 
+    let cecoActualId = null;
+
+    function actualizarEstadoCarga(d) {
+      const habBadge = document.getElementById('det-hab-badge');
+      const btnCambiar = document.getElementById('btnCambiarHab');
+      if (d.habCarga) {
+        habBadge.className = 'badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small fw-bold';
+        habBadge.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i>Habilitado';
+        btnCambiar.className = 'btn btn-sm btn-outline-warning fw-bold shadow-sm py-1 px-2';
+        btnCambiar.innerHTML = '<i class="bi bi-slash-circle me-1"></i>Inhabilitar';
+      } else {
+        habBadge.className = 'badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2 py-1 small fw-bold';
+        habBadge.innerHTML = '<i class="bi bi-x-circle me-1"></i>No habilitado';
+        btnCambiar.className = 'btn btn-sm btn-outline-success fw-bold shadow-sm py-1 px-2';
+        btnCambiar.innerHTML = '<i class="bi bi-check-circle me-1"></i>Habilitar';
+      }
+    }
+
     function mostrarDetalle(id) {
       const d = CECOS[id];
       if (!d) return;
+      cecoActualId = id;
 
-      // Quitar selección previa y marcar el nodo activo
       document.querySelectorAll('.cecoItem').forEach(b => {
         b.classList.remove('bg-primary-subtle','text-primary','fw-bold');
-        b.querySelector('i').className = 'bi bi-diagram-3 text-muted me-2';
+        const ico = b.querySelector('i');
+        if (ico) ico.className = 'bi bi-diagram-3 text-dark me-2';
       });
       document.querySelectorAll(`.cecoItem[data-id="${id}"]`).forEach(b => {
         b.classList.add('bg-primary-subtle','text-primary','fw-bold');
-        b.querySelector('i').className = 'bi bi-diagram-3-fill me-2';
+        const ico = b.querySelector('i');
+        if (ico) ico.className = 'bi bi-diagram-3-fill me-2';
       });
 
-      // Cabecera
-      document.getElementById('det-numero').textContent = d.numero;
       document.getElementById('det-nombre').textContent = d.nombre;
+      document.getElementById('det-numero').textContent = d.numero;
       document.getElementById('det-padre-label').textContent = d.padre_num + ' – ' + d.padre_nombre;
 
       const badge = document.getElementById('det-estatus-badge');
       if (d.estatus === 'activo') {
-        badge.className = 'badge bg-success-subtle text-success border border-success-subtle px-3 py-2';
+        badge.className = 'badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small';
         badge.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i>Activo';
       } else {
-        badge.className = 'badge bg-secondary-subtle text-secondary border border-secondary-subtle px-3 py-2';
+        badge.className = 'badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2 py-1 small';
         badge.innerHTML = '<i class="bi bi-x-circle me-1"></i>Inactivo';
       }
 
-      // Habilitación para carga presupuestal
-      const sw = document.getElementById('switchCargaDetalle');
-      const habLabel = document.getElementById('det-hab-label');
-      sw.checked = d.habCarga;
-      if (d.habCarga) {
-        habLabel.className = 'small fw-bold text-success';
-        habLabel.textContent = 'Sí';
-      } else {
-        habLabel.className = 'small fw-bold text-danger';
-        habLabel.textContent = 'No';
-      }
-      sw.onchange = function() {
-        d.habCarga = this.checked;
-        if (this.checked) {
-          habLabel.className = 'small fw-bold text-success';
-          habLabel.textContent = 'Sí';
-        } else {
-          habLabel.className = 'small fw-bold text-danger';
-          habLabel.textContent = 'No';
-        }
-      };
+      actualizarEstadoCarga(d);
 
-      // Atributos operativos
       document.getElementById('det-moneda').textContent = d.moneda;
       document.getElementById('det-division').textContent = d.division;
       document.getElementById('det-pais').innerHTML = '<i class="bi bi-geo-alt-fill text-danger me-1"></i>' + d.pais;
@@ -1512,8 +1564,7 @@
       document.getElementById('det-responsable').textContent = d.responsable;
       document.getElementById('det-grupo').textContent = d.grupo;
 
-      // Clasificaciones N2–N10
-      const niveles = ['N2','N3','N4','N5','N6','N7','N8','N9','N10'];
+      const niveles = ['Clasificación 2','Clasificación 3','Clasificación 4','Clasificación 5','Clasificación 6','Clasificación 7','Clasificación 8','Clasificación 9','Clasificación 10'];
       const clasDiv = document.getElementById('det-clasificaciones');
       clasDiv.innerHTML = niveles.map((n, i) => `
         <div class="col-4">
@@ -1521,12 +1572,11 @@
           <input type="text" class="form-control form-control-sm bg-light" value="${d.clases[i] || '—'}" readonly>
         </div>`).join('');
 
-      // Cuentas
       document.getElementById('det-cuentas-count').textContent = d.cuentas.length;
-      document.getElementById('det-cuentas-tbody').innerHTML = d.cuentas.map(c => `
+      document.getElementById('det-cuentas-tbody').innerHTML = d.cuentas.length ? d.cuentas.map(c => `
         <tr>
           <td class="fw-bold small">${c.num}</td>
-          <td class="small">${c.nombre}</td>
+          <td class="small text-dark">${c.nombre}</td>
           <td class="small text-dark">${c.rubro}</td>
           <td class="text-center">
             <span class="badge ${c.estatus === 'activo'
@@ -1540,18 +1590,92 @@
               <input class="form-check-input" type="checkbox" role="switch" ${c.hab ? 'checked' : ''}>
             </div>
           </td>
-        </tr>`).join('');
+        </tr>`).join('') : '<tr><td colspan="5" class="text-center text-dark small py-3">Sin cuentas asociadas</td></tr>';
 
-      // Mostrar panel
       document.getElementById('panelVacio').classList.add('d-none');
       document.getElementById('panelDetalle').classList.remove('d-none');
     }
 
-    // Asignar evento a todos los nodos del árbol
     document.querySelectorAll('.cecoItem').forEach(btn => {
       btn.addEventListener('click', () => mostrarDetalle(btn.dataset.id));
     });
+
+    // Modal habilitación
+    document.getElementById('modalHabilitarCeCo').addEventListener('show.bs.modal', function() {
+      if (!cecoActualId) return;
+      const d = CECOS[cecoActualId];
+      document.getElementById('modalHabNumero').textContent = d.numero;
+      document.getElementById('modalHabNombre').textContent = d.nombre;
+      document.getElementById('modalHabInfo').textContent = d.entidad + ' · ' + d.grupo + ' · ' + d.pais;
+
+      const alertHist = document.getElementById('alertHabHistorial');
+      const btnConfirmar = document.getElementById('btnConfirmarHab');
+      const header = document.getElementById('modalHabLabel');
+
+      if (d.habCarga) {
+        header.innerHTML = '<i class="bi bi-slash-circle-fill me-2 text-warning"></i>Inhabilitar para carga presupuestal';
+        document.getElementById('modalHabMensaje').innerHTML =
+          '¿Confirmas que deseas <strong>inhabilitar</strong> este Centro de Costo del período <strong>Presupuesto 2026 – Q1</strong>? Dejará de estar disponible para nuevas asignaciones en este período.';
+        const tieneMovimientos = d.cuentas.some(c => c.hab);
+        if (tieneMovimientos) {
+          alertHist.classList.remove('d-none');
+          btnConfirmar.disabled = true;
+          btnConfirmar.className = 'btn btn-secondary fw-bold';
+          btnConfirmar.textContent = 'No disponible';
+        } else {
+          alertHist.classList.add('d-none');
+          btnConfirmar.disabled = false;
+          btnConfirmar.className = 'btn btn-warning fw-bold';
+          btnConfirmar.innerHTML = '<i class="bi bi-slash-circle me-1"></i>Confirmar inhabilitación';
+        }
+      } else {
+        header.innerHTML = '<i class="bi bi-check-circle-fill me-2 text-success"></i>Habilitar para carga presupuestal';
+        document.getElementById('modalHabMensaje').innerHTML =
+          '¿Confirmas que deseas <strong>habilitar</strong> este Centro de Costo para el período <strong>Presupuesto 2026 – Q1</strong>? Sus cuentas activas estarán disponibles para asignación presupuestal.';
+        alertHist.classList.add('d-none');
+        btnConfirmar.disabled = false;
+        btnConfirmar.className = 'btn btn-success fw-bold';
+        btnConfirmar.innerHTML = '<i class="bi bi-check-circle me-1"></i>Confirmar habilitación';
+      }
+
+      btnConfirmar.onclick = function() {
+        d.habCarga = !d.habCarga;
+        actualizarEstadoCarga(d);
+        bootstrap.Modal.getInstance(document.getElementById('modalHabilitarCeCo')).hide();
+      };
+    });
   </script>
+
+  <!-- ════ MODAL: Habilitar / Inhabilitar CeCo para carga presupuestal ════ -->
+  <div class="modal fade" id="modalHabilitarCeCo" tabindex="-1" aria-labelledby="modalHabLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold" id="modalHabLabel">—</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body pt-2">
+          <div class="alert alert-light border d-flex align-items-center gap-3 py-2 mb-3">
+            <span class="badge bg-dark px-3 py-2 fs-6" id="modalHabNumero">—</span>
+            <div>
+              <div class="fw-bold" id="modalHabNombre">—</div>
+              <small class="text-dark" id="modalHabInfo">—</small>
+            </div>
+          </div>
+          <p class="small mb-0" id="modalHabMensaje">—</p>
+          <div class="alert alert-warning d-flex align-items-start gap-2 py-2 mt-3 mb-0 d-none" id="alertHabHistorial">
+            <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0 mt-1"></i>
+            <small>Este CeCo ya cuenta con cuentas habilitadas en el período activo. <strong>No es posible inhabilitarlo mientras tenga cuentas activas asignadas.</strong> Primero desactiva sus cuentas desde la pestaña <em>Cuentas Asociadas</em>.</small>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn fw-bold" id="btnConfirmarHab">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal Habilitar -->
 
   <!-- ════ MODAL: Eliminar CeCo (sin historial → borrado definitivo) ════ -->
   <div class="modal fade" id="modalEliminarCeCo" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
