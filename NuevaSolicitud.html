@@ -60,6 +60,14 @@
       border-color: #0d6efd;
     }
 
+    .paso-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #6c757d;
+    }
+
     /* ── Matriz de presupuesto ────────────────────── */
     .matrix-input {
       width: 80px;
@@ -651,63 +659,171 @@
              PASO 2 – Cuentas Presupuestales
         ════════════════════════════════════════ -->
         <div id="paso-2" style="display:none;">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <h5 class="fw-bold mb-3 text-dark text-center border-bottom pb-3">Asignación de Cuentas Presupuestales</h5>
 
-              <div class="alert bg-primary-subtle text-primary border border-primary-subtle small mb-4">
-                <i class="bi bi-info-circle-fill me-2"></i>
-                <strong>Regla Operativa:</strong> Las cuentas seleccionadas se asignarán a todos los CeCos del Paso 1.
+          <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+            <h6 class="fw-bold text-dark mb-0"><i class="bi bi-list-check text-primary me-2"></i>Catálogo de Cuentas Presupuestales</h6>
+            <div class="d-flex align-items-center gap-3">
+              <span class="text-muted small"><i class="bi bi-check2-square me-1"></i><span id="cuentaCount">0</span> seleccionadas</span>
+              <div class="form-check form-switch mb-0">
+                <input class="form-check-input shadow-none" type="checkbox" role="switch" id="switchTodasCuentas" onchange="toggleTodasCuentas(this)">
+                <label class="form-check-label small fw-bold text-primary" for="switchTodasCuentas">Seleccionar todas</label>
               </div>
+            </div>
+          </div>
 
-              <div class="bg-white p-4 rounded border border-secondary border-opacity-10 shadow-sm mb-4">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <label class="form-label small fw-bold text-dark mb-0">Catálogo de Cuentas SAP</label>
-                  <div class="form-check form-switch mb-0">
-                    <input class="form-check-input shadow-none" type="checkbox" role="switch" id="switchTodasCuentas" onchange="toggleTodasCuentas(this)">
-                    <label class="form-check-label small fw-bold text-primary" for="switchTodasCuentas">Seleccionar todas</label>
-                  </div>
-                </div>
+          <div class="alert bg-primary-subtle text-primary border border-primary-subtle small mb-3 py-2">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <strong>Regla Operativa:</strong> Las cuentas seleccionadas se asignarán a todos los CeCos elegidos en el Paso 1.
+          </div>
 
-                <div class="input-group input-group-sm shadow-sm mb-3">
-                  <span class="input-group-text bg-light text-dark"><i class="bi bi-search"></i></span>
-                  <input type="text" class="form-control border-start-0 shadow-none" placeholder="Buscar cuenta (Ej. Televisión)...">
-                </div>
+          <div class="bg-white rounded border border-secondary border-opacity-10 shadow-sm p-3 mb-4">
+            <div class="input-group input-group-sm shadow-sm mb-3">
+              <span class="input-group-text bg-light text-dark"><i class="bi bi-search"></i></span>
+              <input type="text" class="form-control border-start-0 shadow-none" placeholder="Buscar cuenta presupuestal…" oninput="filtrarCuentas(this.value)">
+            </div>
 
-                <div class="border border-secondary border-opacity-25 rounded p-3 bg-light" style="max-height:300px; overflow-y:auto;">
-                  <div class="form-check mb-2 border-bottom border-secondary border-opacity-10 pb-2">
-                    <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="60443" id="cta1">
-                    <label class="form-check-label small text-dark fw-medium w-100" for="cta1">60443 – Sesiones y Eventos</label>
-                  </div>
-                  <div class="form-check mb-2 border-bottom border-secondary border-opacity-10 pb-2">
-                    <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609010" id="cta2">
-                    <label class="form-check-label small text-dark fw-medium w-100" for="cta2">609010 – Radio</label>
-                  </div>
-                  <div class="form-check mb-2 border-bottom border-secondary border-opacity-10 pb-2">
-                    <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609011" id="cta3" checked>
-                    <label class="form-check-label small text-dark fw-bold w-100" for="cta3">609011 – Televisión</label>
-                  </div>
-                  <div class="form-check mb-2 border-bottom border-secondary border-opacity-10 pb-2">
-                    <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609013" id="cta4">
-                    <label class="form-check-label small text-dark fw-medium w-100" for="cta4">609013 – Material punto de venta</label>
-                  </div>
-                  <div class="form-check mb-0">
-                    <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609028" id="cta5" checked>
-                    <label class="form-check-label small text-dark fw-bold w-100" for="cta5">609028 – Publicidad Digital</label>
-                  </div>
+            <!-- Grid 2 columnas -->
+            <div class="row g-0" id="gridCuentas">
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="60443" id="cta1" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta1">60443 – Sesiones y Eventos</label>
                 </div>
-
-                <div class="d-flex justify-content-between mt-2">
-                  <span class="text-muted small"><i class="bi bi-check2-square me-1"></i><span id="cuentaCount">2</span> cuentas seleccionadas</span>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="60444" id="cta2" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta2">60444 – Patrocinios</label>
                 </div>
-                <div id="errCuentas" class="text-danger small mt-2" style="display:none;">
-                  <i class="bi bi-exclamation-triangle-fill me-1"></i>Debes seleccionar al menos una cuenta para continuar.
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609010" id="cta3" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta3">609010 – Radio</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609011" id="cta4" checked onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta4">609011 – Televisión</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609012" id="cta5" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta5">609012 – Cine</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609013" id="cta6" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta6">609013 – Material punto de venta</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609014" id="cta7" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta7">609014 – Vía Pública</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609015" id="cta8" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta8">609015 – Prensa / Revistas</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609016" id="cta9" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta9">609016 – Relaciones Públicas</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609017" id="cta10" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta10">609017 – Influencer Marketing</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609018" id="cta11" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta11">609018 – Producción Creativa</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609019" id="cta12" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta12">609019 – Diseño y Arte</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609020" id="cta13" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta13">609020 – Investigación de Mercado</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609021" id="cta14" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta14">609021 – Redes Sociales</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609022" id="cta15" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta15">609022 – Email Marketing</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609023" id="cta16" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta16">609023 – Promociones</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609024" id="cta17" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta17">609024 – Sorteos y Concursos</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609025" id="cta18" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta18">609025 – Activaciones BTL</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609026" id="cta19" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta19">609026 – Muestras y Demostraciones</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609027" id="cta20" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta20">609027 – Merchandising</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609028" id="cta21" checked onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta21">609028 – Publicidad Digital</label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-check px-3 py-2">
+                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609029" id="cta22" onchange="actualizarContCuentas()">
+                  <label class="form-check-label small text-dark w-100" for="cta22">609029 – Programática</label>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="d-flex justify-content-between mt-4 pt-3 border-top border-secondary border-opacity-25">
+          <div id="errCuentas" class="text-danger small mb-3" style="display:none;">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i>Debes seleccionar al menos una cuenta para continuar.
+          </div>
+
+          <div class="d-flex justify-content-between pt-3 border-top border-secondary border-opacity-25">
             <button class="btn btn-outline-dark fw-bold px-4" onclick="irPaso(1)"><i class="bi bi-arrow-left me-1"></i> Anterior</button>
             <button class="btn btn-primary fw-bold px-5 shadow-sm" onclick="validarCuentasYAvanzar()">Siguiente Paso <i class="bi bi-arrow-right ms-1"></i></button>
           </div>
@@ -715,136 +831,285 @@
 
 
         <!-- ════════════════════════════════════════
-             PASO 3 – Matriz de Presupuesto
+             PASO 3 – Asignación de Presupuesto
         ════════════════════════════════════════ -->
         <div id="paso-3" style="display:none;">
+          <div class="row g-4 align-items-start">
 
-          <!-- Panel global de totales -->
-          <div class="card border border-secondary border-opacity-25 shadow-sm bg-white mb-4">
-            <div class="card-body py-3 px-4">
-              <div class="row align-items-center g-3">
-                <div class="col-md-4 border-end border-secondary border-opacity-25">
-                  <div class="text-muted fw-bold text-uppercase mb-1" style="font-size:0.65rem; letter-spacing:.5px;">Límite Global</div>
-                  <div class="fw-bold text-dark fs-5">1,300,000</div>
-                </div>
-                <div class="col-md-4 border-end border-secondary border-opacity-25">
-                  <div class="text-muted fw-bold text-uppercase mb-1" style="font-size:0.65rem; letter-spacing:.5px;">Total Asignado</div>
-                  <div class="fw-bold text-primary fs-5" id="panelAsignado">0</div>
-                </div>
-                <div class="col-md-4">
-                  <div class="text-muted fw-bold text-uppercase mb-1" style="font-size:0.65rem; letter-spacing:.5px;">Disponible</div>
-                  <div class="fw-bold text-success fs-5" id="panelDisponible">1,300,000</div>
-                </div>
-              </div>
-            </div>
-          </div>
+            <!-- Acordeón por CeCo (col-9) -->
+            <div class="col-lg-9">
+              <h6 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+                <i class="bi bi-calendar3 text-primary"></i>Asignación de Presupuesto
+                <span class="badge bg-light border text-dark fw-normal" style="font-size:.7rem;">Distribución mensual por Centro de Costo</span>
+              </h6>
 
-          <!-- Alerta excedente -->
-          <div id="bloqueExcedente" class="alert alert-danger border border-danger d-flex gap-3 align-items-start mb-4" style="display:none!important;">
-            <i class="bi bi-exclamation-triangle-fill fs-4 flex-shrink-0 mt-1"></i>
-            <div>
-              <strong>Excedente detectado.</strong> Los importes capturados superan el límite global.
-              Justifica el sobregiro y adjunta evidencia documental para continuar el flujo de autorización.
-              <div class="row g-2 mt-2">
-                <div class="col-md-8">
-                  <textarea class="form-control form-control-sm border-danger text-dark shadow-none" rows="2" placeholder="Motivo del excedente..."></textarea>
-                </div>
-                <div class="col-md-4">
-                  <input type="file" class="form-control form-control-sm border-danger shadow-none">
-                  <div class="form-text" style="font-size:0.65rem;">PDF, PNG o JPG</div>
-                </div>
-              </div>
-            </div>
-          </div>
+              <div class="accordion accordion-flush border border-secondary border-opacity-25 rounded shadow-sm bg-white mb-4" id="accPresupuesto">
 
-          <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
-            <h5 class="fw-bold mb-0 text-dark">Distribución Mensual de Importes</h5>
-          </div>
-
-          <!-- ── CeCo 100901 ───────────────────── -->
-          <div class="card border border-secondary border-opacity-25 shadow-sm bg-white mb-3">
-            <div class="card-header bg-light py-2 px-3">
-              <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-                <div>
-                  <span class="badge bg-dark me-2">100901</span>
-                  <span class="fw-bold text-dark small">DIR GRAL CONECTIVIDAD</span>
-                </div>
-                <div class="d-flex gap-4 flex-wrap">
-                  <div class="text-end">
-                    <div class="text-muted fw-bold" style="font-size:0.65rem;">Límite de Carga</div>
-                    <div class="fw-bold text-dark small">900,000</div>
+                <!-- ── CeCo 100901 ── -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button py-3 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#dist-100901" aria-expanded="true">
+                      <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="badge bg-primary px-2">100901</span>
+                          <span class="fw-bold text-dark">DIR GRAL CONECTIVIDAD</span>
+                        </div>
+                        <div class="d-flex gap-4 align-items-center">
+                          <div class="text-end">
+                            <div class="paso-label text-dark">Límite de Carga</div>
+                            <div class="fw-bold text-dark" style="font-size:.9rem;">$900,000</div>
+                          </div>
+                          <div class="text-end border-start ps-3">
+                            <div class="paso-label text-dark">Asignado</div>
+                            <div class="fw-bold text-primary ceco-asignado" id="asignado-100901" style="font-size:.9rem;">$450,000</div>
+                          </div>
+                          <div class="text-end border-start ps-3">
+                            <div class="paso-label text-dark">Disponible</div>
+                            <div class="fw-bold ceco-disponible text-success" id="disp-100901" style="font-size:.9rem;">$450,000</div>
+                          </div>
+                          <div class="text-end border-start ps-3" style="min-width:90px;">
+                            <div class="paso-label text-dark mb-1">Consumo</div>
+                            <div class="progress bg-white border" style="height:6px; width:80px;">
+                              <div class="progress-bar bg-success" id="barra-100901" style="width:50%;"></div>
+                            </div>
+                            <div class="paso-label text-dark mt-1 ceco-pct" id="pct-100901">50.0%</div>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="dist-100901" class="accordion-collapse collapse show">
+                    <div class="accordion-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tbl-100901">
+                          <thead class="table-light">
+                            <tr>
+                              <th style="width:32px;"></th>
+                              <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
+                              <th style="min-width:130px;">Campaña / Proyecto</th>
+                              <th style="min-width:65px;">Ene</th><th style="min-width:65px;">Feb</th>
+                              <th style="min-width:65px;">Mar</th><th style="min-width:65px;">Abr</th>
+                              <th style="min-width:65px;">May</th><th style="min-width:65px;">Jun</th>
+                              <th style="min-width:65px;">Jul</th><th style="min-width:65px;">Ago</th>
+                              <th style="min-width:65px;">Sep</th><th style="min-width:65px;">Oct</th>
+                              <th style="min-width:65px;">Nov</th><th style="min-width:65px;">Dic</th>
+                              <th class="bg-light text-dark" style="min-width:95px;">Total Asignado</th>
+                            </tr>
+                          </thead>
+                          <tbody id="body-100901">
+                            <tr class="fila-dato">
+                              <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
+                              <td><select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('100901')">
+                                <option value="">— Cuenta —</option>
+                                <option selected>609011 – Televisión</option>
+                                <option>609023 – Promociones</option>
+                                <option>609028 – Pub. Digital</option>
+                              </select></td>
+                              <td><select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none">
+                                <option value="">— Campaña —</option>
+                                <option selected>19283 – Gemas</option>
+                                <option>21328 – Originación</option>
+                              </select></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input has-value" value="200,000" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input has-value" value="250,000" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                              <td class="fw-bold text-dark bg-light fila-total">$450,000</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="16" class="text-start ps-2 py-2">
+                                <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('body-100901','100901')" style="font-size:.78rem;">
+                                  <i class="bi bi-plus-circle me-1"></i>Agregar línea
+                                </button>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
                   </div>
-                  <div class="text-end border-start ps-3">
-                    <div class="text-muted fw-bold" style="font-size:0.65rem;">Disponible</div>
-                    <div class="fw-bold text-success ceco-disponible" id="disp-100901">900,000</div>
+                </div>
+
+                <!-- ── CeCo 291374 ── -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button py-3 bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dist-291374">
+                      <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
+                        <div class="d-flex align-items-center gap-2">
+                          <span class="badge bg-primary px-2">291374</span>
+                          <span class="fw-bold text-dark">DIR MKT DIGITAL</span>
+                        </div>
+                        <div class="d-flex gap-4 align-items-center">
+                          <div class="text-end">
+                            <div class="paso-label text-dark">Límite de Carga</div>
+                            <div class="fw-bold text-dark" style="font-size:.9rem;">$400,000</div>
+                          </div>
+                          <div class="text-end border-start ps-3">
+                            <div class="paso-label text-dark">Asignado</div>
+                            <div class="fw-bold text-primary ceco-asignado" id="asignado-291374" style="font-size:.9rem;">$0</div>
+                          </div>
+                          <div class="text-end border-start ps-3">
+                            <div class="paso-label text-dark">Disponible</div>
+                            <div class="fw-bold text-success ceco-disponible" id="disp-291374" style="font-size:.9rem;">$400,000</div>
+                          </div>
+                          <div class="text-end border-start ps-3" style="min-width:90px;">
+                            <div class="paso-label text-dark mb-1">Consumo</div>
+                            <div class="progress bg-white border" style="height:6px; width:80px;">
+                              <div class="progress-bar bg-success" id="barra-291374" style="width:0%;"></div>
+                            </div>
+                            <div class="paso-label text-dark mt-1 ceco-pct" id="pct-291374">0%</div>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="dist-291374" class="accordion-collapse collapse">
+                    <div class="accordion-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tbl-291374">
+                          <thead class="table-light">
+                            <tr>
+                              <th style="width:32px;"></th>
+                              <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
+                              <th style="min-width:130px;">Campaña / Proyecto</th>
+                              <th style="min-width:65px;">Ene</th><th style="min-width:65px;">Feb</th>
+                              <th style="min-width:65px;">Mar</th><th style="min-width:65px;">Abr</th>
+                              <th style="min-width:65px;">May</th><th style="min-width:65px;">Jun</th>
+                              <th style="min-width:65px;">Jul</th><th style="min-width:65px;">Ago</th>
+                              <th style="min-width:65px;">Sep</th><th style="min-width:65px;">Oct</th>
+                              <th style="min-width:65px;">Nov</th><th style="min-width:65px;">Dic</th>
+                              <th class="bg-light text-dark" style="min-width:95px;">Total Asignado</th>
+                            </tr>
+                          </thead>
+                          <tbody id="body-291374">
+                            <tr class="fila-dato">
+                              <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
+                              <td><select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('291374')">
+                                <option value="">— Cuenta —</option>
+                                <option>609011 – Televisión</option>
+                                <option>609023 – Promociones</option>
+                                <option selected>609028 – Pub. Digital</option>
+                              </select></td>
+                              <td><select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none">
+                                <option value="">— Campaña —</option>
+                                <option selected>19283 – Gemas</option>
+                              </select></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                              <td class="fw-bold text-dark bg-light fila-total">$0</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="16" class="text-start ps-2 py-2">
+                                <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('body-291374','291374')" style="font-size:.78rem;">
+                                  <i class="bi bi-plus-circle me-1"></i>Agregar línea
+                                </button>
+                              </td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- /accordion -->
+
+              <!-- Bloque Excedente -->
+              <div id="bloqueExcedente" class="card border border-danger radius-10 shadow-sm mb-3" style="display:none;">
+                <div class="card-header bg-danger bg-opacity-10 border-bottom border-danger border-opacity-25 py-2 px-4">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                    <span class="fw-bold text-danger" style="font-size:.88rem;">Solicitud de Excedente Requerida</span>
+                    <span class="badge bg-danger ms-auto px-2 py-1" style="font-size:.65rem;">Obligatorio para continuar</span>
+                  </div>
+                </div>
+                <div class="card-body p-3">
+                  <p class="small text-dark mb-3">Los importes superan el Límite de Carga total. Captura la justificación y adjunta evidencia para continuar al flujo de firmas.</p>
+                  <div class="row g-3">
+                    <div class="col-md-7">
+                      <label class="form-label small fw-bold text-dark">Motivo / Justificación <span class="text-danger">*</span></label>
+                      <textarea class="form-control form-control-sm border-danger shadow-none" rows="2" placeholder="Mínimo 50 caracteres..."></textarea>
+                    </div>
+                    <div class="col-md-5">
+                      <label class="form-label small fw-bold text-dark">Evidencia Documental <span class="text-danger">*</span></label>
+                      <div class="border border-danger border-opacity-50 rounded p-2 text-center bg-danger bg-opacity-10" style="cursor:pointer;">
+                        <i class="bi bi-cloud-upload text-danger"></i>
+                        <p class="mb-0 text-danger" style="font-size:.72rem;">PDF, PNG, JPG — Máx. 10 MB</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="progress mt-2" style="height:4px;">
-                <div id="barra-100901" class="progress-bar bg-success" style="width:0%;"></div>
-              </div>
-            </div>
-            <div class="card-body p-0">
-              <div class="table-responsive">
-                <table class="table table-sm table-bordered align-middle text-center mb-0" id="tbl-100901" style="font-size:0.75rem;">
-                  <thead class="table-light text-muted">
-                    <tr>
-                      <th style="width:28px;"></th>
-                      <th class="text-start" style="min-width:160px;">Cuenta</th>
-                      <th style="min-width:130px;">Campaña / Proyecto</th>
-                      <th>Ene</th><th>Feb</th><th>Mar</th><th>Abr</th><th>May</th><th>Jun</th>
-                      <th>Jul</th><th>Ago</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dic</th>
-                      <th class="bg-light text-dark border-start" style="min-width:90px;">Total Fila</th>
-                    </tr>
-                  </thead>
-                  <tbody id="body-100901">
-                    <tr class="fila-dato">
-                      <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
-                      <td>
-                        <select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('100901')">
-                          <option value="">— Cuenta —</option>
-                          <option>609011 – Televisión</option>
-                          <option>609023 – Promociones</option>
-                          <option>609028 – Pub. Digital</option>
-                        </select>
-                      </td>
-                      <td>
-                        <select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none">
-                          <option value="">— Campaña —</option>
-                          <option>19283 – Gemas</option>
-                          <option>21328 – Originación</option>
-                        </select>
-                      </td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td class="fw-bold text-dark bg-light fila-total">0</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="px-3 py-2">
-                <button class="btn btn-sm btn-outline-primary shadow-none" onclick="agregarFila('body-100901','100901')">
-                  <i class="bi bi-plus-lg me-1"></i> Agregar fila
+
+              <div class="d-flex justify-content-between pt-3 border-top border-secondary border-opacity-25 mt-2">
+                <button class="btn btn-sm btn-outline-secondary fw-semibold px-4" onclick="irPaso(2)">
+                  <i class="bi bi-arrow-left me-1"></i>Anterior
                 </button>
               </div>
             </div>
-          </div>
 
-          <!-- Acciones finales -->
-          <div class="d-flex justify-content-between mt-4 pt-3 border-top border-secondary border-opacity-25">
-            <button class="btn btn-outline-dark fw-bold px-4" onclick="irPaso(2)"><i class="bi bi-arrow-left me-1"></i> Anterior</button>
-          </div>
+            <!-- Panel derecho: Control de Carga Total (col-3) -->
+            <div class="col-lg-3">
+              <div class="card border-0 shadow-sm bg-white sticky-top" style="top:20px;">
+                <div class="card-header bg-white border-bottom py-3 px-4">
+                  <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                    <i class="bi bi-pie-chart text-primary"></i>Control de Carga Total
+                  </h6>
+                </div>
+                <div class="card-body p-4">
 
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="small text-muted">% Consumo Global</span>
+                      <span class="badge fw-bold bg-success bg-opacity-10 text-success border border-success border-opacity-25" id="badgePct">34.6%</span>
+                    </div>
+                    <div class="progress" style="height:10px; border-radius:6px;">
+                      <div class="progress-bar bg-success" id="barraGlobal" style="width:34.6%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="bg-light border border-secondary border-opacity-25 rounded p-3">
+                    <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
+                      <span class="small fw-semibold text-dark">Límite de Carga</span>
+                      <span class="fw-bold text-dark">$1,300,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
+                      <span class="small fw-semibold text-dark">Total Asignado</span>
+                      <span class="fw-bold text-primary" id="panelAsignado">$450,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between py-2">
+                      <span class="small fw-semibold text-dark">Disponible</span>
+                      <span class="fw-bold text-success" id="panelDisponible">$850,000</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div><!-- /paso-3 -->
 
       </div><!-- /card-body -->
