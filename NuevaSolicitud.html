@@ -277,12 +277,17 @@
           </ol>
         </nav>
       </div>
-      <div class="d-flex align-items-center gap-3">
-        <div class="text-end">
-          <span class="d-block text-muted small fw-bold mb-1">Ejercicio Activo</span>
-          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 fs-6 shadow-sm">2026</span>
-        </div>
-        <a href="AEjercicio.html" class="btn btn-outline-dark fw-bold shadow-sm"><i class="bi bi-x-lg me-1"></i> Cancelar</a>
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small fw-bold me-1">Ejercicio Activo:
+          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">2026</span>
+        </span>
+        <button class="btn btn-outline-secondary btn-sm shadow-sm" onclick="confirmarAccion('borrador')">
+          <i class="bi bi-floppy me-1"></i> Guardar borrador
+        </button>
+        <button class="btn btn-success btn-sm fw-bold shadow-sm" onclick="confirmarAccion('enviar')">
+          <i class="bi bi-send-fill me-1"></i> Enviar a autorización
+        </button>
+        <a href="AEjercicio.html" class="btn btn-outline-dark btn-sm shadow-sm"><i class="bi bi-x-lg me-1"></i> Cancelar</a>
       </div>
     </div>
 
@@ -431,112 +436,149 @@
             </div><!-- /col izquierda -->
 
             <!-- Columna derecha: Selección de CeCos -->
-            <div class="col-12 col-lg-8 ps-lg-4">
-              <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
-                <h6 class="fw-bold mb-0 text-dark">Selección de Centros de Costos</h6>
-                <span class="badge bg-warning-subtle text-dark border border-warning px-3 py-1">
-                  <i class="bi bi-shield-check me-1"></i>Sujeto a Límite Presupuestal
-                </span>
-              </div>
+            <div class="col-12 col-lg-8 ps-lg-4"><div class="card border-0 shadow-sm radius-10">
+              <div class="card-body p-4">
 
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="text-muted small">División activa:</span>
-                <span id="labelDivisionActiva" class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span>
-              </div>
+                <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                  <h6 class="fw-bold text-dark mb-0">
+                    <i class="bi bi-building text-primary me-2"></i>Selección de Centros de Costo
+                  </h6>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-warning bg-opacity-10 text-dark border border-warning border-opacity-25 px-2 py-1" style="font-size:.7rem;">
+                      <i class="bi bi-check2-square me-1"></i><span id="cecoCount">0</span> seleccionado(s)
+                    </span>
+                  </div>
+                </div>
 
-              <p class="small text-muted mb-3">
-                Selecciona los CeCos que participarán en la solicitud. Puedes expandirlos para consultar su historial presupuestal base (Solo Lectura).
-              </p>
+                <!-- Buscador -->
+                <div class="input-group input-group-sm shadow-sm mb-3">
+                  <span class="input-group-text bg-white border-secondary border-opacity-50 text-dark"><i class="bi bi-search"></i></span>
+                  <input type="text" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none py-2" placeholder="Buscar por nombre o número de CeCo...">
+                </div>
 
-              <div class="input-group input-group-sm shadow-sm mb-3">
-                <span class="input-group-text bg-white text-dark"><i class="bi bi-search"></i></span>
-                <input type="text" class="form-control border-start-0 shadow-none py-2" placeholder="Buscar por Nombre o Número de CeCo...">
-              </div>
+                <!-- Tabla CeCos -->
+                <div class="border border-secondary border-opacity-25 rounded bg-white shadow-sm" style="max-height:380px; overflow-y:auto;">
+                  <table class="table align-middle mb-0" style="font-size:0.82rem;">
+                    <thead class="sticky-top z-1 bg-white shadow-sm">
+                      <tr>
+                        <th class="ps-3 text-dark fw-bold border-bottom" style="min-width:300px;">Centro de Costo / Campañas origen / Cuentas</th>
+                        <th class="text-end text-dark fw-bold border-bottom" style="width:130px;">Límite de Carga</th>
+                        <th class="text-end text-dark fw-bold border-bottom" style="width:110px;">Disponible</th>
+                      </tr>
+                    </thead>
+                    <tbody>
 
-              <!-- Árbol de CeCos -->
-              <div class="border border-secondary border-opacity-25 rounded bg-white shadow-sm overflow-auto" style="max-height:400px;">
-                <table class="table table-sm table-borderless mb-0 align-middle" id="tablaCecos">
-                  <tbody>
-
-                    <!-- CeCo 1 – con barra lateral -->
-                    <tr class="ceco-row parent-row">
-                      <td style="width:32px;">
-                        <div class="form-check mb-0">
-                          <input class="form-check-input border-secondary shadow-none" type="checkbox" id="chk-ceco-100901" onchange="updateCecoCount()">
-                        </div>
-                      </td>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <i id="ico-ceco1" class="bi bi-chevron-down text-primary me-2 flex-shrink-0" style="cursor:pointer;" onclick="toggleCeco('ceco1')"></i>
-                          <div>
-                            <span class="fw-bold text-dark small">100901</span>
-                            <span class="text-muted small ms-1">– DIR GRAL CONECTIVIDAD</span>
+                      <!-- CeCo 100901 -->
+                      <tr class="ceco-row selected" style="background:#e8f0fe;" id="tr-ceco1">
+                        <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco1')">
+                          <div class="d-flex align-items-center">
+                            <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" checked="" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco1">
+                            <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco1" style="font-size:.75rem;"></i>
+                            <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>
+                            100901 – DIR GRAL CONECTIVIDAD
                           </div>
-                        </div>
-                        <!-- Barra de disponibilidad -->
-                        <div id="bar-ceco1" class="mt-1 px-1">
-                          <div class="progress" style="height:4px;">
-                            <div class="progress-bar bg-success" style="width:47%;"></div>
-                          </div>
-                          <div class="d-flex justify-content-between">
-                            <span class="text-muted" style="font-size:0.65rem;">$0</span>
-                            <span class="text-success fw-bold" style="font-size:0.65rem;">Disp. $477,500</span>
-                            <span class="text-muted" style="font-size:0.65rem;">$900,000</span>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <!-- Sub-filas de ceCo 1 -->
-                    <tr class="ceco-sub-row child-ceco1">
-                      <td colspan="2">
-                        <table class="table table-sm table-borderless mb-0 small text-dark">
-                          <tbody>
-                            <tr><td class="text-muted ps-2">609023 – Promociones</td><td class="text-end fw-semibold">$500,000</td></tr>
-                            <tr><td class="text-muted ps-2">609011 – Televisión</td><td class="text-end fw-semibold">$400,000</td></tr>
-                          </tbody>
-                        </table>
-                      </td>
-                    </tr>
+                        </td>
+                        <td class="text-end fw-bold text-dark">1,892,500</td>
+                        <td class="text-end fw-bold text-success">1,892,500</td>
+                      </tr>
+                      <tr style="background: rgb(238, 242, 255);" id="bar-ceco1">
+                        <td colspan="3" class="py-1 px-4"></td>
+                      </tr>
+                      <!-- Campañas hijo CeCo1 -->
+                      <tr class="child-ceco1" style="background: rgb(248, 249, 255);">
+                        <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco1-A', this)">
+                          <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
+                          <i class="bi bi-tag text-primary me-1"></i>
+                          <span class="fw-semibold">394 – Día de las Madres</span>
+                        </td>
+                        <td class="text-end text-dark" style="font-size:.78rem;">900,000</td>
+                        <td></td>
+                      </tr>
+                      <tr class="cu-ceco1-A d-none" style="background:#f0f4ff;">
+                        <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
+                          <i class="bi bi-dot me-1"></i>609023 – Promociones &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
+                        </td>
+                        <td class="text-end text-dark" style="font-size:.75rem;">500,000</td><td></td>
+                      </tr>
+                      <tr class="cu-ceco1-A d-none" style="background:#f0f4ff;">
+                        <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
+                          <i class="bi bi-dot me-1"></i>609011 – Televisión &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
+                        </td>
+                        <td class="text-end text-dark" style="font-size:.75rem;">400,000</td><td></td>
+                      </tr>
+                      <tr class="child-ceco1" style="background: rgb(248, 249, 255);">
+                        <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco1-B', this)">
+                          <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
+                          <i class="bi bi-tag text-primary me-1"></i>
+                          <span class="fw-semibold">401 – Buen Fin</span>
+                        </td>
+                        <td class="text-end text-dark" style="font-size:.78rem;">992,500</td>
+                        <td></td>
+                      </tr>
+                      <tr class="cu-ceco1-B d-none" style="background:#f0f4ff;">
+                        <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
+                          <i class="bi bi-dot me-1"></i>609011 – Televisión &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 21328 – Originación</span>
+                        </td>
+                        <td class="text-end text-dark" style="font-size:.75rem;">992,500</td><td></td>
+                      </tr>
 
-                    <!-- CeCo 2 -->
-                    <tr class="ceco-row">
-                      <td style="width:32px;">
-                        <div class="form-check mb-0">
-                          <input class="form-check-input border-secondary shadow-none" type="checkbox" id="chk-ceco-291374" onchange="updateCecoCount()">
-                        </div>
-                      </td>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <i id="ico-ceco2" class="bi bi-chevron-right text-dark me-2 flex-shrink-0" style="cursor:pointer;" onclick="toggleCeco('ceco2')"></i>
-                          <div>
-                            <span class="fw-bold text-dark small">291374</span>
-                            <span class="text-muted small ms-1">– DIR MKT DIGITAL</span>
+                      <!-- CeCo 291374 -->
+                      <tr class="ceco-row" id="tr-ceco2" style="border-top:2px solid #dee2e6;">
+                        <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco2')">
+                          <div class="d-flex align-items-center">
+                            <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco2">
+                            <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco2" style="font-size:.75rem;"></i>
+                            <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                            291374 – DIR MKT DIGITAL
                           </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <!-- Sub-filas de ceCo 2 (ocultas por defecto) -->
-                    <tr class="ceco-sub-row child-ceco2" style="display:none;">
-                      <td colspan="2">
-                        <table class="table table-sm table-borderless mb-0 small text-dark">
-                          <tbody>
-                            <tr><td class="text-muted ps-2">609028 – Pub. Digital</td><td class="text-end fw-semibold">$400,000</td></tr>
-                          </tbody>
-                        </table>
-                      </td>
-                    </tr>
+                        </td>
+                        <td class="text-end fw-bold text-dark">1,200,000</td>
+                        <td class="text-end fw-bold text-dark">1,200,000</td>
+                      </tr>
+                      <tr class="child-ceco2" style="background: rgb(248, 249, 255);">
+                        <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco2-A', this)">
+                          <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
+                          <i class="bi bi-tag text-dark me-1"></i>
+                          <span class="fw-semibold">010 – Lanzamiento App</span>
+                        </td>
+                        <td class="text-end text-dark" style="font-size:.78rem;">400,000</td><td></td>
+                      </tr>
+                      <tr class="cu-ceco2-A d-none" style="background:#f0f4ff;">
+                        <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
+                          <i class="bi bi-dot me-1"></i>609028 – Pub. Internet &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
+                        </td>
+                        <td class="text-end text-dark" style="font-size:.75rem;">400,000</td><td></td>
+                      </tr>
+                      <tr class="child-ceco2" style="background: rgb(248, 249, 255);">
+                        <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco2-B', this)">
+                          <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
+                          <i class="bi bi-tag text-dark me-1"></i>
+                          <span class="fw-semibold">401 – Buen Fin</span>
+                        </td>
+                        <td class="text-end text-dark" style="font-size:.78rem;">800,000</td><td></td>
+                      </tr>
 
-                  </tbody>
-                </table>
+                      <!-- CeCo agotado (ejemplo visual) -->
+                      <tr class="ceco-row" style="border-top:2px solid #dee2e6; opacity:.7;">
+                        <td class="ps-3 fw-bold text-dark">
+                          <div class="d-flex align-items-center">
+                            <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" disabled="">
+                            <i class="bi bi-chevron-right text-dark me-2 flex-shrink-0" style="font-size:.75rem;"></i>
+                            <i class="bi bi-building me-2 flex-shrink-0 text-danger"></i>
+                            109220 – PUBLICIDAD CONECTIVIDAD
+                            <span class="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25 ms-2" style="font-size:.62rem;">Sin disponible</span>
+                          </div>
+                        </td>
+                        <td class="text-end fw-bold text-dark">500,000</td>
+                        <td class="text-end fw-bold text-danger">0</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
               </div>
-
-              <div class="d-flex justify-content-between align-items-center mt-2">
-                <span class="text-muted small"><i class="bi bi-info-circle me-1"></i>Solo se muestran CeCos de la división seleccionada.</span>
-                <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">
-                  <i class="bi bi-check2-square me-1"></i><span id="cecoCount">0</span> seleccionados
-                </span>
-              </div>
-
+            </div>
             </div><!-- /col derecha -->
 
             <!-- Botón siguiente paso -->
@@ -626,26 +668,17 @@
           <div class="card border border-secondary border-opacity-25 shadow-sm bg-white mb-4">
             <div class="card-body py-3 px-4">
               <div class="row align-items-center g-3">
-                <div class="col-md-3 border-end border-secondary border-opacity-25">
+                <div class="col-md-4 border-end border-secondary border-opacity-25">
                   <div class="text-muted fw-bold text-uppercase mb-1" style="font-size:0.65rem; letter-spacing:.5px;">Límite Global</div>
-                  <div class="fw-bold text-dark fs-5">$1,300,000</div>
+                  <div class="fw-bold text-dark fs-5">1,300,000</div>
                 </div>
-                <div class="col-md-3 border-end border-secondary border-opacity-25">
+                <div class="col-md-4 border-end border-secondary border-opacity-25">
                   <div class="text-muted fw-bold text-uppercase mb-1" style="font-size:0.65rem; letter-spacing:.5px;">Total Asignado</div>
-                  <div class="fw-bold text-primary fs-5" id="panelAsignado">$0</div>
+                  <div class="fw-bold text-primary fs-5" id="panelAsignado">0</div>
                 </div>
-                <div class="col-md-3 border-end border-secondary border-opacity-25">
-                  <div class="text-muted fw-bold text-uppercase mb-1" style="font-size:0.65rem; letter-spacing:.5px;">Saldo Disponible</div>
-                  <div class="fw-bold text-success fs-5" id="panelDisponible">$1,300,000</div>
-                </div>
-                <div class="col-md-3">
-                  <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="text-muted fw-bold text-uppercase" style="font-size:0.65rem;">% Consumido</span>
-                    <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fw-bold" id="badgePct">0.0%</span>
-                  </div>
-                  <div class="progress" style="height:6px;">
-                    <div id="barraGlobal" class="progress-bar bg-success" style="width:0%;"></div>
-                  </div>
+                <div class="col-md-4">
+                  <div class="text-muted fw-bold text-uppercase mb-1" style="font-size:0.65rem; letter-spacing:.5px;">Disponible</div>
+                  <div class="fw-bold text-success fs-5" id="panelDisponible">1,300,000</div>
                 </div>
               </div>
             </div>
@@ -683,20 +716,12 @@
                 </div>
                 <div class="d-flex gap-4 flex-wrap">
                   <div class="text-end">
-                    <div class="text-muted fw-bold" style="font-size:0.65rem;">Límite</div>
-                    <div class="fw-bold text-dark small">$900,000</div>
-                  </div>
-                  <div class="text-end border-start ps-3">
-                    <div class="text-muted fw-bold" style="font-size:0.65rem;">Asignado</div>
-                    <div class="fw-bold text-primary small" id="asignado-100901">$0</div>
+                    <div class="text-muted fw-bold" style="font-size:0.65rem;">Límite de Carga</div>
+                    <div class="fw-bold text-dark small">900,000</div>
                   </div>
                   <div class="text-end border-start ps-3">
                     <div class="text-muted fw-bold" style="font-size:0.65rem;">Disponible</div>
-                    <div class="fw-bold text-success ceco-disponible" id="disp-100901">$900,000</div>
-                  </div>
-                  <div class="text-end border-start ps-3">
-                    <div class="text-muted fw-bold" style="font-size:0.65rem;">% Consumido</div>
-                    <div class="fw-bold text-dark small" id="pct-100901">0.0%</div>
+                    <div class="fw-bold text-success ceco-disponible" id="disp-100901">900,000</div>
                   </div>
                 </div>
               </div>
@@ -747,7 +772,7 @@
                       <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
                       <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
                       <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-                      <td class="fw-bold text-dark bg-light fila-total">$0</td>
+                      <td class="fw-bold text-dark bg-light fila-total">0</td>
                     </tr>
                   </tbody>
                 </table>
@@ -763,10 +788,6 @@
           <!-- Acciones finales -->
           <div class="d-flex justify-content-between mt-4 pt-3 border-top border-secondary border-opacity-25">
             <button class="btn btn-outline-dark fw-bold px-4" onclick="irPaso(2)"><i class="bi bi-arrow-left me-1"></i> Anterior</button>
-            <div class="d-flex gap-2">
-              <button type="button" class="btn btn-warning fw-bold text-dark shadow-sm px-4"><i class="bi bi-save me-1"></i> Guardar Borrador</button>
-              <button type="button" class="btn btn-primary fw-bold shadow-sm px-5" onclick="simularEnvio()"><i class="bi bi-send-fill me-2"></i>Enviar a Autorización</button>
-            </div>
           </div>
 
         </div><!-- /paso-3 -->
@@ -776,6 +797,40 @@
 
   </main>
   <!-- ================= FIN DEL CONTENIDO PRINCIPAL ================= -->
+
+  <!-- Modal Confirmar Guardar Borrador -->
+  <div class="modal fade" id="modalBorrador" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-5">
+          <i class="bi bi-floppy-fill text-warning mb-3" style="font-size:3rem;"></i>
+          <h5 class="fw-bold text-dark mb-2">¿Guardar borrador?</h5>
+          <p class="small text-muted mb-4">La solicitud quedará guardada como borrador. Podrás retomar y completarla en otro momento.</p>
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
+            <button class="btn btn-warning fw-bold px-4" onclick="ejecutarBorrador()"><i class="bi bi-floppy me-1"></i> Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Confirmar Envío -->
+  <div class="modal fade" id="modalConfirmarEnvio" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-5">
+          <i class="bi bi-send-fill text-primary mb-3" style="font-size:3rem;"></i>
+          <h5 class="fw-bold text-dark mb-2">¿Enviar a autorización?</h5>
+          <p class="small text-muted mb-4">Una vez enviada, la solicitud pasará al flujo de revisión y ya no podrás editarla sin aprobación.</p>
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
+            <button class="btn btn-success fw-bold px-4" onclick="ejecutarEnvio()"><i class="bi bi-send-fill me-1"></i> Confirmar envío</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal de Envío Exitoso -->
   <div class="modal fade" id="modalEnvio" tabindex="-1" data-bs-backdrop="static">
@@ -961,7 +1016,7 @@
           suma += v;
           inp.classList.toggle('has-value', v > 0);
         });
-        row.querySelector('.fila-total').textContent = '$' + suma.toLocaleString('es-MX', { minimumFractionDigits: 0 });
+        row.querySelector('.fila-total').textContent = suma.toLocaleString('es-MX', { maximumFractionDigits: 0 });
         total += suma;
       });
 
@@ -970,13 +1025,16 @@
       const pct = Math.min(100, total / lim * 100);
       const over = disp < 0;
 
-      document.getElementById(`asignado-${ceco}`).textContent = '$' + total.toLocaleString('es-MX');
-      document.getElementById(`disp-${ceco}`).textContent = '$' + Math.abs(disp).toLocaleString('es-MX') + (over ? ' (excedido)' : '');
-      document.getElementById(`disp-${ceco}`).className = `fw-bold ceco-disponible ${over ? 'text-danger' : 'text-success'}`;
-      document.getElementById(`pct-${ceco}`).textContent = pct.toFixed(1) + '%';
+      const dispEl = document.getElementById(`disp-${ceco}`);
+      if (dispEl) {
+        dispEl.textContent = Math.abs(disp).toLocaleString('es-MX', { maximumFractionDigits: 0 }) + (over ? ' (excedido)' : '');
+        dispEl.className = `fw-bold ceco-disponible ${over ? 'text-danger' : 'text-success'}`;
+      }
       const barra = document.getElementById(`barra-${ceco}`);
-      barra.style.width = pct + '%';
-      barra.className = `progress-bar ${over ? 'bg-danger' : pct > 80 ? 'bg-warning' : 'bg-success'}`;
+      if (barra) {
+        barra.style.width = pct + '%';
+        barra.className = `progress-bar ${over ? 'bg-danger' : pct > 80 ? 'bg-warning' : 'bg-success'}`;
+      }
 
       actualizarGlobal();
     }
@@ -995,14 +1053,11 @@
       const pct = Math.min(110, totalAsig / LIMITE_GLOBAL * 100);
       const over = disp < 0;
 
-      document.getElementById('panelAsignado').textContent = '$' + totalAsig.toLocaleString('es-MX');
-      document.getElementById('panelDisponible').textContent = '$' + Math.abs(disp).toLocaleString('es-MX') + (over ? ' (excedido)' : '');
-      document.getElementById('panelDisponible').className = 'fw-bold ' + (over ? 'text-danger' : 'text-success');
-      document.getElementById('badgePct').textContent = pct.toFixed(1) + '%';
-      document.getElementById('badgePct').className = 'badge fw-bold ' + (over ? 'bg-danger bg-opacity-15 text-danger border border-danger border-opacity-25' : 'bg-success bg-opacity-10 text-success border border-success border-opacity-25');
-      const bg = document.getElementById('barraGlobal');
-      bg.style.width = pct + '%';
-      bg.className = 'progress-bar ' + (over ? 'bg-danger' : pct > 80 ? 'bg-warning' : 'bg-success');
+      const fmtN = n => n.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+      const pa = document.getElementById('panelAsignado');
+      const pd = document.getElementById('panelDisponible');
+      if (pa) pa.textContent = fmtN(totalAsig);
+      if (pd) { pd.textContent = fmtN(Math.abs(disp)) + (over ? ' (excedido)' : ''); pd.className = 'fw-bold fs-5 ' + (over ? 'text-danger' : 'text-success'); }
 
       document.getElementById('bloqueExcedente').style.display = over ? 'block' : 'none';
     }
@@ -1029,12 +1084,26 @@
           <option>19283 – Gemas</option><option>21328 – Originación</option>
         </select></td>
         ${Array(12).fill(0).map(() => `<td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('${ceco}')"></td>`).join('')}
-        <td class="fw-bold text-dark bg-light fila-total">$0</td>`;
+        <td class="fw-bold text-dark bg-light fila-total">0</td>`;
       body.appendChild(tr);
     }
 
-    function simularEnvio() {
+    // ── Modales de confirmación ───────────────────────
+    function confirmarAccion(tipo) {
+      const id = tipo === 'borrador' ? 'modalBorrador' : 'modalConfirmarEnvio';
+      new bootstrap.Modal(document.getElementById(id)).show();
+    }
+    function ejecutarBorrador() {
+      bootstrap.Modal.getInstance(document.getElementById('modalBorrador')).hide();
+      // lógica guardar borrador...
+      alert('Borrador guardado. (Demo)');
+    }
+    function ejecutarEnvio() {
+      bootstrap.Modal.getInstance(document.getElementById('modalConfirmarEnvio')).hide();
       new bootstrap.Modal(document.getElementById('modalEnvio')).show();
+    }
+    function simularEnvio() {
+      confirmarAccion('enviar');
     }
 
     // Inicializar
