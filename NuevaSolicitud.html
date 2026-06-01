@@ -94,6 +94,34 @@
     .ceco-row td { font-size: 0.8rem; padding: 5px 8px; }
     .ceco-row.parent-row { background: #f8f9fa; }
     .ceco-sub-row td { font-size: 0.75rem; padding: 4px 8px 4px 28px; }
+
+    /* ── Catálogo de cuentas ─────────────────────── */
+    .cuenta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background .1s;
+    }
+    .cuenta-item:hover { background: rgba(13,110,253,.04); }
+    .cuenta-item:has(.cuenta-checkbox:checked) {
+      background: rgba(13,110,253,.07);
+      box-shadow: inset 3px 0 0 #0d6efd;
+    }
+    .cta-cod {
+      display: block;
+      font-size: .67rem;
+      font-weight: 600;
+      color: #6c757d;
+      line-height: 1.1;
+      letter-spacing: .02em;
+    }
+    .cta-nom {
+      display: block;
+      font-size: .8rem;
+      color: #212529;
+      line-height: 1.3;
+    }
   </style>
 </head>
 
@@ -699,146 +727,117 @@
             <strong>Regla Operativa:</strong> Las cuentas seleccionadas se asignarán a todos los CeCos elegidos en el Paso 1.
           </div>
 
-          <div class="bg-white rounded border border-secondary border-opacity-10 shadow-sm p-3 mb-4">
-            <div class="input-group input-group-sm shadow-sm mb-3">
-              <span class="input-group-text bg-light text-dark"><i class="bi bi-search"></i></span>
-              <input type="text" class="form-control border-start-0 shadow-none" placeholder="Buscar cuenta presupuestal…" oninput="filtrarCuentas(this.value)">
+          <div class="bg-white rounded border border-secondary border-opacity-10 shadow-sm mb-4" style="overflow:hidden;">
+
+            <!-- Buscador sticky -->
+            <div class="p-3 border-bottom border-secondary border-opacity-10" style="position:sticky; top:0; background:#fff; z-index:2;">
+              <div class="input-group input-group-sm">
+                <span class="input-group-text bg-light text-muted border-end-0"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control border-start-0 shadow-none" placeholder="Buscar cuenta presupuestal…" oninput="filtrarCuentas(this.value)">
+              </div>
             </div>
 
-            <!-- Grid 2 columnas -->
-            <div class="row g-0" id="gridCuentas">
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="60443" id="cta1" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta1">60443 – Sesiones y Eventos</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="60444" id="cta2" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta2">60444 – Patrocinios</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609010" id="cta3" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta3">609010 – Radio</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609011" id="cta4" checked onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta4">609011 – Televisión</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609012" id="cta5" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta5">609012 – Cine</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609013" id="cta6" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta6">609013 – Material punto de venta</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609014" id="cta7" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta7">609014 – Vía Pública</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609015" id="cta8" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta8">609015 – Prensa / Revistas</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609016" id="cta9" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta9">609016 – Relaciones Públicas</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609017" id="cta10" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta10">609017 – Influencer Marketing</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609018" id="cta11" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta11">609018 – Producción Creativa</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609019" id="cta12" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta12">609019 – Diseño y Arte</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609020" id="cta13" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta13">609020 – Investigación de Mercado</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609021" id="cta14" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta14">609021 – Redes Sociales</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609022" id="cta15" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta15">609022 – Email Marketing</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609023" id="cta16" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta16">609023 – Promociones</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609024" id="cta17" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta17">609024 – Sorteos y Concursos</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609025" id="cta18" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta18">609025 – Activaciones BTL</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609026" id="cta19" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta19">609026 – Muestras y Demostraciones</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2 border-bottom border-secondary border-opacity-10">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609027" id="cta20" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta20">609027 – Merchandising</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609028" id="cta21" checked onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta21">609028 – Publicidad Digital</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-check px-3 py-2">
-                  <input class="form-check-input cuenta-checkbox border-secondary shadow-none" type="checkbox" value="609029" id="cta22" onchange="actualizarContCuentas()">
-                  <label class="form-check-label small text-dark w-100" for="cta22">609029 – Programática</label>
-                </div>
-              </div>
+            <!-- Grid 3 columnas con scroll -->
+            <div id="gridCuentas" style="max-height:360px; overflow-y:auto; display:grid; grid-template-columns:repeat(3,1fr);">
+
+              <label for="cta1" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="60443" id="cta1" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">60443</span><span class="cta-nom">Sesiones y Eventos</span></span>
+              </label>
+              <label for="cta2" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="60444" id="cta2" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">60444</span><span class="cta-nom">Patrocinios</span></span>
+              </label>
+              <label for="cta3" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609010" id="cta3" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609010</span><span class="cta-nom">Radio</span></span>
+              </label>
+
+              <label for="cta4" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609011" id="cta4" checked onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609011</span><span class="cta-nom">Televisión</span></span>
+              </label>
+              <label for="cta5" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609012" id="cta5" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609012</span><span class="cta-nom">Cine</span></span>
+              </label>
+              <label for="cta6" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609013" id="cta6" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609013</span><span class="cta-nom">Material punto de venta</span></span>
+              </label>
+
+              <label for="cta7" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609014" id="cta7" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609014</span><span class="cta-nom">Vía Pública</span></span>
+              </label>
+              <label for="cta8" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609015" id="cta8" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609015</span><span class="cta-nom">Prensa / Revistas</span></span>
+              </label>
+              <label for="cta9" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609016" id="cta9" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609016</span><span class="cta-nom">Relaciones Públicas</span></span>
+              </label>
+
+              <label for="cta10" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609017" id="cta10" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609017</span><span class="cta-nom">Influencer Marketing</span></span>
+              </label>
+              <label for="cta11" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609018" id="cta11" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609018</span><span class="cta-nom">Producción Creativa</span></span>
+              </label>
+              <label for="cta12" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609019" id="cta12" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609019</span><span class="cta-nom">Diseño y Arte</span></span>
+              </label>
+
+              <label for="cta13" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609020" id="cta13" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609020</span><span class="cta-nom">Investigación de Mercado</span></span>
+              </label>
+              <label for="cta14" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609021" id="cta14" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609021</span><span class="cta-nom">Redes Sociales</span></span>
+              </label>
+              <label for="cta15" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609022" id="cta15" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609022</span><span class="cta-nom">Email Marketing</span></span>
+              </label>
+
+              <label for="cta16" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609023" id="cta16" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609023</span><span class="cta-nom">Promociones</span></span>
+              </label>
+              <label for="cta17" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609024" id="cta17" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609024</span><span class="cta-nom">Sorteos y Concursos</span></span>
+              </label>
+              <label for="cta18" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609025" id="cta18" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609025</span><span class="cta-nom">Activaciones BTL</span></span>
+              </label>
+
+              <label for="cta19" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609026" id="cta19" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609026</span><span class="cta-nom">Muestras y Demostraciones</span></span>
+              </label>
+              <label for="cta20" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609027" id="cta20" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609027</span><span class="cta-nom">Merchandising</span></span>
+              </label>
+              <label class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10" style="pointer-events:none;"></label>
+
+              <label for="cta21" class="cuenta-item px-3 py-2 border-end border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609028" id="cta21" checked onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609028</span><span class="cta-nom">Publicidad Digital</span></span>
+              </label>
+              <label for="cta22" class="cuenta-item px-3 py-2 border-end border-secondary border-opacity-10">
+                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609029" id="cta22" onchange="actualizarContCuentas()">
+                <span><span class="cta-cod">609029</span><span class="cta-nom">Programática</span></span>
+              </label>
+              <label class="cuenta-item px-3 py-2 border-secondary border-opacity-10" style="pointer-events:none;"></label>
+
             </div>
           </div>
 
@@ -1399,6 +1398,13 @@
     }
 
     // ── Cuentas ───────────────────────────────────────
+    function filtrarCuentas(q) {
+      const term = q.toLowerCase().trim();
+      document.querySelectorAll('.cuenta-item').forEach(label => {
+        const txt = label.textContent.toLowerCase();
+        label.style.display = (!term || txt.includes(term)) ? '' : 'none';
+      });
+    }
     function toggleTodasCuentas(sw) {
       document.querySelectorAll('.cuenta-checkbox').forEach(c => c.checked = sw.checked);
       actualizarContCuentas();
