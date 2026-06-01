@@ -947,300 +947,610 @@
 
 
   <main class="page-content">
-  <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-4">
-    <div class="breadcrumb-title pe-3">Catálogos</div>
-    <div class="ps-3">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mb-0 p-0">
-          <li class="breadcrumb-item"><a href="javascript:;"><i class="bi bi-diagram-3"></i></a></li>
-          <li class="breadcrumb-item active" aria-current="page">Centros de Costos (CeCos)</li>
-        </ol>
-      </nav>
-    </div>
-    <div class="ms-auto">
-      <button class="btn btn-outline-primary shadow-sm fw-bold"><i class="bi bi-cloud-arrow-down me-2"></i>Sincronizar SAP</button>
-    </div>
-  </div>
 
-  <div class="card shadow-sm border-0 radius-10">
-    <div class="card-body p-0">
-      <div class="d-flex" style="height: calc(100vh - 160px); min-height: 600px;">
-        
-        <div class="bg-white border-end d-flex flex-column" style="width: 400px; min-width: 400px;">
-          <div class="p-3 bg-light border-bottom">
-            <h6 class="fw-bold text-dark mb-3"><i class="bi bi-funnel-fill text-primary me-2"></i>Buscador de Estructuras</h6>
-            <div class="input-group input-group-sm mb-3 shadow-sm">
-              <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
-              <input type="text" class="form-control border-start-0" placeholder="Buscar CeCo específico...">
-            </div>
-            
-            <ul class="nav nav-pills nav-fill shadow-sm rounded bg-white p-1" role="tablist" style="font-size: 0.8rem;">
-              <li class="nav-item" role="presentation">
-                <a class="nav-link fw-bold py-2 rounded active" data-bs-toggle="pill" href="#tree-ejecutiva" role="tab" aria-selected="true">Estructura Ejecutiva</a>
-              </li>
-              <li class="nav-item" role="presentation">
-                <a class="nav-link fw-bold py-2 rounded" data-bs-toggle="pill" href="#tree-operativa" role="tab" aria-selected="false" tabindex="-1">Estructura Operativa</a>
-              </li>
-            </ul>
-          </div>
+    <!-- ── Breadcrumb + acciones globales ── -->
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+      <div class="breadcrumb-title pe-3">Catálogos</div>
+      <div class="ps-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0 p-0">
+            <li class="breadcrumb-item"><a href="javascript:;"><i class="bi bi-diagram-3"></i></a></li>
+            <li class="breadcrumb-item active" aria-current="page">Centros de Costos</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="ms-auto d-flex gap-2">
+        <button class="btn btn-outline-secondary shadow-sm fw-bold btn-sm" data-bs-toggle="tooltip" title="Sincroniza datos maestros desde el sistema de origen sin alterar configuraciones locales">
+          <i class="bi bi-arrow-clockwise me-1"></i>Refresh SAP
+        </button>
+        <a href="NuevoCeCo.html" class="btn btn-primary shadow-sm fw-bold btn-sm">
+          <i class="bi bi-plus-circle-fill me-1"></i>Nuevo Centro de Costo
+        </a>
+      </div>
+    </div>
 
-          <div class="overflow-auto flex-grow-1 p-2 tab-content">
-            
-            <div class="tab-pane fade active show" id="tree-ejecutiva" role="tabpanel">
-              <div class="accordion accordion-flush" id="accordionEjecutiva">
-                <div class="accordion-item border-0">
-                  <h2 class="accordion-header" id="headingAzteca">
-                    <button class="accordion-button py-2 px-3 fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAzteca" aria-expanded="true" style="font-size: 0.85rem;">
-                      <i class="bi bi-building-fill text-warning me-2 fs-5"></i>6864 - TV AZTECA
-                    </button>
-                  </h2>
-                  <div id="collapseAzteca" class="accordion-collapse collapse show" data-bs-parent="#accordionEjecutiva">
-                    <div class="accordion-body p-0 border-start border-primary ms-3">
-                      <div class="list-group list-group-flush">
-                        <div class="list-group-item py-1 ps-3 border-0 fw-bold text-muted small bg-light">Azteca Uno</div>
-                        <button class="list-group-item list-group-item-action py-2 ps-4 small border-0 bg-primary-subtle text-primary fw-bold">
-                          <i class="bi bi-diagram-3-fill me-2"></i>100901 - Campañas Prime Time
-                        </button>
-                        <div class="list-group-item py-1 ps-3 border-0 fw-bold text-muted small bg-light mt-2">ADN 40</div>
-                        <button class="list-group-item list-group-item-action py-2 ps-4 small border-0"><i class="bi bi-diagram-3 text-muted me-2"></i>291374 - Mercadotecnia Digital</button>
-                      </div>
+    <!-- ── Layout principal: panel izquierdo + panel derecho ── -->
+    <div class="card shadow-sm border-0 radius-10">
+      <div class="card-body p-0">
+        <div class="d-flex" style="height: calc(100vh - 155px); min-height: 620px;">
+
+          <!-- ════════════════════════════════════════
+               PANEL IZQUIERDO — Filtros + Árbol
+               ════════════════════════════════════════ -->
+          <div class="bg-white border-end d-flex flex-column" style="width: 390px; min-width: 390px;">
+
+            <!-- Cabecera: búsqueda + filtros avanzados -->
+            <div class="p-3 bg-light border-bottom">
+              <div class="input-group input-group-sm shadow-sm mb-2">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" class="form-control border-start-0" placeholder="Buscar por número o nombre…">
+                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosAvanzados" aria-expanded="false">
+                  <i class="bi bi-funnel"></i>
+                </button>
+              </div>
+
+              <!-- Filtros avanzados (colapsables) -->
+              <div class="collapse" id="filtrosAvanzados">
+                <div class="pt-2 d-flex flex-column gap-2">
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <label class="form-label small fw-bold text-muted mb-1">Estatus</label>
+                      <select class="form-select form-select-sm">
+                        <option value="">Todos</option>
+                        <option>Activo</option>
+                        <option>Inactivo</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label small fw-bold text-muted mb-1">División</label>
+                      <select class="form-select form-select-sm">
+                        <option value="">Todas</option>
+                        <option>Oferteo</option>
+                        <option>Marca</option>
+                        <option>Estrategia</option>
+                        <option>Sin División</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label small fw-bold text-muted mb-1">País</label>
+                      <select class="form-select form-select-sm">
+                        <option value="">Todos</option>
+                        <option>México</option>
+                        <option>Guatemala</option>
+                        <option>Honduras</option>
+                        <option>Panamá</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label small fw-bold text-muted mb-1">Grupo Empresarial</label>
+                      <select class="form-select form-select-sm">
+                        <option value="">Todos</option>
+                        <option>Grupo Salinas</option>
+                        <option>TV Azteca</option>
+                        <option>Grupo Elektra</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label small fw-bold text-muted mb-1">Responsable</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="Nombre o ID del responsable…">
                     </div>
                   </div>
-                </div>
-                
-                <div class="accordion-item border-0">
-                  <h2 class="accordion-header" id="headingElektra">
-                    <button class="accordion-button collapsed py-2 px-3 fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseElektra" aria-expanded="false" style="font-size: 0.85rem;">
-                      <i class="bi bi-building-fill text-warning me-2 fs-5"></i>6863 - GRUPO ELEKTRA
-                    </button>
-                  </h2>
-                  <div id="collapseElektra" class="accordion-collapse collapse" data-bs-parent="#accordionEjecutiva">
-                    <div class="accordion-body p-0 border-start ms-4 ms-2">
-                      <div class="list-group list-group-flush">
-                        <div class="list-group-item py-1 ps-3 border-0 fw-bold text-muted small bg-light">Tiendas Elektra</div>
-                        <button class="list-group-item list-group-item-action py-2 ps-4 small border-0"><i class="bi bi-diagram-3 text-muted me-2"></i>100500 - Finanzas Retail</button>
-                      </div>
-                    </div>
+                  <div class="d-flex gap-2 justify-content-end pt-1">
+                    <button class="btn btn-sm btn-outline-secondary">Limpiar</button>
+                    <button class="btn btn-sm btn-primary">Aplicar filtros</button>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="tab-pane fade" id="tree-operativa" role="tabpanel">
-              <div class="accordion accordion-flush" id="accordionOperativa">
-                <div class="accordion-item border-0">
-                  <h2 class="accordion-header" id="headingMktMasivo">
-                    <button class="accordion-button py-2 px-3 fw-bold text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMktMasivo" aria-expanded="false" style="font-size: 0.85rem;">
-                      <i class="bi bi-megaphone-fill text-info me-2 fs-5"></i>MARKETING MASIVO
-                    </button>
-                  </h2>
-                  <div id="collapseMktMasivo" class="accordion-collapse collapse" data-bs-parent="#accordionOperativa" style="">
-                    <div class="accordion-body p-0 border-start border-info ms-3">
-                      <div class="list-group list-group-flush">
-                        <div class="list-group-item py-1 ps-3 border-0 fw-bold text-muted small bg-light">Medios Tradicionales (TV/Radio)</div>
-                        <button class="list-group-item list-group-item-action py-2 ps-4 small border-0 bg-primary-subtle text-primary fw-bold">
-                          <i class="bi bi-diagram-3-fill me-2"></i>100901 - Campañas Prime Time
-                        </button>
-                        <button class="list-group-item list-group-item-action py-2 ps-4 small border-0"><i class="bi bi-diagram-3 text-muted me-2"></i>100905 - Pauta Radio Nacional</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="accordion-item border-0">
-                  <h2 class="accordion-header" id="headingMktDigital">
-                    <button class="accordion-button py-2 px-3 fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMktDigital" aria-expanded="true" style="font-size: 0.85rem;">
-                      <i class="bi bi-laptop text-info me-2 fs-5"></i>MARKETING DIGITAL
-                    </button>
-                  </h2>
-                  <div id="collapseMktDigital" class="accordion-collapse collapse show" data-bs-parent="#accordionOperativa" style="">
-                    <div class="accordion-body p-0 border-start ms-4 ms-2">
-                      <div class="list-group list-group-flush">
-                        <div class="list-group-item py-1 ps-3 border-0 fw-bold text-muted small bg-light">Redes Sociales</div>
-                        <button class="list-group-item list-group-item-action py-2 ps-4 small border-0"><i class="bi bi-diagram-3 text-muted me-2"></i>291374 - Mercadotecnia Digital</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="accordion-item border-0">
-                  <h2 class="accordion-header" id="headingEventos">
-                    <button class="accordion-button collapsed py-2 px-3 fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEventos" aria-expanded="false" style="font-size: 0.85rem;">
-                      <i class="bi bi-calendar-star-fill text-info me-2 fs-5"></i>EVENTOS Y BTL
-                    </button>
-                  </h2>
-                  <div id="collapseEventos" class="accordion-collapse collapse" data-bs-parent="#accordionOperativa">
-                    <div class="accordion-body p-0 border-start ms-4 ms-2">
-                      <div class="list-group list-group-flush">
-                        <button class="list-group-item list-group-item-action py-2 ps-4 small border-0 text-muted fst-italic">No hay CeCos asignados...</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="flex-grow-1 bg-light overflow-auto p-4">
-          
-          <div class="d-flex justify-content-between align-items-start mb-4 border-bottom pb-3">
-            <div>
-              <span class="badge bg-dark mb-2 px-3 py-2 fs-6 shadow-sm">CeCo: 100901</span>
-              <h4 class="fw-bold text-dark mb-1">Campañas Prime Time</h4>
-              <p class="text-muted mb-0 small">Centro de costo de impacto compartido</p>
-            </div>
-            <div>
-              <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 fs-6"><i class="bi bi-check-circle-fill me-2"></i>Activo en SAP</span>
-            </div>
-          </div>
-
-          <div class="card border-0 shadow-sm radius-10">
-            <div class="card-header bg-white border-bottom p-0">
-              <ul class="nav nav-tabs px-3 pt-3" role="tablist">
+              <!-- Tabs Ejecutiva / Operativa -->
+              <ul class="nav nav-pills nav-fill shadow-sm rounded bg-white p-1 mt-2" role="tablist" style="font-size: 0.78rem;">
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link fw-bold active" data-bs-toggle="tab" href="#vista-ejecutiva" role="tab" aria-selected="true">
-                    <i class="bi bi-briefcase-fill me-2"></i>Estructura Ejecutiva (Negocio)
+                  <a class="nav-link fw-bold py-2 rounded active" data-bs-toggle="pill" href="#tree-ejecutiva" role="tab" aria-selected="true">
+                    <i class="bi bi-briefcase me-1"></i>Ejecutiva
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link fw-bold" data-bs-toggle="tab" href="#vista-operativa" role="tab" aria-selected="false" tabindex="-1">
-                    <i class="bi bi-gear-fill me-2"></i>Estructura Operativa (Ejecución)
+                  <a class="nav-link fw-bold py-2 rounded" data-bs-toggle="pill" href="#tree-operativa" role="tab" aria-selected="false" tabindex="-1">
+                    <i class="bi bi-gear me-1"></i>Operativa
                   </a>
                 </li>
               </ul>
             </div>
 
-            <div class="card-body p-4">
-              <div class="tab-content">
-                
-                <div class="tab-pane fade active show" id="vista-ejecutiva" role="tabpanel">
-                  <div class="row g-4 mb-4">
-                    <div class="col-md-12">
-                      <h6 class="fw-bold text-primary mb-3"><i class="bi bi-diagram-2-fill me-2"></i>Impacto Financiero de Negocio</h6>
-                      <div class="p-3 bg-light border rounded shadow-sm d-flex align-items-center">
-                        <div class="me-4 text-center border-end pe-4">
-                          <small class="text-muted fw-bold text-uppercase d-block mb-1">Grupo (Holding)</small>
-                          <span class="fs-6 fw-bold text-dark">Grupo Salinas</span>
-                        </div>
-                        <div class="me-4 text-center border-end pe-4">
-                          <small class="text-muted fw-bold text-uppercase d-block mb-1">Empresa / Negocio</small>
-                          <span class="fs-6 fw-bold text-dark">TV Azteca</span>
-                        </div>
-                        <div class="text-center">
-                          <small class="text-muted fw-bold text-uppercase d-block mb-1">Unidad de Negocio / Canal</small>
-                          <span class="fs-6 fw-bold text-dark">Azteca Uno</span>
+            <!-- Árbol jerárquico -->
+            <div class="overflow-auto flex-grow-1 p-2 tab-content">
+
+              <!-- Estructura Ejecutiva -->
+              <div class="tab-pane fade active show" id="tree-ejecutiva" role="tabpanel">
+                <div class="accordion accordion-flush" id="accordionEjecutiva">
+
+                  <!-- N2: TV AZTECA -->
+                  <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAzteca" aria-expanded="true" style="font-size:0.82rem;">
+                        <i class="bi bi-building-fill text-warning me-2"></i>6864 – TV Azteca
+                      </button>
+                    </h2>
+                    <div id="collapseAzteca" class="accordion-collapse collapse show">
+                      <div class="accordion-body p-0 ps-3 border-start border-warning-subtle ms-3">
+
+                        <!-- N3: Azteca Uno -->
+                        <div class="list-group list-group-flush">
+                          <div class="list-group-item py-1 px-2 border-0 small fw-bold text-muted bg-light" style="font-size:0.75rem; letter-spacing:.04em;">
+                            <i class="bi bi-collection text-secondary me-1"></i>Azteca Uno
+                          </div>
+                          <!-- CeCo activo seleccionado -->
+                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 bg-primary-subtle text-primary fw-bold d-flex align-items-center justify-content-between" style="font-size:0.82rem;" onclick="mostrarDetalle()">
+                            <span><i class="bi bi-diagram-3-fill me-2"></i>100901 – Campañas Prime Time</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
+                          </button>
+                          <!-- CeCo inactivo -->
+                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between" style="font-size:0.82rem;">
+                            <span class="text-muted"><i class="bi bi-diagram-3 text-muted me-2"></i>100888 – Patrocinios Azteca Uno</span>
+                            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle" style="font-size:0.68rem;">Inactivo</span>
+                          </button>
+
+                          <!-- N3: ADN 40 -->
+                          <div class="list-group-item py-1 px-2 border-0 small fw-bold text-muted bg-light mt-1" style="font-size:0.75rem; letter-spacing:.04em;">
+                            <i class="bi bi-collection text-secondary me-1"></i>ADN 40
+                          </div>
+                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between" style="font-size:0.82rem;">
+                            <span><i class="bi bi-diagram-3 text-muted me-2"></i>291374 – Mercadotecnia Digital</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <h6 class="fw-bold text-primary mb-3"><i class="bi bi-cash-stack me-2"></i>Salud Presupuestal del Negocio (2026)</h6>
-                  <div class="row row-cols-1 row-cols-md-3 g-3 mb-4">
-                    <div class="col">
-                      <div class="card bg-white border border-primary-subtle shadow-sm h-100">
-                        <div class="card-body py-3">
-                          <p class="mb-0 text-muted fw-bold small text-uppercase">Presupuesto Asignado</p>
-                          <h4 class="mb-0 fw-bold text-primary mt-1">$45,000,000 MXN</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card bg-white border border-warning-subtle shadow-sm h-100">
-                        <div class="card-body py-3">
-                          <p class="mb-0 text-muted fw-bold small text-uppercase">Gastado / Comprometido</p>
-                          <h4 class="mb-0 fw-bold text-warning mt-1">$28,500,000 MXN</h4>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="card bg-white border border-success-subtle shadow-sm h-100">
-                        <div class="card-body py-3">
-                          <p class="mb-0 text-muted fw-bold small text-uppercase">Disponible MKT</p>
-                          <h4 class="mb-0 fw-bold text-success mt-1">$16,500,000 MXN</h4>
+                  <!-- N2: GRUPO ELEKTRA -->
+                  <div class="accordion-item border-0 mt-1">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseElektra" style="font-size:0.82rem;">
+                        <i class="bi bi-building-fill text-warning me-2"></i>6863 – Grupo Elektra
+                      </button>
+                    </h2>
+                    <div id="collapseElektra" class="accordion-collapse collapse">
+                      <div class="accordion-body p-0 ps-3 border-start border-warning-subtle ms-3">
+                        <div class="list-group list-group-flush">
+                          <div class="list-group-item py-1 px-2 border-0 small fw-bold text-muted bg-light" style="font-size:0.75rem; letter-spacing:.04em;">
+                            <i class="bi bi-collection text-secondary me-1"></i>Tiendas Elektra
+                          </div>
+                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between" style="font-size:0.82rem;">
+                            <span><i class="bi bi-diagram-3 text-muted me-2"></i>100500 – Finanzas Retail</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="alert alert-info border-info-subtle d-flex align-items-center mb-0">
-                    <i class="bi bi-bar-chart-fill fs-4 me-3 text-info"></i>
-                    <div>
-                      El gasto de este CeCo impacta directamente en el <strong>P&amp;L de TV Azteca</strong>. Requiere autorización de la Dirección de Finanzas del Negocio para traspasos mayores a $1M.
+                </div>
+              </div>
+
+              <!-- Estructura Operativa -->
+              <div class="tab-pane fade" id="tree-operativa" role="tabpanel">
+                <div class="accordion accordion-flush" id="accordionOperativa">
+
+                  <!-- División: Oferteo -->
+                  <div class="accordion-item border-0">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button py-2 px-3 fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMktMasivo" style="font-size:0.82rem;">
+                        <i class="bi bi-megaphone-fill text-info me-2"></i>Oferteo
+                      </button>
+                    </h2>
+                    <div id="collapseMktMasivo" class="accordion-collapse collapse">
+                      <div class="accordion-body p-0 ps-3 border-start border-info-subtle ms-3">
+                        <div class="list-group list-group-flush">
+                          <div class="list-group-item py-1 px-2 border-0 small fw-bold text-muted bg-light" style="font-size:0.75rem; letter-spacing:.04em;">
+                            <i class="bi bi-collection text-secondary me-1"></i>Medios Tradicionales
+                          </div>
+                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 bg-primary-subtle text-primary fw-bold d-flex align-items-center justify-content-between" style="font-size:0.82rem;" onclick="mostrarDetalle()">
+                            <span><i class="bi bi-diagram-3-fill me-2"></i>100901 – Campañas Prime Time</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
+                          </button>
+                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between" style="font-size:0.82rem;">
+                            <span><i class="bi bi-diagram-3 text-muted me-2"></i>100905 – Pauta Radio Nacional</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
+
+                  <!-- División: Marca -->
+                  <div class="accordion-item border-0 mt-1">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMktDigital" aria-expanded="true" style="font-size:0.82rem;">
+                        <i class="bi bi-laptop text-info me-2"></i>Marca
+                      </button>
+                    </h2>
+                    <div id="collapseMktDigital" class="accordion-collapse collapse show">
+                      <div class="accordion-body p-0 ps-3 border-start border-info-subtle ms-3">
+                        <div class="list-group list-group-flush">
+                          <div class="list-group-item py-1 px-2 border-0 small fw-bold text-muted bg-light" style="font-size:0.75rem; letter-spacing:.04em;">
+                            <i class="bi bi-collection text-secondary me-1"></i>Redes Sociales
+                          </div>
+                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between" style="font-size:0.82rem;">
+                            <span><i class="bi bi-diagram-3 text-muted me-2"></i>291374 – Mercadotecnia Digital</span>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- División: Estrategia -->
+                  <div class="accordion-item border-0 mt-1">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEventos" style="font-size:0.82rem;">
+                        <i class="bi bi-lightbulb text-info me-2"></i>Estrategia
+                      </button>
+                    </h2>
+                    <div id="collapseEventos" class="accordion-collapse collapse">
+                      <div class="accordion-body p-0 ps-3 border-start border-info-subtle ms-3">
+                        <p class="text-muted small fst-italic py-2 mb-0 ps-2">No se encontraron CeCos con los filtros actuales.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <!-- fin árbol -->
+
+          </div>
+          <!-- fin panel izquierdo -->
+
+
+          <!-- ════════════════════════════════════════
+               PANEL DERECHO — Estado vacío / Detalle
+               ════════════════════════════════════════ -->
+
+          <!-- Estado vacío (visible por defecto) -->
+          <div class="flex-grow-1 d-flex align-items-center justify-content-center bg-light" id="panelVacio">
+            <div class="text-center text-muted px-4">
+              <i class="bi bi-diagram-3 display-3 text-secondary opacity-25"></i>
+              <h6 class="mt-3 fw-bold">Selecciona un Centro de Costo</h6>
+              <p class="small mb-0">Haz clic sobre cualquier CeCo de la jerarquía para ver su información detallada.</p>
+            </div>
+          </div>
+
+          <!-- Detalle del CeCo (oculto hasta seleccionar) -->
+          <div class="flex-grow-1 bg-light overflow-auto d-none" id="panelDetalle">
+
+            <!-- Cabecera del detalle -->
+            <div class="bg-white border-bottom px-4 py-3 d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-3">
+                <div>
+                  <div class="d-flex align-items-center gap-2 mb-1">
+                    <span class="badge bg-dark px-3 py-2 fs-6 shadow-sm">100901</span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2">
+                      <i class="bi bi-check-circle-fill me-1"></i>Activo
+                    </span>
+                  </div>
+                  <h5 class="fw-bold text-dark mb-0">Campañas Prime Time</h5>
+                  <small class="text-muted"><i class="bi bi-diagram-2 me-1"></i>CeCo padre: <strong>6864 – TV Azteca</strong></small>
+                </div>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-secondary shadow-sm" data-bs-toggle="tooltip" title="Sincronizar datos maestros de este CeCo desde el sistema de origen">
+                  <i class="bi bi-arrow-clockwise"></i>
+                </button>
+                <a href="EditarCeCo.html" class="btn btn-sm btn-outline-primary shadow-sm fw-bold">
+                  <i class="bi bi-pencil-fill me-1"></i>Editar
+                </a>
+                <button class="btn btn-sm btn-outline-danger shadow-sm fw-bold" data-bs-toggle="modal" data-bs-target="#modalEliminarCeCo">
+                  <i class="bi bi-trash3 me-1"></i>Eliminar
+                </button>
+              </div>
+            </div>
+
+            <!-- Tabs del detalle -->
+            <div class="px-4 pt-3">
+              <div class="card border-0 shadow-sm radius-10">
+                <div class="card-header bg-white border-bottom p-0">
+                  <ul class="nav nav-tabs px-3 pt-3" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link fw-bold active" data-bs-toggle="tab" href="#tab-general" role="tab" aria-selected="true">
+                        <i class="bi bi-info-circle me-1"></i>Datos Generales
+                      </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link fw-bold" data-bs-toggle="tab" href="#tab-cuentas" role="tab" aria-selected="false" tabindex="-1">
+                        <i class="bi bi-receipt me-1"></i>Cuentas Asociadas
+                        <span class="badge bg-primary-subtle text-primary ms-1">3</span>
+                      </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link fw-bold" data-bs-toggle="tab" href="#tab-historial" role="tab" aria-selected="false" tabindex="-1">
+                        <i class="bi bi-clock-history me-1"></i>Historial
+                      </a>
+                    </li>
+                  </ul>
                 </div>
 
-                <div class="tab-pane fade" id="vista-operativa" role="tabpanel">
-                  <div class="row g-4">
-                    <div class="col-md-12">
-                      <h6 class="fw-bold border-bottom pb-2 mb-3 text-primary"><i class="bi bi-tag-fill me-2"></i>Clasificación Operativa MKT</h6>
-                      <div class="row g-3">
-                        <div class="col-md-4">
-                          <label class="small fw-bold text-muted text-uppercase">Dirección Funcional</label>
-                          <input type="text" class="form-control bg-light fw-bold" value="Marketing Masivo" readonly="">
+                <div class="card-body p-4">
+                  <div class="tab-content">
+
+                    <!-- ── Tab 1: Datos Generales ── -->
+                    <div class="tab-pane fade active show" id="tab-general" role="tabpanel">
+
+                      <!-- Identificadores técnicos (inmutables) -->
+                      <h6 class="fw-bold text-primary mb-3 d-flex align-items-center gap-2">
+                        <i class="bi bi-lock-fill fs-6"></i>Identificadores Técnicos
+                        <span class="badge bg-secondary-subtle text-secondary fw-normal" style="font-size:0.7rem;">Solo lectura · no modificables</span>
+                      </h6>
+                      <div class="row g-3 mb-4">
+                        <div class="col-md-3">
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">Número CeCo</label>
+                          <input type="text" class="form-control form-control-sm bg-light fw-bold" value="100901" readonly>
+                        </div>
+                        <div class="col-md-5">
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">Nombre CeCo</label>
+                          <input type="text" class="form-control form-control-sm bg-light" value="Campañas Prime Time" readonly>
                         </div>
                         <div class="col-md-4">
-                          <label class="small fw-bold text-muted text-uppercase">Tipo de Operación / Medio</label>
-                          <select class="form-select shadow-sm fw-bold border-primary text-primary">
-                            <option>Digital / Redes Sociales</option>
-                            <option selected="">Medios Tradicionales (TV/Radio)</option>
-                            <option>Eventos y BTL</option>
-                            <option>Producción de Contenido</option>
-                          </select>
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">Moneda</label>
+                          <input type="text" class="form-control form-control-sm bg-light" value="MXN – Peso Mexicano" readonly>
                         </div>
-                        <div class="col-md-4">
-                          <label class="small fw-bold text-muted text-uppercase">Responsable Operativo</label>
-                          <div class="input-group shadow-sm">
-                            <input type="text" class="form-control" value="801245 - Carlos Mendoza">
-                            <button class="btn btn-outline-primary"><i class="bi bi-search"></i></button>
+                        <div class="col-md-3">
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">Número CeCo Padre</label>
+                          <input type="text" class="form-control form-control-sm bg-light fw-bold" value="6864" readonly>
+                        </div>
+                        <div class="col-md-9">
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">Nombre CeCo Padre</label>
+                          <input type="text" class="form-control form-control-sm bg-light" value="TV Azteca" readonly>
+                        </div>
+                      </div>
+
+                      <!-- Atributos operativos (editables en pantalla de edición) -->
+                      <h6 class="fw-bold text-primary mb-3 d-flex align-items-center gap-2">
+                        <i class="bi bi-sliders fs-6"></i>Atributos Operativos
+                      </h6>
+                      <div class="row g-3 mb-4">
+                        <div class="col-md-3">
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">Estatus</label>
+                          <div><span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2"><i class="bi bi-check-circle-fill me-1"></i>Activo</span></div>
+                        </div>
+                        <div class="col-md-3">
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">División</label>
+                          <div class="fw-semibold">Oferteo</div>
+                        </div>
+                        <div class="col-md-3">
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">País</label>
+                          <div class="fw-semibold"><i class="bi bi-geo-alt-fill text-danger me-1"></i>México</div>
+                        </div>
+                        <div class="col-md-3">
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">Fecha de Alta</label>
+                          <div class="fw-semibold">10/01/2026</div>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">Responsable</label>
+                          <div class="fw-semibold">801245 – Carlos Mendoza</div>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label small fw-bold text-muted text-uppercase mb-1">Grupo Empresarial</label>
+                          <div class="fw-semibold">Grupo Salinas</div>
+                        </div>
+                      </div>
+
+                      <!-- Clasificaciones N2–N10 (colapsable) -->
+                      <div class="border rounded p-0 mb-2">
+                        <button class="btn btn-light btn-sm w-100 text-start fw-bold py-2 px-3 rounded" type="button" data-bs-toggle="collapse" data-bs-target="#clasificaciones" style="font-size:0.82rem;">
+                          <i class="bi bi-layers me-2 text-primary"></i>Clasificaciones Jerárquicas N2–N10
+                          <i class="bi bi-chevron-down float-end mt-1"></i>
+                        </button>
+                        <div class="collapse" id="clasificaciones">
+                          <div class="p-3">
+                            <div class="row g-2">
+                              <div class="col-4"><label class="small text-muted fw-bold mb-0">N2</label><input type="text" class="form-control form-control-sm bg-light" value="TV Azteca" readonly></div>
+                              <div class="col-4"><label class="small text-muted fw-bold mb-0">N3</label><input type="text" class="form-control form-control-sm bg-light" value="Azteca Uno" readonly></div>
+                              <div class="col-4"><label class="small text-muted fw-bold mb-0">N4</label><input type="text" class="form-control form-control-sm bg-light" value="Marketing" readonly></div>
+                              <div class="col-4"><label class="small text-muted fw-bold mb-0">N5</label><input type="text" class="form-control form-control-sm bg-light" value="Medios Masivos" readonly></div>
+                              <div class="col-4"><label class="small text-muted fw-bold mb-0">N6</label><input type="text" class="form-control form-control-sm bg-light" value="Televisión" readonly></div>
+                              <div class="col-4"><label class="small text-muted fw-bold mb-0">N7</label><input type="text" class="form-control form-control-sm bg-light" value="Prime Time" readonly></div>
+                              <div class="col-4"><label class="small text-muted fw-bold mb-0">N8</label><input type="text" class="form-control form-control-sm bg-light" value="–" readonly></div>
+                              <div class="col-4"><label class="small text-muted fw-bold mb-0">N9</label><input type="text" class="form-control form-control-sm bg-light" value="–" readonly></div>
+                              <div class="col-4"><label class="small text-muted fw-bold mb-0">N10</label><input type="text" class="form-control form-control-sm bg-light" value="–" readonly></div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div class="col-md-12 mt-4">
-                      <h6 class="fw-bold border-bottom pb-2 mb-3 text-primary"><i class="bi bi-sliders me-2"></i>Parámetros de Control (Sistema)</h6>
-                      <div class="row g-3">
-                        <div class="col-md-4">
-                          <label class="small fw-bold text-dark">Límite de % Tope Adicional</label>
-                          <div class="input-group shadow-sm">
-                            <input type="number" class="form-control" value="5">
-                            <span class="input-group-text">%</span>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <label class="small fw-bold text-dark">Permite Traslados (Salida)?</label>
-                          <select class="form-select shadow-sm">
-                            <option>Sí, a cualquier CeCo de MKT</option>
-                            <option selected="">Solo dentro de Medios Tradicionales</option>
-                            <option>No permitidos (Bloqueado)</option>
-                          </select>
-                        </div>
-                        <div class="col-md-4">
-                          <label class="small fw-bold text-dark">Jerarquía SAP Mapeada</label>
-                          <input type="text" class="form-control bg-light" value="H_TVAZ_MKT_TRAD" readonly="">
-                        </div>
+                    </div>
+                    <!-- fin tab Datos Generales -->
+
+
+                    <!-- ── Tab 2: Cuentas Asociadas ── -->
+                    <div class="tab-pane fade" id="tab-cuentas" role="tabpanel">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold text-primary mb-0"><i class="bi bi-receipt me-2"></i>Cuentas asociadas a este CeCo</h6>
+                        <small class="text-muted">Las cuentas provienen de la carga inicial — el rubro y la habilitación son editables</small>
+                      </div>
+
+                      <div class="table-responsive">
+                        <table class="table table-sm table-hover align-middle mb-0">
+                          <thead class="table-light">
+                            <tr>
+                              <th class="small fw-bold text-muted text-uppercase">Núm. Cuenta</th>
+                              <th class="small fw-bold text-muted text-uppercase">Nombre</th>
+                              <th class="small fw-bold text-muted text-uppercase">Rubro</th>
+                              <th class="small fw-bold text-muted text-uppercase text-center">Estatus</th>
+                              <th class="small fw-bold text-muted text-uppercase text-center">Habilitada</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="fw-bold small">609010</td>
+                              <td class="small">Radio</td>
+                              <td class="small text-muted">Medios Tradicionales</td>
+                              <td class="text-center"><span class="badge bg-success-subtle text-success border border-success-subtle">Activo</span></td>
+                              <td class="text-center">
+                                <div class="form-check form-switch d-flex justify-content-center mb-0">
+                                  <input class="form-check-input" type="checkbox" checked role="switch">
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="fw-bold small">609015</td>
+                              <td class="small">Televisión Abierta</td>
+                              <td class="small text-muted">Medios Tradicionales</td>
+                              <td class="text-center"><span class="badge bg-success-subtle text-success border border-success-subtle">Activo</span></td>
+                              <td class="text-center">
+                                <div class="form-check form-switch d-flex justify-content-center mb-0">
+                                  <input class="form-check-input" type="checkbox" checked role="switch">
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="fw-bold small">620100</td>
+                              <td class="small">Producción Audiovisual</td>
+                              <td class="small text-muted">Producción</td>
+                              <td class="text-center"><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Inactivo</span></td>
+                              <td class="text-center">
+                                <div class="form-check form-switch d-flex justify-content-center mb-0">
+                                  <input class="form-check-input" type="checkbox" role="switch">
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <div class="alert alert-info d-flex align-items-start gap-2 mt-3 mb-0 py-2">
+                        <i class="bi bi-info-circle-fill text-info mt-1 flex-shrink-0"></i>
+                        <small>La asignación de cuentas proviene de la carga inicial y no puede modificarse en esta vista. Para habilitar/inhabilitar una cuenta o cambiar el rubro, usa <strong>Editar</strong>.</small>
                       </div>
                     </div>
-                  </div>
+                    <!-- fin tab Cuentas -->
 
-                  <div class="text-end mt-4 pt-3 border-top">
-                    <button class="btn btn-outline-secondary px-4 me-2 shadow-sm fw-bold">Descartar Cambios</button>
-                    <button class="btn btn-primary px-4 fw-bold shadow-sm"><i class="bi bi-save me-2"></i>Guardar Cambios Operativos</button>
+
+                    <!-- ── Tab 3: Historial de Actividad ── -->
+                    <div class="tab-pane fade" id="tab-historial" role="tabpanel">
+                      <h6 class="fw-bold text-primary mb-3"><i class="bi bi-clock-history me-2"></i>Historial de actividad</h6>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item px-0 py-3 border-bottom">
+                          <div class="d-flex align-items-start gap-3">
+                            <div class="rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center flex-shrink-0" style="width:36px;height:36px;">
+                              <i class="bi bi-pencil-fill fs-6"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                              <div class="fw-bold small">Actualización de atributos operativos</div>
+                              <div class="text-muted small">División cambiada de <em>Marca</em> a <em>Oferteo</em> · País: México</div>
+                              <div class="d-flex gap-3 mt-1">
+                                <small class="text-muted"><i class="bi bi-person me-1"></i>Edgar Grande</small>
+                                <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>15/01/2026 – 10:42 a.m.</small>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list-group-item px-0 py-3 border-bottom">
+                          <div class="d-flex align-items-start gap-3">
+                            <div class="rounded-circle bg-success-subtle text-success d-flex align-items-center justify-content-center flex-shrink-0" style="width:36px;height:36px;">
+                              <i class="bi bi-plus-lg fs-6"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                              <div class="fw-bold small">Alta de Centro de Costos</div>
+                              <div class="text-muted small">Registro inicial del CeCo en el catálogo general</div>
+                              <div class="d-flex gap-3 mt-1">
+                                <small class="text-muted"><i class="bi bi-person me-1"></i>Edgar Grande</small>
+                                <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>10/01/2026 – 09:15 a.m.</small>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- fin tab Historial -->
+
                   </div>
                 </div>
+              </div>
+            </div>
+            <!-- fin tabs detalle -->
 
+          </div>
+          <!-- fin panelDetalle -->
+
+        </div>
+      </div>
+    </div>
+    <!-- fin card principal -->
+
+  </main>
+  <!-- ── Script para mostrar/ocultar panel detalle ── -->
+  <script>
+    function mostrarDetalle() {
+      document.getElementById('panelVacio').classList.add('d-none');
+      document.getElementById('panelDetalle').classList.remove('d-none');
+    }
+  </script>
+
+  <!-- ════ MODAL: Eliminar CeCo (sin historial → borrado definitivo) ════ -->
+  <div class="modal fade" id="modalEliminarCeCo" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold text-danger" id="modalEliminarLabel">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>Eliminar Centro de Costo
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body pt-2">
+
+          <!-- Caso A: sin historial operativo (borrado definitivo) -->
+          <div id="casoSinHistorial">
+            <p class="mb-3">¿Confirmas que deseas eliminar de forma <strong>permanente</strong> el siguiente Centro de Costo?</p>
+            <div class="alert alert-light border d-flex align-items-center gap-3 py-2">
+              <span class="badge bg-dark px-3 py-2 fs-6">100901</span>
+              <div>
+                <div class="fw-bold">Campañas Prime Time</div>
+                <small class="text-muted">TV Azteca · Oferteo · México</small>
+              </div>
+            </div>
+            <div class="alert alert-warning d-flex align-items-start gap-2 py-2 mb-0">
+              <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0 mt-1"></i>
+              <small>Esta acción es <strong>irreversible</strong>. Se eliminarán también todas las relaciones del CeCo con usuarios y perfiles asociados.</small>
+            </div>
+          </div>
+
+          <!-- Caso B: con historial → inactivación automática (mostrar si aplica) -->
+          <div id="casoConHistorial" class="d-none">
+            <div class="alert alert-danger d-flex align-items-start gap-2 py-2 mb-3">
+              <i class="bi bi-x-circle-fill text-danger flex-shrink-0 mt-1"></i>
+              <div>
+                <strong>No es posible eliminar este Centro de Costo.</strong><br>
+                <small>Cuenta con transacciones operativas registradas. Por reglas de auditoría, el borrado definitivo queda bloqueado.</small>
+              </div>
+            </div>
+            <p class="mb-2 small">Como alternativa, el sistema <strong>cambiará el estatus a Inactivo</strong>. El CeCo se conservará en el catálogo para fines de auditoría pero dejará de estar disponible para nuevas operaciones.</p>
+            <div class="alert alert-light border d-flex align-items-center gap-3 py-2 mb-0">
+              <span class="badge bg-dark px-3 py-2 fs-6">100901</span>
+              <div>
+                <div class="fw-bold">Campañas Prime Time</div>
+                <small class="text-muted">Pasará de <span class="text-success fw-bold">Activo</span> → <span class="text-secondary fw-bold">Inactivo</span></small>
               </div>
             </div>
           </div>
 
         </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <!-- Botón caso A -->
+          <button type="button" class="btn btn-danger fw-bold" id="btnEliminarDefinitivo">
+            <i class="bi bi-trash3 me-1"></i>Sí, eliminar permanentemente
+          </button>
+          <!-- Botón caso B (oculto por defecto) -->
+          <button type="button" class="btn btn-warning fw-bold d-none" id="btnInactivar">
+            <i class="bi bi-toggle-off me-1"></i>Entendido, inactivar CeCo
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</main><!--start main content-->
+  <!-- fin modal Eliminar -->
   
 
 
