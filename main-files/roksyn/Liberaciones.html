@@ -15,6 +15,8 @@
   <!--Styles-->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
   <link rel="stylesheet" href="assets/css/icons.css">
 
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap"
@@ -1041,50 +1043,61 @@
               <h6 class="fw-bold text-dark mb-0">Consulta de Carga Presupuestal Aprobada</h6>
             </div>
 
-            <!-- Filtros multi-selección -->
+            <!-- Filtros multi-selección con Select2 -->
             <div class="bg-light border rounded p-3 mb-3 shadow-sm">
-              <!-- Buscador -->
-              <div class="mb-2">
-                <div class="input-group input-group-sm" style="max-width: 340px;">
-                  <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
-                  <input type="text" id="f-search" class="form-control border-start-0" placeholder="Buscar CeCo o Campaña..." oninput="applyTreeFilters()">
+              <div class="row g-2 align-items-end">
+                <!-- Buscador -->
+                <div class="col-md-3">
+                  <label class="form-label mb-1 small text-muted fw-semibold">Buscar CeCo</label>
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
+                    <input type="text" id="f-search" class="form-control border-start-0" placeholder="Nombre o clave de CeCo..." oninput="applyTreeFilters()">
+                  </div>
                 </div>
-              </div>
-              <!-- División -->
-              <div class="mb-2 d-flex flex-wrap align-items-center gap-1">
-                <span class="text-muted fw-semibold me-1" style="font-size:0.75rem; min-width:80px;">División:</span>
-                <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 chip-btn active" data-group="division" data-val="" onclick="toggleChip(this)" style="font-size:0.75rem;">Todas</button>
-                <button type="button" class="btn btn-sm btn-outline-primary py-0 px-2 chip-btn" data-group="division" data-val="Marca" onclick="toggleChip(this)" style="font-size:0.75rem;">Marca</button>
-                <button type="button" class="btn btn-sm btn-outline-warning py-0 px-2 chip-btn" data-group="division" data-val="Oferteo" onclick="toggleChip(this)" style="font-size:0.75rem;">Oferteo</button>
-                <button type="button" class="btn btn-sm btn-outline-success py-0 px-2 chip-btn" data-group="division" data-val="Estrategia" onclick="toggleChip(this)" style="font-size:0.75rem;">Estrategia</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 chip-btn" data-group="division" data-val="Sin División" onclick="toggleChip(this)" style="font-size:0.75rem;">Sin División</button>
-              </div>
-              <!-- País -->
-              <div class="mb-2 d-flex flex-wrap align-items-center gap-1">
-                <span class="text-muted fw-semibold me-1" style="font-size:0.75rem; min-width:80px;">País:</span>
-                <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 chip-btn active" data-group="pais" data-val="" onclick="toggleChip(this)" style="font-size:0.75rem;">Todos</button>
-                <button type="button" class="btn btn-sm btn-outline-danger py-0 px-2 chip-btn" data-group="pais" data-val="México" onclick="toggleChip(this)" style="font-size:0.75rem;"><i class="bi bi-geo-alt-fill me-1"></i>México</button>
-                <button type="button" class="btn btn-sm btn-outline-info py-0 px-2 chip-btn" data-group="pais" data-val="Guatemala" onclick="toggleChip(this)" style="font-size:0.75rem;"><i class="bi bi-geo-alt me-1"></i>Guatemala</button>
-                <button type="button" class="btn btn-sm btn-outline-info py-0 px-2 chip-btn" data-group="pais" data-val="Honduras" onclick="toggleChip(this)" style="font-size:0.75rem;"><i class="bi bi-geo-alt me-1"></i>Honduras</button>
-                <button type="button" class="btn btn-sm btn-outline-info py-0 px-2 chip-btn" data-group="pais" data-val="Panamá" onclick="toggleChip(this)" style="font-size:0.75rem;"><i class="bi bi-geo-alt me-1"></i>Panamá</button>
-              </div>
-              <!-- Clasificación CeCo -->
-              <div class="mb-2 d-flex flex-wrap align-items-center gap-1">
-                <span class="text-muted fw-semibold me-1" style="font-size:0.75rem; min-width:80px;">Clasif. CeCo:</span>
-                <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 chip-btn active" data-group="clsf" data-val="" onclick="toggleChip(this)" style="font-size:0.75rem;">Todas</button>
-                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2 chip-btn" data-group="clsf" data-val="N4" onclick="toggleChip(this)" style="font-size:0.75rem;">N4</button>
-                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2 chip-btn" data-group="clsf" data-val="N5" onclick="toggleChip(this)" style="font-size:0.75rem;">N5</button>
-                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2 chip-btn" data-group="clsf" data-val="N6" onclick="toggleChip(this)" style="font-size:0.75rem;">N6</button>
-                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2 chip-btn" data-group="clsf" data-val="N7" onclick="toggleChip(this)" style="font-size:0.75rem;">N7</button>
-                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2 chip-btn" data-group="clsf" data-val="N8" onclick="toggleChip(this)" style="font-size:0.75rem;">N8</button>
-                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2 chip-btn" data-group="clsf" data-val="N9" onclick="toggleChip(this)" style="font-size:0.75rem;">N9</button>
-              </div>
-              <!-- Tipo de Gasto -->
-              <div class="d-flex flex-wrap align-items-center gap-1">
-                <span class="text-muted fw-semibold me-1" style="font-size:0.75rem; min-width:80px;">Tipo de Gasto:</span>
-                <button type="button" class="btn btn-sm btn-outline-secondary py-0 px-2 chip-btn active" data-group="tipo" data-val="" onclick="toggleChip(this)" style="font-size:0.75rem;">Todos</button>
-                <button type="button" class="btn btn-sm btn-outline-dark py-0 px-2 chip-btn" data-group="tipo" data-val="Ordinario" onclick="toggleChip(this)" style="font-size:0.75rem;">Ordinario</button>
-                <button type="button" class="btn btn-sm btn-outline-info py-0 px-2 chip-btn" data-group="tipo" data-val="Proy. Inversión" onclick="toggleChip(this)" style="font-size:0.75rem;">Proy. Inversión</button>
+                <!-- División -->
+                <div class="col-md">
+                  <label class="form-label mb-1 small text-muted fw-semibold">División</label>
+                  <select id="f-division" class="form-select form-select-sm w-100" multiple data-placeholder="Todas las divisiones" data-allow-clear="true">
+                    <option value="Marca">Marca</option>
+                    <option value="Oferteo">Oferteo</option>
+                    <option value="Estrategia">Estrategia</option>
+                    <option value="Sin División">Sin División</option>
+                  </select>
+                </div>
+                <!-- País -->
+                <div class="col-md">
+                  <label class="form-label mb-1 small text-muted fw-semibold">País</label>
+                  <select id="f-pais" class="form-select form-select-sm w-100" multiple data-placeholder="Todos los países" data-allow-clear="true">
+                    <option value="México">México</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Panamá">Panamá</option>
+                  </select>
+                </div>
+                <!-- Clasificación CeCo -->
+                <div class="col-md">
+                  <label class="form-label mb-1 small text-muted fw-semibold">Clasificación CeCo</label>
+                  <select id="f-clsf" class="form-select form-select-sm w-100" multiple data-placeholder="Todas las clasificaciones" data-allow-clear="true">
+                    <option value="N4">N4 – Clsf 4</option>
+                    <option value="N5">N5 – Clsf 5</option>
+                    <option value="N6">N6 – Clsf 6</option>
+                    <option value="N7">N7 – Clsf 7</option>
+                    <option value="N8">N8 – Clsf 8</option>
+                    <option value="N9">N9 – Clsf 9</option>
+                  </select>
+                </div>
+                <!-- Tipo de Gasto -->
+                <div class="col-md">
+                  <label class="form-label mb-1 small text-muted fw-semibold">Tipo de Gasto</label>
+                  <select id="f-tipo" class="form-select form-select-sm w-100" multiple data-placeholder="Todos los tipos" data-allow-clear="true">
+                    <option value="Ordinario">Ordinario</option>
+                    <option value="Proy. Inversión">Proy. Inversión</option>
+                  </select>
+                </div>
+                <!-- Descarga -->
+                <div class="col-md-auto">
+                  <button class="btn btn-sm btn-outline-dark px-3"><i class="bi bi-file-earmark-excel me-1"></i>Descargar</button>
+                </div>
               </div>
             </div>
             <!-- Árbol de carga aprobada: expansión/colapso por fila -->
@@ -2150,6 +2163,7 @@
   <!--BS Scripts-->
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/plugins/select2/js/select2.min.js"></script>
 
   <script>
     /* ── Tree state ── */
@@ -2196,7 +2210,6 @@
         if (ico) ico.style.transform = 'rotate(0deg)';
       });
       document.querySelectorAll('.tree-leaf').forEach(row => row.style.display = 'none');
-      // reset root nodes open state
       document.querySelectorAll('.tree-node:not([data-p])').forEach(row => {
         _nodeOpen[row.id] = false;
         const ico = document.getElementById(`ico-${row.id}`);
@@ -2204,43 +2217,16 @@
       });
     }
 
-    /* ── Chip multi-select ── */
-    function toggleChip(btn) {
-      const group = btn.dataset.group;
-      const val = btn.dataset.val;
-      if (val === '') {
-        // "Todas/Todos" — deactivate all others in group, activate this one
-        document.querySelectorAll(`.chip-btn[data-group="${group}"]`).forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      } else {
-        // deactivate "Todas" chip in group
-        document.querySelectorAll(`.chip-btn[data-group="${group}"][data-val=""]`).forEach(b => b.classList.remove('active'));
-        btn.classList.toggle('active');
-        // if no specific chip is active, re-activate "Todas"
-        const anyActive = [...document.querySelectorAll(`.chip-btn[data-group="${group}"]`)].some(b => b.dataset.val !== '' && b.classList.contains('active'));
-        if (!anyActive) {
-          document.querySelector(`.chip-btn[data-group="${group}"][data-val=""]`).classList.add('active');
-        }
-      }
-      applyTreeFilters();
-    }
-
-    function getActiveChips(group) {
-      const vals = [...document.querySelectorAll(`.chip-btn[data-group="${group}"].active`)]
-        .map(b => b.dataset.val).filter(v => v !== '');
-      return vals; // empty array = "Todas" selected
-    }
-
     function applyTreeFilters() {
       const search = (document.getElementById('f-search')?.value || '').toLowerCase().trim();
-      const divs   = getActiveChips('division');
-      const paises = getActiveChips('pais');
-      const clsfs  = getActiveChips('clsf');
-      const tipos  = getActiveChips('tipo');
+      const divs   = $('#f-division').val()  || [];
+      const paises = $('#f-pais').val()      || [];
+      const clsfs  = $('#f-clsf').val()      || [];
+      const tipos  = $('#f-tipo').val()       || [];
 
       let visible = 0;
       document.querySelectorAll('.tree-leaf').forEach(row => {
-        const ok = (!search || row.dataset.ceco.includes(search))
+        const ok = (!search || row.dataset.ceco.toLowerCase().includes(search))
                 && (divs.length   === 0 || divs.includes(row.dataset.division))
                 && (paises.length === 0 || paises.includes(row.dataset.pais))
                 && (tipos.length  === 0 || tipos.includes(row.dataset.tipo))
@@ -2249,20 +2235,32 @@
         if (ok) visible++;
       });
 
-      // Show/hide ancestor nodes based on whether they have visible children
-      document.querySelectorAll('.tree-node').forEach(node => {
-        const hasVisible = node.id
-          ? document.querySelector(`.tree-leaf[data-p="${node.id}"]:not([style*="display: none"]), .tree-node[data-p="${node.id}"]:not([style*="display: none"])`) !== null
-          : true;
-        // Only hide non-root nodes with no visible descendants
-        if (node.dataset.p) {
-          node.style.display = hasVisible ? '' : 'none';
-        }
+      /* Muestra nodos ancestro si tienen hojas visibles */
+      document.querySelectorAll('.tree-node[data-p]').forEach(node => {
+        const hasVisible = !!document.querySelector(`[data-p="${node.id}"]:not([style*="display: none"])`);
+        node.style.display = hasVisible ? '' : 'none';
       });
 
       const el = document.getElementById('tree-count');
       if (el) el.textContent = `${visible} registros`;
     }
+
+    /* ── Init Select2 al cargar ── */
+    $(function () {
+      const s2cfg = {
+        theme: 'bootstrap-5',
+        width: '100%',
+        closeOnSelect: false,
+        allowClear: true,
+      };
+      $('#f-division').select2({ ...s2cfg, placeholder: 'Todas las divisiones' });
+      $('#f-pais').select2(    { ...s2cfg, placeholder: 'Todos los países' });
+      $('#f-clsf').select2(    { ...s2cfg, placeholder: 'Todas las clasificaciones' });
+      $('#f-tipo').select2(    { ...s2cfg, placeholder: 'Todos los tipos' });
+
+      /* Disparar filtro al cambiar cualquier Select2 */
+      $('#f-division, #f-pais, #f-clsf, #f-tipo').on('change', applyTreeFilters);
+    });
   </script>
 
 </body>
