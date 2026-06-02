@@ -927,71 +927,91 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb mb-0 p-0">
             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
-            <li class="breadcrumb-item active" aria-current="page">Resumen de la Carga del Gasto Publicitario</li>
+            <li class="breadcrumb-item active" aria-current="page">E10 – Liberación de Presupuesto a SIPRES</li>
           </ol>
         </nav>
       </div>
     </div>
 
+    <!-- HU1 – Indicadores Generales (Bloque 1) -->
     <div class="row row-cols-1 row-cols-sm-3 g-3 mb-4">
 
+      <!-- Indicador 1: Presupuesto Aprobado Actual -->
       <div class="col">
         <div class="card radius-10 border-0 border-start border-success border-4 h-100 shadow-sm">
           <div class="card-body">
-            <div class="d-flex align-items-center">
-              <div>
+            <div class="d-flex align-items-center mb-2">
+              <div class="flex-grow-1">
                 <p class="mb-1 text-muted fw-bold small text-uppercase">Presupuesto Aprobado Actual</p>
                 <h4 class="mb-0 text-success">162,428,000</h4>
-                <small class="text-muted">Total listo en sistema local</small>
               </div>
-              <div
-                class="ms-auto widget-icon bg-success-subtle text-success rounded-3 d-flex align-items-center justify-content-center fs-4">
+              <div class="ms-auto widget-icon bg-success-subtle text-success rounded-3 d-flex align-items-center justify-content-center fs-4">
                 <i class="bi bi-cash-stack"></i>
+              </div>
+            </div>
+            <div class="row g-0 pt-2 border-top">
+              <div class="col-6">
+                <small class="d-block text-muted" style="font-size: 0.65rem;">ORDINARIO:</small>
+                <small class="fw-bold text-success" style="font-size: 0.75rem;">138,928,000</small>
+              </div>
+              <div class="col-6 border-start ps-2">
+                <small class="d-block text-muted" style="font-size: 0.65rem;">PROYECTOS DE INVERSIÓN:</small>
+                <small class="fw-bold text-success" style="font-size: 0.75rem;">23,500,000</small>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Indicador 2: Importe en Autorización -->
       <div class="col">
         <div class="card radius-10 border-0 border-start border-warning border-4 h-100 shadow-sm">
           <div class="card-body">
-            <div class="d-flex align-items-center">
-              <div>
+            <div class="d-flex align-items-center mb-2">
+              <div class="flex-grow-1">
                 <p class="mb-1 text-muted fw-bold small text-uppercase">Importe en Autorización</p>
                 <h4 class="mb-0 text-dark">24,500,000</h4>
                 <small class="text-warning fw-bold">No disponible para liberar</small>
               </div>
-              <div
-                class="ms-auto widget-icon bg-warning-subtle text-warning rounded-3 d-flex align-items-center justify-content-center fs-4">
+              <div class="ms-auto widget-icon bg-warning-subtle text-warning rounded-3 d-flex align-items-center justify-content-center fs-4">
                 <i class="bi bi-hourglass-split"></i>
+              </div>
+            </div>
+            <div class="row g-0 pt-2 border-top">
+              <div class="col-6">
+                <small class="d-block text-muted" style="font-size: 0.65rem;">ORDINARIO:</small>
+                <small class="fw-bold text-warning" style="font-size: 0.75rem;">18,500,000</small>
+              </div>
+              <div class="col-6 border-start ps-2">
+                <small class="d-block text-muted" style="font-size: 0.65rem;">PROYECTOS DE INVERSIÓN:</small>
+                <small class="fw-bold text-warning" style="font-size: 0.75rem;">6,000,000</small>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- Indicador 3: Última Exposición a SIPRES -->
       <div class="col">
         <div class="card radius-10 border-0 border-start border-primary border-4 h-100 shadow-sm">
           <div class="card-body">
             <div class="d-flex align-items-center mb-2">
               <div>
-                <p class="mb-0 text-muted fw-bold small text-uppercase">Última Exposición SIPRES</p>
+                <p class="mb-0 text-muted fw-bold small text-uppercase">Última Exposición a SIPRES</p>
                 <h4 class="mb-0 text-primary">150,000,000</h4>
               </div>
-              <div
-                class="ms-auto widget-icon bg-primary-subtle text-primary rounded-3 d-flex align-items-center justify-content-center fs-4">
+              <div class="ms-auto widget-icon bg-primary-subtle text-primary rounded-3 d-flex align-items-center justify-content-center fs-4">
                 <i class="bi bi-cloud-check"></i>
               </div>
             </div>
             <div class="row g-0 pt-2 border-top">
               <div class="col-6">
                 <small class="d-block text-muted" style="font-size: 0.65rem;">EXPOSICIÓN:</small>
-                <small class="fw-bold text-dark" style="font-size: 0.75rem;">15 Mar 2026 - 09:15</small>
+                <small class="fw-bold text-dark" style="font-size: 0.75rem;">15 Abr 2026 - 14:30</small>
               </div>
               <div class="col-6 border-start ps-2">
                 <small class="d-block text-muted" style="font-size: 0.65rem;">SINCRONIZACIÓN:</small>
-                <small class="fw-bold text-success" style="font-size: 0.75rem;">15 Mar 2026 - 09:22</small>
+                <small class="fw-bold text-success" style="font-size: 0.75rem;">15 Abr 2026 - 14:35</small>
               </div>
             </div>
           </div>
@@ -1012,11 +1032,12 @@
 
 
 
+        <!-- HU2 – Consulta y Liberación (Bloque 2) | HU3 – Monitoreo (Bloque 3) -->
         <ul class="nav nav-tabs mb-4 border-bottom" id="liberacionTabs" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link fw-bold text-success active" id="aprobadas-tab" data-bs-toggle="tab"
               data-bs-target="#tab-aprobadas" type="button" role="tab" aria-selected="true">
-              <i class="bi bi-check2-circle me-1"></i>Presupuesto Aprobado</button>
+              <i class="bi bi-check2-circle me-1"></i>Consulta de Carga Aprobada</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link fw-bold text-warning text-dark" id="pendientes-tab" data-bs-toggle="tab"
@@ -1027,14 +1048,14 @@
           <li class="nav-item" role="presentation">
             <button class="nav-link fw-bold text-primary" id="sipres-tab" data-bs-toggle="tab"
               data-bs-target="#tab-sipres" type="button" role="tab" aria-selected="false" tabindex="-1">
-              <i class="bi bi-cloud-check me-1"></i>Última Versión Sincronizada
+              <i class="bi bi-cloud-check me-1"></i>Versiones Sincronizadas
             </button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link fw-bold text-muted" id="bitacora-tab" data-bs-toggle="tab"
               data-bs-target="#tab-bitacora" type="button" role="tab" aria-controls="tab-bitacora" aria-selected="false"
               tabindex="-1">
-              <i class="bi bi-clock-history me-1"></i>Bitácora de Liberación
+              <i class="bi bi-clock-history me-1"></i>Bitácora de Cambios
             </button>
           </li>
         </ul>
@@ -1045,17 +1066,18 @@
 
 
 
+          <!-- CA01 – Consulta de Carga Aprobada (Sección 1 del Bloque 2) -->
           <div class="tab-pane fade active show" id="tab-aprobadas" role="tabpanel" aria-labelledby="#aprobadas-tab">
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <h6 class="fw-bold text-dark mb-0">Resumen del Presupuesto Aprobado</h6>
+              <h6 class="fw-bold text-dark mb-0">Consulta de Carga Presupuestal Aprobada</h6>
             </div>
 
             <div class="row g-2 mb-4 bg-light p-2 rounded shadow-sm align-items-center border">
               <div class="col-md-3">
                 <div class="input-group input-group-sm">
                   <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
-                  <input type="text" class="form-control border-start-0" placeholder="Buscar CeCo (Ej. 100901)...">
+                  <input type="text" class="form-control border-start-0" placeholder="Buscar CeCo o Campaña...">
                 </div>
               </div>
               <div class="col-md-2">
@@ -1064,7 +1086,7 @@
                   <option>Marca</option>
                   <option>Oferteo</option>
                   <option>Estrategia</option>
-                  <option>Sin Clasificación</option>
+                  <option>Sin División</option>
                 </select>
               </div>
               <div class="col-md-2">
@@ -1078,157 +1100,162 @@
               </div>
               <div class="col-md-2">
                 <select class="form-select form-select-sm text-muted">
-                  <option selected="">Sector: Todos</option>
-                  <option>Sector Mercado Masivo</option>
-                  <option>Sector Corporativo</option>
+                  <option selected="">Clasificación CeCo: Todas</option>
+                  <option>Clasificación 4</option>
+                  <option>Clasificación 5</option>
+                  <option>Clasificación 6</option>
+                  <option>Clasificación 7</option>
+                  <option>Clasificación 8</option>
+                  <option>Clasificación 9</option>
                 </select>
               </div>
-              <div class="col-md-3 d-flex justify-content-end gap-2">
+              <div class="col-md-1">
+                <select class="form-select form-select-sm text-muted">
+                  <option selected="">Tipo: Todos</option>
+                  <option>Ordinario</option>
+                  <option>Proyectos de Inversión</option>
+                </select>
+              </div>
+              <div class="col-md-2 d-flex justify-content-end gap-2">
                 <button class="btn btn-sm btn-primary px-3 shadow-sm">Filtrar</button>
                 <button class="btn btn-sm btn-outline-dark px-3 shadow-sm"><i
                     class="bi bi-file-earmark-excel me-1"></i>Descargar</button>
               </div>
             </div>
+            <!-- Jerarquía: País > País LAM > Clsf4 > Clsf5 > Clsf6 > Clsf7 > Clsf8 > CeCo (tabla) -->
             <div class="accordion shadow-sm mb-4 border rounded" id="accRoot">
 
+              <!-- ===== MÉXICO ===== -->
               <div class="accordion-item border-0 border-bottom">
                 <h2 class="accordion-header" id="head-mx">
                   <button class="accordion-button bg-secondary-subtle fw-bold text-dark collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#col-mx" aria-expanded="false">
                     <span><i class="bi bi-geo-alt-fill text-danger me-2"></i> México</span>
-                    <span class="ms-auto me-3 fs-5 text-success fw-bolder">2,324,280</span>
+                    <span class="ms-auto me-3 fs-5 text-success fw-bolder">138,928,000</span>
                   </button>
                 </h2>
-                <div id="col-mx" class="accordion-collapse collapse" data-bs-parent="#accRoot" style="">
+                <div id="col-mx" class="accordion-collapse collapse" data-bs-parent="#accRoot">
                   <div class="accordion-body p-0">
-
                     <div class="accordion accordion-flush" id="accC4-mx">
 
+                      <!-- Clsf4: Sector Mercado Masivo -->
                       <div class="accordion-item border-0 border-bottom">
                         <h2 class="accordion-header">
                           <button class="accordion-button bg-light fw-bold py-2 border-0 collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#colC4-masivo-mx" aria-expanded="false">
-                            <span class="ms-3"><i class="bi bi-diagram-2 text-primary me-2"></i> Sector Mercado
-                              Masivo</span>
-                            <span class="ms-auto me-3 fs-6 text-primary fw-bold">1,624,280</span>
+                            <span class="ms-3"><i class="bi bi-diagram-2 text-primary me-2"></i> Sector Mercado Masivo</span>
+                            <span class="ms-auto me-3 fs-6 text-primary fw-bold">98,428,000</span>
                           </button>
                         </h2>
-                        <div id="colC4-masivo-mx" class="accordion-collapse collapse" data-bs-parent="#accC4-mx"
-                          style="">
+                        <div id="colC4-masivo-mx" class="accordion-collapse collapse" data-bs-parent="#accC4-mx">
                           <div class="accordion-body p-0">
-
                             <div class="accordion accordion-flush" id="accC5-masivo-mx">
+
+                              <!-- Clsf5: Unidades de Negocio -->
                               <div class="accordion-item border-0">
                                 <h2 class="accordion-header">
                                   <button class="accordion-button bg-white fw-bold py-2 border-bottom" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#colC5-unidades-mx" aria-expanded="true">
-                                    <span class="ms-4"><i class="bi bi-folder2 text-info me-2"></i> Unidades De
-                                      Negocio</span>
-                                    <span class="ms-auto me-3 text-dark fw-bold">1,624,280</span>
+                                    data-bs-toggle="collapse" data-bs-target="#colC5-unidades-mx" aria-expanded="false">
+                                    <span class="ms-4"><i class="bi bi-folder2 text-info me-2"></i> Unidades De Negocio</span>
+                                    <span class="ms-auto me-3 text-dark fw-bold">98,428,000</span>
                                   </button>
                                 </h2>
-                                <div id="colC5-unidades-mx" class="accordion-collapse collapse show"
-                                  data-bs-parent="#accC5-masivo-mx" style="">
+                                <div id="colC5-unidades-mx" class="accordion-collapse collapse" data-bs-parent="#accC5-masivo-mx">
                                   <div class="accordion-body p-0">
-
                                     <div class="accordion accordion-flush" id="accC6-unidades-mx">
+
+                                      <!-- Clsf6: Préstamos y Cobranza -->
                                       <div class="accordion-item border-0">
                                         <h2 class="accordion-header">
-                                          <button
-                                            class="accordion-button bg-light bg-opacity-50 fw-bold py-2 border-bottom"
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#colC6-prestamos-mx"
-                                            aria-expanded="true">
-                                            <span class="ms-5"><i class="bi bi-folder2-open text-warning me-2"></i>
-                                              Préstamos Y Cobranza</span>
-                                            <span
-                                              class="ms-auto me-3 badge bg-secondary-subtle text-dark fs-6 border border-secondary-subtle">1,624,280</span>
+                                          <button class="accordion-button bg-light bg-opacity-50 fw-bold py-2 border-bottom" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#colC6-prestamos-mx" aria-expanded="false">
+                                            <span class="ms-5"><i class="bi bi-folder2-open text-warning me-2"></i> Préstamos Y Cobranza</span>
+                                            <span class="ms-auto me-3 badge bg-secondary-subtle text-dark fs-6 border border-secondary-subtle">62,748,000</span>
                                           </button>
                                         </h2>
-                                        <div id="colC6-prestamos-mx" class="accordion-collapse collapse show"
-                                          data-bs-parent="#accC6-unidades-mx" style="">
+                                        <div id="colC6-prestamos-mx" class="accordion-collapse collapse" data-bs-parent="#accC6-unidades-mx">
                                           <div class="accordion-body p-0">
-
                                             <div class="accordion accordion-flush" id="accC7-prestamos-mx">
-                                              <div class="accordion-item border-0">
+
+                                              <!-- Clsf7: Préstamos Sin Garantía -->
+                                              <div class="accordion-item border-0 border-bottom">
                                                 <h2 class="accordion-header">
-                                                  <button class="accordion-button bg-white fw-bold py-2 border-bottom"
-                                                    type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#colC7-singarantia-mx" aria-expanded="true">
-                                                    <span class="ms-5 ps-3"><i
-                                                        class="bi bi-chevron-right text-muted me-2"></i> Préstamos Sin
-                                                      Garantía</span>
-                                                    <span
-                                                      class="ms-auto me-3 badge bg-light text-secondary border">1,624,280</span>
+                                                  <button class="accordion-button bg-white fw-bold py-2 border-bottom" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#colC7-singarantia-mx" aria-expanded="false">
+                                                    <span class="ms-5 ps-3"><i class="bi bi-chevron-right text-muted me-2"></i> Préstamos Sin Garantía</span>
+                                                    <span class="ms-auto me-3 badge bg-light text-secondary border">42,248,000</span>
                                                   </button>
                                                 </h2>
-                                                <div id="colC7-singarantia-mx" class="accordion-collapse collapse show"
-                                                  data-bs-parent="#accC7-prestamos-mx" style="">
+                                                <div id="colC7-singarantia-mx" class="accordion-collapse collapse" data-bs-parent="#accC7-prestamos-mx">
                                                   <div class="accordion-body p-0">
-
                                                     <div class="accordion accordion-flush" id="accC8-singarantia-mx">
                                                       <div class="accordion-item border-0">
                                                         <h2 class="accordion-header">
-                                                          <button
-                                                            class="accordion-button bg-light bg-opacity-25 fw-bold py-2 border-bottom"
-                                                            type="button" data-bs-toggle="collapse"
-                                                            data-bs-target="#colC8-consumo-mx" aria-expanded="true">
-                                                            <span class="ms-5 ps-5"><i
-                                                                class="bi bi-dash text-muted me-2"></i> Consumo Más
-                                                              Comercio</span>
-                                                            <span
-                                                              class="ms-auto me-3 small fw-bold text-muted">1,624,280</span>
+                                                          <button class="accordion-button bg-light bg-opacity-25 fw-bold py-2 border-bottom" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#colC8-consumo-mx" aria-expanded="true">
+                                                            <span class="ms-5 ps-5"><i class="bi bi-dash text-muted me-2"></i> Consumo Más Comercio</span>
+                                                            <span class="ms-auto me-3 small fw-bold text-muted">42,248,000</span>
                                                           </button>
                                                         </h2>
-                                                        <div id="colC8-consumo-mx"
-                                                          class="accordion-collapse collapse show"
-                                                          data-bs-parent="#accC8-singarantia-mx" style="">
+                                                        <div id="colC8-consumo-mx" class="accordion-collapse collapse show" data-bs-parent="#accC8-singarantia-mx">
                                                           <div class="accordion-body p-3 bg-white ps-5 ms-4">
-
-                                                            <div
-                                                              class="table-responsive bg-light p-2 rounded border border-light">
-                                                              <table
-                                                                class="table table-sm table-borderless table-hover align-middle mb-0"
-                                                                style="font-size: 0.8rem;">
+                                                            <div class="table-responsive bg-light p-2 rounded border border-light">
+                                                              <table class="table table-sm table-borderless table-hover align-middle mb-0" style="font-size: 0.8rem;">
                                                                 <thead class="text-muted text-uppercase border-bottom">
                                                                   <tr>
                                                                     <th>Centro De Costos</th>
-                                                                    <th>Campaña</th>
+                                                                    <th>División</th>
+                                                                    <th>Tipo de Gasto</th>
                                                                     <th>Cuenta</th>
-                                                                    <th class="text-end">Importe Aprobado</th>
+                                                                    <th class="text-end">Importe Total</th>
                                                                   </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                   <tr>
-                                                                    <td class="fw-bold text-dark"><i
-                                                                        class="bi bi-building me-1 text-muted"></i>
-                                                                      100901 - Dir Gral Conectividad</td>
-                                                                    <td>Préstamo</td>
+                                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 100901 - Dir Gral Conectividad</td>
+                                                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                                    <td>609011 - Televisión</td>
+                                                                    <td class="text-end fw-bold text-success">12,500,000</td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 100901 - Dir Gral Conectividad</td>
+                                                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
                                                                     <td>609023 - Promociones Sorteos</td>
-                                                                    <td class="text-end fw-bold text-success">1,274,280
-                                                                    </td>
+                                                                    <td class="text-end fw-bold text-success">8,274,280</td>
                                                                   </tr>
                                                                   <tr>
-                                                                    <td class="fw-bold text-dark"><i
-                                                                        class="bi bi-building me-1 text-muted"></i>
-                                                                      291374 - Dirección Mercadotecnia Digital</td>
-                                                                    <td>Madres</td>
+                                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 291374 - Dirección Mercadotecnia Digital</td>
+                                                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
                                                                     <td>609011 - Televisión</td>
-                                                                    <td class="text-end fw-bold text-success">150,000
-                                                                    </td>
+                                                                    <td class="text-end fw-bold text-success">7,500,000</td>
                                                                   </tr>
                                                                   <tr>
-                                                                    <td class="fw-bold text-dark"><i
-                                                                        class="bi bi-building me-1 text-muted"></i>
-                                                                      291374 - Dirección Mercadotecnia Digital</td>
-                                                                    <td>Mundial 2026</td>
-                                                                    <td>609011 - Televisión</td>
-                                                                    <td class="text-end fw-bold text-success">200,000
-                                                                    </td>
+                                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 291374 - Dirección Mercadotecnia Digital</td>
+                                                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                                                                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                                                                    <td>609045 - Digital y Redes Sociales</td>
+                                                                    <td class="text-end fw-bold text-success">6,800,000</td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 102847 - Mercadotecnia Préstamos</td>
+                                                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                                    <td>609012 - Radio</td>
+                                                                    <td class="text-end fw-bold text-success">3,173,720</td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 102847 - Mercadotecnia Préstamos</td>
+                                                                    <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Sin División</span></td>
+                                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                                    <td>609031 - Material POP</td>
+                                                                    <td class="text-end fw-bold text-success">4,000,000</td>
                                                                   </tr>
                                                                 </tbody>
                                                               </table>
                                                             </div>
-
                                                           </div>
                                                         </div>
                                                       </div>
@@ -1236,135 +1263,213 @@
                                                   </div>
                                                 </div>
                                               </div>
+
+                                              <!-- Clsf7: Crédito con Garantía -->
+                                              <div class="accordion-item border-0">
+                                                <h2 class="accordion-header">
+                                                  <button class="accordion-button bg-white fw-bold py-2 border-bottom collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#colC7-congarantia-mx" aria-expanded="false">
+                                                    <span class="ms-5 ps-3"><i class="bi bi-chevron-right text-muted me-2"></i> Crédito Con Garantía</span>
+                                                    <span class="ms-auto me-3 badge bg-light text-secondary border">20,500,000</span>
+                                                  </button>
+                                                </h2>
+                                                <div id="colC7-congarantia-mx" class="accordion-collapse collapse" data-bs-parent="#accC7-prestamos-mx">
+                                                  <div class="accordion-body p-3 bg-white ps-5 ms-4">
+                                                    <div class="table-responsive bg-light p-2 rounded border border-light">
+                                                      <table class="table table-sm table-borderless table-hover align-middle mb-0" style="font-size: 0.8rem;">
+                                                        <thead class="text-muted text-uppercase border-bottom">
+                                                          <tr>
+                                                            <th>Centro De Costos</th>
+                                                            <th>División</th>
+                                                            <th>Tipo de Gasto</th>
+                                                            <th>Cuenta</th>
+                                                            <th class="text-end">Importe Total</th>
+                                                          </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                          <tr>
+                                                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 310482 - Dir Crédito Hipotecario</td>
+                                                            <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                                            <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                            <td>609011 - Televisión</td>
+                                                            <td class="text-end fw-bold text-success">9,200,000</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 310482 - Dir Crédito Hipotecario</td>
+                                                            <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                                            <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                                                            <td>609041 - Medios Digitales</td>
+                                                            <td class="text-end fw-bold text-success">7,800,000</td>
+                                                          </tr>
+                                                          <tr>
+                                                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 310482 - Dir Crédito Hipotecario</td>
+                                                            <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                                                            <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                            <td>609013 - Espectaculares</td>
+                                                            <td class="text-end fw-bold text-success">3,500,000</td>
+                                                          </tr>
+                                                        </tbody>
+                                                      </table>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
                                             </div>
                                           </div>
                                         </div>
                                       </div>
+
+                                      <!-- Clsf6: Seguros y Finanzas -->
+                                      <div class="accordion-item border-0">
+                                        <h2 class="accordion-header">
+                                          <button class="accordion-button bg-light bg-opacity-50 fw-bold py-2 border-bottom collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#colC6-seguros-mx" aria-expanded="false">
+                                            <span class="ms-5"><i class="bi bi-folder2-open text-warning me-2"></i> Seguros Y Finanzas</span>
+                                            <span class="ms-auto me-3 badge bg-secondary-subtle text-dark fs-6 border border-secondary-subtle">35,680,000</span>
+                                          </button>
+                                        </h2>
+                                        <div id="colC6-seguros-mx" class="accordion-collapse collapse" data-bs-parent="#accC6-unidades-mx">
+                                          <div class="accordion-body p-3 bg-white ps-5 ms-4">
+                                            <div class="table-responsive bg-light p-2 rounded border border-light">
+                                              <table class="table table-sm table-borderless table-hover align-middle mb-0" style="font-size: 0.8rem;">
+                                                <thead class="text-muted text-uppercase border-bottom">
+                                                  <tr>
+                                                    <th>Centro De Costos</th>
+                                                    <th>División</th>
+                                                    <th>Tipo de Gasto</th>
+                                                    <th>Cuenta</th>
+                                                    <th class="text-end">Importe Total</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 407823 - Dir Seguros Masivos</td>
+                                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                    <td>609011 - Televisión</td>
+                                                    <td class="text-end fw-bold text-success">14,500,000</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 407823 - Dir Seguros Masivos</td>
+                                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                    <td>609023 - Promociones Sorteos</td>
+                                                    <td class="text-end fw-bold text-success">9,180,000</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 407823 - Dir Seguros Masivos</td>
+                                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                                                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                                                    <td>609041 - Medios Digitales</td>
+                                                    <td class="text-end fw-bold text-success">7,200,000</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 512901 - Mercadotecnia Seguros Vida</td>
+                                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                    <td>609012 - Radio</td>
+                                                    <td class="text-end fw-bold text-success">4,800,000</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
                                     </div>
                                   </div>
                                 </div>
                               </div>
+
                             </div>
                           </div>
                         </div>
                       </div>
 
+                      <!-- Clsf4: Sector Corporativo -->
                       <div class="accordion-item border-0">
                         <h2 class="accordion-header">
                           <button class="accordion-button bg-light fw-bold py-2 border-0 collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#colC4-corp-mx" aria-expanded="false">
-                            <span class="ms-3"><i class="bi bi-diagram-2 text-primary me-2"></i> Sector
-                              Corporativo</span>
-                            <span class="ms-auto me-3 fs-6 text-primary fw-bold">700,000</span>
+                            <span class="ms-3"><i class="bi bi-diagram-2 text-primary me-2"></i> Sector Corporativo</span>
+                            <span class="ms-auto me-3 fs-6 text-primary fw-bold">40,500,000</span>
                           </button>
                         </h2>
-                        <div id="colC4-corp-mx" class="accordion-collapse collapse" data-bs-parent="#accC4-mx" style="">
+                        <div id="colC4-corp-mx" class="accordion-collapse collapse" data-bs-parent="#accC4-mx">
                           <div class="accordion-body p-0 border-top">
-
                             <div class="accordion accordion-flush" id="accC5-corp-mx">
                               <div class="accordion-item border-0">
                                 <h2 class="accordion-header">
-                                  <button class="accordion-button bg-white fw-bold py-2 border-bottom" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#colC5-empresas-mx" aria-expanded="true">
-                                    <span class="ms-4"><i class="bi bi-folder2 text-info me-2"></i> Empresas De
-                                      Negocio</span>
-                                    <span class="ms-auto me-3 text-dark fw-bold">700,000</span>
+                                  <button class="accordion-button bg-white fw-bold py-2 border-bottom collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#colC5-empresas-mx" aria-expanded="false">
+                                    <span class="ms-4"><i class="bi bi-folder2 text-info me-2"></i> Empresas De Negocio</span>
+                                    <span class="ms-auto me-3 text-dark fw-bold">40,500,000</span>
                                   </button>
                                 </h2>
-                                <div id="colC5-empresas-mx" class="accordion-collapse collapse show"
-                                  data-bs-parent="#accC5-corp-mx">
+                                <div id="colC5-empresas-mx" class="accordion-collapse collapse" data-bs-parent="#accC5-corp-mx">
                                   <div class="accordion-body p-0">
-
                                     <div class="accordion accordion-flush" id="accC6-empresas-mx">
                                       <div class="accordion-item border-0">
                                         <h2 class="accordion-header">
-                                          <button
-                                            class="accordion-button bg-light bg-opacity-50 fw-bold py-2 border-bottom"
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#colC6-cobranza-mx"
-                                            aria-expanded="true">
-                                            <span class="ms-5"><i class="bi bi-folder2-open text-warning me-2"></i>
-                                              Cobranza</span>
-                                            <span
-                                              class="ms-auto me-3 badge bg-secondary-subtle text-dark fs-6 border border-secondary-subtle">700,000</span>
+                                          <button class="accordion-button bg-light bg-opacity-50 fw-bold py-2 border-bottom collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#colC6-cobranza-mx" aria-expanded="false">
+                                            <span class="ms-5"><i class="bi bi-folder2-open text-warning me-2"></i> Cobranza Corporativa</span>
+                                            <span class="ms-auto me-3 badge bg-secondary-subtle text-dark fs-6 border border-secondary-subtle">40,500,000</span>
                                           </button>
                                         </h2>
-                                        <div id="colC6-cobranza-mx" class="accordion-collapse collapse show"
-                                          data-bs-parent="#accC6-empresas-mx">
-                                          <div class="accordion-body p-0">
-
-                                            <div class="accordion accordion-flush" id="accC7-cobranza-mx">
-                                              <div class="accordion-item border-0">
-                                                <h2 class="accordion-header">
-                                                  <button class="accordion-button bg-white fw-bold py-2 border-bottom"
-                                                    type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#colC7-pubcobranza-mx" aria-expanded="true">
-                                                    <span class="ms-5 ps-3"><i
-                                                        class="bi bi-chevron-right text-muted me-2"></i> Publicidad
-                                                      Cobranza</span>
-                                                    <span
-                                                      class="ms-auto me-3 badge bg-light text-secondary border">700,000</span>
-                                                  </button>
-                                                </h2>
-                                                <div id="colC7-pubcobranza-mx" class="accordion-collapse collapse show"
-                                                  data-bs-parent="#accC7-cobranza-mx">
-                                                  <div class="accordion-body p-0">
-
-                                                    <div class="accordion accordion-flush" id="accC8-pubcobranza-mx">
-                                                      <div class="accordion-item border-0">
-                                                        <h2 class="accordion-header">
-                                                          <button
-                                                            class="accordion-button bg-light bg-opacity-25 fw-bold py-2 border-bottom"
-                                                            type="button" data-bs-toggle="collapse"
-                                                            data-bs-target="#colC8-pubcobranza2-mx"
-                                                            aria-expanded="true">
-                                                            <span class="ms-5 ps-5"><i
-                                                                class="bi bi-dash text-muted me-2"></i> Publicidad
-                                                              Cobranza</span>
-                                                            <span
-                                                              class="ms-auto me-3 small fw-bold text-muted">700,000</span>
-                                                          </button>
-                                                        </h2>
-                                                        <div id="colC8-pubcobranza2-mx"
-                                                          class="accordion-collapse collapse show"
-                                                          data-bs-parent="#accC8-pubcobranza-mx" style="">
-                                                          <div class="accordion-body p-3 bg-white ps-5 ms-4">
-
-                                                            <div
-                                                              class="table-responsive bg-light p-2 rounded border border-light">
-                                                              <table
-                                                                class="table table-sm table-borderless table-hover align-middle mb-0"
-                                                                style="font-size: 0.8rem;">
-                                                                <thead class="text-muted text-uppercase border-bottom">
-                                                                  <tr>
-                                                                    <th>Centro De Costos</th>
-                                                                    <th>Divisiòn</th>
-                                                                    <th>Campaña</th>
-                                                                    <th>Cuenta</th>
-                                                                    <th class="text-end">Importe Aprobado</th>
-                                                                  </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                  <tr>
-                                                                    <td class="fw-bold text-dark"><i
-                                                                        class="bi bi-building me-1 text-muted"></i>
-                                                                      239729 - Publicidad Cobranza</td>
-                                                                    <td>Oferteo</td>
-                                                                    <td>Gasto Ordinario (Bau)</td>
-                                                                    <td>609011 - Televisión</td>
-                                                                    <td class="text-end fw-bold text-success">700,000
-                                                                    </td>
-                                                                  </tr>
-                                                                </tbody>
-                                                              </table>
-                                                            </div>
-
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                              </div>
+                                        <div id="colC6-cobranza-mx" class="accordion-collapse collapse" data-bs-parent="#accC6-empresas-mx">
+                                          <div class="accordion-body p-3 bg-white ps-5 ms-4">
+                                            <div class="table-responsive bg-light p-2 rounded border border-light">
+                                              <table class="table table-sm table-borderless table-hover align-middle mb-0" style="font-size: 0.8rem;">
+                                                <thead class="text-muted text-uppercase border-bottom">
+                                                  <tr>
+                                                    <th>Centro De Costos</th>
+                                                    <th>División</th>
+                                                    <th>Tipo de Gasto</th>
+                                                    <th>Cuenta</th>
+                                                    <th class="text-end">Importe Total</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 239729 - Publicidad Cobranza</td>
+                                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                    <td>609011 - Televisión</td>
+                                                    <td class="text-end fw-bold text-success">12,000,000</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 239729 - Publicidad Cobranza</td>
+                                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                    <td>609013 - Espectaculares</td>
+                                                    <td class="text-end fw-bold text-success">8,500,000</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 620145 - Dir Comunicación Corporativa</td>
+                                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                                                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                                                    <td>609041 - Medios Digitales</td>
+                                                    <td class="text-end fw-bold text-success">11,000,000</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 620145 - Dir Comunicación Corporativa</td>
+                                                    <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Sin División</span></td>
+                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                    <td>609031 - Material POP</td>
+                                                    <td class="text-end fw-bold text-success">5,000,000</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 730291 - Mercadotecnia Empresas</td>
+                                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                                    <td>609012 - Radio</td>
+                                                    <td class="text-end fw-bold text-success">4,000,000</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
                                             </div>
                                           </div>
                                         </div>
@@ -1377,39 +1482,77 @@
                           </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
               </div>
 
+              <!-- ===== LAM ===== -->
               <div class="accordion-item border-0">
                 <h2 class="accordion-header" id="head-lam">
-                  <button class="accordion-button bg-secondary-subtle fw-bold text-dark border-0 collapsed"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#col-lam" aria-expanded="false">
+                  <button class="accordion-button bg-secondary-subtle fw-bold text-dark border-0 collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#col-lam" aria-expanded="false">
                     <span><i class="bi bi-globe-americas text-primary me-2"></i> LAM</span>
-                    <span class="ms-auto me-3 fs-5 text-success fw-bolder">23,700,000</span>
+                    <span class="ms-auto me-3 fs-5 text-success fw-bolder">23,500,000</span>
                   </button>
                 </h2>
-                <div id="col-lam" class="accordion-collapse collapse" data-bs-parent="#accRoot" style="">
+                <div id="col-lam" class="accordion-collapse collapse" data-bs-parent="#accRoot">
                   <div class="accordion-body p-0 border-top border-secondary">
-
                     <div class="accordion accordion-flush" id="accC3-lam">
 
+                      <!-- LAM: Guatemala -->
                       <div class="accordion-item border-0 border-bottom">
                         <h2 class="accordion-header">
                           <button class="accordion-button bg-light fw-bold py-2 border-0 collapsed" type="button"
                             data-bs-toggle="collapse" data-bs-target="#colC3-gt" aria-expanded="false">
                             <span class="ms-3"><i class="bi bi-geo-alt text-info me-2"></i> Guatemala</span>
-                            <span class="ms-auto me-3 fs-6 text-primary fw-bold">15,500,000</span>
+                            <span class="ms-auto me-3 fs-6 text-primary fw-bold">10,500,000</span>
                           </button>
                         </h2>
-                        <div id="colC3-gt" class="accordion-collapse collapse" data-bs-parent="#accC3-lam" style="">
-                          <div class="accordion-body p-3 bg-white text-muted small fst-italic ms-4">
-                            Expandir estructura jerárquica para ver detalle...
+                        <div id="colC3-gt" class="accordion-collapse collapse" data-bs-parent="#accC3-lam">
+                          <div class="accordion-body p-3 bg-white ps-5 ms-4">
+                            <div class="table-responsive bg-light p-2 rounded border border-light">
+                              <table class="table table-sm table-borderless table-hover align-middle mb-0" style="font-size: 0.8rem;">
+                                <thead class="text-muted text-uppercase border-bottom">
+                                  <tr>
+                                    <th>Centro De Costos</th>
+                                    <th>División</th>
+                                    <th>Tipo de Gasto</th>
+                                    <th>Cuenta</th>
+                                    <th class="text-end">Importe Total</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 810034 - Dir Mkt Guatemala</td>
+                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609011 - Televisión</td>
+                                    <td class="text-end fw-bold text-success">4,500,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 810034 - Dir Mkt Guatemala</td>
+                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609012 - Radio</td>
+                                    <td class="text-end fw-bold text-success">3,200,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 810034 - Dir Mkt Guatemala</td>
+                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                                    <td>609041 - Medios Digitales</td>
+                                    <td class="text-end fw-bold text-success">2,800,000</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
                           </div>
                         </div>
                       </div>
 
+                      <!-- LAM: Honduras -->
                       <div class="accordion-item border-0 border-bottom">
                         <h2 class="accordion-header">
                           <button class="accordion-button bg-light fw-bold py-2 border-0 collapsed" type="button"
@@ -1418,24 +1561,95 @@
                             <span class="ms-auto me-3 fs-6 text-primary fw-bold">8,200,000</span>
                           </button>
                         </h2>
-                        <div id="colC3-hn" class="accordion-collapse collapse" data-bs-parent="#accC3-lam" style="">
-                          <div class="accordion-body p-3 bg-white text-muted small fst-italic ms-4">
-                            Expandir estructura jerárquica para ver detalle...
+                        <div id="colC3-hn" class="accordion-collapse collapse" data-bs-parent="#accC3-lam">
+                          <div class="accordion-body p-3 bg-white ps-5 ms-4">
+                            <div class="table-responsive bg-light p-2 rounded border border-light">
+                              <table class="table table-sm table-borderless table-hover align-middle mb-0" style="font-size: 0.8rem;">
+                                <thead class="text-muted text-uppercase border-bottom">
+                                  <tr>
+                                    <th>Centro De Costos</th>
+                                    <th>División</th>
+                                    <th>Tipo de Gasto</th>
+                                    <th>Cuenta</th>
+                                    <th class="text-end">Importe Total</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 920147 - Dir Mkt Honduras</td>
+                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609011 - Televisión</td>
+                                    <td class="text-end fw-bold text-success">3,800,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 920147 - Dir Mkt Honduras</td>
+                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609013 - Espectaculares</td>
+                                    <td class="text-end fw-bold text-success">2,400,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 920148 - Comunicación Honduras</td>
+                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                                    <td>609041 - Medios Digitales</td>
+                                    <td class="text-end fw-bold text-success">2,000,000</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
                           </div>
                         </div>
                       </div>
 
+                      <!-- LAM: Panamá -->
                       <div class="accordion-item border-0">
                         <h2 class="accordion-header">
                           <button class="accordion-button collapsed bg-light fw-bold py-2 border-0" type="button"
                             data-bs-toggle="collapse" data-bs-target="#colC3-pa" aria-expanded="false">
                             <span class="ms-3"><i class="bi bi-geo-alt text-secondary me-2"></i> Panamá</span>
-                            <span class="ms-auto me-3 fs-6 text-muted">0</span>
+                            <span class="ms-auto me-3 fs-6 text-muted">4,800,000</span>
                           </button>
                         </h2>
                         <div id="colC3-pa" class="accordion-collapse collapse" data-bs-parent="#accC3-lam">
-                          <div class="accordion-body p-3 bg-white text-center text-muted small fst-italic border-top">
-                            No hay presupuesto aprobado registrado para esta región actualmente.
+                          <div class="accordion-body p-3 bg-white ps-5 ms-4">
+                            <div class="table-responsive bg-light p-2 rounded border border-light">
+                              <table class="table table-sm table-borderless table-hover align-middle mb-0" style="font-size: 0.8rem;">
+                                <thead class="text-muted text-uppercase border-bottom">
+                                  <tr>
+                                    <th>Centro De Costos</th>
+                                    <th>División</th>
+                                    <th>Tipo de Gasto</th>
+                                    <th>Cuenta</th>
+                                    <th class="text-end">Importe Total</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 1010293 - Dir Mkt Panamá</td>
+                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609011 - Televisión</td>
+                                    <td class="text-end fw-bold text-success">2,500,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 1010293 - Dir Mkt Panamá</td>
+                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609012 - Radio</td>
+                                    <td class="text-end fw-bold text-success">1,400,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 1010293 - Dir Mkt Panamá</td>
+                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                                    <td>609041 - Medios Digitales</td>
+                                    <td class="text-end fw-bold text-success">900,000</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1447,50 +1661,86 @@
 
             </div>
           </div>
+          <!-- HU3 – Monitoreo de Solicitudes de Carga (Bloque 3) -->
           <div class="tab-pane fade" id="tab-pendientes" role="tabpanel" aria-labelledby="pendientes-tab">
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <h6 class="fw-bold text-dark mb-0">Gestión de Cuellos de Botella (Flujo Retenido)</h6>
-              <button class="btn btn-sm btn-light border text-warning"><i class="bi bi-download me-1"></i> Exportar
-                Pendientes</button>
+              <h6 class="fw-bold text-dark mb-0">Monitoreo de Solicitudes Pendientes de Exposición</h6>
+              <button class="btn btn-sm btn-light border text-warning"><i class="bi bi-download me-1"></i> Exportar Pendientes</button>
             </div>
 
+            <!-- CA01 – Indicadores: 3 cards principales + Revisión de Excedente separado -->
             <div class="row g-2 mb-4">
 
-              <div class="col-md-3">
-                <div
-                  class="bg-secondary-subtle border border-secondary border-opacity-25 rounded p-3 text-center h-100 d-flex flex-column justify-content-center">
-                  <span class="d-block small text-muted fw-bold mb-1">Revisión Excedente</span>
-                  <span class="fs-5 fw-bold text-dark">2,500,000</span>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div
-                  class="bg-info-subtle border border-info border-opacity-25 rounded p-3 text-center h-100 d-flex flex-column justify-content-center">
+              <!-- Indicador: Pendiente de Autorización: Marketing -->
+              <div class="col-md-4">
+                <div class="bg-info-subtle border border-info border-opacity-25 rounded p-3 h-100 d-flex flex-column justify-content-center">
                   <span class="d-block small text-info fw-bold mb-1">Pendiente de Autorización: Marketing</span>
-                  <span class="fs-5 fw-bold text-dark">4,000,000</span>
+                  <span class="fs-5 fw-bold text-dark mb-2">4,000,000</span>
+                  <div>
+                    <button class="btn btn-sm btn-outline-info py-0 px-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.70rem;">
+                      Ver Desglose <i class="bi bi-chevron-down ms-1"></i>
+                    </button>
+                    <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 220px;">
+                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
+                        <span class="text-muted">Marca</span>
+                        <span class="fw-bold text-dark">1,800,000</span>
+                      </li>
+                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
+                        <span class="text-muted">Oferteo</span>
+                        <span class="fw-bold text-dark">1,200,000</span>
+                      </li>
+                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
+                        <span class="text-muted">Estrategia</span>
+                        <span class="fw-bold text-dark">800,000</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <span class="text-muted">Sin División</span>
+                        <span class="fw-bold text-dark">200,000</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              <div class="col-md-3">
-                <div
-                  class="bg-primary-subtle border border-primary border-opacity-50 rounded p-3 text-center h-100 shadow-sm d-flex flex-column justify-content-center">
-                  <span class="d-block small text-primary fw-bold mb-1">Pendiente de Autorización: Administraciòn
-                    MKT</span>
-                  <span class="fs-5 fw-bold text-primary">12,000,000</span>
+              <!-- Indicador: Pendiente de Autorización: Administración y Finanzas MKT -->
+              <div class="col-md-4">
+                <div class="bg-primary-subtle border border-primary border-opacity-50 rounded p-3 h-100 shadow-sm d-flex flex-column justify-content-center">
+                  <span class="d-block small text-primary fw-bold mb-1">Pendiente de Autorización: Administración y Finanzas MKT</span>
+                  <span class="fs-5 fw-bold text-primary mb-2">12,000,000</span>
+                  <div>
+                    <button class="btn btn-sm btn-outline-primary py-0 px-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.70rem;">
+                      Ver Desglose <i class="bi bi-chevron-down ms-1"></i>
+                    </button>
+                    <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 220px;">
+                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
+                        <span class="text-muted">Marca</span>
+                        <span class="fw-bold text-dark">5,000,000</span>
+                      </li>
+                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
+                        <span class="text-muted">Oferteo</span>
+                        <span class="fw-bold text-dark">4,500,000</span>
+                      </li>
+                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
+                        <span class="text-muted">Estrategia</span>
+                        <span class="fw-bold text-dark">2,500,000</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <span class="text-muted">Sin División</span>
+                        <span class="fw-bold text-dark">0</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              <div class="col-md-3">
-                <div
-                  class="bg-warning-subtle border border-danger border-opacity-25 rounded p-3 text-center h-100 d-flex flex-column justify-content-center">
+              <!-- Indicador: Pendiente de Autorización: División -->
+              <div class="col-md-4">
+                <div class="bg-warning-subtle border border-danger border-opacity-25 rounded p-3 h-100 d-flex flex-column justify-content-center">
                   <span class="d-block small text-danger fw-bold mb-1">Pendiente de Autorización: División</span>
                   <span class="fs-5 fw-bold text-dark mb-2">6,000,000</span>
-
                   <div>
-                    <button class="btn btn-sm btn-outline-danger py-0 px-2" type="button" data-bs-toggle="dropdown"
-                      aria-expanded="false" style="font-size: 0.70rem;">
+                    <button class="btn btn-sm btn-outline-danger py-0 px-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.70rem;">
                       Ver Desglose <i class="bi bi-chevron-down ms-1"></i>
                     </button>
                     <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 220px;">
@@ -1517,219 +1767,550 @@
 
             </div>
 
+            <!-- Revisión de Excedente (separado de los indicadores) -->
+            <div class="alert alert-secondary d-flex align-items-center gap-3 py-2 mb-3 border" role="alert">
+              <i class="bi bi-exclamation-triangle-fill text-secondary fs-5"></i>
+              <div>
+                <span class="fw-bold text-dark">Revisión de Excedente:</span>
+                <span class="text-dark ms-2">2,500,000</span>
+                <small class="text-muted ms-2">— Solicitudes que superan el monto autorizado y requieren revisión adicional.</small>
+              </div>
+            </div>
+
+            <!-- Tabla de solicitudes pendientes -->
             <div class="table-responsive border rounded bg-white">
               <table class="table table-hover align-middle mb-0" style="font-size: 0.85rem;">
                 <thead class="table-light text-muted small text-uppercase">
                   <tr>
-                    <th style="cursor: pointer;">Folio / Nombre de Gasto <i
-                        class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
+                    <th style="cursor: pointer;">Folio <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
                     <th style="cursor: pointer;">Tipo de Gasto <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
                     <th style="cursor: pointer;">País <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
-                    <th style="cursor: pointer;">Estatus Actual <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
-                    <th style="cursor: pointer;">Vigencia de Campaña<i class="bi bi-arrow-down-up ms-1 opacity-50"></i>
-                    </th>
-                    <th style="cursor: pointer;" class="text-center text-dark fw-bold">Última Actualización <i
-                        class="bi bi-arrow-down ms-1"></i></th>
-                    <th style="cursor: pointer;" class="text-end">Importe<i
-                        class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
+                    <th style="cursor: pointer;">Estatus <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
+                    <th style="cursor: pointer;" class="text-center text-dark fw-bold">Fecha de Registro <i class="bi bi-arrow-down ms-1"></i></th>
+                    <th style="cursor: pointer;" class="text-end">Importe <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
                   </tr>
                 </thead>
                 <tbody>
-
                   <tr>
                     <td>
-                      <a href="AutorizacionExcedente.html"
-                        class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25"
-                        title="Revisar Solicitud" style="width: max-content;">F-26005NMX</a>
+                      <a href="AutorizacionExcedente.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26005NMX</a>
                       <small class="text-dark fw-bold">Campaña Día de las Madres</small>
                     </td>
                     <td><span class="badge bg-light text-dark border">Campaña</span></td>
                     <td><span class="text-dark">México</span></td>
-                    <td><span
-                        class="badge bg-secondary-subtle text-secondary border border-secondary-subtle text-dark">Revisión
-                        Excedente</span></td>
-                    <td>
-                      <span class="text-danger fw-bold d-block"><i class="bi bi-exclamation-triangle me-1"></i>01 May
-                        2026</span>
-                      <small class="text-muted">31 May 2026</small>
-                    </td>
+                    <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Revisión Excedente</span></td>
                     <td class="text-center"><span class="text-dark fw-bold">25 Abr 2026</span></td>
                     <td class="text-end fw-bold text-dark">2,500,000</td>
                   </tr>
-
                   <tr class="table-primary">
                     <td>
-                      <a href="AutorizacionN2.html"
-                        class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25"
-                        title="Revisar Solicitud" style="width: max-content;">F-26008GTM</a>
+                      <a href="AutorizacionN2.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26008GTM</a>
                       <small class="text-dark fw-bold">Lanzamiento Italika Z</small>
                     </td>
                     <td><span class="badge bg-light text-dark border">Campaña</span></td>
                     <td><span class="text-dark">Guatemala</span></td>
-                    <td><span class="badge bg-primary text-white border border-primary">Pendiente Finanzas N2</span>
-                    </td>
-                    <td>
-                      <span class="text-dark d-block">15 Jun 2026</span>
-                      <small class="text-muted">30 Ago 2026</small>
-                    </td>
+                    <td><span class="badge bg-primary text-white border border-primary">Pendiente Admon Finanzas MKT</span></td>
                     <td class="text-center"><span class="text-dark fw-bold">28 Abr 2026</span></td>
                     <td class="text-end fw-bold text-primary">12,000,000</td>
                   </tr>
-
                   <tr>
                     <td>
-                      <a href="AutorizacionN3.html"
-                        class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25"
-                        title="Revisar Solicitud" style="width: max-content;">F-26015NMX</a>
+                      <a href="AutorizacionN3.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26015NMX</a>
                       <small class="text-dark fw-bold">Feria de Empleo Nacional</small>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Proyecto</span></td>
+                    <td><span class="badge bg-light text-dark border">Proyecto de Inversión</span></td>
                     <td><span class="text-dark">México</span></td>
-                    <td><span class="badge bg-danger-subtle text-danger border border-danger-subtle text-dark">Pendiente
-                        Estrategia N3</span></td>
-                    <td>
-                      <span class="text-dark d-block">20 May 2026</span>
-                      <small class="text-muted">25 May 2026</small>
-                    </td>
+                    <td><span class="badge bg-danger-subtle text-danger border border-danger-subtle">Pendiente División</span></td>
                     <td class="text-center"><span class="text-dark fw-bold">22 Abr 2026</span></td>
                     <td class="text-end fw-bold text-dark">6,000,000</td>
                   </tr>
-
                   <tr>
                     <td>
-                      <a href="AutorizacionN1.html"
-                        class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25"
-                        title="Revisar Solicitud" style="width: max-content;">F-26012HND</a>
+                      <a href="AutorizacionN1.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26012HND</a>
                       <small class="text-dark fw-bold">Promoción Remesas Verano</small>
                     </td>
                     <td><span class="badge bg-light text-dark border">Campaña</span></td>
                     <td><span class="text-dark">Honduras</span></td>
-                    <td><span class="badge bg-info-subtle text-info border border-info-subtle text-dark">Pendiente
-                        Marketing N1</span></td>
-                    <td>
-                      <span class="text-dark d-block">01 Jul 2026</span>
-                      <small class="text-muted">31 Ago 2026</small>
-                    </td>
+                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Pendiente Marketing</span></td>
                     <td class="text-center"><span class="text-dark fw-bold">29 Abr 2026</span></td>
                     <td class="text-end fw-bold text-dark">4,000,000</td>
                   </tr>
-
+                  <tr>
+                    <td>
+                      <a href="AutorizacionN1.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26021NMX</a>
+                      <small class="text-dark fw-bold">Campaña Back to School 2026</small>
+                    </td>
+                    <td><span class="badge bg-light text-dark border">Campaña</span></td>
+                    <td><span class="text-dark">México</span></td>
+                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Pendiente Marketing</span></td>
+                    <td class="text-center"><span class="text-dark fw-bold">01 May 2026</span></td>
+                    <td class="text-end fw-bold text-dark">3,500,000</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="AutorizacionN2.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26019GTM</a>
+                      <small class="text-dark fw-bold">Apertura Nueva Zona Norte Guatemala</small>
+                    </td>
+                    <td><span class="badge bg-light text-dark border">Proyecto de Inversión</span></td>
+                    <td><span class="text-dark">Guatemala</span></td>
+                    <td><span class="badge bg-primary text-white border border-primary">Pendiente Admon Finanzas MKT</span></td>
+                    <td class="text-center"><span class="text-dark fw-bold">03 May 2026</span></td>
+                    <td class="text-end fw-bold text-primary">5,800,000</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="AutorizacionN3.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26023NMX</a>
+                      <small class="text-dark fw-bold">Mundial 2026 - Fase Final</small>
+                    </td>
+                    <td><span class="badge bg-light text-dark border">Campaña</span></td>
+                    <td><span class="text-dark">México</span></td>
+                    <td><span class="badge bg-danger-subtle text-danger border border-danger-subtle">Pendiente División</span></td>
+                    <td class="text-center"><span class="text-dark fw-bold">05 May 2026</span></td>
+                    <td class="text-end fw-bold text-dark">8,200,000</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="AutorizacionExcedente.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26027HND</a>
+                      <small class="text-dark fw-bold">Patrocinio Festivo Honduras</small>
+                    </td>
+                    <td><span class="badge bg-light text-dark border">Campaña</span></td>
+                    <td><span class="text-dark">Honduras</span></td>
+                    <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Revisión Excedente</span></td>
+                    <td class="text-center"><span class="text-dark fw-bold">07 May 2026</span></td>
+                    <td class="text-end fw-bold text-dark">1,200,000</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="AutorizacionN1.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26031PAN</a>
+                      <small class="text-dark fw-bold">Campaña Conectividad Panamá</small>
+                    </td>
+                    <td><span class="badge bg-light text-dark border">Campaña</span></td>
+                    <td><span class="text-dark">Panamá</span></td>
+                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Pendiente Marketing</span></td>
+                    <td class="text-center"><span class="text-dark fw-bold">09 May 2026</span></td>
+                    <td class="text-end fw-bold text-dark">2,100,000</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="AutorizacionN2.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26034NMX</a>
+                      <small class="text-dark fw-bold">Relanzamiento Seguros Auto</small>
+                    </td>
+                    <td><span class="badge bg-light text-dark border">Proyecto de Inversión</span></td>
+                    <td><span class="text-dark">México</span></td>
+                    <td><span class="badge bg-primary text-white border border-primary">Pendiente Admon Finanzas MKT</span></td>
+                    <td class="text-center"><span class="text-dark fw-bold">10 May 2026</span></td>
+                    <td class="text-end fw-bold text-primary">9,500,000</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="AutorizacionN3.html" class="fw-bold text-primary d-block text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud" style="width: max-content;">F-26038NMX</a>
+                      <small class="text-dark fw-bold">Campaña Digital Remesas Q3</small>
+                    </td>
+                    <td><span class="badge bg-light text-dark border">Campaña</span></td>
+                    <td><span class="text-dark">México</span></td>
+                    <td><span class="badge bg-danger-subtle text-danger border border-danger-subtle">Pendiente División</span></td>
+                    <td class="text-center"><span class="text-dark fw-bold">12 May 2026</span></td>
+                    <td class="text-end fw-bold text-dark">4,300,000</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
+          <!-- CA03 – Versiones Sincronizadas (Sección 2 del Bloque 2) -->
           <div class="tab-pane fade" id="tab-sipres" role="tabpanel" aria-labelledby="#sipres-tab">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <div>
-                <h6 class="fw-bold text-dark mb-0">Sincronización Previa</h6>
-                <small class="text-muted">Fecha de envío: 15 Ene 2026 | Expuesto por: Admin Finanzas</small>
+                <h6 class="fw-bold text-dark mb-0">Versiones Sincronizadas con SIPRES</h6>
+                <small class="text-muted">Consulta el detalle de cada versión expuesta y confirmada por SIPRES</small>
               </div>
-              <button class="btn btn-sm btn-light border text-primary"><i class="bi bi-download me-1"></i> Exportar
-                versión</button>
+              <button class="btn btn-sm btn-light border text-primary"><i class="bi bi-download me-1"></i> Exportar Versión</button>
             </div>
 
-            <div class="accordion shadow-sm opacity-75" id="accSipres">
-              <div class="accordion-item border-0">
+            <!-- Filtros de versión + comunes -->
+            <div class="row g-2 mb-4 bg-light p-2 rounded shadow-sm align-items-center border">
+              <div class="col-md-2">
+                <select class="form-select form-select-sm text-muted">
+                  <option selected="">Versión: Todas</option>
+                  <option>v4 – 15 Abr 2026</option>
+                  <option>v3 – 02 Abr 2026</option>
+                  <option>v2 – 18 Mar 2026</option>
+                  <option>v1 – 05 Mar 2026</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <div class="input-group input-group-sm">
+                  <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
+                  <input type="text" class="form-control border-start-0" placeholder="Buscar CeCo o Campaña...">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <select class="form-select form-select-sm text-muted">
+                  <option selected="">División: Todas</option>
+                  <option>Marca</option>
+                  <option>Oferteo</option>
+                  <option>Estrategia</option>
+                  <option>Sin División</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <select class="form-select form-select-sm text-muted">
+                  <option selected="">País: Todos</option>
+                  <option>México</option>
+                  <option>Guatemala</option>
+                  <option>Honduras</option>
+                  <option>Panamá</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <select class="form-select form-select-sm text-muted">
+                  <option selected="">Tipo: Todos</option>
+                  <option>Ordinario</option>
+                  <option>Proyectos de Inversión</option>
+                </select>
+              </div>
+              <div class="col-md-1 d-flex justify-content-end">
+                <button class="btn btn-sm btn-primary px-3 shadow-sm">Filtrar</button>
+              </div>
+            </div>
+
+            <!-- Versión activa mostrada: v4 -->
+            <div class="d-flex align-items-center gap-3 mb-3 p-2 bg-primary-subtle rounded border border-primary border-opacity-25">
+              <i class="bi bi-cloud-check-fill text-primary fs-5"></i>
+              <div>
+                <span class="fw-bold text-primary">Versión v4</span>
+                <span class="text-muted small ms-2">Expuesta el 15 Abr 2026 a las 14:30 | Sincronizada el 15 Abr 2026 a las 14:35 | Por: Ana Martínez</span>
+              </div>
+              <span class="ms-auto fw-bold text-primary fs-6">162,428,000</span>
+            </div>
+
+            <!-- Jerarquía igual que CA01 pero de versión sincronizada -->
+            <div class="accordion shadow-sm mb-4 border rounded opacity-90" id="accSipres">
+
+              <!-- México -->
+              <div class="accordion-item border-0 border-bottom">
                 <h2 class="accordion-header">
-                  <button class="accordion-button bg-light fw-bold text-dark collapsed" type="button"
+                  <button class="accordion-button bg-secondary-subtle fw-bold text-dark collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#colSipresMx" aria-expanded="false">
-                    <i class="bi bi-clock-history text-secondary me-2"></i> México (Versión Anterior)
-                    <span class="ms-auto me-3 fs-5 text-secondary">150,000,000</span>
+                    <span><i class="bi bi-geo-alt-fill text-danger me-2"></i> México</span>
+                    <span class="ms-auto me-3 fs-5 text-success fw-bolder">138,928,000</span>
                   </button>
                 </h2>
-                <div id="colSipresMx" class="accordion-collapse collapse" data-bs-parent="#accSipres" style="">
-                  <div class="accordion-body p-3 bg-white text-center">
-                    <p class="small text-muted mb-0 fst-italic">El desglose histórico detallado se encuentra archivado.
-                      Utilice el botón de exportación para visualizar a nivel CeCo.</p>
+                <div id="colSipresMx" class="accordion-collapse collapse" data-bs-parent="#accSipres">
+                  <div class="accordion-body p-0">
+                    <div class="accordion accordion-flush" id="accSipresC4-mx">
+                      <div class="accordion-item border-0 border-bottom">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button bg-light fw-bold py-2 border-0 collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#colSipresC4-masivo" aria-expanded="false">
+                            <span class="ms-3"><i class="bi bi-diagram-2 text-primary me-2"></i> Sector Mercado Masivo</span>
+                            <span class="ms-auto me-3 fs-6 text-primary fw-bold">98,428,000</span>
+                          </button>
+                        </h2>
+                        <div id="colSipresC4-masivo" class="accordion-collapse collapse" data-bs-parent="#accSipresC4-mx">
+                          <div class="accordion-body p-3 bg-white ps-5 ms-4">
+                            <div class="table-responsive bg-light p-2 rounded border border-light">
+                              <table class="table table-sm table-borderless table-hover align-middle mb-0" style="font-size: 0.8rem;">
+                                <thead class="text-muted text-uppercase border-bottom">
+                                  <tr>
+                                    <th>Centro De Costos</th>
+                                    <th>División</th>
+                                    <th>Tipo de Gasto</th>
+                                    <th>Cuenta</th>
+                                    <th class="text-end">Importe Total</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 100901 - Dir Gral Conectividad</td>
+                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609011 - Televisión</td>
+                                    <td class="text-end fw-bold text-success">12,500,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 100901 - Dir Gral Conectividad</td>
+                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609023 - Promociones Sorteos</td>
+                                    <td class="text-end fw-bold text-success">8,274,280</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 291374 - Dirección Mercadotecnia Digital</td>
+                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609011 - Televisión</td>
+                                    <td class="text-end fw-bold text-success">7,500,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 291374 - Dirección Mercadotecnia Digital</td>
+                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                                    <td>609045 - Digital y Redes Sociales</td>
+                                    <td class="text-end fw-bold text-success">6,800,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 102847 - Mercadotecnia Préstamos</td>
+                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609012 - Radio</td>
+                                    <td class="text-end fw-bold text-success">3,173,720</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 407823 - Dir Seguros Masivos</td>
+                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609011 - Televisión</td>
+                                    <td class="text-end fw-bold text-success">14,500,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 512901 - Mercadotecnia Seguros Vida</td>
+                                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609012 - Radio</td>
+                                    <td class="text-end fw-bold text-success">4,800,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 310482 - Dir Crédito Hipotecario</td>
+                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                                    <td>609041 - Medios Digitales</td>
+                                    <td class="text-end fw-bold text-success">7,800,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 239729 - Publicidad Cobranza</td>
+                                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609011 - Televisión</td>
+                                    <td class="text-end fw-bold text-success">12,000,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 620145 - Dir Comunicación Corporativa</td>
+                                    <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                                    <td>609041 - Medios Digitales</td>
+                                    <td class="text-end fw-bold text-success">11,000,000</td>
+                                  </tr>
+                                  <tr>
+                                    <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 730291 - Mercadotecnia Empresas</td>
+                                    <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Sin División</span></td>
+                                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                                    <td>609031 - Material POP</td>
+                                    <td class="text-end fw-bold text-success">9,280,000</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <!-- LAM -->
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button bg-secondary-subtle fw-bold text-dark border-0 collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#colSipresLam" aria-expanded="false">
+                    <span><i class="bi bi-globe-americas text-primary me-2"></i> LAM</span>
+                    <span class="ms-auto me-3 fs-5 text-success fw-bolder">23,500,000</span>
+                  </button>
+                </h2>
+                <div id="colSipresLam" class="accordion-collapse collapse" data-bs-parent="#accSipres">
+                  <div class="accordion-body p-3 bg-white ps-5 ms-4">
+                    <div class="table-responsive bg-light p-2 rounded border border-light">
+                      <table class="table table-sm table-borderless table-hover align-middle mb-0" style="font-size: 0.8rem;">
+                        <thead class="text-muted text-uppercase border-bottom">
+                          <tr>
+                            <th>País</th>
+                            <th>Centro De Costos</th>
+                            <th>División</th>
+                            <th>Tipo de Gasto</th>
+                            <th>Cuenta</th>
+                            <th class="text-end">Importe Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><span class="badge bg-light text-dark border">Guatemala</span></td>
+                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 810034 - Dir Mkt Guatemala</td>
+                            <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                            <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                            <td>609011 - Televisión</td>
+                            <td class="text-end fw-bold text-success">4,500,000</td>
+                          </tr>
+                          <tr>
+                            <td><span class="badge bg-light text-dark border">Guatemala</span></td>
+                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 810034 - Dir Mkt Guatemala</td>
+                            <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                            <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                            <td>609012 - Radio</td>
+                            <td class="text-end fw-bold text-success">3,200,000</td>
+                          </tr>
+                          <tr>
+                            <td><span class="badge bg-light text-dark border">Guatemala</span></td>
+                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 810034 - Dir Mkt Guatemala</td>
+                            <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                            <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                            <td>609041 - Medios Digitales</td>
+                            <td class="text-end fw-bold text-success">2,800,000</td>
+                          </tr>
+                          <tr>
+                            <td><span class="badge bg-light text-dark border">Honduras</span></td>
+                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 920147 - Dir Mkt Honduras</td>
+                            <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                            <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                            <td>609011 - Televisión</td>
+                            <td class="text-end fw-bold text-success">3,800,000</td>
+                          </tr>
+                          <tr>
+                            <td><span class="badge bg-light text-dark border">Honduras</span></td>
+                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 920148 - Comunicación Honduras</td>
+                            <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                            <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                            <td>609041 - Medios Digitales</td>
+                            <td class="text-end fw-bold text-success">2,000,000</td>
+                          </tr>
+                          <tr>
+                            <td><span class="badge bg-light text-dark border">Panamá</span></td>
+                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 1010293 - Dir Mkt Panamá</td>
+                            <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span></td>
+                            <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                            <td>609011 - Televisión</td>
+                            <td class="text-end fw-bold text-success">2,500,000</td>
+                          </tr>
+                          <tr>
+                            <td><span class="badge bg-light text-dark border">Panamá</span></td>
+                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 1010293 - Dir Mkt Panamá</td>
+                            <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                            <td><span class="badge bg-light text-dark border">Ordinario</span></td>
+                            <td>609012 - Radio</td>
+                            <td class="text-end fw-bold text-success">1,400,000</td>
+                          </tr>
+                          <tr>
+                            <td><span class="badge bg-light text-dark border">Panamá</span></td>
+                            <td class="fw-bold text-dark"><i class="bi bi-building me-1 text-muted"></i> 1010293 - Dir Mkt Panamá</td>
+                            <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                            <td><span class="badge bg-info-subtle text-info border border-info-subtle">Proy. Inversión</span></td>
+                            <td>609041 - Medios Digitales</td>
+                            <td class="text-end fw-bold text-success">900,000</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
+          <!-- CA04 – Bitácora de Cambios (Sección 3 del Bloque 2) -->
           <div class="tab-pane fade" id="tab-bitacora" role="tabpanel" aria-labelledby="bitacora-tab">
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <h6 class="fw-bold text-dark mb-0">Historial de Versiones Expuestas a SIPRES</h6>
-              <button class="btn btn-sm btn-light border text-primary shadow-sm"><i
-                  class="bi bi-file-earmark-excel me-1"></i> Descargar Bitácora</button>
+              <h6 class="fw-bold text-dark mb-0">Bitácora de Cambios – Historial de Exposiciones a SIPRES</h6>
+              <button class="btn btn-sm btn-light border text-primary shadow-sm"><i class="bi bi-file-earmark-excel me-1"></i> Descargar Bitácora</button>
             </div>
 
             <div class="table-responsive border rounded bg-white shadow-sm">
               <table class="table table-hover align-middle mb-0" style="font-size: 0.85rem;">
                 <thead class="table-light text-muted small text-uppercase">
                   <tr>
-                    <th>Fecha y Hora Exposición</th>
-                    <th>Fecha y Hora Sincronización</th>
-                    <th>Usuario Responsable</th>
-                    <th style="width: 35%;">Comentario de Versión</th>
-                    <th class="text-end">Importe Total</th>
-                    <th class="text-center">Estatus</th>
+                    <th class="text-center">Versión</th>
+                    <th>Fecha y Hora de Liberación</th>
+                    <th>Usuario que Liberó</th>
+                    <th style="width: 30%;">Comentarios</th>
+                    <th class="text-end">Importe Total Expuesto</th>
+                    <th class="text-center">Estatus de Sincronización</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr class="table-success">
+                    <td class="text-center"><span class="badge bg-success text-white fs-6">v4</span></td>
                     <td>
                       <div class="fw-bold text-dark">15 Abr 2026</div>
                       <small class="text-muted">14:30:12</small>
                     </td>
                     <td>
-                      <div class="text-success fw-bold">15 Abr 2026</div>
-                      <small class="text-success">14:35:00</small>
-                    </td>
-                    <td>
                       <span class="fw-bold text-dark">Ana Martínez</span>
                       <small class="d-block text-muted">Gerencia Admon Mkt</small>
                     </td>
-                    <td class="text-dark">Sincronización SIPRES exitosa: Carga Ordinaria con Nueva Reestructura de
-                      Centro de Costos</td>
+                    <td class="text-dark">Carga Ordinaria con nueva reestructura de Centro de Costos. Incorpora Sector Corporativo LAM.</td>
                     <td class="text-end fw-bold text-dark">162,428,000</td>
                     <td class="text-center">
-                      <span
-                        class="badge bg-success-subtle text-success border border-success-subtle">Sincronizado</span>
+                      <span class="badge bg-success-subtle text-success border border-success-subtle">Sincronizado</span>
                     </td>
                   </tr>
 
                   <tr>
+                    <td class="text-center"><span class="badge bg-secondary text-white fs-6">v3</span></td>
                     <td>
                       <div class="fw-bold text-dark">02 Abr 2026</div>
                       <small class="text-muted">10:15:45</small>
                     </td>
                     <td>
-                      <div class="text-success fw-bold">02 Abr 2026</div>
-                      <small class="text-success">10:20:10</small>
-                    </td>
-                    <td>
                       <span class="fw-bold text-dark">Carlos Ruiz</span>
                       <small class="d-block text-muted">Admin Presupuesto</small>
                     </td>
-                    <td class="text-dark">Carga con menos 3% de préstamos y cobranza</td>
+                    <td class="text-dark">Ajuste -3% en Préstamos y Cobranza. Reclasificación CeCo 102847.</td>
                     <td class="text-end fw-bold text-dark">150,000,000</td>
                     <td class="text-center">
-                      <span
-                        class="badge bg-success-subtle text-success border border-success-subtle">Sincronizado</span>
+                      <span class="badge bg-success-subtle text-success border border-success-subtle">Sincronizado</span>
                     </td>
                   </tr>
 
-                  <tr>
+                  <tr class="table-danger">
+                    <td class="text-center"><span class="badge bg-danger text-white fs-6">v2*</span></td>
                     <td>
                       <div class="fw-bold text-dark">28 Mar 2026</div>
                       <small class="text-muted">11:00:00</small>
                     </td>
                     <td>
-                      <div class="text-danger fw-bold">Fallido</div>
-                      <small class="text-danger">Reintento pendiente</small>
-                    </td>
-                    <td>
                       <span class="fw-bold text-dark">SIPRES CORP</span>
                       <small class="d-block text-muted">Robot de SIPRES</small>
                     </td>
-                    <td class="text-dark">Sincronización SIPRES fallida: Error de comunicación en interfaz (Timeout)
-                    </td>
-                    <td class="text-end fw-bold text-dark">10,500,000</td>
+                    <td class="text-dark">Reintento automático tras timeout. Corrección parcial LAM Honduras.</td>
+                    <td class="text-end fw-bold text-dark">148,200,000</td>
                     <td class="text-center">
                       <span class="badge bg-danger-subtle text-danger border border-danger-subtle">Error SIPRES</span>
                     </td>
                   </tr>
+
+                  <tr>
+                    <td class="text-center"><span class="badge bg-secondary text-white fs-6">v2</span></td>
+                    <td>
+                      <div class="fw-bold text-dark">18 Mar 2026</div>
+                      <small class="text-muted">09:42:30</small>
+                    </td>
+                    <td>
+                      <span class="fw-bold text-dark">Laura Peña</span>
+                      <small class="d-block text-muted">Gerencia Admon Mkt</small>
+                    </td>
+                    <td class="text-dark">Incorporación de proyectos de inversión Q2. Ajustes Guatemala y Panamá.</td>
+                    <td class="text-end fw-bold text-dark">143,500,000</td>
+                    <td class="text-center">
+                      <span class="badge bg-success-subtle text-success border border-success-subtle">Sincronizado</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="text-center"><span class="badge bg-secondary text-white fs-6">v1</span></td>
+                    <td>
+                      <div class="fw-bold text-dark">05 Mar 2026</div>
+                      <small class="text-muted">08:05:10</small>
+                    </td>
+                    <td>
+                      <span class="fw-bold text-dark">Ana Martínez</span>
+                      <small class="d-block text-muted">Gerencia Admon Mkt</small>
+                    </td>
+                    <td class="text-dark fst-italic text-muted">— Sin comentarios (primera exposición) —</td>
+                    <td class="text-end fw-bold text-dark">130,000,000</td>
+                    <td class="text-center">
+                      <span class="badge bg-success-subtle text-success border border-success-subtle">Sincronizado</span>
+                    </td>
+                  </tr>
+
                 </tbody>
               </table>
             </div>
@@ -1740,47 +2321,60 @@
     </div>
   </main>
 
-  <div class="modal fade" id="modalLiberar" tabindex="-1" data-bs-backdrop="static" style="display: none;"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+  <!-- CA02 – Modal: Confirmación de Envío a SIPRES -->
+  <!-- Este modal muestra la vista para exposiciones SUBSECUENTES (v2 en adelante):
+       versión anterior + importe actual + diferencia + comentarios opcionales.
+       Para la PRIMERA exposición se omitirían los campos de versión anterior y diferencia. -->
+  <div class="modal fade" id="modalLiberar" tabindex="-1" data-bs-backdrop="static" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content border-0 shadow-lg">
 
         <div class="modal-header bg-primary-subtle border-0 pb-3">
           <h5 class="modal-title fw-bold text-primary d-flex align-items-center">
-            <i class="bi bi-cloud-arrow-up-fill me-2 fs-4"></i> Exponer el presupuesto a SIPRES
+            <i class="bi bi-cloud-arrow-up-fill me-2 fs-4"></i> Exponer Presupuesto a SIPRES
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
         <div class="modal-body px-4 pt-3 pb-2">
-          <div class="row g-3 mb-4">
-            <div class="col-md-6">
-              <label class="form-label small fw-bold text-muted text-uppercase mb-1">Importe Total a Liberar</label>
+
+          <!-- Indicador de versión a generar -->
+          <div class="alert alert-primary d-flex align-items-center gap-2 py-2 mb-3">
+            <i class="bi bi-info-circle-fill"></i>
+            <span>Se generará la versión <strong>v5</strong>. El periodo de carga está <strong class="text-success">Cerrado</strong> y el importe es mayor a $0.00.</span>
+          </div>
+
+          <!-- Comparativo de importes (para exposiciones subsecuentes) -->
+          <div class="row g-3 mb-3">
+            <div class="col-md-4">
+              <label class="form-label small fw-bold text-muted text-uppercase mb-1">Versión Anterior (v4)</label>
+              <input class="form-control fw-bold text-muted bg-light text-end" value="150,000,000" disabled="">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label small fw-bold text-muted text-uppercase mb-1">Importe Total a Exponer</label>
               <input class="form-control fw-bold text-success bg-white text-end" value="162,428,000" disabled="">
             </div>
-            <div class="col-md-6">
-              <label class="form-label small fw-bold text-muted text-uppercase mb-1">Diferencia vs Versión
-                Anterior</label>
-              <input class="form-control fw-bold text-primary bg-primary-subtle text-end" value="+ 12,428,000"
-                disabled="">
+            <div class="col-md-4">
+              <label class="form-label small fw-bold text-muted text-uppercase mb-1">Diferencia vs Versión Anterior</label>
+              <input class="form-control fw-bold text-primary bg-primary-subtle text-end" value="+ 12,428,000" disabled="">
             </div>
           </div>
 
+          <!-- Comentarios opcionales -->
           <div class="form-group mb-3">
-            <label class="form-label small fw-bold text-dark">Comentarios <span class="text-danger">*</span></label>
+            <label class="form-label small fw-bold text-dark">Comentarios <span class="text-muted fw-normal">(Opcional)</span></label>
             <textarea class="form-control border-primary shadow-sm" rows="3"
-              placeholder="Describe los cambios de esta liberación..."></textarea>
+              placeholder="Describe los cambios de esta liberación (ej. ajuste de proyectos de inversión Q3, nuevos CeCos LAM)..."></textarea>
           </div>
 
           <p class="small text-muted text-center mb-0">
-            <i class="bi bi-info-circle me-1"></i> Al confirmar, el sistema guardará una versión consecutiva para tener
-            un histórico en SIPRES.
+            <i class="bi bi-info-circle me-1"></i> Al confirmar, el sistema guardará la versión consecutiva en el historial de exposiciones a SIPRES.
           </p>
         </div>
 
         <div class="modal-footer bg-light border-top-0 d-flex justify-content-end gap-2 mt-2">
           <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button class="btn btn-success px-4 shadow-sm" data-bs-dismiss="modal">Confirmar Liberación</button>
+          <button class="btn btn-success px-4 shadow-sm" data-bs-dismiss="modal"><i class="bi bi-cloud-arrow-up me-1"></i>Confirmar Exposición</button>
         </div>
       </div>
     </div>
