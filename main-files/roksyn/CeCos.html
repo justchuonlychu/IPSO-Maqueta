@@ -1233,10 +1233,10 @@
 
           <!-- Estado vacío (visible por defecto) -->
           <div class="flex-grow-1 d-flex align-items-center justify-content-center bg-light" id="panelVacio">
-            <div class="text-center text-muted px-4">
+            <div class="text-center px-4">
               <i class="bi bi-diagram-3 display-3 text-secondary opacity-25"></i>
-              <h6 class="mt-3 fw-bold">Selecciona un Centro de Costo</h6>
-              <p class="small mb-0">Haz clic sobre cualquier CeCo de la jerarquía para ver su información detallada.</p>
+              <h6 class="mt-3 fw-bold text-dark">Selecciona un Centro de Costos</h6>
+              <p class="small mb-0 text-dark">Haz clic sobre cualquier Centro de Costos de la jerarquía para ver su información detallada.</p>
             </div>
           </div>
 
@@ -1245,36 +1245,22 @@
 
             <!-- Cabecera del detalle -->
             <div class="bg-white border-bottom px-4 py-3">
-              <div class="d-flex align-items-start justify-content-between gap-3 mb-0">
-                <div class="flex-grow-1 min-w-0">
-                  <h4 class="fw-bold text-dark mb-1 lh-sm" id="det-nombre">—</h4>
-                  <div class="d-flex align-items-center gap-2 flex-wrap">
-                    <span class="badge bg-dark px-2 py-1 small" id="det-numero">—</span>
-                    <span class="badge px-2 py-1 small" id="det-estatus-badge">—</span>
-                    <span class="text-dark small">
-                      <i class="bi bi-diagram-2 me-1"></i>CeCo padre: <strong id="det-padre-label">—</strong>
-                    </span>
-                  </div>
+              <div class="d-flex align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-2 flex-grow-1 min-w-0 flex-wrap">
+                  <span class="badge bg-dark px-3 py-2 fs-6 flex-shrink-0" id="det-numero">—</span>
+                  <h5 class="fw-bold text-dark mb-0" id="det-nombre">—</h5>
                 </div>
-                <div class="d-flex gap-2 flex-shrink-0 mt-1">
-                  <a href="EditarCeCo.html" class="btn btn-sm btn-outline-primary shadow-sm fw-bold">
-                    <i class="bi bi-pencil-fill me-1"></i>Editar
-                  </a>
-                  <button class="btn btn-sm btn-outline-danger shadow-sm fw-bold" data-bs-toggle="modal" data-bs-target="#modalEliminarCeCo">
-                    <i class="bi bi-trash3 me-1"></i>Eliminar
-                  </button>
-                </div>
+                <button class="btn btn-sm btn-outline-danger shadow-sm fw-bold flex-shrink-0" data-bs-toggle="modal" data-bs-target="#modalEliminarCeCo">
+                  <i class="bi bi-trash3 me-1"></i>Eliminar
+                </button>
               </div>
-              <!-- Participación en carga presupuestal -->
+              <!-- Período de Carga Presupuestal -->
               <div class="d-flex align-items-center gap-2 mt-2 pt-2 border-top flex-wrap">
                 <i class="bi bi-calendar3 text-dark small"></i>
-                <span class="small fw-semibold text-dark">Período activo:</span>
-                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1" style="font-size:0.78rem;">Presupuesto 2026 – Q1</span>
+                <span class="small fw-semibold text-dark">Período de Carga Presupuestal:</span>
+                <span class="small text-dark">Inicio: <strong>01/01/2026</strong></span>
                 <div class="vr mx-1"></div>
-                <span class="small fw-semibold text-dark">Estado en carga:</span>
-                <span id="det-hab-badge" class="small fw-bold">—</span>
-                <button class="btn btn-sm fw-bold shadow-sm py-1 px-2" id="btnCambiarHab"
-                        data-bs-toggle="modal" data-bs-target="#modalHabilitarCeCo" style="font-size:0.78rem;">—</button>
+                <span class="small text-dark">Fin: <strong>31/03/2026</strong></span>
               </div>
             </div>
 
@@ -1290,7 +1276,7 @@
                     </li>
                     <li class="nav-item" role="presentation">
                       <a class="nav-link fw-bold" data-bs-toggle="tab" href="#tab-cuentas" role="tab" tabindex="-1">
-                        <i class="bi bi-receipt me-1"></i>Cuentas Asociadas
+                        <i class="bi bi-receipt me-1"></i>Cuentas Vinculadas
                         <span class="badge bg-primary-subtle text-primary ms-1" id="det-cuentas-count">0</span>
                       </a>
                     </li>
@@ -1303,8 +1289,7 @@
                     <!-- ── Tab 1: Datos Generales ── -->
                     <div class="tab-pane fade active show" id="tab-general" role="tabpanel">
 
-                      <!-- Atributos operativos (los que no están en el encabezado) -->
-                      <div class="row g-3 mb-4">
+                      <div class="row g-3">
                         <div class="col-md-4">
                           <label class="form-label small fw-bold text-dark text-uppercase mb-1">Moneda</label>
                           <div class="fw-semibold" id="det-moneda">—</div>
@@ -1317,11 +1302,15 @@
                           <label class="form-label small fw-bold text-dark text-uppercase mb-1">País</label>
                           <div class="fw-semibold" id="det-pais">—</div>
                         </div>
+                        <div class="col-md-8">
+                          <label class="form-label small fw-bold text-dark text-uppercase mb-1">Centro de Costos Padre</label>
+                          <div class="fw-semibold" id="det-padre">—</div>
+                        </div>
                         <div class="col-md-4">
                           <label class="form-label small fw-bold text-dark text-uppercase mb-1">Fecha de Alta</label>
                           <div class="fw-semibold" id="det-fecha">—</div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-8">
                           <label class="form-label small fw-bold text-dark text-uppercase mb-1">Responsable</label>
                           <div class="fw-semibold" id="det-responsable">—</div>
                         </div>
@@ -1329,20 +1318,15 @@
                           <label class="form-label small fw-bold text-dark text-uppercase mb-1">Grupo Empresarial</label>
                           <div class="fw-semibold" id="det-grupo">—</div>
                         </div>
-                      </div>
 
-                      <!-- Clasificaciones de Centros de Costos (colapsable) -->
-                      <div class="border rounded p-0">
-                        <button class="btn btn-light btn-sm w-100 text-start fw-bold py-2 px-3 rounded" type="button" data-bs-toggle="collapse" data-bs-target="#clasificaciones" style="font-size:0.82rem;">
-                          <i class="bi bi-layers me-2 text-primary"></i>Clasificaciones de Centros de Costos
-                          <i class="bi bi-chevron-down float-end mt-1"></i>
-                        </button>
-                        <div class="collapse" id="clasificaciones">
-                          <div class="p-3">
-                            <div class="row g-2" id="det-clasificaciones">
-                              <!-- generado por JS -->
-                            </div>
-                          </div>
+                        <!-- Divisor clasificaciones -->
+                        <div class="col-12"><hr class="my-1"></div>
+                        <div class="col-12">
+                          <p class="small fw-bold text-dark text-uppercase mb-2"><i class="bi bi-layers me-1 text-primary"></i>Clasificaciones de Centros de Costos</p>
+                        </div>
+                        <!-- generado por JS — 9 divs col-md-4 -->
+                        <div id="det-clasificaciones" class="col-12">
+                          <div class="row g-3" id="det-clases-row"><!-- JS --></div>
                         </div>
                       </div>
 
@@ -1350,11 +1334,13 @@
                     <!-- fin tab Datos Generales -->
 
 
-                    <!-- ── Tab 2: Cuentas Asociadas ── -->
+                    <!-- ── Tab 2: Cuentas Vinculadas ── -->
                     <div class="tab-pane fade" id="tab-cuentas" role="tabpanel">
                       <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h6 class="fw-bold text-primary mb-0"><i class="bi bi-receipt me-2"></i>Cuentas asociadas a este CeCo</h6>
-                        <small class="text-dark">Habilitación editable desde aquí · para cambiar rubro o número usa <strong>Editar</strong></small>
+                        <h6 class="fw-bold text-dark mb-0"><i class="bi bi-receipt me-2"></i>Cuentas vinculadas a este Centro de Costos</h6>
+                        <button class="btn btn-sm btn-primary fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#modalVincularCuenta">
+                          <i class="bi bi-link-45deg me-1"></i>Vincular Cuenta
+                        </button>
                       </div>
                       <div class="table-responsive">
                         <table class="table table-sm table-hover align-middle mb-0">
@@ -1364,7 +1350,7 @@
                               <th class="small fw-bold text-dark text-uppercase">Nombre</th>
                               <th class="small fw-bold text-dark text-uppercase">Rubro</th>
                               <th class="small fw-bold text-dark text-uppercase text-center">Estatus</th>
-                              <th class="small fw-bold text-dark text-uppercase text-center">Habilitada</th>
+                              <th class="small fw-bold text-dark text-uppercase text-center">Acción</th>
                             </tr>
                           </thead>
                           <tbody id="det-cuentas-tbody">
@@ -1374,7 +1360,7 @@
                       </div>
                       <div class="alert alert-light border d-flex align-items-start gap-2 mt-3 mb-0 py-2">
                         <i class="bi bi-info-circle-fill text-primary mt-1 flex-shrink-0"></i>
-                        <small class="text-dark">La asignación de cuentas proviene de la carga inicial y no puede modificarse en esta vista. Para cambios de rubro o número usa <strong>Editar</strong>.</small>
+                        <small class="text-dark">Desvincular una cuenta requiere que no tenga historial presupuestal ni movimientos activos en el período de carga. Solo el perfil <strong>Administración y Finanzas Mkt</strong> puede ejecutar esta acción.</small>
                       </div>
                     </div>
                     <!-- fin tab Cuentas -->
@@ -1395,135 +1381,174 @@
 
   </main>
 
-  <!-- ── Datos de CeCos + lógica de detalle ── -->
+  <!-- ── Datos de Centros de Costos + catálogo de cuentas ── -->
   <script>
+    // Catálogo de cuentas disponibles para vincular
+    const CATALOGO_CUENTAS = [
+      {num:'700005',nombre:'Publicidad en Medios Masivos',rubro:'Digital',estatus:'activo'},
+      {num:'700010',nombre:'Publicidad Digital',rubro:'Digital',estatus:'activo'},
+      {num:'700015',nombre:'Search Engine Marketing',rubro:'Digital',estatus:'activo'},
+      {num:'700020',nombre:'Pauta Programática',rubro:'Digital',estatus:'activo'},
+      {num:'700025',nombre:'Redes Sociales',rubro:'Digital',estatus:'activo'},
+      {num:'700030',nombre:'Producción de Contenido',rubro:'Producción',estatus:'activo'},
+      {num:'700035',nombre:'Influencer Marketing',rubro:'Marketing',estatus:'activo'},
+      {num:'700040',nombre:'Logística y Distribución',rubro:'Operaciones',estatus:'activo'},
+      {num:'700041',nombre:'Costo de Plataforma',rubro:'Tecnología',estatus:'activo'},
+      {num:'700045',nombre:'Investigación de Mercado',rubro:'Estrategia',estatus:'activo'},
+      {num:'700050',nombre:'Pruebas A/B',rubro:'Digital',estatus:'activo'},
+      {num:'800010',nombre:'Publicidad Medios Digitales',rubro:'Digital',estatus:'activo'},
+      {num:'800020',nombre:'Marketing App Banco Azteca',rubro:'Digital',estatus:'activo'},
+      {num:'800030',nombre:'Publicidad Código QR',rubro:'Digital',estatus:'activo'},
+      {num:'800099',nombre:'Otros Gastos Mercadotecnia',rubro:'General',estatus:'activo'}
+    ];
+
     const CECOS = {
       '290020': {
-        numero:'290020', nombre:'Dirección General Ecommerce', estatus:'activo', habCarga:true,
+        numero:'290020', nombre:'Dirección General Ecommerce',
         padre_num:'EU', padre_nombre:'Elektra Digital',
         moneda:'MXN', division:'Área Central', pais:'México',
         fecha:'03/05/2008', responsable:'Juan Carlos Arroyo Torres', grupo:'Grupo Elektra', entidad:'Elektra',
         clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Elektra Digital','—','—','—'],
         cuentas:[
-          {num:'700010',nombre:'Publicidad Digital',rubro:'Digital',estatus:'activo',hab:true},
-          {num:'700020',nombre:'Pauta Programática',rubro:'Digital',estatus:'activo',hab:true},
-          {num:'700030',nombre:'Producción de Contenido',rubro:'Producción',estatus:'activo',hab:false}
+          {num:'700010',nombre:'Publicidad Digital',rubro:'Digital',estatus:'activo',historico:true},
+          {num:'700020',nombre:'Pauta Programática',rubro:'Digital',estatus:'activo',historico:true},
+          {num:'700030',nombre:'Producción de Contenido',rubro:'Producción',estatus:'activo',historico:false}
         ]
       },
       '185784': {
-        numero:'185784', nombre:'Publicidad Elektra Digital', estatus:'activo', habCarga:true,
+        numero:'185784', nombre:'Publicidad Elektra Digital',
         padre_num:'290020', padre_nombre:'Dirección General Ecommerce',
         moneda:'MXN', division:'Área Central', pais:'México',
         fecha:'05/11/2025', responsable:'Daniel de Jesús Quirós Cordero', grupo:'Grupo Elektra', entidad:'Elektra',
         clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Elektra Digital','—','—','—'],
         cuentas:[
-          {num:'700010',nombre:'Publicidad Digital',rubro:'Digital',estatus:'activo',hab:true},
-          {num:'700025',nombre:'Redes Sociales',rubro:'Digital',estatus:'activo',hab:true}
+          {num:'700010',nombre:'Publicidad Digital',rubro:'Digital',estatus:'activo',historico:true},
+          {num:'700025',nombre:'Redes Sociales',rubro:'Digital',estatus:'activo',historico:false}
         ]
       },
       '291365': {
-        numero:'291365', nombre:'Seller Center y Logística', estatus:'activo', habCarga:true,
+        numero:'291365', nombre:'Seller Center y Logística',
         padre_num:'290020', padre_nombre:'Dirección General Ecommerce',
         moneda:'MXN', division:'Área Central', pais:'México',
         fecha:'05/02/2019', responsable:'Amir Falah Assadi Carrera', grupo:'Grupo Elektra', entidad:'Elektra',
         clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Elektra Digital','—','—','—'],
         cuentas:[
-          {num:'700040',nombre:'Logística y Distribución',rubro:'Operaciones',estatus:'activo',hab:true},
-          {num:'700041',nombre:'Costo de Plataforma',rubro:'Tecnología',estatus:'activo',hab:true}
+          {num:'700040',nombre:'Logística y Distribución',rubro:'Operaciones',estatus:'activo',historico:true},
+          {num:'700041',nombre:'Costo de Plataforma',rubro:'Tecnología',estatus:'activo',historico:false}
         ]
       },
       '291371': {
-        numero:'291371', nombre:'Growth Elektra Digital', estatus:'activo', habCarga:true,
+        numero:'291371', nombre:'Growth Elektra Digital',
         padre_num:'290020', padre_nombre:'Dirección General Ecommerce',
         moneda:'MXN', division:'Área Central', pais:'México',
         fecha:'27/08/2024', responsable:'David Fierro Villavicencio', grupo:'Grupo Elektra', entidad:'Elektra',
         clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Elektra Digital','—','—','—'],
         cuentas:[
-          {num:'700010',nombre:'Publicidad Digital',rubro:'Digital',estatus:'activo',hab:true},
-          {num:'700050',nombre:'Pruebas A/B',rubro:'Digital',estatus:'activo',hab:false}
+          {num:'700010',nombre:'Publicidad Digital',rubro:'Digital',estatus:'activo',historico:false},
+          {num:'700050',nombre:'Pruebas A/B',rubro:'Digital',estatus:'activo',historico:false}
         ]
       },
       '240025': {
-        numero:'240025', nombre:'Cerrado Ecommerce', estatus:'inactivo', habCarga:false,
+        numero:'240025', nombre:'Cerrado Ecommerce',
         padre_num:'290020', padre_nombre:'Dirección General Ecommerce',
         moneda:'MXN', division:'Área Central', pais:'México',
-        fecha:'06/04/2004', responsable:'Responsable de Baja CeCo', grupo:'Grupo Elektra', entidad:'Elektra',
+        fecha:'06/04/2004', responsable:'Responsable de Baja Centro de Costos', grupo:'Grupo Elektra', entidad:'Elektra',
         clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Elektra Digital','—','—','—'],
         cuentas:[]
       },
       '237065': {
-        numero:'237065', nombre:'Banca Digital', estatus:'activo', habCarga:true,
+        numero:'237065', nombre:'Banca Digital',
         padre_num:'EU', padre_nombre:'Banca Digital',
         moneda:'MXN', division:'Área Central', pais:'México',
         fecha:'23/09/2016', responsable:'Juan Carlos Arroyo Torres', grupo:'Grupo Elektra', entidad:'Banco Azteca',
         clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Banca Digital','—','—','—'],
         cuentas:[
-          {num:'800010',nombre:'Publicidad Medios Digitales',rubro:'Digital',estatus:'activo',hab:true},
-          {num:'800020',nombre:'Marketing App Banco Azteca',rubro:'Digital',estatus:'activo',hab:true}
+          {num:'800010',nombre:'Publicidad Medios Digitales',rubro:'Digital',estatus:'activo',historico:true},
+          {num:'800020',nombre:'Marketing App Banco Azteca',rubro:'Digital',estatus:'activo',historico:true}
         ]
       },
       '239755': {
-        numero:'239755', nombre:'Pagos Digitales', estatus:'activo', habCarga:true,
+        numero:'239755', nombre:'Pagos Digitales',
         padre_num:'EU', padre_nombre:'Código QR',
         moneda:'MXN', division:'Área Central', pais:'México',
         fecha:'14/10/2020', responsable:'José Luis Bustamante Bustamante', grupo:'Grupo Elektra', entidad:'Banco Azteca',
         clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Banca Digital','—','—','—'],
         cuentas:[
-          {num:'800030',nombre:'Publicidad Código QR',rubro:'Digital',estatus:'activo',hab:true},
-          {num:'800031',nombre:'Activaciones Digitales',rubro:'Marketing',estatus:'activo',hab:true}
+          {num:'800030',nombre:'Publicidad Código QR',rubro:'Digital',estatus:'activo',historico:true},
+          {num:'800031',nombre:'Activaciones Digitales',rubro:'Marketing',estatus:'activo',historico:false}
         ]
       },
       '237084': {
-        numero:'237084', nombre:'Publicidad Marketing Banca Digital', estatus:'activo', habCarga:false,
+        numero:'237084', nombre:'Publicidad Marketing Banca Digital',
         padre_num:'EU', padre_nombre:'Publicidad Banca Digital',
         moneda:'MXN', division:'Área Central', pais:'México',
         fecha:'21/10/2016', responsable:'Karla Dolores Castillón y Herrera', grupo:'Grupo Elektra', entidad:'Banco Azteca',
         clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Banca Digital','—','—','—'],
         cuentas:[
-          {num:'800010',nombre:'Publicidad Medios Digitales',rubro:'Digital',estatus:'activo',hab:false},
-          {num:'800040',nombre:'Campañas Marca Banco Azteca',rubro:'Marca',estatus:'activo',hab:false}
+          {num:'800010',nombre:'Publicidad Medios Digitales',rubro:'Digital',estatus:'activo',historico:false},
+          {num:'800040',nombre:'Campañas Marca Banco Azteca',rubro:'Marca',estatus:'activo',historico:false}
         ]
       },
       '230222': {
-        numero:'230222', nombre:'Dirección Internet Banco Azteca', estatus:'activo', habCarga:true,
+        numero:'230222', nombre:'Dirección Internet Banco Azteca',
         padre_num:'237065', padre_nombre:'Banca Digital',
         moneda:'MXN', division:'Área Central con Operación', pais:'México',
         fecha:'19/02/2004', responsable:'Pablo José Alcántara Quilantán', grupo:'Grupo Elektra', entidad:'Banco Azteca',
         clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Banca Digital','—','—','—'],
         cuentas:[
-          {num:'800050',nombre:'Servicios Internet Banca',rubro:'Tecnología',estatus:'activo',hab:true},
-          {num:'800060',nombre:'Publicidad Banca por Internet',rubro:'Digital',estatus:'inactivo',hab:false}
+          {num:'800050',nombre:'Servicios Internet Banca',rubro:'Tecnología',estatus:'activo',historico:true},
+          {num:'800060',nombre:'Publicidad Banca por Internet',rubro:'Digital',estatus:'inactivo',historico:true}
         ]
       },
       '238002': {
-        numero:'238002', nombre:'Pagos Digitales OP', estatus:'activo', habCarga:true,
+        numero:'238002', nombre:'Pagos Digitales OP',
         padre_num:'EU', padre_nombre:'Código QR',
         moneda:'MXN', division:'Área Central con Operación', pais:'México',
         fecha:'29/06/2022', responsable:'Rafael Villanueva Campos', grupo:'Grupo Elektra', entidad:'Banco Azteca',
         clases:['Grupo Elektra','México','Sector Mercado Masivo','Canales','Canales Digitales','Banca Digital','—','—','—'],
         cuentas:[
-          {num:'800030',nombre:'Publicidad Código QR',rubro:'Digital',estatus:'activo',hab:true},
-          {num:'800070',nombre:'Operaciones Pagos Digitales',rubro:'Operaciones',estatus:'activo',hab:true}
+          {num:'800030',nombre:'Publicidad Código QR',rubro:'Digital',estatus:'activo',historico:true},
+          {num:'800070',nombre:'Operaciones Pagos Digitales',rubro:'Operaciones',estatus:'activo',historico:false}
         ]
       }
     };
 
     let cecoActualId = null;
 
-    function actualizarEstadoCarga(d) {
-      const habBadge = document.getElementById('det-hab-badge');
-      const btnCambiar = document.getElementById('btnCambiarHab');
-      if (d.habCarga) {
-        habBadge.className = 'badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small fw-bold';
-        habBadge.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i>Habilitado';
-        btnCambiar.className = 'btn btn-sm btn-outline-warning fw-bold shadow-sm py-1 px-2';
-        btnCambiar.innerHTML = '<i class="bi bi-slash-circle me-1"></i>Inhabilitar';
-      } else {
-        habBadge.className = 'badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2 py-1 small fw-bold';
-        habBadge.innerHTML = '<i class="bi bi-x-circle me-1"></i>No habilitado';
-        btnCambiar.className = 'btn btn-sm btn-outline-success fw-bold shadow-sm py-1 px-2';
-        btnCambiar.innerHTML = '<i class="bi bi-check-circle me-1"></i>Habilitar';
-      }
+    function renderCuentas(id) {
+      const d = CECOS[id];
+      document.getElementById('det-cuentas-count').textContent = d.cuentas.length;
+      document.getElementById('det-cuentas-tbody').innerHTML = d.cuentas.length
+        ? d.cuentas.map((c, idx) => {
+            const bloqueada = c.historico || c.estatus !== 'activo';
+            const btnDesvincular = bloqueada
+              ? `<button class="btn btn-sm btn-outline-secondary py-0 px-2 fw-bold" disabled title="${c.historico ? 'Cuenta con historial presupuestal — no se puede desvincular' : 'Cuenta inactiva'}">
+                   <i class="bi bi-link"></i> Vinculada
+                 </button>`
+              : `<button class="btn btn-sm btn-outline-danger py-0 px-2 fw-bold" onclick="desvincularCuenta('${id}',${idx})" title="Desvincular esta cuenta del Centro de Costos">
+                   <i class="bi bi-x-circle me-1"></i>Desvincular
+                 </button>`;
+            return `<tr>
+              <td class="fw-bold small">${c.num}</td>
+              <td class="small text-dark">${c.nombre}</td>
+              <td class="small text-dark">${c.rubro}</td>
+              <td class="text-center">
+                <span class="badge ${c.estatus === 'activo'
+                  ? 'bg-success-subtle text-success border border-success-subtle'
+                  : 'bg-secondary-subtle text-secondary border border-secondary-subtle'}">
+                  ${c.estatus === 'activo' ? 'Activo' : 'Inactivo'}
+                </span>
+              </td>
+              <td class="text-center">${btnDesvincular}</td>
+            </tr>`;
+          }).join('')
+        : '<tr><td colspan="5" class="text-center text-dark small py-3">Sin cuentas vinculadas — usa "Vincular Cuenta" para agregar.</td></tr>';
+    }
+
+    function desvincularCuenta(cecoId, idx) {
+      if (!confirm('¿Confirmas que deseas desvincular esta cuenta del Centro de Costos?')) return;
+      CECOS[cecoId].cuentas.splice(idx, 1);
+      renderCuentas(cecoId);
     }
 
     function mostrarDetalle(id) {
@@ -1544,53 +1569,23 @@
 
       document.getElementById('det-nombre').textContent = d.nombre;
       document.getElementById('det-numero').textContent = d.numero;
-      document.getElementById('det-padre-label').textContent = d.padre_num + ' – ' + d.padre_nombre;
-
-      const badge = document.getElementById('det-estatus-badge');
-      if (d.estatus === 'activo') {
-        badge.className = 'badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small';
-        badge.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i>Activo';
-      } else {
-        badge.className = 'badge bg-secondary-subtle text-secondary border border-secondary-subtle px-2 py-1 small';
-        badge.innerHTML = '<i class="bi bi-x-circle me-1"></i>Inactivo';
-      }
-
-      actualizarEstadoCarga(d);
 
       document.getElementById('det-moneda').textContent = d.moneda;
       document.getElementById('det-division').textContent = d.division;
       document.getElementById('det-pais').innerHTML = '<i class="bi bi-geo-alt-fill text-danger me-1"></i>' + d.pais;
+      document.getElementById('det-padre').textContent = d.padre_num + ' – ' + d.padre_nombre;
       document.getElementById('det-fecha').textContent = d.fecha;
       document.getElementById('det-responsable').textContent = d.responsable;
       document.getElementById('det-grupo').textContent = d.grupo;
 
       const niveles = ['Clasificación 2','Clasificación 3','Clasificación 4','Clasificación 5','Clasificación 6','Clasificación 7','Clasificación 8','Clasificación 9','Clasificación 10'];
-      const clasDiv = document.getElementById('det-clasificaciones');
-      clasDiv.innerHTML = niveles.map((n, i) => `
-        <div class="col-4">
-          <label class="small text-dark fw-bold mb-0">${n}</label>
-          <input type="text" class="form-control form-control-sm bg-light" value="${d.clases[i] || '—'}" readonly>
+      document.getElementById('det-clases-row').innerHTML = niveles.map((n, i) => `
+        <div class="col-md-4">
+          <label class="form-label small fw-bold text-dark text-uppercase mb-1">${n}</label>
+          <div class="fw-semibold">${d.clases[i] || '—'}</div>
         </div>`).join('');
 
-      document.getElementById('det-cuentas-count').textContent = d.cuentas.length;
-      document.getElementById('det-cuentas-tbody').innerHTML = d.cuentas.length ? d.cuentas.map(c => `
-        <tr>
-          <td class="fw-bold small">${c.num}</td>
-          <td class="small text-dark">${c.nombre}</td>
-          <td class="small text-dark">${c.rubro}</td>
-          <td class="text-center">
-            <span class="badge ${c.estatus === 'activo'
-              ? 'bg-success-subtle text-success border border-success-subtle'
-              : 'bg-secondary-subtle text-secondary border border-secondary-subtle'}">
-              ${c.estatus === 'activo' ? 'Activo' : 'Inactivo'}
-            </span>
-          </td>
-          <td class="text-center">
-            <div class="form-check form-switch d-flex justify-content-center mb-0">
-              <input class="form-check-input" type="checkbox" role="switch" ${c.hab ? 'checked' : ''}>
-            </div>
-          </td>
-        </tr>`).join('') : '<tr><td colspan="5" class="text-center text-dark small py-3">Sin cuentas asociadas</td></tr>';
+      renderCuentas(id);
 
       document.getElementById('panelVacio').classList.add('d-none');
       document.getElementById('panelDetalle').classList.remove('d-none');
@@ -1600,82 +1595,74 @@
       btn.addEventListener('click', () => mostrarDetalle(btn.dataset.id));
     });
 
-    // Modal habilitación
-    document.getElementById('modalHabilitarCeCo').addEventListener('show.bs.modal', function() {
-      if (!cecoActualId) return;
-      const d = CECOS[cecoActualId];
-      document.getElementById('modalHabNumero').textContent = d.numero;
-      document.getElementById('modalHabNombre').textContent = d.nombre;
-      document.getElementById('modalHabInfo').textContent = d.entidad + ' · ' + d.grupo + ' · ' + d.pais;
+    // Modal vincular cuenta
+    document.getElementById('modalVincularCuenta').addEventListener('show.bs.modal', function() {
+      const d = cecoActualId ? CECOS[cecoActualId] : null;
+      const yaVinculados = d ? d.cuentas.map(c => c.num) : [];
+      const lista = document.getElementById('listaCuentasCatalogo');
+      const buscador = document.getElementById('buscarCuentaCatalogo');
+      buscador.value = '';
 
-      const alertHist = document.getElementById('alertHabHistorial');
-      const btnConfirmar = document.getElementById('btnConfirmarHab');
-      const header = document.getElementById('modalHabLabel');
-
-      if (d.habCarga) {
-        header.innerHTML = '<i class="bi bi-slash-circle-fill me-2 text-warning"></i>Inhabilitar para carga presupuestal';
-        document.getElementById('modalHabMensaje').innerHTML =
-          '¿Confirmas que deseas <strong>inhabilitar</strong> este Centro de Costo del período <strong>Presupuesto 2026 – Q1</strong>? Dejará de estar disponible para nuevas asignaciones en este período.';
-        const tieneMovimientos = d.cuentas.some(c => c.hab);
-        if (tieneMovimientos) {
-          alertHist.classList.remove('d-none');
-          btnConfirmar.disabled = true;
-          btnConfirmar.className = 'btn btn-secondary fw-bold';
-          btnConfirmar.textContent = 'No disponible';
-        } else {
-          alertHist.classList.add('d-none');
-          btnConfirmar.disabled = false;
-          btnConfirmar.className = 'btn btn-warning fw-bold';
-          btnConfirmar.innerHTML = '<i class="bi bi-slash-circle me-1"></i>Confirmar inhabilitación';
-        }
-      } else {
-        header.innerHTML = '<i class="bi bi-check-circle-fill me-2 text-success"></i>Habilitar para carga presupuestal';
-        document.getElementById('modalHabMensaje').innerHTML =
-          '¿Confirmas que deseas <strong>habilitar</strong> este Centro de Costo para el período <strong>Presupuesto 2026 – Q1</strong>? Sus cuentas activas estarán disponibles para asignación presupuestal.';
-        alertHist.classList.add('d-none');
-        btnConfirmar.disabled = false;
-        btnConfirmar.className = 'btn btn-success fw-bold';
-        btnConfirmar.innerHTML = '<i class="bi bi-check-circle me-1"></i>Confirmar habilitación';
+      function renderLista(filtro) {
+        lista.innerHTML = CATALOGO_CUENTAS
+          .filter(c => !filtro || c.num.includes(filtro) || c.nombre.toLowerCase().includes(filtro.toLowerCase()))
+          .map(c => {
+            const vinculada = yaVinculados.includes(c.num);
+            return `<label class="list-group-item py-2 d-flex align-items-center gap-2 ${vinculada ? 'text-muted' : ''}">
+              <input class="form-check-input flex-shrink-0" type="checkbox" value="${c.num}" ${vinculada ? 'disabled checked' : ''}>
+              <div class="flex-grow-1">
+                <span class="fw-bold small">${c.num}</span>
+                <span class="small ms-2">${c.nombre}</span>
+              </div>
+              <span class="badge bg-light border text-dark small">${c.rubro}</span>
+              ${vinculada ? '<span class="badge bg-success-subtle text-success small ms-1">Vinculada</span>' : ''}
+            </label>`;
+          }).join('');
       }
 
-      btnConfirmar.onclick = function() {
-        d.habCarga = !d.habCarga;
-        actualizarEstadoCarga(d);
-        bootstrap.Modal.getInstance(document.getElementById('modalHabilitarCeCo')).hide();
+      renderLista('');
+      buscador.oninput = () => renderLista(buscador.value.trim());
+
+      document.getElementById('btnConfirmarVinculo').onclick = function() {
+        const seleccionadas = [...lista.querySelectorAll('input[type=checkbox]:checked:not(:disabled)')].map(cb => cb.value);
+        seleccionadas.forEach(num => {
+          const cat = CATALOGO_CUENTAS.find(c => c.num === num);
+          if (cat && d) d.cuentas.push({num: cat.num, nombre: cat.nombre, rubro: cat.rubro, estatus: cat.estatus, historico: false});
+        });
+        if (d) renderCuentas(cecoActualId);
+        bootstrap.Modal.getInstance(document.getElementById('modalVincularCuenta')).hide();
       };
     });
   </script>
 
-  <!-- ════ MODAL: Habilitar / Inhabilitar CeCo para carga presupuestal ════ -->
-  <div class="modal fade" id="modalHabilitarCeCo" tabindex="-1" aria-labelledby="modalHabLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+  <!-- ════ MODAL: Vincular Cuenta a Centro de Costos ════ -->
+  <div class="modal fade" id="modalVincularCuenta" tabindex="-1" aria-labelledby="modalVincularLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header border-0 pb-0">
-          <h5 class="modal-title fw-bold" id="modalHabLabel">—</h5>
+          <h5 class="modal-title fw-bold" id="modalVincularLabel">
+            <i class="bi bi-link-45deg me-2 text-primary"></i>Vincular Cuenta al Centro de Costos
+          </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body pt-2">
-          <div class="alert alert-light border d-flex align-items-center gap-3 py-2 mb-3">
-            <span class="badge bg-dark px-3 py-2 fs-6" id="modalHabNumero">—</span>
-            <div>
-              <div class="fw-bold" id="modalHabNombre">—</div>
-              <small class="text-dark" id="modalHabInfo">—</small>
-            </div>
+          <div class="mb-2">
+            <input type="text" class="form-control form-control-sm" id="buscarCuentaCatalogo" placeholder="Buscar por número o nombre de cuenta…">
           </div>
-          <p class="small mb-0" id="modalHabMensaje">—</p>
-          <div class="alert alert-warning d-flex align-items-start gap-2 py-2 mt-3 mb-0 d-none" id="alertHabHistorial">
-            <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0 mt-1"></i>
-            <small>Este CeCo ya cuenta con cuentas habilitadas en el período activo. <strong>No es posible inhabilitarlo mientras tenga cuentas activas asignadas.</strong> Primero desactiva sus cuentas desde la pestaña <em>Cuentas Asociadas</em>.</small>
+          <div class="list-group" id="listaCuentasCatalogo" style="max-height:360px;overflow-y:auto;">
+            <!-- generado por JS -->
           </div>
         </div>
         <div class="modal-footer border-0 pt-0">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn fw-bold" id="btnConfirmarHab">Confirmar</button>
+          <button type="button" class="btn btn-primary fw-bold" id="btnConfirmarVinculo">
+            <i class="bi bi-link-45deg me-1"></i>Vincular seleccionadas
+          </button>
         </div>
       </div>
     </div>
   </div>
-  <!-- fin modal Habilitar -->
+  <!-- fin modal Vincular Cuenta -->
 
   <!-- ════ MODAL: Eliminar CeCo (sin historial → borrado definitivo) ════ -->
   <div class="modal fade" id="modalEliminarCeCo" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
@@ -1701,7 +1688,7 @@
             </div>
             <div class="alert alert-warning d-flex align-items-start gap-2 py-2 mb-0">
               <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0 mt-1"></i>
-              <small>Esta acción es <strong>irreversible</strong>. Se eliminarán también todas las relaciones del CeCo con usuarios y perfiles asociados.</small>
+              <small>Esta acción es <strong>irreversible</strong>. Se eliminarán también todas las relaciones del Centro de Costos con usuarios y perfiles asociados.</small>
             </div>
           </div>
 
@@ -1714,7 +1701,7 @@
                 <small>Cuenta con transacciones operativas registradas. Por reglas de auditoría, el borrado definitivo queda bloqueado.</small>
               </div>
             </div>
-            <p class="mb-2 small">Como alternativa, el sistema <strong>cambiará el estatus a Inactivo</strong>. El CeCo se conservará en el catálogo para fines de auditoría pero dejará de estar disponible para nuevas operaciones.</p>
+            <p class="mb-2 small">Como alternativa, el sistema <strong>cambiará el estatus a Inactivo</strong>. El Centro de Costos se conservará en el catálogo para fines de auditoría pero dejará de estar disponible para nuevas operaciones.</p>
             <div class="alert alert-light border d-flex align-items-center gap-3 py-2 mb-0">
               <span class="badge bg-dark px-3 py-2 fs-6">100901</span>
               <div>
@@ -1733,7 +1720,7 @@
           </button>
           <!-- Botón caso B (oculto por defecto) -->
           <button type="button" class="btn btn-warning fw-bold d-none" id="btnInactivar">
-            <i class="bi bi-toggle-off me-1"></i>Entendido, inactivar CeCo
+            <i class="bi bi-toggle-off me-1"></i>Entendido, inactivar Centro de Costos
           </button>
         </div>
       </div>
