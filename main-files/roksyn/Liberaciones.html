@@ -1392,102 +1392,76 @@
               <button class="btn btn-sm btn-light border text-warning"><i class="bi bi-download me-1"></i> Exportar Pendientes</button>
             </div>
 
-            <!-- CA01 – Indicadores: 3 cards principales + Revisión de Excedente separado -->
-            <div class="row g-2 mb-4">
+            <!-- Indicadores compactos: barra horizontal -->
+            <div class="card border-0 shadow-sm mb-3 rounded-3">
+              <div class="card-body py-2 px-3">
+                <div class="row g-0 align-items-center">
 
-              <!-- Indicador: Pendiente de Autorización: Marketing -->
-              <div class="col-md-4">
-                <div class="bg-info-subtle border border-info border-opacity-25 rounded p-3 h-100 d-flex flex-column justify-content-center">
-                  <span class="d-block small text-info fw-bold mb-1">Pendiente de Autorización: Marketing</span>
-                  <span class="fs-5 fw-bold text-dark mb-2">4,000,000</span>
-                  <div>
-                    <button class="btn btn-sm btn-outline-info py-0 px-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.70rem;">
-                      Ver Desglose <i class="bi bi-chevron-down ms-1"></i>
-                    </button>
-                    <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 220px;">
-                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
-                        <span class="text-muted">Marca</span>
-                        <span class="fw-bold text-dark">1,800,000</span>
-                      </li>
-                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
-                        <span class="text-muted">Oferteo</span>
-                        <span class="fw-bold text-dark">1,200,000</span>
-                      </li>
-                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
-                        <span class="text-muted">Estrategia</span>
-                        <span class="fw-bold text-dark">800,000</span>
-                      </li>
-                      <li class="d-flex justify-content-between">
-                        <span class="text-muted">Sin División</span>
-                        <span class="fw-bold text-dark">200,000</span>
-                      </li>
-                    </ul>
+                  <!-- Indicador 1: Marketing -->
+                  <div class="col-md pe-3 border-end">
+                    <div class="d-flex align-items-center gap-2">
+                      <i class="bi bi-person-lines-fill text-info" style="font-size: 2rem;"></i>
+                      <div>
+                        <div class="text-muted fw-semibold" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: .04em;">Pdte. Autorización: Marketing</div>
+                        <div class="fw-bold text-dark" style="font-size: 1rem;">4,000,000</div>
+                        <div class="d-flex gap-2 mt-1 flex-wrap">
+                          <button class="btn btn-sm btn-outline-info py-0 px-2 border-0 p-0" type="button" data-bs-toggle="dropdown" style="font-size:0.65rem;">
+                            Ver desglose <i class="bi bi-chevron-down"></i>
+                          </button>
+                          <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 200px;">
+                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-muted">Marca</span><span class="fw-bold">1,800,000</span></li>
+                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-muted">Oferteo</span><span class="fw-bold">1,200,000</span></li>
+                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-muted">Estrategia</span><span class="fw-bold">800,000</span></li>
+                            <li class="d-flex justify-content-between"><span class="text-muted">Sin División</span><span class="fw-bold">200,000</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Indicador 2: Administración y Finanzas MKT -->
+                  <div class="col-md px-3 border-end">
+                    <div class="d-flex align-items-center gap-2">
+                      <i class="bi bi-bank text-primary" style="font-size: 2rem;"></i>
+                      <div>
+                        <div class="text-muted fw-semibold" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: .04em;">Pdte. Autorización: Adm. y Finanzas MKT</div>
+                        <div class="fw-bold text-primary" style="font-size: 1rem;">12,000,000</div>
+                        <div class="d-flex gap-2 mt-1 flex-wrap">
+                          <button class="btn btn-sm btn-outline-primary py-0 px-2 border-0 p-0" type="button" data-bs-toggle="dropdown" style="font-size:0.65rem;">
+                            Ver desglose <i class="bi bi-chevron-down"></i>
+                          </button>
+                          <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 200px;">
+                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-muted">Marca</span><span class="fw-bold">5,000,000</span></li>
+                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-muted">Oferteo</span><span class="fw-bold">4,500,000</span></li>
+                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-muted">Estrategia</span><span class="fw-bold">2,500,000</span></li>
+                            <li class="d-flex justify-content-between"><span class="text-muted">Sin División</span><span class="fw-bold">0</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Indicador 3: División -->
+                  <div class="col-md ps-3">
+                    <div class="d-flex align-items-center gap-2">
+                      <i class="bi bi-diagram-3 text-danger" style="font-size: 2rem;"></i>
+                      <div>
+                        <div class="text-muted fw-semibold" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: .04em;">Pdte. Autorización: División</div>
+                        <div class="fw-bold text-dark" style="font-size: 1rem;">6,000,000</div>
+                        <div class="d-flex gap-2 mt-1 flex-wrap">
+                          <button class="btn btn-sm btn-outline-danger py-0 px-2 border-0 p-0" type="button" data-bs-toggle="dropdown" style="font-size:0.65rem;">
+                            Ver desglose <i class="bi bi-chevron-down"></i>
+                          </button>
+                          <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 200px;">
+                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-muted">Marca</span><span class="fw-bold">2,500,000</span></li>
+                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-muted">Oferteo</span><span class="fw-bold">2,000,000</span></li>
+                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-muted">Estrategia</span><span class="fw-bold">1,500,000</span></li>
+                            <li class="d-flex justify-content-between"><span class="text-muted">Sin División</span><span class="fw-bold">0</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <!-- Indicador: Pendiente de Autorización: Administración y Finanzas MKT -->
-              <div class="col-md-4">
-                <div class="bg-primary-subtle border border-primary border-opacity-50 rounded p-3 h-100 shadow-sm d-flex flex-column justify-content-center">
-                  <span class="d-block small text-primary fw-bold mb-1">Pendiente de Autorización: Administración y Finanzas MKT</span>
-                  <span class="fs-5 fw-bold text-primary mb-2">12,000,000</span>
-                  <div>
-                    <button class="btn btn-sm btn-outline-primary py-0 px-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.70rem;">
-                      Ver Desglose <i class="bi bi-chevron-down ms-1"></i>
-                    </button>
-                    <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 220px;">
-                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
-                        <span class="text-muted">Marca</span>
-                        <span class="fw-bold text-dark">5,000,000</span>
-                      </li>
-                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
-                        <span class="text-muted">Oferteo</span>
-                        <span class="fw-bold text-dark">4,500,000</span>
-                      </li>
-                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
-                        <span class="text-muted">Estrategia</span>
-                        <span class="fw-bold text-dark">2,500,000</span>
-                      </li>
-                      <li class="d-flex justify-content-between">
-                        <span class="text-muted">Sin División</span>
-                        <span class="fw-bold text-dark">0</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Indicador: Pendiente de Autorización: División -->
-              <div class="col-md-4">
-                <div class="bg-warning-subtle border border-danger border-opacity-25 rounded p-3 h-100 d-flex flex-column justify-content-center">
-                  <span class="d-block small text-danger fw-bold mb-1">Pendiente de Autorización: División</span>
-                  <span class="fs-5 fw-bold text-dark mb-2">6,000,000</span>
-                  <div>
-                    <button class="btn btn-sm btn-outline-danger py-0 px-2" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.70rem;">
-                      Ver Desglose <i class="bi bi-chevron-down ms-1"></i>
-                    </button>
-                    <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 220px;">
-                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
-                        <span class="text-muted">Marca</span>
-                        <span class="fw-bold text-dark">2,500,000</span>
-                      </li>
-                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
-                        <span class="text-muted">Oferteo</span>
-                        <span class="fw-bold text-dark">2,000,000</span>
-                      </li>
-                      <li class="d-flex justify-content-between mb-1 pb-1 border-bottom">
-                        <span class="text-muted">Estrategia</span>
-                        <span class="fw-bold text-dark">1,500,000</span>
-                      </li>
-                      <li class="d-flex justify-content-between">
-                        <span class="text-muted">Sin División</span>
-                        <span class="fw-bold text-dark">0</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
             <!-- Revisión de Excedente (separado de los indicadores) -->
