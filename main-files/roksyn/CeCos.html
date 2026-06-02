@@ -966,6 +966,62 @@
       </div>
     </div>
 
+    <!-- ── Indicadores generales ── -->
+    <div class="row g-3 mb-3">
+      <div class="col-6 col-xl-3">
+        <div class="card border-0 shadow-sm radius-10 h-100">
+          <div class="card-body d-flex align-items-center gap-3 py-3">
+            <div class="bg-primary-subtle rounded-3 p-2 d-flex align-items-center justify-content-center" style="min-width:44px;min-height:44px;">
+              <i class="bi bi-diagram-3 fs-5 text-primary"></i>
+            </div>
+            <div>
+              <div class="fs-3 fw-bold text-dark" id="indTotal">10</div>
+              <div class="small text-dark">Centros de Costos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-xl-3">
+        <div class="card border-0 shadow-sm radius-10 h-100">
+          <div class="card-body d-flex align-items-center gap-3 py-3">
+            <div class="bg-success-subtle rounded-3 p-2 d-flex align-items-center justify-content-center" style="min-width:44px;min-height:44px;">
+              <i class="bi bi-link-45deg fs-5 text-success"></i>
+            </div>
+            <div>
+              <div class="fs-3 fw-bold text-dark" id="indConCuentas">9</div>
+              <div class="small text-dark">Con cuentas vinculadas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-xl-3">
+        <div class="card border-0 shadow-sm radius-10 h-100">
+          <div class="card-body d-flex align-items-center gap-3 py-3">
+            <div class="bg-warning-subtle rounded-3 p-2 d-flex align-items-center justify-content-center" style="min-width:44px;min-height:44px;">
+              <i class="bi bi-exclamation-circle fs-5 text-warning"></i>
+            </div>
+            <div>
+              <div class="fs-3 fw-bold text-dark" id="indSinCuentas">1</div>
+              <div class="small text-dark">Sin cuentas vinculadas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-xl-3">
+        <div class="card border-0 shadow-sm radius-10 h-100">
+          <div class="card-body d-flex align-items-center gap-3 py-3">
+            <div class="bg-dark-subtle rounded-3 p-2 d-flex align-items-center justify-content-center" style="min-width:44px;min-height:44px;">
+              <i class="bi bi-calendar3 fs-5 text-dark"></i>
+            </div>
+            <div>
+              <div class="small fw-bold text-dark">Período de carga</div>
+              <div class="fw-semibold text-dark" style="font-size:0.82rem;">01/01/2026 – 31/03/2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ── Layout principal: panel izquierdo + panel derecho ── -->
     <div class="card shadow-sm border-0 radius-10">
       <div class="card-body p-0">
@@ -976,248 +1032,209 @@
                ════════════════════════════════════════ -->
           <div class="bg-white border-end d-flex flex-column" style="width: 390px; min-width: 390px;">
 
+            <!-- Búsqueda + Filtros -->
             <div class="p-3 bg-light border-bottom">
 
-              <!-- 1) Tabs Ejecutiva / Operativa PRIMERO -->
-              <ul class="nav nav-pills nav-fill shadow-sm rounded bg-white p-1 mb-2" role="tablist" style="font-size: 0.78rem;">
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link fw-bold py-2 rounded active" data-bs-toggle="pill" href="#tree-ejecutiva" role="tab" aria-selected="true">
-                    <i class="bi bi-briefcase me-1"></i>Ejecutiva
-                  </a>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link fw-bold py-2 rounded" data-bs-toggle="pill" href="#tree-operativa" role="tab" aria-selected="false" tabindex="-1">
-                    <i class="bi bi-gear me-1"></i>Operativa
-                  </a>
-                </li>
-              </ul>
-
-              <!-- 2) Búsqueda DEBAJO de las tabs -->
               <div class="input-group input-group-sm shadow-sm mb-2">
-                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
-                <input type="text" class="form-control border-start-0" placeholder="Buscar por número o nombre…">
-                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosAvanzados" aria-expanded="false">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-dark"></i></span>
+                <input type="text" id="buscarArbol" class="form-control border-start-0" placeholder="Buscar por número o nombre…" oninput="filtrarArbol()">
+                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosClasif" aria-expanded="false" id="btnToggleFiltros">
                   <i class="bi bi-funnel"></i>
                 </button>
               </div>
 
-              <!-- 3) Filtros avanzados (colapsables) -->
-              <div class="collapse" id="filtrosAvanzados">
-                <div class="pt-1 d-flex flex-column gap-2">
-                  <div class="row g-2">
-                    <div class="col-6">
-                      <label class="form-label small fw-bold text-dark mb-1">Estatus</label>
-                      <select class="form-select form-select-sm">
-                        <option value="">Todos</option>
-                        <option>Activo</option>
-                        <option>Inactivo</option>
-                      </select>
-                    </div>
-                    <div class="col-6">
-                      <label class="form-label small fw-bold text-dark mb-1">División</label>
-                      <select class="form-select form-select-sm">
-                        <option value="">Todas</option>
-                        <option>Oferteo</option>
-                        <option>Marca</option>
-                        <option>Estrategia</option>
-                        <option>Sin División</option>
-                      </select>
-                    </div>
-                    <div class="col-6">
-                      <label class="form-label small fw-bold text-dark mb-1">País</label>
-                      <select class="form-select form-select-sm">
-                        <option value="">Todos</option>
-                        <option>México</option>
-                        <option>Guatemala</option>
-                        <option>Honduras</option>
-                        <option>Panamá</option>
-                      </select>
-                    </div>
-                    <div class="col-6">
-                      <label class="form-label small fw-bold text-dark mb-1">Grupo Empresarial</label>
-                      <select class="form-select form-select-sm">
-                        <option value="">Todos</option>
-                        <option>Grupo Salinas</option>
-                        <option>Grupo Elektra</option>
-                      </select>
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label small fw-bold text-dark mb-1">Responsable</label>
-                      <input type="text" class="form-control form-control-sm" placeholder="Nombre o ID…">
-                    </div>
+              <div class="collapse" id="filtrosClasif">
+                <div class="d-flex flex-column gap-2 pt-1">
+
+                  <!-- N2 -->
+                  <div>
+                    <label class="form-label small fw-bold text-dark text-uppercase mb-1" style="font-size:0.7rem;">Clasificación 2 — Grupo empresarial</label>
+                    <select class="form-select form-select-sm" multiple id="fN2" size="2" onchange="filtrarArbol()">
+                      <option selected>Todos</option>
+                      <option selected>Grupo Elektra</option>
+                    </select>
                   </div>
+
+                  <!-- N3 -->
+                  <div>
+                    <label class="form-label small fw-bold text-dark text-uppercase mb-1" style="font-size:0.7rem;">Clasificación 3 — País / Región</label>
+                    <select class="form-select form-select-sm" multiple id="fN3" size="2" onchange="filtrarArbol()">
+                      <option selected>Todos</option>
+                      <option selected>México</option>
+                    </select>
+                  </div>
+
+                  <!-- N4 -->
+                  <div>
+                    <label class="form-label small fw-bold text-dark text-uppercase mb-1" style="font-size:0.7rem;">Clasificación 4 — Sector</label>
+                    <select class="form-select form-select-sm" multiple id="fN4" size="2" onchange="filtrarArbol()">
+                      <option selected>Todos</option>
+                      <option selected>Sector Mercado Masivo</option>
+                    </select>
+                  </div>
+
+                  <!-- N5 -->
+                  <div>
+                    <label class="form-label small fw-bold text-dark text-uppercase mb-1" style="font-size:0.7rem;">Clasificación 5 — Área</label>
+                    <select class="form-select form-select-sm" multiple id="fN5" size="2" onchange="filtrarArbol()">
+                      <option selected>Todos</option>
+                      <option selected>Canales</option>
+                    </select>
+                  </div>
+
+                  <!-- N6 -->
+                  <div>
+                    <label class="form-label small fw-bold text-dark text-uppercase mb-1" style="font-size:0.7rem;">Clasificación 6 — Canal</label>
+                    <select class="form-select form-select-sm" multiple id="fN6" size="2" onchange="filtrarArbol()">
+                      <option selected>Todos</option>
+                      <option selected>Canales Digitales</option>
+                    </select>
+                  </div>
+
+                  <!-- N7 -->
+                  <div>
+                    <label class="form-label small fw-bold text-dark text-uppercase mb-1" style="font-size:0.7rem;">Clasificación 7 — Unidad de negocio</label>
+                    <select class="form-select form-select-sm" multiple id="fN7" size="3" onchange="filtrarArbol()">
+                      <option selected>Todos</option>
+                      <option selected>Elektra Digital</option>
+                      <option selected>Banca Digital</option>
+                    </select>
+                  </div>
+
+                  <!-- N8 -->
+                  <div>
+                    <label class="form-label small fw-bold text-dark text-uppercase mb-1" style="font-size:0.7rem;">Clasificación 8</label>
+                    <select class="form-select form-select-sm" multiple id="fN8" size="2" onchange="filtrarArbol()">
+                      <option selected>Todos</option>
+                      <option selected>—</option>
+                    </select>
+                  </div>
+
+                  <!-- N9 -->
+                  <div>
+                    <label class="form-label small fw-bold text-dark text-uppercase mb-1" style="font-size:0.7rem;">Clasificación 9</label>
+                    <select class="form-select form-select-sm" multiple id="fN9" size="2" onchange="filtrarArbol()">
+                      <option selected>Todos</option>
+                      <option selected>—</option>
+                    </select>
+                  </div>
+
                   <div class="d-flex gap-2 justify-content-end pt-1">
-                    <button class="btn btn-sm btn-outline-secondary">Limpiar</button>
-                    <button class="btn btn-sm btn-primary">Aplicar filtros</button>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="limpiarFiltrosArbol()">Limpiar</button>
                   </div>
+
                 </div>
               </div>
 
             </div>
 
-            <!-- Árbol jerárquico -->
-            <div class="overflow-auto flex-grow-1 p-2 tab-content">
+            <!-- Árbol jerárquico: N4 → N5 → N6 → N7 → CeCos -->
+            <div class="overflow-auto flex-grow-1 p-2" id="arbolContainer">
+              <div class="accordion accordion-flush" id="accordionN4">
 
-              <!-- ── Estructura Ejecutiva ── -->
-              <div class="tab-pane fade active show" id="tree-ejecutiva" role="tabpanel">
-                <div class="accordion accordion-flush" id="accordionEjecutiva">
+                <!-- N4: Sector Mercado Masivo -->
+                <div class="accordion-item border-0">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button py-2 px-2 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#colN4Sector" aria-expanded="true" style="font-size:0.8rem;background:transparent;">
+                      <i class="bi bi-grid-3x3-gap-fill text-primary me-2"></i>Sector Mercado Masivo
+                    </button>
+                  </h2>
+                  <div id="colN4Sector" class="accordion-collapse collapse show">
+                    <div class="accordion-body p-0 ps-2 ms-1 border-start border-primary-subtle">
 
-                  <!-- N2: ELEKTRA (entidad) -->
-                  <div class="accordion-item border-0">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseElektra" aria-expanded="true" style="font-size:0.82rem;">
-                        <i class="bi bi-building-fill text-warning me-2"></i>ELEKTRA · Grupo Elektra
-                      </button>
-                    </h2>
-                    <div id="collapseElektra" class="accordion-collapse collapse show">
-                      <div class="accordion-body p-0 ps-3 border-start border-warning-subtle ms-3">
-                        <div class="list-group list-group-flush">
-                          <!-- N7: ELEKTRA DIGITAL -->
-                          <div class="list-group-item py-1 px-2 border-0 small fw-bold text-dark bg-light" style="font-size:0.75rem;letter-spacing:.04em;">
-                            <i class="bi bi-collection text-primary me-1"></i>ELEKTRA DIGITAL
-                          </div>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="290020" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>290020 – Dirección General Ecommerce</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="185784" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>185784 – Publicidad Elektra Digital</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="291365" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>291365 – Seller Center y Logística</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="291371" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>291371 – Growth Elektra Digital</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="240025" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>240025 – Cerrado Ecommerce</span>
-                            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle" style="font-size:0.68rem;">Inactivo</span>
-                          </button>
-                        </div>
+                      <!-- N5: Canales (header estático, no colapsable) -->
+                      <div class="px-2 py-1 d-flex align-items-center gap-1" style="font-size:0.77rem;">
+                        <i class="bi bi-chevron-right text-primary" style="font-size:0.65rem;"></i>
+                        <span class="fw-bold text-dark">Canales</span>
                       </div>
-                    </div>
-                  </div>
 
-                  <!-- N2: BANCO AZTECA (entidad) -->
-                  <div class="accordion-item border-0 mt-1">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBanco" aria-expanded="true" style="font-size:0.82rem;">
-                        <i class="bi bi-building-fill text-warning me-2"></i>BANCO AZTECA · Grupo Elektra
-                      </button>
-                    </h2>
-                    <div id="collapseBanco" class="accordion-collapse collapse show">
-                      <div class="accordion-body p-0 ps-3 border-start border-warning-subtle ms-3">
-                        <div class="list-group list-group-flush">
-                          <!-- N7: BANCA DIGITAL -->
-                          <div class="list-group-item py-1 px-2 border-0 small fw-bold text-dark bg-light" style="font-size:0.75rem;letter-spacing:.04em;">
-                            <i class="bi bi-collection text-primary me-1"></i>BANCA DIGITAL
-                          </div>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="237065" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>237065 – Banca Digital</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="239755" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>239755 – Pagos Digitales</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="237084" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>237084 – Publicidad Marketing Banca Digital</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="230222" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>230222 – Dirección Internet Banco Azteca</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="238002" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>238002 – Pagos Digitales OP</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
+                      <div class="ps-2 ms-1 border-start border-secondary-subtle">
+
+                        <!-- N6: Canales Digitales (header estático) -->
+                        <div class="px-2 py-1 d-flex align-items-center gap-1" style="font-size:0.77rem;">
+                          <i class="bi bi-chevron-right text-primary" style="font-size:0.65rem;"></i>
+                          <span class="fw-bold text-dark">Canales Digitales</span>
                         </div>
-                      </div>
-                    </div>
-                  </div>
 
-                </div>
-              </div>
+                        <div class="ps-2 ms-1">
+                          <div class="accordion accordion-flush" id="accordionN7">
 
-              <!-- ── Estructura Operativa ── -->
-              <div class="tab-pane fade" id="tree-operativa" role="tabpanel">
-                <div class="accordion accordion-flush" id="accordionOperativa">
+                            <!-- N7: Elektra Digital -->
+                            <div class="accordion-item border-0">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button py-2 px-2 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#colN7Elektra" aria-expanded="true" style="font-size:0.79rem;background:transparent;" id="hdrElektraDigital" data-n7="Elektra Digital">
+                                  <i class="bi bi-collection-fill text-warning me-2"></i>Elektra Digital
+                                  <span class="badge bg-dark ms-2 rounded-pill" style="font-size:0.65rem;">5</span>
+                                </button>
+                              </h2>
+                              <div id="colN7Elektra" class="accordion-collapse collapse show">
+                                <div class="accordion-body p-0 ms-2 border-start border-warning-subtle ps-1">
+                                  <div class="list-group list-group-flush" id="listElektraDigital">
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="290020" style="font-size:0.8rem;">
+                                      <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-1" style="font-size:0.75rem;"></i>290020 – Dirección General Ecommerce</span>
+                                    </button>
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="185784" style="font-size:0.8rem;">
+                                      <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-1" style="font-size:0.75rem;"></i>185784 – Publicidad Elektra Digital</span>
+                                    </button>
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="291365" style="font-size:0.8rem;">
+                                      <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-1" style="font-size:0.75rem;"></i>291365 – Seller Center y Logística</span>
+                                    </button>
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="291371" style="font-size:0.8rem;">
+                                      <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-1" style="font-size:0.75rem;"></i>291371 – Growth Elektra Digital</span>
+                                    </button>
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="240025" style="font-size:0.8rem;">
+                                      <span class="text-secondary"><i class="bi bi-diagram-3 text-secondary me-1" style="font-size:0.75rem;"></i>240025 – Cerrado Ecommerce</span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
 
-                  <!-- N7: ELEKTRA DIGITAL -->
-                  <div class="accordion-item border-0">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseED" aria-expanded="true" style="font-size:0.82rem;">
-                        <i class="bi bi-diagram-3 text-info me-2"></i>Elektra Digital
-                      </button>
-                    </h2>
-                    <div id="collapseED" class="accordion-collapse collapse show">
-                      <div class="accordion-body p-0 ps-3 border-start border-info-subtle ms-3">
-                        <div class="list-group list-group-flush">
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="290020" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>290020 – Dirección General Ecommerce</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="185784" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>185784 – Publicidad Elektra Digital</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="291365" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>291365 – Seller Center y Logística</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="291371" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>291371 – Growth Elektra Digital</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="240025" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>240025 – Cerrado Ecommerce</span>
-                            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle" style="font-size:0.68rem;">Inactivo</span>
-                          </button>
+                            <!-- N7: Banca Digital -->
+                            <div class="accordion-item border-0 mt-1">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button py-2 px-2 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#colN7Banca" aria-expanded="true" style="font-size:0.79rem;background:transparent;" id="hdrBancaDigital" data-n7="Banca Digital">
+                                  <i class="bi bi-collection-fill text-info me-2"></i>Banca Digital
+                                  <span class="badge bg-dark ms-2 rounded-pill" style="font-size:0.65rem;">5</span>
+                                </button>
+                              </h2>
+                              <div id="colN7Banca" class="accordion-collapse collapse show">
+                                <div class="accordion-body p-0 ms-2 border-start border-info-subtle ps-1">
+                                  <div class="list-group list-group-flush" id="listBancaDigital">
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="237065" style="font-size:0.8rem;">
+                                      <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-1" style="font-size:0.75rem;"></i>237065 – Banca Digital</span>
+                                    </button>
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="239755" style="font-size:0.8rem;">
+                                      <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-1" style="font-size:0.75rem;"></i>239755 – Pagos Digitales</span>
+                                    </button>
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="237084" style="font-size:0.8rem;">
+                                      <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-1" style="font-size:0.75rem;"></i>237084 – Publicidad Marketing Banca Digital</span>
+                                    </button>
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="230222" style="font-size:0.8rem;">
+                                      <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-1" style="font-size:0.75rem;"></i>230222 – Dirección Internet Banco Azteca</span>
+                                    </button>
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="238002" style="font-size:0.8rem;">
+                                      <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-1" style="font-size:0.75rem;"></i>238002 – Pagos Digitales OP</span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div><!-- fin accordionN7 -->
                         </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <!-- N7: BANCA DIGITAL -->
-                  <div class="accordion-item border-0 mt-1">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button py-2 px-3 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBD" aria-expanded="true" style="font-size:0.82rem;">
-                        <i class="bi bi-diagram-3 text-info me-2"></i>Banca Digital
-                      </button>
-                    </h2>
-                    <div id="collapseBD" class="accordion-collapse collapse show">
-                      <div class="accordion-body p-0 ps-3 border-start border-info-subtle ms-3">
-                        <div class="list-group list-group-flush">
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="237065" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>237065 – Banca Digital</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="239755" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>239755 – Pagos Digitales</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="237084" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>237084 – Publicidad Marketing Banca Digital</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="230222" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>230222 – Dirección Internet Banco Azteca</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                          <button class="list-group-item list-group-item-action py-2 ps-3 pe-2 border-0 d-flex align-items-center justify-content-between cecoItem" data-id="238002" style="font-size:0.82rem;">
-                            <span class="text-dark"><i class="bi bi-diagram-3 text-dark me-2"></i>238002 – Pagos Digitales OP</span>
-                            <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.68rem;">Activo</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                      </div><!-- fin N6 -->
+                    </div><!-- fin N5 -->
+                  </div><!-- fin colN4Sector -->
+                </div><!-- fin N4 item -->
 
-                </div>
+              </div><!-- fin accordionN4 -->
+
+              <!-- Mensaje sin resultados -->
+              <div id="arbolSinResultados" class="text-center py-4 d-none">
+                <i class="bi bi-funnel fs-3 text-secondary d-block mb-1"></i>
+                <small class="text-dark">Ningún Centro de Costos coincide con los filtros aplicados.</small>
               </div>
 
             </div>
@@ -1633,6 +1650,73 @@
         bootstrap.Modal.getInstance(document.getElementById('modalVincularCuenta')).hide();
       };
     });
+
+    // ── Filtrado del árbol ──────────────────────────────────────────
+    const ARBOL_DATA = {
+      'listElektraDigital': { n7:'Elektra Digital', ids:['290020','185784','291365','291371','240025'] },
+      'listBancaDigital':   { n7:'Banca Digital',   ids:['237065','239755','237084','230222','238002'] }
+    };
+
+    function getSeleccionados(selectId) {
+      const sel = document.getElementById(selectId);
+      const vals = Array.from(sel.selectedOptions).map(o => o.text);
+      return vals.includes('Todos') ? [] : vals; // vacío = sin filtro
+    }
+
+    function filtrarArbol() {
+      const busq = (document.getElementById('buscarArbol').value || '').toLowerCase();
+      const filtN7 = getSeleccionados('fN7');
+      let totalVisible = 0;
+
+      Object.entries(ARBOL_DATA).forEach(([listId, grupo]) => {
+        const n7Visible = !filtN7.length || filtN7.includes(grupo.n7);
+        const lista = document.getElementById(listId);
+        let visiblesEnGrupo = 0;
+
+        if (!n7Visible) {
+          lista.parentElement.parentElement.parentElement.parentElement.classList.add('d-none');
+          return;
+        }
+        lista.parentElement.parentElement.parentElement.parentElement.classList.remove('d-none');
+
+        lista.querySelectorAll('.cecoItem').forEach(btn => {
+          const id = btn.dataset.id;
+          const d = CECOS[id];
+          const texto = btn.textContent.toLowerCase();
+          const matchBusq = !busq || texto.includes(busq);
+          if (matchBusq) {
+            btn.classList.remove('d-none');
+            visiblesEnGrupo++;
+          } else {
+            btn.classList.add('d-none');
+          }
+        });
+
+        // actualizar badge count en cabecera N7
+        const hdrBtn = lista.closest('.accordion-collapse').previousElementSibling.querySelector('button');
+        const badge = hdrBtn ? hdrBtn.querySelector('.badge') : null;
+        if (badge) badge.textContent = visiblesEnGrupo;
+
+        // ocultar grupo si ningún hijo visible
+        lista.parentElement.parentElement.parentElement.parentElement.classList.toggle('d-none', visiblesEnGrupo === 0);
+        totalVisible += visiblesEnGrupo;
+      });
+
+      document.getElementById('arbolSinResultados').classList.toggle('d-none', totalVisible > 0);
+
+      // actualizar indicadores
+      document.getElementById('indTotal').textContent = totalVisible || Object.keys(CECOS).length;
+    }
+
+    function limpiarFiltrosArbol() {
+      document.getElementById('buscarArbol').value = '';
+      ['fN2','fN3','fN4','fN5','fN6','fN7','fN8','fN9'].forEach(id => {
+        const sel = document.getElementById(id);
+        if (sel) Array.from(sel.options).forEach(o => o.selected = true);
+      });
+      filtrarArbol();
+    }
+
   </script>
 
   <!-- ════ MODAL: Vincular Cuenta a Centro de Costos ════ -->
