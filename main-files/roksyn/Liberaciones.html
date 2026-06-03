@@ -1843,34 +1843,16 @@
             </div>
 
             <!-- Tabla de solicitudes pendientes -->
-            <div class="table-responsive" style="border: 1px solid #dee2e6; border-radius: 6px; overflow: hidden;">
-              <table class="table align-middle mb-0" style="font-size: 0.83rem;">
-                <thead style="background: #1a1d23; color: #fff;">
+            <div class="table-responsive border rounded shadow-sm">
+              <table class="table table-sm table-hover align-middle mb-0" style="font-size:0.82rem;">
+                <thead class="table-light text-dark text-uppercase border-bottom" style="font-size:0.72rem;">
                   <tr>
-                    <th class="py-3 ps-3 fw-semibold"
-                      style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; cursor:pointer; border:none;">
-                      Folio <i class="bi bi-arrow-down-up ms-1" style="opacity:.4;"></i>
-                    </th>
-                    <th class="py-3 fw-semibold"
-                      style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; cursor:pointer; border:none;">
-                      Tipo de Gasto <i class="bi bi-arrow-down-up ms-1" style="opacity:.4;"></i>
-                    </th>
-                    <th class="py-3 fw-semibold"
-                      style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; cursor:pointer; border:none;">
-                      País <i class="bi bi-arrow-down-up ms-1" style="opacity:.4;"></i>
-                    </th>
-                    <th class="py-3 fw-semibold"
-                      style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; cursor:pointer; border:none;">
-                      Estatus <i class="bi bi-arrow-down-up ms-1" style="opacity:.4;"></i>
-                    </th>
-                    <th class="py-3 fw-semibold text-end"
-                      style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; cursor:pointer; border:none;">
-                      Fecha de Registro <i class="bi bi-arrow-down ms-1" style="opacity:.7;"></i>
-                    </th>
-                    <th class="py-3 pe-3 fw-semibold text-end"
-                      style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; cursor:pointer; border:none;">
-                      Importe <i class="bi bi-arrow-down-up ms-1" style="opacity:.4;"></i>
-                    </th>
+                    <th style="min-width:200px;">Folio / Campaña</th>
+                    <th>Tipo de Gasto</th>
+                    <th>País</th>
+                    <th>Estatus</th>
+                    <th class="text-end">Fecha de Registro</th>
+                    <th class="text-end">Importe</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -2408,17 +2390,17 @@
                   class="bi bi-file-earmark-excel me-1"></i> Descargar Bitácora</button>
             </div>
 
-            <div class="table-responsive border rounded bg-white shadow-sm">
-              <table class="table table-hover align-middle mb-0" style="font-size: 0.84rem;">
-                <thead style="background:#1a1d23; color:#fff;">
+            <div class="table-responsive border rounded shadow-sm">
+              <table class="table table-sm table-hover align-middle mb-0" style="font-size:0.82rem;">
+                <thead class="table-light text-dark text-uppercase border-bottom" style="font-size:0.72rem;">
                   <tr>
-                    <th class="ps-3 py-3" style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; border:none; width:70px;">Versión</th>
-                    <th class="py-3" style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; border:none;">Fecha y Hora</th>
-                    <th class="py-3" style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; border:none;">Usuario</th>
-                    <th class="py-3" style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; border:none; width:30%;">Comentarios</th>
-                    <th class="py-3 text-end" style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; border:none;">Δ Variación</th>
-                    <th class="py-3 text-end" style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; border:none;">Importe Total</th>
-                    <th class="py-3 pe-3 text-center" style="font-size:0.7rem; letter-spacing:.08em; text-transform:uppercase; border:none;">Estatus SIPRES</th>
+                    <th style="width:70px;">Versión</th>
+                    <th>Fecha y Hora</th>
+                    <th>Usuario</th>
+                    <th style="width:30%;">Comentarios</th>
+                    <th class="text-end">Δ Variación</th>
+                    <th class="text-end">Importe Total</th>
+                    <th class="text-center">Estatus SIPRES</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -2799,224 +2781,366 @@
         row.style.display = ok ? '' : 'none';
       });
     }
-    /* ── Datos por versión (CA03) ── */
-    const VERSIONES = {
+    /* ── Datos por versión (CA03) — estructura jerárquica completa ── */
+    const VER_DATA = {
+      /* ── v4 ── */
       v4: {
         meta: '<strong class="text-dark">v4</strong><span class="text-muted ms-2">Expuesta: 15 Abr 2026 14:30 · Sincronizada: 15 Abr 2026 14:35 · Por: Ana Martínez</span>',
         total: '162,428,000',
-        regiones: [
-          {
-            id: 'vs-mx', label: 'México', icon: 'bi-geo-alt-fill text-danger', total: '138,928,000',
-            cecos: [
-              { ceco: '100901 – Dir Gral Conectividad', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '12,500,000' },
-              { ceco: '100901 – Dir Gral Conectividad', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609023 – Promociones Sorteos', imp: '8,274,280' },
-              { ceco: '291374 – Dir Mercadotecnia Digital', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '7,500,000' },
-              { ceco: '291374 – Dir Mercadotecnia Digital', div: 'Estrategia', tipo: 'Proy. Inversión', cuenta: '609045 – Digital y Redes Soc.', imp: '6,800,000' },
-              { ceco: '102847 – Mercadotecnia Préstamos', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609012 – Radio', imp: '3,173,720' },
-              { ceco: '407823 – Dir Seguros Masivos', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '14,500,000' },
-              { ceco: '512901 – Mkt Seguros Vida', div: 'Marca', tipo: 'Ordinario', cuenta: '609012 – Radio', imp: '4,800,000' },
-              { ceco: '310482 – Dir Crédito Hipotecario', div: 'Oferteo', tipo: 'Proy. Inversión', cuenta: '609041 – Medios Digitales', imp: '7,800,000' },
-              { ceco: '239729 – Publicidad Cobranza', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '12,000,000' },
-              { ceco: '620145 – Dir Comunicación Corp.', div: 'Estrategia', tipo: 'Proy. Inversión', cuenta: '609041 – Medios Digitales', imp: '11,000,000' },
-              { ceco: '730291 – Mercadotecnia Empresas', div: 'Sin División', tipo: 'Ordinario', cuenta: '609031 – Material POP', imp: '9,280,000' },
-            ]
+        mx: {
+          t: '138,928,000',
+          masivo: {
+            t: '98,428,000',
+            unidades: {
+              t: '98,428,000',
+              prestamos: {
+                t: '62,748,000',
+                sinGar: { t: '42,248,000', consumo: { t: '42,248,000', cecos: [
+                  { ceco:'100901 – Dir Gral Conectividad',  div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'12,500,000' },
+                  { ceco:'100901 – Dir Gral Conectividad',  div:'Oferteo',   tipo:'Ordinario',       cuenta:'609023 – Promociones Sorteos',    imp:'8,274,280'  },
+                  { ceco:'291374 – Dir Mercadotecnia Dig.', div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'7,500,000'  },
+                  { ceco:'291374 – Dir Mercadotecnia Dig.', div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609045 – Digital y Redes Soc.',   imp:'6,800,000'  },
+                  { ceco:'102847 – Mercadotecnia Préstamos',div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'3,173,720'  },
+                ]}},
+                conGar: { t: '20,500,000', credito: { t: '20,500,000', cecos: [
+                  { ceco:'310482 – Dir Crédito Hipotecario',div:'Oferteo',   tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'7,800,000'  },
+                  { ceco:'239729 – Publicidad Cobranza',    div:'Oferteo',   tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'12,700,000' },
+                ]}}
+              },
+              seguros: { t: '35,680,000', cecos: [
+                { ceco:'407823 – Dir Seguros Masivos',      div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'14,500,000' },
+                { ceco:'512901 – Mkt Seguros Vida',         div:'Marca',     tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'4,800,000'  },
+                { ceco:'512901 – Mkt Seguros Vida',         div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'6,380,000'  },
+              ]}
+            }
           },
-          {
-            id: 'vs-lam', label: 'LAM', icon: 'bi-globe-americas text-primary', total: '23,500,000',
-            cecos: [
-              { pais: 'Guatemala', ceco: '810034 – Dir Mkt Guatemala', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '4,500,000' },
-              { pais: 'Guatemala', ceco: '810034 – Dir Mkt Guatemala', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609012 – Radio', imp: '3,200,000' },
-              { pais: 'Guatemala', ceco: '810034 – Dir Mkt Guatemala', div: 'Estrategia', tipo: 'Proy. Inversión', cuenta: '609041 – Medios Digitales', imp: '2,800,000' },
-              { pais: 'Honduras', ceco: '920147 – Dir Mkt Honduras', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '3,800,000' },
-              { pais: 'Honduras', ceco: '920148 – Comunicación HND', div: 'Estrategia', tipo: 'Proy. Inversión', cuenta: '609041 – Medios Digitales', imp: '2,000,000' },
-              { pais: 'Panamá', ceco: '1010293 – Dir Mkt Panamá', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '2,500,000' },
-              { pais: 'Panamá', ceco: '1010293 – Dir Mkt Panamá', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609012 – Radio', imp: '1,400,000' },
-              { pais: 'Panamá', ceco: '1010293 – Dir Mkt Panamá', div: 'Estrategia', tipo: 'Proy. Inversión', cuenta: '609041 – Medios Digitales', imp: '900,000' },
-              { pais: 'Panamá', ceco: '1010293 – Dir Mkt Panamá', div: 'Sin División', tipo: 'Ordinario', cuenta: '609031 – Material POP', imp: '400,000' },
-            ]
-          }
-        ]
+          corp: { t: '40,500,000', cecos: [
+            { ceco:'620145 – Dir Comunicación Corp.',       div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'11,000,000' },
+            { ceco:'730291 – Mercadotecnia Empresas',       div:'Sin División',tipo:'Ordinario',     cuenta:'609031 – Material POP',           imp:'9,280,000'  },
+            { ceco:'830562 – Mkt Sector Corporativo',       div:'Marca',     tipo:'Ordinario',       cuenta:'609013 – Espectaculares',         imp:'8,100,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609045 – Digital y Redes Soc.',   imp:'7,620,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'4,500,000'  },
+          ]}
+        },
+        lam: {
+          t: '23,500,000',
+          paises: [
+            { id:'gt', label:'Guatemala', t:'10,500,000', cecos: [
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'4,500,000'  },
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'3,200,000'  },
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'2,800,000'  },
+            ]},
+            { id:'hn', label:'Honduras', t:'5,800,000', cecos: [
+              { ceco:'920147 – Dir Mkt Honduras',           div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'3,800,000'  },
+              { ceco:'920148 – Comunicación HND',           div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'2,000,000'  },
+            ]},
+            { id:'pa', label:'Panamá',   t:'7,200,000', cecos: [
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'2,500,000'  },
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'1,400,000'  },
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'900,000'    },
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Sin División',tipo:'Ordinario',     cuenta:'609031 – Material POP',           imp:'400,000'    },
+            ]},
+          ]
+        }
       },
+      /* ── v3 ── */
       v3: {
         meta: '<strong class="text-dark">v3</strong><span class="text-muted ms-2">Expuesta: 02 Abr 2026 10:15 · Sincronizada: 02 Abr 2026 10:22 · Por: Carlos Ruiz</span>',
         total: '150,000,000',
-        regiones: [
-          {
-            id: 'vs-mx', label: 'México', icon: 'bi-geo-alt-fill text-danger', total: '128,500,000',
-            cecos: [
-              { ceco: '100901 – Dir Gral Conectividad', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '11,200,000' },
-              { ceco: '100901 – Dir Gral Conectividad', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609023 – Promociones Sorteos', imp: '7,800,000' },
-              { ceco: '291374 – Dir Mercadotecnia Digital', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '7,000,000' },
-              { ceco: '102847 – Mercadotecnia Préstamos', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609012 – Radio', imp: '2,900,000' },
-              { ceco: '407823 – Dir Seguros Masivos', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '13,800,000' },
-              { ceco: '310482 – Dir Crédito Hipotecario', div: 'Oferteo', tipo: 'Proy. Inversión', cuenta: '609041 – Medios Digitales', imp: '7,800,000' },
-              { ceco: '239729 – Publicidad Cobranza', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '12,000,000' },
-              { ceco: '620145 – Dir Comunicación Corp.', div: 'Estrategia', tipo: 'Proy. Inversión', cuenta: '609041 – Medios Digitales', imp: '10,500,000' },
-              { ceco: '730291 – Mercadotecnia Empresas', div: 'Sin División', tipo: 'Ordinario', cuenta: '609031 – Material POP', imp: '8,900,000' },
-              { ceco: '830562 – Mkt Sector Pymes', div: 'Estrategia', tipo: 'Ordinario', cuenta: '609013 – Espectaculares', imp: '6,600,000' },
-            ]
+        mx: {
+          t: '128,500,000',
+          masivo: {
+            t: '89,800,000',
+            unidades: {
+              t: '89,800,000',
+              prestamos: {
+                t: '56,200,000',
+                sinGar: { t: '38,500,000', consumo: { t: '38,500,000', cecos: [
+                  { ceco:'100901 – Dir Gral Conectividad',  div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'11,200,000' },
+                  { ceco:'100901 – Dir Gral Conectividad',  div:'Oferteo',   tipo:'Ordinario',       cuenta:'609023 – Promociones Sorteos',    imp:'7,800,000'  },
+                  { ceco:'291374 – Dir Mercadotecnia Dig.', div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'7,000,000'  },
+                  { ceco:'102847 – Mercadotecnia Préstamos',div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'2,900,000'  },
+                  { ceco:'102847 – Mercadotecnia Préstamos',div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'3,600,000'  },
+                  { ceco:'830562 – Mkt Sector Pymes',       div:'Estrategia',tipo:'Ordinario',       cuenta:'609013 – Espectaculares',         imp:'6,000,000'  },
+                ]}},
+                conGar: { t: '17,700,000', credito: { t: '17,700,000', cecos: [
+                  { ceco:'310482 – Dir Crédito Hipotecario',div:'Oferteo',   tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'7,800,000'  },
+                  { ceco:'239729 – Publicidad Cobranza',    div:'Oferteo',   tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'9,900,000'  },
+                ]}}
+              },
+              seguros: { t: '33,600,000', cecos: [
+                { ceco:'407823 – Dir Seguros Masivos',      div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'13,800,000' },
+                { ceco:'512901 – Mkt Seguros Vida',         div:'Marca',     tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'4,300,000'  },
+                { ceco:'512901 – Mkt Seguros Vida',         div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'5,500,000'  },
+              ]}
+            }
           },
-          {
-            id: 'vs-lam', label: 'LAM', icon: 'bi-globe-americas text-primary', total: '21,500,000',
-            cecos: [
-              { pais: 'Guatemala', ceco: '810034 – Dir Mkt Guatemala', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '4,100,000' },
-              { pais: 'Guatemala', ceco: '810034 – Dir Mkt Guatemala', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609012 – Radio', imp: '3,000,000' },
-              { pais: 'Honduras', ceco: '920147 – Dir Mkt Honduras', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '3,600,000' },
-              { pais: 'Honduras', ceco: '920147 – Dir Mkt Honduras', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609023 – Promociones Sorteos', imp: '2,200,000' },
-              { pais: 'Panamá', ceco: '1010293 – Dir Mkt Panamá', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '2,300,000' },
-              { pais: 'Panamá', ceco: '1010293 – Dir Mkt Panamá', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609012 – Radio', imp: '1,200,000' },
-              { pais: 'Panamá', ceco: '1010293 – Dir Mkt Panamá', div: 'Sin División', tipo: 'Ordinario', cuenta: '609031 – Material POP', imp: '500,000' },
-            ]
-          }
-        ]
+          corp: { t: '38,700,000', cecos: [
+            { ceco:'620145 – Dir Comunicación Corp.',       div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'10,500,000' },
+            { ceco:'730291 – Mercadotecnia Empresas',       div:'Sin División',tipo:'Ordinario',     cuenta:'609031 – Material POP',           imp:'8,900,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'4,100,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609045 – Digital y Redes Soc.',   imp:'7,200,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'4,500,000'  },
+            { ceco:'830562 – Mkt Sector Corporativo',       div:'Marca',     tipo:'Ordinario',       cuenta:'609013 – Espectaculares',         imp:'3,500,000'  },
+          ]}
+        },
+        lam: {
+          t: '21,500,000',
+          paises: [
+            { id:'gt', label:'Guatemala', t:'9,400,000', cecos: [
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'4,100,000'  },
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'3,000,000'  },
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'2,300,000'  },
+            ]},
+            { id:'hn', label:'Honduras', t:'5,700,000', cecos: [
+              { ceco:'920147 – Dir Mkt Honduras',           div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'3,600,000'  },
+              { ceco:'920147 – Dir Mkt Honduras',           div:'Oferteo',   tipo:'Ordinario',       cuenta:'609023 – Promociones Sorteos',    imp:'2,100,000'  },
+            ]},
+            { id:'pa', label:'Panamá',   t:'6,400,000', cecos: [
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'2,300,000'  },
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'1,200,000'  },
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Sin División',tipo:'Ordinario',     cuenta:'609031 – Material POP',           imp:'500,000'    },
+            ]},
+          ]
+        }
       },
+      /* ── v2 ── */
       v2: {
-        meta: '<strong class="text-dark">v2</strong><span class="text-muted ms-2">Expuesta: 18 Mar 2026 11:00 · Error de sincronización · Por: SIPRES CORP</span>',
+        meta: '<strong class="text-dark">v2</strong><span class="text-muted ms-2">Expuesta: 18 Mar 2026 11:00 · Sincronizada: 18 Mar 2026 11:08 · Por: Laura Peña</span>',
         total: '143,200,000',
-        regiones: [
-          {
-            id: 'vs-mx', label: 'México', icon: 'bi-geo-alt-fill text-danger', total: '122,700,000',
-            cecos: [
-              { ceco: '100901 – Dir Gral Conectividad', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '10,500,000' },
-              { ceco: '291374 – Dir Mercadotecnia Digital', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '6,800,000' },
-              { ceco: '291374 – Dir Mercadotecnia Digital', div: 'Estrategia', tipo: 'Proy. Inversión', cuenta: '609045 – Digital y Redes Soc.', imp: '5,900,000' },
-              { ceco: '102847 – Mercadotecnia Préstamos', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609012 – Radio', imp: '2,600,000' },
-              { ceco: '407823 – Dir Seguros Masivos', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '13,200,000' },
-              { ceco: '310482 – Dir Crédito Hipotecario', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '9,500,000' },
-              { ceco: '239729 – Publicidad Cobranza', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '11,400,000' },
-              { ceco: '620145 – Dir Comunicación Corp.', div: 'Estrategia', tipo: 'Proy. Inversión', cuenta: '609041 – Medios Digitales', imp: '9,800,000' },
-            ]
+        mx: {
+          t: '122,700,000',
+          masivo: {
+            t: '83,900,000',
+            unidades: {
+              t: '83,900,000',
+              prestamos: {
+                t: '52,400,000',
+                sinGar: { t: '35,200,000', consumo: { t: '35,200,000', cecos: [
+                  { ceco:'100901 – Dir Gral Conectividad',  div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'10,500,000' },
+                  { ceco:'291374 – Dir Mercadotecnia Dig.', div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'6,800,000'  },
+                  { ceco:'291374 – Dir Mercadotecnia Dig.', div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609045 – Digital y Redes Soc.',   imp:'5,900,000'  },
+                  { ceco:'102847 – Mercadotecnia Préstamos',div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'2,600,000'  },
+                  { ceco:'102847 – Mercadotecnia Préstamos',div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'3,400,000'  },
+                  { ceco:'830562 – Mkt Sector Pymes',       div:'Estrategia',tipo:'Ordinario',       cuenta:'609013 – Espectaculares',         imp:'6,000,000'  },
+                ]}},
+                conGar: { t: '17,200,000', credito: { t: '17,200,000', cecos: [
+                  { ceco:'310482 – Dir Crédito Hipotecario',div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'9,500,000'  },
+                  { ceco:'239729 – Publicidad Cobranza',    div:'Oferteo',   tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'7,700,000'  },
+                ]}}
+              },
+              seguros: { t: '31,500,000', cecos: [
+                { ceco:'407823 – Dir Seguros Masivos',      div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'13,200,000' },
+                { ceco:'512901 – Mkt Seguros Vida',         div:'Marca',     tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'3,800,000'  },
+                { ceco:'512901 – Mkt Seguros Vida',         div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'4,500,000'  },
+              ]}
+            }
           },
-          {
-            id: 'vs-lam', label: 'LAM', icon: 'bi-globe-americas text-primary', total: '20,500,000',
-            cecos: [
-              { pais: 'Guatemala', ceco: '810034 – Dir Mkt Guatemala', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '3,800,000' },
-              { pais: 'Guatemala', ceco: '810034 – Dir Mkt Guatemala', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609012 – Radio', imp: '2,700,000' },
-              { pais: 'Honduras', ceco: '920147 – Dir Mkt Honduras', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '3,400,000' },
-              { pais: 'Panamá', ceco: '1010293 – Dir Mkt Panamá', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '2,100,000' },
-              { pais: 'Panamá', ceco: '1010293 – Dir Mkt Panamá', div: 'Sin División', tipo: 'Ordinario', cuenta: '609031 – Material POP', imp: '350,000' },
-            ]
-          }
-        ]
+          corp: { t: '38,800,000', cecos: [
+            { ceco:'620145 – Dir Comunicación Corp.',       div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'9,800,000'  },
+            { ceco:'730291 – Mercadotecnia Empresas',       div:'Sin División',tipo:'Ordinario',     cuenta:'609031 – Material POP',           imp:'8,200,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'5,300,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609045 – Digital y Redes Soc.',   imp:'6,800,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'4,700,000'  },
+            { ceco:'830562 – Mkt Sector Corporativo',       div:'Marca',     tipo:'Ordinario',       cuenta:'609013 – Espectaculares',         imp:'4,000,000'  },
+          ]}
+        },
+        lam: {
+          t: '20,500,000',
+          paises: [
+            { id:'gt', label:'Guatemala', t:'9,100,000', cecos: [
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'3,800,000'  },
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'2,700,000'  },
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'2,600,000'  },
+            ]},
+            { id:'hn', label:'Honduras', t:'4,800,000', cecos: [
+              { ceco:'920147 – Dir Mkt Honduras',           div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'3,400,000'  },
+              { ceco:'920147 – Dir Mkt Honduras',           div:'Oferteo',   tipo:'Ordinario',       cuenta:'609023 – Promociones Sorteos',    imp:'1,400,000'  },
+            ]},
+            { id:'pa', label:'Panamá',   t:'6,600,000', cecos: [
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'2,100,000'  },
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Sin División',tipo:'Ordinario',     cuenta:'609031 – Material POP',           imp:'350,000'    },
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'1,200,000'  },
+            ]},
+          ]
+        }
       },
+      /* ── v1 ── */
       v1: {
         meta: '<strong class="text-dark">v1</strong><span class="text-muted ms-2">Expuesta: 05 Mar 2026 09:05 · Sincronizada: 05 Mar 2026 09:11 · Por: Laura Gómez</span>',
         total: '131,500,000',
-        regiones: [
-          {
-            id: 'vs-mx', label: 'México', icon: 'bi-geo-alt-fill text-danger', total: '115,000,000',
-            cecos: [
-              { ceco: '100901 – Dir Gral Conectividad', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '9,800,000' },
-              { ceco: '100901 – Dir Gral Conectividad', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609023 – Promociones Sorteos', imp: '6,500,000' },
-              { ceco: '291374 – Dir Mercadotecnia Digital', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '6,200,000' },
-              { ceco: '102847 – Mercadotecnia Préstamos', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609012 – Radio', imp: '2,400,000' },
-              { ceco: '407823 – Dir Seguros Masivos', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '12,500,000' },
-              { ceco: '310482 – Dir Crédito Hipotecario', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '8,700,000' },
-              { ceco: '239729 – Publicidad Cobranza', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '10,200,000' },
-              { ceco: '620145 – Dir Comunicación Corp.', div: 'Estrategia', tipo: 'Proy. Inversión', cuenta: '609041 – Medios Digitales', imp: '8,900,000' },
-            ]
+        mx: {
+          t: '115,000,000',
+          masivo: {
+            t: '78,200,000',
+            unidades: {
+              t: '78,200,000',
+              prestamos: {
+                t: '48,800,000',
+                sinGar: { t: '32,400,000', consumo: { t: '32,400,000', cecos: [
+                  { ceco:'100901 – Dir Gral Conectividad',  div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'9,800,000'  },
+                  { ceco:'100901 – Dir Gral Conectividad',  div:'Oferteo',   tipo:'Ordinario',       cuenta:'609023 – Promociones Sorteos',    imp:'6,500,000'  },
+                  { ceco:'291374 – Dir Mercadotecnia Dig.', div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'6,200,000'  },
+                  { ceco:'102847 – Mercadotecnia Préstamos',div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'2,400,000'  },
+                  { ceco:'102847 – Mercadotecnia Préstamos',div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'2,900,000'  },
+                  { ceco:'830562 – Mkt Sector Pymes',       div:'Estrategia',tipo:'Ordinario',       cuenta:'609013 – Espectaculares',         imp:'4,600,000'  },
+                ]}},
+                conGar: { t: '16,400,000', credito: { t: '16,400,000', cecos: [
+                  { ceco:'310482 – Dir Crédito Hipotecario',div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'8,700,000'  },
+                  { ceco:'239729 – Publicidad Cobranza',    div:'Oferteo',   tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'7,700,000'  },
+                ]}}
+              },
+              seguros: { t: '29,400,000', cecos: [
+                { ceco:'407823 – Dir Seguros Masivos',      div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'12,500,000' },
+                { ceco:'512901 – Mkt Seguros Vida',         div:'Marca',     tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'3,400,000'  },
+                { ceco:'512901 – Mkt Seguros Vida',         div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'3,900,000'  },
+                { ceco:'512901 – Mkt Seguros Vida',         div:'Oferteo',   tipo:'Ordinario',       cuenta:'609023 – Promociones Sorteos',    imp:'2,800,000'  },
+                { ceco:'512901 – Mkt Seguros Vida',         div:'Sin División',tipo:'Ordinario',     cuenta:'609031 – Material POP',           imp:'2,400,000'  },
+              ]}
+            }
           },
-          {
-            id: 'vs-lam', label: 'LAM', icon: 'bi-globe-americas text-primary', total: '16,500,000',
-            cecos: [
-              { pais: 'Guatemala', ceco: '810034 – Dir Mkt Guatemala', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '3,200,000' },
-              { pais: 'Honduras', ceco: '920147 – Dir Mkt Honduras', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '3,000,000' },
-              { pais: 'Honduras', ceco: '920147 – Dir Mkt Honduras', div: 'Oferteo', tipo: 'Ordinario', cuenta: '609023 – Promociones Sorteos', imp: '1,800,000' },
-              { pais: 'Panamá', ceco: '1010293 – Dir Mkt Panamá', div: 'Marca', tipo: 'Ordinario', cuenta: '609011 – Televisión', imp: '1,900,000' },
-            ]
-          }
-        ]
+          corp: { t: '36,800,000', cecos: [
+            { ceco:'620145 – Dir Comunicación Corp.',       div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'8,900,000'  },
+            { ceco:'730291 – Mercadotecnia Empresas',       div:'Sin División',tipo:'Ordinario',     cuenta:'609031 – Material POP',           imp:'7,400,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'4,600,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609045 – Digital y Redes Soc.',   imp:'6,200,000'  },
+            { ceco:'940183 – Comunicación Institucional',   div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'3,900,000'  },
+            { ceco:'830562 – Mkt Sector Corporativo',       div:'Marca',     tipo:'Ordinario',       cuenta:'609013 – Espectaculares',         imp:'3,600,000'  },
+            { ceco:'830562 – Mkt Sector Corporativo',       div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'2,200,000'  },
+          ]}
+        },
+        lam: {
+          t: '16,500,000',
+          paises: [
+            { id:'gt', label:'Guatemala', t:'6,200,000', cecos: [
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'3,200,000'  },
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'1,500,000'  },
+              { ceco:'810034 – Dir Mkt Guatemala',          div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'1,500,000'  },
+            ]},
+            { id:'hn', label:'Honduras', t:'5,100,000', cecos: [
+              { ceco:'920147 – Dir Mkt Honduras',           div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'3,000,000'  },
+              { ceco:'920147 – Dir Mkt Honduras',           div:'Oferteo',   tipo:'Ordinario',       cuenta:'609023 – Promociones Sorteos',    imp:'1,800,000'  },
+              { ceco:'920147 – Dir Mkt Honduras',           div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'300,000'    },
+            ]},
+            { id:'pa', label:'Panamá',   t:'5,200,000', cecos: [
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Marca',     tipo:'Ordinario',       cuenta:'609011 – Televisión',             imp:'1,900,000'  },
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Oferteo',   tipo:'Ordinario',       cuenta:'609012 – Radio',                  imp:'1,000,000'  },
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Estrategia',tipo:'Proy. Inversión', cuenta:'609041 – Medios Digitales',       imp:'800,000'    },
+              { ceco:'1010293 – Dir Mkt Panamá',            div:'Sin División',tipo:'Ordinario',     cuenta:'609031 – Material POP',           imp:'300,000'    },
+            ]},
+          ]
+        }
       }
     };
 
     /* Colores por División */
     const DIV_COLORS = {
-      'Marca': 'bg-primary-subtle text-primary border border-primary-subtle',
-      'Oferteo': 'bg-warning-subtle text-warning border border-warning-subtle',
-      'Estrategia': 'bg-success-subtle text-success border border-success-subtle',
-      'Sin División': 'bg-secondary-subtle text-secondary border border-secondary-subtle',
+      'Marca':       'bg-primary-subtle text-primary border border-primary-subtle',
+      'Oferteo':     'bg-warning-subtle text-warning border border-warning-subtle',
+      'Estrategia':  'bg-success-subtle text-success border border-success-subtle',
+      'Sin División':'bg-secondary-subtle text-secondary border border-secondary-subtle',
     };
     const TIPO_COLORS = {
-      'Ordinario': 'bg-light text-dark border',
-      'Proy. Inversión': 'bg-info-subtle text-info border border-info-subtle',
+      'Ordinario':      'bg-light text-dark border',
+      'Proy. Inversión':'bg-info-subtle text-dark border border-info-subtle',
     };
 
-    function renderVerTree(verKey) {
-      const ver = VERSIONES[verKey];
-      if (!ver) return;
+    /* ── renderVerTree: genera árbol jerárquico N4→N8 igual a CA01 ── */
+    function renderVerTree(vk) {
+      const d = VER_DATA[vk];
+      if (!d) return;
+      const p = vk + '-';   // prefijo de IDs para no colisionar con CA01
 
-      /* Banner */
-      document.getElementById('ver-meta').innerHTML = ver.meta;
-      document.getElementById('ver-total').textContent = ver.total;
-
-      /* Botones activos */
+      document.getElementById('ver-meta').innerHTML = d.meta;
+      document.getElementById('ver-total').textContent = d.total;
       document.querySelectorAll('.ver-btn').forEach(b => {
-        const isActive = b.dataset.ver === verKey;
-        b.style.background = isActive ? '#111827' : '#f3f4f6';
-        b.style.color = isActive ? '#fff' : '#374151';
-        b.style.border = isActive ? 'none' : '1px solid #d1d5db';
-        b.style.fontWeight = isActive ? '700' : '600';
+        const on = b.dataset.ver === vk;
+        b.style.background  = on ? '#111827' : '#f3f4f6';
+        b.style.color       = on ? '#fff'    : '#374151';
+        b.style.border      = on ? 'none'    : '1px solid #d1d5db';
+        b.style.fontWeight  = on ? '700'     : '600';
       });
 
-      /* Árbol */
-      let rows = '';
-      ver.regiones.forEach(region => {
-        /* Fila raíz de región */
-        rows += `
-      <tr id="${region.id}" class="tree-node table-secondary fw-bold" style="cursor:pointer;"
-          onclick="toggleNode('${region.id}')">
-        <td colspan="5">
-          <i id="ico-${region.id}" class="bi bi-chevron-right me-1 text-muted" style="transition:transform .2s;"></i>
-          <i class="bi ${region.icon} me-2"></i>${region.label}
-          <span class="ms-3 text-success fw-bolder">${region.total}</span>
-        </td>
-      </tr>`;
+      /* ── helpers ── */
+      const dc = c => `<span class="badge ${DIV_COLORS[c]||''}">${c}</span>`;
+      const tc = c => `<span class="badge ${TIPO_COLORS[c]||''}">${c}</span>`;
 
-        /* Filas de CeCo */
-        const hasPais = region.cecos.some(c => c.pais);
-        region.cecos.forEach(c => {
-          const paisCol = hasPais
-            ? `<td><span class="badge bg-light text-dark border">${c.pais || ''}</span></td>`
-            : '';
-          rows += `
-        <tr class="tree-leaf" data-p="${region.id}" style="display:none;">
-          <td class="ps-4"><i class="bi bi-building me-1 text-muted"></i>${c.ceco}</td>
-          ${hasPais ? `<td><span class="badge bg-light text-dark border">${c.pais}</span></td>` : ''}
-          <td><span class="badge ${DIV_COLORS[c.div] || ''}">${c.div}</span></td>
-          <td><span class="badge ${TIPO_COLORS[c.tipo] || ''}">${c.tipo}</span></td>
-          <td>${c.cuenta}</td>
+      const node = (id, indent, cls, icon, label, total, pid) => {
+        const dp = pid ? ` data-p="${p}${pid}"` : '';
+        const disp = pid ? ' style="display:none; cursor:pointer;"' : ' style="cursor:pointer;"';
+        return `<tr id="${p}${id}" class="tree-node ${cls}"${dp}${disp} onclick="toggleNode('${p}${id}')">
+          <td colspan="5" style="padding-left:${indent};">
+            <i id="ico-${p}${id}" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s;"></i>
+            <i class="bi ${icon} me-2"></i>${label}
+            <span class="ms-3 fw-bold text-dark">${total}</span>
+          </td></tr>`;
+      };
+
+      const leaf = (pid, indent, c) =>
+        `<tr class="tree-leaf" data-p="${p}${pid}" style="display:none;">
+          <td style="padding-left:${indent};"><i class="bi bi-building me-1 text-dark"></i>${c.ceco}</td>
+          <td>${dc(c.div)}</td><td>${tc(c.tipo)}</td><td>${c.cuenta}</td>
           <td class="text-end fw-bold text-success">${c.imp}</td>
         </tr>`;
-        });
+
+      const mx = d.mx, lam = d.lam;
+
+      let rows = '';
+
+      /* ════ MÉXICO ════ */
+      rows += node('tn-mx',   '1rem',  'table-secondary fw-bold',  'bi-geo-alt-fill text-danger',  'México',                 mx.t,                  null);
+      rows += node('tn-masivo','2rem', 'bg-light fw-bold',         'bi-diagram-2 text-primary',    'Sector Mercado Masivo',  mx.masivo.t,           'tn-mx');
+      rows += node('tn-unidades','3rem','',                        'bi-folder2 text-dark',         'Unidades de Negocio',    mx.masivo.unidades.t,  'tn-masivo');
+      rows += node('tn-prestamos','3.5rem','',                     'bi-folder2-open text-warning', 'Préstamos y Cobranza',   mx.masivo.unidades.prestamos.t, 'tn-unidades');
+      rows += node('tn-singarantia','4.5rem','',                   'bi-chevron-right text-dark',   'Préstamos Sin Garantía', mx.masivo.unidades.prestamos.sinGar.t, 'tn-prestamos');
+      rows += node('tn-consumo','5.5rem','',                       'bi-dash text-dark',            'Consumo Más Comercio',   mx.masivo.unidades.prestamos.sinGar.consumo.t, 'tn-singarantia');
+      mx.masivo.unidades.prestamos.sinGar.consumo.cecos.forEach(c => rows += leaf('tn-consumo','6.5rem',c));
+
+      rows += node('tn-congarantia','4.5rem','',                   'bi-chevron-right text-dark',   'Con Garantía',           mx.masivo.unidades.prestamos.conGar.t, 'tn-prestamos');
+      rows += node('tn-credito','5.5rem','',                       'bi-dash text-dark',            'Crédito Consumo',        mx.masivo.unidades.prestamos.conGar.credito.t, 'tn-congarantia');
+      mx.masivo.unidades.prestamos.conGar.credito.cecos.forEach(c => rows += leaf('tn-credito','6.5rem',c));
+
+      rows += node('tn-seguros','3.5rem','',                       'bi-folder2-open text-warning', 'Seguros',                mx.masivo.unidades.seguros.t, 'tn-unidades');
+      mx.masivo.unidades.seguros.cecos.forEach(c => rows += leaf('tn-seguros','4.5rem',c));
+
+      rows += node('tn-corp','2rem',   'bg-light fw-bold',         'bi-buildings text-primary',    'Corporativo',            mx.corp.t, 'tn-mx');
+      mx.corp.cecos.forEach(c => rows += leaf('tn-corp','3rem',c));
+
+      /* ════ LAM ════ */
+      rows += node('tn-lam','1rem',    'table-secondary fw-bold',  'bi-globe-americas text-primary','LAM',                   lam.t, null);
+      lam.paises.forEach(pais => {
+        const pid = 'tn-' + pais.id;
+        rows += node(pid, '2rem',      'bg-light fw-bold',         'bi-geo-alt text-dark',         pais.label,              pais.t, 'tn-lam');
+        pais.cecos.forEach(c => rows += leaf(pid, '3rem', c));
       });
 
-      /* Cabecera dinámica: con/sin columna País */
-      const hasPaisV4 = ver.regiones.some(r => r.cecos.some(c => c.pais));
-      const paisTh = hasPaisV4 ? '<th>País</th>' : '';
+      /* Contar hojas */
+      const totalCecos = mx.masivo.unidades.prestamos.sinGar.consumo.cecos.length
+        + mx.masivo.unidades.prestamos.conGar.credito.cecos.length
+        + mx.masivo.unidades.seguros.cecos.length
+        + mx.corp.cecos.length
+        + lam.paises.reduce((s, p) => s + p.cecos.length, 0);
 
       document.getElementById('ver-tree-wrap').innerHTML = `
     <div class="d-flex justify-content-between align-items-center mb-2">
-      <small class="text-muted">${ver.regiones.reduce((s, r) => s + r.cecos.length, 0)} registros</small>
+      <small class="text-muted">${totalCecos} registros</small>
       <div class="d-flex gap-2">
-        <button class="btn btn-sm btn-outline-secondary py-0 px-2" style="font-size:.75rem;"
+        <button class="btn btn-sm btn-warning py-0 px-2" style="font-size:.75rem;"
                 onclick="document.querySelectorAll('#ver-tree-body .tree-node').forEach(r=>{_nodeOpen[r.id]=true;r.style.display='';const i=document.getElementById('ico-'+r.id);if(i)i.style.transform='rotate(90deg)';});document.querySelectorAll('#ver-tree-body .tree-leaf').forEach(r=>r.style.display='');">
           <i class="bi bi-arrows-expand me-1"></i>Expandir todo
         </button>
-        <button class="btn btn-sm btn-outline-secondary py-0 px-2" style="font-size:.75rem;"
+        <button class="btn btn-sm btn-primary py-0 px-2" style="font-size:.75rem;"
                 onclick="document.querySelectorAll('#ver-tree-body .tree-node').forEach(r=>{_nodeOpen[r.id]=false;r.style.display='';const i=document.getElementById('ico-'+r.id);if(i)i.style.transform='rotate(0deg)';});document.querySelectorAll('#ver-tree-body .tree-leaf').forEach(r=>r.style.display='none');">
           <i class="bi bi-arrows-collapse me-1"></i>Contraer todo
         </button>
       </div>
     </div>
     <div class="table-responsive border rounded shadow-sm">
-      <table class="table table-sm table-hover align-middle mb-0" style="font-size:.82rem;">
-        <thead class="table-light text-muted text-uppercase border-bottom" style="font-size:.72rem;">
+      <table class="table table-sm table-hover align-middle mb-0" style="font-size:0.82rem;">
+        <thead class="table-light text-dark text-uppercase border-bottom" style="font-size:0.72rem;">
           <tr>
-            <th style="min-width:280px;">Jerarquía / Centro de Costos</th>
-            ${paisTh}
-            <th>División</th>
-            <th>Tipo de Gasto</th>
-            <th>Cuenta</th>
+            <th style="min-width:320px;">Clasificaciones / Centro de Costos</th>
+            <th>División</th><th>Tipo de Gasto</th><th>Cuenta</th>
             <th class="text-end">Importe Total</th>
           </tr>
         </thead>
