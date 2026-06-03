@@ -1137,21 +1137,17 @@
               </div>
             </div>
           </div>
-          <!-- Indicador 2: Importe en Autorización -->
+          <!-- Indicador 2: Pendiente de Autorización -->
           <div class="col-md px-3 border-end">
             <div class="d-flex align-items-center gap-2">
-              <i class="bi bi-hourglass-split text-warning-emphasis fw-bold text-uppercase "
-                style="font-size: 2rem;"></i>
+              <i class="bi bi-hourglass-split text-warning-emphasis" style="font-size: 2rem;"></i>
               <div>
-                <div class="text-dark fw-semibold"
-                  style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: .04em;">Importe en Autorización
-                </div>
-                <div class="fw-bold text-dark" style="font-size: 1rem;">24,500,000 </div>
-                <div class="d-flex gap-2 mt-1">
-                  <span style="font-size: 0.65rem;" class="text-dark">Presupuesto Ordinario: <strong
-                      class="text-warning-emphasis fw-bold text-uppercase">18,500,000</strong></span>
-                  <span style="font-size: 0.65rem;" class="text-dark">Proyectos de Inversion: <strong
-                      class="text-warning-emphasis fw-bold text-uppercase">6,000,000</strong></span>
+                <div class="text-dark fw-semibold" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: .04em;">Pendiente de Autorización</div>
+                <div class="fw-bold text-dark" style="font-size: 1rem;">24,500,000</div>
+                <div class="text-warning-emphasis fw-bold" style="font-size: 0.8rem;">70 Solicitudes</div>
+                <div class="d-flex gap-2 mt-1 flex-wrap">
+                  <span style="font-size: 0.65rem;" class="text-dark">Ord: <strong class="text-warning-emphasis">18,500,000</strong> <span class="text-muted">(45 sol.)</span></span>
+                  <span style="font-size: 0.65rem;" class="text-dark">Proy. Inv: <strong class="text-warning-emphasis">6,000,000</strong> <span class="text-muted">(25 sol.)</span></span>
                 </div>
               </div>
             </div>
@@ -1200,12 +1196,6 @@
               <i class="bi bi-check2-circle me-1"></i>Consulta de Carga Aprobada</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link fw-bold text-warning text-dark" id="pendientes-tab" data-bs-toggle="tab"
-              data-bs-target="#tab-pendientes" type="button" role="tab" aria-selected="false" tabindex="-1">
-              <i class="bi bi-hourglass-split me-1"></i>Pendiente de Autorización
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
             <button class="nav-link fw-bold text-dark" id="sipres-tab" data-bs-toggle="tab" data-bs-target="#tab-sipres"
               type="button" role="tab" aria-selected="false" tabindex="-1">
               <i class="bi bi-cloud-check me-1"></i>Versiones Sincronizadas
@@ -1215,7 +1205,7 @@
             <button class="nav-link fw-bold text-dark" id="bitacora-tab" data-bs-toggle="tab"
               data-bs-target="#tab-bitacora" type="button" role="tab" aria-controls="tab-bitacora" aria-selected="false"
               tabindex="-1">
-              <i class="bi bi-clock-history me-1"></i>Bitácora de Cambios
+              <i class="bi bi-clock-history me-1"></i>Bitácora de Liberaciones
             </button>
           </li>
         </ul>
@@ -1232,859 +1222,503 @@
 
 
 
-            <!-- Filtros multi-selección con Select2 -->
-            <div class="bg-light border rounded p-3 mb-3 shadow-sm">
-              <div class="row g-2 align-items-end">
-                <!-- Buscador CeCo -->
-                <div class="col-md-2">
-                  <label class="form-label mb-1 small text-muted fw-semibold">Centro de Costos</label>
-                  <div class="input-group input-group-sm">
-                    <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
-                    <input type="text" id="f-search-ceco" class="form-control border-start-0"
-                      placeholder="Clave o nombre..." oninput="applyTreeFilters()">
-                  </div>
-                </div>
-                <!-- Buscador Campaña -->
-                <div class="col-md-2">
-                  <label class="form-label mb-1 small text-muted fw-semibold">Campaña</label>
-                  <div class="input-group input-group-sm">
-                    <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
-                    <input type="text" id="f-search-camp" class="form-control border-start-0"
-                      placeholder="Nombre campaña..." oninput="applyTreeFilters()">
-                  </div>
-                </div>
-                <!-- División -->
-                <div class="col-md">
-                  <label class="form-label mb-1 small text-muted fw-semibold">División</label>
-                  <select id="f-division" class="form-select form-select-sm w-100" multiple
-                    data-placeholder="Todas las divisiones">
-                    <option value="Marca">Marca</option>
-                    <option value="Oferteo">Oferteo</option>
-                    <option value="Estrategia">Estrategia</option>
-                    <option value="Sin División">Sin División</option>
-                  </select>
-                </div>
-                <!-- País -->
-                <div class="col-md">
-                  <label class="form-label mb-1 small text-muted fw-semibold">País</label>
-                  <select id="f-pais" class="form-select form-select-sm w-100" multiple
-                    data-placeholder="Todos los países">
-                    <option value="México">México</option>
-                    <option value="Guatemala">Guatemala</option>
-                    <option value="Honduras">Honduras</option>
-                    <option value="Panamá">Panamá</option>
-                  </select>
-                </div>
-                <!-- Clasificación CeCo -->
-                <div class="col-md">
-                  <label class="form-label mb-1 small text-muted fw-semibold">Clasificación CeCo</label>
-                  <select id="f-clsf" class="form-select form-select-sm w-100" multiple
-                    data-placeholder="Todas las clasificaciones">
-                    <option value="N4">N4 – Clsf 4</option>
-                    <option value="N5">N5 – Clsf 5</option>
-                    <option value="N6">N6 – Clsf 6</option>
-                    <option value="N7">N7 – Clsf 7</option>
-                    <option value="N8">N8 – Clsf 8</option>
-                    <option value="N9">N9 – Clsf 9</option>
-                  </select>
-                </div>
-                <!-- Tipo de Gasto -->
-                <div class="col-md">
-                  <label class="form-label mb-1 small text-muted fw-semibold">Tipo de Gasto</label>
-                  <select id="f-tipo" class="form-select form-select-sm w-100" multiple
-                    data-placeholder="Todos los tipos">
-                    <option value="Ordinario">Ordinario</option>
-                    <option value="Proy. Inversión">Proy. Inversión</option>
-                  </select>
-                </div>
-                <!-- Descarga -->
-                <div class="col-md-auto">
-                  <button class="btn btn-sm btn-outline-dark px-3">
-                    <i class="bi bi-file-earmark-excel me-1"></i>Descargar
-                  </button>
-                </div>
+            <!-- Encabezado: toggle filtros + Exponer a SIPRES -->
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-sm btn-outline-secondary py-1 px-2" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#ca01-filtros" aria-expanded="true"
+                  style="font-size:0.78rem;">
+                  <i class="bi bi-funnel me-1"></i>Filtros
+                  <i class="bi bi-chevron-up ms-1" id="ico-filtros-toggle" style="font-size:0.7rem;"></i>
+                </button>
+                <small class="text-muted" id="tree-count">24 registros</small>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-warning py-0 px-2" style="font-size:0.75rem;" onclick="expandAllNodes()">
+                  <i class="bi bi-arrows-expand me-1"></i>Expandir todo
+                </button>
+                <button class="btn btn-sm btn-primary py-0 px-2" style="font-size:0.75rem;" onclick="collapseAllNodes()">
+                  <i class="bi bi-arrows-collapse me-1"></i>Contraer todo
+                </button>
+                <button class="btn btn-sm btn-outline-dark px-2" style="font-size:0.75rem;">
+                  <i class="bi bi-file-earmark-excel me-1"></i>Descargar
+                </button>
+                <button class="btn btn-sm btn-success fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#modalLiberar" style="font-size:0.75rem;">
+                  <i class="bi bi-send-check me-1"></i> Exponer a SIPRES
+                </button>
               </div>
             </div>
-            <!-- Árbol de carga aprobada: expansión/colapso por fila -->
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <small class="text-dark" id="tree-count">24 registros</small>
-              <div class="d-flex gap-2">
-                <button class="btn btn-sm btn-warning py-0 px-2" style="font-size:0.75rem;"
-                  onclick="expandAllNodes()"><i class="bi bi-arrows-expand me-1"></i>Expandir todo</button>
-                <button class="btn btn-sm btn-primary py-0 px-2" style="font-size:0.75rem;"
-                  onclick="collapseAllNodes()"><i class="bi bi-arrows-collapse me-1"></i>Contraer todo</button>
 
+            <!-- Filtros multi-selección (colapsable) -->
+            <div class="collapse show" id="ca01-filtros">
+              <div class="bg-light border rounded p-3 mb-3 shadow-sm">
+                <div class="row g-2 align-items-end">
+                  <div class="col-md-3">
+                    <label class="form-label mb-1 small text-muted fw-semibold">Centro de Costos</label>
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
+                      <input type="text" id="f-search-ceco" class="form-control border-start-0" placeholder="Clave o nombre..." oninput="applyTreeFilters()">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label mb-1 small text-muted fw-semibold">Campaña</label>
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
+                      <input type="text" id="f-search-camp" class="form-control border-start-0" placeholder="Nombre campaña..." oninput="applyTreeFilters()">
+                    </div>
+                  </div>
+                  <div class="col-md">
+                    <label class="form-label mb-1 small text-muted fw-semibold">División</label>
+                    <select id="f-division" class="form-select form-select-sm w-100" multiple data-placeholder="Todas las divisiones">
+                      <option value="Marca">Marca</option>
+                      <option value="Oferteo">Oferteo</option>
+                      <option value="Estrategia">Estrategia</option>
+                      <option value="Sin División">Sin División</option>
+                    </select>
+                  </div>
+                  <div class="col-md">
+                    <label class="form-label mb-1 small text-muted fw-semibold">País</label>
+                    <select id="f-pais" class="form-select form-select-sm w-100" multiple data-placeholder="Todos los países">
+                      <option value="México">México</option>
+                      <option value="Guatemala">Guatemala</option>
+                      <option value="Honduras">Honduras</option>
+                      <option value="Panamá">Panamá</option>
+                    </select>
+                  </div>
+                  <div class="col-md">
+                    <label class="form-label mb-1 small text-muted fw-semibold">Clasificación CeCo</label>
+                    <select id="f-clsf" class="form-select form-select-sm w-100" multiple data-placeholder="Todas las clasificaciones">
+                      <option value="N4">N4 – Clsf 4</option>
+                      <option value="N5">N5 – Clsf 5</option>
+                      <option value="N6">N6 – Clsf 6</option>
+                      <option value="N7">N7 – Clsf 7</option>
+                      <option value="N8">N8 – Clsf 8</option>
+                      <option value="N9">N9 – Clsf 9</option>
+                    </select>
+                  </div>
+                  <div class="col-md">
+                    <label class="form-label mb-1 small text-muted fw-semibold">Tipo de Gasto</label>
+                    <select id="f-tipo" class="form-select form-select-sm w-100" multiple data-placeholder="Todos los tipos">
+                      <option value="Ordinario">Ordinario</option>
+                      <option value="Proy. Inversión">Proy. Inversión</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
             <div class=" border border-success-subtle table-responsive border rounded shadow-sm" id="tree-wrap">
               <table class="table table-sm table-hover align-middle mb-0" style="font-size:0.82rem;">
                 <thead class="table-light text-dark text-uppercase border-bottom" style="font-size:0.72rem;">
                   <tr>
-                    <th style="min-width:320px;">Clasificaciones / Centro de Costos</th>
-                    <th>División</th>
-                    <th>Tipo de Gasto</th>
-                    <th>Cuenta</th>
-                    <th class="text-end">Importe Total</th>
+                    <th style="min-width:300px;">Clasificaciones / Centro de Costos</th>
+                    <th style="min-width:220px;">Campaña</th>
+                    <th style="min-width:160px;">Cuenta</th>
+                    <th class="text-end" style="min-width:120px;">Importe Total</th>
                   </tr>
                 </thead>
                 <tbody id="tree-body">
                   <!-- ===== MÉXICO ===== -->
                   <tr id="tn-mx" class="tree-node table-secondary fw-bold" style="cursor:pointer;"
                     onclick="toggleNode('tn-mx')">
-                    <td colspan="5">
+                    <td colspan="3">
                       <i id="ico-tn-mx" class="bi bi-chevron-right me-1 text-dark"
                         style="transition: transform 0.2s; transform: rotate(90deg);"></i>
                       <i class="bi bi-geo-alt-fill text-danger me-2"></i>México
-                      <span class="ms-3 text-success fw-bolder">138,928,000</span>
                     </td>
+                    <td class="text-end fw-bolder text-success">138,928,000</td>
                   </tr>
                   <!-- N4: Sector Mercado Masivo -->
                   <tr id="tn-masivo" class="tree-node bg-light fw-bold" data-p="tn-mx" style="cursor: pointer;"
                     onclick="toggleNode('tn-masivo')">
-                    <td colspan="5" class="ps-4">
+                    <td colspan="3" class="ps-4">
                       <i id="ico-tn-masivo" class="bi bi-chevron-right me-1 text-dark"
                         style="transition: transform 0.2s; transform: rotate(90deg);"></i>
                       <i class="bi bi-diagram-2 text-primary me-2"></i>Sector Mercado Masivo
-                      <span class="ms-3 text-primary fw-bold">98,428,000</span>
-
                     </td>
+                    <td class="text-end fw-bold text-dark">98,428,000</td>
                   </tr>
                   <!-- N5: Unidades de Negocio -->
                   <tr id="tn-unidades" class="tree-node" data-p="tn-masivo" style="cursor: pointer;"
                     onclick="toggleNode('tn-unidades')">
-                    <td colspan="5" class="ps-5">
+                    <td colspan="3" class="ps-5">
                       <i id="ico-tn-unidades" class="bi bi-chevron-right me-1 text-dark"
                         style="transition: transform 0.2s; transform: rotate(90deg);"></i>
                       <i class="bi bi-folder2 text-dark me-2"></i>Unidades de Negocio
-                      <span class="ms-3 text-dark fw-bold">98,428,000</span>
-
                     </td>
+                    <td class="text-end fw-bold text-dark">98,428,000</td>
                   </tr>
                   <!-- N6: Préstamos y Cobranza -->
                   <tr id="tn-prestamos" class="tree-node" data-p="tn-unidades" style="cursor: pointer;"
                     onclick="toggleNode('tn-prestamos')">
-                    <td colspan="5" style="padding-left:3.5rem;">
+                    <td colspan="3" style="padding-left:3.5rem;">
                       <i id="ico-tn-prestamos" class="bi bi-chevron-right me-1 text-dark"
                         style="transition: transform 0.2s; transform: rotate(90deg);"></i>
                       <i class="bi bi-folder2-open text-warning me-2"></i>Préstamos y Cobranza
-                      <span class="ms-3 fw-bold text-dark">62,748,000</span>
-
                     </td>
+                    <td class="text-end fw-bold text-dark">62,748,000</td>
                   </tr>
                   <!-- N7: Préstamos Sin Garantía -->
                   <tr id="tn-singarantia" class="tree-node" data-p="tn-prestamos"
                     style="cursor: pointer; display: none;" onclick="toggleNode('tn-singarantia')">
-                    <td colspan="5" style="padding-left:4.5rem;">
+                    <td colspan="3" style="padding-left:4.5rem;">
                       <i id="ico-tn-singarantia" class="bi bi-chevron-right me-1 text-dark"
                         style="transition:transform .2s;"></i>
                       <i class="bi bi-chevron-right text-dark me-1"></i>Préstamos Sin Garantía
-                      <span class="ms-3 text-dark">42,248,000</span>
                       <span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">N7</span>
                     </td>
+                    <td class="text-end fw-bold text-dark">42,248,000</td>
                   </tr>
                   <!-- N8: Consumo Más Comercio -->
                   <tr id="tn-consumo" class="tree-node" data-p="tn-singarantia" style="display:none;cursor:pointer;"
                     onclick="toggleNode('tn-consumo')">
-                    <td colspan="5" style="padding-left:5.5rem;">
+                    <td colspan="3" style="padding-left:5.5rem;">
                       <i id="ico-tn-consumo" class="bi bi-chevron-right me-1 text-dark"
                         style="transition:transform .2s;"></i>
                       <i class="bi bi-dash text-dark me-2"></i>Consumo Más Comercio
-                      <span class="ms-3 text-dark">42,248,000</span>
                       <span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">N8</span>
                     </td>
+                    <td class="text-end fw-bold text-dark">42,248,000</td>
                   </tr>
                   <!-- Hojas: Consumo MX -->
                   <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Marca"
-                    data-tipo="Ordinario" data-clsf="N8" data-ceco="100901 dir gral conectividad" style="display:none;">
-                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>100901 – Dir Gral
-                      Conectividad</td>
-                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span>
+                    data-tipo="Ordinario" data-clsf="N8" data-ceco="100901 dir gral conectividad" data-camp="campaña conectividad tv" style="display:none;">
+                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>100901 – Dir Gral Conectividad</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-001</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Conectividad TV Q2</div>
+                      <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size:0.65rem;">Marca</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609011 – Televisión</td>
+                    <td style="font-size:0.8rem;">609011 – Televisión</td>
                     <td class="text-end fw-bold text-success">12,500,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Oferteo"
-                    data-tipo="Ordinario" data-clsf="N8" data-ceco="100901 dir gral conectividad" style="display:none;">
-                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>100901 – Dir Gral
-                      Conectividad</td>
-                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span>
+                    data-tipo="Ordinario" data-clsf="N8" data-ceco="100901 dir gral conectividad" data-camp="campaña sorteos conectividad" style="display:none;">
+                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>100901 – Dir Gral Conectividad</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-002</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Sorteos y Promociones Q2</div>
+                      <span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:0.65rem;">Oferteo</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609023 – Promociones Sorteos</td>
+                    <td style="font-size:0.8rem;">609023 – Promociones Sorteos</td>
                     <td class="text-end fw-bold text-success">8,274,280</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Marca"
-                    data-tipo="Ordinario" data-clsf="N8" data-ceco="291374 dirección mercadotecnia digital"
+                    data-tipo="Ordinario" data-clsf="N8" data-ceco="291374 dirección mercadotecnia digital" data-camp="campaña digital tv marca"
                     style="display:none;">
-                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>291374 – Dirección
-                      Mercadotecnia Digital</td>
-                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span>
+                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>291374 – Dirección Mercadotecnia Digital</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-003</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Imagen de Marca TV Q2</div>
+                      <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size:0.65rem;">Marca</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609011 – Televisión</td>
+                    <td style="font-size:0.8rem;">609011 – Televisión</td>
                     <td class="text-end fw-bold text-success">7,500,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Estrategia"
-                    data-tipo="Proy. Inversión" data-clsf="N8" data-ceco="291374 dirección mercadotecnia digital"
+                    data-tipo="Proy. Inversión" data-clsf="N8" data-ceco="291374 dirección mercadotecnia digital" data-camp="proyecto digital redes sociales"
                     style="display:none;">
-                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>291374 – Dirección
-                      Mercadotecnia Digital</td>
-                    <td><span
-                        class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
-                    <td><span class="badge bg-info-subtle text-dark border border-info-subtle">Proy. Inversión</span>
+                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>291374 – Dirección Mercadotecnia Digital</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-004</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Estrategia Digital Redes Q2</div>
+                      <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.65rem;">Estrategia</span>
+                      <span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span>
                     </td>
-                    <td>609045 – Digital y Redes Sociales</td>
+                    <td style="font-size:0.8rem;">609045 – Digital y Redes Sociales</td>
                     <td class="text-end fw-bold text-success">6,800,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Oferteo"
-                    data-tipo="Ordinario" data-clsf="N8" data-ceco="102847 mercadotecnia préstamos"
+                    data-tipo="Ordinario" data-clsf="N8" data-ceco="102847 mercadotecnia préstamos" data-camp="campaña radio préstamos"
                     style="display:none;">
-                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>102847 –
-                      Mercadotecnia Préstamos</td>
-                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span>
+                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>102847 – Mercadotecnia Préstamos</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-005</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Radio Préstamos Verano</div>
+                      <span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:0.65rem;">Oferteo</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609012 – Radio</td>
+                    <td style="font-size:0.8rem;">609012 – Radio</td>
                     <td class="text-end fw-bold text-success">3,173,720</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Sin División"
-                    data-tipo="Ordinario" data-clsf="N8" data-ceco="102847 mercadotecnia préstamos"
+                    data-tipo="Ordinario" data-clsf="N8" data-ceco="102847 mercadotecnia préstamos" data-camp="material pop préstamos"
                     style="display:none;">
-                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>102847 –
-                      Mercadotecnia Préstamos</td>
-                    <td><span class="badge bg-secondary-subtle text-dark border border-secondary-subtle">Sin
-                        División</span></td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609031 – Material POP</td>
+                    <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>102847 – Mercadotecnia Préstamos</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-006</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">POP Puntos de Venta Q2</div>
+                      <span class="badge bg-secondary-subtle text-dark border border-secondary-subtle" style="font-size:0.65rem;">Sin División</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
+                    </td>
+                    <td style="font-size:0.8rem;">609031 – Material POP</td>
                     <td class="text-end fw-bold text-success">4,000,000</td>
                   </tr>
                   <!-- N7: Crédito Con Garantía -->
                   <tr id="tn-congarantia" class="tree-node" data-p="tn-prestamos"
                     style="cursor: pointer; display: none;" onclick="toggleNode('tn-congarantia')">
-                    <td colspan="5" style="padding-left:4.5rem;">
+                    <td colspan="3" style="padding-left:4.5rem;">
                       <i id="ico-tn-congarantia" class="bi bi-chevron-right me-1 text-dark"
                         style="transition:transform .2s;"></i>
                       <i class="bi bi-chevron-right text-dark me-1"></i>Crédito Con Garantía
-                      <span class="ms-3 text-dark">20,500,000</span>
                       <span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">N7</span>
                     </td>
+                    <td class="text-end fw-bold text-dark">20,500,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-congarantia" data-pais="México" data-division="Marca"
-                    data-tipo="Ordinario" data-clsf="N7" data-ceco="310482 dir crédito hipotecario"
+                    data-tipo="Ordinario" data-clsf="N7" data-ceco="310482 dir crédito hipotecario" data-camp="campaña hipotecario tv"
                     style="display:none;">
-                    <td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>310482 – Dir Crédito
-                      Hipotecario</td>
-                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span>
+                    <td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>310482 – Dir Crédito Hipotecario</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-007</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Crédito Hipotecario TV Q2</div>
+                      <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size:0.65rem;">Marca</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609011 – Televisión</td>
+                    <td style="font-size:0.8rem;">609011 – Televisión</td>
                     <td class="text-end fw-bold text-success">9,200,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-congarantia" data-pais="México" data-division="Oferteo"
-                    data-tipo="Proy. Inversión" data-clsf="N7" data-ceco="310482 dir crédito hipotecario"
+                    data-tipo="Proy. Inversión" data-clsf="N7" data-ceco="310482 dir crédito hipotecario" data-camp="proyecto digital hipotecario"
                     style="display:none;">
-                    <td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>310482 – Dir Crédito
-                      Hipotecario</td>
-                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span>
+                    <td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>310482 – Dir Crédito Hipotecario</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-008</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Medios Digitales Hipotecario</div>
+                      <span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:0.65rem;">Oferteo</span>
+                      <span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span>
                     </td>
-                    <td><span class="badge bg-info-subtle text-dark border border-info-subtle">Proy. Inversión</span>
-                    </td>
-                    <td>609041 – Medios Digitales</td>
+                    <td style="font-size:0.8rem;">609041 – Medios Digitales</td>
                     <td class="text-end fw-bold text-success">7,800,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-congarantia" data-pais="México" data-division="Estrategia"
-                    data-tipo="Ordinario" data-clsf="N7" data-ceco="310482 dir crédito hipotecario"
+                    data-tipo="Ordinario" data-clsf="N7" data-ceco="310482 dir crédito hipotecario" data-camp="espectaculares hipotecario"
                     style="display:none;">
-                    <td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>310482 – Dir Crédito
-                      Hipotecario</td>
-                    <td><span
-                        class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609013 – Espectaculares</td>
+                    <td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>310482 – Dir Crédito Hipotecario</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-009</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Espectaculares Crédito Q2</div>
+                      <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.65rem;">Estrategia</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
+                    </td>
+                    <td style="font-size:0.8rem;">609013 – Espectaculares</td>
                     <td class="text-end fw-bold text-success">3,500,000</td>
                   </tr>
                   <!-- N6: Seguros y Finanzas -->
                   <tr id="tn-seguros" class="tree-node" data-p="tn-unidades" style="cursor: pointer;"
                     onclick="toggleNode('tn-seguros')">
-                    <td colspan="5" style="padding-left:3.5rem;">
+                    <td colspan="3" style="padding-left:3.5rem;">
                       <i id="ico-tn-seguros" class="bi bi-chevron-right me-1 text-dark"
                         style="transition: transform 0.2s; transform: rotate(90deg);"></i>
                       <i class="bi bi-folder2-open text-warning me-2"></i>Seguros y Finanzas
-                      <span class="ms-3 fw-bold text-dark">35,680,000</span>
-
                     </td>
+                    <td class="text-end fw-bold text-dark">35,680,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-seguros" data-pais="México" data-division="Marca"
-                    data-tipo="Ordinario" data-clsf="N6" data-ceco="407823 dir seguros masivos" style="">
-                    <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>407823 – Dir Seguros
-                      Masivos</td>
-                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span>
+                    data-tipo="Ordinario" data-clsf="N6" data-ceco="407823 dir seguros masivos" data-camp="campaña seguros masivos tv" style="">
+                    <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>407823 – Dir Seguros Masivos</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-010</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Seguros Masivos TV Q2</div>
+                      <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size:0.65rem;">Marca</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609011 – Televisión</td>
+                    <td style="font-size:0.8rem;">609011 – Televisión</td>
                     <td class="text-end fw-bold text-success">14,500,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-seguros" data-pais="México" data-division="Oferteo"
-                    data-tipo="Ordinario" data-clsf="N6" data-ceco="407823 dir seguros masivos" style="">
-                    <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>407823 – Dir Seguros
-                      Masivos</td>
-                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span>
+                    data-tipo="Ordinario" data-clsf="N6" data-ceco="407823 dir seguros masivos" data-camp="sorteos seguros masivos" style="">
+                    <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>407823 – Dir Seguros Masivos</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-011</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Sorteos Seguros Verano</div>
+                      <span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:0.65rem;">Oferteo</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609023 – Promociones Sorteos</td>
+                    <td style="font-size:0.8rem;">609023 – Promociones Sorteos</td>
                     <td class="text-end fw-bold text-success">9,180,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-seguros" data-pais="México" data-division="Estrategia"
-                    data-tipo="Proy. Inversión" data-clsf="N6" data-ceco="407823 dir seguros masivos" style="">
-                    <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>407823 – Dir Seguros
-                      Masivos</td>
-                    <td><span
-                        class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
-                    <td><span class="badge bg-info-subtle text-dark border border-info-subtle">Proy. Inversión</span>
+                    data-tipo="Proy. Inversión" data-clsf="N6" data-ceco="407823 dir seguros masivos" data-camp="proyecto digital seguros" style="">
+                    <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>407823 – Dir Seguros Masivos</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-012</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Digital Seguros Q2</div>
+                      <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.65rem;">Estrategia</span>
+                      <span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span>
                     </td>
-                    <td>609041 – Medios Digitales</td>
+                    <td style="font-size:0.8rem;">609041 – Medios Digitales</td>
                     <td class="text-end fw-bold text-success">7,200,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-seguros" data-pais="México" data-division="Sin División"
-                    data-tipo="Ordinario" data-clsf="N6" data-ceco="512901 mercadotecnia seguros vida" style="">
-                    <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>512901 –
-                      Mercadotecnia Seguros Vida</td>
-                    <td><span class="badge bg-secondary-subtle text-dark border border-secondary-subtle">Sin
-                        División</span></td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609031 – Material POP</td>
+                    data-tipo="Ordinario" data-clsf="N6" data-ceco="512901 mercadotecnia seguros vida" data-camp="pop seguros vida" style="">
+                    <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>512901 – Mercadotecnia Seguros Vida</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-013</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">POP Seguros de Vida Q2</div>
+                      <span class="badge bg-secondary-subtle text-dark border border-secondary-subtle" style="font-size:0.65rem;">Sin División</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
+                    </td>
+                    <td style="font-size:0.8rem;">609031 – Material POP</td>
                     <td class="text-end fw-bold text-success">4,800,000</td>
                   </tr>
                   <!-- ===== LAM ===== -->
                   <tr id="tn-lam" class="tree-node table-secondary fw-bold" style="cursor:pointer;"
                     onclick="toggleNode('tn-lam')">
-                    <td colspan="5">
+                    <td colspan="3">
                       <i id="ico-tn-lam" class="bi bi-chevron-right me-1 text-dark"
                         style="transition: transform 0.2s; transform: rotate(0deg);"></i>
                       <i class="bi bi-globe-americas text-primary me-2"></i>LAM
-                      <span class="ms-3 text-success fw-bolder">23,500,000</span>
                     </td>
+                    <td class="text-end fw-bolder text-success">23,500,000</td>
                   </tr>
                   <!-- Guatemala -->
                   <tr id="tn-gt" class="tree-node bg-light fw-bold" data-p="tn-lam"
                     style="cursor: pointer; display: none;" onclick="toggleNode('tn-gt')">
-                    <td colspan="5" class="ps-4">
+                    <td colspan="3" class="ps-4">
                       <i id="ico-tn-gt" class="bi bi-chevron-right me-1 text-dark"
                         style="transition: transform 0.2s; transform: rotate(90deg);"></i>
                       <i class="bi bi-geo-alt text-dark me-2"></i>Guatemala
-                      <span class="ms-3 text-primary fw-bold">10,500,000</span>
                     </td>
+                    <td class="text-end fw-bold text-dark">10,500,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-gt" data-pais="Guatemala" data-division="Marca" data-tipo="Ordinario"
-                    data-clsf="N6" data-ceco="810034 dir mkt guatemala" style="display: none;">
+                    data-clsf="N6" data-ceco="810034 dir mkt guatemala" data-camp="campaña guatemala tv marca" style="display: none;">
                     <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>810034 – Dir Mkt Guatemala</td>
-                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-014</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">TV Guatemala Marca Q2</div>
+                      <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size:0.65rem;">Marca</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609011 – Televisión</td>
+                    <td style="font-size:0.8rem;">609011 – Televisión</td>
                     <td class="text-end fw-bold text-success">4,500,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-gt" data-pais="Guatemala" data-division="Oferteo"
-                    data-tipo="Proy. Inversión" data-clsf="N6" data-ceco="810034 dir mkt guatemala"
+                    data-tipo="Proy. Inversión" data-clsf="N6" data-ceco="810034 dir mkt guatemala" data-camp="proyecto digital guatemala"
                     style="display: none;">
                     <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>810034 – Dir Mkt Guatemala</td>
-                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-015</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Digital Guatemala Q2</div>
+                      <span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:0.65rem;">Oferteo</span>
+                      <span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span>
                     </td>
-                    <td><span class="badge bg-info-subtle text-dark border border-info-subtle">Proy. Inversión</span>
-                    </td>
-                    <td>609041 – Medios Digitales</td>
+                    <td style="font-size:0.8rem;">609041 – Medios Digitales</td>
                     <td class="text-end fw-bold text-success">3,700,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-gt" data-pais="Guatemala" data-division="Estrategia"
-                    data-tipo="Ordinario" data-clsf="N6" data-ceco="810034 dir mkt guatemala" style="display: none;">
+                    data-tipo="Ordinario" data-clsf="N6" data-ceco="810034 dir mkt guatemala" data-camp="campaña radio guatemala" style="display: none;">
                     <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>810034 – Dir Mkt Guatemala</td>
-                    <td><span
-                        class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609012 – Radio</td>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-016</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Radio Guatemala Estrategia</div>
+                      <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.65rem;">Estrategia</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
+                    </td>
+                    <td style="font-size:0.8rem;">609012 – Radio</td>
                     <td class="text-end fw-bold text-success">2,300,000</td>
                   </tr>
                   <!-- Honduras -->
                   <tr id="tn-hn" class="tree-node bg-light fw-bold" data-p="tn-lam"
                     style="cursor: pointer; display: none;" onclick="toggleNode('tn-hn')">
-                    <td colspan="5" class="ps-4">
+                    <td colspan="3" class="ps-4">
                       <i id="ico-tn-hn" class="bi bi-chevron-right me-1 text-dark"
                         style="transition: transform 0.2s; transform: rotate(90deg);"></i>
                       <i class="bi bi-geo-alt text-dark me-2"></i>Honduras
-                      <span class="ms-3 text-primary fw-bold">7,600,000</span>
                     </td>
+                    <td class="text-end fw-bold text-dark">7,600,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-hn" data-pais="Honduras" data-division="Marca" data-tipo="Ordinario"
-                    data-clsf="N6" data-ceco="920182 dir mkt honduras" style="display: none;">
+                    data-clsf="N6" data-ceco="920182 dir mkt honduras" data-camp="campaña honduras tv" style="display: none;">
                     <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>920182 – Dir Mkt Honduras</td>
-                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-017</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">TV Honduras Marca Q2</div>
+                      <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size:0.65rem;">Marca</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609011 – Televisión</td>
+                    <td style="font-size:0.8rem;">609011 – Televisión</td>
                     <td class="text-end fw-bold text-success">3,600,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-hn" data-pais="Honduras" data-division="Oferteo"
-                    data-tipo="Ordinario" data-clsf="N6" data-ceco="920182 dir mkt honduras" style="display: none;">
+                    data-tipo="Ordinario" data-clsf="N6" data-ceco="920182 dir mkt honduras" data-camp="sorteos honduras" style="display: none;">
                     <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>920182 – Dir Mkt Honduras</td>
-                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-018</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Sorteos Honduras Verano</div>
+                      <span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:0.65rem;">Oferteo</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609023 – Promociones Sorteos</td>
+                    <td style="font-size:0.8rem;">609023 – Promociones Sorteos</td>
                     <td class="text-end fw-bold text-success">2,600,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-hn" data-pais="Honduras" data-division="Estrategia"
-                    data-tipo="Proy. Inversión" data-clsf="N6" data-ceco="920182 dir mkt honduras"
+                    data-tipo="Proy. Inversión" data-clsf="N6" data-ceco="920182 dir mkt honduras" data-camp="proyecto digital honduras"
                     style="display: none;">
                     <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>920182 – Dir Mkt Honduras</td>
-                    <td><span
-                        class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
-                    <td><span class="badge bg-info-subtle text-dark border border-info-subtle">Proy. Inversión</span>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-019</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Digital Honduras Q2</div>
+                      <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.65rem;">Estrategia</span>
+                      <span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span>
                     </td>
-                    <td>609041 – Medios Digitales</td>
+                    <td style="font-size:0.8rem;">609041 – Medios Digitales</td>
                     <td class="text-end fw-bold text-success">1,400,000</td>
                   </tr>
                   <!-- Panamá -->
                   <tr id="tn-pa" class="tree-node bg-light fw-bold" data-p="tn-lam"
                     style="cursor: pointer; display: none;" onclick="toggleNode('tn-pa')">
-                    <td colspan="5" class="ps-4">
+                    <td colspan="3" class="ps-4">
                       <i id="ico-tn-pa" class="bi bi-chevron-right me-1 text-dark"
                         style="transition: transform 0.2s; transform: rotate(90deg);"></i>
                       <i class="bi bi-geo-alt text-dark me-2"></i>Panamá
-                      <span class="ms-3 text-primary fw-bold">5,400,000</span>
                     </td>
+                    <td class="text-end fw-bold text-dark">5,400,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-pa" data-pais="Panamá" data-division="Marca" data-tipo="Ordinario"
-                    data-clsf="N6" data-ceco="1010293 dir mkt panamá" style="display: none;">
+                    data-clsf="N6" data-ceco="1010293 dir mkt panamá" data-camp="campaña panamá tv marca" style="display: none;">
                     <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>1010293 – Dir Mkt Panamá</td>
-                    <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Marca</span>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-020</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">TV Panamá Marca Q2</div>
+                      <span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size:0.65rem;">Marca</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609011 – Televisión</td>
+                    <td style="font-size:0.8rem;">609011 – Televisión</td>
                     <td class="text-end fw-bold text-success">3,100,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-pa" data-pais="Panamá" data-division="Oferteo" data-tipo="Ordinario"
-                    data-clsf="N6" data-ceco="1010293 dir mkt panamá" style="display: none;">
+                    data-clsf="N6" data-ceco="1010293 dir mkt panamá" data-camp="radio panamá oferteo" style="display: none;">
                     <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>1010293 – Dir Mkt Panamá</td>
-                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-021</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Radio Panamá Oferteo Q2</div>
+                      <span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:0.65rem;">Oferteo</span>
+                      <span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
                     </td>
-                    <td><span class="badge bg-light text-dark border">Ordinario</span></td>
-                    <td>609012 – Radio</td>
+                    <td style="font-size:0.8rem;">609012 – Radio</td>
                     <td class="text-end fw-bold text-success">1,400,000</td>
                   </tr>
                   <tr class="tree-leaf" data-p="tn-pa" data-pais="Panamá" data-division="Estrategia"
-                    data-tipo="Proy. Inversión" data-clsf="N6" data-ceco="1010293 dir mkt panamá"
+                    data-tipo="Proy. Inversión" data-clsf="N6" data-ceco="1010293 dir mkt panamá" data-camp="proyecto digital panamá"
                     style="display: none;">
                     <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>1010293 – Dir Mkt Panamá</td>
-                    <td><span
-                        class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
-                    <td><span class="badge bg-info-subtle text-dark border border-info-subtle">Proy. Inversión</span>
+                    <td>
+                      <div class="fw-semibold" style="font-size:0.8rem;">C2026-022</div>
+                      <div style="font-size:0.75rem; color:#6b7280;">Digital Panamá Estrategia</div>
+                      <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.65rem;">Estrategia</span>
+                      <span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span>
                     </td>
-                    <td>609041 – Medios Digitales</td>
+                    <td style="font-size:0.8rem;">609041 – Medios Digitales</td>
                     <td class="text-end fw-bold text-success">900,000</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-          </div>
-          <!-- HU3 – Monitoreo de Solicitudes de Carga (Bloque 3) -->
-          <div class="tab-pane fade" id="tab-pendientes" role="tabpanel" aria-labelledby="pendientes-tab">
-
-
-
-            <!-- Indicadores compactos: barra horizontal -->
-            <div class="card border-0 shadow-sm mb-3 rounded-3">
-              <div class="card-body py-2 px-3">
-                <div class="row g-0 align-items-center">
-
-                  <!-- Indicador 1: Marketing -->
-                  <div class="col-md pe-3 border-end">
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="bi bi-person-lines-fill text-dark" style="font-size: 2rem;"></i>
-                      <div>
-                        <div class="text-dark fw-semibold"
-                          style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: .04em;">Pdte.
-                          Autorización: Marketing</div>
-                        <div class="fw-bold text-dark" style="font-size: 1rem;">4,000,000</div>
-                        <div class="d-flex gap-2 mt-1 flex-wrap">
-                          <button class="btn btn-sm btn-outline-dark py-0 px-2 border-0 p-0" type="button"
-                            data-bs-toggle="dropdown" style="font-size:0.65rem;">
-                            Ver desglose <i class="bi bi-chevron-down"></i>
-                          </button>
-                          <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 200px;">
-                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span
-                                class="text-dark">Marca</span><span class="fw-bold">1,800,000</span></li>
-                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span
-                                class="text-dark">Oferteo</span><span class="fw-bold">1,200,000</span></li>
-                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span
-                                class="text-dark">Estrategia</span><span class="fw-bold">800,000</span></li>
-                            <li class="d-flex justify-content-between"><span class="text-dark">Sin División</span><span
-                                class="fw-bold">200,000</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Indicador 2: Administración y Finanzas MKT -->
-                  <div class="col-md px-3 border-end">
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="bi bi-bank text-primary" style="font-size: 2rem;"></i>
-                      <div>
-                        <div class="text-dark fw-semibold"
-                          style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: .04em;">Pdte.
-                          Autorización: Adm. y Finanzas MKT</div>
-                        <div class="fw-bold text-primary" style="font-size: 1rem;">12,000,000</div>
-                        <div class="d-flex gap-2 mt-1 flex-wrap">
-                          <button class="btn btn-sm btn-outline-primary py-0 px-2 border-0 p-0" type="button"
-                            data-bs-toggle="dropdown" style="font-size:0.65rem;">
-                            Ver desglose <i class="bi bi-chevron-down"></i>
-                          </button>
-                          <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 200px;">
-                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span
-                                class="text-dark">Marca</span><span class="fw-bold">5,000,000</span></li>
-                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span
-                                class="text-dark">Oferteo</span><span class="fw-bold">4,500,000</span></li>
-                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span
-                                class="text-dark">Estrategia</span><span class="fw-bold">2,500,000</span></li>
-                            <li class="d-flex justify-content-between"><span class="text-dark">Sin División</span><span
-                                class="fw-bold">0</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Indicador 3: División -->
-                  <div class="col-md px-3 border-end">
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="bi bi-diagram-3 text-danger" style="font-size: 2rem;"></i>
-                      <div>
-                        <div class="text-dark fw-semibold"
-                          style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: .04em;">Pdte.
-                          Autorización: División</div>
-                        <div class="fw-bold text-dark" style="font-size: 1rem;">6,000,000</div>
-                        <div class="d-flex gap-2 mt-1 flex-wrap">
-                          <button class="btn btn-sm btn-outline-danger py-0 px-2 border-0 p-0" type="button"
-                            data-bs-toggle="dropdown" style="font-size:0.65rem;">
-                            Ver desglose <i class="bi bi-chevron-down"></i>
-                          </button>
-                          <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 200px;">
-                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span
-                                class="text-dark">Marca</span><span class="fw-bold">2,500,000</span></li>
-                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span
-                                class="text-dark">Oferteo</span><span class="fw-bold">2,000,000</span></li>
-                            <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span
-                                class="text-dark">Estrategia</span><span class="fw-bold">1,500,000</span></li>
-                            <li class="d-flex justify-content-between"><span class="text-dark">Sin División</span><span
-                                class="fw-bold">0</span></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-auto ps-3">
-                    <div class="d-flex align-items-right gap-2">
-                      <button class="btn btn-sm btn-dark radius-30"><i class="bi bi-download me-1"></i> Exportar
-                        Pendientes</button>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Revisión de Excedente (separado de los indicadores) -->
-            <div class="alert alert-secondary d-flex align-items-center gap-3 py-2 mb-3 border" role="alert">
-              <i class="bi bi-exclamation-triangle-fill text-dark fs-5"></i>
-              <div>
-                <span class="fw-bold text-dark">Revisión de Excedente:</span>
-                <span class="text-dark ms-2">2,500,000</span>
-                <small class="text-dark ms-2">— Solicitudes que superan el monto autorizado y requieren revisión
-                  adicional.</small>
-              </div>
-            </div>
-
-            <!-- Filtros de solicitudes pendientes -->
-            <div class="bg-light border rounded p-3 mb-3 shadow-sm">
-              <div class="row g-2 align-items-end">
-                <div class="col-md-3">
-                  <label class="form-label mb-1 small text-muted fw-semibold">Folio</label>
-                  <div class="input-group input-group-sm">
-                    <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
-                    <input type="text" id="hu3-search-folio" class="form-control border-start-0" placeholder="Clave folio..." oninput="applyHU3Filters()">
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label mb-1 small text-muted fw-semibold">Campaña</label>
-                  <div class="input-group input-group-sm">
-                    <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
-                    <input type="text" id="hu3-search-camp" class="form-control border-start-0" placeholder="Nombre campaña..." oninput="applyHU3Filters()">
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label mb-1 small text-muted fw-semibold">Estatus</label>
-                  <select id="hu3-estatus" class="form-select form-select-sm" multiple data-placeholder="Todos los estatus">
-                    <option value="Revisión Excedente">Revisión Excedente</option>
-                    <option value="Pendiente Admon Finanzas MKT">Pendiente Admon Finanzas MKT</option>
-                    <option value="Pendiente División">Pendiente División</option>
-                    <option value="Pendiente Marketing">Pendiente Marketing</option>
-                  </select>
-                </div>
-                <div class="col-md-3">
-                  <label class="form-label mb-1 small text-muted fw-semibold">País</label>
-                  <select id="hu3-pais" class="form-select form-select-sm" multiple data-placeholder="Todos los países">
-                    <option value="México">México</option>
-                    <option value="Guatemala">Guatemala</option>
-                    <option value="Honduras">Honduras</option>
-                    <option value="Panamá">Panamá</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Tabla de solicitudes pendientes -->
-            <div class="table-responsive border rounded shadow-sm">
-              <table class="table table-sm table-hover align-middle mb-0" style="font-size:0.82rem;">
-                <thead class="table-light text-dark text-uppercase border-bottom" style="font-size:0.72rem;">
-                  <tr>
-                    <th style="min-width:200px;">Folio / Campaña</th>
-                    <th>Tipo de Gasto</th>
-                    <th>País</th>
-                    <th>Estatus</th>
-                    <th class="text-end">Fecha de Registro</th>
-                    <th class="text-end">Importe</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-                  <!-- Revisión Excedente -->
-                  <tr style="border-bottom: 1px solid rgb(240, 240, 240);" onmouseover="this.style.background='#f9f9f9'"
-                    onmouseout="this.style.background=''">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionExcedente.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26005NMX</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Campaña Día de las
-                        Madres</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Campaña</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">México</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#f3f4f6; color:#374151; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px; border:1px solid #d1d5db;">
-                        Revisión Excedente
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">25 Abr 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827;">2,500,000</td>
-                  </tr>
-
-                  <!-- Pendiente Admon Finanzas MKT — destacado -->
-                  <tr
-                    style="border-left: 3px solid rgb(17, 24, 39); border-bottom: 1px solid rgb(229, 231, 235); background: rgb(250, 250, 250);"
-                    onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#fafafa'">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionN2.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26008GTM</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Lanzamiento
-                        Italika Z</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Campaña</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">Guatemala</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#111827; color:#fff; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px;">
-                        Pendiente Admon Finanzas MKT
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">28 Abr 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827; font-size:0.95rem;">12,000,000</td>
-                  </tr>
-
-                  <!-- Pendiente División -->
-                  <tr style="border-bottom: 1px solid rgb(240, 240, 240);" onmouseover="this.style.background='#f9f9f9'"
-                    onmouseout="this.style.background=''">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionN3.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26015NMX</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Feria de Empleo
-                        Nacional</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Proyecto de Inversión</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">México</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#1a1d23; color:#fff; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px;">
-                        Pendiente División
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">22 Abr 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827;">6,000,000</td>
-                  </tr>
-
-                  <!-- Pendiente Marketing -->
-                  <tr style="border-bottom: 1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'"
-                    onmouseout="this.style.background=''">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionN1.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26012HND</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Promoción Remesas
-                        Verano</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Campaña</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">Honduras</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#374151; color:#fff; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px;">
-                        Pendiente Marketing
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">29 Abr 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827;">4,000,000</td>
-                  </tr>
-
-                  <tr style="border-bottom: 1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'"
-                    onmouseout="this.style.background=''">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionN1.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26021NMX</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Campaña Back to
-                        School 2026</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Campaña</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">México</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#374151; color:#fff; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px;">
-                        Pendiente Marketing
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">01 May 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827;">3,500,000</td>
-                  </tr>
-
-                  <tr style="border-left: 3px solid #111827; border-bottom: 1px solid #e5e7eb; background:#fafafa;"
-                    onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#fafafa'">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionN2.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26019GTM</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Apertura Nueva
-                        Zona Norte Guatemala</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Proyecto de Inversión</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">Guatemala</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#111827; color:#fff; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px;">
-                        Pendiente Admon Finanzas MKT
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">03 May 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827; font-size:0.95rem;">5,800,000</td>
-                  </tr>
-
-                  <tr style="border-bottom: 1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'"
-                    onmouseout="this.style.background=''">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionN3.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26023NMX</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Mundial 2026 -
-                        Fase Final</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Campaña</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">México</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#1a1d23; color:#fff; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px;">
-                        Pendiente División
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">05 May 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827;">8,200,000</td>
-                  </tr>
-
-                  <tr style="border-bottom: 1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'"
-                    onmouseout="this.style.background=''">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionExcedente.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26027HND</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Patrocinio Festivo
-                        Honduras</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Campaña</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">Honduras</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#f3f4f6; color:#374151; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px; border:1px solid #d1d5db;">
-                        Revisión Excedente
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">07 May 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827;">1,200,000</td>
-                  </tr>
-
-                  <tr style="border-bottom: 1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'"
-                    onmouseout="this.style.background=''">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionN1.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26031PAN</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Campaña
-                        Conectividad Panamá</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Campaña</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">Panamá</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#374151; color:#fff; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px;">
-                        Pendiente Marketing
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">09 May 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827;">2,100,000</td>
-                  </tr>
-
-                  <tr style="border-left: 3px solid #111827; border-bottom: 1px solid #e5e7eb; background:#fafafa;"
-                    onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#fafafa'">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionN2.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26034NMX</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Relanzamiento
-                        Seguros Auto</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Proyecto de Inversión</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">México</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#111827; color:#fff; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px;">
-                        Pendiente Admon Finanzas MKT
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">10 May 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827; font-size:0.95rem;">9,500,000</td>
-                  </tr>
-
-                  <tr style="border-bottom: 1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'"
-                    onmouseout="this.style.background=''">
-                    <td class="ps-3 py-3">
-                      <a href="AutorizacionN3.html" class="fw-bold text-decoration-none d-block"
-                        style="color:#0d1117; font-size:0.84rem;">F-26038NMX</a>
-                      <span class="d-block" style="font-size:0.72rem; color:#6b7280; margin-top:2px;">Campaña Digital
-                        Remesas Q3</span>
-                    </td>
-                    <td class="py-3" style="color:#374151;">Campaña</td>
-                    <td class="py-3" style="color:#374151; font-weight:500;">México</td>
-                    <td class="py-3">
-                      <span
-                        style="display:inline-block; background:#1a1d23; color:#fff; font-size:0.7rem; font-weight:600; letter-spacing:.03em; padding:3px 10px; border-radius:4px;">
-                        Pendiente División
-                      </span>
-                    </td>
-                    <td class="py-3 text-end" style="color:#374151; font-weight:500;">12 May 2026</td>
-                    <td class="py-3 pe-3 text-end fw-bold" style="color:#111827;">4,300,000</td>
-                  </tr>
-
-                </tbody>
-              </table>
-            </div>
           </div>
           <!-- CA03 – Versiones Sincronizadas (Sección 2 del Bloque 2) -->
           <!-- CA03 – Versiones Sincronizadas -->
@@ -2095,30 +1729,81 @@
                 <h6 class="fw-bold text-dark mb-0">Versiones Sincronizadas con SIPRES</h6>
                 <small class="text-muted">Consulta el detalle de cada versión expuesta y confirmada por SIPRES</small>
               </div>
-              <button class="btn btn-sm btn-light border text-primary"><i class="bi bi-download me-1"></i> Exportar
-                Versión</button>
             </div>
 
-            <!-- Selector de versión -->
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <span class="text-muted fw-semibold" style="font-size:0.8rem; white-space:nowrap;">Ver versión:</span>
-              <div class="d-flex gap-2 flex-wrap">
-                <button class="btn btn-sm fw-bold px-3 ver-btn active" data-ver="v4"
-                  style="background: rgb(17, 24, 39); color: rgb(255, 255, 255); font-size: 0.78rem; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; font-weight: 700;">
-                  v4 · 15 Abr 2026
+            <!-- Filtros CA03 (colapsable) -->
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-sm btn-outline-secondary py-1 px-2" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#ca03-filtros" aria-expanded="true"
+                  style="font-size:0.78rem;">
+                  <i class="bi bi-funnel me-1"></i>Filtros
+                  <i class="bi bi-chevron-up ms-1" style="font-size:0.7rem;"></i>
                 </button>
-                <button class="btn btn-sm fw-semibold px-3 ver-btn" data-ver="v3"
-                  style="background: rgb(243, 244, 246); color: rgb(55, 65, 81); font-size: 0.78rem; border: 1px solid rgb(209, 213, 219); font-weight: 600;">
-                  v3 · 02 Abr 2026
-                </button>
-                <button class="btn btn-sm fw-semibold px-3 ver-btn" data-ver="v2"
-                  style="background: rgb(243, 244, 246); color: rgb(55, 65, 81); font-size: 0.78rem; border: 1px solid rgb(209, 213, 219); font-weight: 600;">
-                  v2 · 18 Mar 2026
-                </button>
-                <button class="btn btn-sm fw-semibold px-3 ver-btn" data-ver="v1"
-                  style="background: rgb(243, 244, 246); color: rgb(55, 65, 81); font-size: 0.78rem; border: 1px solid rgb(209, 213, 219); font-weight: 600;">
-                  v1 · 05 Mar 2026
-                </button>
+              </div>
+              <button class="btn btn-sm btn-light border shadow-sm" style="font-size:0.8rem;">
+                <i class="bi bi-download me-1"></i> Exportar Versión
+              </button>
+            </div>
+
+            <div class="collapse show" id="ca03-filtros">
+              <div class="bg-light border rounded p-3 mb-3 shadow-sm">
+                <div class="row g-2 align-items-end">
+                  <!-- Versión -->
+                  <div class="col-md-2">
+                    <label class="form-label mb-1 small text-muted fw-semibold">Versión</label>
+                    <select id="ver-select" class="form-select form-select-sm" onchange="renderVerTree(this.value)">
+                      <option value="v4" selected>v4 · 15 Abr 2026 (actual)</option>
+                      <option value="v3">v3 · 02 Abr 2026</option>
+                      <option value="v2">v2 · 18 Mar 2026</option>
+                      <option value="v1">v1 · 05 Mar 2026</option>
+                    </select>
+                  </div>
+                  <!-- Búsqueda CeCo -->
+                  <div class="col-md-2">
+                    <label class="form-label mb-1 small text-muted fw-semibold">Centro de Costos</label>
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
+                      <input type="text" id="ver-search-ceco" class="form-control border-start-0" placeholder="Clave o nombre..." oninput="applyVerFilters()">
+                    </div>
+                  </div>
+                  <!-- Búsqueda Campaña -->
+                  <div class="col-md-2">
+                    <label class="form-label mb-1 small text-muted fw-semibold">Campaña</label>
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
+                      <input type="text" id="ver-search-camp" class="form-control border-start-0" placeholder="Nombre campaña..." oninput="applyVerFilters()">
+                    </div>
+                  </div>
+                  <!-- División -->
+                  <div class="col-md">
+                    <label class="form-label mb-1 small text-muted fw-semibold">División</label>
+                    <select id="ver-division" class="form-select form-select-sm w-100" multiple data-placeholder="Todas las divisiones">
+                      <option value="Marca">Marca</option>
+                      <option value="Oferteo">Oferteo</option>
+                      <option value="Estrategia">Estrategia</option>
+                      <option value="Sin División">Sin División</option>
+                    </select>
+                  </div>
+                  <!-- País -->
+                  <div class="col-md">
+                    <label class="form-label mb-1 small text-muted fw-semibold">País</label>
+                    <select id="ver-pais" class="form-select form-select-sm w-100" multiple data-placeholder="Todos los países">
+                      <option value="México">México</option>
+                      <option value="Guatemala">Guatemala</option>
+                      <option value="Honduras">Honduras</option>
+                      <option value="Panamá">Panamá</option>
+                    </select>
+                  </div>
+                  <!-- Tipo de Gasto -->
+                  <div class="col-md">
+                    <label class="form-label mb-1 small text-muted fw-semibold">Tipo de Gasto</label>
+                    <select id="ver-tipo" class="form-select form-select-sm w-100" multiple data-placeholder="Todos los tipos">
+                      <option value="Ordinario">Ordinario</option>
+                      <option value="Proy. Inversión">Proy. Inversión</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -2151,12 +1836,10 @@
                 <table class="table table-sm table-hover align-middle mb-0" style="font-size:.82rem;">
                   <thead class="table-light text-muted text-uppercase border-bottom" style="font-size:.72rem;">
                     <tr>
-                      <th style="min-width:280px;">Jerarquía / Centro de Costos</th>
-                      <th>País</th>
-                      <th>División</th>
-                      <th>Tipo de Gasto</th>
-                      <th>Cuenta</th>
-                      <th class="text-end">Importe Total</th>
+                      <th style="min-width:300px;">Clasificaciones / Centro de Costos</th>
+                      <th style="min-width:220px;">Campaña</th>
+                      <th style="min-width:160px;">Cuenta</th>
+                      <th class="text-end" style="min-width:120px;">Importe Total</th>
                     </tr>
                   </thead>
                   <tbody id="ver-tree-body">
@@ -2519,6 +2202,225 @@
         </div>
       </div>
     </div>
+
+    <!-- ════ BLOQUE 3 – Solicitudes Pendientes de Autorización ════ -->
+    <div class="card border-0 shadow-sm rounded-3 mt-4">
+      <div class="card-body px-3 py-3">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h6 class="fw-bold text-dark mb-0">Solicitudes Pendientes de Autorización</h6>
+            <small class="text-muted">Haz clic en un indicador para filtrar la tabla</small>
+          </div>
+          <button class="btn btn-sm btn-dark" onclick="applyHU3Filters()">
+            <i class="bi bi-download me-1"></i> Exportar Pendientes
+          </button>
+        </div>
+
+        <!-- Indicadores compactos: barra horizontal (clickables) -->
+        <div class="card border-0 shadow-sm mb-3 rounded-3" style="background:#fafafa;">
+          <div class="card-body py-2 px-3">
+            <div class="row g-0 align-items-center">
+
+              <!-- Indicador 1: Marketing -->
+              <div class="col-md pe-3 border-end" style="cursor:pointer;"
+                onclick="filterHU3ByEstatus('Pendiente Marketing')" title="Filtrar: Pendiente Marketing">
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-person-lines-fill text-dark" style="font-size: 2rem;"></i>
+                  <div>
+                    <div class="text-dark fw-semibold" style="font-size:0.65rem; text-transform:uppercase; letter-spacing:.04em;">Pdte. Autorización: Marketing</div>
+                    <div class="fw-bold text-dark" style="font-size:1rem;">4,000,000</div>
+                    <div style="font-size:0.7rem; color:#6b7280;">5 solicitudes · <span class="text-primary" style="cursor:pointer;" onclick="event.stopPropagation(); filterHU3ByEstatus(null)">Ver todas</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Indicador 2: Administración y Finanzas MKT -->
+              <div class="col-md px-3 border-end" style="cursor:pointer;"
+                onclick="filterHU3ByEstatus('Pendiente Admon Finanzas MKT')" title="Filtrar: Pendiente Admon Finanzas MKT">
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-bank text-primary" style="font-size: 2rem;"></i>
+                  <div>
+                    <div class="text-dark fw-semibold" style="font-size:0.65rem; text-transform:uppercase; letter-spacing:.04em;">Pdte. Autorización: Adm. y Finanzas MKT</div>
+                    <div class="fw-bold text-primary" style="font-size:1rem;">12,000,000</div>
+                    <div style="font-size:0.7rem; color:#6b7280;">3 solicitudes · <span class="text-primary" style="cursor:pointer;" onclick="event.stopPropagation(); filterHU3ByEstatus(null)">Ver todas</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Indicador 3: División (único con Ver desglose) -->
+              <div class="col-md px-3 border-end" style="cursor:pointer;"
+                onclick="filterHU3ByEstatus('Pendiente División')" title="Filtrar: Pendiente División">
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-diagram-3 text-danger" style="font-size: 2rem;"></i>
+                  <div>
+                    <div class="text-dark fw-semibold" style="font-size:0.65rem; text-transform:uppercase; letter-spacing:.04em;">Pdte. Autorización: División</div>
+                    <div class="fw-bold text-dark" style="font-size:1rem;">6,000,000</div>
+                    <div class="d-flex gap-2 mt-1 flex-wrap" onclick="event.stopPropagation();">
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-danger py-0 px-2 border-0 p-0" type="button"
+                          data-bs-toggle="dropdown" style="font-size:0.65rem;">
+                          Ver desglose <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu shadow-sm border-0 p-2" style="font-size: 0.8rem; min-width: 200px;">
+                          <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-dark">Marca</span><span class="fw-bold">2,500,000</span></li>
+                          <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-dark">Oferteo</span><span class="fw-bold">2,000,000</span></li>
+                          <li class="d-flex justify-content-between mb-1 pb-1 border-bottom"><span class="text-dark">Estrategia</span><span class="fw-bold">1,500,000</span></li>
+                          <li class="d-flex justify-content-between"><span class="text-dark">Sin División</span><span class="fw-bold">0</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Revisión Excedente -->
+              <div class="col-md px-3" style="cursor:pointer;"
+                onclick="filterHU3ByEstatus('Revisión Excedente')" title="Filtrar: Revisión Excedente">
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-exclamation-triangle-fill text-warning" style="font-size: 2rem;"></i>
+                  <div>
+                    <div class="text-dark fw-semibold" style="font-size:0.65rem; text-transform:uppercase; letter-spacing:.04em;">Revisión Excedente</div>
+                    <div class="fw-bold text-warning" style="font-size:1rem;">3,700,000</div>
+                    <div style="font-size:0.7rem; color:#6b7280;">2 solicitudes · <span class="text-primary" style="cursor:pointer;" onclick="event.stopPropagation(); filterHU3ByEstatus(null)">Ver todas</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-auto ps-3">
+                <button class="btn btn-sm btn-link text-muted p-0" onclick="filterHU3ByEstatus(null)" style="font-size:0.75rem;">
+                  <i class="bi bi-x-circle me-1"></i>Limpiar filtro
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtros de solicitudes -->
+        <div class="bg-light border rounded p-3 mb-3 shadow-sm">
+          <div class="row g-2 align-items-end">
+            <div class="col-md-3">
+              <label class="form-label mb-1 small text-muted fw-semibold">Folio</label>
+              <div class="input-group input-group-sm">
+                <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
+                <input type="text" id="hu3-search-folio" class="form-control border-start-0" placeholder="Clave folio..." oninput="applyHU3Filters()">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label mb-1 small text-muted fw-semibold">Campaña</label>
+              <div class="input-group input-group-sm">
+                <span class="input-group-text bg-white text-muted border-end-0"><i class="bi bi-search"></i></span>
+                <input type="text" id="hu3-search-camp" class="form-control border-start-0" placeholder="Nombre campaña..." oninput="applyHU3Filters()">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label mb-1 small text-muted fw-semibold">Estatus</label>
+              <select id="hu3-estatus" class="form-select form-select-sm" multiple data-placeholder="Todos los estatus">
+                <option value="Revisión Excedente">Revisión Excedente</option>
+                <option value="Pendiente Admon Finanzas MKT">Pendiente Admon Finanzas MKT</option>
+                <option value="Pendiente División">Pendiente División</option>
+                <option value="Pendiente Marketing">Pendiente Marketing</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label mb-1 small text-muted fw-semibold">País</label>
+              <select id="hu3-pais" class="form-select form-select-sm" multiple data-placeholder="Todos los países">
+                <option value="México">México</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Honduras">Honduras</option>
+                <option value="Panamá">Panamá</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla de solicitudes pendientes -->
+        <div class="table-responsive border rounded shadow-sm">
+          <table class="table table-sm table-hover align-middle mb-0" id="hu3-table" style="font-size:0.82rem;">
+            <thead class="table-light text-dark text-uppercase border-bottom" style="font-size:0.72rem;">
+              <tr>
+                <th style="min-width:200px;">Folio / Campaña</th>
+                <th>Tipo de Gasto</th>
+                <th>País</th>
+                <th>Estatus</th>
+                <th class="text-end">Fecha de Registro</th>
+                <th class="text-end">Importe</th>
+              </tr>
+            </thead>
+            <tbody id="hu3-tbody">
+              <tr style="border-bottom:1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
+                <td class="ps-3 py-2"><a href="AutorizacionExcedente.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26005NMX</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Campaña Día de las Madres</span></td>
+                <td>Campaña</td><td>México</td>
+                <td><span style="display:inline-block; background:#f3f4f6; color:#374151; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px; border:1px solid #d1d5db;">Revisión Excedente</span></td>
+                <td class="text-end" style="color:#374151;">25 Abr 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">2,500,000</td>
+              </tr>
+              <tr style="border-left:3px solid #111827; border-bottom:1px solid #e5e7eb; background:#fafafa;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#fafafa'">
+                <td class="ps-3 py-2"><a href="AutorizacionN2.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26008GTM</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Lanzamiento Italika Z</span></td>
+                <td>Campaña</td><td>Guatemala</td>
+                <td><span style="display:inline-block; background:#111827; color:#fff; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px;">Pendiente Admon Finanzas MKT</span></td>
+                <td class="text-end" style="color:#374151;">28 Abr 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">12,000,000</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
+                <td class="ps-3 py-2"><a href="AutorizacionN3.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26015NMX</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Feria de Empleo Nacional</span></td>
+                <td>Proyecto de Inversión</td><td>México</td>
+                <td><span style="display:inline-block; background:#1a1d23; color:#fff; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px;">Pendiente División</span></td>
+                <td class="text-end" style="color:#374151;">22 Abr 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">6,000,000</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
+                <td class="ps-3 py-2"><a href="AutorizacionN1.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26012HND</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Promoción Remesas Verano</span></td>
+                <td>Campaña</td><td>Honduras</td>
+                <td><span style="display:inline-block; background:#374151; color:#fff; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px;">Pendiente Marketing</span></td>
+                <td class="text-end" style="color:#374151;">29 Abr 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">4,000,000</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
+                <td class="ps-3 py-2"><a href="AutorizacionN1.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26021NMX</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Campaña Back to School 2026</span></td>
+                <td>Campaña</td><td>México</td>
+                <td><span style="display:inline-block; background:#374151; color:#fff; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px;">Pendiente Marketing</span></td>
+                <td class="text-end" style="color:#374151;">01 May 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">3,500,000</td>
+              </tr>
+              <tr style="border-left:3px solid #111827; border-bottom:1px solid #e5e7eb; background:#fafafa;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#fafafa'">
+                <td class="ps-3 py-2"><a href="AutorizacionN2.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26019GTM</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Apertura Nueva Zona Norte Guatemala</span></td>
+                <td>Proyecto de Inversión</td><td>Guatemala</td>
+                <td><span style="display:inline-block; background:#111827; color:#fff; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px;">Pendiente Admon Finanzas MKT</span></td>
+                <td class="text-end" style="color:#374151;">03 May 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">5,800,000</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
+                <td class="ps-3 py-2"><a href="AutorizacionN3.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26023NMX</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Mundial 2026 - Fase Final</span></td>
+                <td>Campaña</td><td>México</td>
+                <td><span style="display:inline-block; background:#1a1d23; color:#fff; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px;">Pendiente División</span></td>
+                <td class="text-end" style="color:#374151;">05 May 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">8,200,000</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
+                <td class="ps-3 py-2"><a href="AutorizacionExcedente.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26027HND</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Patrocinio Festivo Honduras</span></td>
+                <td>Campaña</td><td>Honduras</td>
+                <td><span style="display:inline-block; background:#f3f4f6; color:#374151; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px; border:1px solid #d1d5db;">Revisión Excedente</span></td>
+                <td class="text-end" style="color:#374151;">07 May 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">1,200,000</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
+                <td class="ps-3 py-2"><a href="AutorizacionN1.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26031PAN</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Campaña Conectividad Panamá</span></td>
+                <td>Campaña</td><td>Panamá</td>
+                <td><span style="display:inline-block; background:#374151; color:#fff; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px;">Pendiente Marketing</span></td>
+                <td class="text-end" style="color:#374151;">09 May 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">2,100,000</td>
+              </tr>
+              <tr style="border-left:3px solid #111827; border-bottom:1px solid #e5e7eb; background:#fafafa;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#fafafa'">
+                <td class="ps-3 py-2"><a href="AutorizacionN2.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26034NMX</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Relanzamiento Seguros Auto</span></td>
+                <td>Proyecto de Inversión</td><td>México</td>
+                <td><span style="display:inline-block; background:#111827; color:#fff; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px;">Pendiente Admon Finanzas MKT</span></td>
+                <td class="text-end" style="color:#374151;">10 May 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">9,500,000</td>
+              </tr>
+              <tr style="border-bottom:1px solid #f0f0f0;" onmouseover="this.style.background='#f9f9f9'" onmouseout="this.style.background=''">
+                <td class="ps-3 py-2"><a href="AutorizacionN3.html" class="fw-bold text-decoration-none d-block" style="color:#0d1117; font-size:0.84rem;">F-26038NMX</a><span class="d-block" style="font-size:0.72rem; color:#6b7280;">Campaña Digital Remesas Q3</span></td>
+                <td>Campaña</td><td>México</td>
+                <td><span style="display:inline-block; background:#1a1d23; color:#fff; font-size:0.7rem; font-weight:600; padding:3px 10px; border-radius:4px;">Pendiente División</span></td>
+                <td class="text-end" style="color:#374151;">12 May 2026</td><td class="text-end fw-bold pe-3" style="color:#111827;">4,300,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    <!-- ════ FIN BLOQUE 3 ════ -->
   </main>
 
   <!-- CA02 – Modal: Confirmación de Envío a SIPRES -->
@@ -2760,6 +2662,15 @@
       $('#hu3-estatus').select2({ ...s2cfg, placeholder: 'Todos los estatus' });
       $('#hu3-pais').select2({ ...s2cfg, placeholder: 'Todos los países' });
       $hu3Selects.on('change', applyHU3Filters);
+
+      /* Select2 para filtros CA03 */
+      ['#ver-division', '#ver-pais', '#ver-tipo'].forEach(sel => {
+        try { $(sel).select2('destroy'); } catch(e) {}
+      });
+      $('#ver-division').select2({ ...s2cfg, placeholder: 'Todas las divisiones' });
+      $('#ver-pais').select2({ ...s2cfg, placeholder: 'Todos los países' });
+      $('#ver-tipo').select2({ ...s2cfg, placeholder: 'Todos los tipos' });
+      $('#ver-division, #ver-pais, #ver-tipo').on('change', applyVerFilters);
     });
 
     function applyHU3Filters() {
@@ -2768,7 +2679,7 @@
       const estatus = $('#hu3-estatus').val() || [];
       const paises = $('#hu3-pais').val() || [];
 
-      document.querySelectorAll('#tab-pendientes tbody tr').forEach(row => {
+      document.querySelectorAll('#hu3-tbody tr').forEach(row => {
         const folioTxt = (row.querySelector('td:first-child a')?.textContent || '').toLowerCase();
         const campTxt = (row.querySelector('td:first-child span')?.textContent || '').toLowerCase();
         const estatusTxt = (row.querySelector('td:nth-child(4) span')?.textContent || '').trim();
@@ -3053,13 +2964,12 @@
 
       document.getElementById('ver-meta').innerHTML = d.meta;
       document.getElementById('ver-total').textContent = d.total;
-      document.querySelectorAll('.ver-btn').forEach(b => {
-        const on = b.dataset.ver === vk;
-        b.style.background  = on ? '#111827' : '#f3f4f6';
-        b.style.color       = on ? '#fff'    : '#374151';
-        b.style.border      = on ? 'none'    : '1px solid #d1d5db';
-        b.style.fontWeight  = on ? '700'     : '600';
-      });
+      const sel = document.getElementById('ver-select');
+      if (sel) sel.value = vk;
+      const banner = document.getElementById('ver-banner');
+      if (banner) {
+        banner.style.borderColor = '#c7d8f8';
+      }
 
       /* ── helpers ── */
       const dc = c => `<span class="badge ${DIV_COLORS[c]||''}">${c}</span>`;
@@ -3068,18 +2978,24 @@
       const node = (id, indent, cls, icon, label, total, pid) => {
         const dp = pid ? ` data-p="${p}${pid}"` : '';
         const disp = pid ? ' style="display:none; cursor:pointer;"' : ' style="cursor:pointer;"';
+        const isRoot = !pid;
+        const totalCls = isRoot ? 'text-end fw-bolder text-success' : 'text-end fw-bold text-dark';
         return `<tr id="${p}${id}" class="tree-node ${cls}"${dp}${disp} onclick="toggleNode('${p}${id}')">
-          <td colspan="5" style="padding-left:${indent};">
+          <td colspan="3" style="padding-left:${indent};">
             <i id="ico-${p}${id}" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s;"></i>
             <i class="bi ${icon} me-2"></i>${label}
-            <span class="ms-3 fw-bold text-dark">${total}</span>
-          </td></tr>`;
+          </td>
+          <td class="${totalCls}">${total}</td></tr>`;
       };
 
       const leaf = (pid, indent, c) =>
-        `<tr class="tree-leaf" data-p="${p}${pid}" style="display:none;">
+        `<tr class="tree-leaf" data-p="${p}${pid}" data-division="${c.div}" data-tipo="${c.tipo}" style="display:none;">
           <td style="padding-left:${indent};"><i class="bi bi-building me-1 text-dark"></i>${c.ceco}</td>
-          <td>${dc(c.div)}</td><td>${tc(c.tipo)}</td><td>${c.cuenta}</td>
+          <td>
+            <span class="badge ${DIV_COLORS[c.div]||''}" style="font-size:0.65rem;">${c.div}</span>
+            <span class="badge ${TIPO_COLORS[c.tipo]||''} ms-1" style="font-size:0.65rem;">${c.tipo}</span>
+          </td>
+          <td style="font-size:0.8rem;">${c.cuenta}</td>
           <td class="text-end fw-bold text-success">${c.imp}</td>
         </tr>`;
 
@@ -3139,9 +3055,10 @@
       <table class="table table-sm table-hover align-middle mb-0" style="font-size:0.82rem;">
         <thead class="table-light text-dark text-uppercase border-bottom" style="font-size:0.72rem;">
           <tr>
-            <th style="min-width:320px;">Clasificaciones / Centro de Costos</th>
-            <th>División</th><th>Tipo de Gasto</th><th>Cuenta</th>
-            <th class="text-end">Importe Total</th>
+            <th style="min-width:300px;">Clasificaciones / Centro de Costos</th>
+            <th style="min-width:220px;">Campaña</th>
+            <th style="min-width:160px;">Cuenta</th>
+            <th class="text-end" style="min-width:120px;">Importe Total</th>
           </tr>
         </thead>
         <tbody id="ver-tree-body">${rows}</tbody>
@@ -3149,13 +3066,46 @@
     </div>`;
     }
 
-    /* Inicializar al cargar y al hacer clic en botones */
+    /* Inicializar al cargar */
     document.addEventListener('DOMContentLoaded', () => {
       renderVerTree('v4');
-      document.querySelectorAll('.ver-btn').forEach(btn => {
-        btn.addEventListener('click', () => renderVerTree(btn.dataset.ver));
-      });
     });
+
+    /* ── Filtro rápido por estatus desde indicadores (Bloque 3) ── */
+    function filterHU3ByEstatus(estatus) {
+      try {
+        if (estatus) {
+          $('#hu3-estatus').val([estatus]).trigger('change');
+        } else {
+          $('#hu3-estatus').val([]).trigger('change');
+        }
+      } catch(e) {}
+      applyHU3Filters();
+    }
+
+    /* ── Filtros CA03 (versiones sincronizadas) ── */
+    function applyVerFilters() {
+      const searchCeco = (document.getElementById('ver-search-ceco')?.value || '').toLowerCase().trim();
+      const searchCamp = (document.getElementById('ver-search-camp')?.value || '').toLowerCase().trim();
+      const divs  = $('#ver-division').val() || [];
+      const paises = $('#ver-pais').val() || [];
+      const tipos  = $('#ver-tipo').val() || [];
+
+      document.querySelectorAll('#ver-tree-body .tree-leaf').forEach(row => {
+        const ceco = (row.dataset.ceco || '').toLowerCase();
+        const camp = (row.dataset.camp || '').toLowerCase();
+        const ok = (!searchCeco || ceco.includes(searchCeco))
+          && (!searchCamp || camp.includes(searchCamp))
+          && (divs.length === 0 || divs.includes(row.dataset.division))
+          && (paises.length === 0 || paises.includes(row.dataset.pais))
+          && (tipos.length === 0 || tipos.includes(row.dataset.tipo));
+        row.style.display = ok ? '' : 'none';
+      });
+      document.querySelectorAll('#ver-tree-body .tree-node[data-p]').forEach(node => {
+        const hasVisible = !!node.parentElement.querySelector(`[data-p="${node.id}"]:not([style*="display: none"])`);
+        node.style.display = hasVisible ? '' : 'none';
+      });
+    }
   </script>
 
 
