@@ -1575,13 +1575,13 @@
                       <!-- ===== GRUPO ELEKTRA ===== -->
                       <tr id="tn-ge" class="tree-node fw-bold" style="cursor:pointer; background:#1a1d23; color:#fff;" onclick="toggleNode('tn-ge')">
                         <td colspan="3" style="color:#fff;">
-                          <i id="ico-tn-ge" class="bi bi-chevron-right me-1" style="transition:transform .2s; transform:rotate(0deg); color:#fff;"></i>
+                          <i id="ico-tn-ge" class="bi bi-chevron-right me-1" style="transition:transform .2s; transform:rotate(90deg); color:#fff;"></i>
                           <i class="bi bi-building-fill me-2" style="color:#f59e0b;"></i>Grupo Elektra
                         </td>
                         <td class="text-end fw-bolder" style="color:#86efac;">162,428,000</td>
                       </tr>
                       <!-- ===== MÉXICO ===== -->
-                      <tr id="tn-mx" class="tree-node table-secondary fw-bold" data-p="tn-ge" style="cursor:pointer; display:none;"
+                      <tr id="tn-mx" class="tree-node table-secondary fw-bold" data-p="tn-ge" style="cursor:pointer;"
                         onclick="toggleNode('tn-mx')">
                         <td colspan="3" style="padding-left:2rem;">
                           <i id="ico-tn-mx" class="bi bi-chevron-right me-1 text-dark"
@@ -1885,7 +1885,7 @@
                         <td class="text-end fw-bold text-success">4,800,000</td>
                       </tr>
                       <!-- ===== LAM ===== -->
-                      <tr id="tn-lam" class="tree-node table-secondary fw-bold" data-p="tn-ge" style="cursor:pointer; display:none;"
+                      <tr id="tn-lam" class="tree-node table-secondary fw-bold" data-p="tn-ge" style="cursor:pointer;"
                         onclick="toggleNode('tn-lam')">
                         <td colspan="3" style="padding-left:2rem;">
                           <i id="ico-tn-lam" class="bi bi-chevron-right me-1 text-dark"
@@ -3534,7 +3534,7 @@
 
   <script>
     /* ── Tree state ── */
-    const _nodeOpen = {};
+    const _nodeOpen = { 'tn-ge': true };
 
     function hideDescendants(id) {
       document.querySelectorAll(`[data-p="${id}"]`).forEach(row => {
