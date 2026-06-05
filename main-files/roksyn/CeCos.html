@@ -603,84 +603,8 @@
                     <!-- Tab 1: Datos Generales (Clasificaciones 1–18) -->
                     <div class="tab-pane fade active show" id="tab-general" role="tabpanel">
                       <div id="det-clasificaciones">
-                        <div class="row g-4" id="det-clases-row">
-
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 1</label>
-                            <div class="fw-semibold text-dark fs-6">Grupo Elektra</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 2</label>
-                            <div class="fw-semibold text-dark fs-6">Grupo Elektra</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 3</label>
-                            <div class="fw-semibold text-dark fs-6">México</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 4</label>
-                            <div class="fw-semibold text-dark fs-6">SECTOR MERCADO MASIVO</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 5</label>
-                            <div class="fw-semibold text-dark fs-6">CANALES</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 6</label>
-                            <div class="fw-semibold text-dark fs-6">CANALES DIGITALES</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 7</label>
-                            <div class="fw-semibold text-dark fs-6">ELEKTRA DIGITAL</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 8</label>
-                            <div class="fw-semibold text-dark fs-6">DIR GRAL ECOMMERCE</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 9</label>
-                            <div class="fw-semibold text-dark fs-6">DIRECCIÓN GENERAL ECOMMERCE</div>
-                          </div>
-
-                          <!-- Clasificaciones 10–18 vacías -->
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 10</label>
-                            <div class="fw-semibold text-muted fs-6">—</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 11</label>
-                            <div class="fw-semibold text-muted fs-6">—</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 12</label>
-                            <div class="fw-semibold text-muted fs-6">—</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 13</label>
-                            <div class="fw-semibold text-muted fs-6">—</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 14</label>
-                            <div class="fw-semibold text-muted fs-6">—</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 15</label>
-                            <div class="fw-semibold text-muted fs-6">—</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 16</label>
-                            <div class="fw-semibold text-muted fs-6">—</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 17</label>
-                            <div class="fw-semibold text-muted fs-6">—</div>
-                          </div>
-                          <div class="col-md-4">
-                            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación 18</label>
-                            <div class="fw-semibold text-muted fs-6">—</div>
-                          </div>
-
-                        </div>
+                        <!-- Las 18 clasificaciones se generan dinámicamente al seleccionar un CeCo -->
+                        <div class="row g-4" id="det-clases-row"></div>
                       </div>
                     </div>
                     <!-- fin tab Datos Generales -->
@@ -709,50 +633,8 @@
                               <th class="small fw-bold text-dark text-uppercase text-center">Acción</th>
                             </tr>
                           </thead>
-                          <tbody id="det-cuentas-tbody">
-                            <tr>
-                              <td class="fw-bold small">609023</td>
-                              <td class="small text-dark">Promociones sorteos</td>
-                              <td class="small text-dark">Publicidad</td>
-                              <td class="text-center">
-                                <span class="badge bg-success-subtle text-success border border-success-subtle">Activo</span>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-sm btn-outline-secondary py-0 px-2 fw-bold" disabled
-                                  title="Cuenta con historial presupuestal — no se puede desvincular">
-                                  <i class="bi bi-link"></i> Vinculada
-                                </button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="fw-bold small">620150</td>
-                              <td class="small text-dark">Premios al cliente</td>
-                              <td class="small text-dark">Marketing</td>
-                              <td class="text-center">
-                                <span class="badge bg-success-subtle text-success border border-success-subtle">Activo</span>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-sm btn-outline-secondary py-0 px-2 fw-bold" disabled
-                                  title="Cuenta con historial presupuestal — no se puede desvincular">
-                                  <i class="bi bi-link"></i> Vinculada
-                                </button>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="fw-bold small">609016</td>
-                              <td class="small text-dark">Prod Publicitaria</td>
-                              <td class="small text-dark">Producción</td>
-                              <td class="text-center">
-                                <span class="badge bg-success-subtle text-success border border-success-subtle">Activo</span>
-                              </td>
-                              <td class="text-center">
-                                <button class="btn btn-sm btn-outline-danger py-0 px-2 fw-bold"
-                                  title="Desvincular esta cuenta del Centro de Costos">
-                                  <i class="bi bi-x-circle me-1"></i>Desvincular
-                                </button>
-                              </td>
-                            </tr>
-                          </tbody>
+                          <!-- Las cuentas se generan dinámicamente al seleccionar un CeCo -->
+                          <tbody id="det-cuentas-tbody"></tbody>
                         </table>
                       </div>
 
@@ -944,9 +826,152 @@
   <script src="assets/js/main.js"></script>
 
   <script>
+    /* ── Datos de cada CeCo (mockup) ──
+       clsf: arreglo de 18 clasificaciones (usar '' para vacías → se muestra "—")
+       cuentas: { num, nombre, rubro, estatus, vinculada } */
+    const CECOS = {
+      '290020': {
+        nombre: 'DIRECCIÓN GENERAL ECOMMERCE', grupo: 'Grupo Elektra', division: 'Canales Digitales',
+        pais: 'México', moneda: 'MXN', fecha: '15/01/2018',
+        clsf: ['Grupo Elektra','Grupo Elektra','México','SECTOR MERCADO MASIVO','CANALES','CANALES DIGITALES','ELEKTRA DIGITAL','DIR GRAL ECOMMERCE','DIRECCIÓN GENERAL ECOMMERCE'],
+        cuentas: [
+          { num:'609023', nombre:'Promociones sorteos', rubro:'Publicidad', vinculada:true },
+          { num:'620150', nombre:'Premios al cliente', rubro:'Marketing', vinculada:true },
+          { num:'609016', nombre:'Prod Publicitaria', rubro:'Producción', vinculada:false },
+        ]
+      },
+      '185784': {
+        nombre: 'PUBLICIDAD ELEKTRA DIGITAL', grupo: 'Grupo Elektra', division: 'Canales Digitales',
+        pais: 'México', moneda: 'MXN', fecha: '22/03/2019',
+        clsf: ['Grupo Elektra','Grupo Elektra','México','SECTOR MERCADO MASIVO','CANALES','CANALES DIGITALES','ELEKTRA DIGITAL','PUBLICIDAD','PUBLICIDAD ELEKTRA DIGITAL'],
+        cuentas: [
+          { num:'609023', nombre:'Promociones sorteos', rubro:'Publicidad', vinculada:true },
+          { num:'609016', nombre:'Prod Publicitaria', rubro:'Producción', vinculada:false },
+        ]
+      },
+      '291365': {
+        nombre: 'SELLER CENTER Y LOGÍSTICA', grupo: 'Grupo Elektra', division: 'Canales Digitales',
+        pais: 'México', moneda: 'MXN', fecha: '10/06/2020',
+        clsf: ['Grupo Elektra','Grupo Elektra','México','SECTOR MERCADO MASIVO','CANALES','CANALES DIGITALES','ELEKTRA DIGITAL','OPERACIONES','SELLER CENTER Y LOGÍSTICA'],
+        cuentas: [
+          { num:'615001', nombre:'Logística de última milla', rubro:'Operación', vinculada:true },
+          { num:'615022', nombre:'Comisiones sellers', rubro:'Operación', vinculada:false },
+        ]
+      },
+      '291371': {
+        nombre: 'GROWTH ELEKTRA DIGITAL', grupo: 'Grupo Elektra', division: 'Canales Digitales',
+        pais: 'México', moneda: 'MXN', fecha: '05/02/2021',
+        clsf: ['Grupo Elektra','Grupo Elektra','México','SECTOR MERCADO MASIVO','CANALES','CANALES DIGITALES','ELEKTRA DIGITAL','GROWTH','GROWTH ELEKTRA DIGITAL'],
+        cuentas: [
+          { num:'620150', nombre:'Premios al cliente', rubro:'Marketing', vinculada:true },
+          { num:'621003', nombre:'Performance Media', rubro:'Marketing', vinculada:false },
+        ]
+      },
+      '240025': {
+        nombre: 'CERRADO ECOMMERCE', grupo: 'Grupo Elektra', division: 'Canales Digitales',
+        pais: 'México', moneda: 'MXN', fecha: '18/09/2016',
+        clsf: ['Grupo Elektra','Grupo Elektra','México','SECTOR MERCADO MASIVO','CANALES','CANALES DIGITALES','ELEKTRA DIGITAL','CERRADO','CERRADO ECOMMERCE'],
+        cuentas: []
+      },
+      '237065': {
+        nombre: 'BANCA DIGITAL', grupo: 'Grupo Elektra', division: 'Canales Digitales',
+        pais: 'México', moneda: 'MXN', fecha: '12/04/2017',
+        clsf: ['Grupo Elektra','Grupo Elektra','México','SECTOR MERCADO MASIVO','CANALES','CANALES DIGITALES','BANCA DIGITAL','DIR BANCA DIGITAL','BANCA DIGITAL'],
+        cuentas: [
+          { num:'609023', nombre:'Promociones sorteos', rubro:'Publicidad', vinculada:true },
+          { num:'620150', nombre:'Premios al cliente', rubro:'Marketing', vinculada:false },
+        ]
+      },
+      '239755': {
+        nombre: 'PAGOS DIGITALES', grupo: 'Grupo Elektra', division: 'Canales Digitales',
+        pais: 'México', moneda: 'MXN', fecha: '30/07/2018',
+        clsf: ['Grupo Elektra','Grupo Elektra','México','SECTOR MERCADO MASIVO','CANALES','CANALES DIGITALES','BANCA DIGITAL','PAGOS','PAGOS DIGITALES'],
+        cuentas: [
+          { num:'630010', nombre:'Comisiones procesamiento', rubro:'Financiero', vinculada:true },
+        ]
+      },
+      '237084': {
+        nombre: 'PUBLICIDAD MARKETING BANCA DIGITAL', grupo: 'Grupo Elektra', division: 'Canales Digitales',
+        pais: 'México', moneda: 'MXN', fecha: '14/11/2019',
+        clsf: ['Grupo Elektra','Grupo Elektra','México','SECTOR MERCADO MASIVO','CANALES','CANALES DIGITALES','BANCA DIGITAL','PUBLICIDAD','PUBLICIDAD MARKETING BANCA DIGITAL'],
+        cuentas: [
+          { num:'609023', nombre:'Promociones sorteos', rubro:'Publicidad', vinculada:true },
+          { num:'609016', nombre:'Prod Publicitaria', rubro:'Producción', vinculada:false },
+        ]
+      },
+      '230222': {
+        nombre: 'DIRECCIÓN INTERNET BANCO AZTECA', grupo: 'Grupo Elektra', division: 'Canales Digitales',
+        pais: 'México', moneda: 'MXN', fecha: '08/01/2015',
+        clsf: ['Grupo Elektra','Grupo Elektra','México','SECTOR MERCADO MASIVO','CANALES','CANALES DIGITALES','BANCA DIGITAL','DIR INTERNET','DIRECCIÓN INTERNET BANCO AZTECA'],
+        cuentas: [
+          { num:'640005', nombre:'Hosting y plataforma', rubro:'Tecnología', vinculada:true },
+          { num:'640012', nombre:'Licencias software', rubro:'Tecnología', vinculada:false },
+        ]
+      },
+      '238002': {
+        nombre: 'PAGOS DIGITALES OP', grupo: 'Grupo Elektra', division: 'Canales Digitales',
+        pais: 'México', moneda: 'MXN', fecha: '25/05/2020',
+        clsf: ['Grupo Elektra','Grupo Elektra','México','SECTOR MERCADO MASIVO','CANALES','CANALES DIGITALES','BANCA DIGITAL','PAGOS OP','PAGOS DIGITALES OP'],
+        cuentas: [
+          { num:'630010', nombre:'Comisiones procesamiento', rubro:'Financiero', vinculada:true },
+        ]
+      },
+    };
+
+    function renderClasificaciones(clsf) {
+      let html = '';
+      for (let i = 0; i < 18; i++) {
+        const val = clsf[i];
+        const tieneVal = val && val.trim() !== '';
+        html += `
+          <div class="col-md-4">
+            <label class="form-label small fw-bold text-primary text-uppercase mb-1">Clasificación ${i + 1}</label>
+            <div class="fw-semibold ${tieneVal ? 'text-dark' : 'text-muted'} fs-6">${tieneVal ? val : '—'}</div>
+          </div>`;
+      }
+      document.getElementById('det-clases-row').innerHTML = html;
+    }
+
+    function renderCuentas(cuentas) {
+      const tbody = document.getElementById('det-cuentas-tbody');
+      if (!cuentas.length) {
+        tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted small py-4">
+          <i class="bi bi-inbox me-1"></i>Este Centro de Costos no tiene cuentas vinculadas.</td></tr>`;
+      } else {
+        tbody.innerHTML = cuentas.map(c => `
+          <tr>
+            <td class="fw-bold small">${c.num}</td>
+            <td class="small text-dark">${c.nombre}</td>
+            <td class="small text-dark">${c.rubro}</td>
+            <td class="text-center"><span class="badge bg-success-subtle text-success border border-success-subtle">Activo</span></td>
+            <td class="text-center">${c.vinculada
+              ? `<button class="btn btn-sm btn-outline-secondary py-0 px-2 fw-bold" disabled title="Cuenta con historial presupuestal — no se puede desvincular"><i class="bi bi-link"></i> Vinculada</button>`
+              : `<button class="btn btn-sm btn-outline-danger py-0 px-2 fw-bold" title="Desvincular esta cuenta del Centro de Costos"><i class="bi bi-x-circle me-1"></i>Desvincular</button>`}
+            </td>
+          </tr>`).join('');
+      }
+      document.getElementById('det-cuentas-count').textContent = cuentas.length;
+    }
+
     function seleccionarCeco(btn) {
       document.querySelectorAll('.cecoItem').forEach(el => el.classList.remove('active-ceco'));
       btn.classList.add('active-ceco');
+
+      const id = btn.dataset.id;
+      const data = CECOS[id];
+      if (data) {
+        document.getElementById('det-numero').textContent = id;
+        document.getElementById('det-nombre').textContent = data.nombre;
+        document.getElementById('det-grupo').textContent = data.grupo;
+        document.getElementById('det-division').textContent = data.division;
+        document.getElementById('det-pais').textContent = data.pais;
+        document.getElementById('det-moneda').textContent = data.moneda;
+        document.getElementById('det-fecha').textContent = data.fecha;
+        document.getElementById('modal-del-ceco').textContent = `${id} – ${data.nombre}`;
+        renderClasificaciones(data.clsf);
+        renderCuentas(data.cuentas);
+      }
+
       // Mostrar el detalle y ocultar el empty state
       document.getElementById('detalleVacio')?.classList.add('d-none');
       document.getElementById('detalleContenido')?.classList.remove('d-none');
