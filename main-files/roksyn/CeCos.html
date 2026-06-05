@@ -421,10 +421,10 @@
                               <div id="colN7Elektra" class="accordion-collapse collapse show">
                                 <div class="accordion-body p-0 ms-2 border-start border-warning-subtle ps-1">
                                   <div class="list-group list-group-flush" id="listElektraDigital">
-                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center cecoItem active-ceco"
+                                    <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center cecoItem"
                                       data-id="290020" onclick="seleccionarCeco(this)" style="font-size:0.8rem;">
-                                      <i class="bi bi-diagram-3-fill me-2" style="font-size:0.75rem;"></i>
-                                      <span>290020 – Dirección General Ecommerce</span>
+                                      <i class="bi bi-diagram-3 text-dark me-2" style="font-size:0.75rem;"></i>
+                                      <span class="text-dark">290020 – Dirección General Ecommerce</span>
                                     </button>
                                     <button class="list-group-item list-group-item-action py-2 px-2 border-0 d-flex align-items-center cecoItem"
                                       data-id="185784" onclick="seleccionarCeco(this)" style="font-size:0.8rem;">
@@ -517,6 +517,19 @@
 
           <!-- ── Panel derecho: Detalle del CeCo ── -->
           <div id="panelDetalle" class="flex-grow-1 bg-light overflow-auto">
+
+            <!-- Empty state: visible por default hasta seleccionar un CeCo -->
+            <div id="detalleVacio" class="h-100 d-flex flex-column align-items-center justify-content-center text-center px-4">
+              <i class="bi bi-diagram-3 text-secondary" style="font-size:3.5rem;opacity:0.4;"></i>
+              <h6 class="fw-bold text-dark mt-3 mb-1">Selecciona un Centro de Costos</h6>
+              <p class="text-muted small mb-0" style="max-width:340px;">
+                Elige un CeCo del árbol de la izquierda para consultar sus datos generales,
+                clasificaciones y cuentas vinculadas.
+              </p>
+            </div>
+
+            <!-- Contenido del detalle: oculto hasta seleccionar un CeCo -->
+            <div id="detalleContenido" class="d-none">
 
             <!-- Cabecera del detalle -->
             <div class="bg-white border-bottom px-4 py-3">
@@ -759,6 +772,9 @@
             </div>
             <!-- fin tabs detalle -->
 
+            </div>
+            <!-- fin detalleContenido -->
+
           </div>
           <!-- fin panelDetalle -->
 
@@ -931,6 +947,9 @@
     function seleccionarCeco(btn) {
       document.querySelectorAll('.cecoItem').forEach(el => el.classList.remove('active-ceco'));
       btn.classList.add('active-ceco');
+      // Mostrar el detalle y ocultar el empty state
+      document.getElementById('detalleVacio')?.classList.add('d-none');
+      document.getElementById('detalleContenido')?.classList.remove('d-none');
     }
 
     function filtrarArbol() {
