@@ -1572,535 +1572,89 @@
                     </thead>
                     <tbody id="tree-body">
 
-                      <!-- ===== GRUPO ELEKTRA ===== -->
-                      <tr id="tn-ge" class="tree-node fw-bold" style="cursor:pointer; background:#1a1d23; color:#fff;" onclick="toggleNode('tn-ge')">
-                        <td colspan="3" style="color:#fff;">
-                          <i id="ico-tn-ge" class="bi bi-chevron-right me-1" style="transition:transform .2s; transform:rotate(90deg); color:#fff;"></i>
-                          <i class="bi bi-building-fill me-2" style="color:#f59e0b;"></i>Grupo Elektra
-                        </td>
-                        <td class="text-end fw-bolder" style="color:#86efac;">162,428,000</td>
-                      </tr>
-                      <!-- ===== MÉXICO ===== -->
-                      <tr id="tn-mx" class="tree-node table-secondary fw-bold" data-p="tn-ge" style="cursor:pointer;"
-                        onclick="toggleNode('tn-mx')">
-                        <td colspan="3" style="padding-left:2rem;">
-                          <i id="ico-tn-mx" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-geo-alt-fill text-danger me-2"></i>México
-                        </td>
-                        <td class="text-end fw-bolder text-success">138,928,000</td>
-                      </tr>
-                      <!-- N4: Sector Mercado Masivo -->
-                      <tr id="tn-masivo" class="tree-node bg-light fw-bold" data-p="tn-mx"
-                        style="cursor: pointer; display: none;" onclick="toggleNode('tn-masivo')">
-                        <td colspan="3" class="ps-4">
-                          <i id="ico-tn-masivo" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-diagram-2 text-primary me-2"></i>Sector Mercado Masivo<span
-                            class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación
-                            4</span>
-                        </td>
-                        <td class="text-end fw-bold text-dark">98,428,000</td>
-                      </tr>
-                      <!-- N5: Unidades de Negocio -->
-                      <tr id="tn-unidades" class="tree-node" data-p="tn-masivo" style="cursor: pointer; display: none;"
-                        onclick="toggleNode('tn-unidades')">
-                        <td colspan="3" class="ps-5">
-                          <i id="ico-tn-unidades" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-folder2 text-dark me-2"></i>Unidades de Negocio<span
-                            class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación
-                            5</span>
-                        </td>
-                        <td class="text-end fw-bold text-dark">98,428,000</td>
-                      </tr>
-                      <!-- N6: Préstamos y Cobranza -->
-                      <tr id="tn-prestamos" class="tree-node" data-p="tn-unidades"
-                        style="cursor: pointer; display: none;" onclick="toggleNode('tn-prestamos')">
-                        <td colspan="3" style="padding-left:3.5rem;">
-                          <i id="ico-tn-prestamos" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-folder2-open text-warning me-2"></i>Préstamos y Cobranza<span
-                            class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación
-                            6</span>
-                        </td>
-                        <td class="text-end fw-bold text-dark">62,748,000</td>
-                      </tr>
-                      <!-- N7: Préstamos Sin Garantía -->
-                      <tr id="tn-singarantia" class="tree-node" data-p="tn-prestamos"
-                        style="cursor: pointer; display: none;" onclick="toggleNode('tn-singarantia')">
-                        <td colspan="3" style="padding-left:4.5rem;">
-                          <i id="ico-tn-singarantia" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-chevron-right text-dark me-1"></i>Préstamos Sin Garantía
-                          <span class="badge bg-secondary-subtle text-dark ms-2"
-                            style="font-size:0.65rem;">Clasificación 7</span>
-                        </td>
-                        <td class="text-end fw-bold text-dark">42,248,000</td>
-                      </tr>
-                      <!-- N8: Consumo Más Comercio -->
-                      <tr id="tn-consumo" class="tree-node" data-p="tn-singarantia"
-                        style="cursor: pointer; display: none;" onclick="toggleNode('tn-consumo')">
-                        <td colspan="3" style="padding-left:5.5rem;">
-                          <i id="ico-tn-consumo" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-dash text-dark me-2"></i>Consumo Más Comercio
-                          <span class="badge bg-secondary-subtle text-dark ms-2"
-                            style="font-size:0.65rem;">Clasificación 8</span>
-                        </td>
-                        <td class="text-end fw-bold text-dark">42,248,000</td>
-                      </tr>
-                      <!-- Hojas: Consumo MX -->
-                      <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Marca"
-                        data-tipo="Ordinario" data-clasificación="N8" data-ceco="100901 dir gral conectividad"
-                        data-camp="campaña conectividad tv" style="display: none;">
-                        <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>100901 – Dir Gral
-                          Conectividad</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-001 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Conectividad TV Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609011 – Televisión</td>
-                        <td class="text-end fw-bold text-success">12,500,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Oferteo"
-                        data-tipo="Ordinario" data-clasificación="N8" data-ceco="100901 dir gral conectividad"
-                        data-camp="campaña sorteos conectividad" style="display: none;">
-                        <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>100901 – Dir Gral
-                          Conectividad</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-002 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Sorteos y Promociones Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609023 – Promociones Sorteos</td>
-                        <td class="text-end fw-bold text-success">8,274,280</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Marca"
-                        data-tipo="Ordinario" data-clasificación="N8" data-ceco="291374 dirección mercadotecnia digital"
-                        data-camp="campaña digital tv marca" style="display: none;">
-                        <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>291374 – Dirección
-                          Mercadotecnia Digital</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-003 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Imagen de Marca TV Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609011 – Televisión</td>
-                        <td class="text-end fw-bold text-success">7,500,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Estrategia"
-                        data-tipo="Proy. Inversión" data-clasificación="N8"
-                        data-ceco="291374 dirección mercadotecnia digital" data-camp="proyecto digital redes sociales"
-                        style="display: none;">
-                        <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>291374 – Dirección
-                          Mercadotecnia Digital</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-004<span
-                              class="badge bg-info-subtle text-dark border border-info-subtle ms-1"
-                              style="font-size:0.65rem;">Proy. Inversión</span></div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Estrategia Digital Redes Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609045 – Digital y Redes Sociales</td>
-                        <td class="text-end fw-bold text-success">6,800,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Oferteo"
-                        data-tipo="Ordinario" data-clasificación="N8" data-ceco="102847 mercadotecnia préstamos"
-                        data-camp="campaña radio préstamos" style="display: none;">
-                        <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>102847 –
-                          Mercadotecnia Préstamos</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-005 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Radio Préstamos Verano</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609012 – Radio</td>
-                        <td class="text-end fw-bold text-success">3,173,720</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-consumo" data-pais="México" data-division="Sin División"
-                        data-tipo="Ordinario" data-clasificación="N8" data-ceco="102847 mercadotecnia préstamos"
-                        data-camp="material pop préstamos" style="display: none;">
-                        <td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>102847 –
-                          Mercadotecnia Préstamos</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-006 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">POP Puntos de Venta Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609031 – Material POP</td>
-                        <td class="text-end fw-bold text-success">4,000,000</td>
-                      </tr>
-                      <!-- N7: Crédito Con Garantía -->
-                      <tr id="tn-congarantia" class="tree-node" data-p="tn-prestamos"
-                        style="cursor: pointer; display: none;" onclick="toggleNode('tn-congarantia')">
-                        <td colspan="3" style="padding-left:4.5rem;">
-                          <i id="ico-tn-congarantia" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-chevron-right text-dark me-1"></i>Crédito Con Garantía
-                          <span class="badge bg-secondary-subtle text-dark ms-2"
-                            style="font-size:0.65rem;">Clasificación 7</span>
-                        </td>
-                        <td class="text-end fw-bold text-dark">20,500,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-congarantia" data-pais="México" data-division="Marca"
-                        data-tipo="Ordinario" data-clasificación="N7" data-ceco="310482 dir crédito hipotecario"
-                        data-camp="campaña hipotecario tv" style="display: none;">
-                        <td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>310482 – Dir
-                          Crédito Hipotecario</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-007 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Crédito Hipotecario TV Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609011 – Televisión</td>
-                        <td class="text-end fw-bold text-success">9,200,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-congarantia" data-pais="México" data-division="Oferteo"
-                        data-tipo="Proy. Inversión" data-clasificación="N7" data-ceco="310482 dir crédito hipotecario"
-                        data-camp="proyecto digital hipotecario" style="display: none;">
-                        <td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>310482 – Dir
-                          Crédito Hipotecario</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-00 <span
-                              class="badge bg-info-subtle text-dark border border-info-subtle ms-1"
-                              style="font-size:0.65rem;">Proy. Inversión</span></div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Medios Digitales Hipotecario</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609041 – Medios Digitales</td>
-                        <td class="text-end fw-bold text-success">7,800,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-congarantia" data-pais="México" data-division="Estrategia"
-                        data-tipo="Ordinario" data-clasificación="N7" data-ceco="310482 dir crédito hipotecario"
-                        data-camp="espectaculares hipotecario" style="display: none;">
-                        <td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>310482 – Dir
-                          Crédito Hipotecario</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-009 <span
-                              class="badge bg-info-subtle text-dark border border-info-subtle ms-1"
-                              style="font-size:0.65rem;">Proy. Inversión</span></div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Espectaculares Crédito Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609013 – Espectaculares</td>
-                        <td class="text-end fw-bold text-success">3,500,000</td>
-                      </tr>
-                      <!-- N6: Seguros y Finanzas -->
-                      <tr id="tn-seguros" class="tree-node" data-p="tn-unidades" style="cursor: pointer; display: none;"
-                        onclick="toggleNode('tn-seguros')">
-                        <td colspan="3" style="padding-left:3.5rem;">
-                          <i id="ico-tn-seguros" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-folder2-open text-warning me-2"></i>Seguros y Finanzas<span
-                            class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación
-                            6</span>
-                        </td>
-                        <td class="text-end fw-bold text-dark">35,680,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-seguros" data-pais="México" data-division="Marca"
-                        data-tipo="Ordinario" data-clasificación="N6" data-ceco="407823 dir seguros masivos"
-                        data-camp="campaña seguros masivos tv" style="display: none;">
-                        <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>407823 – Dir
-                          Seguros Masivos</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-010 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-
-
-                          <div style="font-size:0.75rem; color:#6b7280;">Seguros Masivos TV Q2</div>
-                        </td>
-                        <td style="font-size:0.8rem;">609011 – Televisión</td>
-                        <td class="text-end fw-bold text-success">14,500,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-seguros" data-pais="México" data-division="Oferteo"
-                        data-tipo="Ordinario" data-clasificación="N6" data-ceco="407823 dir seguros masivos"
-                        data-camp="sorteos seguros masivos" style="display: none;">
-                        <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>407823 – Dir
-                          Seguros Masivos</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-011 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Sorteos Seguros Verano</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609023 – Promociones Sorteos</td>
-                        <td class="text-end fw-bold text-success">9,180,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-seguros" data-pais="México" data-division="Estrategia"
-                        data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="407823 dir seguros masivos"
-                        data-camp="proyecto digital seguros" style="display: none;">
-                        <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>407823 – Dir
-                          Seguros Masivos</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-012 <span
-                              class="badge bg-info-subtle text-dark border border-info-subtle ms-1"
-                              style="font-size:0.65rem;">Proyecto Especial Mkt</span></div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Digital Seguros Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609041 – Medios Digitales</td>
-                        <td class="text-end fw-bold text-success">7,200,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-seguros" data-pais="México" data-division="Sin División"
-                        data-tipo="Ordinario" data-clasificación="N6" data-ceco="512901 mercadotecnia seguros vida"
-                        data-camp="pop seguros vida" style="display: none;">
-                        <td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>512901 –
-                          Mercadotecnia Seguros Vida</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-013 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">POP Seguros de Vida Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609031 – Material POP</td>
-                        <td class="text-end fw-bold text-success">4,800,000</td>
-                      </tr>
-                      <!-- ===== LAM ===== -->
-                      <tr id="tn-lam" class="tree-node table-secondary fw-bold" data-p="tn-ge" style="cursor:pointer;"
-                        onclick="toggleNode('tn-lam')">
-                        <td colspan="3" style="padding-left:2rem;">
-                          <i id="ico-tn-lam" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-globe-americas text-primary me-2"></i>LAM
-                        </td>
-                        <td class="text-end fw-bolder text-success">23,500,000</td>
-                      </tr>
-                      <!-- Guatemala -->
-                      <tr id="tn-gt" class="tree-node bg-light fw-bold" data-p="tn-lam"
-                        style="cursor: pointer; display: none;" onclick="toggleNode('tn-gt')">
-                        <td colspan="3" class="ps-4">
-                          <i id="ico-tn-gt" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-geo-alt text-dark me-2"></i>Guatemala
-                        </td>
-                        <td class="text-end fw-bold text-dark">10,500,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-gt" data-pais="Guatemala" data-division="Marca"
-                        data-tipo="Ordinario" data-clasificación="N6" data-ceco="810034 dir mkt guatemala"
-                        data-camp="campaña guatemala tv marca" style="display: none;">
-                        <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>810034 – Dir Mkt Guatemala</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-014 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">TV Guatemala Marca Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609011 – Televisión</td>
-                        <td class="text-end fw-bold text-success">4,500,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-gt" data-pais="Guatemala" data-division="Oferteo"
-                        data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="810034 dir mkt guatemala"
-                        data-camp="proyecto digital guatemala" style="display: none;">
-                        <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>810034 – Dir Mkt Guatemala</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-015 <span
-                              class="badge bg-info-subtle text-dark border border-info-subtle ms-1"
-                              style="font-size:0.65rem;">Proy. Inversión</span></div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Digital Guatemala Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609041 – Medios Digitales</td>
-                        <td class="text-end fw-bold text-success">3,700,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-gt" data-pais="Guatemala" data-division="Estrategia"
-                        data-tipo="Ordinario" data-clasificación="N6" data-ceco="810034 dir mkt guatemala"
-                        data-camp="campaña radio guatemala" style="display: none;">
-                        <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>810034 – Dir Mkt Guatemala</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-016 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Radio Guatemala Estrategia</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609012 – Radio</td>
-                        <td class="text-end fw-bold text-success">2,300,000</td>
-                      </tr>
-                      <!-- Honduras -->
-                      <tr id="tn-hn" class="tree-node bg-light fw-bold" data-p="tn-lam"
-                        style="cursor: pointer; display: none;" onclick="toggleNode('tn-hn')">
-                        <td colspan="3" class="ps-4">
-                          <i id="ico-tn-hn" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-geo-alt text-dark me-2"></i>Honduras
-                        </td>
-                        <td class="text-end fw-bold text-dark">7,600,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-hn" data-pais="Honduras" data-division="Marca"
-                        data-tipo="Ordinario" data-clasificación="N6" data-ceco="920182 dir mkt honduras"
-                        data-camp="campaña honduras tv" style="display: none;">
-                        <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>920182 – Dir Mkt Honduras</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-017 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">TV Honduras Marca Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609011 – Televisión</td>
-                        <td class="text-end fw-bold text-success">3,600,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-hn" data-pais="Honduras" data-division="Oferteo"
-                        data-tipo="Ordinario" data-clasificación="N6" data-ceco="920182 dir mkt honduras"
-                        data-camp="sorteos honduras" style="display: none;">
-                        <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>920182 – Dir Mkt Honduras</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-018 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Sorteos Honduras Verano</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609023 – Promociones Sorteos</td>
-                        <td class="text-end fw-bold text-success">2,600,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-hn" data-pais="Honduras" data-division="Estrategia"
-                        data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="920182 dir mkt honduras"
-                        data-camp="proyecto digital honduras" style="display: none;">
-                        <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>920182 – Dir Mkt Honduras</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-019<span
-                              class="badge bg-info-subtle text-dark border border-info-subtle ms-1"
-                              style="font-size:0.65rem;">Proy. Inversión</span></div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Digital Honduras Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609041 – Medios Digitales</td>
-                        <td class="text-end fw-bold text-success">1,400,000</td>
-                      </tr>
-                      <!-- Panamá -->
-                      <tr id="tn-pa" class="tree-node bg-light fw-bold" data-p="tn-lam"
-                        style="cursor: pointer; display: none;" onclick="toggleNode('tn-pa')">
-                        <td colspan="3" class="ps-4">
-                          <i id="ico-tn-pa" class="bi bi-chevron-right me-1 text-dark"
-                            style="transition: transform 0.2s; transform: rotate(0deg);"></i>
-                          <i class="bi bi-geo-alt text-dark me-2"></i>Panamá
-                        </td>
-                        <td class="text-end fw-bold text-dark">5,400,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-pa" data-pais="Panamá" data-division="Marca"
-                        data-tipo="Ordinario" data-clasificación="N6" data-ceco="1010293 dir mkt panamá"
-                        data-camp="campaña panamá tv marca" style="display: none;">
-                        <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>1010293 – Dir Mkt Panamá</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-020 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">TV Panamá Marca Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609011 – Televisión</td>
-                        <td class="text-end fw-bold text-success">3,100,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-pa" data-pais="Panamá" data-division="Oferteo"
-                        data-tipo="Ordinario" data-clasificación="N6" data-ceco="1010293 dir mkt panamá"
-                        data-camp="radio panamá oferteo" style="display: none;">
-                        <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>1010293 – Dir Mkt Panamá</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-021 <span
-                              class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span>
-                          </div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Radio Panamá Oferteo Q2</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609012 – Radio</td>
-                        <td class="text-end fw-bold text-success">1,400,000</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-pa" data-pais="Panamá" data-division="Estrategia"
-                        data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="1010293 dir mkt panamá"
-                        data-camp="proyecto digital panamá" style="display: none;">
-                        <td class="ps-5"><i class="bi bi-building me-1 text-dark"></i>1010293 – Dir Mkt Panamá</td>
-                        <td>
-                          <div class="fw-semibold" style="font-size:0.8rem;">C2026-022 <span
-                              class="badge bg-info-subtle text-dark border border-info-subtle ms-1"
-                              style="font-size:0.65rem;">Proy. Inversión</span></div>
-                          <div style="font-size:0.75rem; color:#6b7280;">Digital Panamá Estrategia</div>
-
-
-                        </td>
-                        <td style="font-size:0.8rem;">609041 – Medios Digitales</td>
-                        <td class="text-end fw-bold text-success">900,000</td>
-                      </tr>
-
-                      <!-- ===== TV AZTECA ===== -->
-                      <tr id="tn-tva" class="tree-node fw-bold" style="cursor:pointer; background:#1a1d23; color:#fff;" onclick="toggleNode('tn-tva')">
-                        <td colspan="3" style="color:#fff;">
-                          <i id="ico-tn-tva" class="bi bi-chevron-right me-1" style="transition:transform .2s; transform:rotate(0deg); color:#fff;"></i>
-                          <i class="bi bi-building-fill me-2" style="color:#3b82f6;"></i>TV Azteca
-                        </td>
-                        <td class="text-end fw-bolder" style="color:#86efac;">0</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-tva" style="display:none;">
-                        <td colspan="4" class="text-center text-muted py-3" style="font-size:0.8rem; padding-left:2rem;">
-                          <i class="bi bi-info-circle me-1"></i>Sin carga registrada para este período
-                        </td>
-                      </tr>
-
-                      <!-- ===== BOFF ===== -->
-                      <tr id="tn-boff" class="tree-node fw-bold" style="cursor:pointer; background:#1a1d23; color:#fff;" onclick="toggleNode('tn-boff')">
-                        <td colspan="3" style="color:#fff;">
-                          <i id="ico-tn-boff" class="bi bi-chevron-right me-1" style="transition:transform .2s; transform:rotate(0deg); color:#fff;"></i>
-                          <i class="bi bi-building-fill me-2" style="color:#10b981;"></i>BOFF
-                        </td>
-                        <td class="text-end fw-bolder" style="color:#86efac;">0</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-boff" style="display:none;">
-                        <td colspan="4" class="text-center text-muted py-3" style="font-size:0.8rem; padding-left:2rem;">
-                          <i class="bi bi-info-circle me-1"></i>Sin carga registrada para este período
-                        </td>
-                      </tr>
-
-                      <!-- ===== TOTALPLAY ===== -->
-                      <tr id="tn-tp" class="tree-node fw-bold" style="cursor:pointer; background:#1a1d23; color:#fff;" onclick="toggleNode('tn-tp')">
-                        <td colspan="3" style="color:#fff;">
-                          <i id="ico-tn-tp" class="bi bi-chevron-right me-1" style="transition:transform .2s; transform:rotate(0deg); color:#fff;"></i>
-                          <i class="bi bi-building-fill me-2" style="color:#a855f7;"></i>Totalplay
-                        </td>
-                        <td class="text-end fw-bolder" style="color:#86efac;">0</td>
-                      </tr>
-                      <tr class="tree-leaf" data-p="tn-tp" style="display:none;">
-                        <td colspan="4" class="text-center text-muted py-3" style="font-size:0.8rem; padding-left:2rem;">
-                          <i class="bi bi-info-circle me-1"></i>Sin carga registrada para este período
-                        </td>
-                      </tr>
+                      <tr id="tn-grupo-elektra" class="tree-node fw-bold" style="cursor:pointer; background:#1a1d23; color:#fff;" onclick="toggleNode('tn-grupo-elektra')"><td colspan="3" style="color:#fff; padding-left:0;"><i id="ico-tn-grupo-elektra" class="bi bi-chevron-right me-1" style="transition:transform .2s; transform:rotate(90deg); color:#fff;"></i><i class="bi bi-building-fill me-2" style="color:#f59e0b;"></i>Grupo Elektra</td><td class="text-end fw-bolder" style="color:#86efac;">139,548,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico" class="tree-node table-secondary fw-bold" data-p="tn-grupo-elektra" style="cursor:pointer;" onclick="toggleNode('tn-grupo-elektra-mexico')"><td colspan="3" style="padding-left:2rem;"><i id="ico-tn-grupo-elektra-mexico" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-geo-alt-fill text-danger  me-2"></i>México</td><td class="text-end fw-bolder text-success">116,048,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-mercado-masivo" class="tree-node " data-p="tn-grupo-elektra-mexico" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-mercado-masivo')"><td colspan="3" style="padding-left:3rem;"><i id="ico-tn-grupo-elektra-mexico-sector-mercado-masivo" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-diagram-2 text-primary text-primary me-2"></i>Sector Mercado Masivo<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 4</span></td><td class="text-end fw-bold text-dark">85,948,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-mercado-masivo" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio')"><td colspan="3" style="padding-left:3.5rem;"><i id="ico-tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2 text-dark text-dark me-2"></i>Unidades de Negocio<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 5</span></td><td class="text-end fw-bold text-dark">85,948,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Préstamos y Cobranza<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">58,748,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia')"><td colspan="3" style="padding-left:4.5rem;"><i id="ico-tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-chevron-right text-dark text-dark me-2"></i>Préstamos Sin Garantía<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 7</span></td><td class="text-end fw-bold text-dark">38,248,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia-consumo-mas-comercio" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia-consumo-mas-comercio')"><td colspan="3" style="padding-left:5.5rem;"><i id="ico-tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia-consumo-mas-comercio" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-dash text-dark text-dark me-2"></i>Consumo Más Comercio<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 8</span></td><td class="text-end fw-bold text-dark">38,248,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia-consumo-mas-comercio" data-pais="México" data-division="Marca" data-tipo="Ordinario" data-clasificación="N8" data-ceco="230388 – publicidad credimax efectivo" data-camp="préstamo efectivo: evolución" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="Préstamos Sin Garantía" data-n8="Consumo Más Comercio" style="display:none;"><td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>230388 – Publicidad CrediMax Efectivo</td><td><div class="fw-semibold" style="font-size:0.8rem;">170<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Préstamo Efectivo: Evolución</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">12,500,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia-consumo-mas-comercio" data-pais="México" data-division="Oferteo" data-tipo="Ordinario" data-clasificación="N8" data-ceco="231002 – créditos personales" data-camp="originación" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="Préstamos Sin Garantía" data-n8="Consumo Más Comercio" style="display:none;"><td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>231002 – Créditos Personales</td><td><div class="fw-semibold" style="font-size:0.8rem;">130<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Originación</div></td><td style="font-size:0.8rem;">609023 – Promociones sorteos</td><td class="text-end fw-bold text-success">8,274,280</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia-consumo-mas-comercio" data-pais="México" data-division="Marca" data-tipo="Ordinario" data-clasificación="N8" data-ceco="238051 – publicidad crédito al consumo elektra" data-camp="aniversario elektra" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="Préstamos Sin Garantía" data-n8="Consumo Más Comercio" style="display:none;"><td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>238051 – Publicidad Crédito al Consumo Elektra</td><td><div class="fw-semibold" style="font-size:0.8rem;">240<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Aniversario Elektra</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">7,500,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia-consumo-mas-comercio" data-pais="México" data-division="Estrategia" data-tipo="Proy. Inversión" data-clasificación="N8" data-ceco="291374 – dirección mercadotecnia digital" data-camp="lanzamiento app money free flex" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="Préstamos Sin Garantía" data-n8="Consumo Más Comercio" style="display:none;"><td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>291374 – Dirección Mercadotecnia Digital</td><td><div class="fw-semibold" style="font-size:0.8rem;">168<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">Lanzamiento App Money Free Flex</div></td><td style="font-size:0.8rem;">609026 – Pub. y Propaganda Di</td><td class="text-end fw-bold text-success">6,800,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-sin-garantia-consumo-mas-comercio" data-pais="México" data-division="Oferteo" data-tipo="Ordinario" data-clasificación="N8" data-ceco="239729 – publicidad cobranza" data-camp="buen fin" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="Préstamos Sin Garantía" data-n8="Consumo Más Comercio" style="display:none;"><td style="padding-left:6.5rem;"><i class="bi bi-building me-1 text-dark"></i>239729 – Publicidad Cobranza</td><td><div class="fw-semibold" style="font-size:0.8rem;">125<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Buen Fin</div></td><td style="font-size:0.8rem;">609010 – Radio</td><td class="text-end fw-bold text-success">3,173,720</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-con-garantia" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-con-garantia')"><td colspan="3" style="padding-left:4.5rem;"><i id="ico-tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-con-garantia" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-chevron-right text-dark text-dark me-2"></i>Préstamos Con Garantía<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 7</span></td><td class="text-end fw-bold text-dark">20,500,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-con-garantia" data-pais="México" data-division="Marca" data-tipo="Ordinario" data-clasificación="N7" data-ceco="239189 – producto crédito para hogar" data-camp="mundial 2026" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="Préstamos Con Garantía" data-n8="" style="display:none;"><td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>239189 – Producto Crédito para Hogar</td><td><div class="fw-semibold" style="font-size:0.8rem;">146<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">MUNDIAL 2026</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">9,200,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-con-garantia" data-pais="México" data-division="Oferteo" data-tipo="Proy. Inversión" data-clasificación="N7" data-ceco="230235 – producto crédito para conectividad" data-camp="hot sale" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="Préstamos Con Garantía" data-n8="" style="display:none;"><td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>230235 – Producto Crédito para Conectividad</td><td><div class="fw-semibold" style="font-size:0.8rem;">384<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">Hot Sale</div></td><td style="font-size:0.8rem;">609026 – Pub. y Propaganda Di</td><td class="text-end fw-bold text-success">7,800,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza-prestamos-con-garantia" data-pais="México" data-division="Estrategia" data-tipo="Ordinario" data-clasificación="N7" data-ceco="226611 – publicidad crédito italika y distribuidores" data-camp="moto sale" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="Préstamos Con Garantía" data-n8="" style="display:none;"><td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>226611 – Publicidad Crédito Italika y Distribuidores</td><td><div class="fw-semibold" style="font-size:0.8rem;">237<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Moto Sale</div></td><td style="font-size:0.8rem;">609013 – Material Punto Venta</td><td class="text-end fw-bold text-success">3,500,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-captacion" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-captacion')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-captacion" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Captación<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">11,100,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-captacion-guardadito" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-captacion" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-captacion-guardadito')"><td colspan="3" style="padding-left:4.5rem;"><i id="ico-tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-captacion-guardadito" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-chevron-right text-dark text-dark me-2"></i>Guardadito<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 7</span></td><td class="text-end fw-bold text-dark">11,100,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-captacion-guardadito" data-pais="México" data-division="Marca" data-tipo="Ordinario" data-clasificación="N7" data-ceco="238043 – publicidad guardadito" data-camp="campaña guardadito" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Captación" data-n7="Guardadito" data-n8="" style="display:none;"><td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>238043 – Publicidad Guardadito</td><td><div class="fw-semibold" style="font-size:0.8rem;">261<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Campaña Guardadito</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">6,400,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-captacion-guardadito" data-pais="México" data-division="Sin división" data-tipo="Ordinario" data-clasificación="N7" data-ceco="230017 – dir captación" data-camp="débito negocio" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Captación" data-n7="Guardadito" data-n8="" style="display:none;"><td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>230017 – Dir Captación</td><td><div class="fw-semibold" style="font-size:0.8rem;">200<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Débito Negocio</div></td><td style="font-size:0.8rem;">609013 – Material Punto Venta</td><td class="text-end fw-bold text-success">2,900,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-captacion-guardadito" data-pais="México" data-division="Estrategia" data-tipo="Proy. Inversión" data-clasificación="N7" data-ceco="237114 – captación nómina" data-camp="gasto ordinario (bau)" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Captación" data-n7="Guardadito" data-n8="" style="display:none;"><td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>237114 – Captación Nómina</td><td><div class="fw-semibold" style="font-size:0.8rem;">201<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">Gasto Ordinario (BAU)</div></td><td style="font-size:0.8rem;">609015 – Inv de mercados</td><td class="text-end fw-bold text-success">1,800,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-seguros" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-seguros')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-seguros" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Seguros<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">16,100,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-seguros-seguros-vida" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-seguros" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-seguros-seguros-vida')"><td colspan="3" style="padding-left:4.5rem;"><i id="ico-tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-seguros-seguros-vida" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-chevron-right text-dark text-dark me-2"></i>Seguros Vida<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 7</span></td><td class="text-end fw-bold text-dark">16,100,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-seguros-seguros-vida" data-pais="México" data-division="Marca" data-tipo="Ordinario" data-clasificación="N7" data-ceco="335567 – publicidad seguros azteca marca" data-camp="institucional banco azteca" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Seguros" data-n7="Seguros Vida" data-n8="" style="display:none;"><td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>335567 – Publicidad Seguros Azteca Marca</td><td><div class="fw-semibold" style="font-size:0.8rem;">243<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Institucional Banco Azteca</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">8,600,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-seguros-seguros-vida" data-pais="México" data-division="Oferteo" data-tipo="Ordinario" data-clasificación="N7" data-ceco="108154 – publicidad afore marca" data-camp="ahorro voluntario" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Seguros" data-n7="Seguros Vida" data-n8="" style="display:none;"><td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>108154 – Publicidad Afore Marca</td><td><div class="fw-semibold" style="font-size:0.8rem;">317<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Ahorro Voluntario</div></td><td style="font-size:0.8rem;">609023 – Promociones sorteos</td><td class="text-end fw-bold text-success">4,300,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-mercado-masivo-unidades-de-negocio-seguros-seguros-vida" data-pais="México" data-division="Estrategia" data-tipo="Proy. Inversión" data-clasificación="N7" data-ceco="269" data-camp="aon digital" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Seguros" data-n7="Seguros Vida" data-n8="" style="display:none;"><td style="padding-left:5.5rem;"><i class="bi bi-building me-1 text-dark"></i>269</td><td><div class="fw-semibold" style="font-size:0.8rem;">Aon digital · 269<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">Aon digital</div></td><td style="font-size:0.8rem;">609026 – Pub. y Propaganda Di</td><td class="text-end fw-bold text-success">3,200,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-corporativo" class="tree-node " data-p="tn-grupo-elektra-mexico" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-corporativo')"><td colspan="3" style="padding-left:3rem;"><i id="ico-tn-grupo-elektra-mexico-sector-corporativo" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-diagram-2 text-primary text-primary me-2"></i>Sector Corporativo<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 4</span></td><td class="text-end fw-bold text-dark">20,100,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-corporativo-empresas-de-datos" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-corporativo" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-corporativo-empresas-de-datos')"><td colspan="3" style="padding-left:3.5rem;"><i id="ico-tn-grupo-elektra-mexico-sector-corporativo-empresas-de-datos" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2 text-dark text-dark me-2"></i>Empresas de Datos<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 5</span></td><td class="text-end fw-bold text-dark">9,500,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-corporativo-empresas-de-datos-algorithia" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-corporativo-empresas-de-datos" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-corporativo-empresas-de-datos-algorithia')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-grupo-elektra-mexico-sector-corporativo-empresas-de-datos-algorithia" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Algorithia<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">9,500,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-corporativo-empresas-de-datos-algorithia" data-pais="México" data-division="Marca" data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="101220 – dirección algorithia" data-camp="proyectos especiales dir mkt marca" data-n4="Sector Corporativo" data-n5="Empresas de Datos" data-n6="Algorithia" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>101220 – Dirección Algorithia</td><td><div class="fw-semibold" style="font-size:0.8rem;">361<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">Proyectos Especiales Dir Mkt Marca</div></td><td style="font-size:0.8rem;">609028 – Publicidad Internet</td><td class="text-end fw-bold text-success">5,400,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-corporativo-empresas-de-datos-algorithia" data-pais="México" data-division="Estrategia" data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="101245 – shopinbaz superapp" data-camp="lanzamiento app money free flex" data-n4="Sector Corporativo" data-n5="Empresas de Datos" data-n6="Algorithia" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>101245 – ShopinBAZ SuperApp</td><td><div class="fw-semibold" style="font-size:0.8rem;">168<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">Lanzamiento App Money Free Flex</div></td><td style="font-size:0.8rem;">609026 – Pub. y Propaganda Di</td><td class="text-end fw-bold text-success">4,100,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-corporativo-publicidad-institucional" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-corporativo" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-corporativo-publicidad-institucional')"><td colspan="3" style="padding-left:3.5rem;"><i id="ico-tn-grupo-elektra-mexico-sector-corporativo-publicidad-institucional" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2 text-dark text-dark me-2"></i>Publicidad Institucional<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 5</span></td><td class="text-end fw-bold text-dark">10,600,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-sector-corporativo-publicidad-institucional-comunicacion-institucional" class="tree-node " data-p="tn-grupo-elektra-mexico-sector-corporativo-publicidad-institucional" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-sector-corporativo-publicidad-institucional-comunicacion-institucional')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-grupo-elektra-mexico-sector-corporativo-publicidad-institucional-comunicacion-institucional" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Comunicación Institucional<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">10,600,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-corporativo-publicidad-institucional-comunicacion-institucional" data-pais="México" data-division="Marca" data-tipo="Ordinario" data-clasificación="N6" data-ceco="237061 – comunicación institucional" data-camp="institucional ekt" data-n4="Sector Corporativo" data-n5="Publicidad Institucional" data-n6="Comunicación Institucional" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>237061 – Comunicación Institucional</td><td><div class="fw-semibold" style="font-size:0.8rem;">137<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Institucional EKT</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">6,700,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-sector-corporativo-publicidad-institucional-comunicacion-institucional" data-pais="México" data-division="Sin división" data-tipo="Ordinario" data-clasificación="N6" data-ceco="224774 – publicidad institucional marca banco" data-camp="institucional banco azteca" data-n4="Sector Corporativo" data-n5="Publicidad Institucional" data-n6="Comunicación Institucional" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>224774 – Publicidad Institucional Marca Banco</td><td><div class="fw-semibold" style="font-size:0.8rem;">243<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Institucional Banco Azteca</div></td><td style="font-size:0.8rem;">609036 – Patrocinios</td><td class="text-end fw-bold text-success">3,900,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-soporte-pais" class="tree-node " data-p="tn-grupo-elektra-mexico" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-soporte-pais')"><td colspan="3" style="padding-left:3rem;"><i id="ico-tn-grupo-elektra-mexico-soporte-pais" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-diagram-2 text-primary text-primary me-2"></i>Soporte País<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 4</span></td><td class="text-end fw-bold text-dark">10,000,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-soporte-pais-canales" class="tree-node " data-p="tn-grupo-elektra-mexico-soporte-pais" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-soporte-pais-canales')"><td colspan="3" style="padding-left:3.5rem;"><i id="ico-tn-grupo-elektra-mexico-soporte-pais-canales" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2 text-dark text-dark me-2"></i>Canales<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 5</span></td><td class="text-end fw-bold text-dark">10,000,000</td></tr>
+                      <tr id="tn-grupo-elektra-mexico-soporte-pais-canales-canales-digitales" class="tree-node " data-p="tn-grupo-elektra-mexico-soporte-pais-canales" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-mexico-soporte-pais-canales-canales-digitales')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-grupo-elektra-mexico-soporte-pais-canales-canales-digitales" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Canales Digitales<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">10,000,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-soporte-pais-canales-canales-digitales" data-pais="México" data-division="Estrategia" data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="185784 – publicidad elektra digital" data-camp="mundial 2026" data-n4="Soporte País" data-n5="Canales" data-n6="Canales Digitales" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>185784 – Publicidad Elektra Digital</td><td><div class="fw-semibold" style="font-size:0.8rem;">376<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">MUNDIAL 2026</div></td><td style="font-size:0.8rem;">609028 – Publicidad Internet</td><td class="text-end fw-bold text-success">4,800,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-mexico-soporte-pais-canales-canales-digitales" data-pais="México" data-division="Oferteo" data-tipo="Ordinario" data-clasificación="N6" data-ceco="240003 – publicidad elektra" data-camp="navidad" data-n4="Soporte País" data-n5="Canales" data-n6="Canales Digitales" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>240003 – Publicidad Elektra</td><td><div class="fw-semibold" style="font-size:0.8rem;">573<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Navidad</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">5,200,000</td></tr>
+                      <tr id="tn-grupo-elektra-lam" class="tree-node table-secondary fw-bold" data-p="tn-grupo-elektra" style="cursor:pointer;" onclick="toggleNode('tn-grupo-elektra-lam')"><td colspan="3" style="padding-left:2rem;"><i id="ico-tn-grupo-elektra-lam" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-globe-americas text-primary  me-2"></i>LAM</td><td class="text-end fw-bolder text-success">23,500,000</td></tr>
+                      <tr id="tn-grupo-elektra-lam-sector-mercado-masivo" class="tree-node " data-p="tn-grupo-elektra-lam" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-lam-sector-mercado-masivo')"><td colspan="3" style="padding-left:3rem;"><i id="ico-tn-grupo-elektra-lam-sector-mercado-masivo" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-diagram-2 text-primary text-primary me-2"></i>Sector Mercado Masivo<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 4</span></td><td class="text-end fw-bold text-dark">23,500,000</td></tr>
+                      <tr id="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio" class="tree-node " data-p="tn-grupo-elektra-lam-sector-mercado-masivo" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio')"><td colspan="3" style="padding-left:3.5rem;"><i id="ico-tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2 text-dark text-dark me-2"></i>Unidades de Negocio<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 5</span></td><td class="text-end fw-bold text-dark">23,500,000</td></tr>
+                      <tr id="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza" class="tree-node " data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Préstamos y Cobranza<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">10,500,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza" data-pais="Guatemala" data-division="Marca" data-tipo="Ordinario" data-clasificación="N6" data-ceco="240014 – publicidad western union" data-camp="madres" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>240014 – Publicidad Western Union</td><td><div class="fw-semibold" style="font-size:0.8rem;">206<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Madres</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">4,500,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza" data-pais="Guatemala" data-division="Oferteo" data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="240017 – publicidad dinero express" data-camp="mundial 2026" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>240017 – Publicidad Dinero Express</td><td><div class="fw-semibold" style="font-size:0.8rem;">396<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">MUNDIAL 2026</div></td><td style="font-size:0.8rem;">609026 – Pub. y Propaganda Di</td><td class="text-end fw-bold text-success">3,700,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-prestamos-y-cobranza" data-pais="Guatemala" data-division="Estrategia" data-tipo="Ordinario" data-clasificación="N6" data-ceco="240034 – publicidad aprende y crece" data-camp="back to school" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Préstamos y Cobranza" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>240034 – Publicidad Aprende y Crece</td><td><div class="fw-semibold" style="font-size:0.8rem;">256<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Back To School</div></td><td style="font-size:0.8rem;">609010 – Radio</td><td class="text-end fw-bold text-success">2,300,000</td></tr>
+                      <tr id="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-remesas" class="tree-node " data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio" style="cursor:pointer; display:none;" onclick="toggleNode('tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-remesas')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-remesas" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Remesas<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">13,000,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-remesas" data-pais="Guatemala" data-division="Marca" data-tipo="Ordinario" data-clasificación="N6" data-ceco="240014 – publicidad western union" data-camp="navidad" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Remesas" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>240014 – Publicidad Western Union</td><td><div class="fw-semibold" style="font-size:0.8rem;">573<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Navidad</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">3,600,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-remesas" data-pais="Guatemala" data-division="Oferteo" data-tipo="Ordinario" data-clasificación="N6" data-ceco="283140 – dinero express" data-camp="hot sale" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Remesas" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>283140 – Dinero Express</td><td><div class="fw-semibold" style="font-size:0.8rem;">559<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Hot Sale</div></td><td style="font-size:0.8rem;">609023 – Promociones sorteos</td><td class="text-end fw-bold text-success">2,600,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-remesas" data-pais="Guatemala" data-division="Estrategia" data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="240017 – publicidad dinero express" data-camp="mundial 2026" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Remesas" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>240017 – Publicidad Dinero Express</td><td><div class="fw-semibold" style="font-size:0.8rem;">440<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">MUNDIAL 2026</div></td><td style="font-size:0.8rem;">609028 – Publicidad Internet</td><td class="text-end fw-bold text-success">1,400,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-remesas" data-pais="Guatemala" data-division="Marca" data-tipo="Ordinario" data-clasificación="N6" data-ceco="240014 – publicidad western union" data-camp="aniversario elektra" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Remesas" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>240014 – Publicidad Western Union</td><td><div class="fw-semibold" style="font-size:0.8rem;">240<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Aniversario Elektra</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">3,100,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-remesas" data-pais="Guatemala" data-division="Oferteo" data-tipo="Ordinario" data-clasificación="N6" data-ceco="240069 – publicidad marketing" data-camp="buen fin" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Remesas" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>240069 – Publicidad Marketing</td><td><div class="fw-semibold" style="font-size:0.8rem;">125<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Buen Fin</div></td><td style="font-size:0.8rem;">609010 – Radio</td><td class="text-end fw-bold text-success">1,400,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-grupo-elektra-lam-sector-mercado-masivo-unidades-de-negocio-remesas" data-pais="Guatemala" data-division="Estrategia" data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="185784 – publicidad elektra digital" data-camp="mundial 2026" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Remesas" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>185784 – Publicidad Elektra Digital</td><td><div class="fw-semibold" style="font-size:0.8rem;">365<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">MUNDIAL 2026</div></td><td style="font-size:0.8rem;">609028 – Publicidad Internet</td><td class="text-end fw-bold text-success">900,000</td></tr>
+                      <tr id="tn-tv-azteca" class="tree-node fw-bold" style="cursor:pointer; background:#1a1d23; color:#fff;" onclick="toggleNode('tn-tv-azteca')"><td colspan="3" style="color:#fff; padding-left:0;"><i id="ico-tn-tv-azteca" class="bi bi-chevron-right me-1" style="transition:transform .2s; transform:rotate(0deg); color:#fff;"></i><i class="bi bi-building-fill me-2" style="color:#3b82f6;"></i>TV Azteca</td><td class="text-end fw-bolder" style="color:#86efac;">18,600,000</td></tr>
+                      <tr id="tn-tv-azteca-mexico" class="tree-node table-secondary fw-bold" data-p="tn-tv-azteca" style="cursor:pointer; display:none;" onclick="toggleNode('tn-tv-azteca-mexico')"><td colspan="3" style="padding-left:2rem;"><i id="ico-tn-tv-azteca-mexico" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-geo-alt-fill text-danger  me-2"></i>México</td><td class="text-end fw-bolder text-success">18,600,000</td></tr>
+                      <tr id="tn-tv-azteca-mexico-sector-mercado-masivo" class="tree-node " data-p="tn-tv-azteca-mexico" style="cursor:pointer; display:none;" onclick="toggleNode('tn-tv-azteca-mexico-sector-mercado-masivo')"><td colspan="3" style="padding-left:3rem;"><i id="ico-tn-tv-azteca-mexico-sector-mercado-masivo" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-diagram-2 text-primary text-primary me-2"></i>Sector Mercado Masivo<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 4</span></td><td class="text-end fw-bold text-dark">15,700,000</td></tr>
+                      <tr id="tn-tv-azteca-mexico-sector-mercado-masivo-contenidos-y-audiencias" class="tree-node " data-p="tn-tv-azteca-mexico-sector-mercado-masivo" style="cursor:pointer; display:none;" onclick="toggleNode('tn-tv-azteca-mexico-sector-mercado-masivo-contenidos-y-audiencias')"><td colspan="3" style="padding-left:3.5rem;"><i id="ico-tn-tv-azteca-mexico-sector-mercado-masivo-contenidos-y-audiencias" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2 text-dark text-dark me-2"></i>Contenidos y Audiencias<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 5</span></td><td class="text-end fw-bold text-dark">15,700,000</td></tr>
+                      <tr id="tn-tv-azteca-mexico-sector-mercado-masivo-contenidos-y-audiencias-programacion" class="tree-node " data-p="tn-tv-azteca-mexico-sector-mercado-masivo-contenidos-y-audiencias" style="cursor:pointer; display:none;" onclick="toggleNode('tn-tv-azteca-mexico-sector-mercado-masivo-contenidos-y-audiencias-programacion')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-tv-azteca-mexico-sector-mercado-masivo-contenidos-y-audiencias-programacion" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Programación<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">15,700,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-tv-azteca-mexico-sector-mercado-masivo-contenidos-y-audiencias-programacion" data-pais="México" data-division="Marca" data-tipo="Ordinario" data-clasificación="N6" data-ceco="310101 – publicidad azteca uno" data-camp="mundial 2026" data-n4="Sector Mercado Masivo" data-n5="Contenidos y Audiencias" data-n6="Programación" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>310101 – Publicidad Azteca Uno</td><td><div class="fw-semibold" style="font-size:0.8rem;">440<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">MUNDIAL 2026</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">7,200,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-tv-azteca-mexico-sector-mercado-masivo-contenidos-y-audiencias-programacion" data-pais="México" data-division="Oferteo" data-tipo="Ordinario" data-clasificación="N6" data-ceco="310145 – publicidad azteca 7" data-camp="hot sale" data-n4="Sector Mercado Masivo" data-n5="Contenidos y Audiencias" data-n6="Programación" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>310145 – Publicidad Azteca 7</td><td><div class="fw-semibold" style="font-size:0.8rem;">384<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Hot Sale</div></td><td style="font-size:0.8rem;">609012 – Prensa</td><td class="text-end fw-bold text-success">3,400,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-tv-azteca-mexico-sector-mercado-masivo-contenidos-y-audiencias-programacion" data-pais="México" data-division="Estrategia" data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="310180 – publicidad deportes azteca" data-camp="escudería" data-n4="Sector Mercado Masivo" data-n5="Contenidos y Audiencias" data-n6="Programación" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>310180 – Publicidad Deportes Azteca</td><td><div class="fw-semibold" style="font-size:0.8rem;">572<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">Escudería</div></td><td style="font-size:0.8rem;">609036 – Patrocinios</td><td class="text-end fw-bold text-success">5,100,000</td></tr>
+                      <tr id="tn-tv-azteca-mexico-sector-corporativo" class="tree-node " data-p="tn-tv-azteca-mexico" style="cursor:pointer; display:none;" onclick="toggleNode('tn-tv-azteca-mexico-sector-corporativo')"><td colspan="3" style="padding-left:3rem;"><i id="ico-tn-tv-azteca-mexico-sector-corporativo" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-diagram-2 text-primary text-primary me-2"></i>Sector Corporativo<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 4</span></td><td class="text-end fw-bold text-dark">2,900,000</td></tr>
+                      <tr id="tn-tv-azteca-mexico-sector-corporativo-publicidad-institucional" class="tree-node " data-p="tn-tv-azteca-mexico-sector-corporativo" style="cursor:pointer; display:none;" onclick="toggleNode('tn-tv-azteca-mexico-sector-corporativo-publicidad-institucional')"><td colspan="3" style="padding-left:3.5rem;"><i id="ico-tn-tv-azteca-mexico-sector-corporativo-publicidad-institucional" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2 text-dark text-dark me-2"></i>Publicidad Institucional<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 5</span></td><td class="text-end fw-bold text-dark">2,900,000</td></tr>
+                      <tr id="tn-tv-azteca-mexico-sector-corporativo-publicidad-institucional-comunicacion-institucional" class="tree-node " data-p="tn-tv-azteca-mexico-sector-corporativo-publicidad-institucional" style="cursor:pointer; display:none;" onclick="toggleNode('tn-tv-azteca-mexico-sector-corporativo-publicidad-institucional-comunicacion-institucional')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-tv-azteca-mexico-sector-corporativo-publicidad-institucional-comunicacion-institucional" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Comunicación Institucional<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">2,900,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-tv-azteca-mexico-sector-corporativo-publicidad-institucional-comunicacion-institucional" data-pais="México" data-division="Marca" data-tipo="Ordinario" data-clasificación="N6" data-ceco="310260 – comunicación institucional tva" data-camp="institucional ekt" data-n4="Sector Corporativo" data-n5="Publicidad Institucional" data-n6="Comunicación Institucional" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>310260 – Comunicación Institucional TVA</td><td><div class="fw-semibold" style="font-size:0.8rem;">137<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Institucional EKT</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">2,900,000</td></tr>
+                      <tr id="tn-boff" class="tree-node fw-bold" style="cursor:pointer; background:#1a1d23; color:#fff;" onclick="toggleNode('tn-boff')"><td colspan="3" style="color:#fff; padding-left:0;"><i id="ico-tn-boff" class="bi bi-chevron-right me-1" style="transition:transform .2s; transform:rotate(0deg); color:#fff;"></i><i class="bi bi-building-fill me-2" style="color:#10b981;"></i>BOFF</td><td class="text-end fw-bolder" style="color:#86efac;">7,600,000</td></tr>
+                      <tr id="tn-boff-mexico" class="tree-node table-secondary fw-bold" data-p="tn-boff" style="cursor:pointer; display:none;" onclick="toggleNode('tn-boff-mexico')"><td colspan="3" style="padding-left:2rem;"><i id="ico-tn-boff-mexico" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-geo-alt-fill text-danger  me-2"></i>México</td><td class="text-end fw-bolder text-success">7,600,000</td></tr>
+                      <tr id="tn-boff-mexico-sector-mercado-masivo" class="tree-node " data-p="tn-boff-mexico" style="cursor:pointer; display:none;" onclick="toggleNode('tn-boff-mexico-sector-mercado-masivo')"><td colspan="3" style="padding-left:3rem;"><i id="ico-tn-boff-mexico-sector-mercado-masivo" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-diagram-2 text-primary text-primary me-2"></i>Sector Mercado Masivo<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 4</span></td><td class="text-end fw-bold text-dark">7,600,000</td></tr>
+                      <tr id="tn-boff-mexico-sector-mercado-masivo-unidades-de-negocio" class="tree-node " data-p="tn-boff-mexico-sector-mercado-masivo" style="cursor:pointer; display:none;" onclick="toggleNode('tn-boff-mexico-sector-mercado-masivo-unidades-de-negocio')"><td colspan="3" style="padding-left:3.5rem;"><i id="ico-tn-boff-mexico-sector-mercado-masivo-unidades-de-negocio" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2 text-dark text-dark me-2"></i>Unidades de Negocio<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 5</span></td><td class="text-end fw-bold text-dark">7,600,000</td></tr>
+                      <tr id="tn-boff-mexico-sector-mercado-masivo-unidades-de-negocio-mobiliario-y-hogar" class="tree-node " data-p="tn-boff-mexico-sector-mercado-masivo-unidades-de-negocio" style="cursor:pointer; display:none;" onclick="toggleNode('tn-boff-mexico-sector-mercado-masivo-unidades-de-negocio-mobiliario-y-hogar')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-boff-mexico-sector-mercado-masivo-unidades-de-negocio-mobiliario-y-hogar" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Mobiliario y Hogar<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">7,600,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-boff-mexico-sector-mercado-masivo-unidades-de-negocio-mobiliario-y-hogar" data-pais="México" data-division="Marca" data-tipo="Ordinario" data-clasificación="N6" data-ceco="420101 – publicidad boff hogar" data-camp="aniversario elektra" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Mobiliario y Hogar" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>420101 – Publicidad BOFF Hogar</td><td><div class="fw-semibold" style="font-size:0.8rem;">240<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Aniversario Elektra</div></td><td style="font-size:0.8rem;">609013 – Material Punto Venta</td><td class="text-end fw-bold text-success">3,800,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-boff-mexico-sector-mercado-masivo-unidades-de-negocio-mobiliario-y-hogar" data-pais="México" data-division="Oferteo" data-tipo="Ordinario" data-clasificación="N6" data-ceco="420130 – publicidad boff línea blanca" data-camp="hot sale" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Mobiliario y Hogar" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>420130 – Publicidad BOFF Línea Blanca</td><td><div class="fw-semibold" style="font-size:0.8rem;">384<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Hot Sale</div></td><td style="font-size:0.8rem;">609026 – Pub. y Propaganda Di</td><td class="text-end fw-bold text-success">2,200,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-boff-mexico-sector-mercado-masivo-unidades-de-negocio-mobiliario-y-hogar" data-pais="México" data-division="Estrategia" data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="420160 – publicidad boff digital" data-camp="back to school" data-n4="Sector Mercado Masivo" data-n5="Unidades de Negocio" data-n6="Mobiliario y Hogar" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>420160 – Publicidad BOFF Digital</td><td><div class="fw-semibold" style="font-size:0.8rem;">256<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">Back To School</div></td><td style="font-size:0.8rem;">609028 – Publicidad Internet</td><td class="text-end fw-bold text-success">1,600,000</td></tr>
+                      <tr id="tn-totalplay" class="tree-node fw-bold" style="cursor:pointer; background:#1a1d23; color:#fff;" onclick="toggleNode('tn-totalplay')"><td colspan="3" style="color:#fff; padding-left:0;"><i id="ico-tn-totalplay" class="bi bi-chevron-right me-1" style="transition:transform .2s; transform:rotate(0deg); color:#fff;"></i><i class="bi bi-building-fill me-2" style="color:#a855f7;"></i>Totalplay</td><td class="text-end fw-bolder" style="color:#86efac;">13,400,000</td></tr>
+                      <tr id="tn-totalplay-mexico" class="tree-node table-secondary fw-bold" data-p="tn-totalplay" style="cursor:pointer; display:none;" onclick="toggleNode('tn-totalplay-mexico')"><td colspan="3" style="padding-left:2rem;"><i id="ico-tn-totalplay-mexico" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-geo-alt-fill text-danger  me-2"></i>México</td><td class="text-end fw-bolder text-success">13,400,000</td></tr>
+                      <tr id="tn-totalplay-mexico-soporte-pais" class="tree-node " data-p="tn-totalplay-mexico" style="cursor:pointer; display:none;" onclick="toggleNode('tn-totalplay-mexico-soporte-pais')"><td colspan="3" style="padding-left:3rem;"><i id="ico-tn-totalplay-mexico-soporte-pais" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-diagram-2 text-primary text-primary me-2"></i>Soporte País<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 4</span></td><td class="text-end fw-bold text-dark">13,400,000</td></tr>
+                      <tr id="tn-totalplay-mexico-soporte-pais-canales" class="tree-node " data-p="tn-totalplay-mexico-soporte-pais" style="cursor:pointer; display:none;" onclick="toggleNode('tn-totalplay-mexico-soporte-pais-canales')"><td colspan="3" style="padding-left:3.5rem;"><i id="ico-tn-totalplay-mexico-soporte-pais-canales" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2 text-dark text-dark me-2"></i>Canales<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 5</span></td><td class="text-end fw-bold text-dark">13,400,000</td></tr>
+                      <tr id="tn-totalplay-mexico-soporte-pais-canales-conectividad-hogar" class="tree-node " data-p="tn-totalplay-mexico-soporte-pais-canales" style="cursor:pointer; display:none;" onclick="toggleNode('tn-totalplay-mexico-soporte-pais-canales-conectividad-hogar')"><td colspan="3" style="padding-left:4rem;"><i id="ico-tn-totalplay-mexico-soporte-pais-canales-conectividad-hogar" class="bi bi-chevron-right me-1 text-dark" style="transition:transform .2s; transform:rotate(0deg);"></i><i class="bi bi-folder2-open text-warning text-warning me-2"></i>Conectividad Hogar<span class="badge bg-secondary-subtle text-dark ms-2" style="font-size:0.65rem;">Clasificación 6</span></td><td class="text-end fw-bold text-dark">13,400,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-totalplay-mexico-soporte-pais-canales-conectividad-hogar" data-pais="México" data-division="Marca" data-tipo="Ordinario" data-clasificación="N6" data-ceco="510101 – publicidad totalplay hogar" data-camp="navidad" data-n4="Soporte País" data-n5="Canales" data-n6="Conectividad Hogar" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>510101 – Publicidad Totalplay Hogar</td><td><div class="fw-semibold" style="font-size:0.8rem;">573<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Navidad</div></td><td style="font-size:0.8rem;">609011 – Televisión</td><td class="text-end fw-bold text-success">6,300,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-totalplay-mexico-soporte-pais-canales-conectividad-hogar" data-pais="México" data-division="Oferteo" data-tipo="Ordinario" data-clasificación="N6" data-ceco="510140 – publicidad totalplay empresarial" data-camp="buen fin" data-n4="Soporte País" data-n5="Canales" data-n6="Conectividad Hogar" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>510140 – Publicidad Totalplay Empresarial</td><td><div class="fw-semibold" style="font-size:0.8rem;">125<span class="badge bg-light text-dark border ms-1" style="font-size:0.65rem;">Ordinario</span></div><div style="font-size:0.75rem; color:#6b7280;">Buen Fin</div></td><td style="font-size:0.8rem;">609012 – Prensa</td><td class="text-end fw-bold text-success">2,700,000</td></tr>
+                      <tr class="tree-leaf" data-p="tn-totalplay-mexico-soporte-pais-canales-conectividad-hogar" data-pais="México" data-division="Estrategia" data-tipo="Proy. Inversión" data-clasificación="N6" data-ceco="510175 – publicidad totalplay digital" data-camp="mundial 2026" data-n4="Soporte País" data-n5="Canales" data-n6="Conectividad Hogar" data-n7="" data-n8="" style="display:none;"><td style="padding-left:4.5rem;"><i class="bi bi-building me-1 text-dark"></i>510175 – Publicidad Totalplay Digital</td><td><div class="fw-semibold" style="font-size:0.8rem;">440<span class="badge bg-info-subtle text-dark border border-info-subtle ms-1" style="font-size:0.65rem;">Proy. Inversión</span></div><div style="font-size:0.75rem; color:#6b7280;">MUNDIAL 2026</div></td><td style="font-size:0.8rem;">609028 – Publicidad Internet</td><td class="text-end fw-bold text-success">4,400,000</td></tr>
+                    
                     </tbody>
                   </table>
                 </div>
@@ -3534,7 +3088,7 @@
 
   <script>
     /* ── Tree state ── */
-    const _nodeOpen = { 'tn-ge': true };
+    const _nodeOpen = { 'tn-grupo-elektra': true };
 
     function hideDescendants(id) {
       document.querySelectorAll(`[data-p="${id}"]`).forEach(row => {
