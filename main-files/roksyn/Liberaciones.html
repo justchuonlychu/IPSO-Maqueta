@@ -2759,60 +2759,46 @@
        Para la PRIMERA exposición se omitirían los campos de versión anterior y diferencia. -->
   <div class="modal fade" id="modalLiberar" tabindex="-1" data-bs-backdrop="static" style="display: none;">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content border-0 shadow-lg">
+      <div class="modal-content border-0 shadow">
 
-        <div class="modal-header bg-primary-subtle border-0 pb-3">
-          <h5 class="modal-title fw-bold text-primary d-flex align-items-center">
-            <i class="bi bi-cloud-arrow-up-fill me-2 fs-4"></i> Exponer Presupuesto a SIPRES
-          </h5>
+        <div class="modal-header border-0 pb-2">
+          <h6 class="modal-title fw-semibold text-dark d-flex align-items-center gap-2">
+            <i class="bi bi-cloud-arrow-up text-primary fs-5"></i> Exponer Presupuesto a SIPRES
+          </h6>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
-        <div class="modal-body px-4 pt-3 pb-2">
+        <div class="modal-body px-4 pt-2 pb-3">
 
-          <!-- Indicador de versión a generar -->
-          <div class="alert alert-primary d-flex align-items-center gap-2 py-2 mb-3">
-            <i class="bi bi-info-circle-fill"></i>
-            <span>Se generará la versión <strong>v5</strong>. El periodo de carga está <strong
-                class="text-success">Cerrado</strong> y el importe es mayor a $0.00.</span>
-          </div>
-
-          <!-- Comparativo de importes (para exposiciones subsecuentes) -->
-          <div class="row g-3 mb-3">
-            <div class="col-md-4">
-              <label class="form-label small fw-bold text-dark  mb-1">Versión Anterior (v4)</label>
-              <input class="form-control fw-bold text-dark bg-light text-end" value="150,000,000" disabled="">
+          <!-- Resumen de la exposición -->
+          <div class="bg-light rounded px-3 py-2 mb-3 d-flex align-items-center justify-content-between">
+            <div>
+              <span class="text-muted small">Versión a generar</span>
+              <div class="fw-bold text-dark">v1 <span class="badge bg-primary-subtle text-primary fw-semibold ms-1" style="font-size:0.7rem;">Primera exposición</span></div>
             </div>
-            <div class="col-md-4">
-              <label class="form-label small fw-bold text-dark  mb-1">Importe Total a Exponer</label>
-              <input class="form-control fw-bold text-success bg-white text-end" value="162,428,000" disabled="">
-            </div>
-            <div class="col-md-4">
-              <label class="form-label small fw-bold text-dark  mb-1">Diferencia vs Versión
-                Anterior</label>
-              <input class="form-control fw-bold text-primary bg-primary-subtle text-end" value="+ 12,428,000"
-                disabled="">
+            <div class="text-end">
+              <span class="text-muted small">Importe total</span>
+              <div class="fw-bold text-dark fs-6">$139,548,000</div>
             </div>
           </div>
 
           <!-- Comentarios opcionales -->
-          <div class="form-group mb-3">
-            <label class="form-label small fw-bold text-dark">Comentarios <span
-                class="text-dark fw-normal">(Opcional)</span></label>
-            <textarea class="form-control border-primary shadow-sm" rows="3"
-              placeholder="Describe los cambios de esta liberación (ej. ajuste de proyectos de inversión Q3, nuevos CeCos LAM)..."></textarea>
+          <div class="mb-3">
+            <label class="form-label small text-muted mb-1">Comentarios <span class="fw-normal">(Opcional)</span></label>
+            <textarea class="form-control form-control-sm" rows="3"
+              placeholder="Ej. Carga inicial de presupuesto aprobado para el ejercicio fiscal..."></textarea>
           </div>
 
-          <p class="small text-dark text-center mb-0">
-            <i class="bi bi-info-circle me-1"></i> Al confirmar, el sistema guardará la versión consecutiva en el
-            historial de exposiciones a SIPRES.
+          <p class="small text-muted text-center mb-0">
+            <i class="bi bi-info-circle me-1"></i>Al confirmar, quedará registrada la versión <strong>v1</strong> en el historial de exposiciones a SIPRES.
           </p>
         </div>
 
-        <div class="modal-footer bg-light border-top-0 d-flex justify-content-end gap-2 mt-2">
-          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button class="btn btn-success px-4 shadow-sm" data-bs-dismiss="modal"><i
-              class="bi bi-cloud-arrow-up me-1"></i>Confirmar Exposición</button>
+        <div class="modal-footer border-0 bg-light d-flex justify-content-end gap-2">
+          <button class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-sm btn-success px-4" data-bs-dismiss="modal">
+            <i class="bi bi-cloud-arrow-up me-1"></i>Confirmar Exposición
+          </button>
         </div>
       </div>
     </div>
