@@ -935,31 +935,28 @@
       <div class="card-body p-4">
         <h5 class="fw-bold text-dark mb-1"><span class="badge bg-primary me-2">1</span>Selecciona el Grupo Empresarial</h5>
         <p class="text-muted small mb-4">Elige el grupo al que pertenecen los Centros de Costo de esta solicitud.</p>
-        <div class="row g-3" id="gruposContainer">
-          <div class="col-md-4 col-sm-6">
-            <div class="card border-2 h-100 cursor-pointer grupo-card" onclick="seleccionarGrupo(this, 'Grupo Salinas')" style="cursor:pointer; transition:all .2s;">
-              <div class="card-body text-center py-4">
-                <div class="mb-3"><i class="bi bi-building fs-1 text-warning"></i></div>
-                <h6 class="fw-bold text-dark mb-1">Grupo Salinas</h6>
-                <p class="text-muted small mb-0">TV Azteca, Azteca Uno, ADN 40</p>
+        <div class="row g-2 justify-content-start" id="gruposContainer">
+          <div class="col-auto">
+            <div class="card border-2 cursor-pointer grupo-card border-primary bg-primary-subtle" onclick="seleccionarGrupo(this, 'Grupo Salinas')" style="cursor:pointer; transition:all .2s; min-width:120px;">
+              <div class="card-body text-center py-2 px-3">
+                <div class="mb-1"><i class="bi bi-router fs-4 text-info"></i></div>
+                <div class="fw-bold small text-dark">Totalplay</div>
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="card border-2 h-100 cursor-pointer grupo-card" onclick="seleccionarGrupo(this, 'Grupo Elektra')" style="cursor:pointer; transition:all .2s;">
-              <div class="card-body text-center py-4">
-                <div class="mb-3"><i class="bi bi-shop fs-1 text-primary"></i></div>
-                <h6 class="fw-bold text-dark mb-1">Grupo Elektra</h6>
-                <p class="text-muted small mb-0">Tiendas Elektra, Banco Azteca</p>
+          <div class="col-auto">
+            <div class="card border-2 cursor-pointer grupo-card border" onclick="seleccionarGrupo(this, 'Grupo Elektra')" style="cursor:pointer; transition:all .2s; min-width:120px;">
+              <div class="card-body text-center py-2 px-3">
+                <div class="mb-1"><i class="bi bi-shop fs-4 text-primary"></i></div>
+                <div class="fw-bold small text-dark">Grupo Elektra</div>
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="card border-2 h-100 cursor-pointer grupo-card" onclick="seleccionarGrupo(this, 'Italika')" style="cursor:pointer; transition:all .2s;">
-              <div class="card-body text-center py-4">
-                <div class="mb-3"><i class="bi bi-bicycle fs-1 text-success"></i></div>
-                <h6 class="fw-bold text-dark mb-1">Italika</h6>
-                <p class="text-muted small mb-0">Motos y vehículos ligeros</p>
+          <div class="col-auto">
+            <div class="card border-2 cursor-pointer grupo-card border" onclick="seleccionarGrupo(this, 'Italika')" style="cursor:pointer; transition:all .2s; min-width:120px;">
+              <div class="card-body text-center py-2 px-3">
+                <div class="mb-1"><i class="bi bi-pc-display fs-4 text-secondary"></i></div>
+                <div class="fw-bold small text-dark">BackOffice</div>
               </div>
             </div>
           </div>
