@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="semi-dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editar Solicitud | IPSO ODTs</title>
+
+  <!-- Plugins y Estilos Base -->
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <link href="assets/plugins/bs-stepper/css/bs-stepper.css" rel="stylesheet">
+  <link href="assets/css/extra-icons.css" rel="stylesheet">
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+
+  <!-- Styles -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+
+  <style>
+    .matrix-input { width: 78px; text-align: right; font-size: 0.8rem; padding: 4px 6px; border: 1px solid #ced4da; border-radius: 4px; }
+    .matrix-input:focus { border-color: #86b7fe; outline: 0; box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25); }
+    .matrix-input:disabled { background-color: #e9ecef; color: #adb5bd; cursor: not-allowed; }
+    .matrix-cell-ro { font-size: 0.78rem; }
+    .table-grouped .group-row td { background-color: #f8f9fa; border-top: 2px solid #dee2e6; }
+    .table-grouped tr[data-level="campana"] td { padding-left: 2rem; background-color: #fff; }
+    .table-grouped tr[data-level="cuenta"] td { padding-left: 3.5rem; background-color: #fff; }
+    .toggle-icon { cursor: pointer; transition: transform .2s ease; display: inline-block; }
+    tr.collapsed .toggle-icon { transform: rotate(-90deg); }
+    /* Bitacora / timeline */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ''; position: absolute; left: 9px; top: 4px; bottom: 4px; width: 2px; background: #dee2e6; }
+    .timeline-item { position: relative; padding-bottom: 1.1rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -1.55rem; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--bs-primary); }
+    .timeline-item.tl-success::before { border-color: #198754; }
+    .timeline-item.tl-danger::before { border-color: #dc3545; }
+    .timeline-item.tl-warning::before { border-color: #ffc107; }
+    .timeline-item.tl-muted::before { border-color: #adb5bd; }
+    
+  </style>
+</head>
+
+<body class="pace-done">
+  <div class="pace pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99"><div class="pace-progress-inner"></div></div><div class="pace-activity"></div></div>
+
+  <!--start header-->
+  <header class="top-header">
+    <nav class="navbar navbar-expand justify-content-between">
+      <div class="btn-toggle-menu"><span class="material-symbols-outlined">menu</span></div>
+      <ul class="navbar-nav top-right-menu gap-2">
+        <li class="nav-item dark-mode"><a class="nav-link dark-mode-icon" href="javascript:;"><span class="material-symbols-outlined">light_mode</span></a></li>
+        <li class="nav-item dropdown dropdown-large">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+            <div class="position-relative"><span class="notify-badge">8</span><span class="material-symbols-outlined">notifications_none</span></div>
+          </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="offcanvas" href="#ThemeCustomizer"><span class="material-symbols-outlined">settings</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <!--end header-->
+
+  <!--start sidebar-->
+  <aside class="sidebar-wrapper">
+    <div class="sidebar-header">
+      <div class="logo-icon"><img src="assets/images/logo-icon.png" class="logo-img" alt=""></div>
+      <div class="logo-name flex-grow-1"><h5 class="mb-0">IPSO</h5></div>
+      <div class="sidebar-close"><span class="material-symbols-outlined">close</span></div>
+    </div>
+    <div class="sidebar-nav" data-simplebar="init">
+      <div class="simplebar-wrapper"><div class="simplebar-mask"><div class="simplebar-offset"><div class="simplebar-content-wrapper"><div class="simplebar-content">
+        <ul class="metismenu mm-show" id="menu">
+          <li><a href="index.html"><div class="parent-icon"><span class="material-symbols-outlined">home</span></div><div class="menu-title">Home</div></a></li>
+          <li><a href="SIPRES.html"><div class="parent-icon"><span class="material-symbols-outlined">redeem</span></div><div class="menu-title">Forecast</div></a></li>
+          <li class="menu-label mb-0 text-light">Gestion de Presupuestos</li>
+          <li class="mm-active">
+            <a href="javascript:;" class="has-arrow" aria-expanded="true"><div class="parent-icon"><span class="material-symbols-outlined">apps</span></div><div class="menu-title">Planeacion<br>Presupuestal</div></a>
+            <ul class="mm-collapse mm-show">
+              <li><a href="Parametros.html"><span class="material-symbols-outlined">arrow_right</span>Parametros</a></li>
+              <li><a class="has-arrow" href="javascript:;"><span class="material-symbols-outlined">arrow_right</span>Base Presupuestal</a>
+                <ul class="mm-collapse">
+                  <li><a href="BPresupuestal.html"><span class="material-symbols-outlined">arrow_right</span>Base del Ejercicio Activo</a></li>
+                  <li><a href="BPRegistros.html"><span class="material-symbols-outlined">arrow_right</span>Registro de Bases</a></li>
+                </ul>
+              </li>
+              <li class="mm-active"><a href="AEjercicio.html" class="mm-active"><span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a></li>
+              <li><a href="Autorizaciones.html"><span class="material-symbols-outlined">arrow_right</span>Autorizaciones</a></li>
+              <li><a href="Liberaciones.html"><span class="material-symbols-outlined">arrow_right</span>Liberaciones</a></li>
+            </ul>
+          </li>
+          <li><a href="javascript:;" class="has-arrow"><div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div><div class="menu-title">Ejercicio Presupuestal</div></a>
+            <ul class="mm-collapse">
+              <li><a href="SCarga.html"><span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales</a></li>
+              <li><a href="Reportes.html"><span class="material-symbols-outlined">arrow_right</span>Reportes</a></li>
+            </ul>
+          </li>
+          <li class="menu-label mb-0 text-light">Configuracion General</li>
+          <li><a href="javascript:;" class="has-arrow"><div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span></div><div class="menu-title">Sistema</div></a>
+            <ul class="mm-collapse">
+              <li><a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a></li>
+              <li><a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de Costos</a></li>
+              <li><a href="GCuentas.html"><span class="material-symbols-outlined">arrow_right</span>Grupo de Cuentas</a></li>
+              <li><a href="CTransversal.html"><span class="material-symbols-outlined">arrow_right</span>Campanas Transversales</a></li>
+              <li><a href="PFondo.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div></div></div></div></div></div>
+    </div>
+    <div class="sidebar-bottom dropdown dropup-center dropup">
+      <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
+        <div class="user-img"><img src="assets/images/avatars/01.png" alt=""></div>
+        <div class="user-info"><h5 class="mb-0 user-name">Edgar Grande</h5><p class="mb-0 user-designation">Carga Presupuestal</p></div>
+      </div>
+    </div>
+  </aside>
+  <!--end sidebar-->
+
+  <!--start main content-->
+  <main class="page-content">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+      <div>
+        <h4 class="fw-bold text-dark mb-0"><i class="bi bi-pencil-square text-primary me-2"></i>Editar Solicitud</h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb small mb-0 mt-1">
+            <li class="breadcrumb-item"><a href="AEjercicio.html" class="text-decoration-none text-muted"><i class="bi bi-house-door me-1"></i>Carga Presupuestal</a></li>
+            <li class="breadcrumb-item text-muted">Mis Solicitudes</li>
+            <li class="breadcrumb-item active fw-bold" aria-current="page">Edicion de Registro</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <div class="text-end">
+          <span class="d-block text-muted small fw-bold mb-1">Categoria</span>
+          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 shadow-sm">Proyecto de Inversion</span>
+        </div>
+        <div class="text-end">
+          <span class="d-block text-muted small fw-bold mb-1">Estatus</span>
+          <span class="badge bg-light text-dark border border-secondary px-3 py-1 fs-6 shadow-sm">Borrador</span>
+        </div>
+        <a href="AEjercicio.html" class="btn btn-outline-dark fw-bold radius-10 shadow-sm"><i class="bi bi-x-lg me-1"></i>Cancelar</a>
+      </div>
+    </div>
+
+    <div id="stepperSolicitud" class="bs-stepper">
+      <div class="card shadow-sm border-0 radius-10 mb-5">
+        <div class="card-header bg-white border-bottom pt-4 pb-3 px-4">
+          <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist">
+            <div class="step active" data-target="#paso-1"><div class="step-trigger bg-transparent p-0" id="stepperTrigger1">
+              <div class="bs-stepper-circle bg-primary"><i class="bi bi-1-circle fs-5"></i></div>
+              <div class="text-start ms-2"><h6 class="mb-0 fw-bold text-dark">Paso 1</h6><p class="mb-0 small text-muted">Datos generales y Centros de Costos</p></div></div></div>
+            <div class="bs-stepper-line"></div>
+            <div class="step" data-target="#paso-2"><div class="step-trigger bg-transparent p-0" id="stepperTrigger2">
+              <div class="bs-stepper-circle bg-secondary"><i class="bi bi-2-circle fs-5"></i></div>
+              <div class="text-start ms-2"><h6 class="mb-0 fw-bold text-dark">Paso 2</h6><p class="mb-0 small text-muted">Asignacion de presupuesto</p></div></div></div>
+          </div>
+        </div>
+        <div class="card-body p-4 bg-light"><div class="bs-stepper-content p-0">
+<div id="paso-1" role="tabpanel" class="bs-stepper-pane active dstepper-block"><div class="row g-4 align-items-start">
+                <div class="col-12 col-lg-5 border-end border-secondary border-opacity-25 pe-lg-4">
+                  <div class="card border-0 bg-white mb-4 shadow-sm radius-10"><div class="card-body p-4">
+                    <h6 class="fw-bold mb-3 text-dark border-bottom pb-2">Informacion General</h6>
+                    <div class="row g-3">
+                      <div class="col-6"><label class="form-label small fw-bold text-dark">Grupo Empresarial <i class="bi bi-lock-fill text-muted" title="Inmutable"></i></label>
+                        <select class="form-select shadow-none bg-light" disabled><option>Grupo Elektra</option></select></div>
+                      <div class="col-6"><label class="form-label small fw-bold text-dark">Categoria <i class="bi bi-lock-fill text-muted" title="Inmutable"></i></label>
+                        <select class="form-select shadow-none bg-light" disabled><option>Proyecto de Inversion</option></select></div>
+                      <div class="col-12"><label class="form-label small fw-bold text-dark">Tipo de Gasto Publicitario <span class="text-danger">*</span></label>
+                        <select class="form-select border-secondary border-opacity-50 text-dark shadow-none"><option selected>Proyecto Especial Mkt</option><option>Proyecto Especial Mkt</option><option>Gasto Ordinario</option></select></div>
+                      <div class="col-12"><label class="form-label small fw-bold text-dark">Division de Centros de Costos <span class="text-danger">*</span></label>
+                        <select class="form-select border-secondary border-opacity-50 text-dark shadow-none" onchange="document.getElementById('btnDivision').click()">
+                          <option selected>Sin Division</option><option>Marca</option><option>Oferteo</option><option>Estrategia</option><option>Sin Division</option></select>
+                        <button id="btnDivision" type="button" class="d-none" data-bs-toggle="modal" data-bs-target="#modalCambioDivision"></button></div>
+                      <div class="col-12"><label class="form-label small fw-bold text-dark">Nombre del Proyecto / Gasto <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control border-secondary border-opacity-50 text-dark shadow-none" value="Vitrinas de Joyeria 2027"></div>
+          <div class="col-12"><label class="form-label small fw-bold text-dark">Proyecto de Inversion <i class="bi bi-lock-fill text-muted ms-1" title="No editable"></i></label>
+            <input type="text" class="form-control bg-light text-dark fw-bold shadow-none" value="134845 - Vitrinas de Joyeria" readonly></div>
+                      <div class="col-6"><label class="form-label small fw-bold text-dark">Fecha Inicio <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control border-secondary border-opacity-50 text-dark shadow-none" value="2027-04-01"></div>
+                      <div class="col-6"><label class="form-label small fw-bold text-dark">Fecha Fin <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control border-secondary border-opacity-50 text-dark shadow-none" value="2027-05-31"></div>
+                      <div class="col-12"><label class="form-label small fw-bold text-dark">Descripcion <span class="text-danger">*</span></label>
+                        <textarea class="form-control border-secondary border-opacity-50 text-dark shadow-none" rows="3">Proyecto de inversion para renovacion de vitrinas y mobiliario de exhibicion de joyeria en 50 sucursales clave.</textarea></div>
+                    </div>
+                  </div></div>
+                </div>
+                <div class="col-12 col-lg-7 ps-lg-4">
+                  <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+                    <h6 class="fw-bold mb-0 text-dark">Seleccion de Centros de Costos</h6>
+                  </div>
+                  <p class="small text-muted mb-3">Al cambiar la Division se limpian los CeCos. Selecciona mediante la casilla los CeCos que participaran en la solicitud.</p>
+                  <div class="input-group input-group-sm shadow-sm mb-3"><span class="input-group-text bg-white text-dark"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control border-start-0 shadow-none py-2" placeholder="Buscar por Nombre o Numero de CeCo..."></div>
+                  <div class="table-responsive border border-secondary border-opacity-25 rounded bg-white shadow-sm" style="max-height:360px;overflow-y:auto;">
+                    <table class="table align-middle mb-0 text-dark table-grouped" style="font-size:.85rem;">
+                      <thead class="table-light sticky-top z-1 shadow-sm"><tr><th class="text-start ps-4 border-end">CENTRO DE COSTOS</th></tr></thead>
+                      <tbody>
+                        <tr class="group-row" data-level="ceco">
+                          <td class="border-end fw-bold"><div class="d-flex align-items-center">
+                            <div class="form-check mb-0 me-3"><input class="form-check-input border-secondary shadow-none" type="checkbox" checked></div>
+                            <i class="bi bi-building me-2 text-primary"></i>140025 - PROY VITRINAS JOYERIA</div></td>
+                        </tr></tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="col-12 mt-4 pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-end">
+                  <button class="btn btn-primary fw-bold radius-30 px-5 shadow-sm" onclick="navegarWizard(2,1)">Siguiente Paso <i class="bi bi-arrow-right ms-2"></i></button>
+                </div></div></div><div id="paso-2" role="tabpanel" class="bs-stepper-pane dstepper-none">
+              <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-3"><h5 class="fw-bold mb-0 text-dark">Distribucion Mensual de Importes</h5><button class="btn btn-sm btn-outline-dark fw-bold"><i class="bi bi-arrows-expand me-1"></i>Expandir Todos</button></div><div class="alert bg-secondary-subtle border border-secondary border-opacity-25 small radius-10 mb-3"><i class="bi bi-lock-fill me-2"></i><strong>Bloqueo cronologico:</strong> Los primeros 3 meses ya abrieron a Planeacion y aparecen deshabilitados.</div><div class="accordion accordion-flush border border-secondary border-opacity-25 rounded shadow-sm bg-white mb-4" id="accDistEd">
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button py-3 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#e-140025" aria-expanded="true">
+          <div class="d-flex justify-content-between w-100 pe-3 align-items-center">
+            <div><span class="badge bg-dark me-2">140025</span><span class="fw-bold text-dark">PROY VITRINAS JOYERIA</span></div>
+            
+          <div class="d-flex gap-4">
+            <div class="text-end"><p class="text-muted fw-bold mb-0" style="font-size:.65rem;">Asignado:</p>
+              <span class="fw-bold text-primary" style="font-size:.9rem;">$430,000</span></div>
+            <div class="text-end border-start ps-3"><p class="text-muted fw-bold mb-0" style="font-size:.65rem;">Tipo:</p>
+              <span class="fw-bold text-dark" style="font-size:.8rem;">Sin Limite</span></div>
+          </div>
+          </div>
+        </button></h2>
+        <div id="e-140025" class="accordion-collapse collapse show" data-bs-parent="#accDistEd">
+          <div class="accordion-body p-0"><div class="table-responsive">
+            <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.75rem;">
+              <thead class="table-light text-muted"><tr><th class="text-start ps-3" style="min-width:170px;">Cuenta Presupuestal</th><th style="min-width:64px;">Ene</th><th style="min-width:64px;">Feb</th><th style="min-width:64px;">Mar</th><th style="min-width:64px;">Abr</th><th style="min-width:64px;">May</th><th style="min-width:64px;">Jun</th><th style="min-width:64px;">Jul</th><th style="min-width:64px;">Ago</th><th style="min-width:64px;">Sep</th><th style="min-width:64px;">Oct</th><th style="min-width:64px;">Nov</th><th style="min-width:64px;">Dic</th><th class="bg-light text-dark border-start" style="min-width:90px;">Total</th><th style="width:40px;"></th></tr></thead>
+              <tbody><tr><td class="text-start ps-3 fw-bold text-dark small">609013 - Material punto de venta</td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="40,000.00" disabled></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="40,000.00" disabled></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="40,000.00" disabled></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="30,000.00"></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="30,000.00"></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="30,000.00"></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="30,000.00"></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="30,000.00"></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="40,000.00"></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="40,000.00"></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="40,000.00"></td><td><input type="text" class="matrix-input border-primary fw-bold text-dark shadow-none" value="40,000.00"></td><td class="fw-bold text-dark bg-light border-start">430,000.00</td><td class="text-center"><i class="bi bi-trash text-danger" role="button" title="Quitar renglon"></i></td></tr></tbody>
+            </table></div>
+            <div class="p-2 border-top"><button class="btn btn-sm btn-outline-primary fw-bold radius-10"><i class="bi bi-plus-lg me-1"></i>Agregar Renglon</button></div>
+          </div>
+        </div>
+      </div></div>
+    <div class="card border border-secondary border-opacity-25 shadow-sm radius-10 bg-light mb-4">
+      <div class="card-body p-4 text-center">
+        <small class="text-muted d-block fw-bold mb-1 text-uppercase" style="font-size:.7rem;letter-spacing:.5px;">Total Asignado de la Solicitud</small>
+        <span class="fw-bolder fs-2 text-primary">$430,000.00</span>
+        <p class="text-muted small mb-0 mt-2"><i class="bi bi-info-circle me-1"></i>Categoria sin Limite de Carga: no aplica monitoreo de Disponible.</p>
+      </div>
+    </div>
+              <div class="d-flex justify-content-between mt-4 pt-3 border-top border-secondary border-opacity-25">
+                <button class="btn btn-outline-dark fw-bold radius-30 px-4" onclick="navegarWizard(1,2)"><i class="bi bi-arrow-left me-1"></i>Anterior</button>
+                <div class="d-flex gap-2">
+                  <button type="button" class="btn btn-warning fw-bold text-dark shadow-sm px-4 radius-30"><i class="bi bi-save me-1"></i>Guardar Borrador</button>
+                  <button type="button" class="btn btn-primary fw-bold shadow-sm px-5 radius-30" ><i class="bi bi-send-fill me-2"></i>Enviar a Autorizacion</button>
+                </div>
+              </div></div></div></div></div></div>
+  <div class="modal fade" id="modalCambioDivision" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg radius-10">
+        <div class="modal-header bg-danger bg-opacity-10 border-bottom-0">
+          <h5 class="modal-title fw-bold text-danger"><i class="bi bi-exclamation-octagon-fill me-2"></i>Confirmar Cambio de Division</h5>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4 text-center">
+          <i class="bi bi-trash3 text-danger" style="font-size:3rem;"></i>
+          <p class="text-dark mt-3 mb-0">Al cambiar de <strong>Division</strong>, todos los Centros de Costos seleccionados y su distribucion de presupuesto se <strong>eliminaran</strong>.</p>
+          <p class="text-muted small mt-2">Esta accion limpia la matriz por completo. Deseas continuar?</p>
+        </div>
+        <div class="modal-footer bg-light border-top-0 px-4 py-3">
+          <button class="btn btn-outline-secondary fw-bold radius-30 px-4" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-danger fw-bold radius-30 px-4"><i class="bi bi-check-lg me-1"></i>Confirmar y Limpiar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </main>
+  <!--end main content-->
+
+  <div class="overlay btn-toggle-menu"></div>
+
+  <!--start theme customization-->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer">
+    <div class="offcanvas-header border-bottom"><h5 class="offcanvas-title">Theme Customizer</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body"><h6 class="mb-0">Theme Variation</h6><hr>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" checked=""><label class="form-check-label" for="SemiDarkTheme">Semi Dark</label></div>
+    </div>
+  </div>
+  <!--end theme customization-->
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    function navegarWizard(t, c) {
+      document.getElementById('paso-'+c).classList.remove('active','dstepper-block');
+      document.getElementById('paso-'+c).classList.add('dstepper-none');
+      document.getElementById('stepperTrigger'+c).parentNode.classList.remove('active');
+      document.getElementById('paso-'+t).classList.remove('dstepper-none');
+      document.getElementById('paso-'+t).classList.add('active','dstepper-block');
+      document.getElementById('stepperTrigger'+t).parentNode.classList.add('active');
+      const pc=document.querySelector('#stepperTrigger'+c+' .bs-stepper-circle');
+      if(pc){pc.classList.remove('bg-primary');pc.classList.add('bg-secondary');}
+      const tc=document.querySelector('#stepperTrigger'+t+' .bs-stepper-circle');
+      if(tc){tc.classList.remove('bg-secondary');tc.classList.add('bg-primary');}
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+  </script>
+</body>
+
+</html>
