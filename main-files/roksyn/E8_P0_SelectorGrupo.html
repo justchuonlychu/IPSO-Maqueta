@@ -913,330 +913,267 @@
   <!--end sidebar-->
 
   <!-- ================= INICIO DEL CONTENIDO PRINCIPAL ================= -->
+
+  <!-- ================= INICIO DEL CONTENIDO PRINCIPAL ================= -->
   <main class="page-content">
 
     <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
       <div>
-        <h4 class="fw-bold text-dark mb-0"><i class="bi bi-graph-up-arrow text-success me-2"></i>Nueva Solicitud — Proyecto de Inversión</h4>
+        <h4 class="fw-bold text-dark mb-0"><i class="bi bi-file-earmark-plus text-primary me-2"></i>Nueva Solicitud de Gasto</h4>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb small mb-0 mt-1">
             <li class="breadcrumb-item"><a href="AEjercicio.html" class="text-decoration-none text-muted">Carga Presupuestal</a></li>
-            <li class="breadcrumb-item"><a href="E8_P0_SelectorGrupo.html" class="text-decoration-none text-muted">Selector</a></li>
-            <li class="breadcrumb-item active fw-bold" aria-current="page">Alta de Registro</li>
+            <li class="breadcrumb-item active fw-bold" aria-current="page">Selección de Grupo y Tipo</li>
           </ol>
         </nav>
       </div>
-      <div class="d-flex align-items-center gap-3">
-        <div class="text-end">
-          <span class="d-block text-muted small fw-bold mb-1">Categoría del Trámite</span>
-          <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 fs-6 shadow-sm"><i class="bi bi-graph-up-arrow me-1"></i>Proyecto de Inversión</span>
+      <a href="AEjercicio.html" class="btn btn-outline-dark fw-bold radius-10 shadow-sm"><i class="bi bi-x-lg me-1"></i> Cancelar</a>
+    </div>
+
+    <!-- PASO 1: Grupo Empresarial -->
+    <div class="card shadow-sm border-0 radius-10 mb-4">
+      <div class="card-body p-4">
+        <h5 class="fw-bold text-dark mb-1"><span class="badge bg-primary me-2">1</span>Selecciona el Grupo Empresarial</h5>
+        <p class="text-muted small mb-4">Elige el grupo al que pertenecen los Centros de Costo de esta solicitud.</p>
+        <div class="row g-3" id="gruposContainer">
+          <div class="col-md-4 col-sm-6">
+            <div class="card border-2 h-100 cursor-pointer grupo-card" onclick="seleccionarGrupo(this, 'Grupo Salinas')" style="cursor:pointer; transition:all .2s;">
+              <div class="card-body text-center py-4">
+                <div class="mb-3"><i class="bi bi-building fs-1 text-warning"></i></div>
+                <h6 class="fw-bold text-dark mb-1">Grupo Salinas</h6>
+                <p class="text-muted small mb-0">TV Azteca, Azteca Uno, ADN 40</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="card border-2 h-100 cursor-pointer grupo-card" onclick="seleccionarGrupo(this, 'Grupo Elektra')" style="cursor:pointer; transition:all .2s;">
+              <div class="card-body text-center py-4">
+                <div class="mb-3"><i class="bi bi-shop fs-1 text-primary"></i></div>
+                <h6 class="fw-bold text-dark mb-1">Grupo Elektra</h6>
+                <p class="text-muted small mb-0">Tiendas Elektra, Banco Azteca</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="card border-2 h-100 cursor-pointer grupo-card" onclick="seleccionarGrupo(this, 'Italika')" style="cursor:pointer; transition:all .2s;">
+              <div class="card-body text-center py-4">
+                <div class="mb-3"><i class="bi bi-bicycle fs-1 text-success"></i></div>
+                <h6 class="fw-bold text-dark mb-1">Italika</h6>
+                <p class="text-muted small mb-0">Motos y vehículos ligeros</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <a href="E8_P0_SelectorGrupo.html" class="btn btn-outline-dark fw-bold radius-10 shadow-sm"><i class="bi bi-x-lg me-1"></i> Cancelar</a>
       </div>
     </div>
 
-    <div id="stepperSolicitud" class="bs-stepper">
-      <div class="card shadow-sm border-0 radius-10 mb-5">
-
-        <div class="card-header bg-white border-bottom pt-4 pb-3 px-4">
-          <div class="d-lg-flex flex-lg-row align-items-lg-center justify-content-lg-between" role="tablist">
-
-            <div class="step active" data-target="#paso-1">
-              <div class="step-trigger bg-transparent p-0" role="tab" id="stepperTrigger1" aria-controls="paso-1" aria-selected="true">
-                <div class="bs-stepper-circle bg-primary"><i class="bi bi-1-circle fs-5"></i></div>
-                <div class="text-start ms-2">
-                  <h6 class="mb-0 fw-bold text-dark">Cabecera</h6>
-                  <p class="mb-0 small text-muted">Datos generales del proyecto</p>
-                </div>
+    <!-- PASO 2: Tipo de Gasto (oculto hasta seleccionar grupo) -->
+    <div id="secTipoGasto" class="card shadow-sm border-0 radius-10 mb-4" style="display:none;">
+      <div class="card-body p-4">
+        <h5 class="fw-bold text-dark mb-1"><span class="badge bg-primary me-2">2</span>Tipo de Gasto</h5>
+        <p class="text-muted small mb-4">Grupo seleccionado: <strong id="grupoSeleccionadoLabel"></strong> — Elige la categoría del trámite.</p>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card border-2 h-100 tipo-card" onclick="seleccionarTipo('ordinario')" style="cursor:pointer; transition:all .2s;">
+              <div class="card-body text-center p-4">
+                <div class="mb-3"><i class="bi bi-calendar-check fs-1 text-primary"></i></div>
+                <h5 class="fw-bold text-dark mb-2">Presupuesto Ordinario</h5>
+                <p class="text-muted small mb-3">Campañas (Transversal / Negocio), Proyectos Especiales de Mkt y Gastos Ordinarios del ejercicio.</p>
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1">Seleccionar</span>
               </div>
             </div>
-
-            <div class="bs-stepper-line"></div>
-
-            <div class="step" data-target="#paso-2">
-              <div class="step-trigger bg-transparent p-0" role="tab" id="stepperTrigger2" aria-controls="paso-2" aria-selected="false">
-                <div class="bs-stepper-circle bg-secondary"><i class="bi bi-2-circle fs-5"></i></div>
-                <div class="text-start ms-2">
-                  <h6 class="mb-0 fw-bold text-dark">Matriz de Captura</h6>
-                  <p class="mb-0 small text-muted">CeCos, cuentas e importes</p>
-                </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card border-2 h-100 tipo-card" onclick="seleccionarTipo('inversion')" style="cursor:pointer; transition:all .2s;">
+              <div class="card-body text-center p-4">
+                <div class="mb-3"><i class="bi bi-graph-up-arrow fs-1 text-success"></i></div>
+                <h5 class="fw-bold text-dark mb-2">Proyecto de Inversión</h5>
+                <p class="text-muted small mb-3">Proyectos estratégicos de inversión de capital con vigencia multi-anual.</p>
+                <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1">Seleccionar</span>
               </div>
             </div>
-
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="card-body p-4 bg-light">
-          <div class="bs-stepper-content p-0">
+    <!-- Resultado: Ordinario -->
+    <div id="secOrdinario" style="display:none;" class="text-end mb-4">
+      <a href="NuevaSol.html" class="btn btn-primary btn-lg fw-bold radius-30 shadow-sm px-5">
+        Continuar con Solicitud Ordinaria <i class="bi bi-arrow-right ms-2"></i>
+      </a>
+    </div>
 
-            <!-- ========== PASO 1 ========== -->
-            <div id="paso-1" role="tabpanel" class="bs-stepper-pane active dstepper-block" aria-labelledby="stepperTrigger1">
-              <div class="row g-4 align-items-start">
-
-                <!-- Información General (izquierda) -->
-                <div class="col-12 col-lg-5 border-end border-secondary border-opacity-25 pe-lg-4">
-                  <h6 class="fw-bold mb-3 text-dark border-bottom pb-2">Información del Proyecto</h6>
-                  <div class="row g-3">
-                    <div class="col-12">
-                      <label class="form-label small fw-bold text-dark">Proyecto de Inversión <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none bg-white fw-bold" value="PI-001 - Expansión Digital" readonly="">
-                      <div class="form-text text-muted small">Proyecto seleccionado desde el catálogo</div>
-                    </div>
-                    <div class="col-6">
-                      <label class="form-label small fw-bold text-dark">Año de Registro</label>
-                      <input type="text" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none bg-white" value="2024" readonly="">
-                    </div>
-                    <div class="col-6">
-                      <label class="form-label small fw-bold text-dark">Vigencia</label>
-                      <input type="text" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none bg-white" value="2024 – 2027" readonly="">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label small fw-bold text-dark">Nombre de la Solicitud <span class="text-danger">*</span></label>
-                      <input type="text" class="form-control form-control-sm border-primary text-dark shadow-none" placeholder="Ej. Compra de servidores Q2 2026">
-                    </div>
-                    <div class="col-6">
-                      <label class="form-label small fw-bold text-dark">Fecha Inicio <span class="text-danger">*</span></label>
-                      <input type="date" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none">
-                    </div>
-                    <div class="col-6">
-                      <label class="form-label small fw-bold text-dark">Fecha Fin <span class="text-danger">*</span></label>
-                      <input type="date" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label small fw-bold text-dark">Descripción <span class="text-danger">*</span></label>
-                      <textarea class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" rows="3" placeholder="Mínimo 50 caracteres..."></textarea>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Control de Carga (derecha) -->
-                <div class="col-12 col-lg-7 ps-lg-4">
-                  <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
-                    <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-speedometer2 text-primary me-2"></i>Control de Carga</h6>
-                    <span class="badge bg-warning-subtle text-dark border border-warning px-3 py-1 small"><i class="bi bi-shield-check me-1"></i>Sujeto a Límite Presupuestal</span>
-                  </div>
-                  <p class="small text-muted mb-3">Los indicadores de cada CeCo se actualizarán conforme los selecciones en la Matriz de Captura (Paso 2).</p>
-
-                  <!-- Estado vacío (visible cuando no hay CeCos) -->
-                  <div id="controlCargaVacioInv" class="text-center py-5 text-muted border border-dashed rounded bg-white">
-                    <i class="bi bi-diagram-3 fs-1 d-block mb-2 opacity-25"></i>
-                    <p class="small mb-0">Aún no has seleccionado CeCos.<br>Ve a la <strong>Matriz de Captura</strong> y elige centros de costo en la primera columna.</p>
-                  </div>
-
-                  <!-- Panel de CeCos (visible cuando hay seleccionados) — mock con 1 CeCo -->
-                  <div id="controlCargaCecosInv" style="display:none;">
-                    <div class="card border border-secondary border-opacity-25 shadow-sm mb-3">
-                      <div class="card-body py-2 px-3">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                          <span class="fw-bold text-dark small">100901 — DIR GRAL CONECTIVIDAD</span>
-                          <span class="badge bg-success-subtle text-success border border-success-subtle small">Disponible</span>
-                        </div>
-                        <div class="row g-2 text-center mb-2" style="font-size: 0.75rem;">
-                          <div class="col-3">
-                            <div class="text-muted fw-bold text-uppercase" style="font-size:0.6rem;">Límite</div>
-                            <div class="fw-bold text-dark">$1,892,500</div>
-                          </div>
-                          <div class="col-3">
-                            <div class="text-muted fw-bold text-uppercase" style="font-size:0.6rem;">Disponible</div>
-                            <div class="fw-bold text-success">$1,442,500</div>
-                          </div>
-                          <div class="col-3">
-                            <div class="text-muted fw-bold text-uppercase" style="font-size:0.6rem;">Asignado</div>
-                            <div class="fw-bold text-primary">$450,000</div>
-                          </div>
-                          <div class="col-3">
-                            <div class="text-muted fw-bold text-uppercase" style="font-size:0.6rem;">% Consumido</div>
-                            <div class="fw-bold text-dark">23.7%</div>
-                          </div>
-                        </div>
-                        <div class="progress" style="height: 6px;">
-                          <div class="progress-bar bg-success" style="width: 23.7%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-12 mt-2 pt-3 border-top border-secondary border-opacity-25 d-flex justify-content-end">
-                  <button class="btn btn-primary fw-bold radius-30 px-5 shadow-sm" onclick="navegarWizard(2, 1)">Siguiente Paso <i class="bi bi-arrow-right ms-2"></i></button>
-                </div>
-              </div>
-            </div>
-
-            <!-- ========== PASO 2: MATRIZ ========== -->
-            <div id="paso-2" role="tabpanel" class="bs-stepper-pane dstepper-none" aria-labelledby="stepperTrigger2">
-
-              <!-- Control de Carga en cabecera de la matriz -->
-              <div class="mb-4">
-                <h6 class="fw-bold mb-3 text-dark border-bottom pb-2"><i class="bi bi-speedometer2 text-primary me-2"></i>Control de Carga — CeCos en esta Solicitud</h6>
-                <div class="row g-3" id="controlCargaMatrizInv">
-                  <!-- CeCo 1 -->
-                  <div class="col-md-6">
-                    <div class="card border border-secondary border-opacity-25 shadow-sm h-100">
-                      <div class="card-body py-2 px-3">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                          <span class="fw-bold text-dark small">100901 — DIR GRAL CONECTIVIDAD</span>
-                          <span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:0.65rem;">OK</span>
-                        </div>
-                        <div class="row g-1 text-center mb-2" style="font-size: 0.72rem;">
-                          <div class="col-3"><div class="text-muted" style="font-size:0.6rem;">LÍMITE</div><div class="fw-bold">$1,892,500</div></div>
-                          <div class="col-3"><div class="text-muted" style="font-size:0.6rem;">DISPONIBLE</div><div class="fw-bold text-success">$1,442,500</div></div>
-                          <div class="col-3"><div class="text-muted" style="font-size:0.6rem;">ASIGNADO</div><div class="fw-bold text-primary">$450,000</div></div>
-                          <div class="col-3"><div class="text-muted" style="font-size:0.6rem;">% CONS.</div><div class="fw-bold">23.7%</div></div>
-                        </div>
-                        <div class="progress" style="height:5px;"><div class="progress-bar bg-success" style="width:23.7%;"></div></div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- CeCo 2 -->
-                  <div class="col-md-6">
-                    <div class="card border border-secondary border-opacity-25 shadow-sm h-100">
-                      <div class="card-body py-2 px-3">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                          <span class="fw-bold text-dark small">291374 — DIR MKT DIGITAL</span>
-                          <span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:0.65rem;">Revisar</span>
-                        </div>
-                        <div class="row g-1 text-center mb-2" style="font-size: 0.72rem;">
-                          <div class="col-3"><div class="text-muted" style="font-size:0.6rem;">LÍMITE</div><div class="fw-bold">$700,000</div></div>
-                          <div class="col-3"><div class="text-muted" style="font-size:0.6rem;">DISPONIBLE</div><div class="fw-bold text-warning">$105,000</div></div>
-                          <div class="col-3"><div class="text-muted" style="font-size:0.6rem;">ASIGNADO</div><div class="fw-bold text-primary">$595,000</div></div>
-                          <div class="col-3"><div class="text-muted" style="font-size:0.6rem;">% CONS.</div><div class="fw-bold text-warning">85%</div></div>
-                        </div>
-                        <div class="progress" style="height:5px;"><div class="progress-bar bg-warning" style="width:85%;"></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Tabla Matriz -->
-              <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
-                <h6 class="fw-bold mb-0 text-dark">Matriz de Distribución Mensual</h6>
-                <button class="btn btn-sm btn-outline-success fw-bold radius-30 shadow-sm" onclick="agregarFilaInv()"><i class="bi bi-plus-circle me-1"></i>Agregar Fila</button>
-              </div>
-
-              <div class="table-responsive border rounded shadow-sm mb-4">
-                <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size: 0.78rem;" id="tablaMatrizInv">
-                  <thead class="table-light text-muted text-uppercase" style="font-size: 0.65rem;">
-                    <tr>
-                      <th class="text-start ps-2" style="min-width:180px;">Centro de Costo</th>
-                      <th class="text-start" style="min-width:170px;">Cuenta Presupuestal</th>
-                      <th style="min-width:70px;">Ene</th><th style="min-width:70px;">Feb</th><th style="min-width:70px;">Mar</th>
-                      <th style="min-width:70px;">Abr</th><th style="min-width:70px;">May</th><th style="min-width:70px;">Jun</th>
-                      <th style="min-width:70px;">Jul</th><th style="min-width:70px;">Ago</th><th style="min-width:70px;">Sep</th>
-                      <th style="min-width:70px;">Oct</th><th style="min-width:70px;">Nov</th><th style="min-width:70px;">Dic</th>
-                      <th class="bg-light text-dark" style="min-width:90px;">Total</th>
-                      <th style="min-width:36px;"></th>
-                    </tr>
-                  </thead>
-                  <tbody id="matrizBodyInv">
-                    <!-- Fila mock 1 -->
-                    <tr>
-                      <td class="text-start ps-1">
-                        <select class="form-select form-select-sm border-primary shadow-none" style="font-size:0.75rem;" onchange="actualizarControlCargaInv()">
-                          <option>100901 — DIR GRAL CONECTIVIDAD</option>
-                          <option>291374 — DIR MKT DIGITAL</option>
-                          <option>100500 — FINANZAS RETAIL</option>
-                        </select>
-                      </td>
-                      <td class="text-start">
-                        <select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none" style="font-size:0.75rem;">
-                          <option>609011 — Televisión</option>
-                          <option>609028 — Publicidad Digital</option>
-                          <option>609010 — Radio</option>
-                          <option>60443 — Sesiones y Eventos</option>
-                        </select>
-                      </td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="200,000"></td>
-                      <td><input type="text" class="matrix-input" value="250,000"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td class="fw-bold text-dark bg-light">450,000.00</td>
-                      <td><button class="btn btn-sm btn-link text-danger p-0" onclick="this.closest('tr').remove()"><i class="bi bi-trash"></i></button></td>
-                    </tr>
-                    <!-- Fila mock 2 -->
-                    <tr>
-                      <td class="text-start ps-1">
-                        <select class="form-select form-select-sm border-primary shadow-none" style="font-size:0.75rem;" onchange="actualizarControlCargaInv()">
-                          <option>100901 — DIR GRAL CONECTIVIDAD</option>
-                          <option selected="">291374 — DIR MKT DIGITAL</option>
-                          <option>100500 — FINANZAS RETAIL</option>
-                        </select>
-                      </td>
-                      <td class="text-start">
-                        <select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none" style="font-size:0.75rem;">
-                          <option>609011 — Televisión</option>
-                          <option selected="">609028 — Publicidad Digital</option>
-                          <option>609010 — Radio</option>
-                          <option>60443 — Sesiones y Eventos</option>
-                        </select>
-                      </td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td><input type="text" class="matrix-input" value="0.00"></td>
-                      <td class="fw-bold text-dark bg-light">0.00</td>
-                      <td><button class="btn btn-sm btn-link text-danger p-0" onclick="this.closest('tr').remove()"><i class="bi bi-trash"></i></button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <!-- Resumen global -->
-              <div class="row justify-content-end mb-5">
-                <div class="col-lg-5">
-                  <div class="card border border-secondary border-opacity-25 shadow-sm radius-10 bg-white">
-                    <div class="card-body py-3 px-4">
-                      <div class="d-flex justify-content-between align-items-center mb-1">
-                        <span class="text-muted small fw-bold text-uppercase">Total Global Capturado</span>
-                        <h4 class="fw-bold text-primary mb-0">$450,000.00</h4>
-                      </div>
-                      <div class="progress mt-2" style="height:8px;">
-                        <div class="progress-bar bg-primary" style="width: 23.7%;"></div>
-                      </div>
-                      <div class="d-flex justify-content-between mt-1">
-                        <small class="text-muted" style="font-size:0.65rem;">$0</small>
-                        <small class="text-primary fw-bold" style="font-size:0.7rem;">23.7% del límite combinado</small>
-                        <small class="text-muted" style="font-size:0.65rem;">$2,592,500</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="d-flex justify-content-between mt-2 pt-3 border-top border-secondary border-opacity-25">
-                <button class="btn btn-outline-dark fw-bold radius-30 px-4" onclick="navegarWizard(1, 2)"><i class="bi bi-arrow-left me-1"></i> Anterior</button>
-                <div class="d-flex gap-2">
-                  <button type="button" class="btn btn-warning fw-bold text-dark shadow-sm px-4 radius-30"><i class="bi bi-save me-1"></i> Guardar Borrador</button>
-                  <button type="button" class="btn btn-primary fw-bold shadow-sm px-5 radius-30" onclick="simularEnvioInv()"><i class="bi bi-send-fill me-2"></i>Enviar a Autorización</button>
-                </div>
-              </div>
-
-            </div>
-
+    <!-- Resultado: Inversión — tabla de proyectos -->
+    <div id="secInversion" class="card shadow-sm border-0 radius-10" style="display:none;">
+      <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h5 class="fw-bold text-dark mb-0"><span class="badge bg-success me-2">3</span>Proyectos de Inversión</h5>
+            <p class="text-muted small mb-0 mt-1">Selecciona un proyecto existente o registra uno nuevo.</p>
           </div>
+          <button class="btn btn-success fw-bold radius-30 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalNuevoProyecto">
+            <i class="bi bi-plus-circle me-1"></i> Nuevo Proyecto
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead class="table-secondary small text-uppercase text-center table-primary">
+              <tr>
+                <th class="text-start ps-4">No. + Nombre del Proyecto</th>
+                <th>Año de Registro</th>
+                <th>Vigencia</th>
+                <th>Centros de Costo</th>
+                <th class="pe-4">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr>
+                <td class="text-start ps-4">
+                  <span class="fw-bold text-dark d-block">PI-001</span>
+                  <span class="text-muted small">Expansión Digital</span>
+                </td>
+                <td class="text-muted">2024</td>
+                <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1">2024 – 2027</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-info border-0 shadow-none" data-bs-toggle="modal" data-bs-target="#modalCecosProyecto" onclick="mostrarCecos('PI-001','Expansión Digital')">
+                    <i class="bi bi-diagram-3 me-1"></i> Ver CeCos (3)
+                  </button>
+                </td>
+                <td class="pe-4">
+                  <a href="NuevaSol_Inversion.html" class="btn btn-sm btn-primary fw-bold radius-30 shadow-sm px-3">
+                    <i class="bi bi-file-earmark-plus me-1"></i> Registrar Solicitud
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-start ps-4">
+                  <span class="fw-bold text-dark d-block">PI-002</span>
+                  <span class="text-muted small">Modernización Infraestructura TI</span>
+                </td>
+                <td class="text-muted">2025</td>
+                <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1">2025 – 2026</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-info border-0 shadow-none" data-bs-toggle="modal" data-bs-target="#modalCecosProyecto" onclick="mostrarCecos('PI-002','Modernización Infraestructura TI')">
+                    <i class="bi bi-diagram-3 me-1"></i> Ver CeCos (2)
+                  </button>
+                </td>
+                <td class="pe-4">
+                  <a href="NuevaSol_Inversion.html" class="btn btn-sm btn-primary fw-bold radius-30 shadow-sm px-3">
+                    <i class="bi bi-file-earmark-plus me-1"></i> Registrar Solicitud
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-start ps-4">
+                  <span class="fw-bold text-dark d-block">PI-003</span>
+                  <span class="text-muted small">Plataforma E-Commerce</span>
+                </td>
+                <td class="text-muted">2025</td>
+                <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle px-3 py-1">2025 – 2028</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-info border-0 shadow-none" data-bs-toggle="modal" data-bs-target="#modalCecosProyecto" onclick="mostrarCecos('PI-003','Plataforma E-Commerce')">
+                    <i class="bi bi-diagram-3 me-1"></i> Ver CeCos (5)
+                  </button>
+                </td>
+                <td class="pe-4">
+                  <a href="NuevaSol_Inversion.html" class="btn btn-sm btn-primary fw-bold radius-30 shadow-sm px-3">
+                    <i class="bi bi-file-earmark-plus me-1"></i> Registrar Solicitud
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
 
   </main>
   <!-- ================= FIN DEL CONTENIDO PRINCIPAL ================= -->
+
+  <!-- Modal: CeCos del Proyecto -->
+  <div class="modal fade" id="modalCecosProyecto" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-light border-bottom-0 pb-0">
+          <div>
+            <h5 class="modal-title fw-bold text-dark" id="modalCecosTitulo">CeCos asignados</h5>
+            <p class="text-muted small mb-0" id="modalCecosSubtitulo"></p>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body px-4 pt-3 pb-4">
+          <table class="table table-sm table-hover align-middle mb-0" id="tablaCecosModal">
+            <thead class="table-light small text-uppercase">
+              <tr>
+                <th>No. CeCo</th>
+                <th>Nombre</th>
+                <th class="text-end">Límite</th>
+              </tr>
+            </thead>
+            <tbody id="bodyCecosModal"></tbody>
+          </table>
+        </div>
+        <div class="modal-footer bg-light border-top-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Nuevo Proyecto -->
+  <div class="modal fade" id="modalNuevoProyecto" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-light border-bottom-0 pb-0">
+          <h5 class="modal-title fw-bold text-dark"><i class="bi bi-plus-circle text-success me-2"></i>Nuevo Proyecto de Inversión</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body px-4 pt-3 pb-2">
+          <div class="row g-3">
+            <div class="col-md-5">
+              <label class="form-label small fw-bold text-dark">Número de Proyecto <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-sm border-primary shadow-none" placeholder="Ej. PI-004">
+            </div>
+            <div class="col-md-7">
+              <label class="form-label small fw-bold text-dark">Nombre del Proyecto <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-sm border-primary shadow-none" placeholder="Ej. Expansión Digital Q3">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label small fw-bold text-dark">Años de Vigencia <span class="text-danger">*</span></label>
+              <div class="input-group input-group-sm">
+                <input type="number" class="form-control border-primary shadow-none" placeholder="1" min="1" max="10">
+                <span class="input-group-text bg-white text-muted">año(s)</span>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <label class="form-label small fw-bold text-dark">Año de Inicio <span class="text-danger">*</span></label>
+              <select class="form-select form-select-sm border-primary shadow-none">
+                <option selected>2026</option>
+                <option>2027</option>
+                <option>2028</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label small fw-bold text-dark">Descripción <span class="text-danger">*</span></label>
+              <textarea class="form-control form-control-sm border-secondary border-opacity-50 shadow-none" rows="3" placeholder="Describe el objetivo, alcance y justificación del proyecto de inversión..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-light border-top-0 d-flex justify-content-center gap-2">
+          <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success fw-bold px-5 shadow-sm" onclick="guardarNuevoProyecto()">
+            <i class="bi bi-check-circle me-1"></i> Guardar Proyecto
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--start overlay-->
+  <div class="overlay btn-toggle-menu"></div>
+  <!--end overlay-->
 
   <!-- Scripts base -->
   <script src="assets/js/jquery.min.js"></script>
@@ -1247,64 +1184,73 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    function navegarWizard(targetStep, currentStep) {
-      document.getElementById('paso-' + currentStep).classList.remove('active', 'dstepper-block');
-      document.getElementById('paso-' + currentStep).classList.add('dstepper-none');
-      document.getElementById('stepperTrigger' + currentStep).parentNode.classList.remove('active');
-      document.getElementById('paso-' + targetStep).classList.remove('dstepper-none');
-      document.getElementById('paso-' + targetStep).classList.add('active', 'dstepper-block');
-      document.getElementById('stepperTrigger' + targetStep).parentNode.classList.add('active');
-      const prevCircle = document.querySelector('#stepperTrigger' + currentStep + ' .bs-stepper-circle');
-      if (prevCircle) { prevCircle.classList.remove('bg-primary'); prevCircle.classList.add('bg-secondary'); }
-      const targetCircle = document.querySelector('#stepperTrigger' + targetStep + ' .bs-stepper-circle');
-      if (targetCircle) { targetCircle.classList.remove('bg-secondary'); targetCircle.classList.add('bg-primary'); }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Mock data CeCos por proyecto
+    const cecosPorProyecto = {
+      'PI-001': [
+        { num: '100901', nombre: 'DIR GRAL CONECTIVIDAD', limite: '$1,892,500' },
+        { num: '291374', nombre: 'DIR MKT DIGITAL',       limite: '$700,000' },
+        { num: '100905', nombre: 'PAUTA RADIO NACIONAL',  limite: '$450,000' },
+      ],
+      'PI-002': [
+        { num: '100500', nombre: 'FINANZAS RETAIL',       limite: '$2,100,000' },
+        { num: '200301', nombre: 'EVENTOS BTL TEMPORADA', limite: '$350,000' },
+      ],
+      'PI-003': [
+        { num: '100901', nombre: 'DIR GRAL CONECTIVIDAD', limite: '$1,892,500' },
+        { num: '291374', nombre: 'DIR MKT DIGITAL',       limite: '$700,000' },
+        { num: '100500', nombre: 'FINANZAS RETAIL',       limite: '$2,100,000' },
+        { num: '350410', nombre: 'PROD CONTENIDO DIGITAL',limite: '$600,000' },
+        { num: '200301', nombre: 'EVENTOS BTL TEMPORADA', limite: '$350,000' },
+      ],
+    };
+
+    function seleccionarGrupo(el, nombre) {
+      document.querySelectorAll('.grupo-card').forEach(c => {
+        c.classList.remove('border-primary', 'bg-primary-subtle');
+        c.classList.add('border');
+      });
+      el.classList.remove('border');
+      el.classList.add('border-primary', 'bg-primary-subtle');
+      document.getElementById('grupoSeleccionadoLabel').textContent = nombre;
+      document.getElementById('secTipoGasto').style.display = 'block';
+      document.getElementById('secOrdinario').style.display = 'none';
+      document.getElementById('secInversion').style.display = 'none';
+      document.getElementById('secTipoGasto').scrollIntoView({ behavior: 'smooth' });
     }
 
-    function agregarFilaInv() {
-      const tbody = document.getElementById('matrizBodyInv');
-      const tr = document.createElement('tr');
-      const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-      tr.innerHTML = `
-        <td class="text-start ps-1">
-          <select class="form-select form-select-sm border-primary shadow-none" style="font-size:0.75rem;" onchange="actualizarControlCargaInv()">
-            <option value="" selected disabled>Seleccione CeCo...</option>
-            <option>100901 — DIR GRAL CONECTIVIDAD</option>
-            <option>291374 — DIR MKT DIGITAL</option>
-            <option>100500 — FINANZAS RETAIL</option>
-          </select>
-        </td>
-        <td class="text-start">
-          <select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none" style="font-size:0.75rem;">
-            <option value="" selected disabled>Seleccione cuenta...</option>
-            <option>609011 — Televisión</option>
-            <option>609028 — Publicidad Digital</option>
-            <option>609010 — Radio</option>
-            <option>60443 — Sesiones y Eventos</option>
-          </select>
-        </td>
-        ${meses.map(() => `<td><input type="text" class="matrix-input" value="0.00"></td>`).join('')}
-        <td class="fw-bold text-dark bg-light">0.00</td>
-        <td><button class="btn btn-sm btn-link text-danger p-0" onclick="this.closest('tr').remove()"><i class="bi bi-trash"></i></button></td>`;
-      tbody.appendChild(tr);
+    function seleccionarTipo(tipo) {
+      document.querySelectorAll('.tipo-card').forEach(c => {
+        c.classList.remove('border-primary', 'border-success', 'bg-primary-subtle', 'bg-success-subtle');
+        c.classList.add('border');
+      });
+      const cards = document.querySelectorAll('.tipo-card');
+      if (tipo === 'ordinario') {
+        cards[0].classList.add('border-primary', 'bg-primary-subtle');
+        document.getElementById('secOrdinario').style.display = 'block';
+        document.getElementById('secInversion').style.display = 'none';
+        document.getElementById('secOrdinario').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        cards[1].classList.add('border-success', 'bg-success-subtle');
+        document.getElementById('secOrdinario').style.display = 'none';
+        document.getElementById('secInversion').style.display = 'block';
+        document.getElementById('secInversion').scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
-    function actualizarControlCargaInv() {
-      // mock: mostrar panel en paso 1 cuando hay cecos seleccionados
-      document.getElementById('controlCargaVacioInv').style.display = 'none';
-      document.getElementById('controlCargaCecosInv').style.display = 'block';
+    function mostrarCecos(codigo, nombre) {
+      document.getElementById('modalCecosTitulo').textContent = codigo + ' — ' + nombre;
+      document.getElementById('modalCecosSubtitulo').textContent = 'Centros de costo asignados al proyecto';
+      const cecos = cecosPorProyecto[codigo] || [];
+      const tbody = document.getElementById('bodyCecosModal');
+      tbody.innerHTML = cecos.map(c =>
+        `<tr><td class="fw-bold text-dark">${c.num}</td><td class="text-muted">${c.nombre}</td><td class="text-end fw-semibold text-dark">${c.limite}</td></tr>`
+      ).join('');
     }
 
-    function simularEnvioInv() {
-      alert('Solicitud enviada a autorización.\nFolio: SOL-INV-26001');
+    function guardarNuevoProyecto() {
+      alert('Proyecto registrado correctamente. Ahora puedes registrar solicitudes contra él.');
+      bootstrap.Modal.getInstance(document.getElementById('modalNuevoProyecto')).hide();
     }
-
-    function aplicarLogicaCampos() {
-      // No aplica para inversión — placeholder para compatibilidad
-    }
-
-    // Alias para compatibilidad
-    function toggleCuentas(source) {}
   </script>
 
 </body>
