@@ -913,8 +913,6 @@
   <!--end sidebar-->
 
   <!-- ================= INICIO DEL CONTENIDO PRINCIPAL ================= -->
-
-  <!-- ================= INICIO DEL CONTENIDO PRINCIPAL ================= -->
   <main class="page-content">
 
     <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
@@ -923,94 +921,31 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb small mb-0 mt-1">
             <li class="breadcrumb-item"><a href="AEjercicio.html" class="text-decoration-none text-muted">Carga Presupuestal</a></li>
-            <li class="breadcrumb-item active fw-bold" aria-current="page">Selección de Grupo y Tipo</li>
+            <li class="breadcrumb-item active fw-bold" aria-current="page">Nueva Solicitud</li>
           </ol>
         </nav>
       </div>
       <a href="AEjercicio.html" class="btn btn-outline-dark fw-bold radius-10 shadow-sm"><i class="bi bi-x-lg me-1"></i> Cancelar</a>
     </div>
 
-    <!-- PASO 1: Grupo Empresarial -->
+    <!-- Banner de contexto: grupo y país pre-asignados -->
+    <div class="alert border-0 radius-10 shadow-sm mb-4 d-flex align-items-center gap-3 py-3 px-4" style="background:var(--bs-secondary-bg);">
+      <i class="bi bi-person-badge fs-4 text-primary"></i>
+      <div>
+        <div class="fw-bold text-dark small mb-0">Tu perfil de acceso</div>
+        <div class="text-muted small">
+          Grupo Empresarial: <strong class="text-dark">Totalplay</strong>
+          &nbsp;|&nbsp; País: <strong class="text-dark">México</strong>
+          &nbsp;|&nbsp; <span class="text-muted">Los Centros de Costo disponibles corresponden a esta asignación.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 1: Tipo de Gasto (directo, sin seleccionar grupo/país) -->
     <div class="card shadow-sm border-0 radius-10 mb-4">
       <div class="card-body p-4">
-        <h5 class="fw-bold text-dark mb-1"><span class="badge bg-primary me-2">1</span>Selecciona el Grupo Empresarial</h5>
-        <p class="text-muted small mb-4">Elige el grupo al que pertenecen los Centros de Costo de esta solicitud.</p>
-        <div class="row g-2 justify-content-start" id="gruposContainer">
-          <div class="col-auto">
-            <div class="card border-2 cursor-pointer grupo-card border-primary bg-primary-subtle" onclick="seleccionarGrupo(this, 'Grupo Salinas')" style="cursor:pointer; transition:all .2s; min-width:120px;">
-              <div class="card-body text-center py-2 px-3">
-                <div class="mb-1"><i class="bi bi-router fs-4 text-info"></i></div>
-                <div class="fw-bold small text-dark">Totalplay</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="card border-2 cursor-pointer grupo-card border" onclick="seleccionarGrupo(this, 'Grupo Elektra')" style="cursor:pointer; transition:all .2s; min-width:120px;">
-              <div class="card-body text-center py-2 px-3">
-                <div class="mb-1"><i class="bi bi-shop fs-4 text-primary"></i></div>
-                <div class="fw-bold small text-dark">Grupo Elektra</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="card border-2 cursor-pointer grupo-card border" onclick="seleccionarGrupo(this, 'Italika')" style="cursor:pointer; transition:all .2s; min-width:120px;">
-              <div class="card-body text-center py-2 px-3">
-                <div class="mb-1"><i class="bi bi-pc-display fs-4 text-secondary"></i></div>
-                <div class="fw-bold small text-dark">BackOffice</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PASO 2: País (oculto hasta seleccionar grupo) -->
-    <div id="secPais" class="card shadow-sm border-0 radius-10 mb-4" style="display:none;">
-      <div class="card-body p-4">
-        <h5 class="fw-bold text-dark mb-1"><span class="badge bg-primary me-2">2</span>Selecciona el País</h5>
-        <p class="text-muted small mb-3">Grupo: <strong id="grupoSeleccionadoLabel"></strong> — Elige el país de los Centros de Costo.</p>
-        <div class="row g-2 justify-content-start" id="paisesContainer">
-          <div class="col-auto">
-            <div class="card border-2 cursor-pointer pais-card border" onclick="seleccionarPais(this, 'México')" style="cursor:pointer; transition:all .2s; min-width:110px;">
-              <div class="card-body text-center py-2 px-3">
-                <div class="mb-1 fs-5">🇲🇽</div>
-                <div class="fw-bold small text-dark">México</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="card border-2 cursor-pointer pais-card border" onclick="seleccionarPais(this, 'Guatemala')" style="cursor:pointer; transition:all .2s; min-width:110px;">
-              <div class="card-body text-center py-2 px-3">
-                <div class="mb-1 fs-5">🇬🇹</div>
-                <div class="fw-bold small text-dark">Guatemala</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="card border-2 cursor-pointer pais-card border" onclick="seleccionarPais(this, 'Honduras')" style="cursor:pointer; transition:all .2s; min-width:110px;">
-              <div class="card-body text-center py-2 px-3">
-                <div class="mb-1 fs-5">🇭🇳</div>
-                <div class="fw-bold small text-dark">Honduras</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="card border-2 cursor-pointer pais-card border" onclick="seleccionarPais(this, 'Panamá')" style="cursor:pointer; transition:all .2s; min-width:110px;">
-              <div class="card-body text-center py-2 px-3">
-                <div class="mb-1 fs-5">🇵🇦</div>
-                <div class="fw-bold small text-dark">Panamá</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PASO 3: Tipo de Gasto (oculto hasta seleccionar grupo + país) -->
-    <div id="secTipoGasto" class="card shadow-sm border-0 radius-10 mb-4" style="display:none;">
-      <div class="card-body p-4">
-        <h5 class="fw-bold text-dark mb-1"><span class="badge bg-primary me-2">3</span>Tipo de Gasto</h5>
-        <p class="text-muted small mb-4">Grupo: <strong id="grupoLabel2"></strong> &nbsp;|&nbsp; País: <strong id="paisSeleccionadoLabel"></strong> — Elige la categoría del trámite.</p>
+        <h5 class="fw-bold text-dark mb-1"><span class="badge bg-primary me-2">1</span>Tipo de Gasto</h5>
+        <p class="text-muted small mb-4">Elige la categoría del trámite que deseas registrar.</p>
         <div class="row g-4">
           <div class="col-md-6">
             <div class="card border-2 h-100 tipo-card" onclick="seleccionarTipo('ordinario')" style="cursor:pointer; transition:all .2s;">
@@ -1048,7 +983,7 @@
       <div class="card-body p-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <div>
-            <h5 class="fw-bold text-dark mb-0"><span class="badge bg-success me-2">4</span>Proyectos de Inversión</h5>
+            <h5 class="fw-bold text-dark mb-0"><span class="badge bg-success me-2">2</span>Proyectos de Inversión</h5>
             <p class="text-muted small mb-0 mt-1">Selecciona un proyecto existente o registra uno nuevo.</p>
           </div>
           <button class="btn btn-success fw-bold radius-30 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalNuevoProyecto">
@@ -1096,24 +1031,6 @@
                 <td>
                   <button class="btn btn-sm btn-outline-info border-0 shadow-none" data-bs-toggle="modal" data-bs-target="#modalCecosProyecto" onclick="mostrarCecos('PI-002','Modernización Infraestructura TI')">
                     <i class="bi bi-diagram-3 me-1"></i> Ver CeCos (2)
-                  </button>
-                </td>
-                <td class="pe-4">
-                  <a href="NuevaSol_Inversion.html" class="btn btn-sm btn-primary fw-bold radius-30 shadow-sm px-3">
-                    <i class="bi bi-file-earmark-plus me-1"></i> Registrar Solicitud
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-start ps-4">
-                  <span class="fw-bold text-dark d-block">PI-003</span>
-                  <span class="text-muted small">Plataforma E-Commerce</span>
-                </td>
-                <td class="text-muted">2025</td>
-                <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle px-3 py-1">2025 – 2028</span></td>
-                <td>
-                  <button class="btn btn-sm btn-outline-info border-0 shadow-none" data-bs-toggle="modal" data-bs-target="#modalCecosProyecto" onclick="mostrarCecos('PI-003','Plataforma E-Commerce')">
-                    <i class="bi bi-diagram-3 me-1"></i> Ver CeCos (5)
                   </button>
                 </td>
                 <td class="pe-4">
@@ -1173,7 +1090,7 @@
           <div class="row g-3">
             <div class="col-md-5">
               <label class="form-label small fw-bold text-dark">Número de Proyecto <span class="text-danger">*</span></label>
-              <input type="text" class="form-control form-control-sm border-primary shadow-none" placeholder="Ej. PI-004">
+              <input type="text" class="form-control form-control-sm border-primary shadow-none" placeholder="Ej. PI-003">
             </div>
             <div class="col-md-7">
               <label class="form-label small fw-bold text-dark">Nombre del Proyecto <span class="text-danger">*</span></label>
@@ -1223,7 +1140,6 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    // Mock data CeCos por proyecto
     const cecosPorProyecto = {
       'PI-001': [
         { num: '100901', nombre: 'DIR GRAL CONECTIVIDAD', limite: '$1,892,500' },
@@ -1234,50 +1150,7 @@
         { num: '100500', nombre: 'FINANZAS RETAIL',       limite: '$2,100,000' },
         { num: '200301', nombre: 'EVENTOS BTL TEMPORADA', limite: '$350,000' },
       ],
-      'PI-003': [
-        { num: '100901', nombre: 'DIR GRAL CONECTIVIDAD', limite: '$1,892,500' },
-        { num: '291374', nombre: 'DIR MKT DIGITAL',       limite: '$700,000' },
-        { num: '100500', nombre: 'FINANZAS RETAIL',       limite: '$2,100,000' },
-        { num: '350410', nombre: 'PROD CONTENIDO DIGITAL',limite: '$600,000' },
-        { num: '200301', nombre: 'EVENTOS BTL TEMPORADA', limite: '$350,000' },
-      ],
     };
-
-    function seleccionarGrupo(el, nombre) {
-      document.querySelectorAll('.grupo-card').forEach(c => {
-        c.classList.remove('border-primary', 'bg-primary-subtle');
-        c.classList.add('border');
-      });
-      el.classList.remove('border');
-      el.classList.add('border-primary', 'bg-primary-subtle');
-      document.getElementById('grupoSeleccionadoLabel').textContent = nombre;
-      // Reset país and downstream
-      document.querySelectorAll('.pais-card').forEach(c => {
-        c.classList.remove('border-primary', 'bg-primary-subtle');
-        c.classList.add('border');
-      });
-      document.getElementById('secPais').style.display = 'block';
-      document.getElementById('secTipoGasto').style.display = 'none';
-      document.getElementById('secOrdinario').style.display = 'none';
-      document.getElementById('secInversion').style.display = 'none';
-      document.getElementById('secPais').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function seleccionarPais(el, pais) {
-      document.querySelectorAll('.pais-card').forEach(c => {
-        c.classList.remove('border-primary', 'bg-primary-subtle');
-        c.classList.add('border');
-      });
-      el.classList.remove('border');
-      el.classList.add('border-primary', 'bg-primary-subtle');
-      const grupo = document.getElementById('grupoSeleccionadoLabel').textContent;
-      document.getElementById('grupoLabel2').textContent = grupo;
-      document.getElementById('paisSeleccionadoLabel').textContent = pais;
-      document.getElementById('secTipoGasto').style.display = 'block';
-      document.getElementById('secOrdinario').style.display = 'none';
-      document.getElementById('secInversion').style.display = 'none';
-      document.getElementById('secTipoGasto').scrollIntoView({ behavior: 'smooth' });
-    }
 
     function seleccionarTipo(tipo) {
       document.querySelectorAll('.tipo-card').forEach(c => {
@@ -1309,7 +1182,7 @@
     }
 
     function guardarNuevoProyecto() {
-      alert('Proyecto registrado correctamente. Ahora puedes registrar solicitudes contra él.');
+      alert('Proyecto registrado correctamente.');
       bootstrap.Modal.getInstance(document.getElementById('modalNuevoProyecto')).hide();
     }
   </script>
