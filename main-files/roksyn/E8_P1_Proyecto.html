@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="semi-dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proyecto de Inversion | IPSO ODTs</title>
+
+  <!-- Plugins y Estilos Base -->
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <link href="assets/plugins/bs-stepper/css/bs-stepper.css" rel="stylesheet">
+  <link href="assets/css/extra-icons.css" rel="stylesheet">
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+
+  <!-- Styles -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+
+  <style>
+    .matrix-input { width: 78px; text-align: right; font-size: 0.8rem; padding: 4px 6px; border: 1px solid #ced4da; border-radius: 4px; }
+    .matrix-input:focus { border-color: #86b7fe; outline: 0; box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25); }
+    .matrix-input:disabled { background-color: #e9ecef; color: #adb5bd; cursor: not-allowed; }
+    .matrix-cell-ro { font-size: 0.78rem; }
+    .table-grouped .group-row td { background-color: #f8f9fa; border-top: 2px solid #dee2e6; }
+    .table-grouped tr[data-level="campana"] td { padding-left: 2rem; background-color: #fff; }
+    .table-grouped tr[data-level="cuenta"] td { padding-left: 3.5rem; background-color: #fff; }
+    .toggle-icon { cursor: pointer; transition: transform .2s ease; display: inline-block; }
+    tr.collapsed .toggle-icon { transform: rotate(-90deg); }
+    /* Bitacora / timeline */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ''; position: absolute; left: 9px; top: 4px; bottom: 4px; width: 2px; background: #dee2e6; }
+    .timeline-item { position: relative; padding-bottom: 1.1rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -1.55rem; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--bs-primary); }
+    .timeline-item.tl-success::before { border-color: #198754; }
+    .timeline-item.tl-danger::before { border-color: #dc3545; }
+    .timeline-item.tl-warning::before { border-color: #ffc107; }
+    .timeline-item.tl-muted::before { border-color: #adb5bd; }
+    
+  </style>
+</head>
+
+<body class="pace-done">
+  <div class="pace pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99"><div class="pace-progress-inner"></div></div><div class="pace-activity"></div></div>
+
+  <!--start header-->
+  <header class="top-header">
+    <nav class="navbar navbar-expand justify-content-between">
+      <div class="btn-toggle-menu"><span class="material-symbols-outlined">menu</span></div>
+      <ul class="navbar-nav top-right-menu gap-2">
+        <li class="nav-item dark-mode"><a class="nav-link dark-mode-icon" href="javascript:;"><span class="material-symbols-outlined">light_mode</span></a></li>
+        <li class="nav-item dropdown dropdown-large">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+            <div class="position-relative"><span class="notify-badge">8</span><span class="material-symbols-outlined">notifications_none</span></div>
+          </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="offcanvas" href="#ThemeCustomizer"><span class="material-symbols-outlined">settings</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <!--end header-->
+
+  <!--start sidebar-->
+  <aside class="sidebar-wrapper">
+    <div class="sidebar-header">
+      <div class="logo-icon"><img src="assets/images/logo-icon.png" class="logo-img" alt=""></div>
+      <div class="logo-name flex-grow-1"><h5 class="mb-0">IPSO</h5></div>
+      <div class="sidebar-close"><span class="material-symbols-outlined">close</span></div>
+    </div>
+    <div class="sidebar-nav" data-simplebar="init">
+      <div class="simplebar-wrapper"><div class="simplebar-mask"><div class="simplebar-offset"><div class="simplebar-content-wrapper"><div class="simplebar-content">
+        <ul class="metismenu mm-show" id="menu">
+          <li><a href="index.html"><div class="parent-icon"><span class="material-symbols-outlined">home</span></div><div class="menu-title">Home</div></a></li>
+          <li><a href="SIPRES.html"><div class="parent-icon"><span class="material-symbols-outlined">redeem</span></div><div class="menu-title">Forecast</div></a></li>
+          <li class="menu-label mb-0 text-light">Gestion de Presupuestos</li>
+          <li class="mm-active">
+            <a href="javascript:;" class="has-arrow" aria-expanded="true"><div class="parent-icon"><span class="material-symbols-outlined">apps</span></div><div class="menu-title">Planeacion<br>Presupuestal</div></a>
+            <ul class="mm-collapse mm-show">
+              <li><a href="Parametros.html"><span class="material-symbols-outlined">arrow_right</span>Parametros</a></li>
+              <li><a class="has-arrow" href="javascript:;"><span class="material-symbols-outlined">arrow_right</span>Base Presupuestal</a>
+                <ul class="mm-collapse">
+                  <li><a href="BPresupuestal.html"><span class="material-symbols-outlined">arrow_right</span>Base del Ejercicio Activo</a></li>
+                  <li><a href="BPRegistros.html"><span class="material-symbols-outlined">arrow_right</span>Registro de Bases</a></li>
+                </ul>
+              </li>
+              <li class="mm-active"><a href="AEjercicio.html" class="mm-active"><span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a></li>
+              <li><a href="Autorizaciones.html"><span class="material-symbols-outlined">arrow_right</span>Autorizaciones</a></li>
+              <li><a href="Liberaciones.html"><span class="material-symbols-outlined">arrow_right</span>Liberaciones</a></li>
+            </ul>
+          </li>
+          <li><a href="javascript:;" class="has-arrow"><div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div><div class="menu-title">Ejercicio Presupuestal</div></a>
+            <ul class="mm-collapse">
+              <li><a href="SCarga.html"><span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales</a></li>
+              <li><a href="Reportes.html"><span class="material-symbols-outlined">arrow_right</span>Reportes</a></li>
+            </ul>
+          </li>
+          <li class="menu-label mb-0 text-light">Configuracion General</li>
+          <li><a href="javascript:;" class="has-arrow"><div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span></div><div class="menu-title">Sistema</div></a>
+            <ul class="mm-collapse">
+              <li><a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a></li>
+              <li><a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de Costos</a></li>
+              <li><a href="GCuentas.html"><span class="material-symbols-outlined">arrow_right</span>Grupo de Cuentas</a></li>
+              <li><a href="CTransversal.html"><span class="material-symbols-outlined">arrow_right</span>Campanas Transversales</a></li>
+              <li><a href="PFondo.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div></div></div></div></div></div>
+    </div>
+    <div class="sidebar-bottom dropdown dropup-center dropup">
+      <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
+        <div class="user-img"><img src="assets/images/avatars/01.png" alt=""></div>
+        <div class="user-info"><h5 class="mb-0 user-name">Edgar Grande</h5><p class="mb-0 user-designation">Carga Presupuestal</p></div>
+      </div>
+    </div>
+  </aside>
+  <!--end sidebar-->
+
+  <!--start main content-->
+  <main class="page-content">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+      <div>
+        <h4 class="fw-bold text-dark mb-0"><i class="bi bi-rocket text-primary me-2"></i>Proyecto de Inversion</h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb small mb-0 mt-1">
+            <li class="breadcrumb-item"><a href="AEjercicio.html" class="text-decoration-none text-muted"><i class="bi bi-house-door me-1"></i>Carga Presupuestal</a></li>
+            <li class="breadcrumb-item text-muted">Mis Solicitudes</li>
+            <li class="breadcrumb-item active fw-bold" aria-current="page">Seleccion / Alta de Proyecto</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <div class="text-end">
+          <span class="d-block text-muted small fw-bold mb-1">Categoria</span>
+          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 shadow-sm">Proyecto de Inversion</span>
+        </div>
+        <div class="text-end">
+          <span class="d-block text-muted small fw-bold mb-1">Estatus</span>
+          <span class="badge bg-light text-dark border border-secondary px-3 py-1 fs-6 shadow-sm">Borrador</span>
+        </div>
+        <a href="E8_P0_SelectorGrupo.html" class="btn btn-outline-dark fw-bold radius-10 shadow-sm"><i class="bi bi-arrow-left me-1"></i>Atras</a>
+      </div>
+    </div>
+
+    <div class="row justify-content-center"><div class="col-lg-10">
+      <div class="alert bg-info-subtle border border-info small radius-10 mb-4"><i class="bi bi-info-circle-fill me-2"></i>Grupo seleccionado: <strong>Grupo Elektra</strong>. Solo aplica para la categoria Proyecto de Inversion. Selecciona un Proyecto existente (Epica 4) o da de alta uno nuevo.</div>
+
+      <ul class="nav nav-pills mb-3 gap-2" role="tablist">
+        <li class="nav-item"><button class="nav-link active fw-bold" data-bs-toggle="pill" data-bs-target="#tab-existente">Proyecto Existente</button></li>
+        <li class="nav-item"><button class="nav-link fw-bold" data-bs-toggle="pill" data-bs-target="#tab-nuevo">Dar de Alta Nuevo</button></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="tab-existente">
+          <div class="card border-0 shadow-sm radius-10"><div class="card-body p-4">
+            <div class="input-group input-group-sm shadow-sm mb-3"><span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+              <input type="text" class="form-control border-start-0 shadow-none" placeholder="Buscar Proyecto por clave o nombre..."></div>
+            <div class="table-responsive border rounded">
+              <table class="table table-hover align-middle mb-0" style="font-size:.85rem;">
+                <thead class="table-dark text-center"><tr><th></th><th class="text-start">Clave</th><th class="text-start">Nombre del Proyecto</th><th>Vigencia</th><th>CeCos</th></tr></thead>
+                <tbody>
+                  <tr><td class="text-center"><input class="form-check-input" type="radio" name="proy" checked></td><td class="fw-bold text-dark">134845</td><td class="text-start text-dark">Vitrinas de Joyeria</td><td class="text-center text-dark">Ene-Dic 2027</td><td class="text-center">3</td></tr>
+                  <tr><td class="text-center"><input class="form-check-input" type="radio" name="proy"></td><td class="fw-bold text-dark">134899</td><td class="text-start text-dark">Branding Verano</td><td class="text-center text-dark">Jul-Ago 2027</td><td class="text-center">2</td></tr>
+                  <tr><td class="text-center"><input class="form-check-input" type="radio" name="proy"></td><td class="fw-bold text-dark">135000</td><td class="text-start text-dark">Remodelacion Sur</td><td class="text-center text-dark">Ene-Mar 2027</td><td class="text-center">5</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div></div>
+        </div>
+        <div class="tab-pane fade" id="tab-nuevo">
+          <div class="card border-0 shadow-sm radius-10"><div class="card-body p-4">
+            <div class="row g-3">
+              <div class="col-md-8"><label class="form-label small fw-bold text-dark">Nombre del Proyecto <span class="text-danger">*</span></label><input type="text" class="form-control shadow-none" placeholder="Ej. Activacion BTL Nacional"></div>
+              <div class="col-md-4"><label class="form-label small fw-bold text-dark">Clave (autogenerada)</label><input type="text" class="form-control bg-light shadow-none" value="135021" readonly></div>
+              <div class="col-md-6"><label class="form-label small fw-bold text-dark">Fecha Inicio <span class="text-danger">*</span></label><input type="date" class="form-control shadow-none"></div>
+              <div class="col-md-6"><label class="form-label small fw-bold text-dark">Fecha Fin <span class="text-danger">*</span></label><input type="date" class="form-control shadow-none"></div>
+              <div class="col-12"><label class="form-label small fw-bold text-dark">Descripcion <span class="text-danger">*</span></label><textarea class="form-control shadow-none" rows="2" placeholder="Describe el proyecto..."></textarea></div>
+              <div class="col-12"><label class="form-label small fw-bold text-dark">CeCos asociados (de Grupo Elektra) <span class="text-danger">*</span></label>
+                <div class="border rounded p-3 bg-light">
+                  <div class="form-check"><input class="form-check-input" type="checkbox" id="nc1" checked><label class="form-check-label small text-dark" for="nc1">140025 - PROY VITRINAS JOYERIA</label></div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" id="nc2"><label class="form-check-label small text-dark" for="nc2">100901 - DIR GRAL CONECTIVIDAD</label></div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" id="nc3"><label class="form-check-label small text-dark" for="nc3">291374 - DIR MKT DIGITAL</label></div>
+                </div></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end gap-2 mt-4">
+        <a href="E8_P0_SelectorGrupo.html" class="btn btn-outline-dark fw-bold radius-30 px-4 shadow-sm">Cancelar</a>
+        <a href="NuevaSol_Inversion.html" class="btn btn-primary fw-bold radius-30 px-5 shadow-sm">Continuar <i class="bi bi-arrow-right ms-2"></i></a>
+      </div>
+    </div></div>
+
+  </main>
+  <!--end main content-->
+
+  <div class="overlay btn-toggle-menu"></div>
+
+  <!--start theme customization-->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer">
+    <div class="offcanvas-header border-bottom"><h5 class="offcanvas-title">Theme Customizer</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body"><h6 class="mb-0">Theme Variation</h6><hr>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" checked=""><label class="form-check-label" for="SemiDarkTheme">Semi Dark</label></div>
+    </div>
+  </div>
+  <!--end theme customization-->
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

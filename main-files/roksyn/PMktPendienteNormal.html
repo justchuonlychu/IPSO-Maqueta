@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="semi-dark">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solicitud F-26004 | IPSO ODTs</title>
+
+  <!-- Plugins y Estilos Base -->
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <link href="assets/plugins/bs-stepper/css/bs-stepper.css" rel="stylesheet">
+  <link href="assets/css/extra-icons.css" rel="stylesheet">
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+
+  <!-- Styles -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+
+  <style>
+    .matrix-input { width: 78px; text-align: right; font-size: 0.8rem; padding: 4px 6px; border: 1px solid #ced4da; border-radius: 4px; }
+    .matrix-input:focus { border-color: #86b7fe; outline: 0; box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25); }
+    .matrix-input:disabled { background-color: #e9ecef; color: #adb5bd; cursor: not-allowed; }
+    .matrix-cell-ro { font-size: 0.78rem; }
+    .table-grouped .group-row td { background-color: #f8f9fa; border-top: 2px solid #dee2e6; }
+    .table-grouped tr[data-level="campana"] td { padding-left: 2rem; background-color: #fff; }
+    .table-grouped tr[data-level="cuenta"] td { padding-left: 3.5rem; background-color: #fff; }
+    .toggle-icon { cursor: pointer; transition: transform .2s ease; display: inline-block; }
+    tr.collapsed .toggle-icon { transform: rotate(-90deg); }
+    /* Bitacora / timeline */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content: ''; position: absolute; left: 9px; top: 4px; bottom: 4px; width: 2px; background: #dee2e6; }
+    .timeline-item { position: relative; padding-bottom: 1.1rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -1.55rem; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--bs-primary); }
+    .timeline-item.tl-success::before { border-color: #198754; }
+    .timeline-item.tl-danger::before { border-color: #dc3545; }
+    .timeline-item.tl-warning::before { border-color: #ffc107; }
+    .timeline-item.tl-muted::before { border-color: #adb5bd; }
+    
+  </style>
+</head>
+
+<body class="pace-done">
+  <div class="pace pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99"><div class="pace-progress-inner"></div></div><div class="pace-activity"></div></div>
+
+  <!--start header-->
+  <header class="top-header">
+    <nav class="navbar navbar-expand justify-content-between">
+      <div class="btn-toggle-menu"><span class="material-symbols-outlined">menu</span></div>
+      <ul class="navbar-nav top-right-menu gap-2">
+        <li class="nav-item dark-mode"><a class="nav-link dark-mode-icon" href="javascript:;"><span class="material-symbols-outlined">light_mode</span></a></li>
+        <li class="nav-item dropdown dropdown-large">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+            <div class="position-relative"><span class="notify-badge">8</span><span class="material-symbols-outlined">notifications_none</span></div>
+          </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="offcanvas" href="#ThemeCustomizer"><span class="material-symbols-outlined">settings</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <!--end header-->
+
+  <!--start sidebar-->
+  <aside class="sidebar-wrapper">
+    <div class="sidebar-header">
+      <div class="logo-icon"><img src="assets/images/logo-icon.png" class="logo-img" alt=""></div>
+      <div class="logo-name flex-grow-1"><h5 class="mb-0">IPSO</h5></div>
+      <div class="sidebar-close"><span class="material-symbols-outlined">close</span></div>
+    </div>
+    <div class="sidebar-nav" data-simplebar="init">
+      <div class="simplebar-wrapper"><div class="simplebar-mask"><div class="simplebar-offset"><div class="simplebar-content-wrapper"><div class="simplebar-content">
+        <ul class="metismenu mm-show" id="menu">
+          <li><a href="index.html"><div class="parent-icon"><span class="material-symbols-outlined">home</span></div><div class="menu-title">Home</div></a></li>
+          <li><a href="SIPRES.html"><div class="parent-icon"><span class="material-symbols-outlined">redeem</span></div><div class="menu-title">Forecast</div></a></li>
+          <li class="menu-label mb-0 text-light">Gestion de Presupuestos</li>
+          <li class="mm-active">
+            <a href="javascript:;" class="has-arrow" aria-expanded="true"><div class="parent-icon"><span class="material-symbols-outlined">apps</span></div><div class="menu-title">Planeacion<br>Presupuestal</div></a>
+            <ul class="mm-collapse mm-show">
+              <li><a href="Parametros.html"><span class="material-symbols-outlined">arrow_right</span>Parametros</a></li>
+              <li><a class="has-arrow" href="javascript:;"><span class="material-symbols-outlined">arrow_right</span>Base Presupuestal</a>
+                <ul class="mm-collapse">
+                  <li><a href="BPresupuestal.html"><span class="material-symbols-outlined">arrow_right</span>Base del Ejercicio Activo</a></li>
+                  <li><a href="BPRegistros.html"><span class="material-symbols-outlined">arrow_right</span>Registro de Bases</a></li>
+                </ul>
+              </li>
+              <li class="mm-active"><a href="AEjercicio.html" class="mm-active"><span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a></li>
+              <li><a href="Autorizaciones.html"><span class="material-symbols-outlined">arrow_right</span>Autorizaciones</a></li>
+              <li><a href="Liberaciones.html"><span class="material-symbols-outlined">arrow_right</span>Liberaciones</a></li>
+            </ul>
+          </li>
+          <li><a href="javascript:;" class="has-arrow"><div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div><div class="menu-title">Ejercicio Presupuestal</div></a>
+            <ul class="mm-collapse">
+              <li><a href="SCarga.html"><span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales</a></li>
+              <li><a href="Reportes.html"><span class="material-symbols-outlined">arrow_right</span>Reportes</a></li>
+            </ul>
+          </li>
+          <li class="menu-label mb-0 text-light">Configuracion General</li>
+          <li><a href="javascript:;" class="has-arrow"><div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span></div><div class="menu-title">Sistema</div></a>
+            <ul class="mm-collapse">
+              <li><a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a></li>
+              <li><a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de Costos</a></li>
+              <li><a href="GCuentas.html"><span class="material-symbols-outlined">arrow_right</span>Grupo de Cuentas</a></li>
+              <li><a href="CTransversal.html"><span class="material-symbols-outlined">arrow_right</span>Campanas Transversales</a></li>
+              <li><a href="PFondo.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div></div></div></div></div></div>
+    </div>
+    <div class="sidebar-bottom dropdown dropup-center dropup">
+      <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
+        <div class="user-img"><img src="assets/images/avatars/01.png" alt=""></div>
+        <div class="user-info"><h5 class="mb-0 user-name">Edgar Grande</h5><p class="mb-0 user-designation">Carga Presupuestal</p></div>
+      </div>
+    </div>
+  </aside>
+  <!--end sidebar-->
+
+  <!--start main content-->
+  <main class="page-content">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
+      <div>
+        <h4 class="fw-bold text-dark mb-0"><i class="bi bi-file-earmark-text text-primary me-2"></i>Solicitud F-26004</h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb small mb-0 mt-1">
+            <li class="breadcrumb-item"><a href="AEjercicio.html" class="text-decoration-none text-muted"><i class="bi bi-house-door me-1"></i>Carga Presupuestal</a></li>
+            <li class="breadcrumb-item text-muted">Mis Solicitudes</li>
+            <li class="breadcrumb-item active fw-bold" aria-current="page">Detalle de Solicitud</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <div class="text-end">
+          <span class="d-block text-muted small fw-bold mb-1">Categoria</span>
+          <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 shadow-sm">Presupuesto Ordinario</span>
+        </div>
+        <div class="text-end">
+          <span class="d-block text-muted small fw-bold mb-1">Estatus</span>
+          <span class="badge bg-info-subtle text-dark border border-info px-3 py-1 fs-6 shadow-sm">P:Aut. Marketing</span>
+        </div>
+        <a href="AEjercicio.html" class="btn btn-outline-dark fw-bold radius-10 shadow-sm"><i class="bi bi-arrow-left me-1"></i>Volver al Listado</a>
+      </div>
+    </div>
+
+    <div class="card border-0 bg-white shadow-sm radius-10 mb-4">
+      <div class="card-header bg-white border-bottom"><h6 class="fw-bold mb-0 text-dark"><i class="bi bi-info-circle text-primary me-2"></i>Informacion General</h6></div>
+      <div class="card-body p-4">
+        <div class="row g-3">
+          <div class="col-md-4"><span class="d-block text-muted small fw-bold mb-1">Grupo Empresarial</span><span class="text-dark fw-semibold"><i class="bi bi-lock-fill text-muted me-1" title="Inmutable"></i>Grupo Elektra</span></div>
+          <div class="col-md-4"><span class="d-block text-muted small fw-bold mb-1">Categoria</span><span class="text-dark fw-semibold"><i class="bi bi-lock-fill text-muted me-1" title="Inmutable"></i>Presupuesto Ordinario</span></div>
+          <div class="col-md-4"><span class="d-block text-muted small fw-bold mb-1">Tipo de Gasto Publicitario</span><span class="text-dark fw-semibold">Campana</span></div>
+          <div class="col-md-4"><span class="d-block text-muted small fw-bold mb-1">Division</span><span class="text-dark fw-semibold">Marca</span></div>
+          <div class="col-md-4"><span class="d-block text-muted small fw-bold mb-1">Campana / Nombre</span><span class="text-dark fw-semibold">394 - Madres</span></div>
+          <div class="col-md-4"><span class="d-block text-muted small fw-bold mb-1">Vigencia</span><span class="text-dark fw-semibold">01/Abr/2027 &rarr; 31/May/2027</span></div>
+          <div class="col-12"><span class="d-block text-muted small fw-bold mb-1">Descripcion</span><p class="text-dark mb-0 small">Campana de temporada Dia de las Madres para impulsar venta de joyeria fina en sucursales del sector masivo.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <h5 class="fw-bold mb-3 text-dark border-bottom pb-2"><i class="bi bi-grid-3x3-gap text-primary me-2"></i>Matriz de Distribucion Mensual</h5><div class="accordion accordion-flush border border-secondary border-opacity-25 rounded shadow-sm bg-white mb-4" id="accDist">
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button py-3 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#d-100901" aria-expanded="true">
+          <div class="d-flex justify-content-between w-100 pe-3 align-items-center">
+            <div><span class="badge bg-dark me-2">100901</span><span class="fw-bold text-dark">DIR GRAL CONECTIVIDAD</span></div>
+            
+          <div class="d-flex gap-4">
+            <div class="text-end"><p class="text-muted fw-bold mb-0" style="font-size:.65rem;">Limite de Carga:</p>
+              <span class="fw-bold text-dark" style="font-size:.9rem;">$1,892,500</span></div>
+            <div class="text-end border-start ps-3"><p class="text-muted fw-bold mb-0" style="font-size:.65rem;">Asignado:</p>
+              <span class="fw-bold text-primary" style="font-size:.9rem;">$450,000</span></div>
+            <div class="text-end border-start ps-3"><p class="text-muted fw-bold mb-0" style="font-size:.65rem;">Disponible:</p>
+              <span class="fw-bold text-success" style="font-size:.9rem;">$1,442,500</span>
+              <i class="bi bi-check-circle-fill text-success ms-1" style="font-size:.7rem;"></i></div>
+            <div class="text-end border-start ps-3"><p class="text-muted fw-bold mb-0" style="font-size:.65rem;">% Consumido:</p>
+              <span class="fw-bold text-dark" style="font-size:.9rem;">23.8%</span></div>
+          </div>
+          </div>
+        </button></h2>
+        <div id="d-100901" class="accordion-collapse collapse show" data-bs-parent="#accDist">
+          <div class="accordion-body p-0"><div class="table-responsive">
+            <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.75rem;">
+              <thead class="table-light text-muted"><tr><th class="text-start ps-3" style="min-width:170px;">Cuenta Presupuestal</th><th style="min-width:140px;">Campana</th><th style="min-width:64px;">Ene</th><th style="min-width:64px;">Feb</th><th style="min-width:64px;">Mar</th><th style="min-width:64px;">Abr</th><th style="min-width:64px;">May</th><th style="min-width:64px;">Jun</th><th style="min-width:64px;">Jul</th><th style="min-width:64px;">Ago</th><th style="min-width:64px;">Sep</th><th style="min-width:64px;">Oct</th><th style="min-width:64px;">Nov</th><th style="min-width:64px;">Dic</th><th class="bg-light text-dark border-start" style="min-width:90px;">Total</th></tr></thead>
+              <tbody><tr><td class="text-start ps-3 fw-bold text-dark small">609011 - Television</td><td class="text-start small text-muted">394 - Madres</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro fw-semibold text-dark">200,000</td><td class="matrix-cell-ro fw-semibold text-dark">250,000</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="fw-bold text-dark bg-light border-start">450,000.00</td></tr></tbody>
+            </table>
+          </div></div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button py-3 bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#d-291374" aria-expanded="false">
+          <div class="d-flex justify-content-between w-100 pe-3 align-items-center">
+            <div><span class="badge bg-dark me-2">291374</span><span class="fw-bold text-dark">DIR MKT DIGITAL</span></div>
+            
+          <div class="d-flex gap-4">
+            <div class="text-end"><p class="text-muted fw-bold mb-0" style="font-size:.65rem;">Limite de Carga:</p>
+              <span class="fw-bold text-dark" style="font-size:.9rem;">$1,200,000</span></div>
+            <div class="text-end border-start ps-3"><p class="text-muted fw-bold mb-0" style="font-size:.65rem;">Asignado:</p>
+              <span class="fw-bold text-primary" style="font-size:.9rem;">$330,000</span></div>
+            <div class="text-end border-start ps-3"><p class="text-muted fw-bold mb-0" style="font-size:.65rem;">Disponible:</p>
+              <span class="fw-bold text-success" style="font-size:.9rem;">$870,000</span>
+              <i class="bi bi-check-circle-fill text-success ms-1" style="font-size:.7rem;"></i></div>
+            <div class="text-end border-start ps-3"><p class="text-muted fw-bold mb-0" style="font-size:.65rem;">% Consumido:</p>
+              <span class="fw-bold text-dark" style="font-size:.9rem;">27.5%</span></div>
+          </div>
+          </div>
+        </button></h2>
+        <div id="d-291374" class="accordion-collapse collapse" data-bs-parent="#accDist">
+          <div class="accordion-body p-0"><div class="table-responsive">
+            <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.75rem;">
+              <thead class="table-light text-muted"><tr><th class="text-start ps-3" style="min-width:170px;">Cuenta Presupuestal</th><th style="min-width:140px;">Campana</th><th style="min-width:64px;">Ene</th><th style="min-width:64px;">Feb</th><th style="min-width:64px;">Mar</th><th style="min-width:64px;">Abr</th><th style="min-width:64px;">May</th><th style="min-width:64px;">Jun</th><th style="min-width:64px;">Jul</th><th style="min-width:64px;">Ago</th><th style="min-width:64px;">Sep</th><th style="min-width:64px;">Oct</th><th style="min-width:64px;">Nov</th><th style="min-width:64px;">Dic</th><th class="bg-light text-dark border-start" style="min-width:90px;">Total</th></tr></thead>
+              <tbody><tr><td class="text-start ps-3 fw-bold text-dark small">609028 - Pub Internet</td><td class="text-start small text-muted">010 - Lanzamiento App</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro fw-semibold text-dark">180,000</td><td class="matrix-cell-ro fw-semibold text-dark">150,000</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="matrix-cell-ro text-muted">0</td><td class="fw-bold text-dark bg-light border-start">330,000.00</td></tr></tbody>
+            </table>
+          </div></div>
+        </div>
+      </div></div>
+    <div class="card border border-secondary border-opacity-25 shadow-sm radius-10 bg-light mb-4">
+      <div class="card-body p-4">
+        <h6 class="fw-bold text-dark text-center border-bottom pb-2 mb-3"><i class="bi bi-clipboard-data text-primary me-2"></i>Control de Carga Total</h6>
+        <div class="row align-items-center text-center">
+          <div class="col-md-4 border-end border-secondary border-opacity-25"><small class="text-muted d-block fw-bold mb-1 text-uppercase" style="font-size:.7rem;">Limite de Carga</small><span class="fw-bolder fs-3 text-dark">$3,092,500</span></div>
+          <div class="col-md-4 border-end border-secondary border-opacity-25"><small class="text-muted d-block fw-bold mb-1 text-uppercase" style="font-size:.7rem;">Total Asignado</small><span class="fw-bolder fs-3 text-primary d-block">$780,000</span></div>
+          <div class="col-md-4"><small class="text-muted d-block fw-bold mb-1 text-uppercase" style="font-size:.7rem;">Disponible</small><span class="fw-bolder fs-3 text-success">$2,312,500</span></div>
+        </div>
+        <div class="px-4 mt-4">
+          <div class="progress bg-white border shadow-sm radius-10" style="height:12px;"><div class="progress-bar bg-success progress-bar-striped" style="width:25.2%;"></div></div>
+          <div class="d-flex justify-content-between mt-2"><small class="text-muted fw-bold" style="font-size:.7rem;">$0</small><small class="text-success fw-bold" style="font-size:.75rem;">25.2% Consumido</small><small class="text-muted fw-bold" style="font-size:.7rem;">$3,092,500</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="card border-0 bg-white shadow-sm radius-10 mb-4">
+      <div class="card-header bg-white border-bottom"><h6 class="fw-bold mb-0 text-dark"><i class="bi bi-clock-history text-primary me-2"></i>Bitacora de Movimientos</h6></div>
+      <div class="card-body p-4"><div class="timeline">
+        <div class="timeline-item tl-primary">
+          <p class="mb-0 small fw-bold text-dark">Solicitud creada (Borrador)</p>
+          <p class="mb-1 text-muted" style="font-size:.72rem;"><i class="bi bi-person me-1"></i>Edgar Grande (Carga) &middot; 02/Feb/2027 09:14</p>
+          
+        </div>
+        <div class="timeline-item tl-primary">
+          <p class="mb-0 small fw-bold text-dark">Enviada a Autorizacion - Nivel 1 (Marketing)</p>
+          <p class="mb-1 text-muted" style="font-size:.72rem;"><i class="bi bi-person me-1"></i>Edgar Grande (Carga) &middot; 03/Feb/2027 11:02</p>
+          
+        </div></div></div>
+    </div>
+  </main>
+  <!--end main content-->
+
+  <div class="overlay btn-toggle-menu"></div>
+
+  <!--start theme customization-->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer">
+    <div class="offcanvas-header border-bottom"><h5 class="offcanvas-title">Theme Customizer</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body"><h6 class="mb-0">Theme Variation</h6><hr>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" checked=""><label class="form-check-label" for="SemiDarkTheme">Semi Dark</label></div>
+    </div>
+  </div>
+  <!--end theme customization-->
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
