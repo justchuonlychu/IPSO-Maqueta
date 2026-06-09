@@ -633,9 +633,18 @@ function seleccionarProyecto(codigo, nombre, cecosIds, btn) {
 
 // ── PASO 2: División + CeCos ──────────────────────────────────
 function toggleDiv(el) {
-  const color = el.dataset.color;
-  const cls   = 'active-' + color;
-  el.classList.toggle(cls);
+  const color    = el.dataset.color;
+  const cls      = 'active-' + color;
+  const yaActivo = el.classList.contains(cls);
+  // Quitar todas las divisiones activas primero (comportamiento radio)
+  document.querySelectorAll('.div-chip').forEach(chip => {
+    chip.classList.remove('active-primary','active-success','active-warning','active-danger');
+  });
+  // Si no estaba activo, activarlo; si ya estaba activo, se queda sin selección
+  if (!yaActivo) el.classList.add(cls);
+  // Limpiar checkboxes de CeCos al cambiar división
+  document.querySelectorAll('.ceco-row input[type=checkbox]:not([disabled])').forEach(c => c.checked = false);
+  updateCecoCount();
   filtrarCecos();
 }
 
