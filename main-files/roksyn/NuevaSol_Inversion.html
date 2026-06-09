@@ -805,14 +805,10 @@ function filaNueva(num) {
         <i class="bi bi-trash"></i>
       </button>
     </td>
+    <td class="fw-bold text-dark" style="font-size:.78rem;">${num}</td>
     <td>
       <select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('${num}')">
-        <option value="">— Cuenta —</option>${cuentasOpts(num)}
-      </select>
-    </td>
-    <td>
-      <select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none">
-        <option value="">— Campaña —</option>${campanasOpts()}
+        <option value="">&#8212; Cuenta &#8212;</option>${cuentasOpts(num)}
       </select>
     </td>
     ${meses}
@@ -862,8 +858,8 @@ function construirMatriz() {
               <thead class="table-light">
                 <tr>
                   <th style="width:32px;"></th>
+                  <th class="text-start" style="min-width:90px;">Centro de Costos</th>
                   <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
-                  <th style="min-width:130px;">Campa&#241;a / Proyecto</th>
                   ${thMeses}
                   <th class="bg-light text-dark" style="min-width:95px;">Total</th>
                 </tr>
