@@ -373,9 +373,14 @@
       </div>
       <!-- Footer paso 2 -->
       <div class="d-flex justify-content-between align-items-center mt-3">
-        <span class="badge bg-warning bg-opacity-10 text-dark border border-warning border-opacity-25 px-3 py-2">
-          <i class="bi bi-check2-square me-1"></i><span id="cecoCount">0</span> CeCo(s) seleccionado(s)
-        </span>
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-outline-secondary fw-semibold px-4" onclick="regresarPaso(1)">
+            <i class="bi bi-arrow-left me-1"></i>Anterior
+          </button>
+          <span class="badge bg-warning bg-opacity-10 text-dark border border-warning border-opacity-25 px-3 py-2">
+            <i class="bi bi-check2-square me-1"></i><span id="cecoCount">0</span> CeCo(s) seleccionado(s)
+          </span>
+        </div>
         <button class="btn btn-primary fw-bold px-4 shadow-sm" onclick="irPaso3()">Siguiente <i class="bi bi-arrow-right ms-1"></i></button>
       </div>
     </div>
@@ -448,7 +453,10 @@
           <textarea id="descInput" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" rows="3" placeholder="M&#237;nimo 50 caracteres..." oninput="contarChars()"></textarea>
           <div class="progress mt-1" style="height:4px;"><div id="charBar" class="progress-bar bg-danger" style="width:0%;"></div></div>
         </div>
-        <div class="col-12 text-end" id="bloque-btn-paso3" style="display:none;">
+        <div class="col-12 d-flex justify-content-between" id="bloque-btn-paso3" style="display:none;">
+          <button class="btn btn-outline-secondary fw-semibold px-4" onclick="regresarPaso(2)">
+            <i class="bi bi-arrow-left me-1"></i>Anterior
+          </button>
           <button class="btn btn-primary fw-bold px-4 shadow-sm" onclick="irPaso4()">Siguiente <i class="bi bi-arrow-right ms-1"></i></button>
         </div>
       </div>
@@ -464,48 +472,42 @@
       <i class="bi bi-chevron-down step-chevron" id="step4-chevron"></i>
     </div>
     <div class="step-body" id="step4-body" style="display:none;">
-      <!-- Resumen -->
-      <div class="d-flex flex-wrap gap-3 mt-3 mb-4">
-        <div class="border rounded px-3 py-2 bg-white shadow-sm" style="min-width:200px;">
-          <div class="text-muted" style="font-size:.72rem;">Proyecto</div>
-          <div class="fw-bold text-dark small" id="resumen-proyecto">&#8212;</div>
-        </div>
-        <div class="border rounded px-3 py-2 bg-white shadow-sm" style="min-width:180px;">
-          <div class="text-muted" style="font-size:.72rem;">CeCos incluidos</div>
-          <div class="fw-bold text-dark small" id="resumen-cecos">0</div>
-        </div>
-        <div class="border border-primary rounded px-3 py-2 shadow-sm" style="min-width:180px;background:#e7f0ff;">
-          <div class="text-primary" style="font-size:.72rem;">Total Solicitado</div>
-          <div class="fw-bold text-primary" id="resumen-total">$0</div>
+
+      <!-- ── Control de Carga (sticky arriba) ── -->
+      <div class="card border-0 shadow-sm mt-3 mb-4" style="position:sticky;top:64px;z-index:10;">
+        <div class="card-body py-3 px-4 d-flex flex-wrap align-items-center gap-4">
+          <div>
+            <div class="text-muted" style="font-size:.7rem;">Proyecto</div>
+            <div class="fw-bold text-dark small" id="resumen-proyecto">&#8212;</div>
+          </div>
+          <div>
+            <div class="text-muted" style="font-size:.7rem;">CeCos incluidos</div>
+            <div class="fw-bold text-dark small" id="resumen-cecos">0</div>
+          </div>
+          <div class="ms-auto d-flex align-items-center gap-4">
+            <div class="text-end">
+              <div class="text-muted" style="font-size:.7rem;">Total Asignado</div>
+              <div class="fw-bold text-primary fs-6" id="resumen-total">$0</div>
+            </div>
+            <button class="btn btn-success fw-bold px-4 shadow-sm" onclick="enviarAAutorizar()">
+              <i class="bi bi-send-check me-2"></i>Enviar a Autorizar
+            </button>
+          </div>
         </div>
       </div>
-      <!-- Matriz -->
-      <div class="table-responsive border border-secondary border-opacity-25 rounded shadow-sm">
-        <table class="table align-middle mb-0" style="font-size:.83rem;" id="tablaMatriz">
-          <thead class="bg-white shadow-sm sticky-top z-1">
-            <tr>
-              <th class="ps-3 text-dark fw-bold border-bottom" style="width:36px;"></th>
-              <th class="text-dark fw-bold border-bottom" style="width:90px;">No. CeCo</th>
-              <th class="text-dark fw-bold border-bottom">Nombre</th>
-              <th class="text-end text-dark fw-bold border-bottom" style="width:140px;">Monto Solicitado</th>
-              <th class="text-dark fw-bold border-bottom">Concepto / Descripci&#243;n</th>
-            </tr>
-          </thead>
-          <tbody id="bodyMatriz"></tbody>
-          <tfoot>
-            <tr class="table-light">
-              <td colspan="3" class="ps-3 fw-bold text-dark text-end">Total</td>
-              <td class="text-end fw-bold text-primary" id="totalMatriz">$0</td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
+
+      <!-- ── Acordeón por CeCo ── -->
+      <div class="accordion accordion-flush border border-secondary border-opacity-25 rounded shadow-sm bg-white mb-4" id="accPresupuesto">
+        <!-- Se construye dinámicamente -->
       </div>
-      <div class="text-end mt-4">
-        <button class="btn btn-success fw-bold px-5 shadow-sm radius-30" onclick="enviarAAutorizar()">
-          <i class="bi bi-send-check me-2"></i>Enviar a Autorizar
+
+      <!-- Botón Anterior -->
+      <div class="d-flex justify-content-start mt-2 mb-3">
+        <button class="btn btn-outline-secondary fw-semibold px-4" onclick="regresarPaso(3)">
+          <i class="bi bi-arrow-left me-1"></i>Anterior
         </button>
       </div>
+
     </div>
   </div>
 
@@ -770,67 +772,172 @@ function irPaso4() {
   abrirPaso(4);
 }
 
-// ── PASO 4: Matriz de Presupuesto ────────────────────────────
+// ── PASO 4: Matriz mensual por CeCo ──────────────────────────
+const MESES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+
+// Catálogo de cuentas y campañas por CeCo (demo)
+const cuentasPorCeco = {
+  '100901': ['609011 – Televisión','609023 – Promociones','609028 – Pub. Digital'],
+  '291374': ['609028 – Pub. Digital','609031 – Social Media'],
+  '182310': ['609015 – BTL','609023 – Promociones'],
+  '330100': ['609011 – Televisión','609028 – Pub. Digital'],
+  'default': ['609011 – Televisión','609023 – Promociones','609028 – Pub. Digital'],
+};
+const campanasPorCeco = {
+  'default': ['19283 – Gemas','21328 – Originación','30011 – Fibra 2025'],
+};
+
+function cuentasOpts(num) {
+  return (cuentasPorCeco[num] || cuentasPorCeco['default'])
+    .map(c => `<option>${c}</option>`).join('');
+}
+function campanasOpts() {
+  return campanasPorCeco['default'].map(c => `<option>${c}</option>`).join('');
+}
+
+function filaNueva(num) {
+  const meses = MESES.map(m =>
+    `<td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('${num}')"></td>`
+  ).join('');
+  return `<tr class="fila-dato">
+    <td class="text-center">
+      <button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this,'${num}')">
+        <i class="bi bi-trash"></i>
+      </button>
+    </td>
+    <td>
+      <select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('${num}')">
+        <option value="">— Cuenta —</option>${cuentasOpts(num)}
+      </select>
+    </td>
+    <td>
+      <select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none">
+        <option value="">— Campaña —</option>${campanasOpts()}
+      </select>
+    </td>
+    ${meses}
+    <td class="fw-bold text-dark bg-light fila-total text-end">0</td>
+  </tr>`;
+}
+
 function construirMatriz() {
   if (!proyectoActual) return;
 
-  // CeCos seleccionados en tabla
   const checkeados = [...document.querySelectorAll('.ceco-row input[type=checkbox]:not([disabled]):checked')];
   const cecosSeleccionados = checkeados.map(chk => {
     const tr  = chk.closest('tr');
     const txt = tr.querySelector('.d-flex')?.textContent.trim() || '';
-    const m   = txt.match(/(\d+)\s*–\s*(.+)/);
-    return m ? { num: m[1].trim(), nombre: m[2].trim() } : null;
+    const m   = txt.match(/(\d+)\s*[–-]\s*(.+)/);
+    return m ? { num: m[1].trim(), nombre: m[2].trim(), origen:'sel' } : null;
   }).filter(Boolean);
 
-  // CeCos del proyecto que NO estén ya seleccionados
   const cecosProyecto = (cecosPorProyecto[proyectoActual.codigo] || [])
-    .filter(cp => !cecosSeleccionados.find(cs => cs.num === cp.num));
+    .filter(cp => !cecosSeleccionados.find(cs => cs.num === cp.num))
+    .map(c => ({ ...c, origen:'proy' }));
 
-  const todos = [
-    ...cecosSeleccionados.map(c => ({ ...c, origen:'sel' })),
-    ...cecosProyecto.map(c => ({ ...c, origen:'proy' })),
-  ];
+  const todos = [...cecosSeleccionados, ...cecosProyecto];
 
   document.getElementById('resumen-proyecto').textContent = proyectoActual.codigo + ' – ' + proyectoActual.nombre;
   document.getElementById('resumen-cecos').textContent    = todos.length + ' CeCo(s)';
 
-  document.getElementById('bodyMatriz').innerHTML = todos.map((c, i) => `
-    <tr>
-      <td class="ps-3"><input class="form-check-input border-secondary shadow-none" type="checkbox" id="mchk-${i}" checked onchange="calcTotal()"></td>
-      <td class="fw-bold text-dark" style="font-size:.82rem;">${c.num}</td>
-      <td class="text-dark" style="font-size:.82rem;">
-        ${c.nombre}
-        ${c.origen === 'proy' ? '<span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 ms-1" style="font-size:.65rem;">Del proyecto</span>' : ''}
-      </td>
-      <td class="text-end"><input type="text" class="matrix-input" id="monto-${i}" placeholder="0" oninput="calcTotal()"></td>
-      <td><input type="text" class="form-control form-control-sm border-secondary border-opacity-50 shadow-none" placeholder="Concepto o descripción..." style="font-size:.8rem;"></td>
-    </tr>
+  // Construir cabecera de meses
+  const thMeses = MESES.map(m => `<th style="min-width:65px;">${m}</th>`).join('');
+
+  const acc = document.getElementById('accPresupuesto');
+  acc.innerHTML = todos.map((c, idx) => `
+    <div class="accordion-item border-0 border-bottom border-secondary border-opacity-25">
+      <h2 class="accordion-header">
+        <button class="accordion-button ${idx > 0 ? 'collapsed' : ''} py-3 fw-bold" type="button"
+                data-bs-toggle="collapse" data-bs-target="#col-${c.num}" aria-expanded="${idx === 0}">
+          <i class="bi bi-building text-primary me-2"></i>
+          ${c.num} &ndash; ${c.nombre}
+          ${c.origen === 'proy' ? '<span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 ms-2" style="font-size:.65rem;">Del proyecto</span>' : ''}
+          <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 ms-2 ceco-subtotal" id="sub-${c.num}" style="font-size:.7rem;">$0</span>
+        </button>
+      </h2>
+      <div id="col-${c.num}" class="accordion-collapse collapse ${idx === 0 ? 'show' : ''}">
+        <div class="accordion-body p-0">
+          <div class="table-responsive">
+            <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;">
+              <thead class="table-light">
+                <tr>
+                  <th style="width:32px;"></th>
+                  <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
+                  <th style="min-width:130px;">Campa&#241;a / Proyecto</th>
+                  ${thMeses}
+                  <th class="bg-light text-dark" style="min-width:95px;">Total</th>
+                </tr>
+              </thead>
+              <tbody id="body-${c.num}">${filaNueva(c.num)}</tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="${3 + MESES.length + 1}" class="text-start ps-2 py-2">
+                    <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold"
+                            onclick="agregarFila('body-${c.num}','${c.num}')" style="font-size:.78rem;">
+                      <i class="bi bi-plus-circle me-1"></i>Agregar l&#237;nea
+                    </button>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   `).join('');
 
   calcTotal();
 }
 
+function agregarFila(bodyId, num) {
+  document.getElementById(bodyId).insertAdjacentHTML('beforeend', filaNueva(num));
+}
+
+function eliminarFila(btn, num) {
+  btn.closest('tr').remove();
+  recalcularCeco(num);
+}
+
+function recalcularCeco(num) {
+  let subtotal = 0;
+  document.querySelectorAll('#body-' + num + ' .fila-dato').forEach(tr => {
+    let rowTotal = 0;
+    tr.querySelectorAll('.matrix-input').forEach(inp => {
+      rowTotal += parseFloat(inp.value.replace(/[^0-9.]/g,'')) || 0;
+    });
+    const td = tr.querySelector('.fila-total');
+    if (td) td.textContent = rowTotal.toLocaleString('es-MX', { minimumFractionDigits:0 });
+    subtotal += rowTotal;
+  });
+  const subEl = document.getElementById('sub-' + num);
+  if (subEl) subEl.textContent = '$' + subtotal.toLocaleString('es-MX', { minimumFractionDigits:0 });
+  calcTotal();
+}
+
 function calcTotal() {
   let total = 0;
-  document.querySelectorAll('#bodyMatriz tr').forEach((tr, i) => {
-    const chk   = document.getElementById('mchk-'  + i);
-    const input = document.getElementById('monto-' + i);
-    if (chk && chk.checked && input) {
-      total += parseFloat(input.value.replace(/[^0-9.]/g,'')) || 0;
-    }
+  document.querySelectorAll('.ceco-subtotal').forEach(el => {
+    total += parseFloat(el.textContent.replace(/[^0-9.]/g,'')) || 0;
   });
   const fmt = '$' + total.toLocaleString('es-MX', { minimumFractionDigits:0 });
-  document.getElementById('totalMatriz').textContent  = fmt;
   document.getElementById('resumen-total').textContent = fmt;
-  document.getElementById('step4-summary').innerHTML  =
+  document.getElementById('step4-summary').innerHTML =
     total > 0 ? '<i class="bi bi-currency-dollar text-success me-1"></i>Total: ' + fmt : '';
 }
 
 function enviarAAutorizar() {
-  const alguno = [...document.querySelectorAll('#bodyMatriz input[type=checkbox]')].some(c => c.checked);
-  if (!alguno) { alert('Selecciona al menos un CeCo con monto asignado.'); return; }
+  const total = parseFloat(
+    (document.getElementById('resumen-total').textContent || '0').replace(/[^0-9.]/g,'')
+  ) || 0;
+  if (total === 0) { alert('Captura al menos un monto antes de enviar.'); return; }
   alert('✓ Solicitud enviada a Autorización correctamente.');
+}
+
+// ── Regresar paso ────────────────────────────────────────────
+function regresarPaso(n) {
+  // Colapsar el paso actual y abrir el anterior
+  for (let i = n + 1; i <= 4; i++) colapsarPaso(i);
+  abrirPaso(n);
 }
 
 // ── Modal CeCos del Proyecto ──────────────────────────────────
