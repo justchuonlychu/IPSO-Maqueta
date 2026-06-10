@@ -1,7 +1,4 @@
-<!doctype html>
-<html lang="es" data-bs-theme="semi-dark">
-
-<head>
+<html lang="es" data-bs-theme="semi-dark"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nueva Solicitud | IPSO ODTs</title>
@@ -18,7 +15,7 @@
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="assets/css/icons.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/dark-theme.css" rel="stylesheet">
   <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
@@ -26,17 +23,42 @@
   <style>
     /* ── Stepper custom ───────────────────────────── */
     .step-circle {
-      width: 28px; height: 28px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 0.78rem; font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
       flex-shrink: 0;
     }
-    .step-circle.active  { background: #0d6efd; color: #fff; }
-    .step-circle.done    { background: #198754; color: #fff; }
-    .step-circle.pending { background: #dee2e6; color: #6c757d; }
-    .step-line { flex: 1; height: 2px; background: #dee2e6; margin: 0 8px; }
-    .step-line.done { background: #198754; }
+
+    .step-circle.active {
+      background: #0d6efd;
+      color: #fff;
+    }
+
+    .step-circle.done {
+      background: #198754;
+      color: #fff;
+    }
+
+    .step-circle.pending {
+      background: #dee2e6;
+      color: #6c757d;
+    }
+
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: #dee2e6;
+      margin: 0 8px;
+    }
+
+    .step-line.done {
+      background: #198754;
+    }
 
     /* ── División chips ───────────────────────────── */
     .div-chip {
@@ -54,6 +76,7 @@
       outline: none;
       box-shadow: none;
     }
+
     .div-chip.active {
       background: #0d6efd;
       color: #fff;
@@ -79,21 +102,36 @@
       background: #fff;
       color: #212529;
     }
+
     .matrix-input:focus {
       border-color: #86b7fe;
       outline: 0;
-      box-shadow: 0 0 0 .2rem rgba(13,110,253,.2);
+      box-shadow: 0 0 0 .2rem rgba(13, 110, 253, .2);
     }
+
     .matrix-input.has-value {
       border-color: #0d6efd;
       font-weight: 600;
     }
-    .ceco-disponible { font-size: 0.85rem; }
+
+    .ceco-disponible {
+      font-size: 0.85rem;
+    }
 
     /* ── CeCo tree ───────────────────────────────── */
-    .ceco-row td { font-size: 0.8rem; padding: 5px 8px; }
-    .ceco-row.parent-row { background: #f8f9fa; }
-    .ceco-sub-row td { font-size: 0.75rem; padding: 4px 8px 4px 28px; }
+    .ceco-row td {
+      font-size: 0.8rem;
+      padding: 5px 8px;
+    }
+
+    .ceco-row.parent-row {
+      background: #f8f9fa;
+    }
+
+    .ceco-sub-row td {
+      font-size: 0.75rem;
+      padding: 4px 8px 4px 28px;
+    }
 
     /* ── Catálogo de cuentas ─────────────────────── */
     .cuenta-item {
@@ -103,11 +141,16 @@
       cursor: pointer;
       transition: background .1s;
     }
-    .cuenta-item:hover { background: rgba(13,110,253,.04); }
+
+    .cuenta-item:hover {
+      background: rgba(13, 110, 253, .04);
+    }
+
     .cuenta-item:has(.cuenta-checkbox:checked) {
-      background: rgba(13,110,253,.07);
+      background: rgba(13, 110, 253, .07);
       box-shadow: inset 3px 0 0 #0d6efd;
     }
+
     .cta-cod {
       display: block;
       font-size: .67rem;
@@ -116,6 +159,7 @@
       line-height: 1.1;
       letter-spacing: .02em;
     }
+
     .cta-nom {
       display: block;
       font-size: .8rem;
@@ -124,49 +168,16 @@
     }
 
     /* Fix scroll: el template pone overflow:hidden en body; page-content debe scrollear */
-    .page-content { overflow-y: auto !important; padding-bottom: 80px !important; }
-
-    /* ── Sticky footer ──────────────────────────── */
-    .form-footer {
-      position: fixed; bottom: 0;
-      left: var(--sidebar-width, 260px); right: 0;
-      z-index: 200;
-      background: #fff;
-      border-top: 1px solid #dee2e6;
-      box-shadow: 0 -2px 10px rgba(0,0,0,.07);
-    }
-    .footer-resumen-item { line-height: 1.2; }
-    .footer-resumen-item .label { font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; color: #6c757d; font-weight: 600; }
-    .footer-resumen-item .value { font-size: .85rem; font-weight: 600; color: #212529; }
-
-    /* ── Meses pasados ──────────────────────────── */
-    .matrix-input.mes-pasado {
-      background: #f4f4f4;
-      color: #adb5bd;
-      cursor: not-allowed;
-      border-color: #e9ecef;
-    }
-
-    /* ── Sección bloqueada (distribución no disponible) */
-    .bloque-locked {
-      opacity: .45;
-      pointer-events: none;
-      filter: grayscale(.4);
-    }
-    .bloque-locked-overlay {
-      position: relative;
-    }
-    .bloque-locked-overlay::after {
-      content: '';
-      position: absolute; inset: 0;
-      border-radius: 10px;
-      background: transparent;
-      pointer-events: none;
+    .page-content {
+      overflow-y: auto !important;
     }
   </style>
 </head>
 
-<body class="pace-done">
+<body class="  pace-done"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
 
   <!--start header-->
   <header class="top-header">
@@ -210,7 +221,9 @@
                 </div>
               </a>
             </div>
-            <a href="javascript:;"><div class="text-center msg-footer">View All</div></a>
+            <a href="javascript:;">
+              <div class="text-center msg-footer">View All</div>
+            </a>
           </div>
         </li>
         <li class="nav-item">
@@ -232,7 +245,7 @@
       <div class="logo-name flex-grow-1">
         <h5 class="mb-0">IPSO</h5>
       </div>
-      <div class="sidebar-close ">
+      <div class="sidebar-close">
         <span class="material-symbols-outlined">close</span>
       </div>
     </div>
@@ -242,10 +255,9 @@
           <div class="simplebar-height-auto-observer"></div>
         </div>
         <div class="simplebar-mask">
-          <div class="simplebar-offset mm-active" style="right: 0px; bottom: 0px;">
-            <div class="simplebar-content-wrapper mm-show" style="height: 100%; overflow: hidden;">
+          <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden;">
               <div class="simplebar-content mm-active" style="padding: 0px;">
-
                 <!--navigation-->
                 <ul class="metismenu mm-show" id="menu">
                   <li>
@@ -254,117 +266,67 @@
                       <div class="menu-title">Home</div>
                     </a>
                   </li>
-                  <li>
+                  <li class="">
                     <a href="SIPRES.html" aria-expanded="false">
                       <div class="parent-icon"><span class="material-symbols-outlined">redeem</span></div>
                       <div class="menu-title">Forecast</div>
                     </a>
                   </li>
-
-                  <li class="menu-label mb-0 text-light">Gesti&#243;n de Presupuestos</li>
-
-                  <li>
-                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                  <li class="menu-label mb-0 text-light">Gestion de Presupuestos</li>
+                  <li class="mm-active">
+                    <a href="javascript:;" class="has-arrow" aria-expanded="true">
                       <div class="parent-icon"><span class="material-symbols-outlined">apps</span></div>
-                      <div class="menu-title">Planeaci&#243;n<br>Presupuestal</div>
+                      <div class="menu-title">Planeacion<br>Presupuestal</div>
                     </a>
-                    <ul class="mm-collapse">
-                      <li>
-                        <a href="Parametros.html" aria-expanded="false">
-                          <span class="material-symbols-outlined">arrow_right</span>Par&#225;metros
-                        </a>
-                      </li>
+                    <ul class="mm-collapse mm-show">
+                      <li><a href="Parametros.html" aria-expanded="false"><span class="material-symbols-outlined">arrow_right</span>Parametros</a></li>
                       <li>
                         <a class="has-arrow" href="javascript:;" aria-expanded="false">
                           <span class="material-symbols-outlined">arrow_right</span>Base Presupuestal
                         </a>
                         <ul class="mm-collapse">
-                          <li>
-                            <a href="BPresupuestal.html">
-                              <span class="material-symbols-outlined">arrow_right</span>Nueva Base Presupuestal
-                            </a>
-                          </li>
-                          <li>
-                            <a href="BPCalculada.html">
-                              <span class="material-symbols-outlined">arrow_right</span>Base Presupuestal Activa
-                            </a>
+                          <li><a href="BPresupuestal.html"><span class="material-symbols-outlined">arrow_right</span>Base del Ejercicio Activo</a></li>
+                          <li><a href="BPRegistros.html"><span class="material-symbols-outlined">arrow_right</span>Registro de Bases Presupuestales</a>
                           </li>
                         </ul>
                       </li>
-                      <li>
-                        <a href="SelGrupoEmpresarial.html" aria-expanded="false">
-                          <span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal
-                        </a>
-                      </li>
-                      <li>
-                        <a href="Autorizaciones.html" aria-expanded="false">
-                          <span class="material-symbols-outlined">arrow_right</span>Autorizaciones
-                        </a>
-                      </li>
-                      <li>
-                        <a href="Liberaciones.html" aria-expanded="false">
-                          <span class="material-symbols-outlined">arrow_right</span>Liberaciones
-                        </a>
-                      </li>
-                      <li>
-                        <a href="ReportesCarga.html" aria-expanded="false">
-                          <span class="material-symbols-outlined">arrow_right</span>Reportes de Carga
-                        </a>
-                      </li>
+                      <li class="mm-active"><a href="AEjercicio.html" aria-expanded="true"><span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a></li>
+                      <li><a href="Autorizaciones.html" aria-expanded="false"><span class="material-symbols-outlined">arrow_right</span>Autorizaciones</a></li>
+                      <li><a href="Liberaciones.html" aria-expanded="true"><span class="material-symbols-outlined">arrow_right</span>Liberaciones</a></li>     <li> <a href="ReportesCarga.html" aria-expanded="true"><span class="material-symbols-outlined">arrow_right</span>Reportes de Carga</a> </li>
                     </ul>
                   </li>
-
-                  <li>
+                  <li class="">
                     <a href="javascript:;" class="has-arrow" aria-expanded="false">
                       <div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div>
-                      <div class="menu-title">Ejercicio Presupuestal<br><small>En Construcci&#243;n</small></div>
+                      <div class="menu-title">Ejercicio Presupuestal</div>
                     </a>
-                    <ul class="mm-collapse">
-                      <li>
-                        <a href="javascript:;" aria-expanded="false">
-                          <span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales
-                        </a>
+                    <ul class="mm-collapse" style="height: 0px;">
+                      <li><a href="SCarga.html"><span class="material-symbols-outlined">arrow_right</span>Movimientos
+                          Presupuestales</a></li>
+                      <li><a href="Reportes.html"><span class="material-symbols-outlined">arrow_right</span>Reportes</a>
                       </li>
                     </ul>
                   </li>
-
-                  <li>
+                  <li class="menu-label mb-0 text-light">Configuracion General</li>
+                  <li class="">
                     <a href="javascript:;" class="has-arrow" aria-expanded="false">
-                      <div class="parent-icon"><span class="material-symbols-outlined">settings</span></div>
-                      <div class="menu-title">Configuraci&#243;n<br>de Carga</div>
+                      <div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span></div>
+                      <div class="menu-title">Sistema</div>
                     </a>
-                    <ul class="mm-collapse">
-                      <li>
-                        <a href="PUsuarios.html">
-                          <span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles
-                        </a>
-                      </li>
-                      <li>
-                        <a href="CeCos.html">
-                          <span class="material-symbols-outlined">arrow_right</span>Centros de Costos
-                        </a>
-                      </li>
-                      <li>
-                        <a href="GCuentas.html">
-                          <span class="material-symbols-outlined">arrow_right</span>Grupo de Cuentas
-                        </a>
-                      </li>
-                      <li>
-                        <a href="CTransversal.html">
-                          <span class="material-symbols-outlined">arrow_right</span>Camp&#241;as Transversales
-                        </a>
-                      </li>
-                      <li>
-                        <a href="PFondo.html">
-                          <span class="material-symbols-outlined">arrow_right</span>Proyectos
-                        </a>
+                    <ul class="mm-collapse" style="height: 0px;">
+                      <li><a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a></li>
+                      <li><a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de
+                          Costos</a></li>
+                      <li><a href="GCuentas.html"><span class="material-symbols-outlined">arrow_right</span>Grupo de
+                          Cuentas</a></li>
+                      <li><a href="CTransversal.html"><span class="material-symbols-outlined">arrow_right</span>Campañas
+                          Transversales</a></li>
+                      <li><a href="PFondo.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos</a>
                       </li>
                     </ul>
                   </li>
-
                 </ul>
                 <!--end navigation-->
-
               </div>
             </div>
           </div>
@@ -375,7 +337,8 @@
         <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
       </div>
       <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
-        <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div>
+        <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;">
+        </div>
       </div>
     </div>
     <div class="sidebar-bottom dropdown dropup-center dropup">
@@ -391,10 +354,6 @@
       <ul class="dropdown-menu dropdown-menu-end">
         <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">account_circle</span><span>Profile</span></a></li>
         <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">tune</span><span>Settings</span></a></li>
-        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">dashboard</span><span>Dashboard</span></a></li>
-        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">account_balance</span><span>Earnings</span></a></li>
-        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">cloud_download</span><span>Downloads</span></a></li>
-        <li><div class="dropdown-divider mb-0"></div></li>
         <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">logout</span><span>Logout</span></a></li>
       </ul>
     </div>
@@ -404,7 +363,7 @@
   <!-- ================= INICIO DEL CONTENIDO PRINCIPAL ================= -->
   <main class="page-content">
 
-    <!-- BLOQUE 1 – Page header -->
+    <!-- Breadcrumb + título -->
     <div class="page-breadcrumb d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
       <div>
         <h5 class="fw-bold text-dark mb-1"><i class="bi bi-file-earmark-plus text-primary me-2"></i>Nueva solicitud - Presupuesto ordinario</h5>
@@ -417,13 +376,29 @@
           </ol>
         </nav>
       </div>
-    </div>
+    <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-primary btn-sm shadow-sm" onclick="confirmarAccion('cancelar')">
+           Cancelar
+        </button><button class="btn btn-warning btn-sm fw-bold text-dark shadow-sm" onclick="confirmarAccion('borrador')">
+          <i class="bi bi-floppy me-1"></i> Guardar borrador
+        </button>
+        <button class="btn btn-success btn-sm fw-bold shadow-sm" onclick="confirmarAccion('enviar')" disabled="">
+          <i class="bi bi-send-fill me-1"></i> Enviar a autorización
+        </button>
+        
+      </div></div>
 
-    <!-- BLOQUE 1b – 3-step stepper -->
-    <div class="card border-0 shadow-sm mb-4" style="border-radius:10px;">
-      <div class="card-body py-3 px-4">
+    <!-- Card de identificación de la solicitud -->
+    
+
+    <!-- Card principal -->
+    <div class="card shadow-sm border-0 mb-5">
+
+      <!-- ── Stepper header ───────────────────────── -->
+      <div class="card-header bg-white border-bottom pt-4 pb-3 px-4">
         <div class="d-flex align-items-center">
-          <!-- step 1 done -->
+
+          <!-- Paso 1 -->
           <div class="d-flex align-items-center flex-shrink-0">
             <span class="step-circle done"><i class="bi bi-check-lg" style="font-size:.65rem;"></i></span>
             <div class="ms-2 d-none d-md-block">
@@ -432,478 +407,655 @@
             </div>
           </div>
           <div class="step-line done"></div>
-          <!-- step 2 active -->
           <div class="d-flex align-items-center flex-shrink-0">
-            <span class="step-circle active">2</span>
+            <span class="step-circle active" id="sc-1">1</span>
             <div class="ms-2 d-none d-md-block">
-              <div class="paso-label">Paso 2</div>
-              <div class="fw-semibold text-primary" style="font-size:.82rem;">Info general y distribución</div>
+              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Informacion general</div>
+              <div class="text-muted" style="font-size:0.7rem;">Distribucion de Presupuesto</div>
             </div>
           </div>
-          <div class="step-line"></div>
-          <!-- step 3 pending -->
+
+          <div class="step-line" id="sl-1"></div>
+
+          <!-- Paso 2 -->
           <div class="d-flex align-items-center flex-shrink-0">
-            <span class="step-circle pending">3</span>
+            <span class="step-circle pending" id="sc-2">2</span>
             <div class="ms-2 d-none d-md-block">
-              <div class="paso-label">Paso 3</div>
-              <div class="fw-semibold text-muted" style="font-size:.82rem;">Confirmación</div>
+              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Asignación de Presupuesto</div>
+              <div class="text-muted" style="font-size:0.7rem;">Distribución mensual</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="card shadow-sm border-0 mb-3">
+      <div class="card-body px-4 py-3">
+        <div class="d-flex flex-wrap align-items-center gap-4">
+          <div>
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Categoría</div>
+            <div class="fw-bold text-dark">Presupuesto Ordinario</div>
+          </div>
+          <div class="border-start ps-4">
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Folio</div>
+            <div class="text-muted fst-italic" style="font-size:.85rem;">Se asignará al guardar</div>
+          </div>
+          <div class="border-start ps-4">
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Ejercicio Activo
+            </div>
+            <div><span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">2026</span>
+            </div>
+          </div>
+          <div class="border-start ps-4">
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Estatus</div>
+            <div><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2 py-1">Nueva</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div><!-- /stepper header -->
 
-    <!-- BLOQUE 3+4 – Two-column layout: Info General (left) + CeCos informativo (right) -->
-    <div class="row g-4 align-items-start mb-4">
+      <div class="card-body p-4" style="background:#f3f4f6;">
 
-      <!-- BLOQUE 3: Información General col-lg-4 -->
-      <div class="col-12 col-lg-4" id="colForm">
-        <div class="card border-0 shadow-sm" style="border-radius:10px;">
-          <div class="card-body p-4">
-            <h6 class="fw-bold mb-3 text-dark border-bottom pb-2">Información General</h6>
-            <div class="row g-3">
+        <!-- ════════════════════════════════════════
+             PASO 1 – Información General y CeCos
+        ════════════════════════════════════════ -->
+        <div id="paso-1" style="display: block;">
+          <div class="row g-4 align-items-start">
 
-              <!-- Tipo de Gasto Publicitario -->
-              <div class="col-12">
-                <label class="form-label small fw-bold text-dark">Tipo de Gasto Publicitario <span class="text-danger">*</span></label>
-                <select id="tipoGasto" class="form-select form-select-sm border-secondary border-opacity-50 text-dark shadow-none" onchange="aplicarLogicaCampos()">
-                  <option value="" selected disabled>Seleccione una opción...</option>
-                  <option value="Transversal">Campaña (Transversal)</option>
-                  <option value="Negocio">Campaña (Negocio)</option>
-                  <option value="Proyecto">Proyecto Especial Mkt</option>
-                  <option value="Ordinario">Gasto Ordinario</option>
-                </select>
-                <div class="text-danger mt-1 d-none" id="errTipoGasto" style="font-size:.78rem;">Este campo es obligatorio</div>
-              </div>
+            <!-- Columna izquierda: Información General -->
+            <div class="col-12 col-lg-4 border-end border-secondary border-opacity-25 pe-lg-4">
+              <h6 class="fw-bold mb-3 text-dark border-bottom pb-2">Información General</h6>
+              <div class="row g-3">
 
-              <!-- División -->
-              <div class="col-12" id="bloqueDivision" style="display:none;">
-                <label class="form-label small fw-bold text-dark">División de Centros de Costos <span class="text-danger">*</span></label>
-                <select id="selDivision" class="form-select form-select-sm border-secondary border-opacity-50 text-dark shadow-none" onchange="onDivisionChange()">
-                  <option value="" selected disabled>Seleccione...</option>
-                  <option>Marca</option>
-                  <option>Oferteo</option>
-                  <option>Estrategia</option>
-                  <option>Sin División</option>
-                </select>
-                <div class="text-danger mt-1 d-none" id="errDivision" style="font-size:.78rem;">Este campo es obligatorio</div>
-              </div>
+                <!-- Tipo de Gasto -->
+                <div class="col-12">
+                  <label class="form-label small fw-bold text-dark">Tipo de Gasto Publicitario <span class="text-danger">*</span></label>
+                  <select id="tipoGasto" class="form-select form-select-sm border-secondary border-opacity-50 text-dark shadow-none" onchange="actualizarCombo()">
+                    <option value="" selected="" disabled="">Seleccione una opción...</option>
+                    <option value="Campana">Campaña</option>
+                    <option value="Proyecto">Proyecto Especial Mkt</option>
+                    <option value="Ordinario">Gasto Ordinario</option>
+                  </select>
+                  <div id="placeholderTipo" class="mt-2 text-muted small" style="display:none;"></div>
+                </div>
 
-              <!-- Tipo de campaña (se llena automáticamente según el tipo de gasto) -->
-              <div class="col-12" id="bloqueTipoCampana" style="display:none;">
-                <label class="form-label small fw-bold text-dark">Tipo de Campaña</label>
-                <input type="text" id="inputTipoCampana" class="form-control form-control-sm border-secondary border-opacity-25 text-muted bg-white shadow-none" readonly>
-              </div>
-
-              <!-- Nombre de campaña -->
-              <div class="col-12" id="bloqueNombre" style="display:none;">
-                <label class="form-label small fw-bold text-dark">Nombre de la Campaña / Proyecto <span class="text-danger">*</span></label>
-                <select id="selectNombreTransversal" class="form-select form-select-sm border-primary text-dark fw-bold shadow-none" style="display:none;">
-                  <option selected disabled>Seleccione del catálogo transversal...</option>
-                  <option>001TMX - Buen Fin Regional</option>
-                  <option>002TMX - Día de las Madres</option>
-                  <option>003TMX - Regreso a Clases</option>
-                </select>
-                <input type="text" id="inputNombreManual" class="form-control form-control-sm border-primary text-dark fw-bold shadow-none" placeholder="Escriba manualmente el nombre..." style="display:none;">
-                <div class="text-danger mt-1 d-none" id="errNombre" style="font-size:.78rem;">Este campo es obligatorio</div>
-              </div>
-
-              <!-- Fechas -->
-              <div class="col-6" id="bloqueFechaIni" style="display:none;">
-                <label class="form-label small fw-bold text-dark">Fecha Inicio <span class="text-danger">*</span></label>
-                <input type="date" id="fechaInicio" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" oninput="onFechaChange()">
-                <div class="text-danger mt-1 d-none" id="errFechaIni" style="font-size:.78rem;">Formato de fecha inválido</div>
-              </div>
-              <div class="col-6" id="bloqueFechaFin" style="display:none;">
-                <label class="form-label small fw-bold text-dark">Fecha Fin <span class="text-danger">*</span></label>
-                <input type="date" id="fechaFin" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" oninput="onFechaChange()">
-                <div class="text-danger mt-1 d-none" id="errFechaFin" style="font-size:.78rem;">Formato de fecha inválido</div>
-              </div>
-
-              <!-- Textos abiertos -->
-              <div class="col-12" id="bloqueTextos" style="display:none;">
-                <div class="row g-3">
-
-                  <!-- Objetivo -->
-                  <div class="col-12">
-                    <label class="form-label small fw-bold text-dark">Objetivo <span class="text-danger">*</span>
-                      <span class="fw-normal text-muted ms-1" id="charCountObjetivo" style="font-size:.7rem;">(0 / 50 mín.)</span>
-                    </label>
-                    <textarea id="objetivoInput" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" rows="3"
-                      placeholder="Mínimo de 50 caracteres..."
-                      oninput="contarChars('objetivoInput','charCountObjetivo','charBarObjetivo')"></textarea>
-                    <div class="progress mt-1" style="height:3px;"><div id="charBarObjetivo" class="progress-bar bg-danger" style="width:0%;"></div></div>
-                    <div class="text-danger mt-1 d-none" id="errObjetivo" style="font-size:.78rem;">Debe contener al menos 50 caracteres</div>
+                <!-- División: chips multiselect -->
+                <div class="mb-3" id="bloque-division" style="display:none;">
+                  <label class="form-label small fw-bold text-dark">División <span class="text-danger">*</span>
+                    <span class="fw-normal text-dark ms-1" style="font-size:0.7rem;">(filtra los CeCos
+                      disponibles)</span>
+                  </label>
+                  <div class="d-flex flex-wrap gap-2" id="divChips">
+                    <button type="button" class="div-chip" data-div="Marca" onclick="toggleDiv(this)">Marca</button>
+                    <button type="button" class="div-chip" data-div="Oferteo" onclick="toggleDiv(this)">Oferteo</button>
+                    <button type="button" class="div-chip" data-div="Estrategia" onclick="toggleDiv(this)">Estrategia</button>
+                    <button type="button" class="div-chip" data-div="Sin División" onclick="toggleDiv(this)">Sin
+                      División</button>
                   </div>
+                </div>
 
-                  <!-- Alcance -->
-                  <div class="col-12">
-                    <label class="form-label small fw-bold text-dark">Alcance <span class="text-danger">*</span>
-                      <span class="fw-normal text-muted ms-1" id="charCountAlcance" style="font-size:.7rem;">(0 / 50 mín.)</span>
-                    </label>
-                    <textarea id="alcanceInput" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" rows="3"
-                      placeholder="Mínimo de 50 caracteres..."
-                      oninput="contarChars('alcanceInput','charCountAlcance','charBarAlcance')"></textarea>
-                    <div class="progress mt-1" style="height:3px;"><div id="charBarAlcance" class="progress-bar bg-danger" style="width:0%;"></div></div>
-                    <div class="text-danger mt-1 d-none" id="errAlcance" style="font-size:.78rem;">Debe contener al menos 50 caracteres</div>
+                <!-- Tipo de campaña (solo si es Campaña) -->
+                <div class="col-12" id="bloque-tipo-campana" style="display:none;">
+                  <label class="form-label small fw-bold text-dark">Tipo de Campaña <span class="text-danger">*</span></label>
+                  <div class="d-flex gap-3">
+                    <div class="form-check">
+                      <input class="form-check-input shadow-none" type="radio" name="tipoCampana" id="rbTransversal" value="Transversal" onchange="actualizarNombre()">
+                      <label class="form-check-label small text-dark" for="rbTransversal">Transversal</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input shadow-none" type="radio" name="tipoCampana" id="rbNegocio" value="Negocio" onchange="actualizarNombre()">
+                      <label class="form-check-label small text-dark" for="rbNegocio">Negocio</label>
+                    </div>
                   </div>
+                </div>
 
-                  <!-- Justificación -->
-                  <div class="col-12">
-                    <label class="form-label small fw-bold text-dark">Justificación <span class="text-danger">*</span>
-                      <span class="fw-normal text-muted ms-1" id="charCountJustif" style="font-size:.7rem;">(0 / 50 mín.)</span>
-                    </label>
-                    <textarea id="justifInput" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" rows="3"
-                      placeholder="Mínimo de 50 caracteres..."
-                      oninput="contarChars('justifInput','charCountJustif','charBarJustif')"></textarea>
-                    <div class="progress mt-1" style="height:3px;"><div id="charBarJustif" class="progress-bar bg-danger" style="width:0%;"></div></div>
-                    <div class="text-danger mt-1 d-none" id="errJustif" style="font-size:.78rem;">Debe contener al menos 50 caracteres</div>
+                <!-- Tipo de proyecto (solo si es Proyecto Especial Mkt) -->
+                <div class="col-12" id="bloque-tipo-proyecto" style="display:none;">
+                  <label class="form-label small fw-bold text-dark">Tipo de Proyecto <span class="text-danger">*</span></label>
+                  <div class="d-flex gap-3">
+                    <div class="form-check">
+                      <input class="form-check-input shadow-none" type="radio" name="tipoProyecto" id="rbProyTransversal" value="Transversal" onchange="actualizarNombreProyecto()">
+                      <label class="form-check-label small text-dark" for="rbProyTransversal">Transversal</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input shadow-none" type="radio" name="tipoProyecto" id="rbProyNegocio" value="Negocio" onchange="actualizarNombreProyecto()">
+                      <label class="form-check-label small text-dark" for="rbProyNegocio">Negocio</label>
+                    </div>
                   </div>
+                </div>
 
-                </div><!-- /row textos -->
-              </div><!-- /bloqueTextos -->
+                <!-- Nombre -->
+                <div class="col-12" id="bloque-nombre" style="display:none;">
+                  <label class="form-label small fw-bold text-dark">Nombre <span class="text-danger">*</span></label>
+                  <select id="selectNombreTransversal" class="form-select form-select-sm border-primary text-dark shadow-none" style="display:none;">
+                    <option selected="" disabled="">Seleccione del catálogo transversal...</option>
+                    <option>001TMX – Buen Fin Regional</option>
+                    <option>002TMX – Día de las Madres</option>
+                    <option>003TMX – Regreso a Clases</option>
+                  </select>
+                  <input type="text" id="inputNombreManual" class="form-control form-control-sm border-primary text-dark shadow-none" placeholder="Escriba el nombre de la campaña..." style="display:none;">
+                  <div id="inputNombreOrdinario" class="input-group input-group-sm" style="display:none;">
+                    <input type="text" class="form-control border-secondary border-opacity-50 text-muted shadow-none" value="Gasto ordinario" readonly="">
+                    <span class="input-group-text bg-light text-muted"><i class="bi bi-lock-fill" style="font-size:.7rem;"></i></span>
+                  </div>
+                </div>
 
-            </div><!-- /row g-3 form -->
-          </div>
-        </div>
-      </div>
+                <!-- Fechas -->
+                <div class="col-12" id="bloque-fechas" style="display:none;">
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <label class="form-label small fw-bold text-dark">Fecha Inicio <span class="text-danger">*</span></label>
+                      <input type="date" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none">
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label small fw-bold text-dark">Fecha Fin <span class="text-danger">*</span></label>
+                      <input type="date" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none">
+                    </div>
+                  </div>
+                </div>
 
-      <!-- BLOQUE 4: Panel CeCos informativo col-lg-8 -->
-      <!-- BLOQUE 4+5: Panel derecho – CeCos filtrados + Distribución -->
-      <div class="col-12 col-lg-8" id="colPanel">
-        <div class="card border-0 shadow-sm" style="border-radius:10px;">
-          <div class="card-header bg-white border-bottom py-3 px-4">
-            <div class="d-flex justify-content-between align-items-center">
-              <h6 class="fw-bold mb-0 text-dark">
-                <i class="bi bi-building text-primary me-2"></i>Centros de Costos – <span id="labelDivisionActiva">Sin selección</span>
-              </h6>
-              <span class="badge bg-warning-subtle text-dark border border-warning px-3 py-1">
-                <i class="bi bi-shield-check me-1"></i>Sujeto a Límite Presupuestal
-              </span>
-            </div>
-          </div>
-          <div class="card-body p-4">
+                <!-- Descripción -->
+                <div class="col-12" id="bloque-desc" style="display:none;">
+                  <label class="form-label small fw-bold text-dark">
+                    Descripción / Objetivo <span class="text-danger">*</span>
+                    <span id="charCount" class="fw-normal text-muted ms-1" style="font-size:0.7rem;">(0 / 50
+                      mín.)</span>
+                  </label>
+                  <textarea id="descInput" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" rows="3" placeholder="Mínimo 50 caracteres..." oninput="contarChars()"></textarea>
+                  <div class="progress mt-1" style="height:4px;">
+                    <div id="charBar" class="progress-bar bg-danger" style="width:0%;"></div>
+                  </div>
+                </div>
 
-            <!-- Empty state (antes de elegir división) -->
-            <div id="ceco-empty-state" class="text-center py-5 px-3">
-              <i class="bi bi-diagram-3 text-secondary mb-2" style="font-size:2rem;display:block;"></i>
-              <p class="text-muted mb-0 small">Selecciona una División para ver los centros de costo disponibles y la tabla de distribución.</p>
+              </div>
             </div>
 
-            <!-- Contenido cuando hay división seleccionada -->
-            <div id="ceco-tabla-wrap" style="display:none;">
+            <!-- Columna derecha: Selección de CeCos -->
+            <div class="col-12 col-lg-8 ps-lg-4">
+              <div class="card border-0 shadow-sm radius-10">
+                <div class="card-body p-4">
 
-              <!-- Buscador -->
-              <div class="input-group input-group-sm shadow-sm mb-3">
-                <span class="input-group-text bg-white text-dark"><i class="bi bi-search"></i></span>
-                <input type="text" id="buscadorCeco" class="form-control border-start-0 shadow-none py-2"
-                  placeholder="Buscar por Nombre o Número de CeCo..."
-                  oninput="filtrarBuscadorCeco()">
+                  <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                    <h6 class="fw-bold text-dark mb-0">
+                      <i class="bi bi-building text-primary me-2"></i>Selección de Centros de Costo
+                      <span class="badge bg-warning bg-opacity-10 text-dark border border-warning border-opacity-25 px-2 py-1 ms-1" style="font-size:.7rem;">
+                        <i class="bi bi-check2-square me-1"></i><span id="cecoCount">0</span> seleccionado(s)
+                      </span>
+                    </h6>
+                    <button class="btn btn-primary fw-bold px-4 shadow-sm btn-sm" onclick="irPaso(2)">
+                      Siguiente <i class="bi bi-arrow-right ms-1"></i>
+                    </button>
+                  </div>
+
+                  <!-- Buscador -->
+                  <div class="input-group input-group-sm shadow-sm mb-3">
+                    <span class="input-group-text bg-white border-secondary border-opacity-50 text-dark"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none py-2" placeholder="Buscar por nombre o número de CeCo...">
+                  </div>
+
+                  <!-- Estado vacío: sin división seleccionada -->
+                  <div id="ceco-empty-state" class="border border-secondary border-opacity-25 rounded bg-white shadow-sm text-center py-5">
+                    <i class="bi bi-diagram-3 text-secondary mb-2" style="font-size:2rem; display:block;"></i>
+                    <p class="text-muted mb-0 small">Selecciona una División para ver los centros de costo disponibles.
+                    </p>
+                  </div>
+
+                  <!-- Tabla CeCos -->
+                  <div id="ceco-tabla-wrap" class="border border-secondary border-opacity-25 rounded bg-white shadow-sm" style="max-height:380px; overflow-y:auto; display:none;">
+                    <table class="table align-middle mb-0" style="font-size:0.82rem;">
+                      <thead class="sticky-top z-1 bg-white shadow-sm">
+                        <tr>
+                          <th class="ps-3 text-dark fw-bold border-bottom" style="min-width:300px;">Centro de Costo /
+                            Campañas origen / Cuentas</th>
+                          <th class="text-end text-dark fw-bold border-bottom" style="width:130px;">Límite de Carga</th>
+                          <th class="text-end text-dark fw-bold border-bottom" style="width:110px;">Disponible</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <!-- CeCo 100901 · División: Marca -->
+                        <tr class="ceco-row ceco-group" data-divs="Marca" id="tr-ceco1">
+                          <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco1')">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco1">
+                              <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco1" style="font-size:.75rem;"></i>
+                              <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>
+                              100901 – DIR GRAL CONECTIVIDAD
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">1,892,500</td>
+                          <td class="text-end fw-bold text-success">1,892,500</td>
+                        </tr>
+                        <tr class="ceco-child-ceco1" style="background:rgb(238,242,255);" id="bar-ceco1">
+                          <td colspan="3" class="py-1 px-4"></td>
+                        </tr>
+                        <tr class="ceco-child-ceco1 child-ceco1" style="background:rgb(248,249,255);">
+                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco1-A', this)">
+                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
+                            <i class="bi bi-tag text-primary me-1"></i>
+                            <span class="fw-semibold">394 – Día de las Madres</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.78rem;">900,000</td>
+                          <td></td>
+                        </tr>
+                        <tr class="ceco-child-ceco1 cu-ceco1-A d-none" style="background:#f0f4ff;">
+                          <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
+                            <i class="bi bi-dot me-1"></i>609023 – Promociones &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.75rem;">500,000</td>
+                          <td></td>
+                        </tr>
+                        <tr class="ceco-child-ceco1 cu-ceco1-A d-none" style="background:#f0f4ff;">
+                          <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
+                            <i class="bi bi-dot me-1"></i>609011 – Televisión &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.75rem;">400,000</td>
+                          <td></td>
+                        </tr>
+                        <tr class="ceco-child-ceco1 child-ceco1" style="background:rgb(248,249,255);">
+                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco1-B', this)">
+                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
+                            <i class="bi bi-tag text-primary me-1"></i>
+                            <span class="fw-semibold">401 – Buen Fin</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.78rem;">992,500</td>
+                          <td></td>
+                        </tr>
+                        <tr class="ceco-child-ceco1 cu-ceco1-B d-none" style="background:#f0f4ff;">
+                          <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
+                            <i class="bi bi-dot me-1"></i>609011 – Televisión &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 21328 – Originación</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.75rem;">992,500</td>
+                          <td></td>
+                        </tr>
+
+                        <!-- CeCo 291374 · División: Oferteo -->
+                        <tr class="ceco-row ceco-group" data-divs="Oferteo" id="tr-ceco2" style="border-top:2px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco2')">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco2">
+                              <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco2" style="font-size:.75rem;"></i>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              291374 – DIR MKT DIGITAL
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">1,200,000</td>
+                          <td class="text-end fw-bold text-dark">1,200,000</td>
+                        </tr>
+                        <tr class="ceco-child-ceco2 child-ceco2" style="background:rgb(248,249,255);">
+                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco2-A', this)">
+                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
+                            <i class="bi bi-tag text-dark me-1"></i>
+                            <span class="fw-semibold">010 – Lanzamiento App</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.78rem;">400,000</td>
+                          <td></td>
+                        </tr>
+                        <tr class="ceco-child-ceco2 cu-ceco2-A d-none" style="background:#f0f4ff;">
+                          <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
+                            <i class="bi bi-dot me-1"></i>609028 – Pub. Internet &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.75rem;">400,000</td>
+                          <td></td>
+                        </tr>
+                        <tr class="ceco-child-ceco2 child-ceco2" style="background:rgb(248,249,255);">
+                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco2-B', this)">
+                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
+                            <i class="bi bi-tag text-dark me-1"></i>
+                            <span class="fw-semibold">401 – Buen Fin</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.78rem;">800,000</td>
+                          <td></td>
+                        </tr>
+
+                        <!-- CeCo 182310 · División: Estrategia -->
+                        <tr class="ceco-row ceco-group" data-divs="Estrategia" id="tr-ceco3" style="border-top:2px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco3')">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco3">
+                              <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco3" style="font-size:.75rem;"></i>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              182310 – DIR ESTRATEGIA COMERCIAL
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">750,000</td>
+                          <td class="text-end fw-bold text-dark">750,000</td>
+                        </tr>
+                        <tr class="ceco-child-ceco3 child-ceco3" style="background:rgb(248,249,255);">
+                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco3-A', this)">
+                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
+                            <i class="bi bi-tag text-dark me-1"></i>
+                            <span class="fw-semibold">215 – CRM Retención</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.78rem;">750,000</td>
+                          <td></td>
+                        </tr>
+
+                        <!-- CeCo 109220 · División: Estrategia (agotado) -->
+                        <tr class="ceco-row ceco-group" data-divs="Estrategia" style="border-top:1px solid #dee2e6; opacity:.7;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" disabled="">
+                              <i class="bi bi-chevron-right text-dark me-2 flex-shrink-0" style="font-size:.75rem;"></i>
+                              <i class="bi bi-building me-2 flex-shrink-0 text-danger"></i>
+                              109220 – PUBLICIDAD CONECTIVIDAD
+                              <span class="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25 ms-2" style="font-size:.62rem;">Sin disponible</span>
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">500,000</td>
+                          <td class="text-end fw-bold text-danger">0</td>
+                        </tr>
+
+                        <!-- CeCo 330100 · División: Sin División -->
+                        <tr class="ceco-row ceco-group" data-divs="Sin División" id="tr-ceco4" style="border-top:2px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco4')">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco4">
+                              <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco4" style="font-size:.75rem;"></i>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              330100 – TOTALPLAY PUBLICIDAD
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">600,000</td>
+                          <td class="text-end fw-bold text-dark">600,000</td>
+                        </tr>
+                        <tr class="ceco-child-ceco4 child-ceco4" style="background:rgb(248,249,255);">
+                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco4-A', this)">
+                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
+                            <i class="bi bi-tag text-dark me-1"></i>
+                            <span class="fw-semibold">502 – Campaña Fibra Óptica</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.78rem;">600,000</td>
+                          <td></td>
+                        </tr>
+                        <tr class="ceco-child-ceco4 cu-ceco4-A d-none" style="background:#f0f4ff;">
+                          <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
+                            <i class="bi bi-dot me-1"></i>609028 – Pub. Internet &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 30011 – Fibra 2025</span>
+                          </td>
+                          <td class="text-end text-dark" style="font-size:.75rem;">600,000</td>
+                          <td></td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
               </div>
+            </div>
 
-              <!-- Accordion CeCos (referencia de base presupuestal) -->
-              <div class="accordion accordion-flush border border-secondary border-opacity-25 rounded bg-white shadow-sm overflow-auto mb-4" id="accordionCecos" style="max-height:280px;">
+          </div>
+        </div><!-- /paso-1 -->
 
-                <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-10 ceco-row" data-divs="Marca,Oferteo,Estrategia">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco1">
-                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
-                        <span class="fw-bold text-dark small">100901 – CAMPAÑAS PRIME TIME</span>
-                        <span class="small text-success fw-semibold">Disponible: $1,892,500</span>
-                      </div>
+
+        <!-- ════════════════════════════════════════
+             PASO 2 – Asignación de Presupuesto
+        ════════════════════════════════════════ -->
+        <div id="paso-2" style="display: none;">
+          <div class="row g-4 align-items-start">
+
+            <!-- Acordeón por CeCo (col-9) -->
+            <div class="col-lg-9">
+              <div class="card border-0 shadow-sm bg-white">
+                <div class="card-header bg-white border-bottom py-3 px-4">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                      <i class="bi bi-calendar3 text-primary"></i>Asignación de Presupuesto
+                    </h6>
+                    <button class="btn btn-sm btn-dark fw-semibold px-4" onclick="irPaso(1)">
+                      <i class="bi bi-arrow-left me-1"></i>Anterior
                     </button>
-                  </h2>
-                  <div id="colCeco1" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
-                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
-                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size:.65rem;">Consulta de Origen (Base Presupuestal):</small>
-                      <table class="table table-sm table-borderless mb-0 small text-dark">
-                        <tbody>
-                          <tr><td>609023 – Promociones | Campaña Madres</td><td class="text-end fw-semibold">$500,000.00</td></tr>
-                          <tr><td>609011 – Televisión | Gasto Ordinario</td><td class="text-end fw-semibold">$1,392,500.00</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
                   </div>
                 </div>
 
-                <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-10 ceco-row" data-divs="Marca,Oferteo">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco2">
-                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
-                        <span class="fw-bold text-dark small">62101 – PUBLICIDAD DIGITAL</span>
-                        <span class="small text-success fw-semibold">Disponible: $400,000</span>
-                      </div>
-                    </button>
-                  </h2>
-                  <div id="colCeco2" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
-                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
-                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size:.65rem;">Consulta de Origen (Base Presupuestal):</small>
-                      <table class="table table-sm table-borderless mb-0 small text-dark">
-                        <tbody>
-                          <tr><td>609028 – Pub Internet | Gasto Ordinario</td><td class="text-end fw-semibold">$400,000.00</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
+                <div class="card-body p-4">
+                  <div class="accordion accordion-flush border border-secondary border-opacity-25 rounded shadow-sm bg-white mb-4" id="accPresupuesto">
 
-                <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-10 ceco-row" data-divs="Marca">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco3">
-                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
-                        <span class="fw-bold text-dark small">62102 – MEDIOS TRADICIONALES</span>
-                        <span class="small text-success fw-semibold">Disponible: $500,000</span>
-                      </div>
-                    </button>
-                  </h2>
-                  <div id="colCeco3" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
-                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
-                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size:.65rem;">Consulta de Origen (Base Presupuestal):</small>
-                      <table class="table table-sm table-borderless mb-0 small text-dark">
-                        <tbody>
-                          <tr><td>609011 – Televisión | Gasto Ordinario</td><td class="text-end fw-semibold">$500,000.00</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-10 ceco-row" data-divs="Estrategia,Oferteo">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco4">
-                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
-                        <span class="fw-bold text-dark small">291374 – DIR MKT DIGITAL</span>
-                        <span class="small text-success fw-semibold">Disponible: $1,200,000</span>
-                      </div>
-                    </button>
-                  </h2>
-                  <div id="colCeco4" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
-                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
-                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size:.65rem;">Consulta de Origen (Base Presupuestal):</small>
-                      <table class="table table-sm table-borderless mb-0 small text-dark">
-                        <tbody>
-                          <tr><td>609028 – Pub Internet | Campaña Madres</td><td class="text-end fw-semibold">$1,200,000.00</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-10 ceco-row" data-divs="Sin División">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco5">
-                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
-                        <span class="fw-bold text-dark small">100500 – FINANZAS RETAIL <span class="badge bg-secondary-subtle text-secondary border border-secondary ms-1" style="font-size:.65rem;">sin base</span></span>
-                        <span class="small text-muted fst-italic">Sin límite</span>
-                      </div>
-                    </button>
-                  </h2>
-                  <div id="colCeco5" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
-                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
-                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size:.65rem;">Consulta de Origen (Base Presupuestal):</small>
-                      <p class="small text-muted fst-italic mb-0">Este CeCo no cuenta con base presupuestal de origen.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item bg-transparent ceco-row" data-divs="Sin División">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco6">
-                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
-                        <span class="fw-bold text-dark small">100600 – SERVICIOS CORPORATIVOS</span>
-                        <span class="small text-success fw-semibold">Disponible: $250,000</span>
-                      </div>
-                    </button>
-                  </h2>
-                  <div id="colCeco6" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
-                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
-                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size:.65rem;">Consulta de Origen (Base Presupuestal):</small>
-                      <table class="table table-sm table-borderless mb-0 small text-dark">
-                        <tbody>
-                          <tr><td>609023 – Promociones | Gasto Ordinario</td><td class="text-end fw-semibold">$250,000.00</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-              </div><!-- /accordionCecos -->
-
-              <!-- ── Tabla de distribución de presupuesto ── -->
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <h6 class="fw-bold text-dark mb-0" style="font-size:.88rem;">
-                  <i class="bi bi-calendar3 text-primary me-2"></i>Distribución de Presupuesto Mensual
-                </h6>
-                <span class="badge bg-warning-subtle text-dark border border-warning" style="font-size:.72rem;">
-                  <i class="bi bi-currency-dollar me-1"></i>MXN
-                </span>
-              </div>
-
-              <!-- Empty state distribución -->
-              <div id="dist-empty-state" class="text-center py-3 border rounded mb-3" style="background:#f8f9fa;">
-                <i class="bi bi-table text-secondary" style="font-size:1.4rem;display:block;"></i>
-                <p class="text-muted small mb-0 mt-1">Agrega al menos una línea de distribución</p>
-              </div>
-
-              <div id="dist-tabla-wrap" class="table-responsive" style="display:none;">
-                <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tblDistribucion">
-                  <thead class="table-light">
-                    <tr>
-                      <th style="width:32px;"></th>
-                      <th class="text-start" style="min-width:140px;">Centro de Costos</th>
-                      <th class="text-start" style="min-width:150px;">Cuenta Presupuestal</th>
-                      <th style="min-width:60px;">Ene</th>
-                      <th style="min-width:60px;">Feb</th>
-                      <th style="min-width:60px;">Mar</th>
-                      <th style="min-width:60px;">Abr</th>
-                      <th style="min-width:60px;">May</th>
-                      <th style="min-width:60px;">Jun</th>
-                      <th style="min-width:60px;">Jul</th>
-                      <th style="min-width:60px;">Ago</th>
-                      <th style="min-width:60px;">Sep</th>
-                      <th style="min-width:60px;">Oct</th>
-                      <th style="min-width:60px;">Nov</th>
-                      <th style="min-width:60px;">Dic</th>
-                      <th class="bg-light text-dark fw-bold" style="min-width:90px;">Total</th>
-                    </tr>
-                  </thead>
-                  <tbody id="bodyDistribucion"></tbody>
-                  <tfoot>
-                    <tr>
-                      <td colspan="16" class="text-start ps-2 py-2">
-                        <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold"
-                          onclick="agregarLineaDist()" style="font-size:.82rem;">
-                          <i class="bi bi-plus-circle me-1"></i>+ Agregar línea
+                    <!-- ── CeCo 100901 ── -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button py-3 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#dist-100901" aria-expanded="true">
+                          <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
+                            <div class="d-flex align-items-center gap-2">
+                              <span class="badge bg-primary px-2">100901</span>
+                              <span class="fw-bold text-dark">DIR GRAL CONECTIVIDAD</span>
+                            </div>
+                            <div class="d-flex gap-4 align-items-center">
+                              <div class="text-end">
+                                <div class="paso-label text-dark">Límite de Carga</div>
+                                <div class="fw-bold text-dark" style="font-size:.9rem;">900,000</div>
+                              </div>
+                              <div class="text-end border-start ps-3">
+                                <div class="paso-label text-dark">Asignado</div>
+                                <div class="fw-bold text-primary ceco-asignado" id="asignado-100901" style="font-size:.9rem;">0</div>
+                              </div>
+                              <div class="text-end border-start ps-3">
+                                <div class="paso-label text-dark">Disponible</div>
+                                <div class="fw-bold ceco-disponible text-success" id="disp-100901" style="font-size:.9rem;">900,000</div>
+                              </div>
+                              <div class="text-end border-start ps-3" style="min-width:90px;">
+                                <div class="paso-label text-dark mb-1">Consumo</div>
+                                <div class="progress bg-white border" style="height:6px; width:80px;">
+                                  <div class="progress-bar bg-success" id="barra-100901" style="width: 0%;"></div>
+                                </div>
+                                <div class="paso-label text-dark mt-1 ceco-pct" id="pct-100901">0%</div>
+                              </div>
+                            </div>
+                          </div>
                         </button>
-                        <div class="text-danger mt-1 d-none" id="errDistribucion" style="font-size:.78rem;">
-                          Agrega al menos una línea
+                      </h2>
+                      <div id="dist-100901" class="accordion-collapse collapse show" style="">
+                        <div class="accordion-body p-0">
+                          <div class="table-responsive">
+                            <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tbl-100901">
+                              <thead class="table-light">
+                                <tr>
+                                  <th style="width:32px;"></th>
+                                  <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
+                                  
+                                  <th style="min-width:65px;">Ene</th>
+                                  <th style="min-width:65px;">Feb</th>
+                                  <th style="min-width:65px;">Mar</th>
+                                  <th style="min-width:65px;">Abr</th>
+                                  <th style="min-width:65px;">May</th>
+                                  <th style="min-width:65px;">Jun</th>
+                                  <th style="min-width:65px;">Jul</th>
+                                  <th style="min-width:65px;">Ago</th>
+                                  <th style="min-width:65px;">Sep</th>
+                                  <th style="min-width:65px;">Oct</th>
+                                  <th style="min-width:65px;">Nov</th>
+                                  <th style="min-width:65px;">Dic</th>
+                                  <th class="bg-light text-dark" style="min-width:95px;">Total Asignado</th>
+                                </tr>
+                              </thead>
+                              <tbody id="body-100901"><tr class="fila-dato">
+        <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
+        <td><select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('100901')">
+          <option value="">— Cuenta —</option>
+          <option>609011 – Televisión</option><option>609023 – Promociones</option><option>609028 – Pub. Digital</option>
+        </select></td>
+        
+        <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+        <td class="fw-bold text-dark bg-light fila-total">0</td></tr></tbody>
+                              <tfoot>
+                                <tr>
+                                  <td colspan="16" class="text-start ps-2 py-2">
+                                    <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('body-100901','100901')" style="font-size:.78rem;">
+                                      <i class="bi bi-plus-circle me-1"></i>Agregar línea
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tfoot>
+                            </table>
+                          </div>
                         </div>
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-
-              <!-- Resumen control de carga -->
-              <div class="d-flex flex-wrap align-items-center gap-3 mt-3 p-3 border rounded" style="background:#f8f9fa;">
-                <div class="flex-grow-1">
-                  <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="small text-muted">% Consumo total</span>
-                    <span class="badge fw-bold border bg-secondary bg-opacity-10 text-secondary" id="badgePct">0%</span>
-                  </div>
-                  <div class="progress" style="height:8px; border-radius:6px;">
-                    <div class="progress-bar bg-success" id="barraGlobal" style="width:0%;"></div>
-                  </div>
-                </div>
-                <div class="d-flex gap-4">
-                  <div class="text-center">
-                    <div class="paso-label text-muted">Límite</div>
-                    <div class="fw-bold text-dark" id="panelLimite" style="font-size:.88rem;">—</div>
-                  </div>
-                  <div class="text-center border-start ps-4">
-                    <div class="paso-label text-muted">Asignado</div>
-                    <div class="fw-bold text-primary" id="panelAsignado" style="font-size:.88rem;">$0</div>
-                  </div>
-                  <div class="text-center border-start ps-4">
-                    <div class="paso-label text-muted">Disponible</div>
-                    <div class="fw-bold text-success" id="panelDisponible" style="font-size:.88rem;">—</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Bloque Excedente -->
-              <div id="bloqueExcedente" class="mt-3 card border border-danger" style="display:none; border-radius:8px;">
-                <div class="card-header bg-danger bg-opacity-10 border-bottom border-danger border-opacity-25 py-2 px-3">
-                  <div class="d-flex align-items-center gap-2">
-                    <i class="bi bi-exclamation-triangle-fill text-danger"></i>
-                    <span class="fw-bold text-danger" style="font-size:.88rem;">Límite de carga excedido</span>
-                    <span class="badge bg-danger ms-auto px-2 py-1" style="font-size:.65rem;">Obligatorio para continuar</span>
-                  </div>
-                </div>
-                <div class="card-body p-3">
-                  <p class="small text-dark mb-3">El total asignado supera el límite disponible. Captura la justificación y adjunta evidencia para continuar.</p>
-                  <div class="row g-3">
-                    <div class="col-md-7">
-                      <label class="form-label small fw-bold text-dark">Motivo / Justificación <span class="text-danger">*</span></label>
-                      <textarea class="form-control form-control-sm border-danger shadow-none" rows="2" placeholder="Mínimo 50 caracteres..."></textarea>
+                      </div>
                     </div>
-                    <div class="col-md-5">
-                      <label class="form-label small fw-bold text-dark">Evidencia Documental <span class="text-danger">*</span></label>
-                      <div class="border border-danger border-opacity-50 rounded p-2 text-center bg-danger bg-opacity-10" style="cursor:pointer;">
-                        <i class="bi bi-cloud-upload text-danger"></i>
-                        <p class="mb-0 text-danger" style="font-size:.72rem;">PDF, PNG, JPG — Máx. 10 MB</p>
+
+                    <!-- ── CeCo 291374 ── -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button py-3 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#dist-291374" aria-expanded="true">
+                          <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
+                            <div class="d-flex align-items-center gap-2">
+                              <span class="badge bg-primary px-2">291374</span>
+                              <span class="fw-bold text-dark">DIR MKT DIGITAL</span>
+                            </div>
+                            <div class="d-flex gap-4 align-items-center">
+                              <div class="text-end">
+                                <div class="paso-label text-dark">Límite de Carga</div>
+                                <div class="fw-bold text-dark" style="font-size:.9rem;">1,200,000</div>
+                              </div>
+                              <div class="text-end border-start ps-3">
+                                <div class="paso-label text-dark">Asignado</div>
+                                <div class="fw-bold text-primary ceco-asignado" id="asignado-291374" style="font-size:.9rem;">0</div>
+                              </div>
+                              <div class="text-end border-start ps-3">
+                                <div class="paso-label text-dark">Disponible</div>
+                                <div class="fw-bold ceco-disponible text-success" id="disp-291374" style="font-size:.9rem;">1,200,000</div>
+                              </div>
+                              <div class="text-end border-start ps-3" style="min-width:90px;">
+                                <div class="paso-label text-dark mb-1">Consumo</div>
+                                <div class="progress bg-white border" style="height:6px; width:80px;">
+                                  <div class="progress-bar bg-success" id="barra-291374" style="width:0%;"></div>
+                                </div>
+                                <div class="paso-label text-dark mt-1 ceco-pct" id="pct-291374">0%</div>
+                              </div>
+                            </div>
+                          </div>
+                        </button>
+                      </h2>
+                      <div id="dist-291374" class="accordion-collapse collapse show" style="">
+                        <div class="accordion-body p-0">
+                          <div class="table-responsive">
+                            <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tbl-291374">
+                              <thead class="table-light">
+                                <tr>
+                                  <th style="width:32px;"></th>
+                                  <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
+                                  
+                                  <th style="min-width:65px;">Ene</th>
+                                  <th style="min-width:65px;">Feb</th>
+                                  <th style="min-width:65px;">Mar</th>
+                                  <th style="min-width:65px;">Abr</th>
+                                  <th style="min-width:65px;">May</th>
+                                  <th style="min-width:65px;">Jun</th>
+                                  <th style="min-width:65px;">Jul</th>
+                                  <th style="min-width:65px;">Ago</th>
+                                  <th style="min-width:65px;">Sep</th>
+                                  <th style="min-width:65px;">Oct</th>
+                                  <th style="min-width:65px;">Nov</th>
+                                  <th style="min-width:65px;">Dic</th>
+                                  <th class="bg-light text-dark" style="min-width:95px;">Total Asignado</th>
+                                </tr>
+                              </thead>
+                              <tbody id="body-291374"><tr class="fila-dato">
+        <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
+        <td><select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('291374')">
+          <option value="">— Cuenta —</option>
+          <option>609011 – Televisión</option><option>609023 – Promociones</option><option>609028 – Pub. Digital</option>
+        </select></td>
+        
+        <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+        <td class="fw-bold text-dark bg-light fila-total">0</td></tr></tbody>
+                              <tfoot>
+                                <tr>
+                                  <td colspan="16" class="text-start ps-2 py-2">
+                                    <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('body-291374','291374')" style="font-size:.78rem;">
+                                      <i class="bi bi-plus-circle me-1"></i>Agregar línea
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tfoot>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div><!-- /accordion -->
+
+                  <!-- Bloque Excedente -->
+                  <div id="bloqueExcedente" class="card border border-danger radius-10 shadow-sm mb-3" style="display: none;">
+                    <div class="card-header bg-danger bg-opacity-10 border-bottom border-danger border-opacity-25 py-2 px-4">
+                      <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                        <span class="fw-bold text-danger" style="font-size:.88rem;">Solicitud de Excedente
+                          Requerida</span>
+                        <span class="badge bg-danger ms-auto px-2 py-1" style="font-size:.65rem;">Obligatorio para
+                          continuar</span>
+                      </div>
+                    </div>
+                    <div class="card-body p-3">
+                      <p class="small text-dark mb-3">Los importes superan el Límite de Carga total. Captura la
+                        justificación y adjunta evidencia para continuar al flujo de firmas.</p>
+                      <div class="row g-3">
+                        <div class="col-md-7">
+                          <label class="form-label small fw-bold text-dark">Motivo / Justificación <span class="text-danger">*</span></label>
+                          <textarea class="form-control form-control-sm border-danger shadow-none" rows="2" placeholder="Mínimo 50 caracteres..."></textarea>
+                        </div>
+                        <div class="col-md-5">
+                          <label class="form-label small fw-bold text-dark">Evidencia Documental <span class="text-danger">*</span></label>
+                          <div class="border border-danger border-opacity-50 rounded p-2 text-center bg-danger bg-opacity-10" style="cursor:pointer;">
+                            <i class="bi bi-cloud-upload text-danger"></i>
+                            <p class="mb-0 text-danger" style="font-size:.72rem;">PDF, PNG, JPG — Máx. 10 MB</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
+            </div>
 
-              <div class="mt-2 text-muted" style="font-size:.72rem;">
-                <i class="bi bi-info-circle me-1"></i>CeCos sin base presupuestal pueden incluirse en la solicitud.
+            <!-- Panel derecho: Control de Carga Total (col-3) -->
+            <div class="col-lg-3">
+              <div class="card border-0 shadow-sm bg-white sticky-top" style="top:20px;">
+                <div class="card-header bg-white border-bottom py-3 px-4">
+                  <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                    <i class="bi bi-pie-chart text-primary"></i>Control de Carga Total
+                  </h6>
+                </div>
+                <div class="card-body p-4">
+
+                  <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="small text-muted">% Consumo Global</span>
+                      <span class="badge fw-bold border bg-success bg-opacity-10 text-success border-success border-opacity-25" id="badgePct">0.0%</span>
+                    </div>
+                    <div class="progress" style="height:10px; border-radius:6px;">
+                      <div class="progress-bar bg-success" id="barraGlobal" style="width: 0%;"></div>
+                    </div>
+                  </div>
+
+                  <div class="border border-secondary border-opacity-25 rounded p-3" style="background:#f8f9fa;">
+                    <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
+                      <span class="small fw-semibold text-dark">Límite de Carga</span>
+                      <span class="fw-bold text-dark">2,100,000</span>
+                    </div>
+                    <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
+                      <span class="small fw-semibold text-dark">Total Asignado</span>
+                      <span class="fw-bold text-primary" id="panelAsignado">0</span>
+                    </div>
+                    <div class="d-flex justify-content-between py-2">
+                      <span class="small fw-semibold text-dark">Disponible</span>
+                      <span class="fw-bold text-success" id="panelDisponible">2,100,000</span>
+                    </div>
+                  </div>
+
+                </div>
               </div>
-
-            </div><!-- /ceco-tabla-wrap -->
-
-            <!-- No data state -->
-            <div id="ceco-no-data" class="text-center py-4 px-3" style="display:none;">
-              <p class="text-muted mb-0 small">No hay centros de costo disponibles para la división seleccionada.</p>
             </div>
 
           </div>
-        </div>
-      </div>
+        </div><!-- /paso-2 -->
 
-    </div><!-- /row bloque 3+4 -->
+      </div><!-- /card-body -->
+    </div><!-- /card principal -->
 
   </main>
   <!-- ================= FIN DEL CONTENIDO PRINCIPAL ================= -->
-
-  <!-- ── Footer sticky con mini resumen + botones unidos ── -->
-  <div class="form-footer">
-    <div class="d-flex align-items-center justify-content-between px-4 py-2 gap-3">
-
-      <!-- Mini resumen -->
-      <div class="d-flex align-items-center gap-4 flex-wrap">
-        <div class="footer-resumen-item">
-          <div class="label">Tipo de gasto</div>
-          <div class="value">Presupuesto ordinario</div>
-        </div>
-        <div class="footer-resumen-item" id="ftrDivBloque" style="display:none;">
-          <div class="label">División</div>
-          <div class="value" id="ftrDivision">—</div>
-        </div>
-        <div class="footer-resumen-item" id="ftrNombreBloque" style="display:none;">
-          <div class="label">Campaña</div>
-          <div class="value" id="ftrNombre">—</div>
-        </div>
-        <div class="footer-resumen-item" id="ftrVigBloque" style="display:none;">
-          <div class="label">Vigencia</div>
-          <div class="value" id="ftrVigencia">—</div>
-        </div>
-        <div class="footer-resumen-item" id="ftrTotalBloque">
-          <div class="label">Total asignado</div>
-          <div class="value text-primary" id="ftrTotal">$0 MXN</div>
-        </div>
-      </div>
-
-      <!-- Botones unidos -->
-      <div class="d-flex align-items-center gap-2 flex-shrink-0">
-        <div id="msgValidacion" class="text-danger me-1 d-none" style="font-size:.78rem;">
-          <i class="bi bi-exclamation-circle me-1"></i>Completa los campos requeridos
-        </div>
-        <div class="btn-group shadow-sm">
-          <button class="btn btn-outline-secondary" onclick="confirmarAccion('borrador')">
-            <i class="bi bi-floppy me-1"></i>Guardar borrador
-          </button>
-          <button class="btn btn-primary fw-bold" onclick="continuar()">
-            Continuar a confirmación <i class="bi bi-arrow-right ms-1"></i>
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <!-- /footer -->
 
   <!-- Modal Confirmar Guardar Borrador -->
   <div class="modal fade" id="modalBorrador" tabindex="-1">
@@ -912,7 +1064,8 @@
         <div class="modal-body text-center p-5">
           <i class="bi bi-floppy-fill text-warning mb-3" style="font-size:3rem;"></i>
           <h5 class="fw-bold text-dark mb-2">¿Guardar borrador?</h5>
-          <p class="small text-muted mb-4">La solicitud quedará guardada como borrador. Podrás retomar y completarla en otro momento.</p>
+          <p class="small text-muted mb-4">La solicitud quedará guardada como borrador. Podrás retomar y completarla en
+            otro momento.</p>
           <div class="d-flex justify-content-center gap-3">
             <button class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
             <button class="btn btn-warning fw-bold text-dark px-4" onclick="ejecutarBorrador()"><i class="bi bi-floppy me-1"></i> Guardar</button>
@@ -933,8 +1086,9 @@
             <span class="text-muted small">Folio asignado:</span>
             <h4 class="fw-bold text-dark mt-1 mb-0">SOL-BORR-26001</h4>
           </div>
-          <p class="small text-muted mb-4">Puedes retomar y completar esta solicitud desde el listado de Carga Presupuestal.</p>
-          <a href="SelGrupoEmpresarial.html" class="btn btn-warning fw-bold text-dark px-5 shadow-sm">
+          <p class="small text-muted mb-4">Puedes retomar y completar esta solicitud desde el listado de Carga
+            Presupuestal.</p>
+          <a href="AEjercicio.html" class="btn btn-warning fw-bold text-dark px-5 shadow-sm">
             <i class="bi bi-list-ul me-1"></i> Ir al listado
           </a>
         </div>
@@ -949,10 +1103,12 @@
         <div class="modal-body text-center p-5">
           <i class="bi bi-exclamation-triangle-fill text-warning mb-3" style="font-size:3rem;"></i>
           <h5 class="fw-bold text-dark mb-2">¿Cancelar la solicitud?</h5>
-          <p class="small text-muted mb-4">Si cancelas ahora, se perderán todos los cambios realizados y serás redirigido al listado de solicitudes.</p>
+          <p class="small text-muted mb-4">Si cancelas ahora, se perderán todos los cambios realizados y serás
+            redirigido al listado de solicitudes.</p>
           <div class="d-flex justify-content-center gap-3">
             <button class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Seguir editando</button>
-            <a href="SelGrupoEmpresarial.html" class="btn btn-primary fw-bold px-4"><i class="bi bi-x-lg me-1"></i> Sí, cancelar</a>
+            <a href="AEjercicio.html" class="btn btn-primary fw-bold px-4"><i class="bi bi-x-lg me-1"></i> Sí,
+              cancelar</a>
           </div>
         </div>
       </div>
@@ -984,19 +1140,22 @@
             </div>
             <div class="flex-fill text-center rounded-3 py-3 px-2" style="background:#f0fff6; border:1.5px solid #b6efd0;">
               <div class="fw-bold text-success" style="font-size:1.5rem; line-height:1.2;" id="resumenTotalCard">–</div>
-              <div class="text-muted mt-1" style="font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.04em;">Total Asignado</div>
+              <div class="text-muted mt-1" style="font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.04em;">Total
+                Asignado</div>
             </div>
           </div>
 
           <!-- Texto resumen -->
           <p class="text-dark mb-3" style="font-size:.88rem; line-height:1.6;">
-            Estás a punto de enviar la solicitud de gasto con <strong id="resumenCecos">–</strong> Centro(s) de Costo y un presupuesto total asignado de <strong class="text-success" id="resumenTotalInline">–</strong>.
+            Estás a punto de enviar la solicitud de gasto con <strong id="resumenCecos">–</strong> Centro(s) de Costo y
+            un presupuesto total asignado de <strong class="text-success" id="resumenTotalInline">–</strong>.
           </p>
 
           <!-- Aviso -->
           <div class="d-flex align-items-start gap-2 p-3 rounded-3" style="background:#fffbe6; border:1px solid #ffe58f;">
             <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0 mt-1" style="font-size:.9rem;"></i>
-            <span class="text-dark" style="font-size:.8rem;">Una vez enviada, la solicitud pasará al flujo de firmas y <strong>ya no podrá editarse</strong> sin aprobación.</span>
+            <span class="text-dark" style="font-size:.8rem;">Una vez enviada, la solicitud pasará al flujo de firmas y
+              <strong>ya no podrá editarse</strong> sin aprobación.</span>
           </div>
 
         </div>
@@ -1023,8 +1182,9 @@
           <i class="bi bi-check-circle-fill text-success mb-3" style="font-size:4rem;"></i>
           <h5 class="fw-bold text-dark mb-2">Solicitud enviada a autorización</h5>
           <h4 class="text-primary fw-bold mb-4">Folio: SOL-26001NMX</h4>
-          <p class="small text-muted mb-4">Se notificó a los niveles de autorización correspondientes para su revisión.</p>
-          <a href="SelGrupoEmpresarial.html" class="btn btn-success px-5 shadow-sm">Salir</a>
+          <p class="small text-muted mb-4">Se notificó a los niveles de autorización correspondientes para su revisión.
+          </p>
+          <a href="AEjercicio.html" class="btn btn-success px-5 shadow-sm">Salir</a>
         </div>
       </div>
     </div>
@@ -1048,7 +1208,7 @@
         <label class="form-check-label" for="LightTheme">Light</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2" checked>
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2" checked="">
         <label class="form-check-label" for="DarkTheme">Dark</label>
       </div>
       <div class="form-check form-check-inline">
@@ -1068,245 +1228,316 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    var LIMITE_GLOBAL = 2100000;
-    var MES_ACTUAL = new Date().getMonth();
-    var CECOS = [
-      {val:'100901', label:'100901 – Campañas Prime Time',    lim:1892500, divs:['Marca','Oferteo','Estrategia']},
-      {val:'62101',  label:'62101 – Publicidad Digital',      lim:400000,  divs:['Marca','Oferteo']},
-      {val:'62102',  label:'62102 – Medios Tradicionales',    lim:500000,  divs:['Marca']},
-      {val:'291374', label:'291374 – Dir Mkt Digital',        lim:1200000, divs:['Estrategia','Oferteo']},
-      {val:'100500', label:'100500 – Finanzas Retail',        lim:0,       divs:['Sin División']},
-      {val:'100600', label:'100600 – Servicios Corporativos', lim:250000,  divs:['Sin División']}
-    ];
-    var CUENTAS = [
-      {val:'609011', label:'609011 – Televisión'},
-      {val:'609023', label:'609023 – Promociones'},
-      {val:'609028', label:'609028 – Pub. Internet'},
-      {val:'62101',  label:'62101 – Pub. Digital'},
-      {val:'62102',  label:'62102 – Medios Trad.'}
-    ];
-    function sh(id){var e=document.getElementById(id);if(e)e.style.display='';}
-    function hi(id){var e=document.getElementById(id);if(e)e.style.display='none';}
-    function shEl(e){if(e)e.style.display='';}
-    function hiEl(e){if(e)e.style.display='none';}
-    function pn(v){return parseFloat((v||'').replace(/,/g,''))||0;}
-    function fmx(n){return '$'+n.toLocaleString('es-MX',{maximumFractionDigits:0})+' MXN';}
+    // ── Stepper ──────────────────────────────────────
+    function irPaso(n) {
+      for (let i = 1; i <= 2; i++) {
+        document.getElementById(`paso-${i}`).style.display = (i === n) ? 'block' : 'none';
+        const sc = document.getElementById(`sc-${i}`);
+        if (i < n) { sc.className = 'step-circle done'; sc.innerHTML = '<i class="bi bi-check-lg" style="font-size:.65rem;"></i>'; }
+        else if (i === n) { sc.className = 'step-circle active'; sc.textContent = i; }
+        else { sc.className = 'step-circle pending'; sc.textContent = i; }
+        if (i < 2) document.getElementById(`sl-${i}`).className = 'step-line' + (i < n ? ' done' : '');
+      }
+    }
 
-    function aplicarLogicaCampos(){
-      var tg=document.getElementById('tipoGasto').value;
-      if(!tg)return;
-      sh('bloqueDivision');
-      var tc=document.getElementById('inputTipoCampana');
-      var sel=document.getElementById('selectNombreTransversal'),inp=document.getElementById('inputNombreManual');
-      if(tg==='Transversal'){
-        sh('bloqueTipoCampana'); tc.value='Transversal';
-        shEl(sel); hiEl(inp); sel.onchange=function(){onNombreChange();};
-      } else if(tg==='Negocio'){
-        sh('bloqueTipoCampana'); tc.value='De negocio';
-        hiEl(sel); shEl(inp); inp.placeholder='Escriba manualmente el nombre...'; inp.oninput=function(){onNombreChange();};
+    // ── División chips ────────────────────────────────
+    function toggleDiv(btn) {
+      btn.classList.toggle('active');
+      const activas = [...document.querySelectorAll('#divChips .div-chip.active')].map(b => b.dataset.div);
+      const label = document.getElementById('labelDivisionActiva');
+      if (label) label.textContent = activas.length ? activas.join(', ') : '—';
+      filtrarCecosPorDivision(activas);
+    }
+
+    function filtrarCecosPorDivision(activas) {
+      const wrap = document.getElementById('ceco-tabla-wrap');
+      const empty = document.getElementById('ceco-empty-state');
+
+      if (!activas.length) {
+        wrap.style.display = 'none';
+        empty.style.display = '';
+        document.querySelectorAll('[id^="chk-ceco"]').forEach(c => { c.checked = false; });
+        updateCecoCount();
+        return;
+      }
+
+      wrap.style.display = '';
+      empty.style.display = 'none';
+
+      document.querySelectorAll('.ceco-group').forEach(parentRow => {
+        const divsCeco = parentRow.dataset.divs.split(',');
+        const visible = divsCeco.some(d => activas.includes(d));
+        const cecoId = parentRow.id ? parentRow.id.replace('tr-', '') : '';
+
+        parentRow.style.display = visible ? '' : 'none';
+        if (cecoId) {
+          document.querySelectorAll(`.ceco-child-${cecoId}`).forEach(r => {
+            r.style.display = visible ? '' : 'none';
+          });
+        }
+
+        if (!visible) {
+          const chk = parentRow.querySelector('input[type="checkbox"]');
+          if (chk) chk.checked = false;
+        }
+      });
+
+      updateCecoCount();
+    }
+
+    // ── Combos dinámicos ──────────────────────────────
+    function actualizarCombo() {
+      const tipo = document.getElementById('tipoGasto').value;
+      const show = (id) => document.getElementById(id).style.display = 'block';
+      const hide = (id) => document.getElementById(id).style.display = 'none';
+
+      document.getElementById('placeholderTipo').style.display = tipo ? 'none' : 'block';
+      if (!tipo) return;
+
+      show('bloque-division'); show('bloque-fechas'); show('bloque-desc');
+
+      if (tipo === 'Campana') {
+        show('bloque-tipo-campana');
+        hide('bloque-tipo-proyecto');
+        hide('bloque-nombre');
+        document.querySelectorAll('input[name="tipoCampana"]').forEach(r => r.checked = false);
+      } else if (tipo === 'Proyecto') {
+        hide('bloque-tipo-campana');
+        show('bloque-tipo-proyecto');
+        hide('bloque-nombre');
+        // limpiar selección previa para que el usuario elija de nuevo
+        document.querySelectorAll('input[name="tipoProyecto"]').forEach(r => r.checked = false);
       } else {
-        hi('bloqueTipoCampana'); tc.value='';
-        hiEl(sel); shEl(inp); inp.placeholder='Escriba manualmente el nombre...'; inp.oninput=function(){onNombreChange();};
+        hide('bloque-tipo-campana');
+        hide('bloque-tipo-proyecto');
+        show('bloque-nombre');
+        document.getElementById('selectNombreTransversal').style.display = 'none';
+        document.getElementById('inputNombreManual').style.display = 'none';
+        document.getElementById('inputNombreOrdinario').style.display = 'flex';
       }
-      sh('bloqueNombre');
-      // reset de pasos posteriores
-      sel.selectedIndex=0; inp.value='';
-      hi('bloqueFechaIni'); hi('bloqueFechaFin'); hi('bloqueTextos');
-      document.getElementById('fechaInicio').value=''; document.getElementById('fechaFin').value='';
-      hi('ftrNombreBloque'); hi('ftrVigBloque');
     }
 
-    function filtrarBuscadorCeco(){
-      var q=(document.getElementById('buscadorCeco').value||'').toLowerCase();
-      document.querySelectorAll('#accordionCecos .ceco-row').forEach(function(row){
-        if(row.style.display==='none') return;
-        row.style.display=row.innerText.toLowerCase().indexOf(q)>=0?'':'none';
+    function actualizarNombre() {
+      const tc = document.querySelector('input[name="tipoCampana"]:checked');
+      if (!tc) return;
+      document.getElementById('bloque-nombre').style.display = 'block';
+      const esT = tc.value === 'Transversal';
+      document.getElementById('selectNombreTransversal').style.display = esT ? 'block' : 'none';
+      document.getElementById('inputNombreManual').style.display = esT ? 'none' : 'block';
+      document.getElementById('inputNombreOrdinario').style.display = 'none';
+    }
+
+    function actualizarNombreProyecto() {
+      const tp = document.querySelector('input[name="tipoProyecto"]:checked');
+      if (!tp) return;
+      document.getElementById('bloque-nombre').style.display = 'block';
+      const esT = tp.value === 'Transversal';
+      document.getElementById('selectNombreTransversal').style.display = esT ? 'block' : 'none';
+      document.getElementById('inputNombreManual').style.display = esT ? 'none' : 'block';
+      document.getElementById('inputNombreOrdinario').style.display = 'none';
+    }
+
+    function contarChars() {
+      const v = document.getElementById('descInput').value.length;
+      const pct = Math.min(100, v / 50 * 100);
+      document.getElementById('charCount').textContent = `(${v} / 50 mín.)`;
+      const bar = document.getElementById('charBar');
+      bar.style.width = pct + '%';
+      bar.className = 'progress-bar ' + (pct >= 100 ? 'bg-success' : 'bg-danger');
+    }
+
+    // ── CeCo árbol ───────────────────────────────────
+    const cecoOpen = { ceco1: true, ceco2: false };
+
+    function toggleCeco(id) {
+      cecoOpen[id] = !cecoOpen[id];
+      const open = cecoOpen[id];
+      document.querySelectorAll(`.child-${id}`).forEach(r => r.style.display = open ? '' : 'none');
+      const ico = document.getElementById(`ico-${id}`);
+      if (ico) ico.className = `bi ${open ? 'bi-chevron-down text-primary' : 'bi-chevron-right text-dark'} me-2 flex-shrink-0`;
+      if (id === 'ceco1') document.getElementById('bar-ceco1').style.display = open ? '' : 'none';
+    }
+
+    function toggleCampana(cls, btn) {
+      const rows = document.querySelectorAll(`.${cls}`);
+      const open = rows[0]?.classList.contains('d-none');
+      rows.forEach(r => r.classList.toggle('d-none', !open));
+      btn.className = `bi ${open ? 'bi-chevron-down' : 'bi-chevron-right'} me-2 text-dark`;
+    }
+
+    function updateCecoCount() {
+      const n = document.querySelectorAll('[id^="chk-ceco"]:checked').length;
+      document.getElementById('cecoCount').textContent = n;
+    }
+
+    // ── Cuentas ───────────────────────────────────────
+    function filtrarCuentas(q) {
+      const term = q.toLowerCase().trim();
+      document.querySelectorAll('.cuenta-item').forEach(label => {
+        const txt = label.textContent.toLowerCase();
+        label.style.display = (!term || txt.includes(term)) ? '' : 'none';
       });
     }
-
-    function onDivisionChange(){
-      var div=document.getElementById('selDivision').value;
-      if(!div)return;
-      var lbl=document.getElementById('labelDivisionActiva'); if(lbl)lbl.textContent=div;
-      var fd=document.getElementById('ftrDivision'); if(fd)fd.textContent=div; sh('ftrDivBloque');
-      filtrarCecos(div);
-      sh('ceco-tabla-wrap'); hi('ceco-empty-state'); hi('ceco-no-data');
-      document.getElementById('bodyDistribucion').innerHTML='';
-      document.getElementById('dist-tabla-wrap').style.display='none';
-      document.getElementById('dist-empty-state').style.display='';
-      agregarLineaDist(); recalcularGlobal();
+    function toggleTodasCuentas(sw) {
+      document.querySelectorAll('.cuenta-checkbox').forEach(c => c.checked = sw.checked);
+      actualizarContCuentas();
+    }
+    function actualizarContCuentas() {
+      const n = document.querySelectorAll('.cuenta-checkbox:checked').length;
+      document.getElementById('cuentaCount').textContent = n;
+    }
+    document.addEventListener('change', e => {
+      if (e.target.classList.contains('cuenta-checkbox')) actualizarContCuentas();
+    });
+    function validarCuentasYAvanzar() {
+      const n = document.querySelectorAll('.cuenta-checkbox:checked').length;
+      const err = document.getElementById('errCuentas');
+      if (n === 0) { err.style.display = 'block'; return; }
+      err.style.display = 'none';
+      irPaso(3);
     }
 
-    function onNombreChange(){
-      var sel=document.getElementById('selectNombreTransversal'),inp=document.getElementById('inputNombreManual');
-      var nom=(sel.style.display!=='none'?sel.value:inp.value).trim();
-      if(nom){
-        sh('bloqueFechaIni');sh('bloqueFechaFin');
-        var fn=document.getElementById('ftrNombre'); if(fn)fn.textContent=nom.length>28?nom.substring(0,26)+'...':nom;
-        sh('ftrNombreBloque');
-      } else {hi('bloqueFechaIni');hi('bloqueFechaFin');hi('bloqueTextos');hi('ftrNombreBloque');hi('ftrVigBloque');}
+    // ── Asignación de Presupuesto ─────────────────────
+    const limites = { '100901': 900000, '291374': 1200000 };
+    const LIMITE_GLOBAL = 2100000;
+
+    function parseNum(v) {
+      return parseFloat(v.replace(/,/g, '')) || 0;
     }
 
-    function onFechaChange(){
-      var fi=document.getElementById('fechaInicio').value,ff=document.getElementById('fechaFin').value;
-      if(fi&&ff){sh('bloqueTextos');var fv=document.getElementById('ftrVigencia');if(fv)fv.textContent=fmtVig(fi,ff);sh('ftrVigBloque');}
-      else{hi('bloqueTextos');hi('ftrVigBloque');}
-    }
-    function fmtVig(fi,ff){
-      var mn=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-      var d1=new Date(fi+'T00:00:00'),d2=new Date(ff+'T00:00:00');
-      return mn[d1.getMonth()]+' '+d1.getFullYear()+' - '+mn[d2.getMonth()]+' '+d2.getFullYear();
-    }
+    function recalcularCeco(ceco) {
+      const body = document.getElementById(`body-${ceco}`);
+      let total = 0;
+      body.querySelectorAll('.fila-dato').forEach(row => {
+        const inputs = row.querySelectorAll('.matrix-input');
+        let suma = 0;
+        inputs.forEach(inp => {
+          const v = parseNum(inp.value);
+          suma += v;
+          inp.classList.toggle('has-value', v > 0);
+        });
+        row.querySelector('.fila-total').textContent = suma.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+        total += suma;
+      });
 
-    function contarChars(iId,cId,bId){
-      var v=document.getElementById(iId).value.length,pct=Math.min(100,v/50*100);
-      document.getElementById(cId).textContent='('+v+' / 50 min.)';
-      var b=document.getElementById(bId); b.style.width=pct+'%'; b.className='progress-bar '+(pct>=100?'bg-success':'bg-danger');
-    }
+      const lim = limites[ceco];
+      const disp = lim - total;
+      const pct = Math.min(100, total / lim * 100);
+      const over = disp < 0;
 
-    function getCecosParaDivision(){
-      var div=(document.getElementById('selDivision')||{}).value||'';
-      if(!div) return CECOS;
-      return CECOS.filter(function(c){return c.divs.indexOf(div)>=0;});
-    }
-    function buildCecoSelect(){
-      var html='<option value="">— CeCo —</option>';
-      getCecosParaDivision().forEach(function(c){html+='<option value="'+c.val+'">'+c.label+'</option>';});
-      return '<select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularGlobal()">'+html+'</select>';
-    }
-    function buildCuentaSelect(){
-      var html='<option value="">— Cuenta —</option>';
-      CUENTAS.forEach(function(c){html+='<option value="'+c.val+'">'+c.label+'</option>';});
-      return '<select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none">'+html+'</select>';
-    }
+      const asigEl = document.getElementById(`asignado-${ceco}`);
+      if (asigEl) asigEl.textContent = total.toLocaleString('es-MX', { maximumFractionDigits: 0 });
 
-    var filaCount=0;
-    function agregarLineaDist(){
-      filaCount++;
-      var body=document.getElementById('bodyDistribucion');
-      var tr=document.createElement('tr');
-      tr.className='fila-dato';
-      var cells='<td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>';
-      cells+='<td class="text-start ps-1">'+buildCecoSelect()+'</td>';
-      cells+='<td class="text-start">'+buildCuentaSelect()+'</td>';
-      for(var m=0;m<12;m++){
-        if(m<MES_ACTUAL){cells+='<td><input type="text" class="matrix-input mes-pasado" value="—" disabled title="Mes cerrado"></td>';}
-        else{cells+='<td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularGlobal()"></td>';}
+      const dispEl = document.getElementById(`disp-${ceco}`);
+      if (dispEl) {
+        dispEl.textContent = Math.abs(disp).toLocaleString('es-MX', { maximumFractionDigits: 0 }) + (over ? ' (excedido)' : '');
+        dispEl.className = `fw-bold ceco-disponible ${over ? 'text-danger' : 'text-success'}`;
       }
-      cells+='<td class="fw-bold text-dark fila-total" style="background:#f8f9fa; white-space:nowrap;">$0</td>';
-      tr.innerHTML=cells;
+      const barra = document.getElementById(`barra-${ceco}`);
+      if (barra) {
+        barra.style.width = pct + '%';
+        barra.className = `progress-bar ${over ? 'bg-danger' : pct > 80 ? 'bg-warning' : 'bg-success'}`;
+      }
+
+      actualizarGlobal();
+    }
+
+    function actualizarGlobal() {
+      let totalAsig = 0;
+      Object.keys(limites).forEach(ceco => {
+        const body = document.getElementById(`body-${ceco}`);
+        if (!body) return;
+        body.querySelectorAll('.fila-dato').forEach(row => {
+          row.querySelectorAll('.matrix-input').forEach(inp => totalAsig += parseNum(inp.value));
+        });
+      });
+
+      const disp = LIMITE_GLOBAL - totalAsig;
+      const pct = Math.min(110, totalAsig / LIMITE_GLOBAL * 100);
+      const over = disp < 0;
+
+      const fmtN = n => n.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+      const pa = document.getElementById('panelAsignado');
+      const pd = document.getElementById('panelDisponible');
+      const bg = document.getElementById('badgePct');
+      const bg2 = document.getElementById('barraGlobal');
+      if (pa) pa.textContent = fmtN(totalAsig);
+      if (pd) { pd.textContent = fmtN(Math.abs(disp)) + (over ? ' (excedido)' : ''); pd.className = 'fw-bold ' + (over ? 'text-danger' : 'text-success'); }
+      if (bg) { bg.textContent = pct.toFixed(1) + '%'; bg.className = 'badge fw-bold border ' + (over ? 'bg-danger bg-opacity-10 text-danger border-danger border-opacity-25' : pct > 80 ? 'bg-warning bg-opacity-10 text-warning border-warning border-opacity-25' : 'bg-success bg-opacity-10 text-success border-success border-opacity-25'); }
+      if (bg2) { bg2.style.width = pct + '%'; bg2.className = 'progress-bar ' + (over ? 'bg-danger' : pct > 80 ? 'bg-warning' : 'bg-success'); }
+
+      document.getElementById('bloqueExcedente').style.display = over ? 'block' : 'none';
+    }
+
+    function eliminarFila(btn) {
+      const row = btn.closest('tr');
+      const ceco = row.closest('table').id.replace('tbl-', '');
+      row.remove();
+      if (ceco) recalcularCeco(ceco);
+    }
+
+    function agregarFila(bodyId, ceco) {
+      const body = document.getElementById(bodyId);
+      const tr = document.createElement('tr');
+      tr.className = 'fila-dato';
+      tr.innerHTML = `
+        <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
+        <td><select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('${ceco}')">
+          <option value="">— Cuenta —</option>
+          <option>609011 – Televisión</option><option>609023 – Promociones</option><option>609028 – Pub. Digital</option>
+        </select></td>
+        <td><select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none">
+          <option value="">— Campaña —</option>
+          <option>19283 – Gemas</option><option>21328 – Originación</option>
+        </select></td>
+        ${Array(12).fill(0).map(() => `<td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('${ceco}')"></td>`).join('')}
+        <td class="fw-bold text-dark bg-light fila-total">0</td>`;
       body.appendChild(tr);
-      document.getElementById('dist-tabla-wrap').style.display='';
-      document.getElementById('dist-empty-state').style.display='none';
     }
 
-    function eliminarFila(btn){
-      btn.closest('tr').remove();
-      if(document.querySelectorAll('#bodyDistribucion .fila-dato').length===0){
-        document.getElementById('dist-tabla-wrap').style.display='none';
-        document.getElementById('dist-empty-state').style.display='';
-      }
-      recalcularGlobal();
-    }
-
-    function recalcularGlobal(){
-      var totalSolicitud=0, porCeco={};
-      document.querySelectorAll('#bodyDistribucion .fila-dato').forEach(function(row){
-        var cecoSel=row.querySelector('select');
-        var cecoVal=cecoSel?cecoSel.value:'';
-        var sumaFila=0;
-        row.querySelectorAll('.matrix-input:not(.mes-pasado)').forEach(function(inp){
-          var v=pn(inp.value); sumaFila+=v; inp.classList.toggle('has-value',v>0);
+    // ── Modales de confirmación ───────────────────────
+    function confirmarAccion(tipo) {
+      if (tipo === 'enviar') {
+        let cecosConMonto = 0;
+        let totalGlobal = 0;
+        Object.keys(limites).forEach(ceco => {
+          const body = document.getElementById(`body-${ceco}`);
+          if (!body) return;
+          let sumaCeco = 0;
+          body.querySelectorAll('.fila-dato').forEach(row => {
+            row.querySelectorAll('.matrix-input').forEach(inp => sumaCeco += parseNum(inp.value));
+          });
+          if (sumaCeco > 0) cecosConMonto++;
+          totalGlobal += sumaCeco;
         });
-        var ft=row.querySelector('.fila-total');
-        if(ft)ft.textContent='$'+sumaFila.toLocaleString('es-MX',{maximumFractionDigits:0});
-        if(cecoVal){porCeco[cecoVal]=(porCeco[cecoVal]||0)+sumaFila;}
-        totalSolicitud+=sumaFila;
-      });
 
-      var limiteTotal=0, hayLimite=false;
-      Object.keys(porCeco).forEach(function(cv){
-        var meta=CECOS.find(function(c){return c.val===cv;});
-        if(meta&&meta.lim>0){limiteTotal+=meta.lim;hayLimite=true;}
-      });
+        const fmt = n => n.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+        document.getElementById('resumenCecos').textContent = cecosConMonto;
+        document.getElementById('resumenCecosCard').textContent = cecosConMonto;
+        document.getElementById('resumenTotalCard').textContent = fmt(totalGlobal);
+        document.getElementById('resumenTotalInline').textContent = fmt(totalGlobal);
 
-      var over=hayLimite&&totalSolicitud>limiteTotal;
-      var pct=hayLimite&&limiteTotal>0?Math.min(110,totalSolicitud/limiteTotal*100):0;
-
-      var pl=document.getElementById('panelLimite'),pa=document.getElementById('panelAsignado'),
-          pd=document.getElementById('panelDisponible'),bg=document.getElementById('barraGlobal'),
-          bp=document.getElementById('badgePct');
-      if(pa)pa.textContent=fmx(totalSolicitud);
-      if(pl)pl.textContent=hayLimite?fmx(limiteTotal):'Sin límite';
-      if(pd){
-        pd.textContent=hayLimite?fmx(Math.abs(limiteTotal-totalSolicitud))+(over?' (excedido)':''):'—';
-        pd.className='fw-bold '+(over?'text-danger':'text-success');
+        new bootstrap.Modal(document.getElementById('modalConfirmarEnvio')).show();
+        return;
       }
-      if(bg){bg.style.width=pct+'%';bg.className='progress-bar '+(over?'bg-danger':pct>80?'bg-warning':'bg-success');}
-      if(bp){
-        bp.textContent=hayLimite?pct.toFixed(1)+'%':'—';
-        bp.className='badge fw-bold border '+(over?'bg-danger-subtle text-dark border-danger':pct>80?'bg-warning-subtle text-dark border-warning':'bg-success-subtle text-dark border-success');
-      }
-
-      // panelDetalleCecos removed — detail now shown inline in the summary bar
-
-      document.getElementById('bloqueExcedente').style.display=over?'block':'none';
-      var ft2=document.getElementById('ftrTotal');
-      if(ft2)ft2.textContent=fmx(totalSolicitud);
+      const map = { borrador: 'modalBorrador', cancelar: 'modalCancelar' };
+      new bootstrap.Modal(document.getElementById(map[tipo])).show();
     }
 
-    function continuar(){
-      var valid=true;
-      var tg=document.getElementById('tipoGasto').value;
-      if(!tg){document.getElementById('errTipoGasto').classList.remove('d-none');valid=false;}
-      else{document.getElementById('errTipoGasto').classList.add('d-none');}
-      var div=document.getElementById('selDivision').value;
-      if(!div){document.getElementById('errDivision').classList.remove('d-none');valid=false;}
-      else{document.getElementById('errDivision').classList.add('d-none');}
-      var sel=document.getElementById('selectNombreTransversal'),inp=document.getElementById('inputNombreManual');
-      var nom=(sel.style.display!=='none'?sel.value:inp.value).trim();
-      if(!nom){document.getElementById('errNombre').classList.remove('d-none');valid=false;}
-      else{document.getElementById('errNombre').classList.add('d-none');}
-      if(!document.getElementById('fechaInicio').value){document.getElementById('errFechaIni').classList.remove('d-none');valid=false;}
-      else{document.getElementById('errFechaIni').classList.add('d-none');}
-      if(!document.getElementById('fechaFin').value){document.getElementById('errFechaFin').classList.remove('d-none');valid=false;}
-      else{document.getElementById('errFechaFin').classList.add('d-none');}
-      [['objetivoInput','errObjetivo'],['alcanceInput','errAlcance'],['justifInput','errJustif']].forEach(function(p){
-        if((document.getElementById(p[0]).value||'').trim().length<50){document.getElementById(p[1]).classList.remove('d-none');valid=false;}
-        else{document.getElementById(p[1]).classList.add('d-none');}
-      });
-      var filas=document.querySelectorAll('#bodyDistribucion .fila-dato').length;
-      if(filas===0){document.getElementById('errDistribucion').classList.remove('d-none');valid=false;}
-      else{document.getElementById('errDistribucion').classList.add('d-none');}
-      if(!valid){sh('msgValidacion');return;}
-      hi('msgValidacion'); confirmarAccion('enviar');
-    }
-
-    function confirmarAccion(tipo){
-      if(tipo==='enviar'){
-        var total=0;
-        document.querySelectorAll('#bodyDistribucion .fila-dato').forEach(function(row){
-          row.querySelectorAll('.matrix-input:not(.mes-pasado)').forEach(function(inp){total+=pn(inp.value);});
-        });
-        var filas=document.querySelectorAll('#bodyDistribucion .fila-dato').length;
-        var fmt=function(n){return n.toLocaleString('es-MX',{maximumFractionDigits:0});};
-        document.getElementById('resumenCecos').textContent=filas;
-        document.getElementById('resumenCecosCard').textContent=filas;
-        document.getElementById('resumenTotalCard').textContent=fmt(total);
-        document.getElementById('resumenTotalInline').textContent=fmt(total);
-        new bootstrap.Modal(document.getElementById('modalConfirmarEnvio')).show(); return;
-      }
-      new bootstrap.Modal(document.getElementById({borrador:'modalBorrador',cancelar:'modalCancelar'}[tipo])).show();
-    }
-    function ejecutarBorrador(){
+    function ejecutarBorrador() {
       bootstrap.Modal.getInstance(document.getElementById('modalBorrador')).hide();
-      setTimeout(function(){new bootstrap.Modal(document.getElementById('modalBorradorExito')).show();},300);
+      setTimeout(() => new bootstrap.Modal(document.getElementById('modalBorradorExito')).show(), 300);
     }
-    function ejecutarEnvio(){
+
+    function ejecutarEnvio() {
       bootstrap.Modal.getInstance(document.getElementById('modalConfirmarEnvio')).hide();
       new bootstrap.Modal(document.getElementById('modalEnvio')).show();
     }
+
+    // Inicializar
+    irPaso(1);
   </script>
 
-</body>
-</html>
+
+
+</body></html>
