@@ -453,38 +453,6 @@
       </div>
     </div>
 
-    <!-- BLOQUE 2 – Banda de presupuesto global (oculta para Sin División) -->
-    <div id="bloqueBanda" class="card border-0 shadow-sm mb-4" style="border-radius:10px; background:#f0f4ff; display:none;">
-      <div class="card-body py-3 px-4">
-        <div class="d-flex flex-wrap align-items-center gap-4">
-          <div>
-            <div class="text-muted" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;font-weight:600;">Límite de carga global</div>
-            <div class="fw-bold text-dark" style="font-size:.85rem;">$2,100,000</div>
-          </div>
-          <div class="border-start ps-4">
-            <div class="text-muted" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;font-weight:600;">Asignado</div>
-            <div class="fw-bold text-primary" id="globalAsignado">$0</div>
-          </div>
-          <div class="border-start ps-4">
-            <div class="text-muted" style="font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;font-weight:600;">Disponible</div>
-            <div class="fw-bold text-success" id="globalDisponible">$2,100,000</div>
-          </div>
-          <div class="border-start ps-4 flex-grow-1" style="min-width:160px;">
-            <div class="d-flex justify-content-between align-items-center mb-1">
-              <span class="text-muted" style="font-size:.7rem;font-weight:600;">Consumo</span>
-              <span class="badge bg-success-subtle text-dark border border-success" id="globalPct">0%</span>
-            </div>
-            <div class="progress" style="height:8px;border-radius:4px;">
-              <div class="progress-bar bg-success" id="globalBar" style="width:0%;"></div>
-            </div>
-          </div>
-          <div class="ms-auto text-muted" style="font-size:.78rem;">
-            <i class="bi bi-info-circle me-1"></i>Detalle por CeCo en panel derecho
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- BLOQUE 3+4 – Two-column layout: Info General (left) + CeCos informativo (right) -->
     <div class="row g-4 align-items-start mb-4">
 
@@ -770,80 +738,146 @@
 
     </div><!-- /row bloque 3+4 -->
 
-    <!-- BLOQUE 5 – Distribución (se revela cuando el formulario está completo) -->
+    <!-- BLOQUE 5 – Distribución de presupuesto (se habilita al elegir División) -->
     <div id="bloqueDistribucion" style="display:none;">
-    <div class="card border-0 shadow-sm mb-4" style="border-radius:10px;">
-      <div class="card-header bg-white border-bottom py-3 px-4 d-flex align-items-center justify-content-between">
-        <h6 class="fw-bold text-dark mb-0"><i class="bi bi-calendar3 text-primary me-2"></i>Distribución de presupuesto mensual</h6>
-        <div class="d-flex gap-2 align-items-center">
-          <span class="badge bg-warning-subtle text-dark border border-warning" style="font-size:.75rem;">
-            <i class="bi bi-currency-dollar me-1"></i>Moneda local (MXN) · Cifras en miles de pesos
-          </span>
-        </div>
-      </div>
-      <div class="card-body p-0">
+      <div class="row g-4 align-items-start mb-4">
 
-        <!-- Empty state -->
-        <div id="dist-empty-state" class="text-center py-4">
-          <i class="bi bi-table text-secondary mb-2" style="font-size:1.8rem;display:block;"></i>
-          <p class="text-muted small mb-0">Agrega al menos una línea de distribución</p>
-        </div>
-
-        <div class="table-responsive" id="dist-tabla-wrap" style="display:none;">
-          <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tblDistribucion">
-            <thead class="table-dark">
-              <tr>
-                <th class="text-start" style="min-width:160px;">CeCo</th>
-                <th class="text-start" style="min-width:150px;">Cuenta</th>
-                <th style="min-width:65px;">Ene</th><th style="min-width:65px;">Feb</th>
-                <th style="min-width:65px;">Mar</th><th style="min-width:65px;">Abr</th>
-                <th style="min-width:65px;">May</th><th style="min-width:65px;">Jun</th>
-                <th style="min-width:65px;">Jul</th><th style="min-width:65px;">Ago</th>
-                <th style="min-width:65px;">Sep</th><th style="min-width:65px;">Oct</th>
-                <th style="min-width:65px;">Nov</th><th style="min-width:65px;">Dic</th>
-                <th class="bg-secondary" style="min-width:90px;">Total</th>
-                <th style="width:36px;"></th>
-              </tr>
-            </thead>
-            <tbody id="bodyDistribucion"></tbody>
-          </table>
-        </div>
-
-        <div class="px-4 py-3 border-top">
-          <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarLineaDist()" style="font-size:.85rem;">
-            <i class="bi bi-plus-circle me-1"></i>+ Agregar línea
-          </button>
-          <div class="text-danger mt-1 d-none" id="errDistribucion" style="font-size:.78rem;">Agrega al menos una línea de distribución</div>
-        </div>
-
-        <!-- Excedente block -->
-        <div id="bloqueExcedente" class="mx-4 mb-3 card border border-danger" style="display:none; border-radius:8px;">
-          <div class="card-header bg-danger bg-opacity-10 border-bottom border-danger border-opacity-25 py-2 px-3">
-            <div class="d-flex align-items-center gap-2">
-              <i class="bi bi-exclamation-triangle-fill text-danger"></i>
-              <span class="fw-bold text-danger" style="font-size:.88rem;">El total asignado no puede superar el límite</span>
-            </div>
-          </div>
-          <div class="card-body p-3">
-            <p class="small text-dark mb-3">El monto excede el disponible del CeCo. Captura la justificación y adjunta evidencia para continuar.</p>
-            <div class="row g-3">
-              <div class="col-md-7">
-                <label class="form-label small fw-bold text-dark">Motivo / Justificación <span class="text-danger">*</span></label>
-                <textarea class="form-control form-control-sm border-danger shadow-none" rows="2" placeholder="Mínimo 50 caracteres..."></textarea>
+        <!-- Tabla de distribución col-9 -->
+        <div class="col-lg-9">
+          <div class="card border-0 shadow-sm bg-white" style="border-radius:10px;">
+            <div class="card-header bg-white border-bottom py-3 px-4">
+              <div class="d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                  <i class="bi bi-calendar3 text-primary"></i>Distribución de Presupuesto Mensual
+                </h6>
+                <span class="badge bg-warning-subtle text-dark border border-warning" style="font-size:.75rem;">
+                  <i class="bi bi-currency-dollar me-1"></i>MXN · Cifras en pesos
+                </span>
               </div>
-              <div class="col-md-5">
-                <label class="form-label small fw-bold text-dark">Evidencia Documental <span class="text-danger">*</span></label>
-                <div class="border border-danger border-opacity-50 rounded p-2 text-center bg-danger bg-opacity-10" style="cursor:pointer;">
-                  <i class="bi bi-cloud-upload text-danger"></i>
-                  <p class="mb-0 text-danger" style="font-size:.72rem;">PDF, PNG, JPG — Máx. 10 MB</p>
+            </div>
+
+            <div class="card-body p-0">
+
+              <!-- Empty state -->
+              <div id="dist-empty-state" class="text-center py-5">
+                <i class="bi bi-table text-secondary mb-2" style="font-size:2rem;display:block;"></i>
+                <p class="text-muted small mb-0">Agrega al menos una línea de distribución</p>
+              </div>
+
+              <!-- Tabla -->
+              <div id="dist-tabla-wrap" class="table-responsive" style="display:none;">
+                <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tblDistribucion">
+                  <thead class="table-dark">
+                    <tr>
+                      <th style="width:32px;"></th>
+                      <th class="text-start" style="min-width:160px;">Centro de Costo</th>
+                      <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
+                      <th style="min-width:65px;">Ene</th>
+                      <th style="min-width:65px;">Feb</th>
+                      <th style="min-width:65px;">Mar</th>
+                      <th style="min-width:65px;">Abr</th>
+                      <th style="min-width:65px;">May</th>
+                      <th style="min-width:65px;">Jun</th>
+                      <th style="min-width:65px;">Jul</th>
+                      <th style="min-width:65px;">Ago</th>
+                      <th style="min-width:65px;">Sep</th>
+                      <th style="min-width:65px;">Oct</th>
+                      <th style="min-width:65px;">Nov</th>
+                      <th style="min-width:65px;">Dic</th>
+                      <th class="bg-secondary bg-opacity-25" style="min-width:95px;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bodyDistribucion"></tbody>
+                </table>
+              </div>
+
+              <!-- Agregar línea -->
+              <div class="px-4 py-3 border-top">
+                <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold"
+                  onclick="agregarLineaDist()" style="font-size:.85rem;">
+                  <i class="bi bi-plus-circle me-1"></i>+ Agregar línea
+                </button>
+                <div class="text-danger mt-1 d-none" id="errDistribucion" style="font-size:.78rem;">
+                  Agrega al menos una línea de distribución
                 </div>
               </div>
+
+              <!-- Bloque Excedente -->
+              <div id="bloqueExcedente" class="mx-4 mb-3 card border border-danger" style="display:none; border-radius:8px;">
+                <div class="card-header bg-danger bg-opacity-10 border-bottom border-danger border-opacity-25 py-2 px-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                    <span class="fw-bold text-danger" style="font-size:.88rem;">Límite de carga excedido</span>
+                    <span class="badge bg-danger ms-auto px-2 py-1" style="font-size:.65rem;">Obligatorio para continuar</span>
+                  </div>
+                </div>
+                <div class="card-body p-3">
+                  <p class="small text-dark mb-3">El total asignado supera el límite disponible. Captura la justificación y adjunta evidencia para continuar.</p>
+                  <div class="row g-3">
+                    <div class="col-md-7">
+                      <label class="form-label small fw-bold text-dark">Motivo / Justificación <span class="text-danger">*</span></label>
+                      <textarea class="form-control form-control-sm border-danger shadow-none" rows="2" placeholder="Mínimo 50 caracteres..."></textarea>
+                    </div>
+                    <div class="col-md-5">
+                      <label class="form-label small fw-bold text-dark">Evidencia Documental <span class="text-danger">*</span></label>
+                      <div class="border border-danger border-opacity-50 rounded p-2 text-center bg-danger bg-opacity-10" style="cursor:pointer;">
+                        <i class="bi bi-cloud-upload text-danger"></i>
+                        <p class="mb-0 text-danger" style="font-size:.72rem;">PDF, PNG, JPG — Máx. 10 MB</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel lateral: Control de Carga col-3 -->
+        <div class="col-lg-3">
+          <div class="card border-0 shadow-sm bg-white sticky-top" style="border-radius:10px; top:20px;">
+            <div class="card-header bg-white border-bottom py-3 px-4">
+              <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                <i class="bi bi-pie-chart text-primary"></i>Control de Carga
+              </h6>
+            </div>
+            <div class="card-body p-4">
+
+              <!-- Barra de consumo -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="small text-muted">% Consumo total</span>
+                  <span class="badge fw-bold border bg-secondary bg-opacity-10 text-secondary border-secondary border-opacity-25" id="badgePct">0%</span>
+                </div>
+                <div class="progress" style="height:10px; border-radius:6px;">
+                  <div class="progress-bar bg-success" id="barraGlobal" style="width:0%;"></div>
+                </div>
+              </div>
+
+              <!-- Métricas -->
+              <div class="border border-secondary border-opacity-25 rounded p-3" style="background:#f8f9fa;">
+                <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
+                  <span class="small fw-semibold text-dark">Límite de Carga</span>
+                  <span class="fw-bold text-dark" id="panelLimite">—</span>
+                </div>
+                <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
+                  <span class="small fw-semibold text-dark">Total Asignado</span>
+                  <span class="fw-bold text-primary" id="panelAsignado">$0</span>
+                </div>
+                <div class="d-flex justify-content-between py-2">
+                  <span class="small fw-semibold text-dark">Disponible</span>
+                  <span class="fw-bold text-success" id="panelDisponible">—</span>
+                </div>
+              </div>
+
+              <!-- Detalle por CeCo -->
+              <div id="panelDetalleCecos" class="mt-3"></div>
+
             </div>
           </div>
         </div>
 
       </div>
-    </div>
     </div><!-- /bloqueDistribucion -->
 
   </main>
@@ -1061,20 +1095,20 @@
   <script>
     var LIMITE_GLOBAL = 2100000;
     var MES_ACTUAL = new Date().getMonth();
-    var cecoOpts = [
-      {val:'100901',label:'100901 - Campañas Prime Time',  lim:1892500},
-      {val:'62101', label:'62101 - Publicidad digital',    lim:400000 },
-      {val:'62102', label:'62102 - Medios tradicionales',  lim:500000 },
-      {val:'291374',label:'291374 - Dir Mkt Digital',      lim:1200000},
-      {val:'100500',label:'100500 - Finanzas Retail',      lim:0      },
-      {val:'100600',label:'100600 - Servicios Corporativos',lim:250000}
+    var CECOS = [
+      {val:'100901', label:'100901 – Campañas Prime Time',    lim:1892500, divs:['Marca','Oferteo','Estrategia']},
+      {val:'62101',  label:'62101 – Publicidad Digital',      lim:400000,  divs:['Marca','Oferteo']},
+      {val:'62102',  label:'62102 – Medios Tradicionales',    lim:500000,  divs:['Marca']},
+      {val:'291374', label:'291374 – Dir Mkt Digital',        lim:1200000, divs:['Estrategia','Oferteo']},
+      {val:'100500', label:'100500 – Finanzas Retail',        lim:0,       divs:['Sin División']},
+      {val:'100600', label:'100600 – Servicios Corporativos', lim:250000,  divs:['Sin División']}
     ];
-    var ctaOpts = [
-      {val:'609011',label:'609011 - Television'},
-      {val:'609023',label:'609023 - Promociones'},
-      {val:'609028',label:'609028 - Pub. Internet'},
-      {val:'62101', label:'62101 - Pub. digital'},
-      {val:'62102', label:'62102 - Medios trad.'}
+    var CUENTAS = [
+      {val:'609011', label:'609011 – Televisión'},
+      {val:'609023', label:'609023 – Promociones'},
+      {val:'609028', label:'609028 – Pub. Internet'},
+      {val:'62101',  label:'62101 – Pub. Digital'},
+      {val:'62102',  label:'62102 – Medios Trad.'}
     ];
     function sh(id){var e=document.getElementById(id);if(e)e.style.display='';}
     function hi(id){var e=document.getElementById(id);if(e)e.style.display='none';}
@@ -1082,7 +1116,6 @@
     function hiEl(e){if(e)e.style.display='none';}
     function pn(v){return parseFloat((v||'').replace(/,/g,''))||0;}
     function fmx(n){return '$'+n.toLocaleString('es-MX',{maximumFractionDigits:0})+' MXN';}
-    function bSel(opts,ph){return '<option value="">'+ph+'</option>'+opts.map(function(o){return '<option value="'+o.val+'">'+o.label+'</option>';}).join('');}
 
     function onDivisionChange(){
       var div=document.getElementById('selDivision').value;
@@ -1090,7 +1123,6 @@
       var sc=(div==='Sin División');
       var lbl=document.getElementById('labelDivisionActiva'); if(lbl)lbl.textContent=div;
       var fd=document.getElementById('ftrDivision'); if(fd)fd.textContent=div; sh('ftrDivBloque');
-      sh('bloqueBanda');
       filtrarCecos(div);
       if(sc){
         hi('bloqueTipoCampana'); sh('bloqueNombre');
@@ -1107,7 +1139,7 @@
       hi('ftrNombreBloque'); hi('ftrVigBloque');
       // La matriz de distribución se habilita al seleccionar la división
       sh('bloqueDistribucion');
-      if(document.querySelectorAll('#bodyDistribucion .fila-dato').length===0){agregarLineaDist();}
+      document.getElementById('bodyDistribucion').innerHTML=''; agregarLineaDist(); recalcularGlobal();
     }
 
     function actualizarNombre(){
@@ -1146,44 +1178,113 @@
       var b=document.getElementById(bId); b.style.width=pct+'%'; b.className='progress-bar '+(pct>=100?'bg-success':'bg-danger');
     }
 
+    function getCecosParaDivision(){
+      var div=(document.getElementById('selDivision')||{}).value||'';
+      if(!div) return CECOS;
+      return CECOS.filter(function(c){return c.divs.indexOf(div)>=0;});
+    }
+    function buildCecoSelect(){
+      var html='<option value="">— CeCo —</option>';
+      getCecosParaDivision().forEach(function(c){html+='<option value="'+c.val+'">'+c.label+'</option>';});
+      return '<select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularGlobal()">'+html+'</select>';
+    }
+    function buildCuentaSelect(){
+      var html='<option value="">— Cuenta —</option>';
+      CUENTAS.forEach(function(c){html+='<option value="'+c.val+'">'+c.label+'</option>';});
+      return '<select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none">'+html+'</select>';
+    }
+
     var filaCount=0;
     function agregarLineaDist(){
       filaCount++;
-      var body=document.getElementById('bodyDistribucion'),tr=document.createElement('tr');
+      var body=document.getElementById('bodyDistribucion');
+      var tr=document.createElement('tr');
       tr.className='fila-dato';
-      var c='<td class="text-start ps-2"><select class="form-select form-select-sm shadow-none" onchange="recalcularGlobal()">'+bSel(cecoOpts,'- CeCo -')+'</select></td>'+
-             '<td class="text-start"><select class="form-select form-select-sm shadow-none">'+bSel(ctaOpts,'- Cuenta -')+'</select></td>';
+      var cells='<td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>';
+      cells+='<td class="text-start ps-1">'+buildCecoSelect()+'</td>';
+      cells+='<td class="text-start">'+buildCuentaSelect()+'</td>';
       for(var m=0;m<12;m++){
-        if(m<MES_ACTUAL){c+='<td><input type="text" class="matrix-input mes-pasado" value="-" disabled></td>';}
-        else{c+='<td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularGlobal()"></td>';}
+        if(m<MES_ACTUAL){cells+='<td><input type="text" class="matrix-input mes-pasado" value="—" disabled title="Mes cerrado"></td>';}
+        else{cells+='<td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularGlobal()"></td>';}
       }
-      c+='<td class="fw-bold text-dark text-end pe-2 fila-total" style="white-space:nowrap;">0 <small class="text-muted fw-normal">MXN</small></td>';
-      c+='<td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>';
-      tr.innerHTML=c; body.appendChild(tr); sh('dist-tabla-wrap'); hi('dist-empty-state');
-    }
-
-    function recalcularGlobal(){
-      var total=0;
-      document.querySelectorAll('#bodyDistribucion .fila-dato').forEach(function(row){
-        var suma=0;
-        row.querySelectorAll('.matrix-input:not(.mes-pasado)').forEach(function(inp){var v=pn(inp.value);suma+=v;inp.classList.toggle('has-value',v>0);});
-        var ft=row.querySelector('.fila-total'); if(ft)ft.innerHTML=suma.toLocaleString('es-MX',{maximumFractionDigits:0})+' <small class="text-muted fw-normal">MXN</small>';
-        total+=suma;
-      });
-      var disp=LIMITE_GLOBAL-total,pct=Math.min(110,total/LIMITE_GLOBAL*100),over=disp<0;
-      var ga=document.getElementById('globalAsignado'),gd=document.getElementById('globalDisponible'),gp=document.getElementById('globalPct'),gb=document.getElementById('globalBar');
-      if(ga)ga.textContent=fmx(total);
-      if(gd){gd.textContent=fmx(Math.abs(disp))+(over?' (excedido)':'');gd.className='fw-bold '+(over?'text-danger':'text-success');}
-      if(gp){gp.textContent=pct.toFixed(1)+'%';gp.className='badge border '+(over?'bg-danger-subtle text-dark border-danger':pct>80?'bg-warning-subtle text-dark border-warning':'bg-success-subtle text-dark border-success');}
-      if(gb){gb.style.width=pct+'%';gb.className='progress-bar '+(over?'bg-danger':pct>80?'bg-warning':'bg-success');}
-      document.getElementById('bloqueExcedente').style.display=over?'block':'none';
-      var ft2=document.getElementById('ftrTotal'); if(ft2)ft2.textContent=fmx(total);
+      cells+='<td class="fw-bold text-dark fila-total" style="background:#f8f9fa; white-space:nowrap;">$0</td>';
+      tr.innerHTML=cells;
+      body.appendChild(tr);
+      document.getElementById('dist-tabla-wrap').style.display='';
+      document.getElementById('dist-empty-state').style.display='none';
     }
 
     function eliminarFila(btn){
       btn.closest('tr').remove();
-      if(document.querySelectorAll('#bodyDistribucion .fila-dato').length===0){hi('dist-tabla-wrap');sh('dist-empty-state');}
+      if(document.querySelectorAll('#bodyDistribucion .fila-dato').length===0){
+        document.getElementById('dist-tabla-wrap').style.display='none';
+        document.getElementById('dist-empty-state').style.display='';
+      }
       recalcularGlobal();
+    }
+
+    function recalcularGlobal(){
+      var totalSolicitud=0, porCeco={};
+      document.querySelectorAll('#bodyDistribucion .fila-dato').forEach(function(row){
+        var cecoSel=row.querySelector('select');
+        var cecoVal=cecoSel?cecoSel.value:'';
+        var sumaFila=0;
+        row.querySelectorAll('.matrix-input:not(.mes-pasado)').forEach(function(inp){
+          var v=pn(inp.value); sumaFila+=v; inp.classList.toggle('has-value',v>0);
+        });
+        var ft=row.querySelector('.fila-total');
+        if(ft)ft.textContent='$'+sumaFila.toLocaleString('es-MX',{maximumFractionDigits:0});
+        if(cecoVal){porCeco[cecoVal]=(porCeco[cecoVal]||0)+sumaFila;}
+        totalSolicitud+=sumaFila;
+      });
+
+      var limiteTotal=0, hayLimite=false;
+      Object.keys(porCeco).forEach(function(cv){
+        var meta=CECOS.find(function(c){return c.val===cv;});
+        if(meta&&meta.lim>0){limiteTotal+=meta.lim;hayLimite=true;}
+      });
+
+      var over=hayLimite&&totalSolicitud>limiteTotal;
+      var pct=hayLimite&&limiteTotal>0?Math.min(110,totalSolicitud/limiteTotal*100):0;
+
+      var pl=document.getElementById('panelLimite'),pa=document.getElementById('panelAsignado'),
+          pd=document.getElementById('panelDisponible'),bg=document.getElementById('barraGlobal'),
+          bp=document.getElementById('badgePct');
+      if(pa)pa.textContent=fmx(totalSolicitud);
+      if(pl)pl.textContent=hayLimite?fmx(limiteTotal):'Sin límite';
+      if(pd){
+        pd.textContent=hayLimite?fmx(Math.abs(limiteTotal-totalSolicitud))+(over?' (excedido)':''):'—';
+        pd.className='fw-bold '+(over?'text-danger':'text-success');
+      }
+      if(bg){bg.style.width=pct+'%';bg.className='progress-bar '+(over?'bg-danger':pct>80?'bg-warning':'bg-success');}
+      if(bp){
+        bp.textContent=hayLimite?pct.toFixed(1)+'%':'—';
+        bp.className='badge fw-bold border '+(over?'bg-danger-subtle text-dark border-danger':pct>80?'bg-warning-subtle text-dark border-warning':'bg-success-subtle text-dark border-success');
+      }
+
+      var detalle=document.getElementById('panelDetalleCecos');
+      if(detalle){
+        var html='';
+        Object.keys(porCeco).forEach(function(cv){
+          var meta=CECOS.find(function(c){return c.val===cv;})||{};
+          var asig=porCeco[cv],lim=meta.lim||0;
+          var pctC=lim>0?Math.min(110,asig/lim*100):0, exC=lim>0&&asig>lim;
+          html+='<div class="mb-3"><div class="d-flex justify-content-between mb-1">';
+          html+='<span class="small fw-semibold text-dark" style="font-size:.75rem;">'+cv+'</span>';
+          html+='<span class="small '+(exC?'text-danger fw-bold':'text-muted')+'" style="font-size:.72rem;">'+
+                (lim>0?asig.toLocaleString('es-MX',{maximumFractionDigits:0})+' / '+lim.toLocaleString('es-MX',{maximumFractionDigits:0}):'Sin límite')+'</span></div>';
+          if(lim>0){
+            html+='<div class="progress" style="height:5px; border-radius:3px;">'+
+                  '<div class="progress-bar '+(exC?'bg-danger':pctC>80?'bg-warning':'bg-success')+'" style="width:'+Math.min(100,pctC)+'%;"></div></div>';
+          }
+          html+='</div>';
+        });
+        detalle.innerHTML=html;
+      }
+
+      document.getElementById('bloqueExcedente').style.display=over?'block':'none';
+      var ft2=document.getElementById('ftrTotal');
+      if(ft2)ft2.textContent=fmx(totalSolicitud);
     }
 
     function continuar(){
