@@ -1,0 +1,1038 @@
+<html lang="es" data-bs-theme="semi-dark"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalle de Autorización | IPSO</title>
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <link href="assets/css/extra-icons.css" rel="stylesheet">
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+  <style>
+    /* ── Barra superior de acción ── */
+    .action-bar {
+      background:#fff;
+      border-bottom:1px solid rgba(0,0,0,.08);
+      padding:.85rem 1.5rem;
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      flex-wrap:wrap;
+      position:sticky;
+      top:60px;
+      z-index:200;
+      box-shadow:0 2px 8px rgba(0,0,0,.05);
+    }
+    .action-bar .folio-badge {
+      font-size:.82rem;
+      font-weight:700;
+      color:#0d6efd;
+      background:#e7f0ff;
+      border:1px solid #b8d0f8;
+      border-radius:6px;
+      padding:.25rem .75rem;
+      letter-spacing:.03em;
+    }
+    .action-bar .status-badge {
+      font-size:.78rem;
+      font-weight:600;
+      padding:.3rem .85rem;
+      border-radius:50px;
+    }
+    /* ── Nav tabs ── */
+    .nav-tabs-custom { border-bottom:2px solid #dee2e6; }
+    .nav-tabs-custom .nav-link {
+      border:none; border-bottom:2px solid transparent;
+      color:#6c757d; font-weight:600; font-size:.88rem;
+      padding:.6rem 1.2rem; margin-bottom:-2px;
+    }
+    .nav-tabs-custom .nav-link.active { border-bottom-color:#0d6efd; color:#0d6efd; }
+    .nav-tabs-custom .nav-link:hover:not(.active) { color:#343a40; }
+    /* ── Sticky summary chips ── */
+    .summary-strip {
+      position:sticky;
+      top:calc(60px + 57px);
+      z-index:150;
+      background:#f8f9fa;
+      border-bottom:1px solid #e9ecef;
+      padding:.5rem 1.5rem;
+      display:flex;
+      gap:.5rem;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .summary-chip {
+      font-size:.75rem;
+      font-weight:600;
+      padding:.25rem .7rem;
+      border-radius:50px;
+      border:1px solid;
+      white-space:nowrap;
+    }
+    /* ── Info card ── */
+    .info-card { background:#fff; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+    /* ── CeCo tags ── */
+    .ceco-tag {
+      display:inline-flex; align-items:center; gap:.35rem;
+      background:#e7f0ff; border:1px solid #b8d0f8; border-radius:6px;
+      font-size:.78rem; font-weight:600; color:#0d6efd;
+      padding:.2rem .65rem;
+    }
+    /* ── Matriz de presupuesto (solo lectura) ── */
+    .matrix-ro {
+      width:90px; text-align:right; font-size:.78rem;
+      background:transparent; border:none; color:#212529;
+      pointer-events:none;
+    }
+    .matrix-total-col { background:#f0f4ff; font-weight:700; color:#0d6efd; font-size:.82rem; }
+    .acc-subtotal-badge {
+      font-size:.7rem; margin-left:.5rem;
+      background:#e7f0ff; border:1px solid #b8d0f8; color:#0d6efd;
+      border-radius:50px; padding:.15rem .6rem;
+    }
+    /* ── Timeline ── */
+    .timeline { list-style:none; padding:0; margin:0; position:relative; }
+    .timeline::before {
+      content:''; position:absolute; left:23px; top:0; bottom:0;
+      width:2px; background:linear-gradient(to bottom, #dee2e6, #dee2e6 80%, transparent);
+    }
+    .timeline-item { display:flex; gap:1rem; margin-bottom:1.5rem; position:relative; }
+    .timeline-icon {
+      width:44px; height:44px; border-radius:50%; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1rem; border:2px solid #fff;
+      box-shadow:0 0 0 2px rgba(0,0,0,.08);
+      z-index:1; background:#fff;
+    }
+    .timeline-body { flex:1; background:#fff; border-radius:10px; padding:.85rem 1rem; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    .timeline-meta { font-size:.72rem; color:#6c757d; margin-bottom:.3rem; }
+    .timeline-text { font-size:.85rem; color:#343a40; }
+    /* ── Chat ── */
+    .chat-bubble {
+      max-width:72%; padding:.65rem 1rem; border-radius:12px;
+      font-size:.85rem; line-height:1.4;
+    }
+    .chat-bubble.mine { background:#0d6efd; color:#fff; border-bottom-right-radius:3px; }
+    .chat-bubble.other { background:#fff; color:#212529; border:1px solid #e9ecef; border-bottom-left-radius:3px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+    .chat-time { font-size:.7rem; color:#6c757d; margin-top:.2rem; }
+    /* ── Grand total bar ── */
+    .total-bar {
+      background:linear-gradient(90deg,#0d6efd,#0a58ca);
+      color:#fff; border-radius:10px;
+      padding:1rem 1.5rem;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+  </style>
+</head>
+
+<body class="pace-done">
+
+<!--start header-->
+<header class="top-header">
+  <nav class="navbar navbar-expand justify-content-between">
+    <div class="btn-toggle-menu"><span class="material-symbols-outlined">menu</span></div>
+    <div class="position-relative search-bar d-lg-block d-none">
+      <input class="form-control form-control-sm rounded-5 px-5" disabled type="search" placeholder="Search">
+      <span class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+    </div>
+    <ul class="navbar-nav top-right-menu gap-2">
+      <li class="nav-item dark-mode">
+        <a class="nav-link dark-mode-icon" href="javascript:;"><span class="material-symbols-outlined">light_mode</span></a>
+      </li>
+      <li class="nav-item dropdown dropdown-large">
+        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+          <div class="position-relative"><span class="notify-badge">3</span><span class="material-symbols-outlined">notifications_none</span></div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="offcanvas" href="#ThemeCustomizer"><span class="material-symbols-outlined">settings</span></a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<!--end header-->
+
+<!--start sidebar-->
+<aside class="sidebar-wrapper">
+  <div class="sidebar-header">
+    <div class="logo-icon"><img src="assets/images/logo-icon.png" class="logo-img" alt=""></div>
+    <div class="logo-name flex-grow-1"><h5 class="mb-0">IPSO</h5></div>
+    <div class="sidebar-close"><span class="material-symbols-outlined">close</span></div>
+  </div>
+  <div class="sidebar-nav" data-simplebar="init">
+    <div class="simplebar-wrapper" style="margin:0px;">
+      <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div>
+      <div class="simplebar-mask">
+        <div class="simplebar-offset mm-active" style="right:0px;bottom:0px;">
+          <div class="simplebar-content-wrapper mm-show" style="height:100%;overflow:hidden;">
+            <div class="simplebar-content mm-active" style="padding:0px;">
+              <!--navigation-->
+              <ul class="metismenu mm-show" id="menu">
+                <li><a href="index.html" aria-expanded="false"><div class="parent-icon"><span class="material-symbols-outlined">home</span></div><div class="menu-title">Home</div></a></li>
+                <li><a href="SIPRES.html" aria-expanded="false"><div class="parent-icon"><span class="material-symbols-outlined">redeem</span></div><div class="menu-title">Forecast</div></a></li>
+                <li class="menu-label mb-0 text-light">Gesti&#243;n de Presupuestos</li>
+                <li class="mm-active">
+                  <a href="javascript:;" class="has-arrow" aria-expanded="true">
+                    <div class="parent-icon"><span class="material-symbols-outlined">apps</span></div>
+                    <div class="menu-title">Planeaci&#243;n<br>Presupuestal</div>
+                  </a>
+                  <ul class="mm-collapse mm-show">
+                    <li><a href="Parametros.html"><span class="material-symbols-outlined">arrow_right</span>Par&#225;metros</a></li>
+                    <li>
+                      <a class="has-arrow" href="javascript:;" aria-expanded="false"><span class="material-symbols-outlined">arrow_right</span>Base Presupuestal</a>
+                      <ul class="mm-collapse">
+                        <li><a href="BPresupuestal.html"><span class="material-symbols-outlined">arrow_right</span>Nueva Base Presupuestal</a></li>
+                        <li><a href="BPCalculada.html"><span class="material-symbols-outlined">arrow_right</span>Base Presupuestal Activa</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="SelGrupoEmpresarial.html"><span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a></li>
+                    <li class="mm-active"><a href="Autorizaciones.html"><span class="material-symbols-outlined">arrow_right</span>Autorizaciones</a></li>
+                    <li><a href="Liberaciones.html"><span class="material-symbols-outlined">arrow_right</span>Liberaciones</a></li>
+                    <li><a href="ReportesCarga.html"><span class="material-symbols-outlined">arrow_right</span>Reportes de Carga</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                    <div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div>
+                    <div class="menu-title">Ejercicio Presupuestal<br><small>En Construcci&#243;n</small></div>
+                  </a>
+                  <ul class="mm-collapse">
+                    <li><a href="javascript:;"><span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                    <div class="parent-icon"><span class="material-symbols-outlined">settings</span></div>
+                    <div class="menu-title">Configuraci&#243;n<br>de Carga</div>
+                  </a>
+                  <ul class="mm-collapse">
+                    <li><a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a></li>
+                    <li><a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de Costos</a></li>
+                    <li><a href="GCuentas.html"><span class="material-symbols-outlined">arrow_right</span>Grupo de Cuentas</a></li>
+                    <li><a href="CTransversal.html"><span class="material-symbols-outlined">arrow_right</span>Campa&#241;as Transversales</a></li>
+                    <li><a href="PFondo.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <!--end navigation-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="simplebar-placeholder" style="width:auto;height:369px;"></div>
+    </div>
+    <div class="simplebar-track simplebar-horizontal" style="visibility:hidden;"><div class="simplebar-scrollbar" style="width:0px;display:none;"></div></div>
+    <div class="simplebar-track simplebar-vertical" style="visibility:hidden;"><div class="simplebar-scrollbar" style="height:0px;display:none;"></div></div>
+  </div>
+  <div class="sidebar-bottom dropdown dropup-center dropup">
+    <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
+      <div class="user-img"><img src="assets/images/avatars/02.png" alt=""></div>
+      <div class="user-info"><h5 class="mb-0 user-name">Laura Mendez</h5><p class="mb-0 user-designation">Admon. Fin. Mkt</p></div>
+    </div>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">account_circle</span><span>Perfil</span></a></li>
+      <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">logout</span><span>Cerrar sesión</span></a></li>
+    </ul>
+  </div>
+</aside>
+<!--end sidebar-->
+
+<!-- ===== CONTENIDO PRINCIPAL ===== -->
+<main class="page-content" style="padding-top:0;">
+
+  <!-- ── Barra de acción fija ── -->
+  <div class="action-bar">
+    <div class="me-auto">
+      <nav aria-label="breadcrumb" class="mb-1">
+        <ol class="breadcrumb small mb-0">
+          <li class="breadcrumb-item"><a href="Autorizaciones.html" class="text-decoration-none text-muted">Autorizaciones</a></li>
+          <li class="breadcrumb-item active fw-bold" aria-current="page">Detalle de Solicitud</li>
+        </ol>
+      </nav>
+      <div class="d-flex align-items-center gap-2 flex-wrap">
+        <h5 class="fw-bold mb-0 text-dark">
+          <i class="bi bi-shield-check text-primary me-2"></i>
+          Solicitud de Proyecto de Inversi&#243;n
+        </h5>
+        <span class="folio-badge">SOL-2024-0047</span>
+        <span class="badge bg-warning-subtle text-warning border border-warning-subtle status-badge">
+          <i class="bi bi-hourglass-split me-1"></i>Pte. Autorización N2
+        </span>
+      </div>
+      <div class="d-flex gap-3 mt-1 small text-muted">
+        <span><i class="bi bi-calendar3 me-1"></i>Ejercicio <strong class="text-dark">2025</strong></span>
+        <span><i class="bi bi-person me-1"></i>Solicitante: <strong class="text-dark">Carlos Torres</strong></span>
+        <span><i class="bi bi-clock-history me-1"></i>Enviada el <strong class="text-dark">03 Jun 2025, 10:14</strong></span>
+      </div>
+    </div>
+    <div class="d-flex gap-2 flex-wrap justify-content-end">
+      <button class="btn btn-outline-secondary fw-bold radius-10 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalSolicAjuste">
+        <i class="bi bi-pencil-square me-1"></i>Solicitar Ajuste
+      </button>
+      <button class="btn btn-outline-danger fw-bold radius-10 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalRechazar">
+        <i class="bi bi-x-circle me-1"></i>Rechazar
+      </button>
+      <button class="btn btn-primary fw-bold radius-10 shadow-sm px-4" data-bs-toggle="modal" data-bs-target="#modalAutorizar">
+        <i class="bi bi-patch-check me-1"></i>Autorizar
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Nav Tabs ── -->
+  <div class="px-4 pt-3 pb-0 bg-white border-bottom">
+    <ul class="nav nav-tabs-custom" id="detalleTabs" role="tablist">
+      <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-info" type="button">
+          <i class="bi bi-file-text me-1"></i>Información de la Solicitud
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-bitacora" type="button">
+          <i class="bi bi-journal-text me-1"></i>Bitácora
+          <span class="badge bg-primary-subtle text-primary ms-1 rounded-pill" style="font-size:.68rem;">3</span>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-comentarios" type="button">
+          <i class="bi bi-chat-dots me-1"></i>Comentarios
+          <span class="badge bg-secondary-subtle text-secondary ms-1 rounded-pill" style="font-size:.68rem;">5</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── Summary Strip (sticky) ── -->
+  <div class="summary-strip">
+    <span class="small text-muted fw-semibold me-1">Resumen:</span>
+    <span class="summary-chip border-primary-subtle text-primary bg-primary-subtle">
+      <i class="bi bi-tag-fill me-1" style="font-size:.65rem;"></i>Proyecto de Inversión
+    </span>
+    <span class="summary-chip border-success-subtle text-success bg-success-subtle">
+      <i class="bi bi-building me-1" style="font-size:.65rem;"></i>División Totalplay
+    </span>
+    <span class="summary-chip border-info-subtle text-info bg-info-subtle">
+      <i class="bi bi-calendar-range me-1" style="font-size:.65rem;"></i>Ene–Dic 2025
+    </span>
+    <span class="ms-auto summary-chip border-warning-subtle text-warning-emphasis bg-warning-subtle" style="font-size:.8rem;">
+      <i class="bi bi-currency-dollar me-1" style="font-size:.7rem;"></i>Total Global:
+      <strong class="ms-1">$4,320,000.00</strong>
+    </span>
+  </div>
+
+  <!-- ── TAB CONTENT ── -->
+  <div class="tab-content px-4 py-4" id="detalleTabContent">
+
+    <!-- ══════════ TAB 1: INFORMACIÓN ══════════ -->
+    <div class="tab-pane fade show active" id="tab-info">
+
+      <!-- Datos generales -->
+      <div class="info-card p-4 mb-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width:30px;height:30px;font-size:.8rem;"><i class="bi bi-info-lg"></i></span>
+          <h6 class="fw-bold mb-0 text-dark">Datos Generales</h6>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="row g-2">
+              <div class="col-5 text-muted small fw-semibold">Proyecto:</div>
+              <div class="col-7 small fw-bold text-dark">PI-001 – Expansión Digital</div>
+              <div class="col-5 text-muted small fw-semibold">Nombre solicitud:</div>
+              <div class="col-7 small text-dark">Expansión Digital Q2 – Campañas TV</div>
+              <div class="col-5 text-muted small fw-semibold">Tipo de Gasto:</div>
+              <div class="col-7"><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Proyecto de Inversión</span></div>
+              <div class="col-5 text-muted small fw-semibold">Tipo de Campaña:</div>
+              <div class="col-7 small text-dark">Negocio</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row g-2">
+              <div class="col-5 text-muted small fw-semibold">Fecha inicio:</div>
+              <div class="col-7 small text-dark"><i class="bi bi-calendar-check text-success me-1"></i>01/01/2025</div>
+              <div class="col-5 text-muted small fw-semibold">Fecha fin:</div>
+              <div class="col-7 small text-dark"><i class="bi bi-calendar-x text-danger me-1"></i>31/12/2025</div>
+              <div class="col-5 text-muted small fw-semibold">Ejercicio:</div>
+              <div class="col-7 small text-dark">2025</div>
+              <div class="col-5 text-muted small fw-semibold">Folio:</div>
+              <div class="col-7 small fw-bold text-primary">SOL-2024-0047</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="text-muted small fw-semibold mb-1">Descripción:</div>
+            <div class="small text-dark bg-light rounded p-2 border">
+              Solicitud de presupuesto para la expansión de campañas digitales en televisión y medios digitales durante el primer semestre de 2025. Incluye producción de contenidos, pauta en canales nacionales y regionales, y activaciones BTL en mercados prioritarios.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Centros de costo seleccionados -->
+      <div class="info-card p-4 mb-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width:30px;height:30px;font-size:.8rem;"><i class="bi bi-buildings"></i></span>
+          <h6 class="fw-bold mb-0 text-dark">Centros de Costo Incluidos</h6>
+          <span class="badge bg-success-subtle text-success border border-success-subtle ms-auto">4 CeCos</span>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="ceco-tag"><i class="bi bi-building"></i>100901 – Mkt Totalplay</span>
+          <span class="ceco-tag"><i class="bi bi-building"></i>291374 – Digital Mkt</span>
+          <span class="ceco-tag"><i class="bi bi-building"></i>182310 – BTL Eventos</span>
+          <span class="ceco-tag"><i class="bi bi-building"></i>330100 – Medios Masivos</span>
+        </div>
+      </div>
+
+      <!-- Estrategia de autorización (histórico) -->
+      <div class="info-card p-4 mb-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width:30px;height:30px;font-size:.8rem;"><i class="bi bi-diagram-3"></i></span>
+          <h6 class="fw-bold mb-0 text-dark">Estrategia de Autorización</h6>
+        </div>
+        <div class="d-flex flex-wrap gap-3 align-items-center">
+          <!-- Nivel 1 — ya autorizado -->
+          <div class="border rounded-3 p-2 px-3 text-center" style="min-width:130px;">
+            <div class="small text-muted mb-1">Nivel 1</div>
+            <div class="small fw-bold text-dark">Dir. Mkt</div>
+            <div class="mt-1"><span class="badge bg-success-subtle text-success border border-success-subtle"><i class="bi bi-check-circle-fill me-1"></i>Autorizado</span></div>
+            <div class="small text-muted mt-1" style="font-size:.68rem;">Javier Reyes · 05 Jun 2025</div>
+          </div>
+          <i class="bi bi-chevron-right text-muted" style="font-size:1.1rem;"></i>
+          <!-- Nivel 2 — pendiente (este usuario) -->
+          <div class="border border-primary rounded-3 p-2 px-3 text-center bg-primary-subtle" style="min-width:130px;">
+            <div class="small text-muted mb-1">Nivel 2</div>
+            <div class="small fw-bold text-dark">Admon. Fin. Mkt</div>
+            <div class="mt-1"><span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i class="bi bi-hourglass-split me-1"></i>Pendiente</span></div>
+            <div class="small text-primary mt-1 fw-semibold" style="font-size:.68rem;"><i class="bi bi-arrow-up-circle-fill me-1"></i>Tú estás aquí</div>
+          </div>
+          <i class="bi bi-chevron-right text-muted" style="font-size:1.1rem;"></i>
+          <!-- Nivel 3 — en espera -->
+          <div class="border rounded-3 p-2 px-3 text-center" style="min-width:130px; opacity:.6;">
+            <div class="small text-muted mb-1">Nivel 3</div>
+            <div class="small fw-bold text-dark">Dir. Finanzas</div>
+            <div class="mt-1"><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle"><i class="bi bi-lock me-1"></i>En espera</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Distribución del presupuesto (matriz solo lectura) -->
+      <div class="info-card p-4 mb-4">
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="bg-info text-white rounded-circle d-flex align-items-center justify-content-center" style="width:30px;height:30px;font-size:.8rem;"><i class="bi bi-table"></i></span>
+          <h6 class="fw-bold mb-0 text-dark">Distribución del Presupuesto</h6>
+          <div class="ms-auto d-flex gap-2">
+            <button class="btn btn-outline-secondary btn-sm shadow-none" onclick="toggleAllAcc(true)">
+              <i class="bi bi-arrows-expand me-1"></i>Expandir todo
+            </button>
+            <button class="btn btn-outline-secondary btn-sm shadow-none" onclick="toggleAllAcc(false)">
+              <i class="bi bi-arrows-collapse me-1"></i>Colapsar todo
+            </button>
+          </div>
+        </div>
+        <p class="small text-muted mb-3">Vista de solo lectura de la asignación capturada por el solicitante.</p>
+
+        <div class="accordion" id="accMatriz">
+          <!-- CeCo 1: 100901 -->
+          <div class="accordion-item border-0 border-bottom border-secondary border-opacity-25">
+            <h2 class="accordion-header">
+              <button class="accordion-button py-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#mat-100901" aria-expanded="true">
+                <i class="bi bi-building text-primary me-2"></i>
+                100901 &ndash; Mkt Totalplay
+                <span class="acc-subtotal-badge">$1,560,000</span>
+              </button>
+            </h2>
+            <div id="mat-100901" class="accordion-collapse collapse show" data-bs-parent="">
+              <div class="accordion-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;">
+                    <thead class="table-light">
+                      <tr>
+                        <th class="text-start" style="min-width:90px;">CeCo</th>
+                        <th class="text-start" style="min-width:160px;">Cuenta Presupuestal</th>
+                        <th style="min-width:70px;">Ene</th><th style="min-width:70px;">Feb</th>
+                        <th style="min-width:70px;">Mar</th><th style="min-width:70px;">Abr</th>
+                        <th style="min-width:70px;">May</th><th style="min-width:70px;">Jun</th>
+                        <th style="min-width:70px;">Jul</th><th style="min-width:70px;">Ago</th>
+                        <th style="min-width:70px;">Sep</th><th style="min-width:70px;">Oct</th>
+                        <th style="min-width:70px;">Nov</th><th style="min-width:70px;">Dic</th>
+                        <th class="matrix-total-col" style="min-width:95px;">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-start fw-bold" style="font-size:.76rem;">100901</td>
+                        <td class="text-start small">609011 – Televisión</td>
+                        <td>80,000</td><td>80,000</td><td>80,000</td><td>80,000</td>
+                        <td>80,000</td><td>80,000</td><td>60,000</td><td>60,000</td>
+                        <td>60,000</td><td>60,000</td><td>60,000</td><td>60,000</td>
+                        <td class="matrix-total-col">$840,000</td>
+                      </tr>
+                      <tr>
+                        <td class="text-start fw-bold" style="font-size:.76rem;">100901</td>
+                        <td class="text-start small">609028 – Pub. Digital</td>
+                        <td>60,000</td><td>60,000</td><td>60,000</td><td>60,000</td>
+                        <td>60,000</td><td>60,000</td><td>60,000</td><td>60,000</td>
+                        <td>60,000</td><td>60,000</td><td>60,000</td><td>60,000</td>
+                        <td class="matrix-total-col">$720,000</td>
+                      </tr>
+                    </tbody>
+                    <tfoot class="table-light fw-bold">
+                      <tr>
+                        <td colspan="2" class="text-start small ps-2">Subtotal CeCo 100901</td>
+                        <td>140,000</td><td>140,000</td><td>140,000</td><td>140,000</td>
+                        <td>140,000</td><td>140,000</td><td>120,000</td><td>120,000</td>
+                        <td>120,000</td><td>120,000</td><td>120,000</td><td>120,000</td>
+                        <td class="matrix-total-col">$1,560,000</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CeCo 2: 291374 -->
+          <div class="accordion-item border-0 border-bottom border-secondary border-opacity-25">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed py-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#mat-291374" aria-expanded="false">
+                <i class="bi bi-building text-primary me-2"></i>
+                291374 &ndash; Digital Mkt
+                <span class="acc-subtotal-badge">$960,000</span>
+              </button>
+            </h2>
+            <div id="mat-291374" class="accordion-collapse collapse" data-bs-parent="">
+              <div class="accordion-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;">
+                    <thead class="table-light">
+                      <tr>
+                        <th class="text-start" style="min-width:90px;">CeCo</th>
+                        <th class="text-start" style="min-width:160px;">Cuenta Presupuestal</th>
+                        <th style="min-width:70px;">Ene</th><th style="min-width:70px;">Feb</th>
+                        <th style="min-width:70px;">Mar</th><th style="min-width:70px;">Abr</th>
+                        <th style="min-width:70px;">May</th><th style="min-width:70px;">Jun</th>
+                        <th style="min-width:70px;">Jul</th><th style="min-width:70px;">Ago</th>
+                        <th style="min-width:70px;">Sep</th><th style="min-width:70px;">Oct</th>
+                        <th style="min-width:70px;">Nov</th><th style="min-width:70px;">Dic</th>
+                        <th class="matrix-total-col" style="min-width:95px;">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-start fw-bold" style="font-size:.76rem;">291374</td>
+                        <td class="text-start small">609028 – Pub. Digital</td>
+                        <td>50,000</td><td>50,000</td><td>50,000</td><td>50,000</td>
+                        <td>50,000</td><td>50,000</td><td>50,000</td><td>50,000</td>
+                        <td>50,000</td><td>50,000</td><td>50,000</td><td>50,000</td>
+                        <td class="matrix-total-col">$600,000</td>
+                      </tr>
+                      <tr>
+                        <td class="text-start fw-bold" style="font-size:.76rem;">291374</td>
+                        <td class="text-start small">609031 – Social Media</td>
+                        <td>30,000</td><td>30,000</td><td>30,000</td><td>30,000</td>
+                        <td>30,000</td><td>30,000</td><td>30,000</td><td>30,000</td>
+                        <td>30,000</td><td>30,000</td><td>30,000</td><td>30,000</td>
+                        <td class="matrix-total-col">$360,000</td>
+                      </tr>
+                    </tbody>
+                    <tfoot class="table-light fw-bold">
+                      <tr>
+                        <td colspan="2" class="text-start small ps-2">Subtotal CeCo 291374</td>
+                        <td>80,000</td><td>80,000</td><td>80,000</td><td>80,000</td>
+                        <td>80,000</td><td>80,000</td><td>80,000</td><td>80,000</td>
+                        <td>80,000</td><td>80,000</td><td>80,000</td><td>80,000</td>
+                        <td class="matrix-total-col">$960,000</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CeCo 3: 182310 -->
+          <div class="accordion-item border-0 border-bottom border-secondary border-opacity-25">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed py-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#mat-182310" aria-expanded="false">
+                <i class="bi bi-building text-primary me-2"></i>
+                182310 &ndash; BTL Eventos
+                <span class="acc-subtotal-badge">$900,000</span>
+              </button>
+            </h2>
+            <div id="mat-182310" class="accordion-collapse collapse" data-bs-parent="">
+              <div class="accordion-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;">
+                    <thead class="table-light">
+                      <tr>
+                        <th class="text-start" style="min-width:90px;">CeCo</th>
+                        <th class="text-start" style="min-width:160px;">Cuenta Presupuestal</th>
+                        <th style="min-width:70px;">Ene</th><th style="min-width:70px;">Feb</th>
+                        <th style="min-width:70px;">Mar</th><th style="min-width:70px;">Abr</th>
+                        <th style="min-width:70px;">May</th><th style="min-width:70px;">Jun</th>
+                        <th style="min-width:70px;">Jul</th><th style="min-width:70px;">Ago</th>
+                        <th style="min-width:70px;">Sep</th><th style="min-width:70px;">Oct</th>
+                        <th style="min-width:70px;">Nov</th><th style="min-width:70px;">Dic</th>
+                        <th class="matrix-total-col" style="min-width:95px;">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-start fw-bold" style="font-size:.76rem;">182310</td>
+                        <td class="text-start small">609015 – BTL</td>
+                        <td>50,000</td><td>50,000</td><td>50,000</td><td>50,000</td>
+                        <td>50,000</td><td>50,000</td><td>75,000</td><td>75,000</td>
+                        <td>75,000</td><td>75,000</td><td>75,000</td><td>75,000</td>
+                        <td class="matrix-total-col">$750,000</td>
+                      </tr>
+                      <tr>
+                        <td class="text-start fw-bold" style="font-size:.76rem;">182310</td>
+                        <td class="text-start small">609023 – Promociones</td>
+                        <td>12,500</td><td>12,500</td><td>12,500</td><td>12,500</td>
+                        <td>12,500</td><td>12,500</td><td>12,500</td><td>12,500</td>
+                        <td>12,500</td><td>12,500</td><td>12,500</td><td>12,500</td>
+                        <td class="matrix-total-col">$150,000</td>
+                      </tr>
+                    </tbody>
+                    <tfoot class="table-light fw-bold">
+                      <tr>
+                        <td colspan="2" class="text-start small ps-2">Subtotal CeCo 182310</td>
+                        <td>62,500</td><td>62,500</td><td>62,500</td><td>62,500</td>
+                        <td>62,500</td><td>62,500</td><td>87,500</td><td>87,500</td>
+                        <td>87,500</td><td>87,500</td><td>87,500</td><td>87,500</td>
+                        <td class="matrix-total-col">$900,000</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CeCo 4: 330100 -->
+          <div class="accordion-item border-0">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed py-3 fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#mat-330100" aria-expanded="false">
+                <i class="bi bi-building text-primary me-2"></i>
+                330100 &ndash; Medios Masivos
+                <span class="acc-subtotal-badge">$900,000</span>
+              </button>
+            </h2>
+            <div id="mat-330100" class="accordion-collapse collapse" data-bs-parent="">
+              <div class="accordion-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;">
+                    <thead class="table-light">
+                      <tr>
+                        <th class="text-start" style="min-width:90px;">CeCo</th>
+                        <th class="text-start" style="min-width:160px;">Cuenta Presupuestal</th>
+                        <th style="min-width:70px;">Ene</th><th style="min-width:70px;">Feb</th>
+                        <th style="min-width:70px;">Mar</th><th style="min-width:70px;">Abr</th>
+                        <th style="min-width:70px;">May</th><th style="min-width:70px;">Jun</th>
+                        <th style="min-width:70px;">Jul</th><th style="min-width:70px;">Ago</th>
+                        <th style="min-width:70px;">Sep</th><th style="min-width:70px;">Oct</th>
+                        <th style="min-width:70px;">Nov</th><th style="min-width:70px;">Dic</th>
+                        <th class="matrix-total-col" style="min-width:95px;">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-start fw-bold" style="font-size:.76rem;">330100</td>
+                        <td class="text-start small">609011 – Televisión</td>
+                        <td>75,000</td><td>75,000</td><td>75,000</td><td>75,000</td>
+                        <td>75,000</td><td>75,000</td><td>75,000</td><td>75,000</td>
+                        <td>75,000</td><td>75,000</td><td>75,000</td><td>75,000</td>
+                        <td class="matrix-total-col">$900,000</td>
+                      </tr>
+                    </tbody>
+                    <tfoot class="table-light fw-bold">
+                      <tr>
+                        <td colspan="2" class="text-start small ps-2">Subtotal CeCo 330100</td>
+                        <td>75,000</td><td>75,000</td><td>75,000</td><td>75,000</td>
+                        <td>75,000</td><td>75,000</td><td>75,000</td><td>75,000</td>
+                        <td>75,000</td><td>75,000</td><td>75,000</td><td>75,000</td>
+                        <td class="matrix-total-col">$900,000</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /accordion -->
+
+        <!-- Grand total -->
+        <div class="total-bar mt-4">
+          <div>
+            <div class="small opacity-75 mb-0">Total Global de la Solicitud</div>
+            <div class="fw-bold fs-5">$4,320,000.00</div>
+          </div>
+          <div class="text-end">
+            <div class="small opacity-75">Distribución</div>
+            <div class="small">4 CeCos &nbsp;·&nbsp; Ene–Dic 2025</div>
+          </div>
+        </div>
+
+      </div><!-- /info-card presupuesto -->
+    </div><!-- /tab-info -->
+
+    <!-- ══════════ TAB 2: BITÁCORA ══════════ -->
+    <div class="tab-pane fade" id="tab-bitacora">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="info-card p-4">
+            <h6 class="fw-bold text-dark mb-4"><i class="bi bi-journal-text text-warning me-2"></i>Historial de Autorizaciones</h6>
+            <ul class="timeline">
+
+              <!-- Evento 3 — Autorización N1 -->
+              <li class="timeline-item">
+                <div class="timeline-icon bg-success-subtle border border-success-subtle" style="color:#198754;">
+                  <i class="bi bi-patch-check-fill"></i>
+                </div>
+                <div class="timeline-body">
+                  <div class="timeline-meta">
+                    <span class="badge bg-success-subtle text-success border border-success-subtle me-2"><i class="bi bi-patch-check me-1"></i>Autorizado N1</span>
+                    <span>05 Jun 2025, 14:32</span>
+                  </div>
+                  <div class="timeline-text fw-semibold text-dark">Javier Reyes &nbsp;<span class="text-muted fw-normal">· Dir. Mkt Totalplay</span></div>
+                  <div class="timeline-text mt-1 text-muted">"La solicitud cumple con los lineamientos de la estrategia de expansión Q2. Autorizado para continuar con nivel 2."</div>
+                </div>
+              </li>
+
+              <!-- Evento 2 — Enviado a autorización -->
+              <li class="timeline-item">
+                <div class="timeline-icon bg-primary-subtle border border-primary-subtle" style="color:#0d6efd;">
+                  <i class="bi bi-send-fill"></i>
+                </div>
+                <div class="timeline-body">
+                  <div class="timeline-meta">
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle me-2"><i class="bi bi-send me-1"></i>Enviada a autorización</span>
+                    <span>03 Jun 2025, 10:14</span>
+                  </div>
+                  <div class="timeline-text fw-semibold text-dark">Carlos Torres &nbsp;<span class="text-muted fw-normal">· Carga Presupuestal Mkt</span></div>
+                  <div class="timeline-text mt-1 text-muted">La solicitud fue enviada al flujo de autorización con estrategia de 3 niveles.</div>
+                </div>
+              </li>
+
+              <!-- Evento 1 — Creación -->
+              <li class="timeline-item">
+                <div class="timeline-icon bg-light border" style="color:#6c757d;">
+                  <i class="bi bi-file-earmark-plus"></i>
+                </div>
+                <div class="timeline-body">
+                  <div class="timeline-meta">
+                    <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle me-2"><i class="bi bi-file-earmark me-1"></i>Solicitud creada</span>
+                    <span>03 Jun 2025, 09:48</span>
+                  </div>
+                  <div class="timeline-text fw-semibold text-dark">Carlos Torres &nbsp;<span class="text-muted fw-normal">· Carga Presupuestal Mkt</span></div>
+                  <div class="timeline-text mt-1 text-muted">Solicitud SOL-2024-0047 creada para el proyecto PI-001 – Expansión Digital.</div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div><!-- /tab-bitacora -->
+
+    <!-- ══════════ TAB 3: COMENTARIOS ══════════ -->
+    <div class="tab-pane fade" id="tab-comentarios">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="info-card p-4">
+            <h6 class="fw-bold text-dark mb-3"><i class="bi bi-chat-dots text-info me-2"></i>Comentarios de la Solicitud</h6>
+
+            <!-- Input nuevo comentario -->
+            <div class="d-flex gap-2 mb-4">
+              <img src="assets/images/avatars/02.png" alt="" class="rounded-circle" style="width:36px;height:36px;object-fit:cover;flex-shrink:0;">
+              <div class="flex-grow-1">
+                <textarea class="form-control shadow-none" rows="2" placeholder="Escribe un comentario..." id="nuevoComentario" style="font-size:.85rem; resize:none;"></textarea>
+                <div class="d-flex justify-content-end mt-2">
+                  <button class="btn btn-primary btn-sm fw-bold shadow-none" onclick="publicarComentario()">
+                    <i class="bi bi-send me-1"></i>Publicar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lista de comentarios -->
+            <div id="listaComentarios" class="d-flex flex-column gap-3">
+
+              <!-- Comentario de otro usuario -->
+              <div class="d-flex gap-2 align-items-start">
+                <img src="assets/images/avatars/03.png" alt="" class="rounded-circle" style="width:36px;height:36px;object-fit:cover;flex-shrink:0;">
+                <div>
+                  <div class="small fw-semibold text-dark mb-1">Javier Reyes <span class="text-muted fw-normal">· Dir. Mkt</span></div>
+                  <div class="chat-bubble other">¿Cuándo se necesita la confirmación del presupuesto para televisión? El cierre con el proveedor es el 15 de junio.</div>
+                  <div class="chat-time">05 Jun 2025, 14:35</div>
+                </div>
+              </div>
+
+              <!-- Respuesta del solicitante -->
+              <div class="d-flex gap-2 align-items-start flex-row-reverse">
+                <img src="assets/images/avatars/04.png" alt="" class="rounded-circle" style="width:36px;height:36px;object-fit:cover;flex-shrink:0;">
+                <div class="text-end">
+                  <div class="small fw-semibold text-dark mb-1">Carlos Torres <span class="text-muted fw-normal">· Solicitante</span></div>
+                  <div class="chat-bubble mine">Necesitamos confirmación a más tardar el 10 de junio para cumplir con los tiempos del proveedor.</div>
+                  <div class="chat-time">05 Jun 2025, 15:02</div>
+                </div>
+              </div>
+
+              <!-- Comentario de otro usuario -->
+              <div class="d-flex gap-2 align-items-start">
+                <img src="assets/images/avatars/05.png" alt="" class="rounded-circle" style="width:36px;height:36px;object-fit:cover;flex-shrink:0;">
+                <div>
+                  <div class="small fw-semibold text-dark mb-1">Ana García <span class="text-muted fw-normal">· Finanzas</span></div>
+                  <div class="chat-bubble other">He revisado los montos por CeCo. Los totales cuadran con la planeación anual. Sin observaciones de mi parte.</div>
+                  <div class="chat-time">06 Jun 2025, 09:17</div>
+                </div>
+              </div>
+
+              <!-- Comentario tuyo -->
+              <div class="d-flex gap-2 align-items-start flex-row-reverse">
+                <img src="assets/images/avatars/02.png" alt="" class="rounded-circle" style="width:36px;height:36px;object-fit:cover;flex-shrink:0;">
+                <div class="text-end">
+                  <div class="small fw-semibold text-dark mb-1">Laura Mendez <span class="text-muted fw-normal">· Admon. Fin. Mkt</span></div>
+                  <div class="chat-bubble mine">En revisión. Voy a validar la cuenta 609011 en el CeCo 330100 antes de autorizar.</div>
+                  <div class="chat-time">09 Jun 2025, 11:30</div>
+                </div>
+              </div>
+
+              <!-- Comentario de otro usuario -->
+              <div class="d-flex gap-2 align-items-start">
+                <img src="assets/images/avatars/04.png" alt="" class="rounded-circle" style="width:36px;height:36px;object-fit:cover;flex-shrink:0;">
+                <div>
+                  <div class="small fw-semibold text-dark mb-1">Carlos Torres <span class="text-muted fw-normal">· Solicitante</span></div>
+                  <div class="chat-bubble other">Confirmado, la cuenta 609011 en 330100 fue validada con el área de contabilidad.</div>
+                  <div class="chat-time">09 Jun 2025, 12:05</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /tab-comentarios -->
+
+  </div><!-- /tab-content -->
+
+</main>
+
+<!-- ══════════ MODAL: AUTORIZAR ══════════ -->
+<div class="modal fade" id="modalAutorizar" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-0 pb-0">
+        <div class="d-flex align-items-center gap-2">
+          <span class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width:38px;height:38px;font-size:1rem;"><i class="bi bi-patch-check-fill"></i></span>
+          <div>
+            <h5 class="modal-title fw-bold mb-0">Confirmar Autorización</h5>
+            <div class="small text-muted">Nivel 2 – Admon. Fin. Mkt</div>
+          </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body pt-3">
+        <div class="alert alert-primary border-primary-subtle d-flex gap-2 align-items-start" style="font-size:.85rem;">
+          <i class="bi bi-info-circle-fill flex-shrink-0 mt-1"></i>
+          <div>Al autorizar esta solicitud, confirmas que el presupuesto asignado cumple con los lineamientos y está listo para el <strong>Nivel 3 (Dir. Finanzas)</strong>.</div>
+        </div>
+        <div class="row g-2 mb-3 small">
+          <div class="col-6 text-muted">Folio:</div><div class="col-6 fw-bold text-dark">SOL-2024-0047</div>
+          <div class="col-6 text-muted">Total:</div><div class="col-6 fw-bold text-primary">$4,320,000.00</div>
+          <div class="col-6 text-muted">Siguiente nivel:</div><div class="col-6 text-dark">Dir. Finanzas (N3)</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label small fw-semibold">Comentario <span class="text-muted fw-normal">(opcional)</span></label>
+          <textarea class="form-control shadow-none" rows="2" placeholder="Agrega un comentario para la bitácora..." style="font-size:.85rem;resize:none;"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button class="btn btn-outline-secondary shadow-none" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary fw-bold shadow-none" onclick="confirmarAutorizacion()">
+          <i class="bi bi-patch-check me-1"></i>Autorizar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MODAL: RECHAZAR ══════════ -->
+<div class="modal fade" id="modalRechazar" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-0 pb-0">
+        <div class="d-flex align-items-center gap-2">
+          <span class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center" style="width:38px;height:38px;font-size:1rem;"><i class="bi bi-x-circle-fill"></i></span>
+          <div>
+            <h5 class="modal-title fw-bold mb-0">Rechazar Solicitud</h5>
+            <div class="small text-muted">La solicitud regresará al solicitante</div>
+          </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body pt-3">
+        <div class="alert alert-danger border-danger-subtle d-flex gap-2 align-items-start" style="font-size:.85rem;">
+          <i class="bi bi-exclamation-triangle-fill flex-shrink-0 mt-1"></i>
+          <div>Esta acción <strong>rechaza</strong> la solicitud. Se notificará al solicitante con el motivo indicado.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label small fw-semibold">Motivo del rechazo <span class="text-danger">*</span></label>
+          <textarea class="form-control shadow-none" rows="3" placeholder="Describe el motivo por el que se rechaza esta solicitud..." id="motivoRechazo" oninput="contarRechazo()" style="font-size:.85rem;resize:none;" maxlength="500"></textarea>
+          <div class="d-flex justify-content-between mt-1">
+            <div class="small text-muted" id="charRechazo">0 / 500 caracteres</div>
+            <div class="progress flex-grow-1 ms-3 my-auto" style="height:4px;max-width:120px;">
+              <div class="progress-bar bg-danger" id="barRechazo" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button class="btn btn-outline-secondary shadow-none" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-danger fw-bold shadow-none" id="btnConfirmarRechazo" disabled onclick="confirmarRechazo()">
+          <i class="bi bi-x-circle me-1"></i>Confirmar Rechazo
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ MODAL: SOLICITAR AJUSTE ══════════ -->
+<div class="modal fade" id="modalSolicAjuste" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg">
+      <div class="modal-header border-0 pb-0">
+        <div class="d-flex align-items-center gap-2">
+          <span class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width:38px;height:38px;font-size:1rem;"><i class="bi bi-pencil-square"></i></span>
+          <div>
+            <h5 class="modal-title fw-bold mb-0">Solicitar Ajuste</h5>
+            <div class="small text-muted">La solicitud regresará al solicitante para corrección</div>
+          </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body pt-3">
+        <div class="alert alert-warning border-warning-subtle d-flex gap-2 align-items-start" style="font-size:.85rem;">
+          <i class="bi bi-pencil-fill flex-shrink-0 mt-1"></i>
+          <div>Se enviará una notificación al solicitante indicando los cambios requeridos. La solicitud quedará en estatus <strong>"Pendiente Ajuste"</strong>.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label small fw-semibold">Ajuste solicitado <span class="text-danger">*</span></label>
+          <textarea class="form-control shadow-none" rows="3" placeholder="Describe qué debe corregir o ajustar el solicitante..." id="motivoAjuste" oninput="contarAjuste()" style="font-size:.85rem;resize:none;" maxlength="500"></textarea>
+          <div class="d-flex justify-content-between mt-1">
+            <div class="small text-muted" id="charAjuste">0 / 500 caracteres</div>
+            <div class="progress flex-grow-1 ms-3 my-auto" style="height:4px;max-width:120px;">
+              <div class="progress-bar bg-warning" id="barAjuste" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button class="btn btn-outline-secondary shadow-none" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-warning fw-bold text-dark shadow-none" id="btnConfirmarAjuste" disabled onclick="confirmarAjuste()">
+          <i class="bi bi-send me-1"></i>Enviar Solicitud de Ajuste
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Toast de confirmación ── -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index:1100">
+  <div id="toastAccion" class="toast align-items-center border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body fw-semibold" id="toastMsg">Acción realizada.</div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+<script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+<script src="assets/js/pace.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+// ── Accordion toggle all ──────────────────────────────────────
+function toggleAllAcc(expand) {
+  document.querySelectorAll('#accMatriz .accordion-collapse').forEach(el => {
+    const btn = el.closest('.accordion-item').querySelector('.accordion-button');
+    if (expand) {
+      el.classList.add('show');
+      if (btn) btn.classList.remove('collapsed'), btn.setAttribute('aria-expanded','true');
+    } else {
+      el.classList.remove('show');
+      if (btn) btn.classList.add('collapsed'), btn.setAttribute('aria-expanded','false');
+    }
+  });
+}
+
+// ── Modal: Rechazar ──────────────────────────────────────────
+function contarRechazo() {
+  const v = document.getElementById('motivoRechazo').value;
+  const n = v.length;
+  document.getElementById('charRechazo').textContent = n + ' / 500 caracteres';
+  document.getElementById('barRechazo').style.width = Math.min(100, n / 5) + '%';
+  document.getElementById('btnConfirmarRechazo').disabled = n < 10;
+}
+
+function confirmarRechazo() {
+  bootstrap.Modal.getInstance(document.getElementById('modalRechazar')).hide();
+  mostrarToast('danger', 'Solicitud rechazada. El solicitante fue notificado.');
+}
+
+// ── Modal: Ajuste ────────────────────────────────────────────
+function contarAjuste() {
+  const v = document.getElementById('motivoAjuste').value;
+  const n = v.length;
+  document.getElementById('charAjuste').textContent = n + ' / 500 caracteres';
+  document.getElementById('barAjuste').style.width = Math.min(100, n / 5) + '%';
+  document.getElementById('btnConfirmarAjuste').disabled = n < 10;
+}
+
+function confirmarAjuste() {
+  bootstrap.Modal.getInstance(document.getElementById('modalSolicAjuste')).hide();
+  mostrarToast('warning', 'Solicitud de ajuste enviada al solicitante.');
+}
+
+// ── Modal: Autorizar ─────────────────────────────────────────
+function confirmarAutorizacion() {
+  bootstrap.Modal.getInstance(document.getElementById('modalAutorizar')).hide();
+  mostrarToast('success', '¡Solicitud autorizada en Nivel 2! Enviada a Dir. Finanzas (N3).');
+}
+
+// ── Comentarios ───────────────────────────────────────────────
+function publicarComentario() {
+  const ta  = document.getElementById('nuevoComentario');
+  const txt = ta.value.trim();
+  if (!txt) return;
+  const html = `
+    <div class="d-flex gap-2 align-items-start flex-row-reverse">
+      <img src="assets/images/avatars/02.png" alt="" class="rounded-circle" style="width:36px;height:36px;object-fit:cover;flex-shrink:0;">
+      <div class="text-end">
+        <div class="small fw-semibold text-dark mb-1">Laura Mendez <span class="text-muted fw-normal">· Admon. Fin. Mkt</span></div>
+        <div class="chat-bubble mine">${txt.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+        <div class="chat-time">Ahora</div>
+      </div>
+    </div>`;
+  document.getElementById('listaComentarios').insertAdjacentHTML('beforeend', html);
+  ta.value = '';
+  ta.focus();
+}
+
+// ── Toast helper ──────────────────────────────────────────────
+function mostrarToast(tipo, msg) {
+  const el  = document.getElementById('toastAccion');
+  const msgEl = document.getElementById('toastMsg');
+  el.className = `toast align-items-center text-white border-0 bg-${tipo}`;
+  msgEl.textContent = msg;
+  new bootstrap.Toast(el, { delay: 4000 }).show();
+}
+</script>
+</body>
+</html>
