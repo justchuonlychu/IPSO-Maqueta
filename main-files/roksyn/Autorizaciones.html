@@ -24,6 +24,13 @@
     .table thead th { font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; }
     .table tbody td { font-size:.85rem; vertical-align:middle; }
     .badge-campaña { background:rgba(111,66,193,.12); color:#6f42c1; border:1px solid rgba(111,66,193,.3); }
+    .kpi-card { cursor:pointer; transition:transform .15s, box-shadow .15s; }
+    .kpi-card:hover { transform:translateY(-2px); box-shadow:0 6px 18px rgba(0,0,0,.12) !important; }
+    .kpi-card.active-filter { outline:2px solid currentColor; outline-offset:2px; }
+    .kpi-card.active-filter.kpi-primary  { outline-color:#0d6efd; }
+    .kpi-card.active-filter.kpi-warning  { outline-color:#ffc107; }
+    .kpi-card.active-filter.kpi-success  { outline-color:#198754; }
+    .kpi-card.active-filter.kpi-danger   { outline-color:#dc3545; }
   </style>
 </head>
 
@@ -153,20 +160,20 @@
   </div>
 
   <!-- KPI Cards -->
-  <div class="row g-3 mb-4">
+  <div class="row g-3 mb-4" id="kpiCards">
     <div class="col-6 col-md-3">
-      <div class="card border-0 shadow-sm h-100" style="border-radius:10px;">
+      <div class="card border-0 shadow-sm h-100 kpi-card kpi-primary" style="border-radius:10px;" data-kpi-filter="">
         <div class="card-body d-flex align-items-center gap-3 p-3">
           <div class="kpi-icon bg-primary-subtle text-primary"><i class="bi bi-collection"></i></div>
           <div>
-            <div class="kpi-value text-primary">19</div>
+            <div class="kpi-value text-primary">13</div>
             <div class="kpi-label">Total de solicitudes</div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-6 col-md-3">
-      <div class="card border-0 shadow-sm h-100" style="border-radius:10px;">
+      <div class="card border-0 shadow-sm h-100 kpi-card kpi-warning" style="border-radius:10px;" data-kpi-filter="pendiente">
         <div class="card-body d-flex align-items-center gap-3 p-3">
           <div class="kpi-icon bg-warning-subtle text-warning"><i class="bi bi-hourglass-split"></i></div>
           <div>
@@ -177,18 +184,18 @@
       </div>
     </div>
     <div class="col-6 col-md-3">
-      <div class="card border-0 shadow-sm h-100" style="border-radius:10px;">
+      <div class="card border-0 shadow-sm h-100 kpi-card kpi-success" style="border-radius:10px;" data-kpi-filter="autorizada">
         <div class="card-body d-flex align-items-center gap-3 p-3">
           <div class="kpi-icon bg-success-subtle text-success"><i class="bi bi-check-circle"></i></div>
           <div>
-            <div class="kpi-value text-success">12</div>
+            <div class="kpi-value text-success">3</div>
             <div class="kpi-label">Autorizadas por mí</div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-6 col-md-3">
-      <div class="card border-0 shadow-sm h-100" style="border-radius:10px;">
+      <div class="card border-0 shadow-sm h-100 kpi-card kpi-danger" style="border-radius:10px;" data-kpi-filter="rechazada">
         <div class="card-body d-flex align-items-center gap-3 p-3">
           <div class="kpi-icon bg-danger-subtle text-danger"><i class="bi bi-x-circle"></i></div>
           <div>
@@ -467,14 +474,16 @@
   const rows           = document.querySelectorAll('#tableBody tr');
   const visibleCount   = document.getElementById('visibleCount');
   const totalBadge     = document.getElementById('totalBadge');
+  const kpiCards       = document.querySelectorAll('.kpi-card');
+
+  // Filtro activo por card ('' = todos)
+  let activeKpi = '';
 
   function applyFilters() {
     const folio    = filterFolio.value.toLowerCase().trim();
     const nombre   = filterNombre.value.toLowerCase().trim();
     const tipo     = filterTipo.value;
     const division = filterDivision.value;
-
-    // multi-select: obtener valores seleccionados
     const estatusSeleccionados = Array.from(filterEstatus.selectedOptions).map(function(o){ return o.value; });
 
     let visible = 0;
@@ -486,8 +495,13 @@
       const matchDivision = !division || row.dataset.division === division;
       const matchEstatus  = estatusSeleccionados.length === 0
                               || estatusSeleccionados.includes(row.dataset.estatus);
+      // card filter: si hay kpi activo sobreescribe el multi-select de estatus
+      const matchKpi      = activeKpi === '' || row.dataset.estatus === activeKpi;
 
-      if (matchFolio && matchNombre && matchTipo && matchDivision && matchEstatus) {
+      const visible_row = matchFolio && matchNombre && matchTipo && matchDivision
+                          && (activeKpi !== '' ? matchKpi : matchEstatus);
+
+      if (visible_row) {
         row.style.display = '';
         visible++;
       } else {
@@ -499,11 +513,37 @@
     totalBadge.textContent   = visible;
   }
 
+  // Clicks en KPI cards
+  kpiCards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      const filter = card.dataset.kpiFilter;
+
+      if (activeKpi === filter) {
+        // segunda vez: deseleccionar
+        activeKpi = '';
+        kpiCards.forEach(function(c){ c.classList.remove('active-filter'); });
+      } else {
+        activeKpi = filter;
+        kpiCards.forEach(function(c){ c.classList.remove('active-filter'); });
+        card.classList.add('active-filter');
+        // limpiar multi-select para evitar conflicto visual
+        Array.from(filterEstatus.options).forEach(function(o){ o.selected = false; });
+      }
+      applyFilters();
+    });
+  });
+
+  // Cuando el usuario usa el multi-select manual, desactivar card
+  filterEstatus.addEventListener('change', function () {
+    activeKpi = '';
+    kpiCards.forEach(function(c){ c.classList.remove('active-filter'); });
+    applyFilters();
+  });
+
   filterFolio.addEventListener('input', applyFilters);
   filterNombre.addEventListener('input', applyFilters);
   filterTipo.addEventListener('change', applyFilters);
   filterDivision.addEventListener('change', applyFilters);
-  filterEstatus.addEventListener('change', applyFilters);
 
   btnClear.addEventListener('click', function () {
     filterFolio.value    = '';
@@ -511,6 +551,8 @@
     filterTipo.value     = '';
     filterDivision.value = '';
     Array.from(filterEstatus.options).forEach(function(o){ o.selected = false; });
+    activeKpi = '';
+    kpiCards.forEach(function(c){ c.classList.remove('active-filter'); });
     applyFilters();
   });
 })();
