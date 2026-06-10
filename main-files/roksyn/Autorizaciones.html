@@ -213,7 +213,8 @@
             <option value="pendiente">Pendiente Auth N2</option>
             <option value="autorizada">Autorizada</option>
             <option value="rechazada">Rechazada</option>
-            <option value="ajuste">Pte. Ajuste</option>
+            <option value="ajuste">En Ajuste</option>
+            <option value="otro-nivel">Pte. Otro Nivel</option>
           </select>
         </div>
         <div class="col-6 col-md-2">
@@ -247,142 +248,185 @@
     <div class="card-header bg-transparent border-bottom d-flex align-items-center gap-2 py-3">
       <i class="bi bi-table text-primary fs-5"></i>
       <span class="fw-semibold">Bandeja de Autorizaciones</span>
-      <span id="totalBadge" class="badge bg-primary-subtle text-primary ms-1">10</span>
+      <span id="totalBadge" class="badge bg-primary-subtle text-primary ms-1">12</span>
     </div>
     <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table table-hover align-middle mb-0">
-          <thead class="table-light">
+      <div class="table-responsive border rounded bg-white shadow-sm">
+        <table class="table table-hover align-middle mb-0 text-start" style="font-size:0.85rem;">
+          <thead class="bg-opacity-10 small fw-bold table-dark text-center">
             <tr>
-              <th>Folio</th>
+              <th>Folio <i class="bi bi-arrow-down-up ms-1"></i></th>
               <th>Tipo</th>
               <th>Nombre</th>
               <th>División</th>
               <th>Vigencia</th>
               <th class="text-end">Importe</th>
               <th>Usuario de Carga</th>
+              <th>Última Actualización <i class="bi bi-arrow-down-up ms-1"></i></th>
               <th>Estatus</th>
-              <th>Última Actualización</th>
             </tr>
           </thead>
           <tbody id="tableBody">
-            <tr data-folio="SOL-2024-0047" data-tipo="inversión" data-division="marca" data-estatus="pendiente" data-search="sol-2024-0047 expansión digital q2 carlos torres">
-              <td><a href="DetalleAutorizacion.html" style="font-family:monospace;font-size:.82rem;">SOL-2024-0047</a></td>
-              <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size:.78rem;">Proyecto de Inversión</span></td>
-              <td style="font-size:.85rem;">Expansión Digital Q2</td>
-              <td><span class="badge bg-info-subtle text-info border border-info-subtle" style="font-size:.78rem;">Marca</span></td>
-              <td style="font-size:.82rem;">01/01/2025<br>31/12/2025</td>
-              <td class="text-end fw-bold" style="font-size:.85rem;">$4,320,000</td>
-              <td style="font-size:.85rem;">Carlos Torres</td>
-              <td><span class="badge bg-warning text-dark" style="font-size:.78rem;">Pte. Auth N2</span></td>
-              <td style="font-size:.82rem;">09 Jun 2025</td>
+
+            <!-- ─── GRUPO 1: Pendientes de MI autorización (N2) — más antiguo primero ─── -->
+            <tr data-folio="F-27005" data-tipo="inversión" data-division="marca" data-estatus="pendiente" data-search="f-27005 medios masivos h1 carlos torres">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27005</a></td>
+              <td class="text-dark small">P. Inversión</td>
+              <td class="text-dark fw-semibold">Medios Masivos H1</td>
+              <td class="text-dark">Marca</td>
+              <td class="text-dark small">Ene–Jun 2027</td>
+              <td class="fw-bold text-dark text-end">1,800,000</td>
+              <td class="text-dark">Carlos Torres</td>
+              <td class="text-dark text-center">05/06/2027 09:14</td>
+              <td class="text-center"><span class="badge bg-warning-subtle text-dark border border-warning px-2 py-1">P:Aut. N2</span></td>
             </tr>
-            <tr data-folio="SOL-2024-0043" data-tipo="campaña" data-division="oferteo" data-estatus="pendiente" data-search="sol-2024-0043 campaña tv verano ana ruiz">
-              <td><a href="DetalleAutorizacion.html" style="font-family:monospace;font-size:.82rem;">SOL-2024-0043</a></td>
-              <td><span class="badge badge-campaña border" style="font-size:.78rem;">Campaña</span></td>
-              <td style="font-size:.85rem;">Campaña TV Verano</td>
-              <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:.78rem;">Oferteo</span></td>
-              <td style="font-size:.82rem;">01/04/2025<br>30/06/2025</td>
-              <td class="text-end fw-bold" style="font-size:.85rem;">$890,000</td>
-              <td style="font-size:.85rem;">Ana Ruiz</td>
-              <td><span class="badge bg-warning text-dark" style="font-size:.78rem;">Pte. Auth N2</span></td>
-              <td style="font-size:.82rem;">08 Jun 2025</td>
+            <tr data-folio="F-27006" data-tipo="campaña" data-division="sin division" data-estatus="pendiente" data-search="f-27006 digital social q2 ana ruiz">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27006</a></td>
+              <td class="text-dark small">Campaña</td>
+              <td class="text-dark fw-semibold">Digital Social Q2</td>
+              <td class="text-dark">Sin División</td>
+              <td class="text-dark small">Abr–Jun 2027</td>
+              <td class="fw-bold text-dark text-end">210,000</td>
+              <td class="text-dark">Ana Ruiz</td>
+              <td class="text-dark text-center">06/06/2027 10:02</td>
+              <td class="text-center"><span class="badge bg-warning-subtle text-dark border border-warning px-2 py-1">P:Aut. N2</span></td>
             </tr>
-            <tr data-folio="SOL-2024-0041" data-tipo="ordinario" data-division="estrategia" data-estatus="pendiente" data-search="sol-2024-0041 btl eventos q1 mario lópez">
-              <td><a href="DetalleAutorizacion.html" style="font-family:monospace;font-size:.82rem;">SOL-2024-0041</a></td>
-              <td><span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:.78rem;">Presupuesto Ordinario</span></td>
-              <td style="font-size:.85rem;">BTL Eventos Q1</td>
-              <td><span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:.78rem;">Estrategia</span></td>
-              <td style="font-size:.82rem;">01/01/2025<br>31/03/2025</td>
-              <td class="text-end fw-bold" style="font-size:.85rem;">$320,000</td>
-              <td style="font-size:.85rem;">Mario López</td>
-              <td><span class="badge bg-warning text-dark" style="font-size:.78rem;">Pte. Auth N2</span></td>
-              <td style="font-size:.82rem;">07 Jun 2025</td>
+            <tr data-folio="F-27007" data-tipo="ordinario" data-division="estrategia" data-estatus="pendiente" data-search="f-27007 btl eventos q1 mario lópez">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27007</a></td>
+              <td class="text-dark small">P. Ordinario</td>
+              <td class="text-dark fw-semibold">BTL Eventos Q1</td>
+              <td class="text-dark">Estrategia</td>
+              <td class="text-dark small">Ene–Mar 2027</td>
+              <td class="fw-bold text-dark text-end">320,000</td>
+              <td class="text-dark">Mario López</td>
+              <td class="text-dark text-center">07/06/2027 08:55</td>
+              <td class="text-center"><span class="badge bg-warning-subtle text-dark border border-warning px-2 py-1">P:Aut. N2</span></td>
             </tr>
-            <tr data-folio="SOL-2024-0039" data-tipo="campaña" data-division="sin division" data-estatus="pendiente" data-search="sol-2024-0039 digital social q2 ana ruiz">
-              <td><a href="DetalleAutorizacion.html" style="font-family:monospace;font-size:.82rem;">SOL-2024-0039</a></td>
-              <td><span class="badge badge-campaña border" style="font-size:.78rem;">Campaña</span></td>
-              <td style="font-size:.85rem;">Digital Social Q2</td>
-              <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle" style="font-size:.78rem;">Sin División</span></td>
-              <td style="font-size:.82rem;">01/04/2025<br>30/06/2025</td>
-              <td class="text-end fw-bold" style="font-size:.85rem;">$210,000</td>
-              <td style="font-size:.85rem;">Ana Ruiz</td>
-              <td><span class="badge bg-warning text-dark" style="font-size:.78rem;">Pte. Auth N2</span></td>
-              <td style="font-size:.82rem;">06 Jun 2025</td>
+            <tr data-folio="F-27008" data-tipo="campaña" data-division="oferteo" data-estatus="pendiente" data-search="f-27008 campaña tv verano ana ruiz">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27008</a></td>
+              <td class="text-dark small">Campaña</td>
+              <td class="text-dark fw-semibold">Campaña TV Verano</td>
+              <td class="text-dark">Oferteo</td>
+              <td class="text-dark small">Abr–Jun 2027</td>
+              <td class="fw-bold text-dark text-end">890,000</td>
+              <td class="text-dark">Ana Ruiz</td>
+              <td class="text-dark text-center">08/06/2027 11:30</td>
+              <td class="text-center"><span class="badge bg-warning-subtle text-dark border border-warning px-2 py-1">P:Aut. N2</span></td>
             </tr>
-            <tr data-folio="SOL-2024-0038" data-tipo="inversión" data-division="marca" data-estatus="pendiente" data-search="sol-2024-0038 medios masivos h1 carlos torres">
-              <td><a href="DetalleAutorizacion.html" style="font-family:monospace;font-size:.82rem;">SOL-2024-0038</a></td>
-              <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size:.78rem;">Proyecto de Inversión</span></td>
-              <td style="font-size:.85rem;">Medios Masivos H1</td>
-              <td><span class="badge bg-info-subtle text-info border border-info-subtle" style="font-size:.78rem;">Marca</span></td>
-              <td style="font-size:.82rem;">01/01/2025<br>30/06/2025</td>
-              <td class="text-end fw-bold" style="font-size:.85rem;">$1,800,000</td>
-              <td style="font-size:.85rem;">Carlos Torres</td>
-              <td><span class="badge bg-warning text-dark" style="font-size:.78rem;">Pte. Auth N2</span></td>
-              <td style="font-size:.82rem;">05 Jun 2025</td>
+            <tr data-folio="F-27009" data-tipo="inversión" data-division="marca" data-estatus="pendiente" data-search="f-27009 expansión digital q2 carlos torres">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27009</a></td>
+              <td class="text-dark small">P. Inversión</td>
+              <td class="text-dark fw-semibold">Expansión Digital Q2</td>
+              <td class="text-dark">Marca</td>
+              <td class="text-dark small">Ene–Dic 2027</td>
+              <td class="fw-bold text-dark text-end">4,320,000</td>
+              <td class="text-dark">Carlos Torres</td>
+              <td class="text-dark text-center">09/06/2027 14:47</td>
+              <td class="text-center"><span class="badge bg-warning-subtle text-dark border border-warning px-2 py-1">P:Aut. N2</span></td>
             </tr>
-            <tr data-folio="SOL-2024-0035" data-tipo="campaña" data-division="oferteo" data-estatus="autorizada" data-search="sol-2024-0035 campaña fibra pedro sánchez">
-              <td><a href="DetalleAutorizacion.html" style="font-family:monospace;font-size:.82rem;">SOL-2024-0035</a></td>
-              <td><span class="badge badge-campaña border" style="font-size:.78rem;">Campaña</span></td>
-              <td style="font-size:.85rem;">Campaña Fibra</td>
-              <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:.78rem;">Oferteo</span></td>
-              <td style="font-size:.82rem;">01/03/2025<br>31/05/2025</td>
-              <td class="text-end fw-bold" style="font-size:.85rem;">$540,000</td>
-              <td style="font-size:.85rem;">Pedro Sánchez</td>
-              <td><span class="badge bg-success" style="font-size:.78rem;">Autorizada</span></td>
-              <td style="font-size:.82rem;">02 Jun 2025</td>
+
+            <!-- ─── GRUPO 2: En Ajuste — enviadas por mí a corrección ─── -->
+            <tr class="bg-warning bg-opacity-10" data-folio="F-27003" data-tipo="campaña" data-division="sin division" data-estatus="ajuste" data-search="f-27003 btl nacional mario lópez">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27003</a></td>
+              <td class="text-dark small">Campaña</td>
+              <td class="text-dark fw-semibold">BTL Nacional</td>
+              <td class="text-dark">Sin División</td>
+              <td class="text-dark small">Jul–Sep 2027</td>
+              <td class="fw-bold text-dark text-end">430,000</td>
+              <td class="text-dark">Mario López</td>
+              <td class="text-dark text-center">25/05/2027 16:10</td>
+              <td class="text-center"><span class="badge bg-warning-subtle text-dark border border-warning px-2 py-1">En Ajuste</span></td>
             </tr>
-            <tr data-folio="SOL-2024-0031" data-tipo="ordinario" data-division="estrategia" data-estatus="pendiente" data-search="sol-2024-0031 gasto ordinario adm laura castro">
-              <td><a href="DetalleAutorizacion.html" style="font-family:monospace;font-size:.82rem;">SOL-2024-0031</a></td>
-              <td><span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:.78rem;">Presupuesto Ordinario</span></td>
-              <td style="font-size:.85rem;">Gasto Ordinario Adm</td>
-              <td><span class="badge bg-success-subtle text-success border border-success-subtle" style="font-size:.78rem;">Estrategia</span></td>
-              <td style="font-size:.82rem;">01/01/2025<br>31/12/2025</td>
-              <td class="text-end fw-bold" style="font-size:.85rem;">$150,000</td>
-              <td style="font-size:.85rem;">Laura Castro</td>
-              <td><span class="badge bg-info text-dark" style="font-size:.78rem;">Pte. Auth N3</span></td>
-              <td style="font-size:.82rem;">01 Jun 2025</td>
+            <tr class="bg-warning bg-opacity-10" data-folio="F-27004" data-tipo="ordinario" data-division="estrategia" data-estatus="ajuste" data-search="f-27004 reforma marca pedro sánchez">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27004</a></td>
+              <td class="text-dark small">P. Ordinario</td>
+              <td class="text-dark fw-semibold">Reforma Marca</td>
+              <td class="text-dark">Estrategia</td>
+              <td class="text-dark small">May–Ago 2027</td>
+              <td class="fw-bold text-dark text-end">175,000</td>
+              <td class="text-dark">Pedro Sánchez</td>
+              <td class="text-dark text-center">28/05/2027 09:33</td>
+              <td class="text-center"><span class="badge bg-warning-subtle text-dark border border-warning px-2 py-1">En Ajuste</span></td>
             </tr>
-            <tr data-folio="SOL-2024-0028" data-tipo="inversión" data-division="marca" data-estatus="rechazada" data-search="sol-2024-0028 expansión fibra carlos torres">
-              <td><a href="DetalleAutorizacion.html" style="font-family:monospace;font-size:.82rem;">SOL-2024-0028</a></td>
-              <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle" style="font-size:.78rem;">Proyecto de Inversión</span></td>
-              <td style="font-size:.85rem;">Expansión Fibra</td>
-              <td><span class="badge bg-info-subtle text-info border border-info-subtle" style="font-size:.78rem;">Marca</span></td>
-              <td style="font-size:.82rem;">01/01/2025<br>31/12/2025</td>
-              <td class="text-end fw-bold" style="font-size:.85rem;">$2,100,000</td>
-              <td style="font-size:.85rem;">Carlos Torres</td>
-              <td><span class="badge bg-danger" style="font-size:.78rem;">Rechazada</span></td>
-              <td style="font-size:.82rem;">28 May 2025</td>
+
+            <!-- ─── GRUPO 3: Autorizadas por mí ─── -->
+            <tr data-folio="F-27001" data-tipo="campaña" data-division="oferteo" data-estatus="autorizada" data-search="f-27001 campaña fibra pedro sánchez">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27001</a></td>
+              <td class="text-dark small">Campaña</td>
+              <td class="text-dark fw-semibold">Campaña Fibra</td>
+              <td class="text-dark">Oferteo</td>
+              <td class="text-dark small">Mar–May 2027</td>
+              <td class="fw-bold text-dark text-end">540,000</td>
+              <td class="text-dark">Pedro Sánchez</td>
+              <td class="text-dark text-center">02/06/2027 13:20</td>
+              <td class="text-center"><span class="badge bg-success-subtle text-dark border border-success px-2 py-1">Aprobada</span></td>
             </tr>
-            <tr data-folio="SOL-2024-0025" data-tipo="campaña" data-division="sin division" data-estatus="ajuste" data-search="sol-2024-0025 btl nacional mario lópez">
-              <td><a href="DetalleAutorizacion.html" style="font-family:monospace;font-size:.82rem;">SOL-2024-0025</a></td>
-              <td><span class="badge badge-campaña border" style="font-size:.78rem;">Campaña</span></td>
-              <td style="font-size:.85rem;">BTL Nacional</td>
-              <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle" style="font-size:.78rem;">Sin División</span></td>
-              <td style="font-size:.82rem;">01/07/2025<br>30/09/2025</td>
-              <td class="text-end fw-bold" style="font-size:.85rem;">$430,000</td>
-              <td style="font-size:.85rem;">Mario López</td>
-              <td><span class="badge bg-secondary" style="font-size:.78rem;">Pte. Ajuste</span></td>
-              <td style="font-size:.82rem;">25 May 2025</td>
+            <tr data-folio="F-27002" data-tipo="campaña" data-division="oferteo" data-estatus="autorizada" data-search="f-27002 tv navidad ana ruiz">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27002</a></td>
+              <td class="text-dark small">Campaña</td>
+              <td class="text-dark fw-semibold">TV Navidad</td>
+              <td class="text-dark">Oferteo</td>
+              <td class="text-dark small">Oct–Dic 2027</td>
+              <td class="fw-bold text-dark text-end">670,000</td>
+              <td class="text-dark">Ana Ruiz</td>
+              <td class="text-dark text-center">20/05/2027 10:05</td>
+              <td class="text-center"><span class="badge bg-success-subtle text-dark border border-success px-2 py-1">Aprobada</span></td>
             </tr>
-            <tr data-folio="SOL-2024-0022" data-tipo="campaña" data-division="oferteo" data-estatus="autorizada" data-search="sol-2024-0022 tv navidad ana ruiz">
-              <td><a href="DetalleAutorizacion.html" style="font-family:monospace;font-size:.82rem;">SOL-2024-0022</a></td>
-              <td><span class="badge badge-campaña border" style="font-size:.78rem;">Campaña</span></td>
-              <td style="font-size:.85rem;">TV Navidad</td>
-              <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle" style="font-size:.78rem;">Oferteo</span></td>
-              <td style="font-size:.82rem;">01/10/2025<br>31/12/2025</td>
-              <td class="text-end fw-bold" style="font-size:.85rem;">$670,000</td>
-              <td style="font-size:.85rem;">Ana Ruiz</td>
-              <td><span class="badge bg-success" style="font-size:.78rem;">Autorizada</span></td>
-              <td style="font-size:.82rem;">20 May 2025</td>
+            <tr data-folio="F-27010" data-tipo="inversión" data-division="marca" data-estatus="autorizada" data-search="f-27010 estrategia 360 carlos torres">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27010</a></td>
+              <td class="text-dark small">P. Inversión</td>
+              <td class="text-dark fw-semibold">Estrategia 360°</td>
+              <td class="text-dark">Marca</td>
+              <td class="text-dark small">Ene–Jun 2027</td>
+              <td class="fw-bold text-dark text-end">980,000</td>
+              <td class="text-dark">Carlos Torres</td>
+              <td class="text-dark text-center">03/06/2027 15:44</td>
+              <td class="text-center"><span class="badge bg-info-subtle text-dark border border-info px-2 py-1">P:Aut. N3</span></td>
+            </tr>
+
+            <!-- ─── GRUPO 4: Rechazadas por mí ─── -->
+            <tr class="opacity-75" data-folio="F-27011" data-tipo="inversión" data-division="marca" data-estatus="rechazada" data-search="f-27011 expansión fibra carlos torres">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27011</a></td>
+              <td class="text-dark small">P. Inversión</td>
+              <td class="text-dark fw-semibold text-decoration-line-through">Expansión Fibra</td>
+              <td class="text-dark">Marca</td>
+              <td class="text-dark small">Ene–Dic 2027</td>
+              <td class="fw-bold text-dark text-end">2,100,000</td>
+              <td class="text-dark">Carlos Torres</td>
+              <td class="text-dark text-center">28/05/2027 11:22</td>
+              <td class="text-center"><span class="badge bg-danger-subtle text-dark border border-danger px-2 py-1">Rechazada</span></td>
+            </tr>
+            <tr class="opacity-75" data-folio="F-27012" data-tipo="campaña" data-division="oferteo" data-estatus="rechazada" data-search="f-27012 campaña promo btl mario lópez">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27012</a></td>
+              <td class="text-dark small">Campaña</td>
+              <td class="text-dark fw-semibold text-decoration-line-through">Campaña Promo BTL</td>
+              <td class="text-dark">Oferteo</td>
+              <td class="text-dark small">Jul–Sep 2027</td>
+              <td class="fw-bold text-dark text-end">360,000</td>
+              <td class="text-dark">Mario López</td>
+              <td class="text-dark text-center">01/06/2027 17:05</td>
+              <td class="text-center"><span class="badge bg-danger-subtle text-dark border border-danger px-2 py-1">Rechazada</span></td>
+            </tr>
+
+            <!-- ─── GRUPO 5: Pendientes de otro nivel (ya pasaron por mí o aún no llegan) ─── -->
+            <tr data-folio="F-27013" data-tipo="ordinario" data-division="estrategia" data-estatus="otro-nivel" data-search="f-27013 gasto ordinario adm laura castro">
+              <td><a href="DetalleAutorizacion.html" class="fw-bold text-primary text-decoration-underline">F-27013</a></td>
+              <td class="text-dark small">P. Ordinario</td>
+              <td class="text-dark fw-semibold">Gasto Ordinario Adm</td>
+              <td class="text-dark">Estrategia</td>
+              <td class="text-dark small">Ene–Dic 2027</td>
+              <td class="fw-bold text-dark text-end">150,000</td>
+              <td class="text-dark">Laura Castro</td>
+              <td class="text-dark text-center">01/06/2027 08:00</td>
+              <td class="text-center"><span class="badge bg-secondary-subtle text-dark border border-secondary px-2 py-1">P:Aut. N1</span></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
     <div class="card-footer bg-transparent d-flex align-items-center justify-content-between py-2 px-3" style="font-size:.82rem;">
-      <span>Mostrando <strong id="visibleCount">10</strong> de 10 solicitudes</span>
-      <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Ejercicio 2025</span>
+      <span>Mostrando <strong id="visibleCount">13</strong> de 13 solicitudes</span>
+      <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Ejercicio 2027</span>
     </div>
   </div>
 </main>
