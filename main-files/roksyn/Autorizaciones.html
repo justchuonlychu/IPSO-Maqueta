@@ -246,9 +246,10 @@
                 <div class="col-6 col-md-2">
                   <select id="filterDivision" class="form-select form-select-sm">
                     <option value="">División: Todas</option>
-                    <option value="totalplay">Totalplay</option>
-                    <option value="gelektra">GElektra</option>
-                    <option value="backoffice">BackOffice</option>
+                    <option value="marca">Marca</option>
+                    <option value="oferteo">Oferteo</option>
+                    <option value="estrategia">Estrategia</option>
+                    <option value="sin division">Sin División</option>
                   </select>
                 </div>
                 <div class="col-6 col-md-2">
@@ -272,12 +273,12 @@
                   <thead class="table-light">
                     <tr>
                       <th>Folio</th>
-                      <th>Nombre / Tipo</th>
-                      <th>Solicitante</th>
+                      <th>Tipo de Solicitud</th>
+                      <th>Nombre</th>
                       <th>División</th>
-                      <th>Período</th>
+                      <th>Vigencia</th>
                       <th class="text-end">Total ($)</th>
-                      <th>Nivel Auth</th>
+                      <th>Usuario de Carga</th>
                       <th>Estatus</th>
                       <th class="text-center">Acciones</th>
                     </tr>
@@ -286,321 +287,161 @@
 
                     <!-- Row 1 -->
                     <tr data-folio="SOL-2024-0047" data-nombre="Expansión Digital Q2" data-solicitante="Carlos Torres"
-                        data-estatus="pendiente" data-tipo="inversión" data-division="totalplay">
+                        data-estatus="pendiente" data-tipo="inversión" data-division="marca">
                       <td><span class="folio-code">SOL-2024-0047</span></td>
-                      <td class="nombre-tipo">
-                        <div class="fw-semibold" style="font-size:.85rem;">Expansión Digital Q2</div>
-                        <span class="badge bg-primary-subtle text-primary tipo-badge border border-primary-subtle">Proyecto de Inversión</span>
-                      </td>
-                      <td>Carlos Torres</td>
-                      <td><span class="badge bg-info-subtle text-info border border-info-subtle">Totalplay</span></td>
-                      <td>Ene–Dic 2025</td>
+                      <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Proyecto de Inversión</span></td>
+                      <td class="fw-semibold" style="font-size:.85rem;">Expansión Digital Q2</td>
+                      <td><span class="badge bg-info-subtle text-info border border-info-subtle">Marca</span></td>
+                      <td><small>01/01/2025</small><br><small>31/12/2025</small></td>
                       <td class="text-end fw-semibold">$4,320,000</td>
-                      <td>
-                        <div class="nivel-flow">
-                          <span class="nivel-dot bg-success" title="N1 Autorizado"></span>
-                          <small class="text-success fw-semibold">N1</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-warning border border-2 border-warning" style="box-shadow:0 0 0 2px rgba(255,193,7,.3)" title="N2 Pendiente"></span>
-                          <small class="text-warning fw-semibold">N2</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-secondary opacity-25" title="N3 Pendiente"></span>
-                          <small class="text-secondary opacity-50">N3</small>
-                        </div>
-                      </td>
+                      <td>Carlos Torres</td>
                       <td><span class="badge bg-warning text-dark">Pte. Auth N2</span></td>
                       <td class="text-center">
-                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver">
-                          <i class="bi bi-eye me-1"></i>Ver detalle
-                        </a>
+                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver"><i class="bi bi-eye me-1"></i>Ver detalle</a>
                       </td>
                     </tr>
 
                     <!-- Row 2 -->
                     <tr data-folio="SOL-2024-0043" data-nombre="Campaña TV Verano" data-solicitante="Ana Ruiz"
-                        data-estatus="pendiente" data-tipo="campaña" data-division="totalplay">
+                        data-estatus="pendiente" data-tipo="campaña" data-division="oferteo">
                       <td><span class="folio-code">SOL-2024-0043</span></td>
-                      <td class="nombre-tipo">
-                        <div class="fw-semibold" style="font-size:.85rem;">Campaña TV Verano</div>
-                        <span class="badge bg-purple-subtle text-purple tipo-badge border" style="background-color:rgba(111,66,193,.12)!important;color:#6f42c1;border-color:rgba(111,66,193,.3)!important;">Campaña</span>
-                      </td>
-                      <td>Ana Ruiz</td>
-                      <td><span class="badge bg-info-subtle text-info border border-info-subtle">Totalplay</span></td>
-                      <td>Abr–Jun 2025</td>
+                      <td><span class="badge border" style="background-color:rgba(111,66,193,.12)!important;color:#6f42c1;border-color:rgba(111,66,193,.3)!important;">Campaña</span></td>
+                      <td class="fw-semibold" style="font-size:.85rem;">Campaña TV Verano</td>
+                      <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                      <td><small>01/04/2025</small><br><small>30/06/2025</small></td>
                       <td class="text-end fw-semibold">$890,000</td>
-                      <td>
-                        <div class="nivel-flow">
-                          <span class="nivel-dot bg-success" title="N1 Autorizado"></span>
-                          <small class="text-success fw-semibold">N1</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-warning border border-2 border-warning" style="box-shadow:0 0 0 2px rgba(255,193,7,.3)" title="N2 Pendiente"></span>
-                          <small class="text-warning fw-semibold">N2</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-secondary opacity-25" title="N3 Pendiente"></span>
-                          <small class="text-secondary opacity-50">N3</small>
-                        </div>
-                      </td>
+                      <td>Ana Ruiz</td>
                       <td><span class="badge bg-warning text-dark">Pte. Auth N2</span></td>
                       <td class="text-center">
-                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver">
-                          <i class="bi bi-eye me-1"></i>Ver detalle
-                        </a>
+                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver"><i class="bi bi-eye me-1"></i>Ver detalle</a>
                       </td>
                     </tr>
 
                     <!-- Row 3 -->
                     <tr data-folio="SOL-2024-0041" data-nombre="BTL Eventos Q1" data-solicitante="Mario López"
-                        data-estatus="pendiente" data-tipo="ordinario" data-division="gelektra">
+                        data-estatus="pendiente" data-tipo="ordinario" data-division="estrategia">
                       <td><span class="folio-code">SOL-2024-0041</span></td>
-                      <td class="nombre-tipo">
-                        <div class="fw-semibold" style="font-size:.85rem;">BTL Eventos Q1</div>
-                        <span class="badge bg-success-subtle text-success tipo-badge border border-success-subtle">Gasto Ordinario</span>
-                      </td>
-                      <td>Mario López</td>
-                      <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">GElektra</span></td>
-                      <td>Ene–Mar 2025</td>
+                      <td><span class="badge bg-success-subtle text-success border border-success-subtle">Presupuesto Ordinario</span></td>
+                      <td class="fw-semibold" style="font-size:.85rem;">BTL Eventos Q1</td>
+                      <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                      <td><small>01/01/2025</small><br><small>31/03/2025</small></td>
                       <td class="text-end fw-semibold">$320,000</td>
-                      <td>
-                        <div class="nivel-flow">
-                          <span class="nivel-dot bg-success" title="N1 Autorizado"></span>
-                          <small class="text-success fw-semibold">N1</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-warning border border-2 border-warning" style="box-shadow:0 0 0 2px rgba(255,193,7,.3)" title="N2 Pendiente"></span>
-                          <small class="text-warning fw-semibold">N2</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-secondary opacity-25" title="N3 Pendiente"></span>
-                          <small class="text-secondary opacity-50">N3</small>
-                        </div>
-                      </td>
+                      <td>Mario López</td>
                       <td><span class="badge bg-warning text-dark">Pte. Auth N2</span></td>
                       <td class="text-center">
-                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver">
-                          <i class="bi bi-eye me-1"></i>Ver detalle
-                        </a>
+                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver"><i class="bi bi-eye me-1"></i>Ver detalle</a>
                       </td>
                     </tr>
 
                     <!-- Row 4 -->
                     <tr data-folio="SOL-2024-0039" data-nombre="Digital Social Q2" data-solicitante="Ana Ruiz"
-                        data-estatus="pendiente" data-tipo="campaña" data-division="backoffice">
+                        data-estatus="pendiente" data-tipo="campaña" data-division="sin division">
                       <td><span class="folio-code">SOL-2024-0039</span></td>
-                      <td class="nombre-tipo">
-                        <div class="fw-semibold" style="font-size:.85rem;">Digital Social Q2</div>
-                        <span class="badge tipo-badge border" style="background-color:rgba(111,66,193,.12)!important;color:#6f42c1;border-color:rgba(111,66,193,.3)!important;">Campaña</span>
-                      </td>
-                      <td>Ana Ruiz</td>
-                      <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">BackOffice</span></td>
-                      <td>Abr–Jun 2025</td>
+                      <td><span class="badge border" style="background-color:rgba(111,66,193,.12)!important;color:#6f42c1;border-color:rgba(111,66,193,.3)!important;">Campaña</span></td>
+                      <td class="fw-semibold" style="font-size:.85rem;">Digital Social Q2</td>
+                      <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Sin División</span></td>
+                      <td><small>01/04/2025</small><br><small>30/06/2025</small></td>
                       <td class="text-end fw-semibold">$210,000</td>
-                      <td>
-                        <div class="nivel-flow">
-                          <span class="nivel-dot bg-success" title="N1 Autorizado"></span>
-                          <small class="text-success fw-semibold">N1</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-warning border border-2 border-warning" style="box-shadow:0 0 0 2px rgba(255,193,7,.3)" title="N2 Pendiente"></span>
-                          <small class="text-warning fw-semibold">N2</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-secondary opacity-25" title="N3 Pendiente"></span>
-                          <small class="text-secondary opacity-50">N3</small>
-                        </div>
-                      </td>
+                      <td>Ana Ruiz</td>
                       <td><span class="badge bg-warning text-dark">Pte. Auth N2</span></td>
                       <td class="text-center">
-                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver">
-                          <i class="bi bi-eye me-1"></i>Ver detalle
-                        </a>
+                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver"><i class="bi bi-eye me-1"></i>Ver detalle</a>
                       </td>
                     </tr>
 
                     <!-- Row 5 -->
                     <tr data-folio="SOL-2024-0038" data-nombre="Medios Masivos H1" data-solicitante="Carlos Torres"
-                        data-estatus="pendiente" data-tipo="inversión" data-division="totalplay">
+                        data-estatus="pendiente" data-tipo="inversión" data-division="marca">
                       <td><span class="folio-code">SOL-2024-0038</span></td>
-                      <td class="nombre-tipo">
-                        <div class="fw-semibold" style="font-size:.85rem;">Medios Masivos H1</div>
-                        <span class="badge bg-primary-subtle text-primary tipo-badge border border-primary-subtle">Proyecto de Inversión</span>
-                      </td>
-                      <td>Carlos Torres</td>
-                      <td><span class="badge bg-info-subtle text-info border border-info-subtle">Totalplay</span></td>
-                      <td>Ene–Jun 2025</td>
+                      <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Proyecto de Inversión</span></td>
+                      <td class="fw-semibold" style="font-size:.85rem;">Medios Masivos H1</td>
+                      <td><span class="badge bg-info-subtle text-info border border-info-subtle">Marca</span></td>
+                      <td><small>01/01/2025</small><br><small>30/06/2025</small></td>
                       <td class="text-end fw-semibold">$1,800,000</td>
-                      <td>
-                        <div class="nivel-flow">
-                          <span class="nivel-dot bg-success" title="N1 Autorizado"></span>
-                          <small class="text-success fw-semibold">N1</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-warning border border-2 border-warning" style="box-shadow:0 0 0 2px rgba(255,193,7,.3)" title="N2 Pendiente"></span>
-                          <small class="text-warning fw-semibold">N2</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-secondary opacity-25" title="N3 Pendiente"></span>
-                          <small class="text-secondary opacity-50">N3</small>
-                        </div>
-                      </td>
+                      <td>Carlos Torres</td>
                       <td><span class="badge bg-warning text-dark">Pte. Auth N2</span></td>
                       <td class="text-center">
-                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver">
-                          <i class="bi bi-eye me-1"></i>Ver detalle
-                        </a>
+                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver"><i class="bi bi-eye me-1"></i>Ver detalle</a>
                       </td>
                     </tr>
 
-                    <!-- Row 6 — Autorizada (all levels done) -->
+                    <!-- Row 6 — Autorizada -->
                     <tr data-folio="SOL-2024-0035" data-nombre="Campaña Fibra" data-solicitante="Pedro Sánchez"
-                        data-estatus="autorizada" data-tipo="campaña" data-division="totalplay">
+                        data-estatus="autorizada" data-tipo="campaña" data-division="oferteo">
                       <td><span class="folio-code">SOL-2024-0035</span></td>
-                      <td class="nombre-tipo">
-                        <div class="fw-semibold" style="font-size:.85rem;">Campaña Fibra</div>
-                        <span class="badge tipo-badge border" style="background-color:rgba(111,66,193,.12)!important;color:#6f42c1;border-color:rgba(111,66,193,.3)!important;">Campaña</span>
-                      </td>
-                      <td>Pedro Sánchez</td>
-                      <td><span class="badge bg-info-subtle text-info border border-info-subtle">Totalplay</span></td>
-                      <td>Mar–May 2025</td>
+                      <td><span class="badge border" style="background-color:rgba(111,66,193,.12)!important;color:#6f42c1;border-color:rgba(111,66,193,.3)!important;">Campaña</span></td>
+                      <td class="fw-semibold" style="font-size:.85rem;">Campaña Fibra</td>
+                      <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                      <td><small>01/03/2025</small><br><small>31/05/2025</small></td>
                       <td class="text-end fw-semibold">$540,000</td>
-                      <td>
-                        <div class="nivel-flow">
-                          <span class="nivel-dot bg-success" title="N1 Autorizado"></span>
-                          <small class="text-success fw-semibold">N1</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-success" title="N2 Autorizado"></span>
-                          <small class="text-success fw-semibold">N2</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-success" title="N3 Autorizado"></span>
-                          <small class="text-success fw-semibold">N3</small>
-                        </div>
-                      </td>
+                      <td>Pedro Sánchez</td>
                       <td><span class="badge bg-success">Autorizada</span></td>
                       <td class="text-center">
-                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver">
-                          <i class="bi bi-eye me-1"></i>Ver detalle
-                        </a>
+                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver"><i class="bi bi-eye me-1"></i>Ver detalle</a>
                       </td>
                     </tr>
 
                     <!-- Row 7 — Pte. Auth N3 -->
                     <tr data-folio="SOL-2024-0031" data-nombre="Gasto Ordinario Adm" data-solicitante="Laura Castro"
-                        data-estatus="pendiente" data-tipo="ordinario" data-division="gelektra">
+                        data-estatus="pendiente" data-tipo="ordinario" data-division="estrategia">
                       <td><span class="folio-code">SOL-2024-0031</span></td>
-                      <td class="nombre-tipo">
-                        <div class="fw-semibold" style="font-size:.85rem;">Gasto Ordinario Adm</div>
-                        <span class="badge bg-success-subtle text-success tipo-badge border border-success-subtle">Gasto Ordinario</span>
-                      </td>
-                      <td>Laura Castro</td>
-                      <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">GElektra</span></td>
-                      <td>Ene–Dic 2025</td>
+                      <td><span class="badge bg-success-subtle text-success border border-success-subtle">Presupuesto Ordinario</span></td>
+                      <td class="fw-semibold" style="font-size:.85rem;">Gasto Ordinario Adm</td>
+                      <td><span class="badge bg-success-subtle text-success border border-success-subtle">Estrategia</span></td>
+                      <td><small>01/01/2025</small><br><small>31/12/2025</small></td>
                       <td class="text-end fw-semibold">$150,000</td>
-                      <td>
-                        <div class="nivel-flow">
-                          <span class="nivel-dot bg-success" title="N1 Autorizado"></span>
-                          <small class="text-success fw-semibold">N1</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-success" title="N2 Autorizado"></span>
-                          <small class="text-success fw-semibold">N2</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-info border border-2 border-info" style="box-shadow:0 0 0 2px rgba(13,202,240,.3)" title="N3 Pendiente"></span>
-                          <small class="text-info fw-semibold">N3</small>
-                        </div>
-                      </td>
+                      <td>Laura Castro</td>
                       <td><span class="badge bg-info text-dark">Pte. Auth N3</span></td>
                       <td class="text-center">
-                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver">
-                          <i class="bi bi-eye me-1"></i>Ver detalle
-                        </a>
+                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver"><i class="bi bi-eye me-1"></i>Ver detalle</a>
                       </td>
                     </tr>
 
                     <!-- Row 8 — Rechazada -->
                     <tr data-folio="SOL-2024-0028" data-nombre="Expansión Fibra" data-solicitante="Carlos Torres"
-                        data-estatus="rechazada" data-tipo="inversión" data-division="totalplay">
+                        data-estatus="rechazada" data-tipo="inversión" data-division="marca">
                       <td><span class="folio-code">SOL-2024-0028</span></td>
-                      <td class="nombre-tipo">
-                        <div class="fw-semibold" style="font-size:.85rem;">Expansión Fibra</div>
-                        <span class="badge bg-primary-subtle text-primary tipo-badge border border-primary-subtle">Proyecto de Inversión</span>
-                      </td>
-                      <td>Carlos Torres</td>
-                      <td><span class="badge bg-info-subtle text-info border border-info-subtle">Totalplay</span></td>
-                      <td>Ene–Dic 2025</td>
+                      <td><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Proyecto de Inversión</span></td>
+                      <td class="fw-semibold" style="font-size:.85rem;">Expansión Fibra</td>
+                      <td><span class="badge bg-info-subtle text-info border border-info-subtle">Marca</span></td>
+                      <td><small>01/01/2025</small><br><small>31/12/2025</small></td>
                       <td class="text-end fw-semibold">$2,100,000</td>
-                      <td>
-                        <div class="nivel-flow">
-                          <span class="nivel-dot bg-success" title="N1 Autorizado"></span>
-                          <small class="text-success fw-semibold">N1</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-danger" title="N2 Rechazado"></span>
-                          <small class="text-danger fw-semibold">N2</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-secondary opacity-25" title="N3 N/A"></span>
-                          <small class="text-secondary opacity-50">N3</small>
-                        </div>
-                      </td>
+                      <td>Carlos Torres</td>
                       <td><span class="badge bg-danger">Rechazada</span></td>
                       <td class="text-center">
-                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver">
-                          <i class="bi bi-eye me-1"></i>Ver detalle
-                        </a>
+                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver"><i class="bi bi-eye me-1"></i>Ver detalle</a>
                       </td>
                     </tr>
 
                     <!-- Row 9 — Pte. Ajuste -->
                     <tr data-folio="SOL-2024-0025" data-nombre="BTL Nacional" data-solicitante="Mario López"
-                        data-estatus="ajuste" data-tipo="campaña" data-division="backoffice">
+                        data-estatus="ajuste" data-tipo="campaña" data-division="sin division">
                       <td><span class="folio-code">SOL-2024-0025</span></td>
-                      <td class="nombre-tipo">
-                        <div class="fw-semibold" style="font-size:.85rem;">BTL Nacional</div>
-                        <span class="badge tipo-badge border" style="background-color:rgba(111,66,193,.12)!important;color:#6f42c1;border-color:rgba(111,66,193,.3)!important;">Campaña</span>
-                      </td>
-                      <td>Mario López</td>
-                      <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">BackOffice</span></td>
-                      <td>Jul–Sep 2025</td>
+                      <td><span class="badge border" style="background-color:rgba(111,66,193,.12)!important;color:#6f42c1;border-color:rgba(111,66,193,.3)!important;">Campaña</span></td>
+                      <td class="fw-semibold" style="font-size:.85rem;">BTL Nacional</td>
+                      <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Sin División</span></td>
+                      <td><small>01/07/2025</small><br><small>30/09/2025</small></td>
                       <td class="text-end fw-semibold">$430,000</td>
-                      <td>
-                        <div class="nivel-flow">
-                          <span class="nivel-dot bg-success" title="N1 Autorizado"></span>
-                          <small class="text-success fw-semibold">N1</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-secondary opacity-50 border border-2" title="N2 En Ajuste"></span>
-                          <small class="text-secondary fw-semibold">N2</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-secondary opacity-25" title="N3 Pendiente"></span>
-                          <small class="text-secondary opacity-50">N3</small>
-                        </div>
-                      </td>
+                      <td>Mario López</td>
                       <td><span class="badge bg-secondary">Pte. Ajuste</span></td>
                       <td class="text-center">
-                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver">
-                          <i class="bi bi-eye me-1"></i>Ver detalle
-                        </a>
+                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver"><i class="bi bi-eye me-1"></i>Ver detalle</a>
                       </td>
                     </tr>
 
                     <!-- Row 10 — Autorizada -->
                     <tr data-folio="SOL-2024-0022" data-nombre="TV Navidad" data-solicitante="Ana Ruiz"
-                        data-estatus="autorizada" data-tipo="campaña" data-division="gelektra">
+                        data-estatus="autorizada" data-tipo="campaña" data-division="oferteo">
                       <td><span class="folio-code">SOL-2024-0022</span></td>
-                      <td class="nombre-tipo">
-                        <div class="fw-semibold" style="font-size:.85rem;">TV Navidad</div>
-                        <span class="badge tipo-badge border" style="background-color:rgba(111,66,193,.12)!important;color:#6f42c1;border-color:rgba(111,66,193,.3)!important;">Campaña</span>
-                      </td>
-                      <td>Ana Ruiz</td>
-                      <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">GElektra</span></td>
-                      <td>Oct–Dic 2025</td>
+                      <td><span class="badge border" style="background-color:rgba(111,66,193,.12)!important;color:#6f42c1;border-color:rgba(111,66,193,.3)!important;">Campaña</span></td>
+                      <td class="fw-semibold" style="font-size:.85rem;">TV Navidad</td>
+                      <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle">Oferteo</span></td>
+                      <td><small>01/10/2025</small><br><small>31/12/2025</small></td>
                       <td class="text-end fw-semibold">$670,000</td>
-                      <td>
-                        <div class="nivel-flow">
-                          <span class="nivel-dot bg-success" title="N1 Autorizado"></span>
-                          <small class="text-success fw-semibold">N1</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-success" title="N2 Autorizado"></span>
-                          <small class="text-success fw-semibold">N2</small>
-                          <small class="nivel-arrow">→</small>
-                          <span class="nivel-dot bg-success" title="N3 Autorizado"></span>
-                          <small class="text-success fw-semibold">N3</small>
-                        </div>
-                      </td>
+                      <td>Ana Ruiz</td>
                       <td><span class="badge bg-success">Autorizada</span></td>
                       <td class="text-center">
-                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver">
-                          <i class="bi bi-eye me-1"></i>Ver detalle
-                        </a>
+                        <a href="DetalleAutorizacion.html" class="btn btn-outline-primary btn-ver"><i class="bi bi-eye me-1"></i>Ver detalle</a>
                       </td>
                     </tr>
 
