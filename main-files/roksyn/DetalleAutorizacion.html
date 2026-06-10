@@ -272,17 +272,6 @@
         <span><i class="bi bi-clock-history me-1"></i>Enviada el <strong class="text-dark">03 Jun 2025, 10:14</strong></span>
       </div>
     </div>
-    <div class="d-flex gap-2 flex-wrap justify-content-end">
-      <button class="btn btn-outline-secondary fw-bold radius-10 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalSolicAjuste">
-        <i class="bi bi-pencil-square me-1"></i>Solicitar Ajuste
-      </button>
-      <button class="btn btn-outline-danger fw-bold radius-10 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalRechazar">
-        <i class="bi bi-x-circle me-1"></i>Rechazar
-      </button>
-      <button class="btn btn-primary fw-bold radius-10 shadow-sm px-4" data-bs-toggle="modal" data-bs-target="#modalAutorizar">
-        <i class="bi bi-patch-check me-1"></i>Autorizar
-      </button>
-    </div>
   </div>
 
   <!-- ── Nav Tabs ── -->
@@ -297,6 +286,7 @@
         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-bitacora" type="button">
           <i class="bi bi-journal-text me-1"></i>Bitácora
           <span class="badge bg-primary-subtle text-primary ms-1 rounded-pill" style="font-size:.68rem;">3</span>
+          <span class="badge bg-warning-subtle text-warning border border-warning-subtle ms-1" style="font-size:.63rem;" title="Hubo regreso/ajuste en el flujo"><i class="bi bi-arrow-left-right"></i></span>
         </button>
       </li>
       <li class="nav-item">
@@ -327,7 +317,7 @@
   </div>
 
   <!-- ── TAB CONTENT ── -->
-  <div class="tab-content px-4 py-4" id="detalleTabContent">
+  <div class="tab-content px-4 py-4 pb-5" id="detalleTabContent">
 
     <!-- ══════════ TAB 1: INFORMACIÓN ══════════ -->
     <div class="tab-pane fade show active" id="tab-info">
@@ -343,12 +333,17 @@
             <div class="row g-2">
               <div class="col-5 text-muted small fw-semibold">Proyecto:</div>
               <div class="col-7 small fw-bold text-dark">PI-001 – Expansión Digital</div>
-              <div class="col-5 text-muted small fw-semibold">Nombre solicitud:</div>
-              <div class="col-7 small text-dark">Expansión Digital Q2 – Campañas TV</div>
+              <div class="col-5 text-muted small fw-semibold">Solicitud:</div>
+              <div class="col-7 small text-dark text-muted fst-italic" style="font-size:.78rem;">
+                <i class="bi bi-arrow-return-right me-1 text-primary"></i>PI-001 – Expansión Digital
+                <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle ms-1" style="font-size:.63rem;">Automático</span>
+              </div>
               <div class="col-5 text-muted small fw-semibold">Tipo de Gasto:</div>
               <div class="col-7"><span class="badge bg-primary-subtle text-primary border border-primary-subtle">Proyecto de Inversión</span></div>
               <div class="col-5 text-muted small fw-semibold">Tipo de Campaña:</div>
               <div class="col-7 small text-dark">Negocio</div>
+              <div class="col-5 text-muted small fw-semibold">División:</div>
+              <div class="col-7"><span class="badge bg-info-subtle text-info border border-info-subtle">Marca</span></div>
             </div>
           </div>
           <div class="col-md-6">
@@ -357,35 +352,28 @@
               <div class="col-7 small text-dark"><i class="bi bi-calendar-check text-success me-1"></i>01/01/2025</div>
               <div class="col-5 text-muted small fw-semibold">Fecha fin:</div>
               <div class="col-7 small text-dark"><i class="bi bi-calendar-x text-danger me-1"></i>31/12/2025</div>
-              <div class="col-5 text-muted small fw-semibold">Ejercicio:</div>
-              <div class="col-7 small text-dark">2025</div>
               <div class="col-5 text-muted small fw-semibold">Folio:</div>
               <div class="col-7 small fw-bold text-primary">SOL-2024-0047</div>
+              <div class="col-5 text-muted small fw-semibold">Solicitante:</div>
+              <div class="col-7 small text-dark">Carlos Torres</div>
             </div>
           </div>
           <div class="col-12"><hr class="my-2"></div>
-          <div class="col-md-6">
+          <div class="col-12">
             <div class="text-muted small fw-semibold mb-1">Objetivo <span class="text-danger">*</span></div>
             <div class="small text-dark bg-light rounded p-2 border">
-              Ampliar la presencia de marca en canales digitales y televisión para capturar nuevos segmentos de mercado durante el primer semestre de 2025.
+              Ampliar la presencia de marca en canales digitales y televisión para capturar nuevos segmentos de mercado durante el primer semestre de 2025, priorizando los mercados de mayor potencial de crecimiento.
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="text-muted small fw-semibold mb-1">Justificación <span class="text-danger">*</span></div>
+          <div class="col-12">
+            <div class="text-muted small fw-semibold mb-1">KPIs <span class="text-danger">*</span></div>
             <div class="small text-dark bg-light rounded p-2 border">
-              Incremento en participación de mercado de competidores directos en Q4 2024 requiere inversión reforzada en medios masivos y activaciones BTL en mercados prioritarios.
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="text-muted small fw-semibold mb-1">Alcance <span class="text-danger">*</span></div>
-            <div class="small text-dark bg-light rounded p-2 border">
-              Producción de contenidos audiovisuales, pauta en canales nacionales y regionales, y activaciones BTL en las 5 ciudades con mayor concentración de clientes potenciales.
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="text-muted small fw-semibold mb-1">Beneficio esperado <span class="text-danger">*</span></div>
-            <div class="small text-dark bg-light rounded p-2 border">
-              Recuperar 3 puntos de participación de mercado y aumentar en 18% las solicitudes de servicio provenientes de medios pagados al cierre de Q2 2025.
+              <ul class="mb-0 ps-3">
+                <li>Incremento de 18% en solicitudes provenientes de medios pagados al cierre de Q2 2025</li>
+                <li>Recuperar 3 puntos de participación de mercado vs Q4 2024</li>
+                <li>CPL (Costo por Lead) ≤ $180 en canales digitales</li>
+                <li>Alcance mínimo de 2.5M de impresiones en TV nacional</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -452,7 +440,17 @@
             </button>
           </div>
         </div>
-        <p class="small text-muted mb-3">Vista de solo lectura de la asignación capturada por el solicitante.</p>
+        <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+          <p class="small text-muted mb-0">Vista de solo lectura de la asignación capturada por el solicitante.</p>
+          <div class="ms-auto d-flex gap-2 flex-wrap">
+            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle" style="font-size:.72rem;">
+              <i class="bi bi-cash-coin me-1"></i>Moneda local (MXN)
+            </span>
+            <span class="badge bg-info-subtle text-info border border-info-subtle" style="font-size:.72rem;">
+              <i class="bi bi-info-circle me-1"></i>Cifras en miles de pesos
+            </span>
+          </div>
+        </div>
 
         <div class="accordion" id="accMatriz">
           <!-- CeCo 1: 100901 -->
@@ -471,7 +469,7 @@
                     <thead class="table-light">
                       <tr>
                         <th class="text-start" style="min-width:90px;">CeCo</th>
-                        <th class="text-start" style="min-width:160px;">Cuenta Presupuestal</th>
+                        <th class="text-start" style="min-width:160px;">Cuenta</th>
                         <th style="min-width:70px;">Ene</th><th style="min-width:70px;">Feb</th>
                         <th style="min-width:70px;">Mar</th><th style="min-width:70px;">Abr</th>
                         <th style="min-width:70px;">May</th><th style="min-width:70px;">Jun</th>
@@ -530,7 +528,7 @@
                     <thead class="table-light">
                       <tr>
                         <th class="text-start" style="min-width:90px;">CeCo</th>
-                        <th class="text-start" style="min-width:160px;">Cuenta Presupuestal</th>
+                        <th class="text-start" style="min-width:160px;">Cuenta</th>
                         <th style="min-width:70px;">Ene</th><th style="min-width:70px;">Feb</th>
                         <th style="min-width:70px;">Mar</th><th style="min-width:70px;">Abr</th>
                         <th style="min-width:70px;">May</th><th style="min-width:70px;">Jun</th>
@@ -589,7 +587,7 @@
                     <thead class="table-light">
                       <tr>
                         <th class="text-start" style="min-width:90px;">CeCo</th>
-                        <th class="text-start" style="min-width:160px;">Cuenta Presupuestal</th>
+                        <th class="text-start" style="min-width:160px;">Cuenta</th>
                         <th style="min-width:70px;">Ene</th><th style="min-width:70px;">Feb</th>
                         <th style="min-width:70px;">Mar</th><th style="min-width:70px;">Abr</th>
                         <th style="min-width:70px;">May</th><th style="min-width:70px;">Jun</th>
@@ -648,7 +646,7 @@
                     <thead class="table-light">
                       <tr>
                         <th class="text-start" style="min-width:90px;">CeCo</th>
-                        <th class="text-start" style="min-width:160px;">Cuenta Presupuestal</th>
+                        <th class="text-start" style="min-width:160px;">Cuenta</th>
                         <th style="min-width:70px;">Ene</th><th style="min-width:70px;">Feb</th>
                         <th style="min-width:70px;">Mar</th><th style="min-width:70px;">Abr</th>
                         <th style="min-width:70px;">May</th><th style="min-width:70px;">Jun</th>
@@ -838,6 +836,32 @@
     </div><!-- /tab-comentarios -->
 
   </div><!-- /tab-content -->
+
+  <!-- ── Barra de acciones fija inferior ── -->
+  <div style="position:fixed;bottom:0;left:var(--sidebar-width,260px);right:0;z-index:300;background:#fff;border-top:1px solid rgba(0,0,0,.1);padding:.85rem 1.5rem;box-shadow:0 -2px 12px rgba(0,0,0,.08);">
+    <div class="d-flex align-items-center gap-2 flex-wrap justify-content-between">
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge bg-warning-subtle text-warning border border-warning-subtle px-3 py-2" style="font-size:.78rem;">
+          <i class="bi bi-hourglass-split me-1"></i>Pte. Autorización N2 — tu turno
+        </span>
+        <span class="text-muted small"><i class="bi bi-info-circle me-1"></i>Las solicitudes se autorizan una por una</span>
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-secondary fw-bold shadow-none radius-10" data-bs-toggle="modal" data-bs-target="#modalSolicAjuste">
+          <i class="bi bi-pencil-square me-1"></i>Solicitar Ajuste
+        </button>
+        <button class="btn btn-outline-danger fw-bold shadow-none radius-10" data-bs-toggle="modal" data-bs-target="#modalRechazar">
+          <i class="bi bi-x-circle me-1"></i>Rechazar
+        </button>
+        <button class="btn btn-primary fw-bold shadow-none radius-10 px-4" data-bs-toggle="modal" data-bs-target="#modalAutorizar">
+          <i class="bi bi-patch-check me-1"></i>Autorizar
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- spacer for sticky bar -->
+  <div style="height:70px;"></div>
+
 
 </main>
 
