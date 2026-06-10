@@ -485,42 +485,38 @@
       </div>
     </div>
 
-    <!-- BLOQUE 3+4 – Two-column layout: Form (left) + CeCo panel (right) -->
-    <div class="row g-4 mb-4">
+    <!-- BLOQUE 3+4 – Two-column layout: Info General (left) + CeCos informativo (right) -->
+    <div class="row g-4 align-items-start mb-4">
 
-      <!-- BLOQUE 3: Formulario col-lg-7 (se vuelve col-12 para Sin División) -->
-      <div class="col-12 col-lg-7" id="colForm">
-        <div class="card border-0 shadow-sm h-100" style="border-radius:10px;">
-          <div class="card-header bg-white border-bottom py-3 px-4">
-            <h6 class="fw-bold text-dark mb-0"><i class="bi bi-file-text text-primary me-2"></i>Solicitud de gasto publicitario</h6>
-            <div class="text-muted mt-1" style="font-size:.78rem;">* Todos los campos son obligatorios</div>
-          </div>
+      <!-- BLOQUE 3: Información General col-lg-4 -->
+      <div class="col-12 col-lg-4" id="colForm">
+        <div class="card border-0 shadow-sm" style="border-radius:10px;">
           <div class="card-body p-4">
+            <h6 class="fw-bold mb-3 text-dark border-bottom pb-2">Información General</h6>
             <div class="row g-3">
 
               <!-- Tipo de gasto (readonly, ya elegido en paso 1) -->
-              <div class="col-12 col-md-6">
-                <label class="form-label small fw-bold text-dark">Tipo de gasto *</label>
-                <div class="form-control form-control-sm bg-light text-muted border-secondary border-opacity-50 d-flex align-items-center gap-2" style="cursor:default;">
-                  <i class="bi bi-lock-fill" style="font-size:.7rem;"></i> Campaña
-                </div>
+              <div class="col-12">
+                <label class="form-label small fw-bold text-dark">Tipo de Gasto Publicitario <span class="text-danger">*</span></label>
+                <input type="text" class="form-control form-control-sm border-secondary border-opacity-25 text-muted bg-white shadow-none" value="Gasto Ordinario" readonly>
               </div>
 
-              <!-- División chips -->
-              <div class="col-12 col-md-6">
-                <label class="form-label small fw-bold text-dark">División *</label>
-                <div class="d-flex flex-wrap gap-2" id="divChips">
-                  <button type="button" class="div-chip" data-div="Sin clas." onclick="toggleDiv(this)">Sin clas.</button>
-                  <button type="button" class="div-chip" data-div="Marca" onclick="toggleDiv(this)">Marca</button>
-                  <button type="button" class="div-chip" data-div="Oferteo" onclick="toggleDiv(this)">Ofertéo</button>
-                  <button type="button" class="div-chip" data-div="Estrategia" onclick="toggleDiv(this)">Estrategia</button>
-                </div>
-                <div class="invalid-feedback d-none" id="errDivision">Este campo es obligatorio</div>
+              <!-- División -->
+              <div class="col-12">
+                <label class="form-label small fw-bold text-dark">División de Centros de Costos <span class="text-danger">*</span></label>
+                <select id="selDivision" class="form-select form-select-sm border-secondary border-opacity-50 text-dark shadow-none" onchange="onDivisionChange()">
+                  <option value="" selected disabled>Seleccione...</option>
+                  <option>Marca</option>
+                  <option>Oferteo</option>
+                  <option>Estrategia</option>
+                  <option>Sin División</option>
+                </select>
+                <div class="text-danger mt-1 d-none" id="errDivision" style="font-size:.78rem;">Este campo es obligatorio</div>
               </div>
 
               <!-- Tipo de campaña (oculto para Sin División) -->
-              <div class="col-12 col-md-6" id="bloqueTipoCampana" style="display:none;">
-                <label class="form-label small fw-bold text-dark">Tipo de campaña *</label>
+              <div class="col-12" id="bloqueTipoCampana" style="display:none;">
+                <label class="form-label small fw-bold text-dark">Tipo de Campaña <span class="text-danger">*</span></label>
                 <div class="d-flex gap-3">
                   <div class="form-check">
                     <input class="form-check-input shadow-none" type="radio" name="tipoCampana" id="rbNegocio" value="De negocio" onchange="actualizarNombre()">
@@ -534,74 +530,68 @@
                 <div class="text-danger mt-1 d-none" id="errTipoCampana" style="font-size:.78rem;">Este campo es obligatorio</div>
               </div>
 
-              <!-- Nombre de campaña (se revela tras elegir tipo campaña o división Sin clas.) -->
-              <div class="col-12 col-md-6" id="bloqueNombre" style="display:none;">
-                <label class="form-label small fw-bold text-dark">Nombre de la campaña *</label>
-                <select id="selectNombreTransversal" class="form-select form-select-sm shadow-none" style="display:none;">
-                  <option selected disabled>Selecciona del listado...</option>
-                  <option>001TMX – Buen Fin Regional</option>
-                  <option>002TMX – Día de las Madres</option>
-                  <option>003TMX – Regreso a Clases</option>
+              <!-- Nombre de campaña -->
+              <div class="col-12" id="bloqueNombre" style="display:none;">
+                <label class="form-label small fw-bold text-dark">Nombre de la Campaña / Proyecto <span class="text-danger">*</span></label>
+                <select id="selectNombreTransversal" class="form-select form-select-sm border-primary text-dark fw-bold shadow-none" style="display:none;">
+                  <option selected disabled>Seleccione del catálogo transversal...</option>
+                  <option>001TMX - Buen Fin Regional</option>
+                  <option>002TMX - Día de las Madres</option>
+                  <option>003TMX - Regreso a Clases</option>
                 </select>
-                <input type="text" id="inputNombreManual" class="form-control form-control-sm shadow-none" placeholder="Selecciona del listado..." style="display:none;">
-                <div class="text-muted" id="nombrePlaceholder" style="font-size:.78rem; padding:.35rem .5rem; border:1px solid #dee2e6; border-radius:.25rem; background:#f8f9fa; color:#6c757d;">
-                  Selecciona tipo de campaña primero
-                </div>
+                <input type="text" id="inputNombreManual" class="form-control form-control-sm border-primary text-dark fw-bold shadow-none" placeholder="Escriba manualmente el nombre..." style="display:none;">
                 <div class="text-danger mt-1 d-none" id="errNombre" style="font-size:.78rem;">Este campo es obligatorio</div>
               </div>
 
-              <!-- Fechas (se revelan cuando nombre tiene valor) -->
+              <!-- Fechas -->
               <div class="col-6" id="bloqueFechaIni" style="display:none;">
-                <label class="form-label small fw-bold text-dark">Fecha inicio *</label>
-                <input type="date" id="fechaInicio" class="form-control form-control-sm shadow-none" placeholder="dd/mm/aaaa" oninput="onFechaChange()">
+                <label class="form-label small fw-bold text-dark">Fecha Inicio <span class="text-danger">*</span></label>
+                <input type="date" id="fechaInicio" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" oninput="onFechaChange()">
                 <div class="text-danger mt-1 d-none" id="errFechaIni" style="font-size:.78rem;">Formato de fecha inválido</div>
               </div>
               <div class="col-6" id="bloqueFechaFin" style="display:none;">
-                <label class="form-label small fw-bold text-dark">Fecha fin *</label>
-                <input type="date" id="fechaFin" class="form-control form-control-sm shadow-none" placeholder="dd/mm/aaaa" oninput="onFechaChange()">
+                <label class="form-label small fw-bold text-dark">Fecha Fin <span class="text-danger">*</span></label>
+                <input type="date" id="fechaFin" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" oninput="onFechaChange()">
                 <div class="text-danger mt-1 d-none" id="errFechaFin" style="font-size:.78rem;">Formato de fecha inválido</div>
               </div>
 
-              <!-- Textos abiertos (se revelan cuando ambas fechas tienen valor) -->
+              <!-- Textos abiertos -->
               <div class="col-12" id="bloqueTextos" style="display:none;">
                 <div class="row g-3">
 
                   <!-- Objetivo -->
                   <div class="col-12">
-                    <label class="form-label small fw-bold text-dark">Objetivo *
+                    <label class="form-label small fw-bold text-dark">Objetivo <span class="text-danger">*</span>
                       <span class="fw-normal text-muted ms-1" id="charCountObjetivo" style="font-size:.7rem;">(0 / 50 mín.)</span>
                     </label>
-                    <textarea id="objetivoInput" class="form-control form-control-sm shadow-none" rows="3"
-                      placeholder="Describe el objetivo de la campaña..."
-                      oninput="contarChars('objetivoInput','charCountObjetivo','charBarObjetivo'); verificarFormCompleto()"></textarea>
+                    <textarea id="objetivoInput" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" rows="3"
+                      placeholder="Mínimo de 50 caracteres..."
+                      oninput="contarChars('objetivoInput','charCountObjetivo','charBarObjetivo')"></textarea>
                     <div class="progress mt-1" style="height:3px;"><div id="charBarObjetivo" class="progress-bar bg-danger" style="width:0%;"></div></div>
-                    <div class="text-muted mt-1" style="font-size:.72rem;">Mínimo 50 caracteres</div>
                     <div class="text-danger mt-1 d-none" id="errObjetivo" style="font-size:.78rem;">Debe contener al menos 50 caracteres</div>
                   </div>
 
                   <!-- Alcance -->
                   <div class="col-12">
-                    <label class="form-label small fw-bold text-dark">Alcance *
+                    <label class="form-label small fw-bold text-dark">Alcance <span class="text-danger">*</span>
                       <span class="fw-normal text-muted ms-1" id="charCountAlcance" style="font-size:.7rem;">(0 / 50 mín.)</span>
                     </label>
-                    <textarea id="alcanceInput" class="form-control form-control-sm shadow-none" rows="3"
-                      placeholder="Escribe el alcance..."
-                      oninput="contarChars('alcanceInput','charCountAlcance','charBarAlcance'); verificarFormCompleto()"></textarea>
+                    <textarea id="alcanceInput" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" rows="3"
+                      placeholder="Mínimo de 50 caracteres..."
+                      oninput="contarChars('alcanceInput','charCountAlcance','charBarAlcance')"></textarea>
                     <div class="progress mt-1" style="height:3px;"><div id="charBarAlcance" class="progress-bar bg-danger" style="width:0%;"></div></div>
-                    <div class="text-muted mt-1" style="font-size:.72rem;">Mínimo 50 caracteres</div>
                     <div class="text-danger mt-1 d-none" id="errAlcance" style="font-size:.78rem;">Debe contener al menos 50 caracteres</div>
                   </div>
 
                   <!-- Justificación -->
                   <div class="col-12">
-                    <label class="form-label small fw-bold text-dark">Justificación *
+                    <label class="form-label small fw-bold text-dark">Justificación <span class="text-danger">*</span>
                       <span class="fw-normal text-muted ms-1" id="charCountJustif" style="font-size:.7rem;">(0 / 50 mín.)</span>
                     </label>
-                    <textarea id="justifInput" class="form-control form-control-sm shadow-none" rows="3"
-                      placeholder="Escribe la justificación..."
-                      oninput="contarChars('justifInput','charCountJustif','charBarJustif'); verificarFormCompleto()"></textarea>
+                    <textarea id="justifInput" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" rows="3"
+                      placeholder="Mínimo de 50 caracteres..."
+                      oninput="contarChars('justifInput','charCountJustif','charBarJustif')"></textarea>
                     <div class="progress mt-1" style="height:3px;"><div id="charBarJustif" class="progress-bar bg-danger" style="width:0%;"></div></div>
-                    <div class="text-muted mt-1" style="font-size:.72rem;">Mínimo 50 caracteres</div>
                     <div class="text-danger mt-1 d-none" id="errJustif" style="font-size:.78rem;">Debe contener al menos 50 caracteres</div>
                   </div>
 
@@ -613,89 +603,159 @@
         </div>
       </div>
 
-      <!-- BLOQUE 4: Panel CeCo col-lg-5 (oculto para Sin División) -->
-      <div class="col-12 col-lg-5" id="colPanel" style="display:none;">
-        <div class="card border-0 shadow-sm h-100" style="border-radius:10px;">
-          <div class="card-header bg-white border-bottom py-3 px-4">
-            <h6 class="fw-bold text-dark mb-0">
-              <i class="bi bi-building text-primary me-2"></i>Centros de costo – <span id="labelDivisionActiva">Sin selección</span>
-            </h6>
-          </div>
-          <div class="card-body p-0">
+      <!-- BLOQUE 4: Panel CeCos informativo col-lg-8 -->
+      <div class="col-12 col-lg-8" id="colPanel">
+        <div class="card border-0 shadow-sm" style="border-radius:10px;">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+              <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-building text-primary me-2"></i>Centros de Costos – <span id="labelDivisionActiva">Sin selección</span></h6>
+              <span class="badge bg-info-subtle text-dark border border-info px-3 py-1"><i class="bi bi-eye me-1"></i>Solo Informativo</span>
+            </div>
 
             <!-- Empty state -->
             <div id="ceco-empty-state" class="text-center py-5 px-3">
               <i class="bi bi-diagram-3 text-secondary mb-2" style="font-size:2rem;display:block;"></i>
-              <p class="text-muted mb-0 small">Selecciona una División para ver los centros de costo disponibles.</p>
+              <p class="text-muted mb-0 small">Selecciona una División para consultar los centros de costo de esa clasificación.</p>
             </div>
 
-            <!-- CeCo table -->
+            <!-- Accordion CeCos (solo lectura) -->
             <div id="ceco-tabla-wrap" style="display:none;">
-              <div class="table-responsive">
-                <table class="table table-hover align-middle mb-0" style="font-size:.82rem;">
-                  <thead class="table-light">
-                    <tr>
-                      <th class="ps-3">CeCo</th>
-                      <th class="text-end">Límite</th>
-                      <th class="text-end pe-3">Disponible</th>
-                    </tr>
-                  </thead>
-                  <tbody id="cecoTableBody">
-                    <tr class="ceco-row" data-divs="Marca,Oferteo,Estrategia,Sin clas.">
-                      <td class="ps-3">
-                        <div class="form-check">
-                          <input class="form-check-input shadow-none" type="checkbox" id="chk-100901" onchange="updateCecoCount()">
-                          <label class="form-check-label fw-semibold text-dark" for="chk-100901">100901 – Campañas Prime Time</label>
-                        </div>
-                      </td>
-                      <td class="text-end text-dark">$1,892,500</td>
-                      <td class="text-end text-success fw-bold pe-3">$1,892,500</td>
-                    </tr>
-                    <tr class="ceco-row" data-divs="Marca,Oferteo">
-                      <td class="ps-3">
-                        <div class="form-check">
-                          <input class="form-check-input shadow-none" type="checkbox" id="chk-62101" onchange="updateCecoCount()">
-                          <label class="form-check-label fw-semibold text-dark" for="chk-62101">62101 – Pub. digital</label>
-                        </div>
-                      </td>
-                      <td class="text-end text-dark">$400,000</td>
-                      <td class="text-end text-success fw-bold pe-3">$400,000</td>
-                    </tr>
-                    <tr class="ceco-row" data-divs="Marca">
-                      <td class="ps-3">
-                        <div class="form-check">
-                          <input class="form-check-input shadow-none" type="checkbox" id="chk-62102" onchange="updateCecoCount()">
-                          <label class="form-check-label fw-semibold text-dark" for="chk-62102">62102 – Medios trad.</label>
-                        </div>
-                      </td>
-                      <td class="text-end text-dark">$500,000</td>
-                      <td class="text-end text-success fw-bold pe-3">$500,000</td>
-                    </tr>
-                    <tr class="ceco-row" data-divs="Estrategia,Oferteo">
-                      <td class="ps-3">
-                        <div class="form-check">
-                          <input class="form-check-input shadow-none" type="checkbox" id="chk-291374" onchange="updateCecoCount()">
-                          <label class="form-check-label fw-semibold text-dark" for="chk-291374">291374 – Mercadotecnia Digital</label>
-                        </div>
-                      </td>
-                      <td class="text-end text-dark">$1,200,000</td>
-                      <td class="text-end text-success fw-bold pe-3">$1,200,000</td>
-                    </tr>
-                    <tr class="ceco-row" data-divs="Sin clas.">
-                      <td class="ps-3">
-                        <div class="form-check">
-                          <input class="form-check-input shadow-none" type="checkbox" id="chk-100500" onchange="updateCecoCount()">
-                          <label class="form-check-label fw-semibold text-dark" for="chk-100500">100500 – Finanzas Retail <span class="badge bg-secondary-subtle text-secondary border border-secondary ms-1" style="font-size:.65rem;">sin base</span></label>
-                        </div>
-                      </td>
-                      <td class="text-end text-muted fst-italic">—</td>
-                      <td class="text-end text-muted fst-italic pe-3">—</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <p class="small text-muted mb-3">Consulta los CeCos disponibles de la división y su historial base de origen (Solo Lectura). La asignación de presupuesto se realiza en la matriz de distribución.</p>
+
+              <div class="input-group input-group-sm shadow-sm mb-3">
+                <span class="input-group-text bg-white text-dark"><i class="bi bi-search"></i></span>
+                <input type="text" class="form-control border-start-0 shadow-none py-2" placeholder="Buscar por Nombre o Número de CeCo en el catálogo disponible...">
               </div>
-              <div class="px-3 py-2 text-muted border-top" style="font-size:.75rem;">
-                <i class="bi bi-info-circle me-1"></i>CeCos sin límite pueden incluirse en la solicitud.
+
+              <div class="accordion accordion-flush border border-secondary border-opacity-25 rounded bg-white shadow-sm overflow-auto" id="accordionCecos" style="max-height: 400px;">
+
+                <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-10 ceco-row" data-divs="Marca,Oferteo,Estrategia">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco1">
+                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
+                        <span class="fw-bold text-dark small">100901 - CAMPAÑAS PRIME TIME</span>
+                        <span class="small text-success fw-semibold">Disponible: $1,892,500</span>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="colCeco1" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
+                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
+                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size: 0.65rem;">Consulta de Origen (Base Presupuestal):</small>
+                      <table class="table table-sm table-borderless mb-0 small text-dark">
+                        <tbody>
+                          <tr><td>609023 - Promociones | Campaña Madres</td><td class="text-end fw-semibold">$500,000.00</td></tr>
+                          <tr><td>609011 - Televisión | Gasto Ordinario</td><td class="text-end fw-semibold">$1,392,500.00</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-10 ceco-row" data-divs="Marca,Oferteo">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco2">
+                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
+                        <span class="fw-bold text-dark small">62101 - PUBLICIDAD DIGITAL</span>
+                        <span class="small text-success fw-semibold">Disponible: $400,000</span>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="colCeco2" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
+                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
+                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size: 0.65rem;">Consulta de Origen (Base Presupuestal):</small>
+                      <table class="table table-sm table-borderless mb-0 small text-dark">
+                        <tbody>
+                          <tr><td>609028 - Pub Internet | Gasto Ordinario</td><td class="text-end fw-semibold">$400,000.00</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-10 ceco-row" data-divs="Marca">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco3">
+                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
+                        <span class="fw-bold text-dark small">62102 - MEDIOS TRADICIONALES</span>
+                        <span class="small text-success fw-semibold">Disponible: $500,000</span>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="colCeco3" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
+                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
+                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size: 0.65rem;">Consulta de Origen (Base Presupuestal):</small>
+                      <table class="table table-sm table-borderless mb-0 small text-dark">
+                        <tbody>
+                          <tr><td>609011 - Televisión | Gasto Ordinario</td><td class="text-end fw-semibold">$500,000.00</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-10 ceco-row" data-divs="Estrategia,Oferteo">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco4">
+                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
+                        <span class="fw-bold text-dark small">291374 - DIR MKT DIGITAL</span>
+                        <span class="small text-success fw-semibold">Disponible: $1,200,000</span>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="colCeco4" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
+                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
+                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size: 0.65rem;">Consulta de Origen (Base Presupuestal):</small>
+                      <table class="table table-sm table-borderless mb-0 small text-dark">
+                        <tbody>
+                          <tr><td>609028 - Pub Internet | Campaña Madres</td><td class="text-end fw-semibold">$1,200,000.00</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item bg-transparent border-bottom border-secondary border-opacity-10 ceco-row" data-divs="Sin División">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco5">
+                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
+                        <span class="fw-bold text-dark small">100500 - FINANZAS RETAIL <span class="badge bg-secondary-subtle text-secondary border border-secondary ms-1" style="font-size:.65rem;">sin base</span></span>
+                        <span class="small text-muted fst-italic">Sin límite</span>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="colCeco5" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
+                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
+                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size: 0.65rem;">Consulta de Origen (Base Presupuestal):</small>
+                      <p class="small text-muted fst-italic mb-0">Este CeCo no cuenta con base presupuestal de origen.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item bg-transparent ceco-row" data-divs="Sin División">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button py-2 px-3 bg-transparent shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#colCeco6">
+                      <div class="flex-grow-1 d-flex justify-content-between align-items-center me-2">
+                        <span class="fw-bold text-dark small">100600 - SERVICIOS CORPORATIVOS</span>
+                        <span class="small text-success fw-semibold">Disponible: $250,000</span>
+                      </div>
+                    </button>
+                  </h2>
+                  <div id="colCeco6" class="accordion-collapse collapse" data-bs-parent="#accordionCecos">
+                    <div class="accordion-body p-3 bg-white border-top border-secondary border-opacity-10">
+                      <small class="text-muted d-block mb-2 fw-bold text-uppercase" style="font-size: 0.65rem;">Consulta de Origen (Base Presupuestal):</small>
+                      <table class="table table-sm table-borderless mb-0 small text-dark">
+                        <tbody>
+                          <tr><td>609023 - Promociones | Gasto Ordinario</td><td class="text-end fw-semibold">$250,000.00</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="px-1 py-2 text-muted" style="font-size:.75rem;">
+                <i class="bi bi-info-circle me-1"></i>CeCos sin límite también pueden incluirse en la solicitud.
               </div>
             </div>
 
@@ -1002,11 +1062,12 @@
     var LIMITE_GLOBAL = 2100000;
     var MES_ACTUAL = new Date().getMonth();
     var cecoOpts = [
-      {val:'100901',label:'100901 - Campanas Prime Time',lim:1892500},
-      {val:'62101', label:'62101 - Pub. digital',        lim:400000 },
-      {val:'62102', label:'62102 - Medios trad.',         lim:500000 },
-      {val:'291374',label:'291374 - Mercadotecnia Digital',lim:1200000},
-      {val:'100500',label:'100500 - Finanzas Retail',     lim:0      }
+      {val:'100901',label:'100901 - Campañas Prime Time',  lim:1892500},
+      {val:'62101', label:'62101 - Publicidad digital',    lim:400000 },
+      {val:'62102', label:'62102 - Medios tradicionales',  lim:500000 },
+      {val:'291374',label:'291374 - Dir Mkt Digital',      lim:1200000},
+      {val:'100500',label:'100500 - Finanzas Retail',      lim:0      },
+      {val:'100600',label:'100600 - Servicios Corporativos',lim:250000}
     ];
     var ctaOpts = [
       {val:'609011',label:'609011 - Television'},
@@ -1023,51 +1084,39 @@
     function fmx(n){return '$'+n.toLocaleString('es-MX',{maximumFractionDigits:0})+' MXN';}
     function bSel(opts,ph){return '<option value="">'+ph+'</option>'+opts.map(function(o){return '<option value="'+o.val+'">'+o.label+'</option>';}).join('');}
 
-    function toggleDiv(btn){
-      document.querySelectorAll('#divChips .div-chip').forEach(function(b){b.classList.remove('active');});
-      btn.classList.add('active');
-      var div=btn.dataset.div, sc=(div==='Sin clas.');
+    function onDivisionChange(){
+      var div=document.getElementById('selDivision').value;
+      if(!div)return;
+      var sc=(div==='Sin División');
       var lbl=document.getElementById('labelDivisionActiva'); if(lbl)lbl.textContent=div;
       var fd=document.getElementById('ftrDivision'); if(fd)fd.textContent=div; sh('ftrDivBloque');
+      sh('bloqueBanda');
+      filtrarCecos(div);
       if(sc){
-        hi('bloqueBanda'); hi('colPanel');
-        var cf=document.getElementById('colForm'); if(cf)cf.className='col-12';
         hi('bloqueTipoCampana'); sh('bloqueNombre');
-        document.getElementById('nombrePlaceholder').style.display='none';
         document.getElementById('selectNombreTransversal').style.display='none';
         var inp=document.getElementById('inputNombreManual');
-        inp.style.display='block'; inp.placeholder='Escribe el nombre del gasto...';
+        inp.style.display='block'; inp.placeholder='Escriba manualmente el nombre...';
         inp.oninput=function(){onNombreChange();};
       } else {
-        sh('bloqueBanda'); sh('colPanel');
-        var cf2=document.getElementById('colForm'); if(cf2)cf2.className='col-12 col-lg-7';
         sh('bloqueTipoCampana'); hi('bloqueNombre');
         document.querySelectorAll('input[name="tipoCampana"]').forEach(function(r){r.checked=false;});
-        filtrarCecos(div);
       }
-      hi('bloqueFechaIni'); hi('bloqueFechaFin'); hi('bloqueTextos'); hi('bloqueDistribucion');
+      hi('bloqueFechaIni'); hi('bloqueFechaFin'); hi('bloqueTextos');
       document.getElementById('fechaInicio').value=''; document.getElementById('fechaFin').value='';
       hi('ftrNombreBloque'); hi('ftrVigBloque');
+      // La matriz de distribución se habilita al seleccionar la división
+      sh('bloqueDistribucion');
+      if(document.querySelectorAll('#bodyDistribucion .fila-dato').length===0){agregarLineaDist();}
     }
-
-    function filtrarCecos(div){
-      var any=false;
-      document.querySelectorAll('.ceco-row').forEach(function(r){
-        var v=r.dataset.divs.split(',').indexOf(div)>=0; r.style.display=v?'':'none'; if(v)any=true;
-      });
-      hi('ceco-empty-state');
-      if(any){sh('ceco-tabla-wrap');hi('ceco-no-data');}
-      else   {hi('ceco-tabla-wrap');sh('ceco-no-data');}
-    }
-    function updateCecoCount(){}
 
     function actualizarNombre(){
       var tc=document.querySelector('input[name="tipoCampana"]:checked'); if(!tc)return;
       sh('bloqueNombre');
-      var ph=document.getElementById('nombrePlaceholder'),sel=document.getElementById('selectNombreTransversal'),inp=document.getElementById('inputNombreManual');
-      if(tc.value==='Transversal'){hiEl(ph);shEl(sel);hiEl(inp);sel.onchange=function(){onNombreChange();};}
-      else{hiEl(ph);hiEl(sel);shEl(inp);inp.placeholder='Escribe el nombre...';inp.oninput=function(){onNombreChange();};}
-      hi('bloqueFechaIni');hi('bloqueFechaFin');hi('bloqueTextos');hi('bloqueDistribucion');hi('ftrNombreBloque');hi('ftrVigBloque');
+      var sel=document.getElementById('selectNombreTransversal'),inp=document.getElementById('inputNombreManual');
+      if(tc.value==='Transversal'){shEl(sel);hiEl(inp);sel.onchange=function(){onNombreChange();};}
+      else{hiEl(sel);shEl(inp);inp.placeholder='Escriba manualmente el nombre...';inp.oninput=function(){onNombreChange();};}
+      hi('bloqueFechaIni');hi('bloqueFechaFin');hi('bloqueTextos');hi('ftrNombreBloque');hi('ftrVigBloque');
     }
 
     function onNombreChange(){
@@ -1077,25 +1126,18 @@
         sh('bloqueFechaIni');sh('bloqueFechaFin');
         var fn=document.getElementById('ftrNombre'); if(fn)fn.textContent=nom.length>28?nom.substring(0,26)+'...':nom;
         sh('ftrNombreBloque');
-      } else {hi('bloqueFechaIni');hi('bloqueFechaFin');hi('bloqueTextos');hi('bloqueDistribucion');hi('ftrNombreBloque');hi('ftrVigBloque');}
+      } else {hi('bloqueFechaIni');hi('bloqueFechaFin');hi('bloqueTextos');hi('ftrNombreBloque');hi('ftrVigBloque');}
     }
 
     function onFechaChange(){
       var fi=document.getElementById('fechaInicio').value,ff=document.getElementById('fechaFin').value;
       if(fi&&ff){sh('bloqueTextos');var fv=document.getElementById('ftrVigencia');if(fv)fv.textContent=fmtVig(fi,ff);sh('ftrVigBloque');}
-      else{hi('bloqueTextos');hi('bloqueDistribucion');hi('ftrVigBloque');}
+      else{hi('bloqueTextos');hi('ftrVigBloque');}
     }
     function fmtVig(fi,ff){
       var mn=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
       var d1=new Date(fi+'T00:00:00'),d2=new Date(ff+'T00:00:00');
       return mn[d1.getMonth()]+' '+d1.getFullYear()+' - '+mn[d2.getMonth()]+' '+d2.getFullYear();
-    }
-
-    function verificarFormCompleto(){
-      var o=(document.getElementById('objetivoInput').value||'').trim().length>=50;
-      var a=(document.getElementById('alcanceInput').value||'').trim().length>=50;
-      var j=(document.getElementById('justifInput').value||'').trim().length>=50;
-      if(o&&a&&j){sh('bloqueDistribucion');}else{hi('bloqueDistribucion');}
     }
 
     function contarChars(iId,cId,bId){
@@ -1146,10 +1188,10 @@
 
     function continuar(){
       var valid=true;
-      var div=document.querySelector('#divChips .div-chip.active');
+      var div=document.getElementById('selDivision').value;
       if(!div){document.getElementById('errDivision').classList.remove('d-none');valid=false;}
       else{document.getElementById('errDivision').classList.add('d-none');}
-      var sc=div&&div.dataset.div==='Sin clas.';
+      var sc=(div==='Sin División');
       if(!sc){var tc=document.querySelector('input[name="tipoCampana"]:checked');
         if(!tc){document.getElementById('errTipoCampana').classList.remove('d-none');valid=false;}
         else{document.getElementById('errTipoCampana').classList.add('d-none');}}
