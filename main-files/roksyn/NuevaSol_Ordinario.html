@@ -463,8 +463,21 @@
             <h6 class="fw-bold mb-3 text-dark border-bottom pb-2">Información General</h6>
             <div class="row g-3">
 
-              <!-- División -->
+              <!-- Tipo de Gasto Publicitario -->
               <div class="col-12">
+                <label class="form-label small fw-bold text-dark">Tipo de Gasto Publicitario <span class="text-danger">*</span></label>
+                <select id="tipoGasto" class="form-select form-select-sm border-secondary border-opacity-50 text-dark shadow-none" onchange="aplicarLogicaCampos()">
+                  <option value="" selected disabled>Seleccione una opción...</option>
+                  <option value="Transversal">Campaña (Transversal)</option>
+                  <option value="Negocio">Campaña (Negocio)</option>
+                  <option value="Proyecto">Proyecto Especial Mkt</option>
+                  <option value="Ordinario">Gasto Ordinario</option>
+                </select>
+                <div class="text-danger mt-1 d-none" id="errTipoGasto" style="font-size:.78rem;">Este campo es obligatorio</div>
+              </div>
+
+              <!-- División -->
+              <div class="col-12" id="bloqueDivision" style="display:none;">
                 <label class="form-label small fw-bold text-dark">División de Centros de Costos <span class="text-danger">*</span></label>
                 <select id="selDivision" class="form-select form-select-sm border-secondary border-opacity-50 text-dark shadow-none" onchange="onDivisionChange()">
                   <option value="" selected disabled>Seleccione...</option>
@@ -476,20 +489,10 @@
                 <div class="text-danger mt-1 d-none" id="errDivision" style="font-size:.78rem;">Este campo es obligatorio</div>
               </div>
 
-              <!-- Tipo de campaña (oculto para Sin División) -->
+              <!-- Tipo de campaña (se llena automáticamente según el tipo de gasto) -->
               <div class="col-12" id="bloqueTipoCampana" style="display:none;">
-                <label class="form-label small fw-bold text-dark">Tipo de Campaña <span class="text-danger">*</span></label>
-                <div class="d-flex gap-3">
-                  <div class="form-check">
-                    <input class="form-check-input shadow-none" type="radio" name="tipoCampana" id="rbNegocio" value="De negocio" onchange="actualizarNombre()">
-                    <label class="form-check-label small text-dark" for="rbNegocio">De negocio</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input shadow-none" type="radio" name="tipoCampana" id="rbTransversal" value="Transversal" onchange="actualizarNombre()">
-                    <label class="form-check-label small text-dark" for="rbTransversal">Transversal</label>
-                  </div>
-                </div>
-                <div class="text-danger mt-1 d-none" id="errTipoCampana" style="font-size:.78rem;">Este campo es obligatorio</div>
+                <label class="form-label small fw-bold text-dark">Tipo de Campaña</label>
+                <input type="text" id="inputTipoCampana" class="form-control form-control-sm border-secondary border-opacity-25 text-muted bg-white shadow-none" readonly>
               </div>
 
               <!-- Nombre de campaña -->
@@ -1111,38 +1114,39 @@
     function pn(v){return parseFloat((v||'').replace(/,/g,''))||0;}
     function fmx(n){return '$'+n.toLocaleString('es-MX',{maximumFractionDigits:0})+' MXN';}
 
-    function onDivisionChange(){
-      var div=document.getElementById('selDivision').value;
-      if(!div)return;
-      var sc=(div==='Sin División');
-      var lbl=document.getElementById('labelDivisionActiva'); if(lbl)lbl.textContent=div;
-      var fd=document.getElementById('ftrDivision'); if(fd)fd.textContent=div; sh('ftrDivBloque');
-      filtrarCecos(div);
-      if(sc){
-        hi('bloqueTipoCampana'); sh('bloqueNombre');
-        document.getElementById('selectNombreTransversal').style.display='none';
-        var inp=document.getElementById('inputNombreManual');
-        inp.style.display='block'; inp.placeholder='Escriba manualmente el nombre...';
-        inp.oninput=function(){onNombreChange();};
+    function aplicarLogicaCampos(){
+      var tg=document.getElementById('tipoGasto').value;
+      if(!tg)return;
+      sh('bloqueDivision');
+      var tc=document.getElementById('inputTipoCampana');
+      var sel=document.getElementById('selectNombreTransversal'),inp=document.getElementById('inputNombreManual');
+      if(tg==='Transversal'){
+        sh('bloqueTipoCampana'); tc.value='Transversal';
+        shEl(sel); hiEl(inp); sel.onchange=function(){onNombreChange();};
+      } else if(tg==='Negocio'){
+        sh('bloqueTipoCampana'); tc.value='De negocio';
+        hiEl(sel); shEl(inp); inp.placeholder='Escriba manualmente el nombre...'; inp.oninput=function(){onNombreChange();};
       } else {
-        sh('bloqueTipoCampana'); hi('bloqueNombre');
-        document.querySelectorAll('input[name="tipoCampana"]').forEach(function(r){r.checked=false;});
+        hi('bloqueTipoCampana'); tc.value='';
+        hiEl(sel); shEl(inp); inp.placeholder='Escriba manualmente el nombre...'; inp.oninput=function(){onNombreChange();};
       }
+      sh('bloqueNombre');
+      // reset de pasos posteriores
+      sel.selectedIndex=0; inp.value='';
       hi('bloqueFechaIni'); hi('bloqueFechaFin'); hi('bloqueTextos');
       document.getElementById('fechaInicio').value=''; document.getElementById('fechaFin').value='';
       hi('ftrNombreBloque'); hi('ftrVigBloque');
+    }
+
+    function onDivisionChange(){
+      var div=document.getElementById('selDivision').value;
+      if(!div)return;
+      var lbl=document.getElementById('labelDivisionActiva'); if(lbl)lbl.textContent=div;
+      var fd=document.getElementById('ftrDivision'); if(fd)fd.textContent=div; sh('ftrDivBloque');
+      filtrarCecos(div);
       // La matriz de distribución se habilita al seleccionar la división
       sh('bloqueDistribucion');
       document.getElementById('bodyDistribucion').innerHTML=''; agregarLineaDist(); recalcularGlobal();
-    }
-
-    function actualizarNombre(){
-      var tc=document.querySelector('input[name="tipoCampana"]:checked'); if(!tc)return;
-      sh('bloqueNombre');
-      var sel=document.getElementById('selectNombreTransversal'),inp=document.getElementById('inputNombreManual');
-      if(tc.value==='Transversal'){shEl(sel);hiEl(inp);sel.onchange=function(){onNombreChange();};}
-      else{hiEl(sel);shEl(inp);inp.placeholder='Escriba manualmente el nombre...';inp.oninput=function(){onNombreChange();};}
-      hi('bloqueFechaIni');hi('bloqueFechaFin');hi('bloqueTextos');hi('ftrNombreBloque');hi('ftrVigBloque');
     }
 
     function onNombreChange(){
@@ -1283,13 +1287,12 @@
 
     function continuar(){
       var valid=true;
+      var tg=document.getElementById('tipoGasto').value;
+      if(!tg){document.getElementById('errTipoGasto').classList.remove('d-none');valid=false;}
+      else{document.getElementById('errTipoGasto').classList.add('d-none');}
       var div=document.getElementById('selDivision').value;
       if(!div){document.getElementById('errDivision').classList.remove('d-none');valid=false;}
       else{document.getElementById('errDivision').classList.add('d-none');}
-      var sc=(div==='Sin División');
-      if(!sc){var tc=document.querySelector('input[name="tipoCampana"]:checked');
-        if(!tc){document.getElementById('errTipoCampana').classList.remove('d-none');valid=false;}
-        else{document.getElementById('errTipoCampana').classList.add('d-none');}}
       var sel=document.getElementById('selectNombreTransversal'),inp=document.getElementById('inputNombreManual');
       var nom=(sel.style.display!=='none'?sel.value:inp.value).trim();
       if(!nom){document.getElementById('errNombre').classList.remove('d-none');valid=false;}
