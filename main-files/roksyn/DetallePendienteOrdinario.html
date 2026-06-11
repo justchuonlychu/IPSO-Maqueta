@@ -1,0 +1,667 @@
+<html lang="es" data-bs-theme="semi-dark"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solicitud Pendiente | IPSO ODTs</title>
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <link href="assets/css/extra-icons.css" rel="stylesheet">
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+
+  <style>
+    .page-content { overflow-y: auto !important; padding-bottom: 2rem; }
+
+    /* Tabs */
+    .nav-tabs-det { border-bottom: 2px solid #dee2e6; }
+    .nav-tabs-det .nav-link {
+      border: none; border-bottom: 3px solid transparent; color: #6c757d;
+      font-weight: 600; padding: .55rem 1.1rem; margin-bottom: -2px;
+      font-size: .85rem; transition: color .15s;
+    }
+    .nav-tabs-det .nav-link.active { border-bottom-color: #0d6efd; color: #0d6efd; }
+
+    /* Status badge */
+    .badge-pendiente {
+      background: #fff8e1; color: #b45309;
+      border: 1.5px solid #fcd34d; font-size: .72rem; font-weight: 700;
+      padding: .35em .8em; border-radius: 20px; letter-spacing: .02em;
+    }
+
+    /* Timeline autorización */
+    .auth-step { display: flex; align-items: flex-start; gap: 1rem; position: relative; }
+    .auth-step:not(:last-child)::after {
+      content: ''; position: absolute; left: 19px; top: 42px;
+      width: 2px; height: calc(100% - 8px); background: #dee2e6;
+    }
+    .auth-step.done::after { background: #198754; }
+    .auth-icon {
+      width: 40px; height: 40px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; flex-shrink: 0;
+      font-size: 1.1rem; z-index: 1;
+    }
+    .auth-icon.done  { background: #d1fae5; color: #198754; }
+    .auth-icon.active { background: #fff8e1; color: #b45309; border: 2px solid #fcd34d; }
+    .auth-icon.pending { background: #f1f3f5; color: #adb5bd; }
+
+    /* Distribución tabla read-only */
+    .matrix-cell {
+      font-size: .75rem; text-align: right; padding: 4px 6px;
+      background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px;
+      min-width: 64px; color: #212529;
+    }
+    .matrix-cell.total-col { background: #eef2ff; font-weight: 700; color: #0d6efd; min-width: 90px; }
+    .matrix-cell.empty { color: #adb5bd; }
+
+    /* Bitácora */
+    .bita-entry { border-left: 3px solid #dee2e6; padding: .75rem 1rem; margin-bottom: .75rem; background: #fff; border-radius: 0 8px 8px 0; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+    .bita-entry.sistema { border-left-color: #0d6efd; background: #f8faff; }
+    .bita-entry.usuario { border-left-color: #198754; background: #f6fffa; }
+    .bita-entry.alerta  { border-left-color: #dc3545; background: #fff8f8; }
+
+    /* Línea punteada espera */
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .pulse-dot { animation: pulse-dot 1.6s infinite; }
+  </style>
+</head>
+
+<body class="pace-done">
+
+<!--start header-->
+<header class="top-header">
+  <nav class="navbar navbar-expand justify-content-between">
+    <div class="btn-toggle-menu"><span class="material-symbols-outlined">menu</span></div>
+    <div class="position-relative search-bar d-lg-block d-none">
+      <input class="form-control form-control-sm rounded-5 px-5" disabled type="search" placeholder="Search">
+      <span class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+    </div>
+    <ul class="navbar-nav top-right-menu gap-2">
+      <li class="nav-item dark-mode">
+        <a class="nav-link dark-mode-icon" href="javascript:;"><span class="material-symbols-outlined">light_mode</span></a>
+      </li>
+      <li class="nav-item dropdown dropdown-large">
+        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+          <div class="position-relative"><span class="notify-badge">2</span><span class="material-symbols-outlined">notifications_none</span></div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="offcanvas" href="#ThemeCustomizer"><span class="material-symbols-outlined">settings</span></a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<!--end header-->
+
+<!--start sidebar-->
+<aside class="sidebar-wrapper">
+  <div class="sidebar-header">
+    <div class="logo-icon"><img src="assets/images/logo-icon.png" class="logo-img" alt=""></div>
+    <div class="logo-name flex-grow-1"><h5 class="mb-0">IPSO</h5></div>
+    <div class="sidebar-close"><span class="material-symbols-outlined">close</span></div>
+  </div>
+  <div class="sidebar-nav" data-simplebar="init">
+    <div class="simplebar-wrapper" style="margin:0px;">
+      <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div>
+      <div class="simplebar-mask">
+        <div class="simplebar-offset" style="right:0px;bottom:0px;">
+          <div class="simplebar-content-wrapper" style="height:100%;overflow:hidden;">
+            <div class="simplebar-content mm-active" style="padding:0px;">
+              <ul class="metismenu mm-show" id="menu">
+                <li><a href="index.html"><div class="parent-icon"><span class="material-symbols-outlined">home</span></div><div class="menu-title">Home</div></a></li>
+                <li><a href="SIPRES.html"><div class="parent-icon"><span class="material-symbols-outlined">redeem</span></div><div class="menu-title">Forecast</div></a></li>
+                <li class="menu-label mb-0 text-light">Gestión de Presupuestos</li>
+                <li class="mm-active">
+                  <a href="javascript:;" class="has-arrow" aria-expanded="true">
+                    <div class="parent-icon"><span class="material-symbols-outlined">apps</span></div>
+                    <div class="menu-title">Planeación<br>Presupuestal</div>
+                  </a>
+                  <ul class="mm-collapse mm-show">
+                    <li><a href="Parametros.html"><span class="material-symbols-outlined">arrow_right</span>Parámetros</a></li>
+                    <li><a class="has-arrow" href="javascript:;"><span class="material-symbols-outlined">arrow_right</span>Base Presupuestal</a>
+                      <ul class="mm-collapse"><li><a href="BPresupuestal.html"><span class="material-symbols-outlined">arrow_right</span>Base del Ejercicio Activo</a></li><li><a href="BPRegistros.html"><span class="material-symbols-outlined">arrow_right</span>Registro de Bases</a></li></ul>
+                    </li>
+                    <li class="mm-active"><a href="AEjercicio.html"><span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a></li>
+                    <li><a href="Autorizaciones.html"><span class="material-symbols-outlined">arrow_right</span>Autorizaciones</a></li>
+                    <li><a href="Liberaciones.html"><span class="material-symbols-outlined">arrow_right</span>Liberaciones</a></li>
+                    <li><a href="ReportesCarga.html"><span class="material-symbols-outlined">arrow_right</span>Reportes de Carga</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div>
+                    <div class="menu-title">Ejercicio Presupuestal</div>
+                  </a>
+                  <ul class="mm-collapse"><li><a href="SCarga.html"><span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales</a></li><li><a href="Reportes.html"><span class="material-symbols-outlined">arrow_right</span>Reportes</a></li></ul>
+                </li>
+                <li class="menu-label mb-0 text-light">Configuración General</li>
+                <li>
+                  <a href="javascript:;" class="has-arrow">
+                    <div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span></div>
+                    <div class="menu-title">Sistema</div>
+                  </a>
+                  <ul class="mm-collapse"><li><a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a></li><li><a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de Costos</a></li><li><a href="GCuentas.html"><span class="material-symbols-outlined">arrow_right</span>Grupo de Cuentas</a></li><li><a href="CTransversal.html"><span class="material-symbols-outlined">arrow_right</span>Campañas Transversales</a></li><li><a href="PFondo.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos</a></li></ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-bottom dropdown dropup-center dropup">
+    <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
+      <div class="user-img"><img src="assets/images/avatars/01.png" alt=""></div>
+      <div class="user-info"><h5 class="mb-0 user-name">Edgar Grande</h5><p class="mb-0 user-designation">P2 – Carga Presupuestal</p></div>
+    </div>
+  </div>
+</aside>
+<!--end sidebar-->
+
+<main class="page-content">
+
+  <!-- ── Breadcrumb ── -->
+  <div class="d-flex flex-wrap justify-content-between align-items-start mb-4 gap-3">
+    <div>
+      <h5 class="fw-bold text-dark mb-1">
+        <i class="bi bi-file-earmark-text text-primary me-2"></i>Solicitud de Carga Presupuestal
+      </h5>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb small mb-0">
+          <li class="breadcrumb-item"><a href="AEjercicio.html" class="text-decoration-none text-muted">Carga Presupuestal</a></li>
+          <li class="breadcrumb-item text-muted">GEKT</li>
+          <li class="breadcrumb-item active fw-bold" aria-current="page">SOL-26042NMX</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <a href="AEjercicio.html" class="btn btn-outline-secondary btn-sm fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i>Mis solicitudes
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Banner estado pendiente ── -->
+  <div class="alert border-0 rounded-3 mb-4 d-flex align-items-start gap-3" style="background:#fffbeb; border-left:4px solid #f59e0b !important; border-left-width:4px; border:1px solid #fde68a;">
+    <i class="bi bi-hourglass-split text-warning flex-shrink-0 mt-1" style="font-size:1.3rem;"></i>
+    <div class="flex-grow-1">
+      <div class="fw-bold text-dark mb-1">Solicitud en revisión — esperando autorización</div>
+      <div class="small text-muted">Tu solicitud fue enviada correctamente el <strong>09 Jun 2026, 10:42 h</strong>. El autorizador de Nivel 1 recibió una notificación por correo y tiene hasta <strong>5 días hábiles</strong> para responder.</div>
+    </div>
+    <span class="badge-pendiente flex-shrink-0"><i class="bi bi-clock me-1 pulse-dot"></i>Pendiente de autorización</span>
+  </div>
+
+  <div class="row g-4 align-items-start">
+
+    <!-- ═══════════════════════════════════
+         Columna izquierda — datos + tabs
+    ═══════════════════════════════════ -->
+    <div class="col-12 col-xl-8">
+
+      <!-- Card resumen header -->
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body px-4 py-3">
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <div>
+              <div class="fw-bold text-dark" style="font-size:1.05rem;">Campaña Verano 2026</div>
+              <div class="d-flex flex-wrap gap-2 mt-1">
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1" style="font-size:.7rem;">Presupuesto Ordinario</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2 py-1" style="font-size:.7rem;">Marca</span>
+                <span class="badge bg-secondary bg-opacity-10 text-dark border border-secondary border-opacity-25 px-2 py-1" style="font-size:.7rem;"><i class="bi bi-building me-1"></i>GEKT – Totalplay</span>
+              </div>
+            </div>
+            <div class="text-end">
+              <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Total solicitado</div>
+              <div class="fw-bold text-primary" style="font-size:1.5rem;">$4,000,000</div>
+              <div class="text-muted" style="font-size:.72rem;">2 CeCos · 3 cuentas</div>
+            </div>
+          </div>
+
+          <!-- Metadatos en fila -->
+          <hr class="my-3">
+          <div class="row g-2" style="font-size:.78rem;">
+            <div class="col-6 col-md-3">
+              <div class="text-muted fw-bold" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em;">Folio</div>
+              <div class="fw-semibold text-dark">SOL-26042NMX</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="text-muted fw-bold" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em;">Ejercicio</div>
+              <div class="fw-semibold text-dark">2026</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="text-muted fw-bold" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em;">Vigencia</div>
+              <div class="fw-semibold text-dark">Jul 2026 – Sep 2026</div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="text-muted fw-bold" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em;">Enviada el</div>
+              <div class="fw-semibold text-dark">09 Jun 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <ul class="nav nav-tabs-det mb-4" id="detTabs" role="tablist">
+        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-info">Información General</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-dist">Distribución</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-bita">Bitácora</button></li>
+      </ul>
+
+      <div class="tab-content">
+
+        <!-- ── Tab: Información General ── -->
+        <div class="tab-pane fade show active" id="tab-info">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+
+              <!-- Bloque: Tipo de gasto -->
+              <h6 class="fw-bold text-dark border-bottom pb-2 mb-3" style="font-size:.82rem; text-transform:uppercase; letter-spacing:.04em;">Tipo de gasto</h6>
+              <div class="row g-3 mb-4" style="font-size:.85rem;">
+                <div class="col-md-4">
+                  <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Categoría</div>
+                  <div class="fw-semibold text-dark">Presupuesto Ordinario</div>
+                </div>
+                <div class="col-md-4">
+                  <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Tipo de Campaña</div>
+                  <div class="fw-semibold text-dark">Negocio</div>
+                </div>
+                <div class="col-md-4">
+                  <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">División</div>
+                  <div class="fw-semibold text-dark"><span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2 py-1">Marca</span></div>
+                </div>
+              </div>
+
+              <!-- Bloque: Datos de la campaña -->
+              <h6 class="fw-bold text-dark border-bottom pb-2 mb-3" style="font-size:.82rem; text-transform:uppercase; letter-spacing:.04em;">Datos de la campaña</h6>
+              <div class="row g-3 mb-4" style="font-size:.85rem;">
+                <div class="col-md-6">
+                  <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Nombre</div>
+                  <div class="fw-semibold text-dark">Campaña Verano 2026</div>
+                </div>
+                <div class="col-md-3">
+                  <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Fecha inicio</div>
+                  <div class="fw-semibold text-dark">01 Jul 2026</div>
+                </div>
+                <div class="col-md-3">
+                  <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Fecha fin</div>
+                  <div class="fw-semibold text-dark">30 Sep 2026</div>
+                </div>
+                <div class="col-12">
+                  <div class="text-muted mb-1" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Objetivo</div>
+                  <div class="text-dark p-3 rounded-2" style="background:#f8f9fa; font-size:.85rem; line-height:1.6;">Incrementar el reconocimiento de marca en segmento 25-45 años mediante campaña multimedia en canales digitales y televisión abierta durante el periodo vacacional de verano.</div>
+                </div>
+                <div class="col-12">
+                  <div class="text-muted mb-1" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Alcance</div>
+                  <div class="text-dark p-3 rounded-2" style="background:#f8f9fa; font-size:.85rem; line-height:1.6;">Zonas metropolitanas CDMX, GDL y MTY. Cobertura nacional en plataformas digitales.</div>
+                </div>
+                <div class="col-12">
+                  <div class="text-muted mb-1" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">KPIs</div>
+                  <div class="text-dark p-3 rounded-2" style="background:#f8f9fa; font-size:.85rem; line-height:1.6;">Alcance mínimo de 3M de impactos. CTR ≥ 2.5% en digital. Recordación de marca +8 puntos vs. línea base.</div>
+                </div>
+              </div>
+
+              <!-- Bloque: Centros de costo seleccionados -->
+              <h6 class="fw-bold text-dark border-bottom pb-2 mb-3" style="font-size:.82rem; text-transform:uppercase; letter-spacing:.04em;">Centros de Costo</h6>
+              <div class="row g-2">
+                <div class="col-md-6">
+                  <div class="border rounded-3 px-3 py-2 d-flex align-items-center gap-2" style="background:#f8faff;">
+                    <i class="bi bi-building text-primary"></i>
+                    <div>
+                      <div class="fw-semibold text-dark" style="font-size:.82rem;">100901 – DIR GRAL CONECTIVIDAD</div>
+                      <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25" style="font-size:.62rem;">Marca</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="border rounded-3 px-3 py-2 d-flex align-items-center gap-2" style="background:#f8faff;">
+                    <i class="bi bi-building text-primary"></i>
+                    <div>
+                      <div class="fw-semibold text-dark" style="font-size:.82rem;">100902 – MARCA INSTITUCIONAL</div>
+                      <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25" style="font-size:.62rem;">Marca</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Tab: Distribución ── -->
+        <div class="tab-pane fade" id="tab-dist">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+
+              <!-- Resumen global -->
+              <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                  <div class="p-3 rounded-3 border text-center" style="background:#f0f4ff;">
+                    <div class="text-muted" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Total Solicitado</div>
+                    <div class="fw-bold text-primary" style="font-size:1.35rem;">$4,000,000</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="p-3 rounded-3 border text-center" style="background:#f0fff6;">
+                    <div class="text-muted" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">CeCos asignados</div>
+                    <div class="fw-bold text-success" style="font-size:1.35rem;">2</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="p-3 rounded-3 border text-center" style="background:#f8f9fa;">
+                    <div class="text-muted" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Cuentas usadas</div>
+                    <div class="fw-bold text-dark" style="font-size:1.35rem;">3</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CeCo 100901 -->
+              <div class="mb-4">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="badge bg-primary px-2 py-1">100901</span>
+                  <span class="fw-bold text-dark" style="font-size:.88rem;">DIR GRAL CONECTIVIDAD</span>
+                  <span class="ms-auto fw-bold text-primary" style="font-size:.88rem;">$2,500,000</span>
+                </div>
+                <div class="table-responsive border rounded-3" style="overflow-x:auto;">
+                  <table class="table table-sm align-middle text-center mb-0" style="font-size:.75rem; min-width:900px;">
+                    <thead class="table-light">
+                      <tr>
+                        <th class="text-start ps-3" style="min-width:160px;">Cuenta Presupuestal</th>
+                        <th style="min-width:62px;">Ene</th><th style="min-width:62px;">Feb</th><th style="min-width:62px;">Mar</th><th style="min-width:62px;">Abr</th><th style="min-width:62px;">May</th><th style="min-width:62px;">Jun</th>
+                        <th class="table-primary" style="min-width:62px;">Jul</th><th class="table-primary" style="min-width:62px;">Ago</th><th class="table-primary" style="min-width:62px;">Sep</th>
+                        <th style="min-width:62px;">Oct</th><th style="min-width:62px;">Nov</th><th style="min-width:62px;">Dic</th>
+                        <th class="text-end pe-3" style="min-width:92px; background:#eef2ff; color:#0d6efd; font-weight:700;">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-start ps-3 fw-semibold text-dark">609011 – Televisión</td>
+                        <td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td>
+                        <td class="fw-semibold text-dark" style="background:#f0f4ff;">500,000</td>
+                        <td class="fw-semibold text-dark" style="background:#f0f4ff;">500,000</td>
+                        <td class="fw-semibold text-dark" style="background:#f0f4ff;">500,000</td>
+                        <td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td>
+                        <td class="fw-bold text-primary pe-3" style="background:#eef2ff;">1,500,000</td>
+                      </tr>
+                      <tr>
+                        <td class="text-start ps-3 fw-semibold text-dark">609028 – Pub. Digital</td>
+                        <td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td>
+                        <td class="fw-semibold text-dark" style="background:#f0f4ff;">333,334</td>
+                        <td class="fw-semibold text-dark" style="background:#f0f4ff;">333,333</td>
+                        <td class="fw-semibold text-dark" style="background:#f0f4ff;">333,333</td>
+                        <td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td>
+                        <td class="fw-bold text-primary pe-3" style="background:#eef2ff;">1,000,000</td>
+                      </tr>
+                      <tr class="table-light fw-bold">
+                        <td class="text-start ps-3 text-dark">Subtotal CeCo</td>
+                        <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+                        <td style="background:#e8edff;">833,334</td><td style="background:#e8edff;">833,333</td><td style="background:#e8edff;">833,333</td>
+                        <td>—</td><td>—</td><td>—</td>
+                        <td class="text-primary pe-3" style="background:#dde4ff;">2,500,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- CeCo 100902 -->
+              <div class="mb-2">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="badge bg-primary px-2 py-1">100902</span>
+                  <span class="fw-bold text-dark" style="font-size:.88rem;">MARCA INSTITUCIONAL</span>
+                  <span class="ms-auto fw-bold text-primary" style="font-size:.88rem;">$1,500,000</span>
+                </div>
+                <div class="table-responsive border rounded-3" style="overflow-x:auto;">
+                  <table class="table table-sm align-middle text-center mb-0" style="font-size:.75rem; min-width:900px;">
+                    <thead class="table-light">
+                      <tr>
+                        <th class="text-start ps-3" style="min-width:160px;">Cuenta Presupuestal</th>
+                        <th style="min-width:62px;">Ene</th><th style="min-width:62px;">Feb</th><th style="min-width:62px;">Mar</th><th style="min-width:62px;">Abr</th><th style="min-width:62px;">May</th><th style="min-width:62px;">Jun</th>
+                        <th class="table-primary" style="min-width:62px;">Jul</th><th class="table-primary" style="min-width:62px;">Ago</th><th class="table-primary" style="min-width:62px;">Sep</th>
+                        <th style="min-width:62px;">Oct</th><th style="min-width:62px;">Nov</th><th style="min-width:62px;">Dic</th>
+                        <th class="text-end pe-3" style="min-width:92px; background:#eef2ff; color:#0d6efd; font-weight:700;">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-start ps-3 fw-semibold text-dark">609023 – Promociones</td>
+                        <td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td>
+                        <td class="fw-semibold text-dark" style="background:#f0f4ff;">500,000</td>
+                        <td class="fw-semibold text-dark" style="background:#f0f4ff;">500,000</td>
+                        <td class="fw-semibold text-dark" style="background:#f0f4ff;">500,000</td>
+                        <td class="text-muted">—</td><td class="text-muted">—</td><td class="text-muted">—</td>
+                        <td class="fw-bold text-primary pe-3" style="background:#eef2ff;">1,500,000</td>
+                      </tr>
+                      <tr class="table-light fw-bold">
+                        <td class="text-start ps-3 text-dark">Subtotal CeCo</td>
+                        <td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td>
+                        <td style="background:#e8edff;">500,000</td><td style="background:#e8edff;">500,000</td><td style="background:#e8edff;">500,000</td>
+                        <td>—</td><td>—</td><td>—</td>
+                        <td class="text-primary pe-3" style="background:#dde4ff;">1,500,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Tab: Bitácora ── -->
+        <div class="tab-pane fade" id="tab-bita">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+
+              <div class="bita-entry sistema">
+                <div class="d-flex justify-content-between align-items-start mb-1">
+                  <span class="fw-bold text-dark" style="font-size:.82rem;"><i class="bi bi-send-fill text-primary me-2"></i>Solicitud enviada a autorización</span>
+                  <span class="text-muted" style="font-size:.72rem;">09 Jun 2026 · 10:42 h</span>
+                </div>
+                <div class="small text-muted">Edgar Grande envió la solicitud. Folio asignado: <strong>SOL-26042NMX</strong>. Se notificó a Nivel 1 (Marketing) vía correo.</div>
+              </div>
+
+              <div class="bita-entry usuario">
+                <div class="d-flex justify-content-between align-items-start mb-1">
+                  <span class="fw-bold text-dark" style="font-size:.82rem;"><i class="bi bi-pencil-square text-success me-2"></i>Confirmación de distribución completada</span>
+                  <span class="text-muted" style="font-size:.72rem;">09 Jun 2026 · 10:40 h</span>
+                </div>
+                <div class="small text-muted">El usuario completó la asignación mensual en 2 CeCos con un total de $4,000,000.</div>
+              </div>
+
+              <div class="bita-entry sistema">
+                <div class="d-flex justify-content-between align-items-start mb-1">
+                  <span class="fw-bold text-dark" style="font-size:.82rem;"><i class="bi bi-file-earmark-plus text-primary me-2"></i>Solicitud creada</span>
+                  <span class="text-muted" style="font-size:.72rem;">09 Jun 2026 · 09:15 h</span>
+                </div>
+                <div class="small text-muted">Edgar Grande inició una nueva solicitud de Presupuesto Ordinario para el ejercicio 2026.</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /tab-content -->
+    </div><!-- /col izquierda -->
+
+    <!-- ═══════════════════════════════════
+         Columna derecha — flujo y estado
+    ═══════════════════════════════════ -->
+    <div class="col-12 col-xl-4">
+
+      <!-- Card Flujo de Autorización -->
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white border-bottom py-3 px-4">
+          <h6 class="fw-bold text-dark mb-0" style="font-size:.85rem;">
+            <i class="bi bi-diagram-3 text-primary me-2"></i>Flujo de Autorización
+          </h6>
+        </div>
+        <div class="card-body p-4">
+
+          <!-- Paso: Solicitante (done) -->
+          <div class="auth-step done mb-4 pb-2">
+            <div class="auth-icon done"><i class="bi bi-check-lg"></i></div>
+            <div class="flex-grow-1">
+              <div class="fw-bold text-dark" style="font-size:.85rem;">Solicitante</div>
+              <div class="small text-muted">Edgar Grande</div>
+              <div class="d-flex align-items-center gap-2 mt-1">
+                <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2" style="font-size:.65rem;">Enviada</span>
+                <span class="text-muted" style="font-size:.72rem;">09 Jun 2026 · 10:42 h</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso: Nivel 1 (activo / esperando) -->
+          <div class="auth-step active mb-4 pb-2">
+            <div class="auth-icon active"><i class="bi bi-hourglass-split pulse-dot"></i></div>
+            <div class="flex-grow-1">
+              <div class="fw-bold text-dark" style="font-size:.85rem;">Nivel 1 – Marketing</div>
+              <div class="small text-muted">Verónica Salas · Gerente de Aprobaciones</div>
+              <div class="d-flex align-items-center gap-2 mt-1">
+                <span class="badge-pendiente" style="font-size:.65rem;"><i class="bi bi-clock me-1"></i>Esperando respuesta</span>
+              </div>
+              <div class="small text-muted mt-1">Notificado el 09 Jun 2026 · 10:42 h</div>
+              <div class="mt-2 p-2 rounded-2 d-flex align-items-center gap-2" style="background:#fffbeb; border:1px solid #fde68a; font-size:.75rem;">
+                <i class="bi bi-clock-history text-warning"></i>
+                <span class="text-dark">Vence el <strong>16 Jun 2026</strong> (5 días hábiles)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso: Nivel 2 (pendiente) -->
+          <div class="auth-step pending mb-4 pb-2">
+            <div class="auth-icon pending"><i class="bi bi-person"></i></div>
+            <div class="flex-grow-1">
+              <div class="fw-bold text-muted" style="font-size:.85rem;">Nivel 2 – Admón y Finanzas</div>
+              <div class="small text-muted">Pendiente de asignación</div>
+              <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 mt-1" style="font-size:.65rem;">En espera</span>
+            </div>
+          </div>
+
+          <!-- Paso: Liberación (pendiente) -->
+          <div class="auth-step pending">
+            <div class="auth-icon pending"><i class="bi bi-check2-all"></i></div>
+            <div class="flex-grow-1">
+              <div class="fw-bold text-muted" style="font-size:.85rem;">Liberación a SIPRES</div>
+              <div class="small text-muted">Pendiente de autorización completa</div>
+              <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 mt-1" style="font-size:.65rem;">En espera</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Card Resumen de montos -->
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-white border-bottom py-3 px-4">
+          <h6 class="fw-bold text-dark mb-0" style="font-size:.85rem;">
+            <i class="bi bi-pie-chart text-primary me-2"></i>Control de Carga
+          </h6>
+        </div>
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="small text-muted">Límite de carga global</span>
+            <span class="fw-bold text-dark small">$200,100,000</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="small text-muted">Total en esta solicitud</span>
+            <span class="fw-bold text-primary small">$4,000,000</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="small text-muted">% del límite</span>
+            <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fw-bold" style="font-size:.72rem;">2.0%</span>
+          </div>
+          <div class="progress" style="height:8px; border-radius:6px;">
+            <div class="progress-bar bg-success" style="width:2%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Acciones disponibles -->
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-bottom py-3 px-4">
+          <h6 class="fw-bold text-dark mb-0" style="font-size:.85rem;">
+            <i class="bi bi-lightning text-primary me-2"></i>Acciones
+          </h6>
+        </div>
+        <div class="card-body p-4 d-grid gap-2">
+          <div class="d-flex align-items-start gap-2 p-2 rounded-2 mb-1" style="background:#f8f9fa; font-size:.78rem; color:#6c757d;">
+            <i class="bi bi-lock flex-shrink-0 mt-1"></i>
+            <span>La solicitud está bloqueada para edición mientras se encuentre en proceso de autorización.</span>
+          </div>
+          <button class="btn btn-outline-secondary btn-sm fw-semibold" onclick="bootstrap.Modal.getOrCreateInstance(document.getElementById('modalRetirar')).show()">
+            <i class="bi bi-arrow-counterclockwise me-1"></i>Retirar solicitud
+          </button>
+          <a href="AEjercicio.html" class="btn btn-outline-primary btn-sm fw-semibold">
+            <i class="bi bi-list-ul me-1"></i>Ver todas mis solicitudes
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /col derecha -->
+  </div><!-- /row -->
+
+</main>
+
+<!-- ── Modal Retirar solicitud ── -->
+<div class="modal fade" id="modalRetirar" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered" style="max-width:400px;">
+    <div class="modal-content border-0 shadow-lg" style="border-radius:14px;">
+      <div class="modal-body p-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <i class="bi bi-arrow-counterclockwise text-warning" style="font-size:1.2rem;"></i>
+          <span class="fw-bold text-dark">¿Retirar la solicitud?</span>
+        </div>
+        <p class="small text-muted mb-3">Al retirar la solicitud, esta regresará al estado <strong>Borrador</strong> y podrás editar la distribución y reenviarla cuando esté lista.</p>
+        <div class="border rounded-3 p-3 mb-4" style="background:#f8f9fa; font-size:.82rem;">
+          <div class="d-flex justify-content-between mb-1"><span class="text-muted">Solicitud</span><span class="fw-semibold text-dark">Campaña Verano 2026</span></div>
+          <div class="d-flex justify-content-between mb-1"><span class="text-muted">Folio</span><span class="fw-semibold text-dark">SOL-26042NMX</span></div>
+          <div class="d-flex justify-content-between"><span class="text-muted">Estado actual</span><span class="badge-pendiente" style="font-size:.65rem;">Pendiente autorización</span></div>
+        </div>
+        <div class="p-2 rounded-2 mb-4 d-flex align-items-start gap-2" style="background:#fff8e1; border:1px solid #fde68a; font-size:.78rem;">
+          <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0 mt-1"></i>
+          <span class="text-dark">El autorizador de Nivel 1 será notificado de que la solicitud fue retirada.</span>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary flex-fill" data-bs-dismiss="modal">Cancelar</button>
+          <a href="NuevaSol_Ordinario.html" class="btn btn-warning flex-fill fw-bold text-dark">
+            <i class="bi bi-arrow-counterclockwise me-1"></i>Sí, retirar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--start overlay-->
+<div class="overlay btn-toggle-menu"></div>
+<!--end overlay-->
+
+<!--start theme customization-->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer" aria-labelledby="ThemeCustomizerLable">
+  <div class="offcanvas-header border-bottom">
+    <h5 class="offcanvas-title" id="ThemeCustomizerLable">Theme Customizer</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <h6 class="mb-0">Theme Variation</h6><hr>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1"><label class="form-check-label" for="LightTheme">Light</label></div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2" checked><label class="form-check-label" for="DarkTheme">Dark</label></div>
+    <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" value="option3"><label class="form-check-label" for="SemiDarkTheme">Semi Dark</label></div>
+  </div>
+</div>
+<!--end theme customization-->
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+<script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+<script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body></html>
