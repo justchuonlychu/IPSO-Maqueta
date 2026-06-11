@@ -636,356 +636,219 @@
                     <table class="table align-middle mb-0" style="font-size:0.82rem;">
                       <thead class="sticky-top z-1 bg-white shadow-sm">
                         <tr>
-                          <th class="ps-3 text-dark fw-bold border-bottom" style="min-width:300px;">Centro de Costo /
-                            Campañas origen / Cuentas</th>
-                          <th class="text-end text-dark fw-bold border-bottom" style="width:130px;">Límite de Carga</th>
-                          <th class="text-end text-dark fw-bold border-bottom" style="width:110px;">Disponible</th>
+                          <th class="ps-3 text-dark fw-bold border-bottom">Centro de Costo</th>
                         </tr>
                       </thead>
                       <tbody>
 
-                        <!-- CeCo 100901 · División: Marca -->
+                        <!-- Marca -->
                         <tr class="ceco-row ceco-group" data-divs="Marca" id="tr-ceco1">
-                          <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco1')">
+                          <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco1">
-                              <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco1" style="font-size:.75rem;"></i>
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco1">
                               <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>
                               100901 – DIR GRAL CONECTIVIDAD
+                              <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 ms-2" style="font-size:.62rem;">Marca</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">1,892,500</td>
-                          <td class="text-end fw-bold text-success">1,892,500</td>
                         </tr>
-                        <tr class="ceco-child-ceco1" style="background:rgb(238,242,255);" id="bar-ceco1">
-                          <td colspan="3" class="py-1 px-4"></td>
-                        </tr>
-                        <tr class="ceco-child-ceco1 child-ceco1" style="background:rgb(248,249,255);">
-                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco1-A', this)">
-                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
-                            <i class="bi bi-tag text-primary me-1"></i>
-                            <span class="fw-semibold">394 – Día de las Madres</span>
+                        <tr class="ceco-row ceco-group" data-divs="Marca" id="tr-ceco10" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco10">
+                              <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>
+                              100902 – MARCA INSTITUCIONAL
+                              <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 ms-2" style="font-size:.62rem;">Marca</span>
+                            </div>
                           </td>
-                          <td class="text-end text-dark" style="font-size:.78rem;">900,000</td>
-                          <td></td>
                         </tr>
-                        <tr class="ceco-child-ceco1 cu-ceco1-A d-none" style="background:#f0f4ff;">
-                          <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
-                            <i class="bi bi-dot me-1"></i>609023 – Promociones &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
+                        <tr class="ceco-row ceco-group" data-divs="Marca" id="tr-ceco11" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco11">
+                              <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>
+                              100903 – PUBLICIDAD MASIVA
+                              <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 ms-2" style="font-size:.62rem;">Marca</span>
+                            </div>
                           </td>
-                          <td class="text-end text-dark" style="font-size:.75rem;">500,000</td>
-                          <td></td>
                         </tr>
-                        <tr class="ceco-child-ceco1 cu-ceco1-A d-none" style="background:#f0f4ff;">
-                          <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
-                            <i class="bi bi-dot me-1"></i>609011 – Televisión &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
+                        <tr class="ceco-row ceco-group" data-divs="Marca" id="tr-ceco12" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco12">
+                              <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>
+                              100904 – PATROCINIOS DEPORTIVOS
+                              <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 ms-2" style="font-size:.62rem;">Marca</span>
+                            </div>
                           </td>
-                          <td class="text-end text-dark" style="font-size:.75rem;">400,000</td>
-                          <td></td>
                         </tr>
-                        <tr class="ceco-child-ceco1 child-ceco1" style="background:rgb(248,249,255);">
-                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco1-B', this)">
-                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
-                            <i class="bi bi-tag text-primary me-1"></i>
-                            <span class="fw-semibold">401 – Buen Fin</span>
+                        <tr class="ceco-row ceco-group" data-divs="Marca" id="tr-ceco13" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco13">
+                              <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>
+                              100905 – BRANDING DIGITAL
+                              <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 ms-2" style="font-size:.62rem;">Marca</span>
+                            </div>
                           </td>
-                          <td class="text-end text-dark" style="font-size:.78rem;">992,500</td>
-                          <td></td>
-                        </tr>
-                        <tr class="ceco-child-ceco1 cu-ceco1-B d-none" style="background:#f0f4ff;">
-                          <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
-                            <i class="bi bi-dot me-1"></i>609011 – Televisión &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 21328 – Originación</span>
-                          </td>
-                          <td class="text-end text-dark" style="font-size:.75rem;">992,500</td>
-                          <td></td>
                         </tr>
 
-                        <!-- CeCo 291374 · División: Oferteo -->
+                        <!-- Oferteo -->
                         <tr class="ceco-row ceco-group" data-divs="Oferteo" id="tr-ceco2" style="border-top:2px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco2')">
+                          <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco2">
-                              <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco2" style="font-size:.75rem;"></i>
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco2">
                               <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
                               291374 – DIR MKT DIGITAL
+                              <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 ms-2" style="font-size:.62rem;">Oferteo</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">1,200,000</td>
-                          <td class="text-end fw-bold text-dark">1,200,000</td>
                         </tr>
-                        <tr class="ceco-child-ceco2 child-ceco2" style="background:rgb(248,249,255);">
-                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco2-A', this)">
-                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
-                            <i class="bi bi-tag text-dark me-1"></i>
-                            <span class="fw-semibold">010 – Lanzamiento App</span>
+                        <tr class="ceco-row ceco-group" data-divs="Oferteo" id="tr-ceco20" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco20">
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              291375 – PROMOCIONES RETAIL
+                              <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 ms-2" style="font-size:.62rem;">Oferteo</span>
+                            </div>
                           </td>
-                          <td class="text-end text-dark" style="font-size:.78rem;">400,000</td>
-                          <td></td>
                         </tr>
-                        <tr class="ceco-child-ceco2 cu-ceco2-A d-none" style="background:#f0f4ff;">
-                          <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
-                            <i class="bi bi-dot me-1"></i>609028 – Pub. Internet &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 19283 – Gemas</span>
+                        <tr class="ceco-row ceco-group" data-divs="Oferteo" id="tr-ceco21" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco21">
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              291376 – OFERTAS TEMPORADA
+                              <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 ms-2" style="font-size:.62rem;">Oferteo</span>
+                            </div>
                           </td>
-                          <td class="text-end text-dark" style="font-size:.75rem;">400,000</td>
-                          <td></td>
                         </tr>
-                        <tr class="ceco-child-ceco2 child-ceco2" style="background:rgb(248,249,255);">
-                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco2-B', this)">
-                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
-                            <i class="bi bi-tag text-dark me-1"></i>
-                            <span class="fw-semibold">401 – Buen Fin</span>
+                        <tr class="ceco-row ceco-group" data-divs="Oferteo" id="tr-ceco22" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco22">
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              291377 – MKT PROMOCIONAL
+                              <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 ms-2" style="font-size:.62rem;">Oferteo</span>
+                            </div>
                           </td>
-                          <td class="text-end text-dark" style="font-size:.78rem;">800,000</td>
-                          <td></td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Oferteo" id="tr-ceco23" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco23">
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              291378 – CUPONES Y DESCUENTOS
+                              <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 ms-2" style="font-size:.62rem;">Oferteo</span>
+                            </div>
+                          </td>
                         </tr>
 
-                        <!-- CeCo 182310 · División: Estrategia -->
+                        <!-- Estrategia -->
                         <tr class="ceco-row ceco-group" data-divs="Estrategia" id="tr-ceco3" style="border-top:2px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco3')">
+                          <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco3">
-                              <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco3" style="font-size:.75rem;"></i>
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco3">
                               <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
                               182310 – DIR ESTRATEGIA COMERCIAL
+                              <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 ms-2" style="font-size:.62rem;">Estrategia</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">750,000</td>
-                          <td class="text-end fw-bold text-dark">750,000</td>
                         </tr>
-                        <tr class="ceco-child-ceco3 child-ceco3" style="background:rgb(248,249,255);">
-                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco3-A', this)">
-                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
-                            <i class="bi bi-tag text-dark me-1"></i>
-                            <span class="fw-semibold">215 – CRM Retención</span>
-                          </td>
-                          <td class="text-end text-dark" style="font-size:.78rem;">750,000</td>
-                          <td></td>
-                        </tr>
-
-                        <!-- CeCo 109220 · División: Estrategia (agotado) -->
+                        <!-- CeCo 109220 · Sin disponible -->
                         <tr class="ceco-row ceco-group" data-divs="Estrategia" style="border-top:1px solid #dee2e6; opacity:.7;">
                           <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
                               <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" disabled="">
-                              <i class="bi bi-chevron-right text-dark me-2 flex-shrink-0" style="font-size:.75rem;"></i>
                               <i class="bi bi-building me-2 flex-shrink-0 text-danger"></i>
                               109220 – PUBLICIDAD CONECTIVIDAD
                               <span class="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25 ms-2" style="font-size:.62rem;">Sin disponible</span>
+                              <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 ms-1" style="font-size:.62rem;">Estrategia</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">500,000</td>
-                          <td class="text-end fw-bold text-danger">0</td>
                         </tr>
-
-                        <!-- CeCo 330100 · División: Sin División -->
-                        <tr class="ceco-row ceco-group" data-divs="Sin División" id="tr-ceco4" style="border-top:2px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark" onclick="toggleCeco('ceco4')">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco4">
-                              <i class="bi bi-chevron-down text-primary me-2 flex-shrink-0" id="ico-ceco4" style="font-size:.75rem;"></i>
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              330100 – TOTALPLAY PUBLICIDAD
-                            </div>
-                          </td>
-                          <td class="text-end fw-bold text-dark">600,000</td>
-                          <td class="text-end fw-bold text-dark">600,000</td>
-                        </tr>
-                        <tr class="ceco-child-ceco4 child-ceco4" style="background:rgb(248,249,255);">
-                          <td class="ps-5 text-dark" style="font-size:.78rem;" onclick="toggleCampana('cu-ceco4-A', this)">
-                            <i class="bi bi-chevron-right me-2 text-dark" style="font-size:.65rem;"></i>
-                            <i class="bi bi-tag text-dark me-1"></i>
-                            <span class="fw-semibold">502 – Campaña Fibra Óptica</span>
-                          </td>
-                          <td class="text-end text-dark" style="font-size:.78rem;">600,000</td>
-                          <td></td>
-                        </tr>
-                        <tr class="ceco-child-ceco4 cu-ceco4-A d-none" style="background:#f0f4ff;">
-                          <td class="text-dark" style="font-size:.75rem; padding-left:5rem;">
-                            <i class="bi bi-dot me-1"></i>609028 – Pub. Internet &nbsp;<span class="text-dark" style="font-size:.68rem;">| Proy: 30011 – Fibra 2025</span>
-                          </td>
-                          <td class="text-end text-dark" style="font-size:.75rem;">600,000</td>
-                          <td></td>
-                        </tr>
-
-                        <tr class="ceco-row ceco-group" data-divs="Marca" style="border-top:1px solid #dee2e6;">
+                        <tr class="ceco-row ceco-group" data-divs="Estrategia" id="tr-ceco30" style="border-top:1px solid #dee2e6;">
                           <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco10">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              100902 – MARCA INSTITUCIONAL
-                            </div>
-                          </td>
-                          <td class="text-end fw-bold text-dark">1,500,000</td>
-                          <td class="text-end fw-bold text-success">1,500,000</td>
-                        </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Marca" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco11">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              100903 – PUBLICIDAD MASIVA
-                            </div>
-                          </td>
-                          <td class="text-end fw-bold text-dark">980,000</td>
-                          <td class="text-end fw-bold text-success">980,000</td>
-                        </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Marca" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco12">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              100904 – PATROCINIOS DEPORTIVOS
-                            </div>
-                          </td>
-                          <td class="text-end fw-bold text-dark">1,200,000</td>
-                          <td class="text-end fw-bold text-success">750,000</td>
-                        </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Marca" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco13">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              100905 – BRANDING DIGITAL
-                            </div>
-                          </td>
-                          <td class="text-end fw-bold text-dark">640,000</td>
-                          <td class="text-end fw-bold text-success">640,000</td>
-                        </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Oferteo" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco20">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              291375 – PROMOCIONES RETAIL
-                            </div>
-                          </td>
-                          <td class="text-end fw-bold text-dark">850,000</td>
-                          <td class="text-end fw-bold text-success">850,000</td>
-                        </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Oferteo" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco21">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              291376 – OFERTAS TEMPORADA
-                            </div>
-                          </td>
-                          <td class="text-end fw-bold text-dark">1,100,000</td>
-                          <td class="text-end fw-bold text-success">600,000</td>
-                        </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Oferteo" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco22">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              291377 – MKT PROMOCIONAL
-                            </div>
-                          </td>
-                          <td class="text-end fw-bold text-dark">700,000</td>
-                          <td class="text-end fw-bold text-success">700,000</td>
-                        </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Oferteo" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco23">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              291378 – CUPONES Y DESCUENTOS
-                            </div>
-                          </td>
-                          <td class="text-end fw-bold text-dark">450,000</td>
-                          <td class="text-end fw-bold text-success">450,000</td>
-                        </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Estrategia" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco30">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco30">
                               <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
                               182311 – INTELIGENCIA DE MERCADO
+                              <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 ms-2" style="font-size:.62rem;">Estrategia</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">900,000</td>
-                          <td class="text-end fw-bold text-success">900,000</td>
                         </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Estrategia" style="border-top:1px solid #dee2e6;">
+                        <tr class="ceco-row ceco-group" data-divs="Estrategia" id="tr-ceco31" style="border-top:1px solid #dee2e6;">
                           <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco31">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco31">
                               <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
                               182312 – ANALÍTICA COMERCIAL
+                              <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 ms-2" style="font-size:.62rem;">Estrategia</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">1,050,000</td>
-                          <td class="text-end fw-bold text-success">500,000</td>
                         </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Estrategia" style="border-top:1px solid #dee2e6;">
+                        <tr class="ceco-row ceco-group" data-divs="Estrategia" id="tr-ceco32" style="border-top:1px solid #dee2e6;">
                           <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco32">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco32">
                               <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
                               182313 – PLANEACIÓN ESTRATÉGICA
+                              <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 ms-2" style="font-size:.62rem;">Estrategia</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">680,000</td>
-                          <td class="text-end fw-bold text-success">680,000</td>
                         </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Sin División" style="border-top:1px solid #dee2e6;">
+
+                        <!-- Sin División -->
+                        <tr class="ceco-row ceco-group" data-divs="Sin División" id="tr-ceco4" style="border-top:2px solid #dee2e6;">
                           <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco40">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco4">
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              330100 – TOTALPLAY PUBLICIDAD
+                              <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 ms-2" style="font-size:.62rem;">Sin División</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Sin División" id="tr-ceco40" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco40">
                               <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
                               330101 – TOTALPLAY INSTITUCIONAL
+                              <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 ms-2" style="font-size:.62rem;">Sin División</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">720,000</td>
-                          <td class="text-end fw-bold text-success">720,000</td>
                         </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Sin División" style="border-top:1px solid #dee2e6;">
+                        <tr class="ceco-row ceco-group" data-divs="Sin División" id="tr-ceco41" style="border-top:1px solid #dee2e6;">
                           <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco41">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco41">
                               <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
                               330102 – CORPORATIVO GENERAL
+                              <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 ms-2" style="font-size:.62rem;">Sin División</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">1,300,000</td>
-                          <td class="text-end fw-bold text-success">900,000</td>
                         </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Sin División" style="border-top:1px solid #dee2e6;">
+                        <tr class="ceco-row ceco-group" data-divs="Sin División" id="tr-ceco42" style="border-top:1px solid #dee2e6;">
                           <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco42">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco42">
                               <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
                               330103 – COMUNICACIÓN INTERNA
+                              <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 ms-2" style="font-size:.62rem;">Sin División</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">500,000</td>
-                          <td class="text-end fw-bold text-success">500,000</td>
                         </tr>
-                        <tr class="ceco-row ceco-group" data-divs="Sin División" style="border-top:1px solid #dee2e6;">
+                        <tr class="ceco-row ceco-group" data-divs="Sin División" id="tr-ceco43" style="border-top:1px solid #dee2e6;">
                           <td class="ps-3 fw-bold text-dark">
                             <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco43">
-                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco43">
                               <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
                               330104 – RESPONSABILIDAD SOCIAL
+                              <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 ms-2" style="font-size:.62rem;">Sin División</span>
                             </div>
                           </td>
-                          <td class="text-end fw-bold text-dark">400,000</td>
-                          <td class="text-end fw-bold text-success">400,000</td>
                         </tr>
                       </tbody>
                     </table>
