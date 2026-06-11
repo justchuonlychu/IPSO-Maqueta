@@ -25,6 +25,11 @@
   <link href="assets/css/minimal-theme.css" rel="stylesheet">
   <link href="assets/css/shadow-theme.css" rel="stylesheet">
 
+  <style>
+    .x-small { font-size: .72rem; }
+    /* Compensa el sticky header para que el top-header de la app no tape el sticky card */
+    #headerSolicitud { top: 60px; }
+  </style>
 </head>
 
 <body class="pace-done" style="">
@@ -1013,37 +1018,90 @@
       </div>
     </div>
 
-    <div class="card shadow-sm border-0">
-      <div class="card-body">
+    <!-- Encabezado sticky: permanece visible al hacer scroll en el contenido de las pestañas -->
+    <div id="headerSolicitud" class="card shadow-sm border-0 mb-0" style="position:sticky; top:0; z-index:100;">
+      <div class="card-body pb-0">
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Fila 1: Folio / meta / regresar -->
+        <div class="d-flex justify-content-between align-items-start mb-3">
           <div>
-            <h5 class="mb-0 text-primary fw-bold">Autorización de Solicitud de Gasto</h5>
-            <div class="d-flex align-items-center flex-wrap gap-2 mt-1">
-              <small class="text-muted fw-bold">Folio: SOL-26003NMX</small>
-              <span class="text-muted">|</span>
-              <small class="text-muted"><i class="bi bi-calendar-event me-1"></i>Enviada: 27 Mar 2026</small>
-              <span class="text-muted">|</span>
-              <small class="text-muted"><i class="bi bi-person me-1"></i>Solicitante: Carlos Ruiz</small>
-              <span class="text-muted">|</span>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <h5 class="mb-0 text-primary fw-bold">SOL-26003NMX</h5>
               <span class="badge bg-info-subtle text-info border border-info-subtle text-uppercase"
-                style="font-size: 0.7rem;">Pendiente de autorizar</span>
+                style="font-size: 0.68rem;">Pendiente de autorizar</span>
+              <span class="badge bg-primary-subtle text-primary border border-primary-subtle"
+                style="font-size: 0.68rem;"><i class="bi bi-shield-check me-1"></i>Autorizador N1 — Marketing</span>
+            </div>
+            <div class="d-flex align-items-center flex-wrap gap-3 mt-1">
+              <small class="text-muted"><i class="bi bi-tag me-1"></i>Campaña Ordinaria · <strong>Lanzamiento App 2026</strong></small>
+              <small class="text-muted"><i class="bi bi-calendar-event me-1"></i>Enviada: 27 Mar 2026</small>
+              <small class="text-muted"><i class="bi bi-person me-1"></i>Solicitante: Carlos Ruiz</small>
+              <small class="text-muted"><i class="bi bi-clock me-1"></i>Vigencia: 01 Jul – 30 Sep 2026</small>
             </div>
           </div>
-          <div class="d-flex gap-2">
-            <a href="Autorizaciones.html" class="btn btn-outline-secondary shadow-sm">
-              <i class="bi bi-arrow-left me-1"></i> Regresar a la Bandeja
-            </a>
+          <a href="Autorizaciones.html" class="btn btn-outline-secondary btn-sm shadow-sm flex-shrink-0">
+            <i class="bi bi-arrow-left me-1"></i> Regresar a la Bandeja
+          </a>
+        </div>
+
+        <!-- Fila 2: Métricas de control + botones de acción -->
+        <div class="d-flex align-items-stretch gap-3 pb-3 flex-wrap">
+
+          <!-- Límite de Carga Global -->
+          <div class="border rounded px-3 py-2 flex-fill" style="min-width:160px; background:#f8f9fa;">
+            <div class="text-muted x-small text-uppercase fw-bold mb-1">Límite de Carga Global</div>
+            <div class="fw-bold text-dark fs-6 mb-1">$18,500,000</div>
+            <div class="d-flex align-items-center gap-2">
+              <div class="progress flex-grow-1" style="height:5px;">
+                <div class="progress-bar bg-secondary" style="width:100%;"></div>
+              </div>
+              <span class="x-small text-muted fw-bold">100%</span>
+            </div>
+          </div>
+
+          <!-- Asignado Total -->
+          <div class="border rounded px-3 py-2 flex-fill border-warning" style="min-width:160px; background:#fffdf2;">
+            <div class="text-warning x-small text-uppercase fw-bold mb-1">Asignado en esta Solicitud</div>
+            <div class="fw-bold text-dark fs-6 mb-1">$15,000,000</div>
+            <div class="d-flex align-items-center gap-2">
+              <div class="progress flex-grow-1" style="height:5px;">
+                <div class="progress-bar bg-warning" style="width:81%;"></div>
+              </div>
+              <span class="x-small text-warning fw-bold">81.1%</span>
+            </div>
+          </div>
+
+          <!-- Disponible Total -->
+          <div class="border rounded px-3 py-2 flex-fill border-success" style="min-width:160px; background:#f2fff5;">
+            <div class="text-success x-small text-uppercase fw-bold mb-1">Disponible si se Aprueba</div>
+            <div class="fw-bold text-dark fs-6 mb-1">$3,500,000</div>
+            <div class="d-flex align-items-center gap-2">
+              <div class="progress flex-grow-1" style="height:5px;">
+                <div class="progress-bar bg-success" style="width:19%;"></div>
+              </div>
+              <span class="x-small text-success fw-bold">18.9%</span>
+            </div>
+          </div>
+
+          <!-- Botones de acción -->
+          <div class="d-flex align-items-center gap-2 flex-shrink-0 ms-auto">
+            <button type="button" class="btn btn-outline-danger btn-sm px-3 shadow-sm" data-bs-toggle="modal"
+              data-bs-target="#modalRechazar">
+              <i class="bi bi-x-octagon me-1"></i> Rechazar
+            </button>
+            <button type="button" class="btn btn-outline-warning btn-sm px-3 shadow-sm text-dark" data-bs-toggle="modal"
+              data-bs-target="#modalAjustes">
+              <i class="bi bi-pencil-square me-1"></i> Solicitar Ajustes
+            </button>
+            <button type="button" class="btn btn-success btn-sm px-4 shadow-sm fw-bold" data-bs-toggle="modal"
+              data-bs-target="#modalAprobar">
+              <i class="bi bi-check2-circle me-1"></i> Aprobar
+            </button>
           </div>
         </div>
 
-        <div class="alert alert-primary d-flex align-items-center border-0 py-2 px-3 mb-4 small">
-          <i class="bi bi-shield-check fs-5 me-2"></i>
-          <span>Esta solicitud se encuentra en tu bandeja como autorizador <strong>Nivel 1 (Marketing)</strong>.
-            Revisa la información y resuelve con Aprobar, Rechazar o Solicitar Ajustes.</span>
-        </div>
-
-        <ul class="nav nav-tabs mb-4 border-bottom" id="solicitudTabs" role="tablist">
+        <!-- Fila 3: Nav tabs (pegados al borde inferior del encabezado) -->
+        <ul class="nav nav-tabs border-bottom-0 mt-1" id="solicitudTabs" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link fw-bold text-primary active" id="detalle-tab" data-bs-toggle="tab"
               data-bs-target="#detalle" type="button" role="tab" aria-selected="true">
@@ -1064,75 +1122,89 @@
             </button>
           </li>
         </ul>
+      </div>
+    </div>
 
+    <!-- Contenido de pestañas (scrollable) -->
+    <div class="card shadow-sm border-0 border-top-0 rounded-top-0">
+      <div class="card-body pt-4">
         <div class="tab-content" id="solicitudTabsContent">
 
           <div class="tab-pane fade active show" id="detalle" role="tabpanel" aria-labelledby="#detalle-tab">
+
+            <!-- Sección 1: Información General -->
             <div class="row align-items-start mb-4">
-              <div class="col-md-7 pe-md-4">
-                <h6 class="fw-bold mb-3 text-dark">1. Información de la Solicitud</h6>
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label small fw-bold text-muted">Tipo de Gasto</label>
-                    <input type="text" class="form-control form-control-sm bg-light text-dark" value="Campaña"
-                      disabled="">
+              <div class="col-md-7 pe-md-5">
+                <p class="text-muted x-small text-uppercase fw-bold mb-3 border-bottom pb-2">Datos generales</p>
+                <div class="row g-0">
+                  <div class="col-5 col-md-4 py-2 border-bottom">
+                    <span class="small text-muted">Tipo de gasto</span>
                   </div>
-                  <div class="col-md-6">
-                    <label class="form-label small fw-bold text-muted">División</label>
-                    <input type="text" class="form-control form-control-sm bg-light text-dark" value="Estrategia"
-                      disabled="">
+                  <div class="col-7 col-md-8 py-2 border-bottom">
+                    <span class="small fw-bold text-dark">Campaña Ordinaria</span>
                   </div>
-                  <div class="col-md-12">
-                    <label class="form-label small fw-bold text-muted">Nombre de la Campaña</label>
-                    <input type="text" class="form-control form-control-sm bg-light text-dark"
-                      value="Lanzamiento App 2026" disabled="">
+
+                  <div class="col-5 col-md-4 py-2 border-bottom">
+                    <span class="small text-muted">División</span>
                   </div>
-                  <div class="col-md-6">
-                    <label class="form-label small fw-bold text-muted">Fecha Inicio</label>
-                    <input type="date" class="form-control form-control-sm bg-light text-dark" value="2026-07-01"
-                      disabled="">
+                  <div class="col-7 col-md-8 py-2 border-bottom">
+                    <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">Estrategia</span>
                   </div>
-                  <div class="col-md-6">
-                    <label class="form-label small fw-bold text-muted">Fecha Fin</label>
-                    <input type="date" class="form-control form-control-sm bg-light text-dark" value="2026-09-30"
-                      disabled="">
+
+                  <div class="col-5 col-md-4 py-2 border-bottom">
+                    <span class="small text-muted">Nombre</span>
                   </div>
-                  <div class="col-md-12">
-                    <label class="form-label small fw-bold text-muted">Descripción / Objetivo</label>
-                    <textarea class="form-control form-control-sm bg-light text-dark" rows="2"
-                      disabled="">Lanzamiento nacional de la nueva aplicación móvil. Incluye medios digitales, influencers y OOH.</textarea>
+                  <div class="col-7 col-md-8 py-2 border-bottom">
+                    <span class="small fw-bold text-dark">Lanzamiento App 2026</span>
+                  </div>
+
+                  <div class="col-5 col-md-4 py-2 border-bottom">
+                    <span class="small text-muted">Vigencia</span>
+                  </div>
+                  <div class="col-7 col-md-8 py-2 border-bottom">
+                    <span class="small text-dark">01 Jul 2026 — 30 Sep 2026</span>
+                  </div>
+
+                  <div class="col-5 col-md-4 py-2">
+                    <span class="small text-muted">Descripción / Objetivo</span>
+                  </div>
+                  <div class="col-7 col-md-8 py-2">
+                    <span class="small text-dark">Lanzamiento nacional de la nueva aplicación móvil. Incluye medios digitales, influencers y OOH.</span>
                   </div>
                 </div>
               </div>
 
               <div class="col-md-5 border-start ps-md-4">
-                <h6 class="fw-bold mb-3 text-dark">2. Centros de Costos Involucrados</h6>
-                <div class="border rounded p-3 bg-light" style="height: 180px; overflow-y: auto;">
-                  <div class="d-flex align-items-center mb-2">
-                    <i class="bi bi-check2-square text-success me-2"></i>
-                    <span class="small fw-bold text-dark">291374 - MKT DIGITAL</span>
+                <p class="text-muted x-small text-uppercase fw-bold mb-3 border-bottom pb-2">Centros de costos involucrados</p>
+                <div class="d-flex flex-column gap-2">
+                  <div class="d-flex align-items-center justify-content-between rounded px-3 py-2" style="background:#f0fdf4; border:1px solid #bbf7d0;">
+                    <div class="d-flex align-items-center gap-2">
+                      <i class="bi bi-building text-success"></i>
+                      <div>
+                        <div class="small fw-bold text-dark">291374 — MKT DIGITAL</div>
+                        <div class="x-small text-muted">División Estrategia</div>
+                      </div>
+                    </div>
+                    <span class="fw-bold text-success small">$12,000,000</span>
                   </div>
-                  <div class="d-flex align-items-center mb-2">
-                    <i class="bi bi-check2-square text-success me-2"></i>
-                    <span class="small fw-bold text-dark">239729 - COBRANZA</span>
+                  <div class="d-flex align-items-center justify-content-between rounded px-3 py-2" style="background:#f0fdf4; border:1px solid #bbf7d0;">
+                    <div class="d-flex align-items-center gap-2">
+                      <i class="bi bi-building text-success"></i>
+                      <div>
+                        <div class="small fw-bold text-dark">239729 — COBRANZA</div>
+                        <div class="x-small text-muted">División Estrategia</div>
+                      </div>
+                    </div>
+                    <span class="fw-bold text-success small">$3,000,000</span>
                   </div>
                 </div>
                 <div class="text-end mt-2">
-                  <span class="badge bg-secondary rounded-pill">2 Seleccionados</span>
+                  <span class="badge bg-secondary-subtle text-secondary border">2 centros de costo</span>
                 </div>
               </div>
             </div>
 
-            <div
-              class="alert bg-light border border-secondary-subtle d-flex justify-content-between align-items-center mb-4">
-              <div>
-                <i class="bi bi-info-circle-fill text-secondary me-2"></i>
-                <span class="small text-muted">Tope disponible global al momento de la solicitud</span>
-              </div>
-              <h5 class="mb-0 text-muted fw-bold">18,500,000</h5>
-            </div>
-
-            <h6 class="fw-bold mb-3 text-dark">3. Asignación de Presupuesto</h6>
+            <p class="text-muted x-small text-uppercase fw-bold mb-3 border-bottom pb-2">Asignación de presupuesto</p>
 
             <div class="table-responsive mb-4 border rounded">
               <table class="table table-bordered table-sm align-middle text-center mb-0" style="font-size: 0.85rem;">
@@ -1197,38 +1269,12 @@
               </table>
             </div>
 
-            <div class="row align-items-center mt-3 mb-4">
-              <div class="col-md-6 offset-md-6">
-                <div class="card border-0 bg-light shadow-sm">
-                  <div class="card-body py-2 px-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="text-muted small fw-bold text-uppercase">Total Global Solicitado</div>
-                      <div class="d-flex align-items-center">
-                        <span class="badge bg-white text-dark border me-2 small">MXN</span>
-                        <h4 class="mb-0 fw-bold text-primary">15,000,000</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <!-- Total de la solicitud (resumen al pie de la distribución) -->
+            <div class="d-flex justify-content-end mt-3 mb-2">
+              <div class="border rounded px-4 py-2 text-end" style="background:#f8f9fa; min-width:220px;">
+                <div class="x-small text-muted text-uppercase fw-bold">Total de esta solicitud</div>
+                <div class="fw-bold text-primary fs-5">$15,000,000 <span class="x-small text-muted fw-normal">MXN</span></div>
               </div>
-            </div>
-
-            <hr class="my-4">
-            <div class="d-flex justify-content-end align-items-center gap-2 mb-2">
-              <button type="button" class="btn btn-outline-danger px-4 shadow-sm" data-bs-toggle="modal"
-                data-bs-target="#modalRechazar">
-                <i class="bi bi-x-octagon me-1"></i> Rechazar
-              </button>
-
-              <button type="button" class="btn btn-outline-warning px-4 shadow-sm text-dark" data-bs-toggle="modal"
-                data-bs-target="#modalAjustes">
-                <i class="bi bi-pencil-square me-1"></i> Solicitar Ajustes
-              </button>
-
-              <button type="button" class="btn btn-success px-5 shadow-sm" data-bs-toggle="modal"
-                data-bs-target="#modalAprobar">
-                Aprobar Solicitud <i class="bi bi-check2-circle ms-1"></i>
-              </button>
             </div>
 
           </div>
