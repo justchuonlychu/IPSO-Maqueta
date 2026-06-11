@@ -454,6 +454,37 @@
       </div>
     </div><!-- /stepper header -->
 
+      <!-- ── Control de Carga (barra horizontal fija) ── -->
+      <div class="bg-white border-bottom px-4 py-3 sticky-top" id="barraControlCarga" style="top:0; z-index:20;">
+        <div class="d-flex flex-wrap align-items-center gap-4">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-pie-chart text-primary"></i>
+            <span class="fw-bold text-dark" style="font-size:.9rem;">Control de Carga</span>
+          </div>
+          <div class="border-start ps-4">
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Límite de Carga</div>
+            <div class="fw-bold text-dark">2,100,000</div>
+          </div>
+          <div class="border-start ps-4">
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Total Asignado</div>
+            <div class="fw-bold text-primary" id="panelAsignado">0</div>
+          </div>
+          <div class="border-start ps-4">
+            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Disponible</div>
+            <div class="fw-bold text-success" id="panelDisponible">2,100,000</div>
+          </div>
+          <div class="border-start ps-4 flex-grow-1" style="min-width:220px;">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="small text-muted">% Consumo Global</span>
+              <span class="badge fw-bold border bg-success bg-opacity-10 text-success border-success border-opacity-25" id="badgePct">0.0%</span>
+            </div>
+            <div class="progress" style="height:8px; border-radius:6px;">
+              <div class="progress-bar bg-success" id="barraGlobal" style="width:0%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="card-body p-4" style="background:#f3f4f6;">
 
         <!-- ════════════════════════════════════════
@@ -776,6 +807,186 @@
                           <td></td>
                         </tr>
 
+                        <tr class="ceco-row ceco-group" data-divs="Marca" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco10">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              100902 – MARCA INSTITUCIONAL
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">1,500,000</td>
+                          <td class="text-end fw-bold text-success">1,500,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Marca" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco11">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              100903 – PUBLICIDAD MASIVA
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">980,000</td>
+                          <td class="text-end fw-bold text-success">980,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Marca" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco12">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              100904 – PATROCINIOS DEPORTIVOS
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">1,200,000</td>
+                          <td class="text-end fw-bold text-success">750,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Marca" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco13">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              100905 – BRANDING DIGITAL
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">640,000</td>
+                          <td class="text-end fw-bold text-success">640,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Oferteo" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco20">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              291375 – PROMOCIONES RETAIL
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">850,000</td>
+                          <td class="text-end fw-bold text-success">850,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Oferteo" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco21">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              291376 – OFERTAS TEMPORADA
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">1,100,000</td>
+                          <td class="text-end fw-bold text-success">600,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Oferteo" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco22">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              291377 – MKT PROMOCIONAL
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">700,000</td>
+                          <td class="text-end fw-bold text-success">700,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Oferteo" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco23">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              291378 – CUPONES Y DESCUENTOS
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">450,000</td>
+                          <td class="text-end fw-bold text-success">450,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Estrategia" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco30">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              182311 – INTELIGENCIA DE MERCADO
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">900,000</td>
+                          <td class="text-end fw-bold text-success">900,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Estrategia" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco31">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              182312 – ANALÍTICA COMERCIAL
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">1,050,000</td>
+                          <td class="text-end fw-bold text-success">500,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Estrategia" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco32">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              182313 – PLANEACIÓN ESTRATÉGICA
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">680,000</td>
+                          <td class="text-end fw-bold text-success">680,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Sin División" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco40">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              330101 – TOTALPLAY INSTITUCIONAL
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">720,000</td>
+                          <td class="text-end fw-bold text-success">720,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Sin División" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco41">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              330102 – CORPORATIVO GENERAL
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">1,300,000</td>
+                          <td class="text-end fw-bold text-success">900,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Sin División" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco42">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              330103 – COMUNICACIÓN INTERNA
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">500,000</td>
+                          <td class="text-end fw-bold text-success">500,000</td>
+                        </tr>
+                        <tr class="ceco-row ceco-group" data-divs="Sin División" style="border-top:1px solid #dee2e6;">
+                          <td class="ps-3 fw-bold text-dark">
+                            <div class="d-flex align-items-center">
+                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="event.stopPropagation(); updateCecoCount()" id="chk-ceco43">
+                              <span class="me-2 flex-shrink-0" style="width:.75rem; display:inline-block;"></span>
+                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
+                              330104 – RESPONSABILIDAD SOCIAL
+                            </div>
+                          </td>
+                          <td class="text-end fw-bold text-dark">400,000</td>
+                          <td class="text-end fw-bold text-success">400,000</td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -794,8 +1005,8 @@
         <div id="paso-2" style="display: none;">
           <div class="row g-4 align-items-start">
 
-            <!-- Acordeón por CeCo (col-9) -->
-            <div class="col-lg-9">
+            <!-- Acordeón por CeCo (full width) -->
+            <div class="col-12">
               <div class="card border-0 shadow-sm bg-white">
                 <div class="card-header bg-white border-bottom py-3 px-4">
                   <div class="d-flex justify-content-between align-items-center">
@@ -960,45 +1171,6 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <!-- Panel derecho: Control de Carga Total (col-3) -->
-            <div class="col-lg-3">
-              <div class="card border-0 shadow-sm bg-white sticky-top" style="top:20px;">
-                <div class="card-header bg-white border-bottom py-3 px-4">
-                  <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
-                    <i class="bi bi-pie-chart text-primary"></i>Control de Carga Total
-                  </h6>
-                </div>
-                <div class="card-body p-4">
-
-                  <div class="mb-4">
-                    <div class="d-flex justify-content-between align-items-center mb-1">
-                      <span class="small text-muted">% Consumo Global</span>
-                      <span class="badge fw-bold border bg-success bg-opacity-10 text-success border-success border-opacity-25" id="badgePct">0.0%</span>
-                    </div>
-                    <div class="progress" style="height:10px; border-radius:6px;">
-                      <div class="progress-bar bg-success" id="barraGlobal" style="width: 0%;"></div>
-                    </div>
-                  </div>
-
-                  <div class="border border-secondary border-opacity-25 rounded p-3" style="background:#f8f9fa;">
-                    <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
-                      <span class="small fw-semibold text-dark">Límite de Carga</span>
-                      <span class="fw-bold text-dark">2,100,000</span>
-                    </div>
-                    <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
-                      <span class="small fw-semibold text-dark">Total Asignado</span>
-                      <span class="fw-bold text-primary" id="panelAsignado">0</span>
-                    </div>
-                    <div class="d-flex justify-content-between py-2">
-                      <span class="small fw-semibold text-dark">Disponible</span>
-                      <span class="fw-bold text-success" id="panelDisponible">2,100,000</span>
                     </div>
                   </div>
 
