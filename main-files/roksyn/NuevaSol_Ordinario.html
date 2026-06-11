@@ -377,15 +377,12 @@
         </nav>
       </div>
     <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-primary btn-sm shadow-sm" onclick="confirmarAccion('cancelar')">
+        <button class="btn btn-outline-secondary btn-sm shadow-sm" onclick="confirmarAccion('cancelar')">
            Cancelar
-        </button><button class="btn btn-warning btn-sm fw-bold text-dark shadow-sm" onclick="confirmarAccion('borrador')">
+        </button>
+        <button class="btn btn-warning btn-sm fw-bold text-dark shadow-sm" onclick="confirmarAccion('borrador')">
           <i class="bi bi-floppy me-1"></i> Guardar borrador
         </button>
-        <button class="btn btn-success btn-sm fw-bold shadow-sm" onclick="confirmarAccion('enviar')" disabled="">
-          <i class="bi bi-send-fill me-1"></i> Enviar a autorización
-        </button>
-        
       </div></div>
 
     <!-- Card de identificación de la solicitud -->
@@ -421,38 +418,14 @@
           <div class="d-flex align-items-center flex-shrink-0">
             <span class="step-circle pending" id="sc-2">2</span>
             <div class="ms-2 d-none d-md-block">
-              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Asignación de Presupuesto</div>
-              <div class="text-muted" style="font-size:0.7rem;">Distribución mensual</div>
+              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Confirmación</div>
+              <div class="text-muted" style="font-size:0.7rem;">Revisión y envío</div>
             </div>
           </div>
 
         </div>
       </div>
-      <div class="card shadow-sm border-0 mb-3">
-      <div class="card-body px-4 py-3">
-        <div class="d-flex flex-wrap align-items-center gap-4">
-          <div>
-            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Categoría</div>
-            <div class="fw-bold text-dark">Presupuesto Ordinario</div>
-          </div>
-          <div class="border-start ps-4">
-            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Folio</div>
-            <div class="text-muted fst-italic" style="font-size:.85rem;">Se asignará al guardar</div>
-          </div>
-          <div class="border-start ps-4">
-            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Ejercicio Activo
-            </div>
-            <div><span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">2026</span>
-            </div>
-          </div>
-          <div class="border-start ps-4">
-            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Estatus</div>
-            <div><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2 py-1">Nueva</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div><!-- /stepper header -->
+      <!-- /stepper header -->
 
       <!-- ── Control de Carga (barra horizontal fija) ── -->
       <div class="bg-white border-bottom px-4 py-3 sticky-top" id="barraControlCarga" style="top:0; z-index:20;">
@@ -613,9 +586,7 @@
                         <i class="bi bi-check2-square me-1"></i><span id="cecoCount">0</span> seleccionado(s)
                       </span>
                     </h6>
-                    <button class="btn btn-primary fw-bold px-4 shadow-sm btn-sm" onclick="irPaso(2)">
-                      Siguiente <i class="bi bi-arrow-right ms-1"></i>
-                    </button>
+                    <span class="small text-muted fst-italic" style="font-size:.75rem;">Selecciona los CeCos y distribuye presupuesto abajo</span>
                   </div>
 
                   <!-- Buscador -->
@@ -859,190 +830,245 @@
             </div>
 
           </div>
-        </div><!-- /paso-1 -->
 
+          <!-- ── Sección distribución inline (visible al marcar CeCos) ── -->
+          <div id="distribucion-wrap" style="display:none;" class="mt-4 border-top pt-4">
+            <h6 class="fw-bold text-dark mb-3 d-flex align-items-center gap-2">
+              <i class="bi bi-calendar3 text-primary"></i>Asignación de Presupuesto
+            </h6>
+            <div class="accordion accordion-flush border border-secondary border-opacity-25 rounded shadow-sm bg-white mb-4" id="accPresupuesto">
 
-        <!-- ════════════════════════════════════════
-             PASO 2 – Asignación de Presupuesto
-        ════════════════════════════════════════ -->
-        <div id="paso-2" style="display: none;">
-          <div class="row g-4 align-items-start">
-
-            <!-- Acordeón por CeCo (full width) -->
-            <div class="col-12">
-              <div class="card border-0 shadow-sm bg-white">
-                <div class="card-header bg-white border-bottom py-3 px-4">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
-                      <i class="bi bi-calendar3 text-primary"></i>Asignación de Presupuesto
-                    </h6>
-                    <button class="btn btn-sm btn-dark fw-semibold px-4" onclick="irPaso(1)">
-                      <i class="bi bi-arrow-left me-1"></i>Anterior
-                    </button>
+              <!-- ── CeCo 100901 ── -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button py-3 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#dist-100901" aria-expanded="true">
+                    <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
+                      <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-primary px-2">100901</span>
+                        <span class="fw-bold text-dark">DIR GRAL CONECTIVIDAD</span>
+                      </div>
+                    </div>
+                  </button>
+                </h2>
+                <div id="dist-100901" class="accordion-collapse collapse show">
+                  <div class="accordion-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tbl-100901">
+                        <thead class="table-light">
+                          <tr>
+                            <th style="width:32px;"></th>
+                            <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
+                            <th style="min-width:65px;">Ene</th><th style="min-width:65px;">Feb</th><th style="min-width:65px;">Mar</th><th style="min-width:65px;">Abr</th><th style="min-width:65px;">May</th><th style="min-width:65px;">Jun</th><th style="min-width:65px;">Jul</th><th style="min-width:65px;">Ago</th><th style="min-width:65px;">Sep</th><th style="min-width:65px;">Oct</th><th style="min-width:65px;">Nov</th><th style="min-width:65px;">Dic</th>
+                            <th class="bg-light text-dark" style="min-width:95px;">Total Asignado</th>
+                          </tr>
+                        </thead>
+                        <tbody id="body-100901">
+                          <tr class="fila-dato">
+                            <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
+                            <td><select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('100901')"><option value="">— Cuenta —</option><option>609011 – Televisión</option><option>609023 – Promociones</option><option>609028 – Pub. Digital</option></select></td>
+                            <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
+                            <td class="fw-bold text-dark bg-light fila-total">0</td>
+                          </tr>
+                        </tbody>
+                        <tfoot><tr><td colspan="15" class="text-start ps-2 py-2"><button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('body-100901','100901')" style="font-size:.78rem;"><i class="bi bi-plus-circle me-1"></i>Agregar línea</button></td></tr></tfoot>
+                      </table>
+                    </div>
                   </div>
                 </div>
+              </div>
 
-                <div class="card-body p-4">
-                  <div class="accordion accordion-flush border border-secondary border-opacity-25 rounded shadow-sm bg-white mb-4" id="accPresupuesto">
-
-                    <!-- ── CeCo 100901 ── -->
-                    <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button py-3 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#dist-100901" aria-expanded="true">
-                          <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
-                            <div class="d-flex align-items-center gap-2">
-                              <span class="badge bg-primary px-2">100901</span>
-                              <span class="fw-bold text-dark">DIR GRAL CONECTIVIDAD</span>
-                            </div>
-                          </div>
-                        </button>
-                      </h2>
-                      <div id="dist-100901" class="accordion-collapse collapse show" style="">
-                        <div class="accordion-body p-0">
-                          <div class="table-responsive">
-                            <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tbl-100901">
-                              <thead class="table-light">
-                                <tr>
-                                  <th style="width:32px;"></th>
-                                  <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
-                                  
-                                  <th style="min-width:65px;">Ene</th>
-                                  <th style="min-width:65px;">Feb</th>
-                                  <th style="min-width:65px;">Mar</th>
-                                  <th style="min-width:65px;">Abr</th>
-                                  <th style="min-width:65px;">May</th>
-                                  <th style="min-width:65px;">Jun</th>
-                                  <th style="min-width:65px;">Jul</th>
-                                  <th style="min-width:65px;">Ago</th>
-                                  <th style="min-width:65px;">Sep</th>
-                                  <th style="min-width:65px;">Oct</th>
-                                  <th style="min-width:65px;">Nov</th>
-                                  <th style="min-width:65px;">Dic</th>
-                                  <th class="bg-light text-dark" style="min-width:95px;">Total Asignado</th>
-                                </tr>
-                              </thead>
-                              <tbody id="body-100901"><tr class="fila-dato">
-        <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
-        <td><select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('100901')">
-          <option value="">— Cuenta —</option>
-          <option>609011 – Televisión</option><option>609023 – Promociones</option><option>609028 – Pub. Digital</option>
-        </select></td>
-        
-        <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('100901')"></td>
-        <td class="fw-bold text-dark bg-light fila-total">0</td></tr></tbody>
-                              <tfoot>
-                                <tr>
-                                  <td colspan="16" class="text-start ps-2 py-2">
-                                    <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('body-100901','100901')" style="font-size:.78rem;">
-                                      <i class="bi bi-plus-circle me-1"></i>Agregar línea
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tfoot>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- ── CeCo 291374 ── -->
-                    <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button py-3 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#dist-291374" aria-expanded="true">
-                          <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
-                            <div class="d-flex align-items-center gap-2">
-                              <span class="badge bg-primary px-2">291374</span>
-                              <span class="fw-bold text-dark">DIR MKT DIGITAL</span>
-                            </div>
-                          </div>
-                        </button>
-                      </h2>
-                      <div id="dist-291374" class="accordion-collapse collapse show" style="">
-                        <div class="accordion-body p-0">
-                          <div class="table-responsive">
-                            <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tbl-291374">
-                              <thead class="table-light">
-                                <tr>
-                                  <th style="width:32px;"></th>
-                                  <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
-                                  
-                                  <th style="min-width:65px;">Ene</th>
-                                  <th style="min-width:65px;">Feb</th>
-                                  <th style="min-width:65px;">Mar</th>
-                                  <th style="min-width:65px;">Abr</th>
-                                  <th style="min-width:65px;">May</th>
-                                  <th style="min-width:65px;">Jun</th>
-                                  <th style="min-width:65px;">Jul</th>
-                                  <th style="min-width:65px;">Ago</th>
-                                  <th style="min-width:65px;">Sep</th>
-                                  <th style="min-width:65px;">Oct</th>
-                                  <th style="min-width:65px;">Nov</th>
-                                  <th style="min-width:65px;">Dic</th>
-                                  <th class="bg-light text-dark" style="min-width:95px;">Total Asignado</th>
-                                </tr>
-                              </thead>
-                              <tbody id="body-291374"><tr class="fila-dato">
-        <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
-        <td><select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('291374')">
-          <option value="">— Cuenta —</option>
-          <option>609011 – Televisión</option><option>609023 – Promociones</option><option>609028 – Pub. Digital</option>
-        </select></td>
-        
-        <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
-        <td class="fw-bold text-dark bg-light fila-total">0</td></tr></tbody>
-                              <tfoot>
-                                <tr>
-                                  <td colspan="16" class="text-start ps-2 py-2">
-                                    <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('body-291374','291374')" style="font-size:.78rem;">
-                                      <i class="bi bi-plus-circle me-1"></i>Agregar línea
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tfoot>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div><!-- /accordion -->
-
-                  <!-- Bloque Excedente -->
-                  <div id="bloqueExcedente" class="card border border-danger radius-10 shadow-sm mb-3" style="display: none;">
-                    <div class="card-header bg-danger bg-opacity-10 border-bottom border-danger border-opacity-25 py-2 px-4">
+              <!-- ── CeCo 291374 ── -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button py-3 bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dist-291374" aria-expanded="false">
+                    <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
                       <div class="d-flex align-items-center gap-2">
-                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>
-                        <span class="fw-bold text-danger" style="font-size:.88rem;">Solicitud de Excedente
-                          Requerida</span>
-                        <span class="badge bg-danger ms-auto px-2 py-1" style="font-size:.65rem;">Obligatorio para
-                          continuar</span>
+                        <span class="badge bg-primary px-2">291374</span>
+                        <span class="fw-bold text-dark">DIR MKT DIGITAL</span>
                       </div>
                     </div>
-                    <div class="card-body p-3">
-                      <p class="small text-dark mb-3">Los importes superan el Límite de Carga total. Captura la
-                        justificación y adjunta evidencia para continuar al flujo de firmas.</p>
-                      <div class="row g-3">
-                        <div class="col-md-7">
-                          <label class="form-label small fw-bold text-dark">Motivo / Justificación <span class="text-danger">*</span></label>
-                          <textarea class="form-control form-control-sm border-danger shadow-none" rows="2" placeholder="Mínimo 50 caracteres..."></textarea>
-                        </div>
-                        <div class="col-md-5">
-                          <label class="form-label small fw-bold text-dark">Evidencia Documental <span class="text-danger">*</span></label>
-                          <div class="border border-danger border-opacity-50 rounded p-2 text-center bg-danger bg-opacity-10" style="cursor:pointer;">
-                            <i class="bi bi-cloud-upload text-danger"></i>
-                            <p class="mb-0 text-danger" style="font-size:.72rem;">PDF, PNG, JPG — Máx. 10 MB</p>
-                          </div>
-                        </div>
-                      </div>
+                  </button>
+                </h2>
+                <div id="dist-291374" class="accordion-collapse collapse">
+                  <div class="accordion-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tbl-291374">
+                        <thead class="table-light">
+                          <tr>
+                            <th style="width:32px;"></th>
+                            <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
+                            <th style="min-width:65px;">Ene</th><th style="min-width:65px;">Feb</th><th style="min-width:65px;">Mar</th><th style="min-width:65px;">Abr</th><th style="min-width:65px;">May</th><th style="min-width:65px;">Jun</th><th style="min-width:65px;">Jul</th><th style="min-width:65px;">Ago</th><th style="min-width:65px;">Sep</th><th style="min-width:65px;">Oct</th><th style="min-width:65px;">Nov</th><th style="min-width:65px;">Dic</th>
+                            <th class="bg-light text-dark" style="min-width:95px;">Total Asignado</th>
+                          </tr>
+                        </thead>
+                        <tbody id="body-291374">
+                          <tr class="fila-dato">
+                            <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
+                            <td><select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('291374')"><option value="">— Cuenta —</option><option>609011 – Televisión</option><option>609023 – Promociones</option><option>609028 – Pub. Digital</option></select></td>
+                            <td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td><td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('291374')"></td>
+                            <td class="fw-bold text-dark bg-light fila-total">0</td>
+                          </tr>
+                        </tbody>
+                        <tfoot><tr><td colspan="15" class="text-start ps-2 py-2"><button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('body-291374','291374')" style="font-size:.78rem;"><i class="bi bi-plus-circle me-1"></i>Agregar línea</button></td></tr></tfoot>
+                      </table>
                     </div>
                   </div>
+                </div>
+              </div>
 
+            </div><!-- /accordion -->
+
+            <!-- Bloque Excedente -->
+            <div id="bloqueExcedente" class="card border border-danger radius-10 shadow-sm mb-4" style="display:none;">
+              <div class="card-header bg-danger bg-opacity-10 border-bottom border-danger border-opacity-25 py-2 px-4">
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                  <span class="fw-bold text-danger" style="font-size:.88rem;">Solicitud de Excedente Requerida</span>
+                  <span class="badge bg-danger ms-auto px-2 py-1" style="font-size:.65rem;">Obligatorio para continuar</span>
+                </div>
+              </div>
+              <div class="card-body p-3">
+                <p class="small text-dark mb-3">Los importes superan el Límite de Carga total. Captura la justificación y adjunta evidencia para continuar al flujo de firmas.</p>
+                <div class="row g-3">
+                  <div class="col-md-7">
+                    <label class="form-label small fw-bold text-dark">Motivo / Justificación <span class="text-danger">*</span></label>
+                    <textarea class="form-control form-control-sm border-danger shadow-none" rows="2" placeholder="Mínimo 50 caracteres..."></textarea>
+                  </div>
+                  <div class="col-md-5">
+                    <label class="form-label small fw-bold text-dark">Evidencia Documental <span class="text-danger">*</span></label>
+                    <div class="border border-danger border-opacity-50 rounded p-2 text-center bg-danger bg-opacity-10" style="cursor:pointer;">
+                      <i class="bi bi-cloud-upload text-danger"></i>
+                      <p class="mb-0 text-danger" style="font-size:.72rem;">PDF, PNG, JPG — Máx. 10 MB</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
+            <!-- Botón Ir a Confirmación -->
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-primary fw-bold px-5 shadow-sm" onclick="irPaso(2)">
+                Siguiente <i class="bi bi-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div><!-- /distribucion-wrap -->
+
+        </div><!-- /paso-1 -->
+
+
+        <!-- ════════════════════════════════════════
+             PASO 2 – Confirmación
+        ════════════════════════════════════════ -->
+        <div id="paso-2" style="display:none;">
+          <div class="card border-0 shadow-sm bg-white">
+            <div class="card-header bg-white border-bottom py-3 px-4">
+              <div class="d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
+                  <i class="bi bi-clipboard2-check text-primary"></i>Confirmación y Envío
+                </h6>
+                <button class="btn btn-sm btn-outline-secondary fw-semibold px-4" onclick="irPaso(1)">
+                  <i class="bi bi-arrow-left me-1"></i>Regresar a distribución
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-4">
+
+              <!-- Alerta de excedente en confirmación -->
+              <div id="alertaExcedenteConf" class="d-flex align-items-start gap-3 p-3 rounded-3 mb-4" style="background:#fff3cd; border:1px solid #ffc107; display:none !important;">
+                <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0 mt-1"></i>
+                <div>
+                  <div class="fw-bold text-dark mb-1">No es posible enviar la solicitud</div>
+                  <div class="small text-dark">El total asignado en esta solicitud supera el límite de carga global disponible. Regresa a la distribución y ajusta los importes para continuar.</div>
+                </div>
+              </div>
+
+              <!-- Métricas globales -->
+              <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                  <div class="p-3 rounded-3 border" style="background:#f8f9fa;">
+                    <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Límite de carga global</div>
+                    <div class="fw-bold text-dark fs-5">$200,100,000</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="p-3 rounded-3 border" style="background:#f8f9fa;">
+                    <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Total asignado en solicitud</div>
+                    <div class="fw-bold text-primary fs-5" id="confTotalAsig">$0</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="p-3 rounded-3 border" style="background:#f8f9fa;">
+                    <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Disponible global</div>
+                    <div class="fw-bold fs-5 text-success" id="confDisponible">$200,100,000</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Resumen Información General -->
+              <div class="card border border-secondary border-opacity-25 shadow-sm mb-4">
+                <div class="card-header bg-white border-bottom py-2 px-4 d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-dark" style="font-size:.88rem;"><i class="bi bi-info-circle text-primary me-2"></i>Información General</span>
+                  <button class="btn btn-sm btn-link text-primary p-0 fw-semibold shadow-none" onclick="irPaso(1)"><i class="bi bi-pencil me-1"></i>Editar</button>
+                </div>
+                <div class="card-body px-4 py-3">
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Nombre del gasto</div>
+                      <div class="fw-semibold text-dark small" id="confNombre">—</div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Categoría</div>
+                      <div class="fw-semibold text-dark small"><span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">Presupuesto ordinario</span></div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">División</div>
+                      <div class="fw-semibold text-dark small" id="confDivision">—</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Total de la solicitud -->
+              <div class="card border border-primary border-opacity-25 shadow-sm mb-4" style="background:linear-gradient(135deg,#f0f4ff 0%,#fff 100%);">
+                <div class="card-body px-4 py-3 d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-bold text-dark">Total de la solicitud</div>
+                    <div class="small text-muted" id="confResumenCecos">— CeCos seleccionados</div>
+                  </div>
+                  <div class="fw-bold text-primary" style="font-size:1.6rem;" id="confTotalGrande">$0</div>
+                </div>
+              </div>
+
+              <!-- Flujo de autorización -->
+              <div class="card border border-secondary border-opacity-25 shadow-sm mb-4">
+                <div class="card-header bg-white border-bottom py-2 px-4">
+                  <span class="fw-bold text-dark" style="font-size:.88rem;"><i class="bi bi-diagram-3 text-primary me-2"></i>Flujo de autorización</span>
+                </div>
+                <div class="card-body px-4 py-3">
+                  <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                    <span class="badge border border-secondary border-opacity-25 bg-white text-dark px-3 py-2"><i class="bi bi-person-circle text-secondary me-1"></i>Usuario de carga</span>
+                    <i class="bi bi-arrow-right text-muted"></i>
+                    <span class="badge border border-warning border-opacity-50 bg-warning bg-opacity-10 text-warning px-3 py-2"><i class="bi bi-person-check me-1"></i>Nivel 1 – Marketing</span>
+                    <i class="bi bi-arrow-right text-muted"></i>
+                    <span class="badge border border-secondary border-opacity-25 bg-white text-muted px-3 py-2">Nivel 2 – Admón y Finanzas</span>
+                  </div>
+                  <div class="small text-muted"><i class="bi bi-envelope me-1"></i>Al enviar, el autorizador de Nivel 1 recibirá una notificación por correo.</div>
+                </div>
+              </div>
+
+              <!-- Botones -->
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <button class="btn btn-outline-secondary fw-semibold px-4" onclick="irPaso(1)">
+                  <i class="bi bi-arrow-left me-1"></i>Regresar
+                </button>
+                <button class="btn btn-success fw-bold px-5 shadow-sm" id="btnEnviarConf" onclick="confirmarAccion('enviar')">
+                  <i class="bi bi-send-fill me-1"></i>Enviar a autorización
+                </button>
+              </div>
+
+            </div>
           </div>
-        </div><!-- /paso-2 -->
+        </div><!-- /paso-2 confirmación -->
 
       </div><!-- /card-body -->
     </div><!-- /card principal -->
@@ -1070,20 +1096,36 @@
 
   <!-- Modal Borrador Exitoso -->
   <div class="modal fade" id="modalBorradorExito" tabindex="-1" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content border-0 shadow-lg">
-        <div class="modal-body text-center p-5">
-          <i class="bi bi-floppy-fill text-warning mb-3" style="font-size:4rem;"></i>
-          <h5 class="fw-bold text-dark mb-1">Solicitud guardada en Borrador</h5>
-          <div class="my-3">
-            <span class="text-muted small">Folio asignado:</span>
-            <h4 class="fw-bold text-dark mt-1 mb-0">SOL-BORR-26001</h4>
+    <div class="modal-dialog modal-dialog-centered" style="max-width:440px;">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:16px;">
+        <div class="modal-body p-4 text-center">
+          <i class="bi bi-floppy-fill text-warning mb-3" style="font-size:3rem; display:block;"></i>
+          <h5 class="fw-bold text-dark mb-1">Solicitud guardada como borrador</h5>
+          <p class="small text-muted mb-4">Tu solicitud fue guardada. Puedes continuar editándola y enviarla a la autorización cuando esté lista.</p>
+          <div class="border rounded-3 p-3 mb-4 text-start" style="background:#f8f9fa;">
+            <div class="row g-2">
+              <div class="col-6">
+                <div class="text-muted fw-bold" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em;">Campaña</div>
+                <div class="fw-semibold text-dark" style="font-size:.82rem;" id="borrNombre">—</div>
+              </div>
+              <div class="col-6">
+                <div class="text-muted fw-bold" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em;">División</div>
+                <div class="fw-semibold text-dark" style="font-size:.82rem;" id="borrDivision">—</div>
+              </div>
+              <div class="col-6">
+                <div class="text-muted fw-bold" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em;">Vigencia</div>
+                <div class="fw-semibold text-dark" style="font-size:.82rem;" id="borrVigencia">—</div>
+              </div>
+              <div class="col-6">
+                <div class="text-muted fw-bold" style="font-size:.65rem; text-transform:uppercase; letter-spacing:.04em;">Total capturado</div>
+                <div class="fw-bold text-primary" style="font-size:.82rem;" id="borrTotal">$0</div>
+              </div>
+            </div>
           </div>
-          <p class="small text-muted mb-4">Puedes retomar y completar esta solicitud desde el listado de Carga
-            Presupuestal.</p>
-          <a href="AEjercicio.html" class="btn btn-warning fw-bold text-dark px-5 shadow-sm">
-            <i class="bi bi-list-ul me-1"></i> Ir al listado
-          </a>
+          <div class="d-flex gap-2">
+            <a href="AEjercicio.html" class="btn btn-outline-secondary flex-fill fw-semibold"><i class="bi bi-list-ul me-1"></i>Ver mis solicitudes</a>
+            <button class="btn btn-warning flex-fill fw-bold text-dark" data-bs-dismiss="modal"><i class="bi bi-pencil me-1"></i>Continuar editando</button>
+          </div>
         </div>
       </div>
     </div>
@@ -1183,6 +1225,46 @@
     </div>
   </div>
 
+  <!-- Modal Eliminar Borrador -->
+  <div class="modal fade" id="modalEliminarBorrador" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:380px;">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:14px;">
+        <div class="modal-body p-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <i class="bi bi-trash3-fill text-danger"></i>
+            <span class="fw-bold text-dark">Eliminar solicitud</span>
+          </div>
+          <p class="small text-dark mb-3">Estás a punto de eliminar esta solicitud en borrador. Esta acción no se puede deshacer.</p>
+          <div class="border rounded-3 p-3 mb-4" style="background:#f8f9fa; font-size:.82rem;">
+            <div class="d-flex justify-content-between mb-1"><span class="text-muted">Nombre</span><span class="fw-semibold text-dark" id="elimNombre">Campaña Verano 2026</span></div>
+            <div class="d-flex justify-content-between mb-1"><span class="text-muted">Estatus</span><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25">Borrador</span></div>
+            <div class="d-flex justify-content-between"><span class="text-muted">Total capturado</span><span class="fw-bold text-dark" id="elimTotal">$0</span></div>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-secondary flex-fill" data-bs-dismiss="modal">Cancelar</button>
+            <button class="btn btn-danger flex-fill fw-bold" onclick="ejecutarEliminar()"><i class="bi bi-trash3 me-1"></i>Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Eliminado Exitoso -->
+  <div class="modal fade" id="modalEliminadoExito" tabindex="-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:380px;">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:14px;">
+        <div class="modal-body p-4 text-center">
+          <div class="rounded-circle bg-danger bg-opacity-10 d-inline-flex align-items-center justify-content-center mb-3" style="width:56px; height:56px;">
+            <i class="bi bi-trash3-fill text-danger" style="font-size:1.5rem;"></i>
+          </div>
+          <h6 class="fw-bold text-dark mb-1">Solicitud eliminada</h6>
+          <p class="small text-muted mb-4">La solicitud fue eliminada correctamente.</p>
+          <a href="AEjercicio.html" class="btn btn-primary fw-bold px-4"><i class="bi bi-list-ul me-1"></i>Volver a mis solicitudes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!--start overlay-->
   <div class="overlay btn-toggle-menu"></div>
   <!--end overlay-->
@@ -1221,7 +1303,7 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    // ── Stepper ──────────────────────────────────────
+    // ── Stepper (2 pasos) ─────────────────────────────
     function irPaso(n) {
       for (let i = 1; i <= 2; i++) {
         document.getElementById(`paso-${i}`).style.display = (i === n) ? 'block' : 'none';
@@ -1231,6 +1313,8 @@
         else { sc.className = 'step-circle pending'; sc.textContent = i; }
         if (i < 2) document.getElementById(`sl-${i}`).className = 'step-line' + (i < n ? ' done' : '');
       }
+      if (n === 2) actualizarConfirmacion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // ── División chips ────────────────────────────────
@@ -1361,6 +1445,8 @@
     function updateCecoCount() {
       const n = document.querySelectorAll('[id^="chk-ceco"]:checked').length;
       document.getElementById('cecoCount').textContent = n;
+      const wrap = document.getElementById('distribucion-wrap');
+      if (wrap) wrap.style.display = n > 0 ? 'block' : 'none';
     }
 
     // ── Cuentas ───────────────────────────────────────
@@ -1488,28 +1574,52 @@
       body.appendChild(tr);
     }
 
+    // ── Confirmación ──────────────────────────────────
+    function actualizarConfirmacion() {
+      let totalAsig = 0, cecosCon = 0;
+      Object.keys(limites).forEach(ceco => {
+        const body = document.getElementById(`body-${ceco}`);
+        if (!body) return;
+        let suma = 0;
+        body.querySelectorAll('.fila-dato').forEach(row => {
+          row.querySelectorAll('.matrix-input').forEach(inp => suma += parseNum(inp.value));
+        });
+        if (suma > 0) cecosCon++;
+        totalAsig += suma;
+      });
+      const over = totalAsig > LIMITE_GLOBAL;
+      const fmtM = n => '$' + n.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+      const el = id => document.getElementById(id);
+      if (el('confTotalAsig')) el('confTotalAsig').textContent = fmtM(totalAsig);
+      if (el('confTotalGrande')) el('confTotalGrande').textContent = fmtM(totalAsig);
+      if (el('confResumenCecos')) el('confResumenCecos').textContent = cecosCon + ' CeCo(s) seleccionado(s)';
+      const confDisp = el('confDisponible');
+      if (confDisp) {
+        const disp = LIMITE_GLOBAL - totalAsig;
+        confDisp.textContent = fmtM(Math.abs(disp)) + (over ? ' (excedido)' : '');
+        confDisp.className = 'fw-bold fs-5 ' + (over ? 'text-danger' : 'text-success');
+      }
+      const alerta = el('alertaExcedenteConf');
+      if (alerta) alerta.style.display = over ? 'flex' : 'none';
+      const btnEnv = el('btnEnviarConf');
+      if (btnEnv) btnEnv.disabled = over;
+
+      const inputNom = el('inputNombreManual');
+      const inputOrd = el('inputNombreOrdinario');
+      const selTrans = el('selectNombreTransversal');
+      let nombre = '—';
+      if (inputNom && inputNom.style.display !== 'none') nombre = inputNom.value || '—';
+      else if (selTrans && selTrans.style.display !== 'none') nombre = selTrans.value || '—';
+      else if (inputOrd && inputOrd.style.display !== 'none') nombre = 'Gasto ordinario';
+      if (el('confNombre')) el('confNombre').textContent = nombre;
+
+      const activas = [...document.querySelectorAll('#divChips .div-chip.active')].map(b => b.dataset.div);
+      if (el('confDivision')) el('confDivision').textContent = activas.join(', ') || '—';
+    }
+
     // ── Modales de confirmación ───────────────────────
     function confirmarAccion(tipo) {
       if (tipo === 'enviar') {
-        let cecosConMonto = 0;
-        let totalGlobal = 0;
-        Object.keys(limites).forEach(ceco => {
-          const body = document.getElementById(`body-${ceco}`);
-          if (!body) return;
-          let sumaCeco = 0;
-          body.querySelectorAll('.fila-dato').forEach(row => {
-            row.querySelectorAll('.matrix-input').forEach(inp => sumaCeco += parseNum(inp.value));
-          });
-          if (sumaCeco > 0) cecosConMonto++;
-          totalGlobal += sumaCeco;
-        });
-
-        const fmt = n => n.toLocaleString('es-MX', { maximumFractionDigits: 0 });
-        document.getElementById('resumenCecos').textContent = cecosConMonto;
-        document.getElementById('resumenCecosCard').textContent = cecosConMonto;
-        document.getElementById('resumenTotalCard').textContent = fmt(totalGlobal);
-        document.getElementById('resumenTotalInline').textContent = fmt(totalGlobal);
-
         new bootstrap.Modal(document.getElementById('modalConfirmarEnvio')).show();
         return;
       }
@@ -1518,6 +1628,30 @@
     }
 
     function ejecutarBorrador() {
+      const el = id => document.getElementById(id);
+      const inputNom = el('inputNombreManual');
+      const inputOrd = el('inputNombreOrdinario');
+      const selTrans = el('selectNombreTransversal');
+      let nombre = '—';
+      if (inputNom && inputNom.style.display !== 'none') nombre = inputNom.value || '—';
+      else if (selTrans && selTrans.style.display !== 'none') nombre = selTrans.value || '—';
+      else if (inputOrd && inputOrd.style.display !== 'none') nombre = 'Gasto ordinario';
+      if (el('borrNombre')) el('borrNombre').textContent = nombre;
+      const activas = [...document.querySelectorAll('#divChips .div-chip.active')].map(b => b.dataset.div);
+      if (el('borrDivision')) el('borrDivision').textContent = activas.join(', ') || '—';
+      if (el('borrVigencia')) el('borrVigencia').textContent = '2026';
+      let totalAsig = 0;
+      Object.keys(limites).forEach(ceco => {
+        const body = el(`body-${ceco}`);
+        if (!body) return;
+        body.querySelectorAll('.fila-dato').forEach(row => {
+          row.querySelectorAll('.matrix-input').forEach(inp => totalAsig += parseNum(inp.value));
+        });
+      });
+      if (el('borrTotal')) el('borrTotal').textContent = '$' + totalAsig.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+      if (el('elimNombre')) el('elimNombre').textContent = nombre;
+      if (el('elimTotal')) el('elimTotal').textContent = '$' + totalAsig.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+
       bootstrap.Modal.getInstance(document.getElementById('modalBorrador')).hide();
       setTimeout(() => new bootstrap.Modal(document.getElementById('modalBorradorExito')).show(), 300);
     }
@@ -1525,6 +1659,11 @@
     function ejecutarEnvio() {
       bootstrap.Modal.getInstance(document.getElementById('modalConfirmarEnvio')).hide();
       new bootstrap.Modal(document.getElementById('modalEnvio')).show();
+    }
+
+    function ejecutarEliminar() {
+      bootstrap.Modal.getInstance(document.getElementById('modalEliminarBorrador')).hide();
+      setTimeout(() => new bootstrap.Modal(document.getElementById('modalEliminadoExito')).show(), 300);
     }
 
     // Inicializar
