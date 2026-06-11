@@ -29,6 +29,11 @@
     .x-small { font-size: .72rem; }
     /* Compensa el sticky header para que el top-header de la app no tape el sticky card */
     #headerSolicitud { top: 60px; }
+    /* Nav tabs oscuros para marcar la separación de secciones */
+    #solicitudTabs { background:#2b2f36; border-radius:8px 8px 0 0; padding:.25rem .25rem 0 .25rem; }
+    #solicitudTabs .nav-link { color:#cbd2da !important; border:0; border-radius:6px 6px 0 0; }
+    #solicitudTabs .nav-link:hover { color:#fff !important; background:rgba(255,255,255,.08); }
+    #solicitudTabs .nav-link.active { color:#212529 !important; background:#fff; }
   </style>
 </head>
 
@@ -1132,148 +1137,182 @@
 
           <div class="tab-pane fade active show" id="detalle" role="tabpanel" aria-labelledby="#detalle-tab">
 
-            <!-- Sección 1: Información General -->
-            <div class="row align-items-start mb-4">
-              <div class="col-md-7 pe-md-5">
-                <p class="text-muted x-small text-uppercase fw-bold mb-3 border-bottom pb-2">Datos generales</p>
-                <div class="row g-0">
-                  <div class="col-5 col-md-4 py-2 border-bottom">
-                    <span class="small text-muted">Tipo de gasto</span>
-                  </div>
-                  <div class="col-7 col-md-8 py-2 border-bottom">
-                    <span class="small fw-bold text-dark">Campaña Ordinaria</span>
-                  </div>
-
-                  <div class="col-5 col-md-4 py-2 border-bottom">
-                    <span class="small text-muted">División</span>
-                  </div>
-                  <div class="col-7 col-md-8 py-2 border-bottom">
-                    <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">Estrategia</span>
-                  </div>
-
-                  <div class="col-5 col-md-4 py-2 border-bottom">
-                    <span class="small text-muted">Nombre</span>
-                  </div>
-                  <div class="col-7 col-md-8 py-2 border-bottom">
-                    <span class="small fw-bold text-dark">Lanzamiento App 2026</span>
-                  </div>
-
-                  <div class="col-5 col-md-4 py-2 border-bottom">
-                    <span class="small text-muted">Vigencia</span>
-                  </div>
-                  <div class="col-7 col-md-8 py-2 border-bottom">
-                    <span class="small text-dark">01 Jul 2026 — 30 Sep 2026</span>
-                  </div>
-
-                  <div class="col-5 col-md-4 py-2">
-                    <span class="small text-muted">Descripción / Objetivo</span>
-                  </div>
-                  <div class="col-7 col-md-8 py-2">
-                    <span class="small text-dark">Lanzamiento nacional de la nueva aplicación móvil. Incluye medios digitales, influencers y OOH.</span>
-                  </div>
-                </div>
+            <!-- Sección 1: Información General (ocupa todo el ancho) -->
+            <p class="text-dark x-small text-uppercase fw-bold mb-3 border-bottom pb-2">Información general de la solicitud</p>
+            <div class="row g-3 mb-4">
+              <div class="col-md-3">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">Tipo de gasto</div>
+                <div class="text-dark">Campaña Ordinaria</div>
+              </div>
+              <div class="col-md-3">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">División</div>
+                <div class="text-dark">Estrategia</div>
+              </div>
+              <div class="col-md-3">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">Nombre del gasto</div>
+                <div class="text-dark">Lanzamiento App 2026</div>
+              </div>
+              <div class="col-md-3">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">Vigencia</div>
+                <div class="text-dark">01 Jul — 30 Sep 2026</div>
               </div>
 
-              <div class="col-md-5 border-start ps-md-4">
-                <p class="text-muted x-small text-uppercase fw-bold mb-3 border-bottom pb-2">Centros de costos involucrados</p>
-                <div class="d-flex flex-column gap-2">
-                  <div class="d-flex align-items-center justify-content-between rounded px-3 py-2" style="background:#f0fdf4; border:1px solid #bbf7d0;">
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="bi bi-building text-success"></i>
-                      <div>
-                        <div class="small fw-bold text-dark">291374 — MKT DIGITAL</div>
-                        <div class="x-small text-muted">División Estrategia</div>
-                      </div>
-                    </div>
-                    <span class="fw-bold text-success small">$12,000,000</span>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between rounded px-3 py-2" style="background:#f0fdf4; border:1px solid #bbf7d0;">
-                    <div class="d-flex align-items-center gap-2">
-                      <i class="bi bi-building text-success"></i>
-                      <div>
-                        <div class="small fw-bold text-dark">239729 — COBRANZA</div>
-                        <div class="x-small text-muted">División Estrategia</div>
-                      </div>
-                    </div>
-                    <span class="fw-bold text-success small">$3,000,000</span>
-                  </div>
+              <div class="col-md-4">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">
+                  Objetivos
+                  <i class="bi bi-info-circle text-dark ms-1" role="button" tabindex="0" data-bs-toggle="popover"
+                    data-bs-trigger="focus" data-bs-placement="top" title="Objetivos"
+                    data-bs-content="¿Qué se busca lograr con esta campaña? Metas concretas y resultados esperados del gasto publicitario."></i>
                 </div>
-                <div class="text-end mt-2">
-                  <span class="badge bg-secondary-subtle text-secondary border">2 centros de costo</span>
+                <div class="text-dark border rounded p-2" style="background:#fafafa;">Posicionar la nueva aplicación móvil
+                  a nivel nacional y alcanzar 500 mil descargas en el primer trimestre.</div>
+              </div>
+              <div class="col-md-4">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">
+                  Alcance
+                  <i class="bi bi-info-circle text-dark ms-1" role="button" tabindex="0" data-bs-toggle="popover"
+                    data-bs-trigger="focus" data-bs-placement="top" title="Alcance"
+                    data-bs-content="Cobertura de la campaña: mercados, canales, audiencias y medios donde se ejecutará el gasto."></i>
                 </div>
+                <div class="text-dark border rounded p-2" style="background:#fafafa;">Cobertura nacional en medios
+                  digitales, influencers y OOH en las 10 principales ciudades del país.</div>
+              </div>
+              <div class="col-md-4">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">
+                  KPI's
+                  <i class="bi bi-info-circle text-dark ms-1" role="button" tabindex="0" data-bs-toggle="popover"
+                    data-bs-trigger="focus" data-bs-placement="top" title="KPI's"
+                    data-bs-content="Indicadores medibles que permitirán evaluar el éxito de la campaña (alcance, CPM, conversiones, descargas, etc.)."></i>
+                </div>
+                <div class="text-dark border rounded p-2" style="background:#fafafa;">500K descargas · CPM ≤ $45 ·
+                  Alcance 12M impresiones · Tasa de conversión ≥ 4%.</div>
               </div>
             </div>
 
-            <p class="text-muted x-small text-uppercase fw-bold mb-3 border-bottom pb-2">Asignación de presupuesto</p>
+            <!-- Sección 2: Distribución del presupuesto por CeCo (acordeones) -->
+            <div class="p-4 mb-2" style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;">
+              <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+                <span class="d-flex align-items-center justify-content-center rounded-circle text-dark"
+                  style="width:32px;height:32px;background:#e7e3d8;">
+                  <i class="bi bi-table" style="font-size:.95rem;"></i>
+                </span>
+                <h6 class="fw-bold text-dark mb-0">Distribución del Presupuesto</h6>
+                <span class="badge bg-light text-dark border fw-bold">Moneda local (MXN)</span>
+                <span class="badge bg-light text-dark border fw-bold">Cifras en pesos</span>
+                <div class="ms-auto d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-dark" onclick="expandAll()"><i
+                      class="bi bi-arrows-expand me-1"></i>Expandir todo</button>
+                  <button class="btn btn-sm btn-outline-dark" onclick="collapseAll()"><i
+                      class="bi bi-arrows-collapse me-1"></i>Colapsar todo</button>
+                </div>
+              </div>
 
-            <div class="table-responsive mb-4 border rounded">
-              <table class="table table-bordered table-sm align-middle text-center mb-0" style="font-size: 0.85rem;">
-                <thead class="table-light">
-                  <tr>
-                    <th style="min-width: 160px;">CeCo Destino</th>
-                    <th style="min-width: 150px;">Cuenta</th>
-                    <th style="min-width: 150px;">Proyecto</th>
-                    <th>Ene</th>
-                    <th>Feb</th>
-                    <th>Mar</th>
-                    <th>Abr</th>
-                    <th>May</th>
-                    <th>Jun</th>
-                    <th>Jul</th>
-                    <th>Ago</th>
-                    <th>Sep</th>
-                    <th>Oct</th>
-                    <th>Nov</th>
-                    <th>Dic</th>
-                    <th class="bg-light">TOTAL</th>
-                  </tr>
-                </thead>
-                <tbody class="bg-light">
-                  <tr>
-                    <td class="text-start px-2"><small>291374 - MKT DIGITAL</small></td>
-                    <td class="text-start px-2"><small>609011 - Televisión</small></td>
-                    <td class="text-start px-2"><small>N/A</small></td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-dark fw-bold">5,000,000</td>
-                    <td class="text-dark fw-bold">5,000,000</td>
-                    <td class="text-dark fw-bold">2,000,000</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="fw-bold text-primary bg-white">12,000,000</td>
-                  </tr>
-                  <tr>
-                    <td class="text-start px-2"><small>239729 - COBRANZA</small></td>
-                    <td class="text-start px-2"><small>609023 - Promociones</small></td>
-                    <td class="text-start px-2"><small>N/A</small></td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-dark fw-bold">1,000,000</td>
-                    <td class="text-dark fw-bold">1,000,000</td>
-                    <td class="text-dark fw-bold">1,000,000</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="fw-bold text-primary bg-white">3,000,000</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+              <div class="accordion" id="accMatriz">
 
-            <!-- Total de la solicitud (resumen al pie de la distribución) -->
-            <div class="d-flex justify-content-end mt-3 mb-2">
-              <div class="border rounded px-4 py-2 text-end" style="background:#f8f9fa; min-width:220px;">
-                <div class="x-small text-muted text-uppercase fw-bold">Total de esta solicitud</div>
-                <div class="fw-bold text-primary fs-5">$15,000,000 <span class="x-small text-muted fw-normal">MXN</span></div>
+                <!-- CeCo 1: 291374 MKT DIGITAL -->
+                <div class="accordion-item border mb-2 rounded">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button fw-semibold text-dark" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#ceco1" aria-expanded="true" aria-controls="ceco1" style="font-size:.9rem;">
+                      <i class="bi bi-building text-dark me-2"></i>291374 — MKT DIGITAL
+                      <span class="badge bg-light text-dark border fw-bold ms-2">$12,000,000</span>
+                    </button>
+                  </h2>
+                  <div id="ceco1" class="accordion-collapse collapse show">
+                    <div class="accordion-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle mb-0 text-dark" style="font-size:.85rem;">
+                          <thead class="table-light text-center text-dark">
+                            <tr>
+                              <th class="text-start ps-3">CeCo</th>
+                              <th class="text-start">Cuenta</th>
+                              <th>Ene</th><th>Feb</th><th>Mar</th><th>Abr</th><th>May</th><th>Jun</th>
+                              <th>Jul</th><th>Ago</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dic</th>
+                              <th>Total</th>
+                            </tr>
+                          </thead>
+                          <tbody class="text-end">
+                            <tr>
+                              <td class="text-start ps-3">291374</td>
+                              <td class="text-start">609011 — Televisión</td>
+                              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                              <td>4,000,000</td><td>4,000,000</td><td>1,000,000</td><td>0</td><td>0</td><td>0</td>
+                              <td class="fw-bold">9,000,000</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start ps-3">291374</td>
+                              <td class="text-start">609028 — Pub. Digital</td>
+                              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                              <td>1,000,000</td><td>1,000,000</td><td>1,000,000</td><td>0</td><td>0</td><td>0</td>
+                              <td class="fw-bold">3,000,000</td>
+                            </tr>
+                            <tr class="fw-bold" style="background:#f3f1ea;">
+                              <td class="text-start ps-3" colspan="2">Subtotal</td>
+                              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                              <td>5,000,000</td><td>5,000,000</td><td>2,000,000</td><td>0</td><td>0</td><td>0</td>
+                              <td>$12,000,000</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CeCo 2: 239729 COBRANZA -->
+                <div class="accordion-item border mb-2 rounded">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button fw-semibold text-dark collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#ceco2" aria-expanded="false" aria-controls="ceco2" style="font-size:.9rem;">
+                      <i class="bi bi-building text-dark me-2"></i>239729 — COBRANZA
+                      <span class="badge bg-light text-dark border fw-bold ms-2">$3,000,000</span>
+                    </button>
+                  </h2>
+                  <div id="ceco2" class="accordion-collapse collapse">
+                    <div class="accordion-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle mb-0 text-dark" style="font-size:.85rem;">
+                          <thead class="table-light text-center text-dark">
+                            <tr>
+                              <th class="text-start ps-3">CeCo</th>
+                              <th class="text-start">Cuenta</th>
+                              <th>Ene</th><th>Feb</th><th>Mar</th><th>Abr</th><th>May</th><th>Jun</th>
+                              <th>Jul</th><th>Ago</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dic</th>
+                              <th>Total</th>
+                            </tr>
+                          </thead>
+                          <tbody class="text-end">
+                            <tr>
+                              <td class="text-start ps-3">239729</td>
+                              <td class="text-start">609023 — Promociones</td>
+                              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                              <td>1,000,000</td><td>1,000,000</td><td>1,000,000</td><td>0</td><td>0</td><td>0</td>
+                              <td class="fw-bold">3,000,000</td>
+                            </tr>
+                            <tr class="fw-bold" style="background:#f3f1ea;">
+                              <td class="text-start ps-3" colspan="2">Subtotal</td>
+                              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                              <td>1,000,000</td><td>1,000,000</td><td>1,000,000</td><td>0</td><td>0</td><td>0</td>
+                              <td>$3,000,000</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- /accordion -->
+
+              <!-- Total global -->
+              <div class="rounded mt-3 px-4 py-3 fw-bold d-flex align-items-center gap-3 flex-wrap text-dark"
+                style="background:#e7e3d8; font-size:.95rem;">
+                <i class="bi bi-calculator me-1"></i>
+                <span>Total Global: <strong>$15,000,000.00</strong></span>
+                <span class="opacity-50">·</span>
+                <span>2 CeCos</span>
+                <span class="opacity-50">·</span>
+                <span>Jul–Sep 2026</span>
               </div>
             </div>
 
@@ -1524,6 +1563,22 @@
     function confirmarAprobacion() { document.getElementById('stepAprobarConfirmacion').classList.add('d-none'); document.getElementById('stepAprobarExito').classList.remove('d-none'); }
     function confirmarAjuste() { document.getElementById('stepAjusteConfirmacion').classList.add('d-none'); document.getElementById('stepAjusteExito').classList.remove('d-none'); }
     function confirmarRechazo() { document.getElementById('stepRechazarConfirmacion').classList.add('d-none'); document.getElementById('stepRechazarExito').classList.remove('d-none'); }
+
+    function expandAll() {
+      document.querySelectorAll('#accMatriz .accordion-collapse').forEach(function (el) {
+        new bootstrap.Collapse(el, { toggle: false }).show();
+      });
+    }
+    function collapseAll() {
+      document.querySelectorAll('#accMatriz .accordion-collapse').forEach(function (el) {
+        new bootstrap.Collapse(el, { toggle: false }).hide();
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('[data-bs-toggle="popover"]').forEach(function (el) {
+        new bootstrap.Popover(el);
+      });
+    });
   </script>
 
 
