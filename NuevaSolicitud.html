@@ -194,7 +194,7 @@
       <div class="logo-name flex-grow-1">
         <h5 class="mb-0">IPSO</h5>
       </div>
-      <div class="sidebar-close">
+      <div class="sidebar-close ">
         <span class="material-symbols-outlined">close</span>
       </div>
     </div>
@@ -204,9 +204,10 @@
           <div class="simplebar-height-auto-observer"></div>
         </div>
         <div class="simplebar-mask">
-          <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
-            <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden;">
+          <div class="simplebar-offset mm-active" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper mm-show" style="height: 100%; overflow: hidden;">
               <div class="simplebar-content mm-active" style="padding: 0px;">
+
                 <!--navigation-->
                 <ul class="metismenu mm-show" id="menu">
                   <li>
@@ -215,60 +216,117 @@
                       <div class="menu-title">Home</div>
                     </a>
                   </li>
-                  <li class="">
+                  <li>
                     <a href="SIPRES.html" aria-expanded="false">
                       <div class="parent-icon"><span class="material-symbols-outlined">redeem</span></div>
                       <div class="menu-title">Forecast</div>
                     </a>
                   </li>
-                  <li class="menu-label mb-0 text-light">Gestion de Presupuestos</li>
-                  <li class="mm-active">
-                    <a href="javascript:;" class="has-arrow" aria-expanded="true">
+
+                  <li class="menu-label mb-0 text-light">Gesti&#243;n de Presupuestos</li>
+
+                  <li>
+                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
                       <div class="parent-icon"><span class="material-symbols-outlined">apps</span></div>
-                      <div class="menu-title">Planeacion<br>Presupuestal</div>
+                      <div class="menu-title">Planeaci&#243;n<br>Presupuestal</div>
                     </a>
-                    <ul class="mm-collapse mm-show">
-                      <li><a href="Parametros.html" aria-expanded="false"><span class="material-symbols-outlined">arrow_right</span>Parametros</a></li>
+                    <ul class="mm-collapse">
+                      <li>
+                        <a href="Parametros.html" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Par&#225;metros
+                        </a>
+                      </li>
                       <li>
                         <a class="has-arrow" href="javascript:;" aria-expanded="false">
                           <span class="material-symbols-outlined">arrow_right</span>Base Presupuestal
                         </a>
                         <ul class="mm-collapse">
-                          <li><a href="BPresupuestal.html"><span class="material-symbols-outlined">arrow_right</span>Base del Ejercicio Activo</a></li>
-                          <li><a href="BPRegistros.html"><span class="material-symbols-outlined">arrow_right</span>Registro de Bases Presupuestales</a></li>
+                          <li>
+                            <a href="BPresupuestal.html">
+                              <span class="material-symbols-outlined">arrow_right</span>Nueva Base Presupuestal
+                            </a>
+                          </li>
+                          <li>
+                            <a href="BPCalculada.html">
+                              <span class="material-symbols-outlined">arrow_right</span>Base Presupuestal Activa
+                            </a>
+                          </li>
                         </ul>
                       </li>
-                      <li class="mm-active"><a href="AEjercicio.html" aria-expanded="true"><span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a></li>
-                      <li><a href="Autorizaciones.html" aria-expanded="false"><span class="material-symbols-outlined">arrow_right</span>Autorizaciones</a></li>
-                      <li><a href="Liberaciones.html" aria-expanded="true"><span class="material-symbols-outlined">arrow_right</span>Liberaciones</a></li>
+                      <li>
+                        <a href="SelGrupoEmpresarial.html" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal
+                        </a>
+                      </li>
+                      <li>
+                        <a href="Autorizaciones.html" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Autorizaciones
+                        </a>
+                      </li>
+                      <li>
+                        <a href="Liberaciones.html" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Liberaciones
+                        </a>
+                      </li>
+                      <li>
+                        <a href="ReportesCarga.html" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Reportes de Carga
+                        </a>
+                      </li>
                     </ul>
                   </li>
-                  <li class="">
+
+                  <li>
                     <a href="javascript:;" class="has-arrow" aria-expanded="false">
                       <div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div>
-                      <div class="menu-title">Ejercicio Presupuestal</div>
+                      <div class="menu-title">Ejercicio Presupuestal<br><small>En Construcci&#243;n</small></div>
                     </a>
-                    <ul class="mm-collapse" style="height: 0px;">
-                      <li><a href="SCarga.html"><span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales</a></li>
-                      <li><a href="Reportes.html"><span class="material-symbols-outlined">arrow_right</span>Reportes</a></li>
+                    <ul class="mm-collapse">
+                      <li>
+                        <a href="javascript:;" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales
+                        </a>
+                      </li>
                     </ul>
                   </li>
-                  <li class="menu-label mb-0 text-light">Configuracion General</li>
-                  <li class="">
+
+                  <li>
                     <a href="javascript:;" class="has-arrow" aria-expanded="false">
-                      <div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span></div>
-                      <div class="menu-title">Sistema</div>
+                      <div class="parent-icon"><span class="material-symbols-outlined">settings</span></div>
+                      <div class="menu-title">Configuraci&#243;n<br>de Carga</div>
                     </a>
-                    <ul class="mm-collapse" style="height: 0px;">
-                      <li><a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a></li>
-                      <li><a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de Costos</a></li>
-                      <li><a href="GCuentas.html"><span class="material-symbols-outlined">arrow_right</span>Grupo de Cuentas</a></li>
-                      <li><a href="CTransversal.html"><span class="material-symbols-outlined">arrow_right</span>Campañas Transversales</a></li>
-                      <li><a href="PFondo.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos</a></li>
+                    <ul class="mm-collapse">
+                      <li>
+                        <a href="PUsuarios.html">
+                          <span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles
+                        </a>
+                      </li>
+                      <li>
+                        <a href="CeCos.html">
+                          <span class="material-symbols-outlined">arrow_right</span>Centros de Costos
+                        </a>
+                      </li>
+                      <li>
+                        <a href="GCuentas.html">
+                          <span class="material-symbols-outlined">arrow_right</span>Grupo de Cuentas
+                        </a>
+                      </li>
+                      <li>
+                        <a href="CTransversal.html">
+                          <span class="material-symbols-outlined">arrow_right</span>Camp&#241;as Transversales
+                        </a>
+                      </li>
+                      <li>
+                        <a href="PFondo.html">
+                          <span class="material-symbols-outlined">arrow_right</span>Proyectos
+                        </a>
+                      </li>
                     </ul>
                   </li>
+
                 </ul>
                 <!--end navigation-->
+
               </div>
             </div>
           </div>
@@ -295,6 +353,10 @@
       <ul class="dropdown-menu dropdown-menu-end">
         <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">account_circle</span><span>Profile</span></a></li>
         <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">tune</span><span>Settings</span></a></li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">dashboard</span><span>Dashboard</span></a></li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">account_balance</span><span>Earnings</span></a></li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">cloud_download</span><span>Downloads</span></a></li>
+        <li><div class="dropdown-divider mb-0"></div></li>
         <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">logout</span><span>Logout</span></a></li>
       </ul>
     </div>

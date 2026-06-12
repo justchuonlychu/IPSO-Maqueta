@@ -25,6 +25,16 @@
   <link href="assets/css/minimal-theme.css" rel="stylesheet">
   <link href="assets/css/shadow-theme.css" rel="stylesheet">
 
+  <style>
+    .x-small { font-size: .72rem; }
+    /* Compensa el sticky header para que el top-header de la app no tape el sticky card */
+    #headerSolicitud { top: 60px; }
+    /* Nav tabs oscuros para marcar la separación de secciones */
+    #solicitudTabs { background:#2b2f36; border-radius:8px 8px 0 0; padding:.25rem .25rem 0 .25rem; }
+    #solicitudTabs .nav-link { color:#cbd2da !important; border:0; border-radius:6px 6px 0 0; }
+    #solicitudTabs .nav-link:hover { color:#fff !important; background:rgba(255,255,255,.08); }
+    #solicitudTabs .nav-link.active { color:#212529 !important; background:#fff; }
+  </style>
 </head>
 
 <body class="pace-done" style="">
@@ -839,101 +849,125 @@
           <div class="simplebar-height-auto-observer"></div>
         </div>
         <div class="simplebar-mask">
-          <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
-            <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden;">
+          <div class="simplebar-offset mm-active" style="right: 0px; bottom: 0px;">
+            <div class="simplebar-content-wrapper mm-show" style="height: 100%; overflow: hidden;">
               <div class="simplebar-content mm-active" style="padding: 0px;">
 
                 <!--navigation-->
                 <ul class="metismenu mm-show" id="menu">
                   <li>
                     <a href="index.html" aria-expanded="false">
-                      <div class="parent-icon"><span class="material-symbols-outlined">home</span>
-                      </div>
+                      <div class="parent-icon"><span class="material-symbols-outlined">home</span></div>
                       <div class="menu-title">Home</div>
                     </a>
                   </li>
-                  <li class="menu-label mb-0 text-dark">Gestion de Presupuestos</li>
-                  <li class="mm-active">
-                    <a href="javascript:;" class="has-arrow" aria-expanded="true">
-                      <div class="parent-icon"><span class="material-symbols-outlined">apps</span>
-                      </div>
-                      <div class="menu-title">Planeacion<br>Presupuestal</div>
+                  <li>
+                    <a href="SIPRES.html" aria-expanded="false">
+                      <div class="parent-icon"><span class="material-symbols-outlined">redeem</span></div>
+                      <div class="menu-title">Forecast</div>
                     </a>
-                    <ul class="mm-collapse mm-show" style="">
-                      <li class=""><a href="Parametros.html" aria-expanded="true"><span
-                            class="material-symbols-outlined">arrow_right</span>Parametros</a>
-                      </li>
-                      <li> <a href="SelGrupoEmpresarial.html" aria-expanded="false"><span
-                            class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a>
-                      </li>
-
-
-
-
-
-
-                      <li class="mm-active"> <a href="Autorizaciones.html" aria-expanded="true"><span
-                            class="material-symbols-outlined">arrow_right</span>Autorizaciones</a>
-                      </li>
-                      <li> <a href="Liberaciones.html" aria-expanded="true"><span
-                            class="material-symbols-outlined">arrow_right</span>Liberaciones</a>
-                      </li>
-                      <li> <a href="Reportes.html" aria-expanded="false"><span
-                            class="material-symbols-outlined">arrow_right</span>Reportes</a>
-                      </li>
-                    </ul>
                   </li>
 
-                  <li class="">
+                  <li class="menu-label mb-0 text-light">Gesti&#243;n de Presupuestos</li>
+
+                  <li>
                     <a href="javascript:;" class="has-arrow" aria-expanded="false">
-                      <div class="parent-icon"><span class="material-symbols-outlined">widgets</span>
-                      </div>
-                      <div class="menu-title">Ejercicio Presupuestal</div>
+                      <div class="parent-icon"><span class="material-symbols-outlined">apps</span></div>
+                      <div class="menu-title">Planeaci&#243;n<br>Presupuestal</div>
                     </a>
-                    <ul class="mm-collapse" style="height: 0px;">
-                      <li "=""> <a href=" SCarga.html"><span
-                          class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales</a>
+                    <ul class="mm-collapse">
+                      <li>
+                        <a href="Parametros.html" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Par&#225;metros
+                        </a>
                       </li>
-                      <li> <a href="SIPRES.html"><span class="material-symbols-outlined">arrow_right</span>Forecast</a>
+                      <li>
+                        <a class="has-arrow" href="javascript:;" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Base Presupuestal
+                        </a>
+                        <ul class="mm-collapse">
+                          <li>
+                            <a href="BPresupuestal.html">
+                              <span class="material-symbols-outlined">arrow_right</span>Nueva Base Presupuestal
+                            </a>
+                          </li>
+                          <li>
+                            <a href="BPCalculada.html">
+                              <span class="material-symbols-outlined">arrow_right</span>Base Presupuestal Activa
+                            </a>
+                          </li>
+                        </ul>
                       </li>
-                      <li> <a href="Reportes.html"><span class="material-symbols-outlined">arrow_right</span>Reportes</a>
+                      <li>
+                        <a href="SelGrupoEmpresarial.html" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal
+                        </a>
+                      </li>
+                      <li>
+                        <a href="Autorizaciones.html" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Autorizaciones
+                        </a>
+                      </li>
+                      <li>
+                        <a href="Liberaciones.html" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Liberaciones
+                        </a>
+                      </li>
+                      <li>
+                        <a href="ReportesCarga.html" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Reportes de Carga
+                        </a>
                       </li>
                     </ul>
                   </li>
-                  <li class="menu-label mb-0 text-dark">Configiuración del Sistema</li>
-                  <li class="">
+
+                  <li>
                     <a href="javascript:;" class="has-arrow" aria-expanded="false">
-                      <div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span>
-                      </div>
-                      <div class="menu-title">Sistema</div>
+                      <div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div>
+                      <div class="menu-title">Ejercicio Presupuestal<br><small>En Construcci&#243;n</small></div>
                     </a>
-                    <ul class="mm-collapse" style="height: 0px;">
-
-
-
-                      <li> <a href="PUsuarios.html"><span
-                            class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a>
-                      </li>
-                      <li> <a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de
-                          Costos</a>
-                      </li>
-                      <li> <a href="GCuentas.html"><span class="material-symbols-outlined">arrow_right</span>Grupo de
-                          Cuentas</a>
-                      </li>
-                      <li> <a href="CTransversal.html"><span
-                            class="material-symbols-outlined">arrow_right</span>Campañas
-                          Transversales</a>
-                      </li>
-                      <li> <a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos
-                          / Fondos</a>
+                    <ul class="mm-collapse">
+                      <li>
+                        <a href="javascript:;" aria-expanded="false">
+                          <span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales
+                        </a>
                       </li>
                     </ul>
                   </li>
 
-
-
-
-
+                  <li>
+                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                      <div class="parent-icon"><span class="material-symbols-outlined">settings</span></div>
+                      <div class="menu-title">Configuraci&#243;n<br>de Carga</div>
+                    </a>
+                    <ul class="mm-collapse">
+                      <li>
+                        <a href="PUsuarios.html">
+                          <span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles
+                        </a>
+                      </li>
+                      <li>
+                        <a href="CeCos.html">
+                          <span class="material-symbols-outlined">arrow_right</span>Centros de Costos
+                        </a>
+                      </li>
+                      <li>
+                        <a href="GCuentas.html">
+                          <span class="material-symbols-outlined">arrow_right</span>Grupo de Cuentas
+                        </a>
+                      </li>
+                      <li>
+                        <a href="CTransversal.html">
+                          <span class="material-symbols-outlined">arrow_right</span>Camp&#241;as Transversales
+                        </a>
+                      </li>
+                      <li>
+                        <a href="PFondo.html">
+                          <span class="material-symbols-outlined">arrow_right</span>Proyectos
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
 
                 </ul>
                 <!--end navigation-->
@@ -948,8 +982,7 @@
         <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
       </div>
       <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
-        <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;">
-        </div>
+        <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div>
       </div>
     </div>
     <div class="sidebar-bottom dropdown dropup-center dropup">
@@ -963,33 +996,13 @@
         </div>
       </div>
       <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
-              account_circle
-            </span><span>Profile</span></a>
-        </li>
-        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
-              tune
-            </span><span>Settings</span></a>
-        </li>
-        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
-              dashboard
-            </span><span>Dashboard</span></a>
-        </li>
-        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
-              account_balance
-            </span><span>Earnings</span></a>
-        </li>
-        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
-              cloud_download
-            </span><span>Downloads</span></a>
-        </li>
-        <li>
-          <div class="dropdown-divider mb-0"></div>
-        </li>
-        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">
-              logout
-            </span><span>Logout</span></a>
-        </li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">account_circle</span><span>Profile</span></a></li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">tune</span><span>Settings</span></a></li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">dashboard</span><span>Dashboard</span></a></li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">account_balance</span><span>Earnings</span></a></li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">cloud_download</span><span>Downloads</span></a></li>
+        <li><div class="dropdown-divider mb-0"></div></li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">logout</span><span>Logout</span></a></li>
       </ul>
     </div>
   </aside>
@@ -1010,29 +1023,90 @@
       </div>
     </div>
 
-    <div class="card shadow-sm border-0">
-      <div class="card-body">
+    <!-- Encabezado sticky: permanece visible al hacer scroll en el contenido de las pestañas -->
+    <div id="headerSolicitud" class="card shadow-sm border-0 mb-0" style="position:sticky; top:0; z-index:100;">
+      <div class="card-body pb-0">
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Fila 1: Folio / meta / regresar -->
+        <div class="d-flex justify-content-between align-items-start mb-3">
           <div>
-            <h5 class="mb-0 text-primary fw-bold">Autorización de Solicitud de Gasto</h5>
-            <div class="d-flex align-items-center gap-2 mt-1">
-              <small class="text-muted fw-bold">Folio: SOL-26003NMX</small>
-              <span class="text-muted">|</span>
-              <small class="text-muted">Ejercicio: 2026</small>
-              <span class="text-muted">|</span>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <h5 class="mb-0 text-primary fw-bold">SOL-26003NMX</h5>
               <span class="badge bg-info-subtle text-info border border-info-subtle text-uppercase"
-                style="font-size: 0.7rem;">Pendiente Nivel 1</span>
+                style="font-size: 0.68rem;">Pendiente de autorizar</span>
+              <span class="badge bg-primary-subtle text-primary border border-primary-subtle"
+                style="font-size: 0.68rem;"><i class="bi bi-shield-check me-1"></i>Autorizador N1 — Marketing</span>
+            </div>
+            <div class="d-flex align-items-center flex-wrap gap-3 mt-1">
+              <small class="text-muted"><i class="bi bi-tag me-1"></i>Campaña Ordinaria · <strong>Lanzamiento App 2026</strong></small>
+              <small class="text-muted"><i class="bi bi-calendar-event me-1"></i>Enviada: 27 Mar 2026</small>
+              <small class="text-muted"><i class="bi bi-person me-1"></i>Solicitante: Carlos Ruiz</small>
+              <small class="text-muted"><i class="bi bi-clock me-1"></i>Vigencia: 01 Jul – 30 Sep 2026</small>
             </div>
           </div>
-          <div class="d-flex gap-2">
-            <a href="BandejaAutorizaciones.html" class="btn btn-outline-secondary shadow-sm">
-              <i class="bi bi-arrow-left me-1"></i> Regresar a la Bandeja
-            </a>
+          <a href="Autorizaciones.html" class="btn btn-outline-secondary btn-sm shadow-sm flex-shrink-0">
+            <i class="bi bi-arrow-left me-1"></i> Regresar a la Bandeja
+          </a>
+        </div>
+
+        <!-- Fila 2: Métricas de control + botones de acción -->
+        <div class="d-flex align-items-stretch gap-3 pb-3 flex-wrap">
+
+          <!-- Límite de Carga Global -->
+          <div class="border rounded px-3 py-2 flex-fill" style="min-width:160px; background:#f8f9fa;">
+            <div class="text-muted x-small text-uppercase fw-bold mb-1">Límite de Carga Global</div>
+            <div class="fw-bold text-dark fs-6 mb-1">$18,500,000</div>
+            <div class="d-flex align-items-center gap-2">
+              <div class="progress flex-grow-1" style="height:5px;">
+                <div class="progress-bar bg-secondary" style="width:100%;"></div>
+              </div>
+              <span class="x-small text-muted fw-bold">100%</span>
+            </div>
+          </div>
+
+          <!-- Asignado Total -->
+          <div class="border rounded px-3 py-2 flex-fill border-warning" style="min-width:160px; background:#fffdf2;">
+            <div class="text-warning x-small text-uppercase fw-bold mb-1">Asignado en esta Solicitud</div>
+            <div class="fw-bold text-dark fs-6 mb-1">$15,000,000</div>
+            <div class="d-flex align-items-center gap-2">
+              <div class="progress flex-grow-1" style="height:5px;">
+                <div class="progress-bar bg-warning" style="width:81%;"></div>
+              </div>
+              <span class="x-small text-warning fw-bold">81.1%</span>
+            </div>
+          </div>
+
+          <!-- Disponible Total -->
+          <div class="border rounded px-3 py-2 flex-fill border-success" style="min-width:160px; background:#f2fff5;">
+            <div class="text-success x-small text-uppercase fw-bold mb-1">Disponible si se Aprueba</div>
+            <div class="fw-bold text-dark fs-6 mb-1">$3,500,000</div>
+            <div class="d-flex align-items-center gap-2">
+              <div class="progress flex-grow-1" style="height:5px;">
+                <div class="progress-bar bg-success" style="width:19%;"></div>
+              </div>
+              <span class="x-small text-success fw-bold">18.9%</span>
+            </div>
+          </div>
+
+          <!-- Botones de acción -->
+          <div class="d-flex align-items-center gap-2 flex-shrink-0 ms-auto">
+            <button type="button" class="btn btn-outline-danger btn-sm px-3 shadow-sm" data-bs-toggle="modal"
+              data-bs-target="#modalRechazar">
+              <i class="bi bi-x-octagon me-1"></i> Rechazar
+            </button>
+            <button type="button" class="btn btn-outline-warning btn-sm px-3 shadow-sm text-dark" data-bs-toggle="modal"
+              data-bs-target="#modalAjustes">
+              <i class="bi bi-pencil-square me-1"></i> Solicitar Ajustes
+            </button>
+            <button type="button" class="btn btn-success btn-sm px-4 shadow-sm fw-bold" data-bs-toggle="modal"
+              data-bs-target="#modalAprobar">
+              <i class="bi bi-check2-circle me-1"></i> Aprobar
+            </button>
           </div>
         </div>
 
-        <ul class="nav nav-tabs mb-4 border-bottom" id="solicitudTabs" role="tablist">
+        <!-- Fila 3: Nav tabs (pegados al borde inferior del encabezado) -->
+        <ul class="nav nav-tabs border-bottom-0 mt-1" id="solicitudTabs" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link fw-bold text-primary active" id="detalle-tab" data-bs-toggle="tab"
               data-bs-target="#detalle" type="button" role="tab" aria-selected="true">
@@ -1042,195 +1116,278 @@
           <li class="nav-item" role="presentation">
             <button class="nav-link fw-bold text-muted" id="historial-tab" data-bs-toggle="tab"
               data-bs-target="#historial" type="button" role="tab" aria-selected="false" tabindex="-1">
-              <i class="bi bi-clock-history me-1"></i>Bitácora de Cambios
+              <i class="bi bi-clock-history me-1"></i>Bitácora de cambios
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link fw-bold text-muted" id="comentarios-tab" data-bs-toggle="tab"
+              data-bs-target="#comentarios" type="button" role="tab" aria-selected="false" tabindex="-1">
+              <i class="bi bi-chat-left-dots me-1"></i>Comentarios
+              <span class="badge bg-danger rounded-pill ms-1" style="font-size:.6rem;">1</span>
             </button>
           </li>
         </ul>
+      </div>
+    </div>
 
+    <!-- Contenido de pestañas (scrollable) -->
+    <div class="card shadow-sm border-0 border-top-0 rounded-top-0">
+      <div class="card-body pt-4">
         <div class="tab-content" id="solicitudTabsContent">
 
           <div class="tab-pane fade active show" id="detalle" role="tabpanel" aria-labelledby="#detalle-tab">
-            <div class="row align-items-start mb-4">
-              <div class="col-md-7 pe-md-4">
-                <h6 class="fw-bold mb-3 text-dark">1. Información de la Solicitud</h6>
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label small fw-bold text-muted">Tipo de Gasto</label>
-                    <input type="text" class="form-control form-control-sm bg-light text-dark" value="Campaña"
-                      disabled="">
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label small fw-bold text-muted">División</label>
-                    <input type="text" class="form-control form-control-sm bg-light text-dark" value="Estrategia"
-                      disabled="">
-                  </div>
-                  <div class="col-md-12">
-                    <label class="form-label small fw-bold text-muted">Nombre de la Campaña</label>
-                    <input type="text" class="form-control form-control-sm bg-light text-dark"
-                      value="Lanzamiento App 2026" disabled="">
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label small fw-bold text-muted">Fecha Inicio</label>
-                    <input type="date" class="form-control form-control-sm bg-light text-dark" value="2026-07-01"
-                      disabled="">
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label small fw-bold text-muted">Fecha Fin</label>
-                    <input type="date" class="form-control form-control-sm bg-light text-dark" value="2026-09-30"
-                      disabled="">
-                  </div>
-                  <div class="col-md-12">
-                    <label class="form-label small fw-bold text-muted">Descripción / Objetivo</label>
-                    <textarea class="form-control form-control-sm bg-light text-dark" rows="2"
-                      disabled="">Lanzamiento nacional de la nueva aplicación móvil. Incluye medios digitales, influencers y OOH.</textarea>
-                  </div>
-                </div>
+
+            <!-- Sección 1: Información General (ocupa todo el ancho) -->
+            <p class="text-dark x-small text-uppercase fw-bold mb-3 border-bottom pb-2">Información general de la solicitud</p>
+            <div class="row g-3 mb-4">
+              <div class="col-md-3">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">Tipo de gasto</div>
+                <div class="text-dark">Campaña Ordinaria</div>
+              </div>
+              <div class="col-md-3">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">División</div>
+                <div class="text-dark">Estrategia</div>
+              </div>
+              <div class="col-md-3">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">Nombre del gasto</div>
+                <div class="text-dark">Lanzamiento App 2026</div>
+              </div>
+              <div class="col-md-3">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">Vigencia</div>
+                <div class="text-dark">01 Jul — 30 Sep 2026</div>
               </div>
 
-              <div class="col-md-5 border-start ps-md-4">
-                <h6 class="fw-bold mb-3 text-dark">2. Centros de Costos Involucrados</h6>
-                <div class="border rounded p-3 bg-light" style="height: 180px; overflow-y: auto;">
-                  <div class="d-flex align-items-center mb-2">
-                    <i class="bi bi-check2-square text-success me-2"></i>
-                    <span class="small fw-bold text-dark">291374 - MKT DIGITAL</span>
-                  </div>
-                  <div class="d-flex align-items-center mb-2">
-                    <i class="bi bi-check2-square text-success me-2"></i>
-                    <span class="small fw-bold text-dark">239729 - COBRANZA</span>
-                  </div>
+              <div class="col-md-4">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">
+                  Objetivos
+                  <i class="bi bi-info-circle text-dark ms-1" role="button" tabindex="0" data-bs-toggle="popover"
+                    data-bs-trigger="focus" data-bs-placement="top" title="Objetivos"
+                    data-bs-content="¿Qué se busca lograr con esta campaña? Metas concretas y resultados esperados del gasto publicitario."></i>
                 </div>
-                <div class="text-end mt-2">
-                  <span class="badge bg-secondary rounded-pill">2 Seleccionados</span>
+                <div class="text-dark border rounded p-2" style="background:#fafafa;">Posicionar la nueva aplicación móvil
+                  a nivel nacional y alcanzar 500 mil descargas en el primer trimestre.</div>
+              </div>
+              <div class="col-md-4">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">
+                  Alcance
+                  <i class="bi bi-info-circle text-dark ms-1" role="button" tabindex="0" data-bs-toggle="popover"
+                    data-bs-trigger="focus" data-bs-placement="top" title="Alcance"
+                    data-bs-content="Cobertura de la campaña: mercados, canales, audiencias y medios donde se ejecutará el gasto."></i>
                 </div>
+                <div class="text-dark border rounded p-2" style="background:#fafafa;">Cobertura nacional en medios
+                  digitales, influencers y OOH en las 10 principales ciudades del país.</div>
+              </div>
+              <div class="col-md-4">
+                <div class="fw-bold text-dark x-small text-uppercase mb-1">
+                  KPI's
+                  <i class="bi bi-info-circle text-dark ms-1" role="button" tabindex="0" data-bs-toggle="popover"
+                    data-bs-trigger="focus" data-bs-placement="top" title="KPI's"
+                    data-bs-content="Indicadores medibles que permitirán evaluar el éxito de la campaña (alcance, CPM, conversiones, descargas, etc.)."></i>
+                </div>
+                <div class="text-dark border rounded p-2" style="background:#fafafa;">500K descargas · CPM ≤ $45 ·
+                  Alcance 12M impresiones · Tasa de conversión ≥ 4%.</div>
               </div>
             </div>
 
-            <div
-              class="alert bg-light border border-secondary-subtle d-flex justify-content-between align-items-center mb-4">
-              <div>
-                <i class="bi bi-info-circle-fill text-secondary me-2"></i>
-                <span class="small text-muted">Tope disponible global al momento de la solicitud</span>
+            <!-- Sección 2: Distribución del presupuesto por CeCo (acordeones) -->
+            <div class="p-4 mb-2" style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;">
+              <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+                <span class="d-flex align-items-center justify-content-center rounded-circle text-dark"
+                  style="width:32px;height:32px;background:#e7e3d8;">
+                  <i class="bi bi-table" style="font-size:.95rem;"></i>
+                </span>
+                <h6 class="fw-bold text-dark mb-0">Distribución del Presupuesto</h6>
+                <span class="badge bg-light text-dark border fw-bold">Moneda local (MXN)</span>
+                <span class="badge bg-light text-dark border fw-bold">Cifras en pesos</span>
+                <div class="ms-auto d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-dark" onclick="expandAll()"><i
+                      class="bi bi-arrows-expand me-1"></i>Expandir todo</button>
+                  <button class="btn btn-sm btn-outline-dark" onclick="collapseAll()"><i
+                      class="bi bi-arrows-collapse me-1"></i>Colapsar todo</button>
+                </div>
               </div>
-              <h5 class="mb-0 text-muted fw-bold">18,500,000</h5>
-            </div>
 
-            <h6 class="fw-bold mb-3 text-dark">3. Asignación de Presupuesto</h6>
+              <div class="accordion" id="accMatriz">
 
-            <div class="table-responsive mb-4 border rounded">
-              <table class="table table-bordered table-sm align-middle text-center mb-0" style="font-size: 0.85rem;">
-                <thead class="table-light">
-                  <tr>
-                    <th style="min-width: 160px;">CeCo Destino</th>
-                    <th style="min-width: 150px;">Cuenta</th>
-                    <th style="min-width: 150px;">Proyecto</th>
-                    <th>Ene</th>
-                    <th>Feb</th>
-                    <th>Mar</th>
-                    <th>Abr</th>
-                    <th>May</th>
-                    <th>Jun</th>
-                    <th>Jul</th>
-                    <th>Ago</th>
-                    <th>Sep</th>
-                    <th>Oct</th>
-                    <th>Nov</th>
-                    <th>Dic</th>
-                    <th class="bg-light">TOTAL</th>
-                  </tr>
-                </thead>
-                <tbody class="bg-light">
-                  <tr>
-                    <td class="text-start px-2"><small>291374 - MKT DIGITAL</small></td>
-                    <td class="text-start px-2"><small>609011 - Televisión</small></td>
-                    <td class="text-start px-2"><small>N/A</small></td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-dark fw-bold">5,000,000</td>
-                    <td class="text-dark fw-bold">5,000,000</td>
-                    <td class="text-dark fw-bold">2,000,000</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="fw-bold text-primary bg-white">12,000,000</td>
-                  </tr>
-                  <tr>
-                    <td class="text-start px-2"><small>239729 - COBRANZA</small></td>
-                    <td class="text-start px-2"><small>609023 - Promociones</small></td>
-                    <td class="text-start px-2"><small>N/A</small></td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-dark fw-bold">1,000,000</td>
-                    <td class="text-dark fw-bold">1,000,000</td>
-                    <td class="text-dark fw-bold">1,000,000</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="text-muted">0</td>
-                    <td class="fw-bold text-primary bg-white">3,000,000</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="row align-items-center mt-3 mb-4">
-              <div class="col-md-6 offset-md-6">
-                <div class="card border-0 bg-light shadow-sm">
-                  <div class="card-body py-2 px-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="text-muted small fw-bold text-uppercase">Total Global Solicitado</div>
-                      <div class="d-flex align-items-center">
-                        <span class="badge bg-white text-dark border me-2 small">MXN</span>
-                        <h4 class="mb-0 fw-bold text-primary">15,000,000</h4>
+                <!-- CeCo 1: 291374 MKT DIGITAL -->
+                <div class="accordion-item border mb-2 rounded">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button fw-semibold text-dark" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#ceco1" aria-expanded="true" aria-controls="ceco1" style="font-size:.9rem;">
+                      <i class="bi bi-building text-dark me-2"></i>291374 — MKT DIGITAL
+                      <span class="badge bg-light text-dark border fw-bold ms-2">$12,000,000</span>
+                    </button>
+                  </h2>
+                  <div id="ceco1" class="accordion-collapse collapse show">
+                    <div class="accordion-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle mb-0 text-dark" style="font-size:.85rem;">
+                          <thead class="table-light text-center text-dark">
+                            <tr>
+                              <th class="text-start ps-3">CeCo</th>
+                              <th class="text-start">Cuenta</th>
+                              <th>Ene</th><th>Feb</th><th>Mar</th><th>Abr</th><th>May</th><th>Jun</th>
+                              <th>Jul</th><th>Ago</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dic</th>
+                              <th>Total</th>
+                            </tr>
+                          </thead>
+                          <tbody class="text-end">
+                            <tr>
+                              <td class="text-start ps-3">291374</td>
+                              <td class="text-start">609011 — Televisión</td>
+                              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                              <td>4,000,000</td><td>4,000,000</td><td>1,000,000</td><td>0</td><td>0</td><td>0</td>
+                              <td class="fw-bold">9,000,000</td>
+                            </tr>
+                            <tr>
+                              <td class="text-start ps-3">291374</td>
+                              <td class="text-start">609028 — Pub. Digital</td>
+                              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                              <td>1,000,000</td><td>1,000,000</td><td>1,000,000</td><td>0</td><td>0</td><td>0</td>
+                              <td class="fw-bold">3,000,000</td>
+                            </tr>
+                            <tr class="fw-bold" style="background:#f3f1ea;">
+                              <td class="text-start ps-3" colspan="2">Subtotal</td>
+                              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                              <td>5,000,000</td><td>5,000,000</td><td>2,000,000</td><td>0</td><td>0</td><td>0</td>
+                              <td>$12,000,000</td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                <!-- CeCo 2: 239729 COBRANZA -->
+                <div class="accordion-item border mb-2 rounded">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button fw-semibold text-dark collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#ceco2" aria-expanded="false" aria-controls="ceco2" style="font-size:.9rem;">
+                      <i class="bi bi-building text-dark me-2"></i>239729 — COBRANZA
+                      <span class="badge bg-light text-dark border fw-bold ms-2">$3,000,000</span>
+                    </button>
+                  </h2>
+                  <div id="ceco2" class="accordion-collapse collapse">
+                    <div class="accordion-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle mb-0 text-dark" style="font-size:.85rem;">
+                          <thead class="table-light text-center text-dark">
+                            <tr>
+                              <th class="text-start ps-3">CeCo</th>
+                              <th class="text-start">Cuenta</th>
+                              <th>Ene</th><th>Feb</th><th>Mar</th><th>Abr</th><th>May</th><th>Jun</th>
+                              <th>Jul</th><th>Ago</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dic</th>
+                              <th>Total</th>
+                            </tr>
+                          </thead>
+                          <tbody class="text-end">
+                            <tr>
+                              <td class="text-start ps-3">239729</td>
+                              <td class="text-start">609023 — Promociones</td>
+                              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                              <td>1,000,000</td><td>1,000,000</td><td>1,000,000</td><td>0</td><td>0</td><td>0</td>
+                              <td class="fw-bold">3,000,000</td>
+                            </tr>
+                            <tr class="fw-bold" style="background:#f3f1ea;">
+                              <td class="text-start ps-3" colspan="2">Subtotal</td>
+                              <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                              <td>1,000,000</td><td>1,000,000</td><td>1,000,000</td><td>0</td><td>0</td><td>0</td>
+                              <td>$3,000,000</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- /accordion -->
+
+              <!-- Total global -->
+              <div class="rounded mt-3 px-4 py-3 fw-bold d-flex align-items-center gap-3 flex-wrap text-dark"
+                style="background:#e7e3d8; font-size:.95rem;">
+                <i class="bi bi-calculator me-1"></i>
+                <span>Total Global: <strong>$15,000,000.00</strong></span>
+                <span class="opacity-50">·</span>
+                <span>2 CeCos</span>
+                <span class="opacity-50">·</span>
+                <span>Jul–Sep 2026</span>
               </div>
-            </div>
-
-            <hr class="my-4">
-            <div class="d-flex justify-content-end align-items-center gap-2 mb-2">
-              <button type="button" class="btn btn-outline-danger px-4 shadow-sm" data-bs-toggle="modal"
-                data-bs-target="#modalRechazar">
-                <i class="bi bi-x-octagon me-1"></i> Rechazar
-              </button>
-
-              <button type="button" class="btn btn-outline-warning px-4 shadow-sm text-dark" data-bs-toggle="modal"
-                data-bs-target="#modalAjustes">
-                <i class="bi bi-pencil-square me-1"></i> Solicitar Ajustes
-              </button>
-
-              <button type="button" class="btn btn-success px-5 shadow-sm" data-bs-toggle="modal"
-                data-bs-target="#modalAprobar">
-                Aprobar Solicitud <i class="bi bi-check2-circle ms-1"></i>
-              </button>
             </div>
 
           </div>
 
+          <!-- TAB: Bitácora de cambios (CA04) -->
           <div class="tab-pane fade" id="historial" role="tabpanel" aria-labelledby="#historial-tab">
+
+            <h6 class="fw-bold text-dark mb-3 small text-uppercase"><i class="bi bi-clock-history me-2"></i>Histórico de
+              cambios y movimientos</h6>
+            <div class="table-responsive border rounded shadow-sm bg-white">
+              <table class="table table-hover align-middle mb-0">
+                <thead class="table-light small text-uppercase fw-bold text-muted">
+                  <tr>
+                    <th style="width: 170px;">Fecha y Hora</th>
+                    <th style="width: 190px;">Estatus / Evento</th>
+                    <th style="width: 130px;">Nivel</th>
+                    <th style="width: 200px;">Usuario</th>
+                    <th>Observaciones</th>
+                  </tr>
+                </thead>
+                <tbody class="small">
+                  <tr>
+                    <td class="text-nowrap">28 Mar 2026, 09:15</td>
+                    <td><span class="badge bg-warning-subtle text-warning border border-warning-subtle"><i
+                          class="bi bi-chat-quote me-1"></i>Comentario publicado</span></td>
+                    <td><span class="badge bg-light text-dark border">Nivel 1 — Marketing</span></td>
+                    <td>
+                      <span class="d-block fw-bold text-dark">Edgar Grande Arteaga</span>
+                      <span class="x-small text-muted text-uppercase">Admon Finanzas Mkt</span>
+                    </td>
+                    <td class="text-muted">Solicitud de aclaración sobre IVA en pauta digital.</td>
+                  </tr>
+                  <tr>
+                    <td class="text-nowrap">27 Mar 2026, 16:45</td>
+                    <td><span class="badge bg-info-subtle text-info border border-info-subtle">Enviada a autorización</span></td>
+                    <td><span class="badge bg-light text-dark border">Nivel 1 — Marketing</span></td>
+                    <td>
+                      <span class="d-block fw-bold text-dark">Carlos Ruiz</span>
+                      <span class="x-small text-muted text-uppercase">MKT Operativo</span>
+                    </td>
+                    <td class="text-muted">Distribución de presupuesto completada y enviada al flujo de autorización.</td>
+                  </tr>
+                  <tr>
+                    <td class="text-nowrap">27 Mar 2026, 15:10</td>
+                    <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Solicitud creada</span></td>
+                    <td><span class="text-muted">—</span></td>
+                    <td>
+                      <span class="d-block fw-bold text-dark">Carlos Ruiz</span>
+                      <span class="x-small text-muted text-uppercase">MKT Operativo</span>
+                    </td>
+                    <td class="text-muted">Creación de la solicitud de gasto publicitario.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB: Comentarios (CA05) -->
+          <div class="tab-pane fade" id="comentarios" role="tabpanel" aria-labelledby="#comentarios-tab">
 
             <div class="card border shadow-sm mt-3 mb-4">
               <div class="card-body p-3 bg-light-subtle">
                 <label class="form-label fw-bold small text-primary text-uppercase"><i
-                    class="bi bi-chat-left-dots me-2"></i>Enviar mensaje</label>
+                    class="bi bi-pencil-square me-2"></i>Escribir comentario</label>
                 <div class="d-flex gap-3">
                   <div class="flex-grow-1">
                     <textarea class="form-control shadow-sm border-2" rows="2"
-                      placeholder="Escriba aquí sus dudas, aclaraciones o el motivo de ajuste solicitado..."
+                      placeholder="Escribe aquí tus dudas, aclaraciones o notas sobre esta solicitud..."
                       style="resize: none;"></textarea>
-                    <div class="form-text x-small">Este comentario será visible para todos los involucrados en el flujo
-                      de autorización.</div>
+                    <div class="form-text x-small">El comentario se publica sin cambiar el estatus y notifica por correo
+                      al usuario de carga y al autorizador activo.</div>
                   </div>
                   <div class="d-flex flex-column justify-content-end">
-                    <button class="btn btn-primary fw-bold px-4 shadow-sm h-100 mb-4">
+                    <button class="btn btn-primary fw-bold px-4 shadow-sm mb-4">
                       <i class="bi bi-send-fill me-2"></i>Publicar
                     </button>
                   </div>
@@ -1238,50 +1395,43 @@
               </div>
             </div>
 
-            <h6 class="fw-bold text-dark mb-3 small text-uppercase"><i class="bi bi-clock-history me-2"></i>Historial
-              Detallado y Mensajes</h6>
-            <div class="table-responsive border rounded shadow-sm bg-white">
-              <table class="table table-hover align-middle mb-0">
-                <thead class="table-light small text-uppercase fw-bold text-muted">
-                  <tr>
-                    <th style="width: 180px;">Fecha y Hora</th>
-                    <th style="width: 200px;">Acción / Estatus</th>
-                    <th style="width: 250px;">Usuario / Nivel</th>
-                    <th>Observaciones / Conversación</th>
-                  </tr>
-                </thead>
-                <tbody class="small">
-                  <tr class="bg-warning-subtle border-start border-4 border-warning">
-                    <td class="text-nowrap">28 Mar 2026, 09:15</td>
-                    <td><span class="badge bg-warning text-dark border border-warning-subtle"><i
-                          class="bi bi-chat-quote me-1"></i> Comentario / Ajuste</span></td>
-                    <td>
-                      <span class="d-block fw-bold text-dark">Edgar Grande Arteaga</span>
-                      <span class="x-small text-muted text-uppercase">Admon Finanzas Mkt</span>
-                    </td>
-                    <td>
-                      <div class="fw-bold text-dark">Solicitud de aclaración:</div>
-                      <div class="text-dark p-2 rounded bg-white border mt-1">
-                        ¿Podrías confirmar si este gasto de pauta digital ya incluye el IVA? El tope actual no permite
-                        excedentes de este tamaño en Q1.
-                      </div>
-                    </td>
-                  </tr>
+            <h6 class="fw-bold text-dark mb-3 small text-uppercase"><i class="bi bi-chat-square-text me-2"></i>Historial
+              de comentarios</h6>
 
-                  <tr>
-                    <td class="text-nowrap">27 Mar 2026, 16:45</td>
-                    <td><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Enviado a
-                        Autorización N1</span></td>
-                    <td>
-                      <span class="d-block fw-bold">Carlos Ruiz</span>
-                      <span class="x-small text-muted text-uppercase">MKT Operativo</span>
-                    </td>
-                    <td class="text-muted">
-                      <em>Creación de solicitud original e inicio de flujo.</em>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="d-flex gap-3 mb-3">
+              <div class="flex-shrink-0">
+                <div class="rounded-circle bg-warning-subtle text-warning d-flex align-items-center justify-content-center fw-bold"
+                  style="width:42px;height:42px;">EG</div>
+              </div>
+              <div class="flex-grow-1 border rounded p-3 bg-white shadow-sm">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <div>
+                    <span class="fw-bold text-dark">Edgar Grande Arteaga</span>
+                    <span class="badge bg-light text-muted border ms-1 x-small text-uppercase">Admon Finanzas Mkt</span>
+                  </div>
+                  <small class="text-muted">28 Mar 2026 · 09:15</small>
+                </div>
+                <p class="mb-0 text-dark small">¿Podrías confirmar si este gasto de pauta digital ya incluye el IVA?
+                  El tope actual no permite excedentes de este tamaño en Q1.</p>
+              </div>
+            </div>
+
+            <div class="d-flex gap-3 mb-3">
+              <div class="flex-shrink-0">
+                <div class="rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center fw-bold"
+                  style="width:42px;height:42px;">CR</div>
+              </div>
+              <div class="flex-grow-1 border rounded p-3 bg-white shadow-sm">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <div>
+                    <span class="fw-bold text-dark">Carlos Ruiz</span>
+                    <span class="badge bg-light text-muted border ms-1 x-small text-uppercase">MKT Operativo</span>
+                  </div>
+                  <small class="text-muted">27 Mar 2026 · 16:50</small>
+                </div>
+                <p class="mb-0 text-dark small">Adjunto la solicitud para revisión. Quedo atento a cualquier
+                  observación antes de la aprobación.</p>
+              </div>
             </div>
           </div>
 
@@ -1322,7 +1472,7 @@
           <div class="modal-body text-center p-5">
             <i class="bi bi-check-circle-fill text-success mb-3" style="font-size: 4rem;"></i>
             <h5 class="fw-bold text-dark mb-2">¡Éxito! La solicitud se aprobó correctamente.</h5>
-            <a href="BandejaAutorizaciones.html" class="btn btn-success px-5 mt-3 shadow-sm">Continuar</a>
+            <a href="Autorizaciones.html" class="btn btn-success px-5 mt-3 shadow-sm">Continuar</a>
           </div>
         </div>
       </div>
@@ -1362,7 +1512,7 @@
           <div class="modal-body text-center p-5">
             <i class="bi bi-send-check-fill text-warning mb-3" style="font-size: 4rem;"></i>
             <h5 class="fw-bold text-dark mb-2">¡Éxito! La solicitud de ajustes se envió correctamente.</h5>
-            <a href="BandejaAutorizaciones.html" class="btn btn-dark px-5 mt-3 shadow-sm">Continuar</a>
+            <a href="Autorizaciones.html" class="btn btn-dark px-5 mt-3 shadow-sm">Continuar</a>
           </div>
         </div>
       </div>
@@ -1402,7 +1552,7 @@
           <div class="modal-body text-center p-5">
             <i class="bi bi-x-circle-fill text-danger mb-3" style="font-size: 4rem;"></i>
             <h5 class="fw-bold text-dark mb-2">La solicitud ha sido rechazada.</h5>
-            <a href="BandejaAutorizaciones.html" class="btn btn-danger px-5 mt-3 shadow-sm">Continuar</a>
+            <a href="Autorizaciones.html" class="btn btn-danger px-5 mt-3 shadow-sm">Continuar</a>
           </div>
         </div>
       </div>
@@ -1413,6 +1563,22 @@
     function confirmarAprobacion() { document.getElementById('stepAprobarConfirmacion').classList.add('d-none'); document.getElementById('stepAprobarExito').classList.remove('d-none'); }
     function confirmarAjuste() { document.getElementById('stepAjusteConfirmacion').classList.add('d-none'); document.getElementById('stepAjusteExito').classList.remove('d-none'); }
     function confirmarRechazo() { document.getElementById('stepRechazarConfirmacion').classList.add('d-none'); document.getElementById('stepRechazarExito').classList.remove('d-none'); }
+
+    function expandAll() {
+      document.querySelectorAll('#accMatriz .accordion-collapse').forEach(function (el) {
+        new bootstrap.Collapse(el, { toggle: false }).show();
+      });
+    }
+    function collapseAll() {
+      document.querySelectorAll('#accMatriz .accordion-collapse').forEach(function (el) {
+        new bootstrap.Collapse(el, { toggle: false }).hide();
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('[data-bs-toggle="popover"]').forEach(function (el) {
+        new bootstrap.Popover(el);
+      });
+    });
   </script>
 
 
