@@ -185,7 +185,6 @@
       </div>
       <div class="d-flex align-items-center gap-2">
         <button class="btn btn-warning btn-sm fw-bold text-dark shadow-sm" onclick="confirmarAccion('borrador')"><i class="bi bi-floppy me-1"></i> Guardar borrador</button>
-        <button class="btn btn-success btn-sm fw-bold shadow-sm" onclick="confirmarAccion('enviar')"><i class="bi bi-send-fill me-1"></i> Enviar a aprobación</button>
         <button class="btn btn-primary btn-sm shadow-sm" onclick="confirmarAccion('cancelar')"><i class="bi bi-x-lg me-1"></i> Cancelar</button>
       </div>
     </div>
@@ -316,17 +315,17 @@
                   <div class="form-text" style="font-size:.7rem;">No aplica «Gasto Ordinario» en Proyectos de Inversión.</div>
                 </div>
 
-                <!-- División -->
+                <!-- División (informativa · heredada del proyecto) -->
                 <div class="col-12">
-                  <label class="form-label small fw-bold text-dark">División <span class="text-danger">*</span>
-                    <span class="fw-normal text-dark ms-1" style="font-size:0.7rem;">(filtra los Negocios · no requiere Base Presupuestal)</span>
-                  </label>
-                  <div class="d-flex flex-wrap gap-2" id="divChips">
-                    <button type="button" class="div-chip" data-div="Marca" onclick="seleccionarDiv(this)">Marca</button>
-                    <button type="button" class="div-chip" data-div="Oferteo" onclick="seleccionarDiv(this)">Oferteo</button>
-                    <button type="button" class="div-chip" data-div="Estrategia" onclick="seleccionarDiv(this)">Estrategia</button>
-                    <button type="button" class="div-chip" data-div="Sin División" onclick="seleccionarDiv(this)">Sin División</button>
-                  </div>
+                  <label class="form-label small fw-bold text-dark">División</label>
+                  <input type="text" id="igDivision" class="form-control form-control-sm bg-light text-dark fw-bold shadow-none" value="—" disabled>
+                  <div class="form-text" style="font-size:.7rem;">Heredada del proyecto y sus CeCos asignados.</div>
+                </div>
+
+                <!-- Negocio (informativo · heredado del proyecto) -->
+                <div class="col-12">
+                  <label class="form-label small fw-bold text-dark">Negocio</label>
+                  <input type="text" id="igNegocio" class="form-control form-control-sm bg-light text-dark fw-bold shadow-none" value="—" disabled>
                 </div>
 
                 <!-- Tipo de campaña: siempre De Negocio (dato) -->
@@ -400,26 +399,16 @@
                     </div>
                   </div>
 
-                  <div id="estado-sin-division" class="border border-secondary border-opacity-25 rounded bg-white shadow-sm text-center py-5">
-                    <i class="bi bi-diagram-3 text-secondary mb-2" style="font-size:2rem; display:block;"></i>
-                    <p class="text-muted mb-0 small">Selecciona una División para ver los Negocios y sus Centros de Costo disponibles.</p>
+                  <!-- División y Negocio informativos (heredados del proyecto) -->
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <span class="badge bg-light text-dark border fw-bold">División: <span id="cecoInfoDivision">—</span></span>
+                    <span class="badge bg-light text-dark border fw-bold">Negocio: <span id="cecoInfoNegocio">—</span></span>
                   </div>
 
-                  <!-- Negocio -->
-                  <div id="bloque-negocio" style="display:none;">
-                    <label class="form-label small fw-bold text-dark mb-2"><i class="bi bi-1-circle-fill text-primary me-1"></i>Selecciona el Negocio
-                      <span class="fw-normal text-muted ms-1" style="font-size:0.7rem;">(solo un Negocio por solicitud)</span></label>
-                    <div id="lista-negocios" class="row g-2 mb-3"></div>
-                    <div id="negocio-unico" class="alert alert-primary py-2 px-3 mb-3 d-flex align-items-center gap-2" style="display:none;">
-                      <i class="bi bi-briefcase-fill"></i>
-                      <div><div class="paso-label text-primary mb-0">Negocio (único en esta División)</div><div class="fw-bold" id="negocio-unico-nombre">—</div></div>
-                    </div>
-                  </div>
-
-                  <!-- CeCos -->
-                  <div id="bloque-cecos" style="display:none;">
-                    <label class="form-label small fw-bold text-dark mb-2"><i class="bi bi-2-circle-fill text-primary me-1"></i>Selecciona los Centros de Costo
-                      <span class="fw-normal text-muted ms-1" style="font-size:0.7rem;">(al menos uno · quedan asignados al proyecto)</span></label>
+                  <!-- CeCos del proyecto -->
+                  <div id="bloque-cecos">
+                    <label class="form-label small fw-bold text-dark mb-2"><i class="bi bi-check2-square text-primary me-1"></i>Selecciona los Centros de Costo de la solicitud
+                      <span class="fw-normal text-muted ms-1" style="font-size:0.7rem;">(al menos uno · relacionados con el proyecto)</span></label>
                     <div class="input-group input-group-sm shadow-sm mb-2">
                       <span class="input-group-text bg-white border-secondary border-opacity-50 text-dark"><i class="bi bi-search"></i></span>
                       <input type="text" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none py-2" placeholder="Buscar por nombre o número de CeCo..." oninput="filtrarCecos(this.value)">
@@ -428,8 +417,7 @@
                       <table class="table align-middle mb-0" style="font-size:0.82rem;">
                         <thead class="sticky-top z-1 bg-white shadow-sm">
                           <tr>
-                            <th class="ps-3 text-dark fw-bold border-bottom" style="min-width:300px;">Centro de Costo</th>
-                            <th class="text-end text-dark fw-bold border-bottom" style="width:160px;">Negocio</th>
+                            <th class="ps-3 text-dark fw-bold border-bottom">Centro de Costo</th>
                           </tr>
                         </thead>
                         <tbody id="ceco-tbody"></tbody>
@@ -453,18 +441,41 @@
         ════════════════════════════════════════ -->
         <div id="paso-3" style="display:none;">
 
-          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
-            <div class="d-flex align-items-center gap-2 flex-wrap">
-              <span class="negocio-badge-lg"><i class="bi bi-briefcase-fill"></i><span id="negocioBadge">—</span></span>
-              <span class="proyecto-badge-lg"><i class="bi bi-rocket-takeoff"></i><span id="proyectoBadge">—</span></span>
-              <span class="badge bg-light text-dark border fw-bold" id="badgeDivision">División —</span>
-              <span class="badge bg-light text-dark border fw-bold">Moneda local (MXN)</span>
-            </div>
-            <button class="btn btn-sm btn-dark fw-semibold px-4" onclick="irPaso(2)"><i class="bi bi-arrow-left me-1"></i>Anterior</button>
+          <!-- Badges identificadores -->
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+            <span class="negocio-badge-lg"><i class="bi bi-briefcase-fill"></i><span id="negocioBadge">—</span></span>
+            <span class="proyecto-badge-lg"><i class="bi bi-rocket-takeoff"></i><span id="proyectoBadge">—</span></span>
+            <span class="badge bg-light text-dark border fw-bold" id="badgeDivision">División —</span>
+            <span class="badge bg-light text-dark border fw-bold">Moneda local (MXN)</span>
           </div>
 
-          <div class="row g-4 align-items-start">
-            <div class="col-lg-9">
+          <!-- Resumen de captura: horizontal en la parte superior -->
+          <div class="card border-0 shadow-sm bg-white mb-3">
+            <div class="card-body py-3 px-4">
+              <div class="row g-3 align-items-center">
+                <div class="col-12 col-md-4">
+                  <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2"><i class="bi bi-pie-chart text-primary"></i>Resumen de Captura</h6>
+                  <div class="text-muted small mt-1">Captura libre · sin Base Presupuestal</div>
+                </div>
+                <div class="col-6 col-md-4">
+                  <div class="border rounded px-3 py-2 text-center" style="background:#f8f9fa;">
+                    <div class="paso-label">CeCos con importe</div>
+                    <div class="fw-bold text-dark fs-5" id="panelCecos">0</div>
+                  </div>
+                </div>
+                <div class="col-6 col-md-4">
+                  <div class="border rounded px-3 py-2 text-center border-primary" style="background:#f0f4ff;">
+                    <div class="paso-label">Total Asignado</div>
+                    <div class="fw-bold text-primary fs-5" id="panelAsignado">$0.00 MXN</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Distribución a ancho completo -->
+          <div class="row g-4">
+            <div class="col-12">
               <div class="card border-0 shadow-sm bg-white">
                 <div class="card-header bg-white border-bottom py-3 px-4">
                   <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2"><i class="bi bi-calendar3 text-primary"></i>Distribución del Presupuesto / Centros de Costo</h6>
@@ -475,25 +486,12 @@
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="col-lg-3">
-              <div class="card border-0 shadow-sm bg-white sticky-top" style="top:20px;">
-                <div class="card-header bg-white border-bottom py-3 px-4">
-                  <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2"><i class="bi bi-pie-chart text-primary"></i>Resumen de Captura</h6>
-                </div>
-                <div class="card-body p-4">
-                  <div class="border border-secondary border-opacity-25 rounded p-3" style="background:#f8f9fa;">
-                    <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
-                      <span class="small fw-semibold text-dark">CeCos con importe</span><span class="fw-bold text-dark" id="panelCecos">0</span>
-                    </div>
-                    <div class="d-flex justify-content-between py-2">
-                      <span class="small fw-semibold text-dark">Total Asignado</span><span class="fw-bold text-primary" id="panelAsignado">$0.00 MXN</span>
-                    </div>
-                  </div>
-                  <div class="alert alert-info py-2 px-3 mt-3 mb-0 small"><i class="bi bi-info-circle me-1"></i>Sin Base Presupuestal: el sistema solo suma los totales capturados.</div>
-                </div>
-              </div>
-            </div>
+          <!-- Navegación: el envío vive solo en el Resumen de Confirmación -->
+          <div class="d-flex justify-content-between align-items-center gap-2 mt-4">
+            <button class="btn btn-dark fw-semibold px-4" onclick="irPaso(2)"><i class="bi bi-arrow-left me-1"></i>Anterior</button>
+            <button class="btn btn-primary fw-bold px-4 shadow-sm" onclick="confirmarAccion('enviar')">Revisar y confirmar <i class="bi bi-arrow-right ms-1"></i></button>
           </div>
         </div><!-- /paso-3 -->
 
@@ -538,7 +536,56 @@
         </div>
         <div class="modal-footer border-0">
           <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button class="btn btn-primary fw-bold" onclick="guardarNuevoProyecto()"><i class="bi bi-check-lg me-1"></i>Registrar y seleccionar</button>
+          <button class="btn btn-primary fw-bold" onclick="abrirAsignarCecos()"><i class="bi bi-diagram-3 me-1"></i>Asignar CeCos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Asignar CeCos al Proyecto (Paso 3.1) -->
+  <div class="modal fade" id="modalAsignarCecosProyecto" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-primary-subtle border-0">
+          <h5 class="modal-title fw-bold text-primary"><i class="bi bi-diagram-3 me-2"></i>Asignar Centros de Costo al Proyecto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="alert alert-info py-2 px-3 small"><i class="bi bi-info-circle me-1"></i>Los Centros de Costo seleccionados quedarán asignados al proyecto. La distribución se realizará únicamente sobre ellos.</div>
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label class="form-label small fw-bold text-dark">División <span class="text-danger">*</span></label>
+              <select id="acDivision" class="form-select form-select-sm shadow-none" onchange="acDivChange()">
+                <option value="" selected disabled>Seleccione...</option>
+                <option value="Marca">Marca</option>
+                <option value="Oferteo">Oferteo</option>
+                <option value="Estrategia">Estrategia</option>
+                <option value="Sin División">Sin División</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold text-dark">Negocio <span class="text-danger">*</span></label>
+              <select id="acNegocio" class="form-select form-select-sm shadow-none" onchange="acNegChange()" disabled>
+                <option value="" selected disabled>Seleccione una División primero...</option>
+              </select>
+            </div>
+          </div>
+          <label class="form-label small fw-bold text-dark">Centros de Costo <span class="text-danger">*</span></label>
+          <div class="border border-secondary border-opacity-25 rounded bg-white" style="max-height:260px; overflow-y:auto;">
+            <table class="table align-middle mb-0" style="font-size:0.82rem;">
+              <thead class="sticky-top z-1 bg-light">
+                <tr><th class="ps-3 text-dark fw-bold border-bottom" style="width:46px;"></th><th class="text-dark fw-bold border-bottom">Centro de Costo</th></tr>
+              </thead>
+              <tbody id="acCecoTbody">
+                <tr><td colspan="2" class="text-center text-muted small py-4">Selecciona División y Negocio para ver los Centros de Costo.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="acError" class="alert alert-danger py-2 px-3 mt-3 mb-0 small" style="display:none;"></div>
+        </div>
+        <div class="modal-footer border-0">
+          <button class="btn btn-outline-secondary" onclick="volverNuevoProyecto()"><i class="bi bi-arrow-left me-1"></i>Atrás</button>
+          <button class="btn btn-primary fw-bold" onclick="guardarNuevoProyecto()"><i class="bi bi-check-lg me-1"></i>Guardar Proyecto</button>
         </div>
       </div>
     </div>
@@ -663,7 +710,7 @@
         </div>
         <div class="px-4 pb-4 d-flex gap-2">
           <button class="btn btn-light fw-semibold flex-fill border" data-bs-dismiss="modal" style="border-radius:10px;">Cancelar</button>
-          <button class="btn btn-success fw-bold flex-fill shadow-sm" onclick="ejecutarEnvio()" style="border-radius:10px;"><i class="bi bi-send-fill me-1"></i> Sí, enviar</button>
+          <button class="btn btn-success fw-bold flex-fill shadow-sm" onclick="ejecutarEnvio()" style="border-radius:10px;"><i class="bi bi-send-fill me-1"></i> Enviar a aprobación</button>
         </div>
       </div>
     </div>
@@ -760,11 +807,16 @@
 
     const CUENTAS = ['609011 – Televisión','609023 – Promociones','609028 – Pub. Digital','609040 – Radio','609055 – OOH / Exteriores'];
 
+    // Cada proyecto trae asignados División, Negocio y sus Centros de Costo (E4)
     const PROYECTOS = [
-      { num:'19283', nombre:'Gemas', anioInicio:2025, vigencia:3 },
-      { num:'21328', nombre:'Originación Crédito', anioInicio:2026, vigencia:2 },
-      { num:'30011', nombre:'Fibra 2026 Totalplay', anioInicio:2026, vigencia:4 },
-      { num:'40005', nombre:'Expansión App Banca', anioInicio:2026, vigencia:5 },
+      { num:'19283', nombre:'Gemas', anioInicio:2025, vigencia:3, division:'Marca', negocio:'Banco Azteca',
+        cecos:[{num:'100901',nombre:'DIR GRAL CONECTIVIDAD'},{num:'100902',nombre:'DIR MARCA CORPORATIVA'}] },
+      { num:'21328', nombre:'Originación Crédito', anioInicio:2026, vigencia:2, division:'Estrategia', negocio:'Estrategia Comercial',
+        cecos:[{num:'182310',nombre:'DIR ESTRATEGIA COMERCIAL'}] },
+      { num:'30011', nombre:'Fibra 2026 Totalplay', anioInicio:2026, vigencia:4, division:'Sin División', negocio:'Totalplay',
+        cecos:[{num:'330100',nombre:'TOTALPLAY PUBLICIDAD'},{num:'330200',nombre:'TOTALPLAY EXPANSION'}] },
+      { num:'40005', nombre:'Expansión App Banca', anioInicio:2026, vigencia:5, division:'Oferteo', negocio:'Marketing Digital',
+        cecos:[{num:'291374',nombre:'DIR MKT DIGITAL'}] },
     ];
 
     let estado = { proyecto:null, division:null, negocio:null };
@@ -806,6 +858,9 @@
     }
     function seleccionarProyecto(num) {
       estado.proyecto = PROYECTOS.find(p => p.num === num);
+      // La División y el Negocio se heredan del proyecto y sus CeCos asignados
+      estado.division = estado.proyecto.division;
+      estado.negocio = { nombre: estado.proyecto.negocio, cecos: estado.proyecto.cecos };
       document.querySelectorAll('.proyecto-row').forEach(r => {
         const on = r.dataset.num === num;
         r.classList.toggle('active', on);
@@ -820,7 +875,11 @@
         tr.style.display = (!t || tr.textContent.toLowerCase().includes(t)) ? '' : 'none';
       });
     }
-    function guardarNuevoProyecto() {
+    // Borrador del proyecto en alta (datos generales + asignación de CeCos)
+    let proyectoDraft = null;
+
+    // Paso 3.1: valida los datos generales y abre la asignación de CeCos (aún no guarda)
+    function abrirAsignarCecos() {
       const num = document.getElementById('npNumero').value.trim();
       const nombre = document.getElementById('npNombre').value.trim();
       const vig = parseInt(document.getElementById('npVigencia').value, 10);
@@ -835,11 +894,67 @@
       if (!vig || vig < 1 || vig > 5) fallos.push('Años de vigencia (1 a 5)');
       if (fallos.length) { err.style.display='block'; err.textContent = 'Captura: ' + fallos.join(', ') + '.'; return; }
       err.style.display = 'none';
-      const nuevo = { num, nombre, anioInicio:ini, vigencia:vig };
-      PROYECTOS.unshift(nuevo);
-      renderProyectos();
-      seleccionarProyecto(num);
+      proyectoDraft = { num, nombre, anioInicio:ini, vigencia:vig, desc };
       bootstrap.Modal.getInstance(document.getElementById('modalNuevoProyecto')).hide();
+      // Reiniciar la asignación
+      document.getElementById('acDivision').value = '';
+      document.getElementById('acNegocio').innerHTML = '<option value="" selected disabled>Seleccione una División primero...</option>';
+      document.getElementById('acNegocio').disabled = true;
+      document.getElementById('acCecoTbody').innerHTML = '<tr><td colspan="2" class="text-center text-muted small py-4">Selecciona División y Negocio para ver los Centros de Costo.</td></tr>';
+      document.getElementById('acError').style.display = 'none';
+      new bootstrap.Modal(document.getElementById('modalAsignarCecosProyecto')).show();
+    }
+
+    function volverNuevoProyecto() {
+      bootstrap.Modal.getInstance(document.getElementById('modalAsignarCecosProyecto')).hide();
+      new bootstrap.Modal(document.getElementById('modalNuevoProyecto')).show();
+    }
+
+    function acDivChange() {
+      const div = document.getElementById('acDivision').value;
+      const selNeg = document.getElementById('acNegocio');
+      const negs = NEGOCIOS[div] || [];
+      selNeg.innerHTML = '<option value="" selected disabled>Seleccione...</option>' + negs.map((n,i)=>`<option value="${i}">${n.nombre}</option>`).join('');
+      selNeg.disabled = false;
+      document.getElementById('acCecoTbody').innerHTML = '<tr><td colspan="2" class="text-center text-muted small py-4">Selecciona el Negocio para ver los Centros de Costo.</td></tr>';
+    }
+    function acNegChange() {
+      const div = document.getElementById('acDivision').value;
+      const idx = document.getElementById('acNegocio').value;
+      const neg = (NEGOCIOS[div] || [])[idx];
+      const tb = document.getElementById('acCecoTbody');
+      if (!neg) { tb.innerHTML = ''; return; }
+      tb.innerHTML = neg.cecos.map(c => `
+        <tr>
+          <td class="ps-3"><input class="form-check-input shadow-none ac-chk" type="checkbox" value="${c.num}" data-nombre="${c.nombre}"></td>
+          <td class="text-dark"><i class="bi bi-building text-primary me-2"></i>${c.num} – ${c.nombre}</td>
+        </tr>`).join('');
+    }
+
+    // Guarda el proyecto con sus CeCos asignados y vuelve a la tabla del Paso 1
+    function guardarNuevoProyecto() {
+      const err = document.getElementById('acError');
+      const div = document.getElementById('acDivision').value;
+      const idx = document.getElementById('acNegocio').value;
+      const neg = (NEGOCIOS[div] || [])[idx];
+      const sel = [...document.querySelectorAll('.ac-chk:checked')];
+      const fallos = [];
+      if (!div) fallos.push('División');
+      if (!neg) fallos.push('Negocio');
+      if (!sel.length) fallos.push('al menos un Centro de Costo');
+      if (fallos.length) { err.style.display='block'; err.textContent = 'Selecciona: ' + fallos.join(', ') + '.'; return; }
+      err.style.display = 'none';
+
+      const nuevo = Object.assign({}, proyectoDraft, {
+        division: div,
+        negocio: neg.nombre,
+        cecos: sel.map(c => ({ num:c.value, nombre:c.dataset.nombre })),
+      });
+      PROYECTOS.unshift(nuevo);
+      proyectoDraft = null;
+      renderProyectos();
+      seleccionarProyecto(nuevo.num);
+      bootstrap.Modal.getInstance(document.getElementById('modalAsignarCecosProyecto')).hide();
     }
 
     function validarPaso1() {
@@ -852,6 +967,12 @@
       document.getElementById('igNombre').value = estado.proyecto.nombre;
       document.getElementById('igProyecto').textContent = `${estado.proyecto.num} – ${estado.proyecto.nombre}`;
       document.getElementById('igProyVigencia').textContent = vigProyTexto(estado.proyecto);
+      // División y Negocio informativos (heredados del proyecto)
+      document.getElementById('igDivision').value = estado.division || '—';
+      document.getElementById('igNegocio').value = estado.negocio ? estado.negocio.nombre : '—';
+      document.getElementById('cecoInfoDivision').textContent = estado.division || '—';
+      document.getElementById('cecoInfoNegocio').textContent = estado.negocio ? estado.negocio.nombre : '—';
+      renderCecos();
       irPaso(2);
     }
 
@@ -866,52 +987,10 @@
       bar.className = 'progress-bar barra-largo ' + (v >= min ? 'bg-success' : 'bg-danger');
     }
 
-    // ── División / Negocio / CeCos ────────────────────
-    function seleccionarDiv(btn) {
-      document.querySelectorAll('#divChips .div-chip').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      estado.division = btn.dataset.div;
-      estado.negocio = null;
-      document.getElementById('estado-sin-division').style.display = 'none';
-      renderNegocios();
-    }
-    function renderNegocios() {
-      const negs = NEGOCIOS[estado.division] || [];
-      const lista = document.getElementById('lista-negocios');
-      const unico = document.getElementById('negocio-unico');
-      document.getElementById('bloque-negocio').style.display = 'block';
-      document.getElementById('bloque-cecos').style.display = 'none';
-      lista.innerHTML = ''; unico.style.display = 'none';
-
-      if (negs.length === 1) {
-        estado.negocio = negs[0];
-        document.getElementById('negocio-unico-nombre').textContent = negs[0].nombre;
-        unico.style.display = 'flex';
-        renderCecos();
-        return;
-      }
-      negs.forEach(n => {
-        const col = document.createElement('div');
-        col.className = 'col-12 col-md-6';
-        col.innerHTML = `
-          <div class="negocio-card p-3 h-100" data-neg="${n.id}" onclick="seleccionarNegocio('${n.id}')">
-            <div class="d-flex align-items-center gap-2"><i class="bi bi-briefcase-fill text-primary"></i><span class="fw-bold text-dark">${n.nombre}</span></div>
-            <div class="small text-muted mt-1">${n.cecos.length} Centro(s) de Costo
-              <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 ms-1" style="font-size:.62rem;">Captura libre</span></div>
-          </div>`;
-        lista.appendChild(col);
-      });
-    }
-    function seleccionarNegocio(id) {
-      const negs = NEGOCIOS[estado.division] || [];
-      estado.negocio = negs.find(n => n.id === id);
-      document.querySelectorAll('.negocio-card').forEach(c => c.classList.toggle('active', c.dataset.neg === id));
-      renderCecos();
-    }
+    // ── CeCos del proyecto (División y Negocio heredados) ──
     function renderCecos() {
       const tbody = document.getElementById('ceco-tbody');
       const vacio = document.getElementById('ceco-vacio-negocio');
-      document.getElementById('bloque-cecos').style.display = 'block';
       tbody.innerHTML = '';
       const cecos = estado.negocio ? estado.negocio.cecos : [];
       if (!cecos.length) { vacio.style.display = 'block'; updateCecoCount(); return; }
@@ -925,8 +1004,7 @@
               <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0 chk-ceco" type="checkbox" value="${c.num}" onchange="updateCecoCount()">
               <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>${c.num} – ${c.nombre}
             </div>
-          </td>
-          <td class="text-end small text-muted">${estado.negocio.nombre}</td>`;
+          </td>`;
         tbody.appendChild(tr);
       });
       updateCecoCount();
@@ -945,8 +1023,6 @@
     function validarPaso2() {
       const errs = [];
       if (!document.getElementById('tipoGasto').value) errs.push('Selecciona el Tipo de Gasto Publicitario.');
-      if (!estado.division) errs.push('Selecciona una División.');
-      if (!estado.negocio) errs.push('Selecciona un Negocio.');
       document.querySelectorAll('.campo-largo').forEach(ta => {
         if (ta.value.trim().length < parseInt(ta.dataset.min,10))
           errs.push('Objetivo, Alcance y KPI\'s requieren mínimo 50 caracteres cada uno.');
