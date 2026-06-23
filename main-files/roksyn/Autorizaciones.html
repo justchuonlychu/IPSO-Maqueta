@@ -989,29 +989,17 @@
 
           <div class="tab-pane fade active show" id="tab-autorizaciones" role="tabpanel">
 
-            <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-2 mb-4">
+            <!-- CA01 · Encabezado con indicadores acumulados -->
+            <div class="row row-cols-2 row-cols-md-2 row-cols-xl-4 g-2 mb-4">
               <div class="col">
-                <div class="card border border-warning-subtle shadow-none h-100 bg-white radius-10">
+                <div class="card border border-warning-subtle shadow-none h-100 bg-warning bg-opacity-10 radius-10">
                   <div class="card-body p-2 px-3 d-flex flex-column justify-content-center">
                     <div class="d-flex align-items-center mb-1">
-                      <span class="text-warning-emphasis fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Mis Pendientes</span>
-                      <i class="bi bi-inbox ms-auto text-warning-emphasis opacity-50"></i>
+                      <span class="text-warning-emphasis fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Pendiente de aprobación <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle ms-1">N2 · Finanzas Mkt</span></span>
+                      <i class="bi bi-hourglass-split ms-auto text-warning-emphasis opacity-50"></i>
                     </div>
                     <h5 class="text-dark fw-bold mb-0 lh-1">$46,500,000</h5>
-                    <span class="text-warning-emphasis small mt-1 fw-semibold">14 Solicitudes</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="card border border-danger-subtle shadow-none h-100 bg-danger bg-opacity-10 radius-10">
-                  <div class="card-body p-2 px-3 d-flex flex-column justify-content-center">
-                    <div class="d-flex align-items-center mb-1">
-                      <span class="text-danger fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Revisión Excedente</span>
-                      <i class="bi bi-exclamation-triangle ms-auto text-danger opacity-50"></i>
-                    </div>
-                    <h5 class="text-danger fw-bold mb-0 lh-1">$8,500,000</h5>
-                    <span class="text-danger small mt-1 fw-semibold">2 Solicitudes</span>
+                    <span class="text-warning-emphasis small mt-1 fw-semibold" id="ind-pendiente">14 Solicitudes</span>
                   </div>
                 </div>
               </div>
@@ -1020,24 +1008,24 @@
                 <div class="card border border-info-subtle shadow-none h-100 bg-white radius-10">
                   <div class="card-body p-2 px-3 d-flex flex-column justify-content-center">
                     <div class="d-flex align-items-center mb-1">
-                      <span class="text-info fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Pendientes MKT</span>
-                      <i class="bi bi-bullseye ms-auto text-info opacity-50"></i>
+                      <span class="text-info fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">En Ajuste</span>
+                      <i class="bi bi-arrow-repeat ms-auto text-info opacity-50"></i>
                     </div>
-                    <h5 class="text-dark fw-bold mb-0 lh-1">$15,000,000</h5>
-                    <span class="text-info small mt-1 fw-semibold">5 Solicitudes</span>
+                    <h5 class="text-dark fw-bold mb-0 lh-1">$5,800,000</h5>
+                    <span class="text-info small mt-1 fw-semibold" id="ind-ajuste">3 Solicitudes</span>
                   </div>
                 </div>
               </div>
 
               <div class="col">
-                <div class="card border border-primary-subtle shadow-none h-100 bg-white radius-10">
+                <div class="card border border-success-subtle shadow-none h-100 bg-white radius-10">
                   <div class="card-body p-2 px-3 d-flex flex-column justify-content-center">
                     <div class="d-flex align-items-center mb-1">
-                      <span class="text-primary fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Pendientes Finanzas</span>
-                      <i class="bi bi-calculator ms-auto text-primary opacity-50"></i>
+                      <span class="text-success fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Aprobadas</span>
+                      <i class="bi bi-check-circle ms-auto text-success opacity-50"></i>
                     </div>
-                    <h5 class="text-dark fw-bold mb-0 lh-1">$1,000,000</h5>
-                    <span class="text-primary small mt-1 fw-semibold">4 Solicitudes</span>
+                    <h5 class="text-dark fw-bold mb-0 lh-1">$3,200,000</h5>
+                    <span class="text-success small mt-1 fw-semibold" id="ind-aprobada">1 Solicitud</span>
                   </div>
                 </div>
               </div>
@@ -1046,11 +1034,11 @@
                 <div class="card border border-secondary-subtle shadow-none h-100 bg-white radius-10">
                   <div class="card-body p-2 px-3 d-flex flex-column justify-content-center">
                     <div class="d-flex align-items-center mb-1">
-                      <span class="text-secondary fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Pendientes División</span>
-                      <i class="bi bi-briefcase ms-auto text-secondary opacity-50"></i>
+                      <span class="text-secondary fw-bold text-uppercase" style="font-size: 0.65rem; letter-spacing: 0.5px;">Rechazadas</span>
+                      <i class="bi bi-x-circle ms-auto text-secondary opacity-50"></i>
                     </div>
-                    <h5 class="text-dark fw-bold mb-0 lh-1">$22,000,000</h5>
-                    <span class="text-secondary small mt-1 fw-semibold">3 Solicitudes</span>
+                    <h5 class="text-dark fw-bold mb-0 lh-1">$500,000</h5>
+                    <span class="text-secondary small mt-1 fw-semibold" id="ind-rechazada">1 Solicitud</span>
                   </div>
                 </div>
               </div>
@@ -1063,45 +1051,55 @@
                     Autorizaciones</h5>
                 </div>
 
-                <div class="row g-2 mb-4 bg-light p-3 rounded shadow-sm border align-items-end">
-                  <div class="col-md-2">
-                    <label class="form-label small fw-bold text-muted mb-1">Mostrar</label>
-                    <select class="form-select form-select-sm border-primary shadow-none">
-                      <option selected="">Mis pendientes</option>
-                      <option>Todas</option>
+                <!-- CA01 · Buscadores y filtros de múltiple selección -->
+                <div class="row g-2 mb-4 bg-light p-3 rounded shadow-sm border align-items-end" id="filtrosAutorizaciones">
+                  <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted mb-1"><i class="bi bi-search me-1"></i>Folio</label>
+                    <input type="text" id="f-folio" class="form-control form-control-sm shadow-none" placeholder="Ej. F-26001">
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted mb-1"><i class="bi bi-search me-1"></i>Nombre del gasto publicitario</label>
+                    <input type="text" id="f-gasto" class="form-control form-control-sm shadow-none" placeholder="Ej. Lanzamiento...">
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted mb-1">Tipo de presupuesto</label>
+                    <select id="f-tipo" class="form-select form-select-sm shadow-none" multiple size="2">
+                      <option value="Presupuesto ordinario">Presupuesto ordinario</option>
+                      <option value="Proyecto de inversión">Proyecto de inversión</option>
                     </select>
                   </div>
-                  <div class="col-md-2">
-                    <label class="form-label small fw-bold text-muted mb-1">Folio</label>
-                    <input type="text" class="form-control form-control-sm shadow-none" placeholder="Ej. F-26001">
-                  </div>
-                  <div class="col-md-2">
-                    <label class="form-label small fw-bold text-muted mb-1">Clave de Campaña</label>
-                    <input type="text" class="form-control form-control-sm shadow-none" placeholder="Ej. Verano...">
-                  </div>
-                  <div class="col-md-2">
-                    <label class="form-label small fw-bold text-muted mb-1">País</label>
-                    <select class="form-select form-select-sm shadow-none">
-                      <option selected="">Todos</option>
-                      <option>México</option>
-                      <option>Guatemala</option>
-                      <option>Panamá</option>
+                  <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted mb-1">Negocio</label>
+                    <select id="f-negocio" class="form-select form-select-sm shadow-none" multiple size="4">
+                      <option value="Crédito">Crédito</option>
+                      <option value="Débito">Débito</option>
+                      <option value="Seguros">Seguros</option>
+                      <option value="Inversiones">Inversiones</option>
                     </select>
                   </div>
-                  <div class="col-md-2">
-                    <label class="form-label small fw-bold text-muted mb-1">Estatus</label>
-                    <select class="form-select form-select-sm shadow-none">
-                      <option selected="">Todos</option>
-                      <option>Solicitud de Excedente</option>
-                      <option>Pendiente MKT</option>
-                      <option>Pendiente Finanzas</option>
-                      <option>Pendiente División</option>
+                  <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted mb-1">División</label>
+                    <select id="f-division" class="form-select form-select-sm shadow-none" multiple size="4">
+                      <option value="Marca">Marca</option>
+                      <option value="Oferteo">Oferteo</option>
+                      <option value="Estrategia">Estrategia</option>
+                      <option value="Sin división">Sin división</option>
                     </select>
                   </div>
-                  <div class="col-md-2 d-flex gap-2 text-end">
-                    <button class="btn btn-sm btn-outline-secondary w-100 shadow-none"><i class="bi bi-eraser"></i></button>
-                    <button class="btn btn-sm btn-primary w-100 shadow-sm fw-bold"><i class="bi bi-funnel me-1"></i>
-                      Filtrar</button>
+                  <div class="col-md-3">
+                    <label class="form-label small fw-bold text-muted mb-1">Estatus de la solicitud</label>
+                    <select id="f-estatus" class="form-select form-select-sm shadow-none" multiple size="5">
+                      <option value="Pendiente de aprobación" selected>Pendiente de aprobación</option>
+                      <option value="Aprobada">Aprobada</option>
+                      <option value="Rechazada">Rechazada</option>
+                      <option value="En ajuste">En ajuste</option>
+                      <option value="Cancelada">Cancelada</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 d-flex gap-2 align-items-end">
+                    <button id="btnLimpiarFiltros" class="btn btn-sm btn-outline-secondary shadow-none px-3"><i class="bi bi-eraser me-1"></i> Limpiar</button>
+                    <button id="btnFiltrar" class="btn btn-sm btn-primary shadow-sm fw-bold px-3"><i class="bi bi-funnel me-1"></i> Filtrar</button>
+                    <span class="ms-auto small text-muted align-self-center"><i class="bi bi-info-circle me-1"></i>Filtros de selección múltiple (Ctrl/Cmd + clic)</span>
                   </div>
                 </div>
 
@@ -1109,124 +1107,107 @@
                   <table class="table table-hover align-middle mb-0" style="font-size: 0.80rem;">
                     <thead class="table-light text-muted small text-uppercase text-center">
                       <tr>
-                        <th style="cursor: pointer;">Folio <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
-                        <th style="cursor: pointer;">País <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
-                        <th style="cursor: pointer;">Gasto Publicitario<i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
-                        <th style="cursor: pointer;">División <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
-                        <th style="cursor: pointer;">Importe Total <i class="bi bi-arrow-down-up ms-1 opacity-50"></i>
-                        </th>
-                        <th style="cursor: pointer;">Usuario creador<i class="bi bi-arrow-down-up ms-1 opacity-50"></i>
-                        </th>
-                        <th style="cursor: pointer;" class="text-dark fw-bold">Fecha Solicitud <i class="bi bi-arrow-down ms-1"></i></th>
-                        <th style="cursor: pointer;">Estatus <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
-                        <th style="cursor: pointer;" class="text-primary fw-bold">Autorizador <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
+                        <th style="cursor: pointer;">Folio</th>
+                        <th style="cursor: pointer;">Tipo de presupuesto</th>
+                        <th style="cursor: pointer;">Gasto Publicitario</th>
+                        <th style="cursor: pointer;">División</th>
+                        <th style="cursor: pointer;">Negocio</th>
+                        <th style="cursor: pointer;">Vigencia</th>
+                        <th style="cursor: pointer;">Importe Total</th>
+                        <th style="cursor: pointer;">Usuario de carga</th>
+                        <th class="text-center">Notif.</th>
+                        <th style="cursor: pointer;" class="text-dark fw-bold">Última Actualización <i class="bi bi-arrow-up ms-1"></i></th>
+                        <th style="cursor: pointer;">Estatus</th>
                       </tr>
                     </thead>
-                    <tbody class="text-center">
+                    <tbody class="text-center" id="tablaAutorizaciones">
 
-                      <tr>
-                        <td class="text-start fw-bold"><a href="AutorizacionExcedente.html" class="text-primary text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud">F-26002NMX</a></td>
-                        <td class="text-start">México</td>
-                        <td class="text-start">Propuesta V1 Tope Excedente</td>
-                        <td class="text-start"><span class="badge bg-light text-dark border">Marca</span></td>
-                        <td class="text-end fw-bold text-danger">$8,500,000</td>
-                        <td class="text-start text-muted">Ana López</td>
-                        <td class="text-start text-muted">28/03/2026</td>
-                        <td class="text-start"><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Solicitud de
-                            Excedente</span></td>
-                        <td class="text-start fw-bold text-dark"><i class="bi bi-person-circle text-muted me-1"></i>
-                          Christian García</td>
-                      </tr>
-
-                      <tr>
-                        <td class="text-start fw-bold"><a href="AutorizacionExcedente2.html" class="text-primary text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud">F-26002NMX</a></td>
-                        <td class="text-start">México</td>
-                        <td class="text-start">Propuesta 2 Tope Excedente</td>
-                        <td class="text-start"><span class="badge bg-light text-dark border">Marca</span></td>
-                        <td class="text-end fw-bold text-danger">$8,500,000</td>
-                        <td class="text-start text-muted">Ana López</td>
-                        <td class="text-start text-muted">28/03/2026</td>
-                        <td class="text-start"><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Solicitud de
-                            Excedente</span></td>
-                        <td class="text-start fw-bold text-dark"><i class="bi bi-person-circle text-muted me-1"></i>
-                          Christian García</td>
-                      </tr>
-                      <tr>
-                        <td class="text-start fw-bold"><a href="AutorizacionRemanente.html" class="text-primary text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud">F-26002NMX</a></td>
-                        <td class="text-start">México</td>
-                        <td class="text-start">Propuesta 2 Remanente</td>
-                        <td class="text-start"><span class="badge bg-light text-dark border">Marca</span></td>
-                        <td class="text-end fw-bold text-danger">$8,500,000</td>
-                        <td class="text-start text-muted">Ana López</td>
-                        <td class="text-start text-muted">28/03/2026</td>
-                        <td class="text-start"><span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Pendiente
-                            Finanzas</span></td>
-                        <td class="text-start fw-bold text-dark"><i class="bi bi-person-circle text-muted me-1"></i>
-                          Christian García</td>
-                      </tr>
-                      <tr>
+                      <tr data-folio="F-26003NMX" data-gasto="Lanzamiento App" data-tipo="Presupuesto ordinario" data-negocio="Crédito" data-division="Estrategia" data-estatus="Pendiente de aprobación">
                         <td class="text-start fw-bold"><a href="AutorizacionN1.html" class="text-primary text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud">F-26003NMX</a></td>
-                        <td class="text-start">Honduras</td>
+                        <td class="text-start"><span class="badge bg-light text-dark border">Presupuesto ordinario</span></td>
                         <td class="text-start">Lanzamiento App</td>
                         <td class="text-start"><span class="badge bg-light text-dark border">Estrategia</span></td>
+                        <td class="text-start text-muted">Crédito</td>
+                        <td class="text-start text-muted">Ene–Mar 2026</td>
                         <td class="text-end fw-bold">$15,000,000</td>
                         <td class="text-start text-muted">Carlos Ruiz</td>
-                        <td class="text-start text-muted">27/03/2026</td>
-                        <td class="text-start"><span class="badge bg-info-subtle text-dark border border-info-subtle">Pendiente MKT</span></td>
-                        <td class="text-start fw-bold text-dark"><i class="bi bi-person-circle text-muted me-1"></i>
-                          Laura Martínez</td>
+                        <td class="text-center"><i class="bi bi-envelope text-muted" title="Pendiente sin abrir"></i></td>
+                        <td class="text-start text-muted">26/03/2026 09:14</td>
+                        <td class="text-start"><span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle">Pendiente de aprobación</span></td>
                       </tr>
 
-                      <tr>
+                      <tr data-folio="F-26001NMX" data-gasto="Préstamo Verano" data-tipo="Presupuesto ordinario" data-negocio="Crédito" data-division="Oferteo" data-estatus="Pendiente de aprobación">
                         <td class="text-start fw-bold"><a href="AutorizacionN2.html" class="text-primary text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud">F-26001NMX</a></td>
-                        <td class="text-start">Panamá</td>
+                        <td class="text-start"><span class="badge bg-light text-dark border">Presupuesto ordinario</span></td>
                         <td class="text-start">Préstamo Verano</td>
                         <td class="text-start"><span class="badge bg-light text-dark border">Oferteo</span></td>
+                        <td class="text-start text-muted">Crédito</td>
+                        <td class="text-start text-muted">Jun–Ago 2026</td>
                         <td class="text-end fw-bold">$1,000,000</td>
                         <td class="text-start text-muted">Juan Pérez</td>
-                        <td class="text-start text-muted">28/03/2026</td>
-                        <td class="text-start"><span class="badge bg-primary-subtle text-dark border border-primary-subtle">Pendiente
-                            Finanzas</span></td>
-                        <td class="text-start fw-bold text-dark"><i class="bi bi-person-circle text-muted me-1"></i>
-                          Eduardo Santoyo</td>
+                        <td class="text-center"><i class="bi bi-envelope-open text-primary" title="Pendiente abierta"></i></td>
+                        <td class="text-start text-muted">27/03/2026 11:02</td>
+                        <td class="text-start"><span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle">Pendiente de aprobación</span></td>
                       </tr>
 
-                      <tr>
+                      <tr data-folio="F-26004NMX" data-gasto="Patrocinio Deportivo" data-tipo="Proyecto de inversión" data-negocio="Seguros" data-division="Estrategia" data-estatus="Pendiente de aprobación">
                         <td class="text-start fw-bold"><a href="AutorizacionN3.html" class="text-primary text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud">F-26004NMX</a></td>
-                        <td class="text-start">Guatemala</td>
+                        <td class="text-start"><span class="badge bg-info-subtle text-info border border-info-subtle">Proyecto de inversión</span></td>
                         <td class="text-start">Patrocinio Deportivo</td>
                         <td class="text-start"><span class="badge bg-light text-dark border">Estrategia</span></td>
+                        <td class="text-start text-muted">Seguros</td>
+                        <td class="text-start text-muted">Ene–Dic 2026</td>
                         <td class="text-end fw-bold">$22,000,000</td>
                         <td class="text-start text-muted">Roberto Gómez</td>
-                        <td class="text-start text-muted">26/03/2026</td>
-                        <td class="text-start"><span class="badge bg-warning-subtle text-danger border border-warning-subtle">Pendiente
-                            División</span></td>
-                        <td class="text-start fw-bold text-dark"><i class="bi bi-person-circle text-muted me-1"></i>
-                          Karla Castillón</td>
+                        <td class="text-center"><i class="bi bi-envelope text-muted" title="Pendiente sin abrir"></i></td>
+                        <td class="text-start text-muted">27/03/2026 16:40</td>
+                        <td class="text-start"><span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle">Pendiente de aprobación</span></td>
                       </tr>
 
-                      <tr>
+                      <tr data-folio="F-26006NMX" data-gasto="Campaña Débito Digital" data-tipo="Presupuesto ordinario" data-negocio="Débito" data-division="Marca" data-estatus="En ajuste">
+                        <td class="text-start fw-bold"><a href="AutorizacionN1.html" class="text-primary text-decoration-none border-bottom border-primary border-opacity-25" title="Revisar Solicitud">F-26006NMX</a></td>
+                        <td class="text-start"><span class="badge bg-light text-dark border">Presupuesto ordinario</span></td>
+                        <td class="text-start">Campaña Débito Digital</td>
+                        <td class="text-start"><span class="badge bg-light text-dark border">Marca</span></td>
+                        <td class="text-start text-muted">Débito</td>
+                        <td class="text-start text-muted">Abr–Jun 2026</td>
+                        <td class="text-end fw-bold">$5,800,000</td>
+                        <td class="text-start text-muted">Sofía Vargas</td>
+                        <td class="text-center"><i class="bi bi-envelope-open text-primary" title="Pendiente abierta"></i></td>
+                        <td class="text-start text-muted">28/03/2026 08:25</td>
+                        <td class="text-start"><span class="badge bg-info-subtle text-info border border-info-subtle">En ajuste</span></td>
+                      </tr>
+
+                      <tr data-folio="F-25088NMX" data-gasto="Lanzamiento Q4" data-tipo="Presupuesto ordinario" data-negocio="Crédito" data-division="Marca" data-estatus="Aprobada">
                         <td class="text-start fw-bold"><a href="DetalleAprobada.html" class="text-primary text-decoration-none border-bottom border-primary border-opacity-25" title="Ver Detalle">F-25088NMX</a></td>
-                        <td class="text-start text-dark">México</td>
+                        <td class="text-start"><span class="badge bg-light text-dark border">Presupuesto ordinario</span></td>
                         <td class="text-start text-dark">Lanzamiento Q4</td>
                         <td class="text-start"><span class="badge bg-light text-dark border">Marca</span></td>
+                        <td class="text-start text-muted">Crédito</td>
+                        <td class="text-start text-muted">Oct–Dic 2025</td>
                         <td class="text-end fw-bold text-dark">$3,200,000</td>
                         <td class="text-start text-dark">Luis Herrera</td>
-                        <td class="text-start text-dark">15/12/2025</td>
+                        <td class="text-center"><i class="bi bi-envelope-open text-muted opacity-50" title="Sin notificaciones"></i></td>
+                        <td class="text-start text-muted">15/12/2025 18:30</td>
                         <td class="text-start"><span class="badge bg-success text-white border border-success">Aprobada</span></td>
-                        <td class="text-start text-muted fst-italic small">N/A</td>
                       </tr>
 
-                      <tr class="table-secondary text-muted">
+                      <tr class="table-secondary text-muted" data-folio="F-26005NMX" data-gasto="BTL Centros Comerciales" data-tipo="Proyecto de inversión" data-negocio="Inversiones" data-division="Marca" data-estatus="Rechazada">
                         <td class="text-start fw-bold"><a href="DetalleRechazada.html" class="text-secondary text-decoration-none border-bottom border-secondary border-opacity-50" title="Ver Detalle">F-26005NMX</a></td>
-                        <td class="text-start text-secondary">Honduras</td>
+                        <td class="text-start"><span class="badge bg-light text-secondary border">Proyecto de inversión</span></td>
                         <td class="text-start text-secondary">BTL Centros Comerciales</td>
                         <td class="text-start"><span class="badge bg-light text-secondary border">Marca</span></td>
+                        <td class="text-start text-secondary">Inversiones</td>
+                        <td class="text-start text-secondary">Feb–Abr 2026</td>
                         <td class="text-end fw-bold text-secondary">$500,000</td>
                         <td class="text-start text-secondary">María Soto</td>
-                        <td class="text-start text-secondary">25/03/2026</td>
+                        <td class="text-center"><i class="bi bi-envelope-open text-muted opacity-50" title="Sin notificaciones"></i></td>
+                        <td class="text-start text-secondary">28/03/2026 10:05</td>
                         <td class="text-start"><span class="badge bg-dark text-white border border-dark">Rechazada</span></td>
-                        <td class="text-start text-muted fst-italic small">N/A</td>
+                      </tr>
+
+                      <tr id="filaSinResultados" class="d-none">
+                        <td colspan="11" class="text-center text-muted py-4"><i class="bi bi-search me-1"></i>No se encontraron solicitudes con los filtros seleccionados.</td>
                       </tr>
 
                     </tbody>
@@ -1234,7 +1215,7 @@
                 </div>
 
                 <div class="d-flex justify-content-between align-items-center mt-3">
-                  <span class="small text-muted">Mostrando 1 a 3 de 14 registros</span>
+                  <span class="small text-muted" id="contadorRegistros">Mostrando 0 de 0 registros</span>
                   <ul class="pagination pagination-sm mb-0">
                     <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -1830,8 +1811,72 @@
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
 
+  <!-- CA01 · Lógica de filtros y buscadores de la bandeja de Aprobaciones -->
+  <script>
+    (function () {
+      var tabla = document.getElementById('tablaAutorizaciones');
+      if (!tabla) return;
 
+      var fFolio = document.getElementById('f-folio');
+      var fGasto = document.getElementById('f-gasto');
+      var fTipo = document.getElementById('f-tipo');
+      var fNegocio = document.getElementById('f-negocio');
+      var fDivision = document.getElementById('f-division');
+      var fEstatus = document.getElementById('f-estatus');
+      var filaSin = document.getElementById('filaSinResultados');
+      var contador = document.getElementById('contadorRegistros');
 
+      function seleccionados(sel) {
+        return Array.prototype.filter.call(sel.options, function (o) { return o.selected; })
+          .map(function (o) { return o.value; });
+      }
+
+      function aplicarFiltros() {
+        var folio = (fFolio.value || '').trim().toLowerCase();
+        var gasto = (fGasto.value || '').trim().toLowerCase();
+        var tipos = seleccionados(fTipo);
+        var negocios = seleccionados(fNegocio);
+        var divisiones = seleccionados(fDivision);
+        var estatuses = seleccionados(fEstatus);
+
+        var filas = tabla.querySelectorAll('tr[data-folio]');
+        var visibles = 0;
+
+        filas.forEach(function (tr) {
+          var ok = true;
+          if (folio && tr.dataset.folio.toLowerCase().indexOf(folio) === -1) ok = false;
+          if (gasto && tr.dataset.gasto.toLowerCase().indexOf(gasto) === -1) ok = false;
+          if (tipos.length && tipos.indexOf(tr.dataset.tipo) === -1) ok = false;
+          if (negocios.length && negocios.indexOf(tr.dataset.negocio) === -1) ok = false;
+          if (divisiones.length && divisiones.indexOf(tr.dataset.division) === -1) ok = false;
+          if (estatuses.length && estatuses.indexOf(tr.dataset.estatus) === -1) ok = false;
+
+          tr.classList.toggle('d-none', !ok);
+          if (ok) visibles++;
+        });
+
+        if (filaSin) filaSin.classList.toggle('d-none', visibles !== 0);
+        if (contador) contador.textContent = 'Mostrando ' + visibles + ' de ' + filas.length + ' registros';
+      }
+
+      function limpiarFiltros() {
+        fFolio.value = '';
+        fGasto.value = '';
+        [fTipo, fNegocio, fDivision, fEstatus].forEach(function (sel) {
+          Array.prototype.forEach.call(sel.options, function (o) { o.selected = false; });
+        });
+        aplicarFiltros();
+      }
+
+      document.getElementById('btnFiltrar').addEventListener('click', aplicarFiltros);
+      document.getElementById('btnLimpiarFiltros').addEventListener('click', limpiarFiltros);
+      [fFolio, fGasto].forEach(function (i) { i.addEventListener('keyup', aplicarFiltros); });
+      [fTipo, fNegocio, fDivision, fEstatus].forEach(function (s) { s.addEventListener('change', aplicarFiltros); });
+
+      // RN02 · Por defecto se muestran las solicitudes Pendiente de aprobación
+      aplicarFiltros();
+    })();
+  </script>
 
 
 
