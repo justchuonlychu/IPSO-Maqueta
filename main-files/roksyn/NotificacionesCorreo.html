@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HU6 - Notificaciones por Correo Electrónico</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --ipso-purple: #6c3fc7;
+      --ipso-purple-dark: #5a2fb0;
+    }
+    body {
+      background: #eef0f4;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding: 40px 16px;
+    }
+
+    /* ---- Botones de demostración ---- */
+    .demo-panel { max-width: 720px; margin: 0 auto; }
+    .demo-panel .card { border: none; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+
+    /* ---- Estilo del correo dentro del modal ---- */
+    .mail .modal-content { border: none; border-radius: 14px; overflow: hidden; }
+
+    .mail .mail-status-bar {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 22px; color: #fff; font-weight: 600; font-size: .85rem;
+      letter-spacing: .3px; text-transform: uppercase;
+    }
+    .status-enviada   { background: #6c3fc7; }
+    .status-ajuste    { background: #2f7ad1; }
+    .status-aprobada  { background: #27a567; }
+    .status-rechazada { background: #d94a5a; }
+
+    .mail .modal-body { background: #f6f7fb; padding: 26px 28px 30px; }
+
+    .mail-meta { font-size: .8rem; color: #555; margin-bottom: 4px; }
+    .mail-meta strong { color: #222; }
+
+    .mail-card {
+      background: #fff; border-radius: 12px; padding: 22px 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.05); margin-top: 14px;
+    }
+
+    .brand-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .brand-icon {
+      width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
+      background: var(--ipso-purple); color: #fff; font-size: 1.1rem;
+    }
+    .brand-name { font-weight: 700; color: #2c2c3a; }
+
+    .info-banner {
+      display: flex; align-items: flex-start; gap: 10px;
+      border-radius: 9px; padding: 12px 14px; font-size: .85rem; margin-bottom: 18px;
+    }
+    .banner-enviada   { background: #fff4e0; color: #8a5a00; border: 1px solid #ffe1ad; }
+    .banner-ajuste    { background: #e9f2fc; color: #1c4f86; border: 1px solid #cfe2f7; }
+    .banner-aprobada  { background: #e6f6ee; color: #1c6b44; border: 1px solid #c4ebd5; }
+    .banner-rechazada { background: #fdeaec; color: #9c2330; border: 1px solid #f6cdd2; }
+
+    .greeting { font-weight: 600; margin-bottom: 6px; }
+    .lead-text { font-size: .9rem; color: #444; margin-bottom: 18px; }
+
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+    .field-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .5px; color: #9094a3; margin-bottom: 5px; }
+    .field-value { font-weight: 600; color: #2c2c3a; font-size: .92rem; }
+
+    .folio-badge, .clave-badge {
+      display: inline-block; background: #efe7fb; color: var(--ipso-purple-dark);
+      font-weight: 700; padding: 4px 10px; border-radius: 7px; font-size: .82rem;
+    }
+
+    .comment-box {
+      margin-top: 18px; border-left: 4px solid; padding: 12px 16px;
+      border-radius: 0 8px 8px 0; font-size: .87rem; font-style: italic;
+    }
+    .comment-ajuste    { background: #e9f2fc; border-color: #2f7ad1; color: #1c4f86; }
+    .comment-rechazada { background: #fdeaec; border-color: #d94a5a; color: #9c2330; }
+
+    .mail-footer { margin-top: 20px; font-size: .72rem; color: #9a9aa5; text-align: center; }
+
+    .btn-ipso { background: var(--ipso-purple); border-color: var(--ipso-purple); color:#fff; }
+    .btn-ipso:hover { background: var(--ipso-purple-dark); border-color: var(--ipso-purple-dark); color:#fff; }
+  </style>
+</head>
+<body>
+
+  <!-- ======================= PANEL DE BOTONES ======================= -->
+  <div class="demo-panel">
+    <div class="card p-4">
+      <h5 class="mb-1">HU6 · Notificaciones por correo</h5>
+      <p class="text-muted mb-4" style="font-size:.88rem;">
+        Vista previa de la plantilla enviada en cada cambio de estatus del flujo de autorización.
+      </p>
+      <div class="d-grid gap-2 d-md-flex flex-wrap">
+        <button type="button" class="btn btn-ipso"        data-bs-toggle="modal" data-bs-target="#modalEnviada">1 · Enviada a Nivel 1</button>
+        <button type="button" class="btn btn-primary"     data-bs-toggle="modal" data-bs-target="#modalAjuste">2 · Devuelta en ajuste</button>
+        <button type="button" class="btn btn-success"     data-bs-toggle="modal" data-bs-target="#modalAprobada">3 · Aprobada</button>
+        <button type="button" class="btn btn-danger"      data-bs-toggle="modal" data-bs-target="#modalRechazada">4 · Rechazada</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= 1. SOLICITUD ENVIADA A NIVEL 1 ======================= -->
+  <div class="modal fade mail" id="modalEnviada" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="mail-status-bar status-enviada">
+          <span>①</span> Solicitud enviada — al autorizador Nivel 1
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mail-meta"><strong>Para:</strong> Carlos Mendoza &lt;c.mendoza@ipsomarketing.com&gt;</div>
+          <div class="mail-meta"><strong>Asunto:</strong> Nueva solicitud pendiente de autorización — 26042NMXN</div>
+
+          <div class="mail-card">
+            <div class="brand-row">
+              <div class="brand-icon">▦</div>
+              <div class="brand-name">IPSO · Carga Presupuestal</div>
+            </div>
+
+            <div class="info-banner banner-enviada">
+              <span>⏳</span>
+              <div><strong>Solicitud pendiente de autorización</strong><br>Nivel 1 — Marketing</div>
+            </div>
+
+            <div class="greeting">Hola Carlos,</div>
+            <p class="lead-text">Tienes una nueva solicitud de gasto publicitario pendiente de autorización.</p>
+
+            <div class="fields">
+              <div>
+                <div class="field-label">Folio</div>
+                <div class="field-value"><span class="folio-badge">26042NMXN</span></div>
+              </div>
+              <div>
+                <div class="field-label">Nombre del gasto</div>
+                <div class="field-value">Campaña Digital Q3</div>
+              </div>
+              <div>
+                <div class="field-label">Importe</div>
+                <div class="field-value">3,500,000 MXN</div>
+              </div>
+            </div>
+
+            <div class="mail-footer">Correo generado automáticamente por IPSO · Carga Presupuestal.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= 2. DEVUELTA EN AJUSTE ======================= -->
+  <div class="modal fade mail" id="modalAjuste" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="mail-status-bar status-ajuste">
+          <span>②</span> Devuelta en ajuste — al usuario de carga
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mail-meta"><strong>Para:</strong> Ana López &lt;a.lopez@ipsomarketing.com&gt;</div>
+          <div class="mail-meta"><strong>Asunto:</strong> Tu solicitud requiere ajustes — 26042NMXN</div>
+
+          <div class="mail-card">
+            <div class="brand-row">
+              <div class="brand-icon">▦</div>
+              <div class="brand-name">IPSO · Carga Presupuestal</div>
+            </div>
+
+            <div class="info-banner banner-ajuste">
+              <span>✎</span>
+              <div><strong>Tu solicitud fue devuelta en ajuste</strong><br>Nivel 1 — Marketing · Carlos Mendoza</div>
+            </div>
+
+            <div class="greeting">Hola Ana,</div>
+            <p class="lead-text">Tu solicitud fue revisada y requiere ajustes antes de continuar con el flujo de autorización.</p>
+
+            <div class="fields">
+              <div>
+                <div class="field-label">Folio</div>
+                <div class="field-value"><span class="folio-badge">26042NMXN</span></div>
+              </div>
+              <div>
+                <div class="field-label">Nombre del gasto</div>
+                <div class="field-value">Campaña Digital Q3</div>
+              </div>
+              <div>
+                <div class="field-label">Importe</div>
+                <div class="field-value">3,500,000 MXN</div>
+              </div>
+              <div>
+                <div class="field-label">Clave</div>
+                <div class="field-value"><span class="clave-badge">26042NMXN</span></div>
+              </div>
+            </div>
+
+            <div class="comment-box comment-ajuste">
+              "El importe asignado al CeCo 291374 excede el presupuesto disponible para Q3. Favor de revisar y redistribuir."
+            </div>
+
+            <div class="mail-footer">Correo generado automáticamente por IPSO · Carga Presupuestal.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= 3. SOLICITUD APROBADA ======================= -->
+  <div class="modal fade mail" id="modalAprobada" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="mail-status-bar status-aprobada">
+          <span>③</span> Solicitud aprobada — al usuario de carga
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mail-meta"><strong>Para:</strong> Ana López &lt;a.lopez@ipsomarketing.com&gt;</div>
+          <div class="mail-meta"><strong>Asunto:</strong> Tu solicitud fue aprobada — 26042NMXN</div>
+
+          <div class="mail-card">
+            <div class="brand-row">
+              <div class="brand-icon">▦</div>
+              <div class="brand-name">IPSO · Carga Presupuestal</div>
+            </div>
+
+            <div class="info-banner banner-aprobada">
+              <span>✓</span>
+              <div><strong>Tu solicitud fue aprobada</strong><br>Flujo de autorización completado</div>
+            </div>
+
+            <div class="greeting">Hola Ana,</div>
+            <p class="lead-text">Tu solicitud de gasto publicitario completó el flujo de autorización y fue aprobada.</p>
+
+            <div class="fields">
+              <div>
+                <div class="field-label">Folio</div>
+                <div class="field-value"><span class="folio-badge">26042NMXN</span></div>
+              </div>
+              <div>
+                <div class="field-label">Nombre del gasto</div>
+                <div class="field-value">Campaña Digital Q3</div>
+              </div>
+              <div>
+                <div class="field-label">Importe aprobado</div>
+                <div class="field-value">3,500,000 MXN</div>
+              </div>
+              <div>
+                <div class="field-label">Clave de solicitud</div>
+                <div class="field-value"><span class="clave-badge">26042NMXN</span></div>
+              </div>
+            </div>
+
+            <div class="mail-footer">Correo generado automáticamente por IPSO · Carga Presupuestal.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================= 4. SOLICITUD RECHAZADA ======================= -->
+  <div class="modal fade mail" id="modalRechazada" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="mail-status-bar status-rechazada">
+          <span>④</span> Solicitud rechazada — al usuario de carga
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mail-meta"><strong>Para:</strong> Ana López &lt;a.lopez@ipsomarketing.com&gt;</div>
+          <div class="mail-meta"><strong>Asunto:</strong> Tu solicitud fue rechazada — 26042NMXN</div>
+
+          <div class="mail-card">
+            <div class="brand-row">
+              <div class="brand-icon">▦</div>
+              <div class="brand-name">IPSO · Carga Presupuestal</div>
+            </div>
+
+            <div class="info-banner banner-rechazada">
+              <span>⊘</span>
+              <div><strong>Tu solicitud fue rechazada</strong><br>Nivel 1 — Marketing · Carlos Mendoza</div>
+            </div>
+
+            <div class="greeting">Hola Ana,</div>
+            <p class="lead-text">Tu solicitud de gasto publicitario fue rechazada. Consulta el motivo a continuación.</p>
+
+            <div class="fields">
+              <div>
+                <div class="field-label">Folio</div>
+                <div class="field-value"><span class="folio-badge">26042NMXN</span></div>
+              </div>
+              <div>
+                <div class="field-label">Nombre del gasto</div>
+                <div class="field-value">Campaña Digital Q3</div>
+              </div>
+              <div>
+                <div class="field-label">Importe</div>
+                <div class="field-value">3,500,000 MXN</div>
+              </div>
+            </div>
+
+            <div class="comment-box comment-rechazada">
+              "El presupuesto solicitado no corresponde al plan aprobado para el ejercicio."
+            </div>
+
+            <div class="mail-footer">Correo generado automáticamente por IPSO · Carga Presupuestal.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
