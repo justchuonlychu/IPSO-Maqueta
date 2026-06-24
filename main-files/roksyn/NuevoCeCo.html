@@ -1,0 +1,714 @@
+<html lang="es" data-bs-theme="semi-dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nuevo Centro de Costo | IPSO</title>
+
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="assets/js/pace.min.js"></script>
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/dark-theme.css" rel="stylesheet">
+  <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
+  <link href="assets/css/minimal-theme.css" rel="stylesheet">
+  <link href="assets/css/shadow-theme.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--start header-->
+  <header class="top-header">
+    <nav class="navbar navbar-expand justify-content-between">
+      <div class="btn-toggle-menu">
+        <span class="material-symbols-outlined">menu</span>
+      </div>
+      <div class="position-relative search-bar d-lg-block d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <input class="form-control form-control-sm rounded-5 px-5" disabled type="search" placeholder="Search">
+        <span class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+      </div>
+      <ul class="navbar-nav top-right-menu gap-2">
+        <li class="nav-item d-lg-none d-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <a class="nav-link" href="javascript:;"><span class="material-symbols-outlined">search</span></a>
+        </li>
+        <li class="nav-item dark-mode">
+          <a class="nav-link dark-mode-icon" href="javascript:;"><span class="material-symbols-outlined">light_mode</span></a>
+        </li>
+        <li class="nav-item dropdown dropdown-large">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
+            <div class="position-relative">
+              <span class="notify-badge">8</span>
+              <span class="material-symbols-outlined">notifications_none</span>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end mt-lg-2">
+            <a href="javascript:;">
+              <div class="msg-header">
+                <p class="msg-header-title">Notificaciones</p>
+                <p class="msg-header-clear ms-auto">Marcar todas como leídas</p>
+              </div>
+            </a>
+            <div class="header-notifications-list ps">
+              <a class="dropdown-item" href="javascript:;">
+                <div class="d-flex align-items-center">
+                  <div class="notify text-primary border"><span class="material-symbols-outlined">add_shopping_cart</span></div>
+                  <div class="flex-grow-1">
+                    <h6 class="msg-name">Sin notificaciones nuevas <span class="msg-time float-end">ahora</span></h6>
+                    <p class="msg-info">Todo al día</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <a href="javascript:;"><div class="text-center msg-footer">Ver todas</div></a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="offcanvas" href="#ThemeCustomizer">
+            <span class="material-symbols-outlined">settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <!--end header-->
+
+  <!--start sidebar-->
+  <aside class="sidebar-wrapper">
+    <div class="sidebar-header">
+      <div class="logo-icon"><img src="assets/images/logo-icon.png" class="logo-img" alt=""></div>
+      <div class="logo-name flex-grow-1"><h5 class="mb-0">IPSO</h5></div>
+      <div class="sidebar-close"><span class="material-symbols-outlined">close</span></div>
+    </div>
+    <div class="sidebar-nav" data-simplebar="init">
+      <div class="simplebar-wrapper" style="margin:0">
+        <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div>
+        <div class="simplebar-mask">
+          <div class="simplebar-offset" style="right:0;bottom:0">
+            <div class="simplebar-content-wrapper" style="height:100%;overflow:hidden">
+              <div class="simplebar-content mm-active" style="padding:0">
+                <ul class="metismenu mm-show" id="menu">
+                  <li>
+                    <a href="index.html" aria-expanded="false">
+                      <div class="parent-icon"><span class="material-symbols-outlined">home</span></div>
+                      <div class="menu-title">Home</div>
+                    </a>
+                  </li>
+                  <li class="menu-label mb-0 text-dark">Gestión de Presupuestos</li>
+                  <li>
+                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                      <div class="parent-icon"><span class="material-symbols-outlined">apps</span></div>
+                      <div class="menu-title">Planeación Presupuestal</div>
+                    </a>
+                    <ul class="mm-collapse" style="height:0">
+                      <li><a href="Parametros.html"><span class="material-symbols-outlined">arrow_right</span>Parámetros</a></li>
+                      <li><a href="AEjercicio.html"><span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a></li>
+                      <li><a href="Autorizaciones.html"><span class="material-symbols-outlined">arrow_right</span>Autorizaciones</a></li>
+                      <li><a href="Liberaciones.html"><span class="material-symbols-outlined">arrow_right</span>Liberaciones</a></li>
+                      <li><a href="Reportes.html"><span class="material-symbols-outlined">arrow_right</span>Reportes</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                      <div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div>
+                      <div class="menu-title">Ejercicio Presupuestal</div>
+                    </a>
+                    <ul class="mm-collapse" style="height:0">
+                      <li><a href="SCarga.html"><span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales</a></li>
+                      <li><a href="SIPRES.html"><span class="material-symbols-outlined">arrow_right</span>Forecast</a></li>
+                      <li><a href="Reportes.html"><span class="material-symbols-outlined">arrow_right</span>Reportes</a></li>
+                    </ul>
+                  </li>
+                  <li class="menu-label mb-0 text-dark">Configuración del Sistema</li>
+                  <li class="mm-active">
+                    <a href="javascript:;" class="has-arrow" aria-expanded="true">
+                      <div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span></div>
+                      <div class="menu-title">Sistema</div>
+                    </a>
+                    <ul class="mm-collapse mm-show">
+                      <li><a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a></li>
+                      <li class="mm-active"><a href="CeCos.html" aria-expanded="true"><span class="material-symbols-outlined">arrow_right</span>Centros de Costos</a></li>
+                      <li><a href="GCuentas.html"><span class="material-symbols-outlined">arrow_right</span>Cuentas Presupuestales</a></li>
+                      <li><a href="CTransversal.html"><span class="material-symbols-outlined">arrow_right</span>Campañas Transversales</a></li>
+                      <li><a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Proyectos / Fondos</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="simplebar-placeholder" style="width:auto;height:369px"></div>
+      </div>
+      <div class="simplebar-track simplebar-horizontal" style="visibility:hidden"><div class="simplebar-scrollbar" style="width:0;display:none"></div></div>
+      <div class="simplebar-track simplebar-vertical" style="visibility:hidden"><div class="simplebar-scrollbar" style="height:0;display:none"></div></div>
+    </div>
+    <div class="sidebar-bottom dropdown dropup-center dropup">
+      <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
+        <div class="user-img"><img src="assets/images/avatars/01.png" alt=""></div>
+        <div class="user-info">
+          <h5 class="mb-0 user-name">Edgar Grande</h5>
+          <p class="mb-0 user-designation">P2</p>
+        </div>
+      </div>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">account_circle</span>Profile</a></li>
+        <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">logout</span>Logout</a></li>
+      </ul>
+    </div>
+  </aside>
+  <!--end sidebar-->
+
+
+  <main class="page-content">
+
+    <!-- ── Breadcrumb ── -->
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-4">
+      <div>
+        <h4 class="fw-bold text-dark mb-0">
+          <i class="bi bi-diagram-3-fill text-primary me-2"></i>Nuevo Centro de Costo
+        </h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb small mb-0 mt-1">
+            <li class="breadcrumb-item"><a href="javascript:;" class="text-decoration-none text-muted">Configuración del Sistema</a></li>
+            <li class="breadcrumb-item"><a href="CeCos.html" class="text-decoration-none text-muted">Centros de Costos</a></li>
+            <li class="breadcrumb-item active fw-bold" aria-current="page">Nuevo Centro de Costo</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="ms-auto d-flex gap-2">
+        <a href="CeCos.html" class="btn btn-outline-secondary fw-bold shadow-sm">
+          <i class="bi bi-arrow-left me-1"></i>Cancelar
+        </a>
+        <button class="btn btn-primary fw-bold shadow-sm" id="btnGuardar" disabled data-bs-toggle="modal" data-bs-target="#modalConfirmarAlta">
+          <i class="bi bi-floppy-fill me-1"></i>Guardar Centro de Costo
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Alerta campos obligatorios ── -->
+    <div class="alert alert-warning d-flex align-items-center gap-2 py-2 mb-4" id="alertaIncompleto">
+      <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0"></i>
+      <small>Completa todos los campos obligatorios (<span class="fw-bold">*</span>) para habilitar el registro.</small>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- ══════════════════════════════════════════════
+           COLUMNA IZQUIERDA — Identificación + Clasificación
+           ══════════════════════════════════════════════ -->
+      <div class="col-12 col-xl-5">
+
+        <!-- Card: Datos de Identificación -->
+        <div class="card border-0 shadow-sm radius-10 mb-4">
+          <div class="card-header bg-white border-bottom py-3">
+            <h6 class="fw-bold mb-0 text-dark">
+              <i class="bi bi-card-text text-primary me-2"></i>Identificación del CeCo
+            </h6>
+          </div>
+          <div class="card-body p-4">
+
+            <div class="mb-3">
+              <label class="form-label fw-bold text-dark small text-uppercase">Número de CeCo <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="inputNumeroCeCo" placeholder="Ej. 100901" maxlength="10" required>
+              <div class="form-text small">Identificador numérico único. No modificable una vez guardado.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-bold text-dark small text-uppercase">Nombre del CeCo <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="inputNombreCeCo" placeholder="Ej. Campañas Prime Time" maxlength="100" required>
+              <div class="form-text small">Debe ser único en el catálogo (no puede repetirse).</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-bold text-dark small text-uppercase">CeCo Padre <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inputCeCoPardreBusqueda" placeholder="Buscar por número o nombre…">
+                <button class="btn btn-outline-secondary" type="button">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+              <div class="mt-2 d-none" id="cecopadreSeleccionado">
+                <div class="alert alert-light border d-flex align-items-center gap-3 py-2 mb-0">
+                  <div class="rounded-circle bg-primary-subtle text-primary d-flex align-items-center justify-content-center flex-shrink-0" style="width:32px;height:32px;">
+                    <i class="bi bi-diagram-2-fill"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-bold small" id="cecopadreNumNombre">6864 – TV Azteca</div>
+                    <small class="text-muted">CeCo padre seleccionado</small>
+                  </div>
+                  <button type="button" class="btn btn-sm btn-link text-danger p-0" onclick="limpiarCecoPadre()">
+                    <i class="bi bi-x-circle"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="form-text small">Obligatorio para conservar la trazabilidad padre-hijo.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Card: Clasificación Operativa -->
+        <div class="card border-0 shadow-sm radius-10">
+          <div class="card-header bg-white border-bottom py-3">
+            <h6 class="fw-bold mb-0 text-dark">
+              <i class="bi bi-sliders text-primary me-2"></i>Clasificación Operativa
+            </h6>
+          </div>
+          <div class="card-body p-4">
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark small text-uppercase">División <span class="text-danger">*</span></label>
+                <select class="form-select" id="selectDivision" required>
+                  <option value="" selected disabled>Selecciona…</option>
+                  <option value="1">1 – Oferteo</option>
+                  <option value="2">2 – Marca</option>
+                  <option value="3">3 – Estrategia</option>
+                  <option value="4">4 – Sin División</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark small text-uppercase">País <span class="text-danger">*</span></label>
+                <select class="form-select" id="selectPais" required>
+                  <option value="" selected disabled>Selecciona…</option>
+                  <option value="1">1 – México</option>
+                  <option value="2">2 – Guatemala</option>
+                  <option value="3">3 – Honduras</option>
+                  <option value="4">4 – Panamá</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark small text-uppercase">Moneda <span class="text-danger">*</span></label>
+                <select class="form-select" id="selectMoneda" required>
+                  <option value="" selected disabled>Selecciona…</option>
+                  <option value="1">1 – MXN (Peso Mexicano)</option>
+                  <option value="2">2 – USD (Dólar)</option>
+                  <option value="3">3 – GTQ (Quetzal)</option>
+                  <option value="4">4 – HNL (Lempira)</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-bold text-dark small text-uppercase">Grupo Empresarial <span class="text-danger">*</span></label>
+                <select class="form-select" id="selectGrupo" required>
+                  <option value="" selected disabled>Selecciona…</option>
+                  <option value="GS">Grupo Salinas</option>
+                  <option value="TVA">TV Azteca</option>
+                  <option value="GE">Grupo Elektra</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-bold text-dark small text-uppercase">Responsable</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="inputResponsable" placeholder="ID o nombre del responsable…">
+                  <button class="btn btn-outline-secondary" type="button">
+                    <i class="bi bi-search"></i>
+                  </button>
+                </div>
+                <div class="form-text small">Campo opcional. Puede asignarse después desde Editar.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- fin columna izquierda -->
+
+
+      <!-- ══════════════════════════════════════════════
+           COLUMNA DERECHA — Clasificaciones N2–N10
+           ══════════════════════════════════════════════ -->
+      <div class="col-12 col-xl-7">
+        <div class="card border-0 shadow-sm radius-10 h-100">
+          <div class="card-header bg-white border-bottom py-3 d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="fw-bold mb-0 text-dark">
+                <i class="bi bi-layers text-primary me-2"></i>Clasificaciones Jerárquicas N2–N10
+              </h6>
+              <small class="text-muted">Define la posición de este CeCo dentro de la estructura organizativa</small>
+            </div>
+            <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Solo lectura una vez guardado</span>
+          </div>
+          <div class="card-body p-4">
+
+            <div class="alert alert-info d-flex align-items-start gap-2 py-2 mb-4">
+              <i class="bi bi-info-circle-fill text-info mt-1 flex-shrink-0"></i>
+              <small>La estructura jerárquica va del nivel N2 (raíz) al N10 (más específico). Completa los niveles que apliquen; los niveles sin uso deja en blanco. N2 y N3 son obligatorios.</small>
+            </div>
+
+            <!-- Tabla de niveles N2–N10 -->
+            <div class="row g-3">
+
+              <div class="col-12">
+                <div class="p-3 bg-light rounded border mb-1">
+                  <div class="row align-items-center g-2">
+                    <div class="col-auto">
+                      <span class="badge bg-primary px-3 py-2 fw-bold" style="min-width:48px;">N2</span>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-sm nivel-clase" id="n2" placeholder="Clasificación nivel 2 (raíz / holding)…" required>
+                    </div>
+                    <div class="col-auto">
+                      <span class="badge bg-danger-subtle text-danger border border-danger-subtle small">Obligatorio</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="p-3 bg-light rounded border mb-1">
+                  <div class="row align-items-center g-2">
+                    <div class="col-auto">
+                      <span class="badge bg-primary px-3 py-2 fw-bold" style="min-width:48px;">N3</span>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-sm nivel-clase" id="n3" placeholder="Clasificación nivel 3 (empresa / canal)…" required>
+                    </div>
+                    <div class="col-auto">
+                      <span class="badge bg-danger-subtle text-danger border border-danger-subtle small">Obligatorio</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- N4–N10 opcionales -->
+              <div class="col-12">
+                <div class="p-3 rounded border mb-1">
+                  <div class="row align-items-center g-2">
+                    <div class="col-auto">
+                      <span class="badge bg-secondary px-3 py-2 fw-bold" style="min-width:48px;">N4</span>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-sm nivel-clase" id="n4" placeholder="Clasificación nivel 4…">
+                    </div>
+                    <div class="col-auto">
+                      <span class="badge bg-secondary-subtle text-muted border small">Opcional</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="p-3 rounded border mb-1">
+                  <div class="row align-items-center g-2">
+                    <div class="col-auto">
+                      <span class="badge bg-secondary px-3 py-2 fw-bold" style="min-width:48px;">N5</span>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-sm nivel-clase" id="n5" placeholder="Clasificación nivel 5…">
+                    </div>
+                    <div class="col-auto">
+                      <span class="badge bg-secondary-subtle text-muted border small">Opcional</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="p-3 rounded border mb-1">
+                  <div class="row align-items-center g-2">
+                    <div class="col-auto">
+                      <span class="badge bg-secondary px-3 py-2 fw-bold" style="min-width:48px;">N6</span>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-sm nivel-clase" id="n6" placeholder="Clasificación nivel 6…">
+                    </div>
+                    <div class="col-auto">
+                      <span class="badge bg-secondary-subtle text-muted border small">Opcional</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="p-3 rounded border mb-1">
+                  <div class="row align-items-center g-2">
+                    <div class="col-auto">
+                      <span class="badge bg-secondary px-3 py-2 fw-bold" style="min-width:48px;">N7</span>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-sm nivel-clase" id="n7" placeholder="Clasificación nivel 7…">
+                    </div>
+                    <div class="col-auto">
+                      <span class="badge bg-secondary-subtle text-muted border small">Opcional</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="p-3 rounded border mb-1">
+                  <div class="row align-items-center g-2">
+                    <div class="col-auto">
+                      <span class="badge bg-secondary px-3 py-2 fw-bold" style="min-width:48px;">N8</span>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-sm nivel-clase" id="n8" placeholder="Clasificación nivel 8…">
+                    </div>
+                    <div class="col-auto">
+                      <span class="badge bg-secondary-subtle text-muted border small">Opcional</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="p-3 rounded border mb-1">
+                  <div class="row align-items-center g-2">
+                    <div class="col-auto">
+                      <span class="badge bg-secondary px-3 py-2 fw-bold" style="min-width:48px;">N9</span>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-sm nivel-clase" id="n9" placeholder="Clasificación nivel 9…">
+                    </div>
+                    <div class="col-auto">
+                      <span class="badge bg-secondary-subtle text-muted border small">Opcional</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="p-3 rounded border mb-1">
+                  <div class="row align-items-center g-2">
+                    <div class="col-auto">
+                      <span class="badge bg-secondary px-3 py-2 fw-bold" style="min-width:48px;">N10</span>
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-sm nivel-clase" id="n10" placeholder="Clasificación nivel 10 (más específico)…">
+                    </div>
+                    <div class="col-auto">
+                      <span class="badge bg-secondary-subtle text-muted border small">Opcional</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- fin niveles -->
+
+            <!-- Indicador de validación general -->
+            <div class="mt-4 pt-3 border-top d-flex align-items-center gap-2" id="validacionGeneral">
+              <i class="bi bi-hourglass-split text-muted fs-5"></i>
+              <small class="text-muted">Completa los campos obligatorios para poder guardar el registro.</small>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- fin columna derecha -->
+
+    </div>
+    <!-- fin row -->
+
+  </main>
+
+
+  <!--start overlay-->
+  <div class="overlay btn-toggle-menu"></div>
+  <!--end overlay-->
+
+
+  <!-- ════ MODAL: Confirmar Alta ════ -->
+  <div class="modal fade" id="modalConfirmarAlta" tabindex="-1" aria-labelledby="modalAltaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold" id="modalAltaLabel">
+            <i class="bi bi-diagram-3-fill text-primary me-2"></i>Confirmar registro de Centro de Costo
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body pt-2">
+          <p class="mb-3">¿Confirmas el registro del siguiente Centro de Costo en el catálogo general?</p>
+
+          <!-- Resumen del CeCo a guardar -->
+          <div class="card border bg-light mb-3">
+            <div class="card-body py-3 px-4">
+              <div class="row g-2">
+                <div class="col-4">
+                  <small class="text-muted fw-bold text-uppercase d-block" style="font-size:0.7rem;">Número</small>
+                  <span class="fw-bold" id="resNumeroCeCo">—</span>
+                </div>
+                <div class="col-8">
+                  <small class="text-muted fw-bold text-uppercase d-block" style="font-size:0.7rem;">Nombre</small>
+                  <span class="fw-bold" id="resNombreCeCo">—</span>
+                </div>
+                <div class="col-4">
+                  <small class="text-muted fw-bold text-uppercase d-block" style="font-size:0.7rem;">División</small>
+                  <span id="resDivision">—</span>
+                </div>
+                <div class="col-4">
+                  <small class="text-muted fw-bold text-uppercase d-block" style="font-size:0.7rem;">País</small>
+                  <span id="resPais">—</span>
+                </div>
+                <div class="col-4">
+                  <small class="text-muted fw-bold text-uppercase d-block" style="font-size:0.7rem;">Moneda</small>
+                  <span id="resMoneda">—</span>
+                </div>
+                <div class="col-12">
+                  <small class="text-muted fw-bold text-uppercase d-block" style="font-size:0.7rem;">Grupo Empresarial</small>
+                  <span id="resGrupo">—</span>
+                </div>
+                <div class="col-12">
+                  <small class="text-muted fw-bold text-uppercase d-block" style="font-size:0.7rem;">CeCo Padre</small>
+                  <span id="resPadre">—</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-info d-flex align-items-start gap-2 py-2 mb-0">
+            <i class="bi bi-envelope-fill text-info mt-1 flex-shrink-0"></i>
+            <small>Al confirmar, el sistema registrará el CeCo y enviará una <strong>notificación por correo electrónico</strong> al destinatario predeterminado.</small>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <a href="CeCos.html" class="btn btn-primary fw-bold">
+            <i class="bi bi-floppy-fill me-1"></i>Sí, registrar CeCo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal Confirmar -->
+
+
+  <!-- Search Modal (boilerplate) -->
+  <div class="modal" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header gap-2">
+          <div class="position-relative popup-search w-100">
+            <input class="form-control form-control-lg ps-5 border border-3 border-primary" type="search" placeholder="Search">
+            <span class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+          </div>
+          <button type="button" class="btn-close d-xl-none" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted small text-center pt-4">Escribe para buscar en el sistema…</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme Customizer -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer" aria-labelledby="ThemeCustomizerLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="ThemeCustomizerLabel">Theme Customizer</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h6 class="mb-0">Theme Variation</h6><hr>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1"><label class="form-check-label" for="LightTheme">Light</label></div>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2" checked><label class="form-check-label" for="DarkTheme">Dark</label></div>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" value="option3"><label class="form-check-label" for="SemiDarkTheme">Semi Dark</label></div>
+      <hr>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="MinimalTheme" value="option3"><label class="form-check-label" for="MinimalTheme">Minimal</label></div>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="ShadowTheme" value="option4"><label class="form-check-label" for="ShadowTheme">Shadow</label></div>
+    </div>
+  </div>
+
+  <!-- Plugins -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // ── Campos obligatorios para habilitar el botón Guardar ──
+    const camposObligatorios = [
+      'inputNumeroCeCo',
+      'inputNombreCeCo',
+      'selectDivision',
+      'selectPais',
+      'selectMoneda',
+      'selectGrupo',
+      'n2',
+      'n3'
+    ];
+
+    function validarFormulario() {
+      const todosLlenos = camposObligatorios.every(id => {
+        const el = document.getElementById(id);
+        return el && el.value.trim() !== '';
+      });
+      // También requiere CeCo padre seleccionado
+      const padreSel = !document.getElementById('cecopadreSeleccionado').classList.contains('d-none');
+      const valido = todosLlenos && padreSel;
+      document.getElementById('btnGuardar').disabled = !valido;
+      document.getElementById('alertaIncompleto').classList.toggle('d-none', valido);
+
+      // Actualizar indicador de validación en el panel derecho
+      const indicador = document.getElementById('validacionGeneral');
+      if (valido) {
+        indicador.innerHTML = '<i class="bi bi-check-circle-fill text-success fs-5"></i><small class="text-success fw-bold">Todos los campos obligatorios completados. Puedes guardar el registro.</small>';
+      } else {
+        indicador.innerHTML = '<i class="bi bi-hourglass-split text-muted fs-5"></i><small class="text-muted">Completa los campos obligatorios para poder guardar el registro.</small>';
+      }
+    }
+
+    // Escuchar cambios en todos los campos obligatorios
+    camposObligatorios.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', validarFormulario);
+      if (el) el.addEventListener('change', validarFormulario);
+    });
+
+    // Simular selección de CeCo padre al hacer clic en Buscar
+    document.querySelector('#inputCeCoPardreBusqueda').closest('.input-group')
+      .querySelector('button').addEventListener('click', function () {
+        const val = document.getElementById('inputCeCoPardreBusqueda').value.trim();
+        if (val) {
+          document.getElementById('cecopadreNumNombre').textContent = val.match(/^\d/) ? val : '6864 – ' + val;
+          document.getElementById('cecopadreSeleccionado').classList.remove('d-none');
+          validarFormulario();
+        }
+      });
+
+    // Demo: Enter en el campo de búsqueda también selecciona
+    document.getElementById('inputCeCoPardreBusqueda').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const val = this.value.trim();
+        if (val) {
+          document.getElementById('cecopadreNumNombre').textContent = val.match(/^\d/) ? val : '6864 – ' + val;
+          document.getElementById('cecopadreSeleccionado').classList.remove('d-none');
+          validarFormulario();
+        }
+      }
+    });
+
+    function limpiarCecoPadre() {
+      document.getElementById('cecopadreSeleccionado').classList.add('d-none');
+      document.getElementById('inputCeCoPardreBusqueda').value = '';
+      validarFormulario();
+    }
+
+    // Poblar resumen del modal antes de abrir
+    document.getElementById('btnGuardar').addEventListener('click', function () {
+      const divOpts = { '1': 'Oferteo', '2': 'Marca', '3': 'Estrategia', '4': 'Sin División' };
+      const paisOpts = { '1': 'México', '2': 'Guatemala', '3': 'Honduras', '4': 'Panamá' };
+      const monedaOpts = { '1': 'MXN', '2': 'USD', '3': 'GTQ', '4': 'HNL' };
+      const grupoOpts = { 'GS': 'Grupo Salinas', 'TVA': 'TV Azteca', 'GE': 'Grupo Elektra' };
+
+      document.getElementById('resNumeroCeCo').textContent = document.getElementById('inputNumeroCeCo').value;
+      document.getElementById('resNombreCeCo').textContent = document.getElementById('inputNombreCeCo').value;
+      document.getElementById('resDivision').textContent = divOpts[document.getElementById('selectDivision').value] || '—';
+      document.getElementById('resPais').textContent = paisOpts[document.getElementById('selectPais').value] || '—';
+      document.getElementById('resMoneda').textContent = monedaOpts[document.getElementById('selectMoneda').value] || '—';
+      document.getElementById('resGrupo').textContent = grupoOpts[document.getElementById('selectGrupo').value] || '—';
+      document.getElementById('resPadre').textContent = document.getElementById('cecopadreNumNombre').textContent || '—';
+    });
+  </script>
+
+</body>
+</html>

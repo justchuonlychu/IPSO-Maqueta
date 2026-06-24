@@ -889,16 +889,57 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
       <div>
         <h4 class="fw-bold text-dark mb-0">
-          <i class="bi bi-wallet2 text-dark me-2"></i>Gestión de Cuentas Presupuestales
+          <i class="bi bi-receipt text-dark me-2"></i>Gestión de Cuentas Presupuestales
         </h4>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb small mb-0 mt-1">
-            <li class="breadcrumb-item"><a href="javascript:;" class="text-decoration-none text-muted">Configuración del
-                sistema</a></li>
-
+            <li class="breadcrumb-item"><a href="javascript:;" class="text-decoration-none text-dark">Configuración del sistema</a></li>
             <li class="breadcrumb-item active fw-bold" aria-current="page">Cuentas Presupuestales</li>
           </ol>
         </nav>
+      </div>
+    </div>
+
+    <!-- Tarjetas resumen -->
+    <div class="row g-3 mb-4">
+      <div class="col-12 col-md-4">
+        <div class="card border-0 shadow-sm radius-10 h-100">
+          <div class="card-body d-flex align-items-center gap-3 py-3">
+            <div class="bg-primary-subtle rounded-3 p-3 d-flex align-items-center justify-content-center" style="min-width:52px;min-height:52px;">
+              <i class="bi bi-receipt fs-4 text-primary"></i>
+            </div>
+            <div>
+              <div class="fs-3 fw-bold text-dark" id="cntTotal">15</div>
+              <div class="small text-dark">Cuentas en catálogo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card border-0 shadow-sm radius-10 h-100">
+          <div class="card-body d-flex align-items-center gap-3 py-3">
+            <div class="bg-success-subtle rounded-3 p-3 d-flex align-items-center justify-content-center" style="min-width:52px;min-height:52px;">
+              <i class="bi bi-link-45deg fs-4 text-success"></i>
+            </div>
+            <div>
+              <div class="fs-3 fw-bold text-dark" id="cntVinculadas">13</div>
+              <div class="small text-dark">Vinculadas a ≥ 1 Centro de Costos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="card border-0 shadow-sm radius-10 h-100">
+          <div class="card-body d-flex align-items-center gap-3 py-3">
+            <div class="bg-warning-subtle rounded-3 p-3 d-flex align-items-center justify-content-center" style="min-width:52px;min-height:52px;">
+              <i class="bi bi-exclamation-circle fs-4 text-warning"></i>
+            </div>
+            <div>
+              <div class="fs-3 fw-bold text-dark" id="cntSinVincular">2</div>
+              <div class="small text-dark">Sin Centro de Costos vinculado</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -906,420 +947,79 @@
       <div class="card-body p-4">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <h5 class="mb-0 text-dark fw-bold">Catálogo Centralizado de Cuentas</h5>
+          <h5 class="mb-0 text-dark fw-bold"><i class="bi bi-journal-text me-2 text-primary"></i>Catálogo de Cuentas Presupuestales</h5>
           <a href="NuevaCuenta.html" class="btn btn-success shadow-sm fw-bold radius-30 px-3">
-            <i class="bi bi-plus-circle me-1"></i> Nueva Cuenta Presupuestal
+            <i class="bi bi-plus-circle me-1"></i>Nueva Cuenta
           </a>
         </div>
 
-        <div class="mb-4">
+        <!-- Filtros -->
+        <div class="mb-3">
           <div class="row align-items-end g-3">
             <div class="col-md-4">
-              <label class="form-label small text-muted fw-bold mb-1">Nombre o Número de cuenta</label>
-              <div class="input-group input-group-sm shadow-sm radius-10 overflow-hidden">
-                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
-                <input type="text" class="form-control border-start-0 shadow-none px-2"
-                  placeholder="Buscar por nombre o número...">
+              <label class="form-label small fw-bold text-dark mb-1">Nombre o Número</label>
+              <div class="input-group input-group-sm shadow-sm overflow-hidden">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-dark"></i></span>
+                <input type="text" id="filtroBusqueda" class="form-control border-start-0 shadow-none px-2" placeholder="Buscar por nombre o número…" oninput="filtrarTabla()">
               </div>
             </div>
-
             <div class="col-md-3">
-              <label class="form-label small text-muted fw-bold mb-1">Rubro de cuenta</label>
-              <select class="form-select form-select-sm shadow-sm cursor-pointer radius-10" multiple="" size="1"
-                id="selectRubroMulti">
-                <option value="operativo">Operativo</option>
-                <option value="administrativo">Administrativo</option>
-                <option value="capital">Capital</option>
+              <label class="form-label small fw-bold text-dark mb-1">Rubro</label>
+              <select class="form-select form-select-sm shadow-sm" id="filtroRubro" onchange="filtrarTabla()">
+                <option value="">— Todos —</option>
+                <option value="Digital">Digital</option>
+                <option value="Producción">Producción</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Operaciones">Operaciones</option>
+                <option value="Tecnología">Tecnología</option>
+                <option value="Estrategia">Estrategia</option>
+                <option value="General">General</option>
               </select>
             </div>
-
             <div class="col-md-3">
-              <label class="form-label small text-muted fw-bold mb-1">Estatus</label>
-              <select class="form-select form-select-sm shadow-sm cursor-pointer radius-10">
-                <option selected="" value="todos">-- TODOS --</option>
-                <option value="activo">Activo</option>
-                <option value="inactivo">Inactivo</option>
+              <label class="form-label small fw-bold text-dark mb-1">Centros de Costos</label>
+              <select class="form-select form-select-sm shadow-sm" id="filtroVinculo" onchange="filtrarTabla()">
+                <option value="">— Todos —</option>
+                <option value="vinculada">Con Centro de Costos</option>
+                <option value="libre">Sin Centro de Costos</option>
               </select>
             </div>
-
             <div class="col-md-2">
-              <button class="btn btn-sm btn-outline-dark w-100 fw-bold shadow-sm radius-10">
-                <i class="bi bi-funnel me-2"></i>Filtrar
+              <button class="btn btn-sm btn-outline-dark w-100 fw-bold shadow-sm" onclick="limpiarFiltros()">
+                <i class="bi bi-x-circle me-1"></i>Limpiar
               </button>
             </div>
           </div>
         </div>
 
         <div class="table-responsive mt-2">
-          <div class="table-responsive mt-2">
-            <table class="table table-hover align-middle">
-              <thead class="table-secondary small text-uppercase text-center table-primary">
-                <tr>
-                  <th style="cursor: pointer;" class="text-start ps-4">Número de cuenta <i
-                      class="bi bi-arrow-up text-dark"></i></th>
-                  <th style="cursor: pointer;" class="text-start">Nombre de cuenta <i
-                      class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
-                  <th style="cursor: pointer;">Rubro de cuenta <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
-                  <th style="cursor: pointer;">Fecha de Creación <i class="bi bi-arrow-down-up ms-1 opacity-50"></i>
-                  </th>
-                  <th style="cursor: pointer;">Estatus <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
-                  <th class="text-center pe-4">Acciones</th>
-                </tr>
-              </thead>
-              <tbody class="text-center">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light small">
+              <tr>
+                <th class="fw-bold text-dark text-uppercase ps-3" style="cursor:pointer;" onclick="ordenarPor('num')">Núm. Cuenta <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
+                <th class="fw-bold text-dark text-uppercase" style="cursor:pointer;" onclick="ordenarPor('nombre')">Nombre <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
+                <th class="fw-bold text-dark text-uppercase text-center">Rubro</th>
+                <th class="fw-bold text-dark text-uppercase text-center">Centros de Costos vinculados</th>
+                <th class="fw-bold text-dark text-uppercase text-center">Fecha Alta</th>
+                <th class="fw-bold text-dark text-uppercase text-center pe-3">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaCuentas">
+              <!-- generado por JS -->
+            </tbody>
+          </table>
+        </div>
 
-                <tr>
-                  <td class="text-start ps-4 fw-bold text-dark">609010</td>
-                  <td class="text-start fw-semibold text-dark fs-6">Radio</td>
-                  <td class="text-muted">Operativo</td>
-                  <td class="text-muted">10/01/2026</td>
-                  <td><span
-                      class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Activo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Inhabilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalInactivarCuenta"
-                        onclick="configurarModalInactivar('609010', 'Radio')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar: Tiene registros operativos" disabled=""><i
-                          class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-start ps-4 fw-bold text-dark">609011</td>
-                  <td class="text-start fw-semibold text-dark fs-6">Televisión</td>
-                  <td class="text-muted">Operativo</td>
-                  <td class="text-muted">11/01/2026</td>
-                  <td><span
-                      class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Activo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Inhabilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalInactivarCuenta"
-                        onclick="configurarModalInactivar('609011', 'Televisión')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar" disabled=""><i class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-start ps-4 fw-bold text-dark">609012</td>
-                  <td class="text-start fw-semibold text-dark fs-6">Prensa</td>
-                  <td class="text-muted">Operativo</td>
-                  <td class="text-muted">12/01/2026</td>
-                  <td><span
-                      class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Activo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Inhabilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalInactivarCuenta"
-                        onclick="configurarModalInactivar('609012', 'Prensa')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar" disabled=""><i class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-start ps-4 fw-bold text-dark">609013</td>
-                  <td class="text-start fw-semibold text-dark fs-6">Material Punto Venta</td>
-                  <td class="text-muted">Operativo</td>
-                  <td class="text-muted">14/01/2026</td>
-                  <td><span
-                      class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Activo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Inhabilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalInactivarCuenta"
-                        onclick="configurarModalInactivar('609013', 'Material Punto Venta')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar" disabled=""><i class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-start ps-4 fw-bold text-dark">609014</td>
-                  <td class="text-start fw-semibold text-dark fs-6">Eventos Esp Publici</td>
-                  <td class="text-muted">Operativo</td>
-                  <td class="text-muted">18/01/2026</td>
-                  <td><span
-                      class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Activo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Inhabilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalInactivarCuenta"
-                        onclick="configurarModalInactivar('609014', 'Eventos Esp Publici')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar" disabled=""><i class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-start ps-4 fw-bold text-dark">609015</td>
-                  <td class="text-start fw-semibold text-dark fs-6">Inv de mercados</td>
-                  <td class="text-muted">Capital</td>
-                  <td class="text-muted">20/01/2026</td>
-                  <td><span
-                      class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Activo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Inhabilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalInactivarCuenta"
-                        onclick="configurarModalInactivar('609015', 'Inv de mercados')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar" disabled=""><i class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-start ps-4 fw-bold text-dark">609016</td>
-                  <td class="text-start fw-semibold text-dark fs-6">Prod Publicitaria</td>
-                  <td class="text-muted">Operativo</td>
-                  <td class="text-muted">22/01/2026</td>
-                  <td><span
-                      class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Activo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Inhabilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalInactivarCuenta"
-                        onclick="configurarModalInactivar('609016', 'Prod Publicitaria')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar" disabled=""><i class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-start ps-4 fw-bold text-dark">609023</td>
-                  <td class="text-start fw-semibold text-dark fs-6">Promociones sorteos</td>
-                  <td class="text-muted">Operativo</td>
-                  <td class="text-muted">25/01/2026</td>
-                  <td><span
-                      class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Activo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Inhabilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalInactivarCuenta"
-                        onclick="configurarModalInactivar('609023', 'Promociones sorteos')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar" disabled=""><i class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-start ps-4 fw-bold text-dark">609026</td>
-                  <td class="text-start fw-semibold text-dark fs-6">Pub. Y Propaganda Di</td>
-                  <td class="text-muted">Administrativo</td>
-                  <td class="text-muted">28/01/2026</td>
-                  <td><span
-                      class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Activo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Inhabilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalInactivarCuenta"
-                        onclick="configurarModalInactivar('609026', 'Pub. Y Propaganda Di')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar" disabled=""><i class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="text-start ps-4 fw-bold text-dark">609028</td>
-                  <td class="text-start fw-semibold text-dark fs-6">Publicidad Internet</td>
-                  <td class="text-muted">Operativo</td>
-                  <td class="text-muted">02/02/2026</td>
-                  <td><span
-                      class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Activo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Inhabilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalInactivarCuenta"
-                        onclick="configurarModalInactivar('609028', 'Publicidad Internet')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar" disabled=""><i class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr class="table-light opacity-75">
-                  <td class="text-start ps-4 fw-bold text-muted">609036</td>
-                  <td class="text-start text-muted fs-6">Patrocinios</td>
-                  <td class="text-muted">Operativo</td>
-                  <td class="text-muted">05/02/2026</td>
-                  <td><span
-                      class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Inactivo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-success border-0 shadow-none text-success"
-                        title="Habilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalActivarCuenta"
-                        onclick="configurarModalActivar('609036', 'Patrocinios')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-muted"
-                        title="No se puede eliminar: Cuenta con historial en la base" disabled=""><i
-                          class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr class="table-light opacity-75">
-                  <td class="text-start ps-4 fw-bold text-muted">620150</td>
-                  <td class="text-start text-muted fs-6">Premios al cliente</td>
-                  <td class="text-muted">Administrativo</td>
-                  <td class="text-muted">10/02/2026</td>
-                  <td><span
-                      class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 fs-7 px-3 py-1 radius-30 shadow-none">Inactivo</span>
-                  </td>
-                  <td class="text-center pe-4">
-                    <div class="d-flex justify-content-center gap-2">
-                      <a href="DetalleCuenta.html"
-                        class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark"
-                        title="Ver detalle / Editar"><i class="bi bi-eye fs-5"></i></a>
-                      <button type="button" class="btn btn-sm btn-outline-success border-0 shadow-none text-success"
-                        title="Habilitar cuenta" data-bs-toggle="modal" data-bs-target="#modalActivarCuenta"
-                        onclick="configurarModalActivar('620150', 'Premios al cliente')"><i
-                          class="bx bx-power-off fs-5"></i></button>
-                      <button type="button" class="btn btn-sm btn-outline-danger border-0 shadow-none text-danger"
-                        title="Eliminar cuenta" data-bs-toggle="modal" data-bs-target="#modalConfirmarEliminar"
-                        onclick="configurarModalEliminar('620150', 'Premios al cliente')"><i
-                          class="bi bi-trash fs-5"></i></button>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr id="filaSinResultados" class="d-none">
-                  <td colspan="6" class="text-center py-4 text-muted">
-                    <i class="bi bi-exclamation-circle fs-3 d-block mb-2"></i>
-                    No se encontraron cuentas que coincidan con los criterios de búsqueda.
-                  </td>
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
+        <div id="sinResultados" class="text-center py-4 d-none">
+          <i class="bi bi-search fs-3 text-secondary d-block mb-2"></i>
+          <span class="small text-dark">No se encontraron cuentas con los criterios seleccionados.</span>
         </div>
 
       </div>
     </div>
 
-    <div class="modal fade" id="modalConfirmarEstatus" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content radius-10 border-0 shadow">
-          <div class="modal-header border-bottom-0 pb-0">
-            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-          </div>
-          <div class="modal-body text-center pb-4 px-4">
-            <div id="iconoEstatusModal" class="text-warning mb-3">
-              <i class="bi bi-exclamation-circle-fill" style="font-size: 3.5rem;"></i>
-            </div>
-            <h5 class="fw-bold mb-3 text-dark" id="tituloEstatusModal">¿Confirma que desea cambiar el estado?</h5>
-            <p class="text-muted small mb-4">
-              Cuenta: <span id="infoCuentaEstatus" class="fw-bold text-dark"></span><br>
-              Esta acción afectará la disponibilidad de la cuenta en los flujos presupuestales de forma inmediata.
-            </p>
-            <div class="d-flex justify-content-center gap-3">
-              <button type="button" class="btn btn-outline-secondary px-4 radius-30 fw-bold shadow-sm"
-                data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-warning px-4 radius-30 fw-bold shadow-sm text-dark"
-                onclick="procesarCambioEstatus()">Confirmar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content radius-10 border-0 shadow">
-          <div class="modal-header border-bottom-0 pb-0">
-            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-          </div>
-          <div class="modal-body text-center pb-4 px-4">
-            <div class="text-danger mb-3">
-              <i class="bi bi-trash3-fill" style="font-size: 3.5rem;"></i>
-            </div>
-            <h5 class="fw-bold mb-3 text-dark">¿Estás seguro?</h5>
-            <p class="text-muted small mb-4">
-              Esta acción es permanente y borrará la cuenta seleccionada: <br>
-              <span id="infoCuentaEliminar" class="fw-bold text-danger"></span>.
-            </p>
-            <div class="alert alert-light border text-start small mb-4">
-              <i class="bi bi-info-circle text-muted me-1"></i> El sistema validará que la cuenta no posea ningún
-              registro histórico antes de completar la eliminación física.
-            </div>
-            <div class="d-flex justify-content-center gap-3">
-              <button type="button" class="btn btn-outline-secondary px-4 radius-30 fw-bold shadow-sm"
-                data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-danger px-4 radius-30 fw-bold shadow-sm"
-                onclick="procesarEliminacion()">Confirmar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </main><!--start overlay-->
+  </main>
+  <!--start overlay-->
   <div class="overlay btn-toggle-menu"></div>
   <!--end overlay-->
 
@@ -1329,140 +1029,63 @@
       <div class="modal-content">
         <div class="modal-header gap-2">
           <div class="position-relative popup-search w-100">
-            <input class="form-control form-control-lg ps-5 border border-3 border-primary" type="search"
-              placeholder="Search">
-            <span
-              class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+            <input class="form-control form-control-lg ps-5 border border-3 border-primary" type="search" placeholder="Search">
+            <span class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
           </div>
           <button type="button" class="btn-close d-xl-none" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <div class="search-list">
-            <p class="mb-1">Html Templates</p>
-            <div class="list-group">
-              <a href="javascript:;"
-                class="list-group-item list-group-item-action active align-items-center d-flex gap-2"><i
-                  class="bi bi-filetype-html fs-5"></i>Best Html Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-award fs-5"></i>Html5 Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-box2-heart fs-5"></i>Responsive Html5 Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-camera-video fs-5"></i>eCommerce Html Templates</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ MODAL: Eliminar Cuenta ════ -->
+  <div class="modal fade" id="modalEliminarCuenta" tabindex="-1" aria-labelledby="modalEliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content radius-10 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold text-danger" id="modalEliminarCuentaLabel">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>Eliminar Cuenta
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body pt-2">
+          <!-- Caso A: sin histórico → eliminación definitiva -->
+          <div id="casoEliminarOk">
+            <p class="mb-3">¿Confirmas que deseas eliminar de forma <strong>permanente</strong> la cuenta:</p>
+            <div class="alert alert-light border d-flex align-items-center gap-3 py-2 mb-3">
+              <span class="badge bg-dark px-3 py-2 fs-6" id="elNumCuenta">—</span>
+              <div class="fw-bold" id="elNombreCuenta">—</div>
             </div>
-            <p class="mb-1 mt-3">Web Designe Company</p>
-            <div class="list-group">
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-chat-right-text fs-5"></i>Best Html Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-cloud-arrow-down fs-5"></i>Html5 Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-columns-gap fs-5"></i>Responsive Html5 Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-collection-play fs-5"></i>eCommerce Html Templates</a>
+            <div class="alert alert-warning d-flex align-items-start gap-2 py-2 mb-0">
+              <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0 mt-1"></i>
+              <small>Esta acción es <strong>irreversible</strong>. Se eliminarán también todas las vinculaciones con Centros de Costos.</small>
             </div>
-            <p class="mb-1 mt-3">Software Development</p>
-            <div class="list-group">
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-cup-hot fs-5"></i>Best Html Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-droplet fs-5"></i>Html5 Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-exclamation-triangle fs-5"></i>Responsive Html5 Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-eye fs-5"></i>eCommerce Html Templates</a>
+          </div>
+          <!-- Caso B: con histórico → bloqueado -->
+          <div id="casoEliminarBloqueado" class="d-none">
+            <div class="alert alert-danger d-flex align-items-start gap-2 py-2 mb-3">
+              <i class="bi bi-x-circle-fill text-danger flex-shrink-0 mt-1"></i>
+              <div>
+                <strong>No es posible eliminar esta cuenta.</strong><br>
+                <small>Cuenta con historial presupuestal registrado. Por reglas de auditoría, el borrado queda bloqueado.</small>
+              </div>
             </div>
-            <p class="mb-1 mt-3">Online Shoping Portals</p>
-            <div class="list-group">
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-facebook fs-5"></i>Best Html Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-flower2 fs-5"></i>Html5 Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-geo-alt fs-5"></i>Responsive Html5 Templates</a>
-              <a href="javascript:;" class="list-group-item list-group-item-action align-items-center d-flex gap-2"><i
-                  class="bi bi-github fs-5"></i>eCommerce Html Templates</a>
+            <div class="alert alert-light border d-flex align-items-center gap-3 py-2 mb-0">
+              <span class="badge bg-dark px-3 py-2 fs-6" id="elNumCuentaB">—</span>
+              <div class="fw-bold" id="elNombreCuentaB">—</div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-<div class="modal fade" id="modalInactivarCuenta" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content radius-10 border-0 shadow">
-      <div class="modal-header border-bottom-0 pb-0">
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body text-center pb-4 px-4">
-        <div class="text-danger mb-3">
-          <i class="bx bx-power-off" style="font-size: 3.5rem;"></i>
-        </div>
-        <h5 class="fw-bold mb-3 text-dark">¿Confirma que desea inhabilitar esta cuenta?</h5>
-        <p class="text-muted small mb-4">
-          Cuenta: <span id="infoCuentaInactivar" class="fw-bold text-dark"></span><br>
-          Esta acción restringirá su uso para nuevas operaciones de forma inmediata.
-        </p>
-        <div class="d-flex justify-content-center gap-3">
-          <button type="button" class="btn btn-outline-secondary px-4 radius-30 fw-bold shadow-sm" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger px-4 radius-30 fw-bold shadow-sm" onclick="procesarInactivacion()">Confirmar</button>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger fw-bold" id="btnConfirmarEliminarCuenta">
+            <i class="bi bi-trash3 me-1"></i>Sí, eliminar permanentemente
+          </button>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="modal fade" id="modalActivarCuenta" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content radius-10 border-0 shadow">
-      <div class="modal-header border-bottom-0 pb-0">
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body text-center pb-4 px-4">
-        <div class="text-success mb-3">
-          <i class="bx bx-power-off" style="font-size: 3.5rem;"></i>
-        </div>
-        <h5 class="fw-bold mb-3 text-dark">¿Confirma que desea habilitar esta cuenta?</h5>
-        <p class="text-muted small mb-4">
-          Cuenta: <span id="infoCuentaActivar" class="fw-bold text-dark"></span><br>
-          Esta acción volverá a permitir su uso en los procesos operativos de forma inmediata.
-        </p>
-        <div class="d-flex justify-content-center gap-3">
-          <button type="button" class="btn btn-outline-secondary px-4 radius-30 fw-bold shadow-sm" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-success px-4 radius-30 fw-bold shadow-sm" onclick="procesarActivacion()">Confirmar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content radius-10 border-0 shadow">
-      <div class="modal-header border-bottom-0 pb-0">
-        <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body text-center pb-4 px-4">
-        <div class="text-danger mb-3">
-          <i class="bi bi-trash3-fill" style="font-size: 3.5rem;"></i>
-        </div>
-        <h5 class="fw-bold mb-3 text-dark">¿Estás seguro?</h5>
-        <p class="text-muted small mb-4">
-          Esta acción es permanente y borrará la cuenta seleccionada: <br>
-          <span id="infoCuentaEliminar" class="fw-bold text-danger"></span>.
-        </p>
-        <div class="alert alert-light border text-start small mb-4">
-          <i class="bi bi-info-circle text-muted me-1"></i> El sistema validará que la cuenta no posea ningún registro histórico antes de completar la eliminación física.
-        </div>
-        <div class="d-flex justify-content-center gap-3">
-          <button type="button" class="btn btn-outline-secondary px-4 radius-30 fw-bold shadow-sm" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger px-4 radius-30 fw-bold shadow-sm" onclick="procesarEliminacion()">Confirmar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+  <!-- fin modal Eliminar Cuenta -->
 
   <!--start theme customization-->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer" aria-labelledby="ThemeCustomizerLable">
@@ -1478,8 +1101,7 @@
         <label class="form-check-label" for="LightTheme">Light</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2"
-          checked="">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2" checked="">
         <label class="form-check-label" for="DarkTheme">Dark</label>
       </div>
       <div class="form-check form-check-inline">
@@ -1495,26 +1117,416 @@
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ShadowTheme" value="option4">
         <label class="form-check-label" for="ShadowTheme">Shadow Theme</label>
       </div>
-
     </div>
   </div>
   <!--end theme customization-->
+
   <!--plugins-->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
   <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
   <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
-
-  <!--BS Scripts-->
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
 
+  <script>
+    const CUENTAS = [
+      {num:'700005', nombre:'Publicidad en Medios Masivos',  rubro:'Digital',     fecha:'02/01/2024', cecos:1,  historico:false},
+      {num:'700010', nombre:'Publicidad Digital',            rubro:'Digital',     fecha:'02/01/2024', cecos:3,  historico:true},
+      {num:'700015', nombre:'Search Engine Marketing',       rubro:'Digital',     fecha:'02/01/2024', cecos:2,  historico:true},
+      {num:'700020', nombre:'Pauta Programática',            rubro:'Digital',     fecha:'02/01/2024', cecos:2,  historico:true},
+      {num:'700025', nombre:'Redes Sociales',                rubro:'Digital',     fecha:'03/01/2024', cecos:1,  historico:false},
+      {num:'700030', nombre:'Producción de Contenido',       rubro:'Producción',  fecha:'03/01/2024', cecos:2,  historico:true},
+      {num:'700035', nombre:'Influencer Marketing',          rubro:'Marketing',   fecha:'03/01/2024', cecos:1,  historico:false},
+      {num:'700040', nombre:'Logística y Distribución',      rubro:'Operaciones', fecha:'05/01/2024', cecos:0,  historico:false},
+      {num:'700041', nombre:'Costo de Plataforma',           rubro:'Tecnología',  fecha:'05/01/2024', cecos:2,  historico:false},
+      {num:'700045', nombre:'Investigación de Mercado',      rubro:'Estrategia',  fecha:'06/01/2024', cecos:0,  historico:false},
+      {num:'700050', nombre:'Pruebas A/B',                   rubro:'Digital',     fecha:'06/01/2024', cecos:2,  historico:false},
+      {num:'800010', nombre:'Publicidad Medios Digitales',   rubro:'Digital',     fecha:'10/01/2024', cecos:5,  historico:true},
+      {num:'800020', nombre:'Marketing App Banco Azteca',    rubro:'Digital',     fecha:'10/01/2024', cecos:2,  historico:true},
+      {num:'800030', nombre:'Publicidad Código QR',          rubro:'Digital',     fecha:'12/01/2024', cecos:1,  historico:false},
+      {num:'800099', nombre:'Otros Gastos Mercadotecnia',    rubro:'General',     fecha:'15/01/2024', cecos:1,  historico:false},
+    ];
 
+    let ordenAsc = true;
+    let ordenCampo = 'num';
+    let cuentaActual = null;
 
+    function renderTabla(datos) {
+      const tbody = document.getElementById('tablaCuentas');
+      const sinResultados = document.getElementById('sinResultados');
+      if (!datos.length) {
+        tbody.innerHTML = '';
+        sinResultados.classList.remove('d-none');
+        return;
+      }
+      sinResultados.classList.add('d-none');
+      tbody.innerHTML = datos.map(c => {
+        const puedeEliminar = c.cecos === 0 && !c.historico;
+        const cecoBadge = c.cecos === 0
+          ? `<span class="badge bg-warning-subtle text-warning border border-warning-subtle">Sin vincular</span>`
+          : `<span class="badge bg-primary-subtle text-primary border border-primary-subtle">${c.cecos} Centro${c.cecos > 1 ? 's' : ''} de Costos</span>`;
+        const btnEliminar = puedeEliminar
+          ? `<button class="btn btn-sm btn-outline-danger border-0 shadow-none" title="Eliminar cuenta" onclick="abrirEliminar('${c.num}','${c.nombre}',false)" data-bs-toggle="modal" data-bs-target="#modalEliminarCuenta"><i class="bi bi-trash fs-5"></i></button>`
+          : `<button class="btn btn-sm btn-outline-secondary border-0 shadow-none" title="${c.historico ? 'No eliminable: tiene historial presupuestal' : 'No eliminable: vinculada a Centros de Costos'}" disabled><i class="bi bi-trash fs-5"></i></button>`;
+        return `<tr>
+          <td class="ps-3 fw-bold text-dark small">${c.num}</td>
+          <td class="fw-semibold text-dark">${c.nombre}</td>
+          <td class="text-center"><span class="badge bg-light border text-dark small">${c.rubro}</span></td>
+          <td class="text-center">${cecoBadge}</td>
+          <td class="text-center small text-dark">${c.fecha}</td>
+          <td class="text-center pe-3">
+            <div class="d-flex justify-content-center gap-1">
+              <a href="DetalleCuenta.html" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark" title="Ver detalle"><i class="bi bi-eye fs-5"></i></a>
+              ${btnEliminar}
+            </div>
+          </td>
+        </tr>`;
+      }).join('');
+    }
 
+    function filtrarTabla() {
+      const busq = document.getElementById('filtroBusqueda').value.toLowerCase();
+      const rubro = document.getElementById('filtroRubro').value;
+      const vinculo = document.getElementById('filtroVinculo').value;
+      let resultado = CUENTAS.filter(c => {
+        const matchBusq = !busq || c.num.includes(busq) || c.nombre.toLowerCase().includes(busq);
+        const matchRubro = !rubro || c.rubro === rubro;
+        const matchVinculo = !vinculo || (vinculo === 'vinculada' ? c.cecos > 0 : c.cecos === 0);
+        return matchBusq && matchRubro && matchVinculo;
+      });
+      resultado = ordenarDatos(resultado);
+      renderTabla(resultado);
+    }
 
+    function ordenarDatos(datos) {
+      return [...datos].sort((a, b) => {
+        const va = a[ordenCampo]; const vb = b[ordenCampo];
+        return ordenAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+      });
+    }
 
+    function ordenarPor(campo) {
+      if (ordenCampo === campo) ordenAsc = !ordenAsc;
+      else { ordenCampo = campo; ordenAsc = true; }
+      filtrarTabla();
+    }
+
+    function limpiarFiltros() {
+      document.getElementById('filtroBusqueda').value = '';
+      document.getElementById('filtroRubro').value = '';
+      document.getElementById('filtroVinculo').value = '';
+      filtrarTabla();
+    }
+
+    function abrirEliminar(num, nombre, bloqueado) {
+      cuentaActual = num;
+      document.getElementById('casoEliminarOk').classList.toggle('d-none', bloqueado);
+      document.getElementById('casoEliminarBloqueado').classList.toggle('d-none', !bloqueado);
+      document.getElementById('btnConfirmarEliminarCuenta').classList.toggle('d-none', bloqueado);
+      document.getElementById('elNumCuenta').textContent = num;
+      document.getElementById('elNombreCuenta').textContent = nombre;
+      document.getElementById('elNumCuentaB').textContent = num;
+      document.getElementById('elNombreCuentaB').textContent = nombre;
+    }
+
+    document.getElementById('btnConfirmarEliminarCuenta').addEventListener('click', function() {
+      const idx = CUENTAS.findIndex(c => c.num === cuentaActual);
+      if (idx !== -1) CUENTAS.splice(idx, 1);
+      bootstrap.Modal.getInstance(document.getElementById('modalEliminarCuenta')).hide();
+      filtrarTabla();
+      actualizarResumen();
+    });
+
+    function actualizarResumen() {
+      document.getElementById('cntTotal').textContent = CUENTAS.length;
+      document.getElementById('cntVinculadas').textContent = CUENTAS.filter(c => c.cecos > 0).length;
+      document.getElementById('cntSinVincular').textContent = CUENTAS.filter(c => c.cecos === 0).length;
+    }
+
+    renderTabla(CUENTAS);
+  </script>
 
 </body>
+</html>
 
+        <!-- Filtros -->
+        <div class="mb-3">
+          <div class="row align-items-end g-3">
+            <div class="col-md-4">
+              <label class="form-label small fw-bold text-dark mb-1">Nombre o Número</label>
+              <div class="input-group input-group-sm shadow-sm overflow-hidden">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-dark"></i></span>
+                <input type="text" id="filtroBusqueda" class="form-control border-start-0 shadow-none px-2" placeholder="Buscar por nombre o número…" oninput="filtrarTabla()">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label small fw-bold text-dark mb-1">Rubro</label>
+              <select class="form-select form-select-sm shadow-sm" id="filtroRubro" onchange="filtrarTabla()">
+                <option value="">— Todos —</option>
+                <option value="Digital">Digital</option>
+                <option value="Producción">Producción</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Operaciones">Operaciones</option>
+                <option value="Tecnología">Tecnología</option>
+                <option value="Estrategia">Estrategia</option>
+                <option value="General">General</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label small fw-bold text-dark mb-1">Centros de Costos</label>
+              <select class="form-select form-select-sm shadow-sm" id="filtroVinculo" onchange="filtrarTabla()">
+                <option value="">— Todos —</option>
+                <option value="vinculada">Con Centro de Costos</option>
+                <option value="libre">Sin Centro de Costos</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-sm btn-outline-dark w-100 fw-bold shadow-sm" onclick="limpiarFiltros()">
+                <i class="bi bi-x-circle me-1"></i>Limpiar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive mt-2">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light small">
+              <tr>
+                <th class="fw-bold text-dark text-uppercase ps-3" style="cursor:pointer;" onclick="ordenarPor('num')">Núm. Cuenta <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
+                <th class="fw-bold text-dark text-uppercase" style="cursor:pointer;" onclick="ordenarPor('nombre')">Nombre <i class="bi bi-arrow-down-up ms-1 opacity-50"></i></th>
+                <th class="fw-bold text-dark text-uppercase text-center">Rubro</th>
+                <th class="fw-bold text-dark text-uppercase text-center">Centros de Costos vinculados</th>
+                <th class="fw-bold text-dark text-uppercase text-center">Fecha Alta</th>
+                <th class="fw-bold text-dark text-uppercase text-center pe-3">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaCuentas"><!-- generado por JS --></tbody>
+          </table>
+        </div>
+
+        <div id="sinResultados" class="text-center py-4 d-none">
+          <i class="bi bi-search fs-3 text-secondary d-block mb-2"></i>
+          <span class="small text-dark">No se encontraron cuentas con los criterios seleccionados.</span>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+  <div class="overlay btn-toggle-menu"></div>
+
+  <!-- Search Modal -->
+  <div class="modal" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header gap-2">
+          <div class="position-relative popup-search w-100">
+            <input class="form-control form-control-lg ps-5 border border-3 border-primary" type="search" placeholder="Search">
+            <span class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+          </div>
+          <button type="button" class="btn-close d-xl-none" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Eliminar Cuenta -->
+  <div class="modal fade" id="modalEliminarCuenta" tabindex="-1" aria-labelledby="modalEliminarCuentaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content radius-10 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold text-danger" id="modalEliminarCuentaLabel">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>Eliminar Cuenta Presupuestal
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body pt-2">
+          <div id="casoEliminarOk">
+            <p class="mb-3">¿Confirmas que deseas eliminar de forma <strong>permanente</strong> la cuenta:</p>
+            <div class="alert alert-light border d-flex align-items-center gap-3 py-2 mb-3">
+              <span class="badge bg-dark px-3 py-2 fs-6" id="elNumCuenta">—</span>
+              <div class="fw-bold" id="elNombreCuenta">—</div>
+            </div>
+            <div class="alert alert-warning d-flex align-items-start gap-2 py-2 mb-0">
+              <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0 mt-1"></i>
+              <small>Esta acción es <strong>irreversible</strong>. Se eliminarán también todas las vinculaciones con Centros de Costos.</small>
+            </div>
+          </div>
+          <div id="casoEliminarBloqueado" class="d-none">
+            <div class="alert alert-danger d-flex align-items-start gap-2 py-2 mb-3">
+              <i class="bi bi-x-circle-fill text-danger flex-shrink-0 mt-1"></i>
+              <div>
+                <strong>No es posible eliminar esta cuenta.</strong><br>
+                <small>Cuenta con historial presupuestal registrado. Por reglas de auditoría, el borrado queda bloqueado.</small>
+              </div>
+            </div>
+            <div class="alert alert-light border d-flex align-items-center gap-3 py-2 mb-0">
+              <span class="badge bg-dark px-3 py-2 fs-6" id="elNumCuentaB">—</span>
+              <div class="fw-bold" id="elNombreCuentaB">—</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger fw-bold" id="btnConfirmarEliminarCuenta">
+            <i class="bi bi-trash3 me-1"></i>Sí, eliminar permanentemente
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--start theme customization-->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer" aria-labelledby="ThemeCustomizerLable">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="ThemeCustomizerLable">Theme Customizer</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h6 class="mb-0">Theme Variation</h6><hr>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1">
+        <label class="form-check-label" for="LightTheme">Light</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2" checked="">
+        <label class="form-check-label" for="DarkTheme">Dark</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" value="option3">
+        <label class="form-check-label" for="SemiDarkTheme">Semi Dark</label>
+      </div>
+      <hr>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="MinimalTheme" value="option3">
+        <label class="form-check-label" for="MinimalTheme">Minimal Theme</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="ShadowTheme" value="option4">
+        <label class="form-check-label" for="ShadowTheme">Shadow Theme</label>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    const CUENTAS = [
+      {num:'700005', nombre:'Publicidad en Medios Masivos',  rubro:'Digital',     fecha:'02/01/2024', cecos:1,  historico:false},
+      {num:'700010', nombre:'Publicidad Digital',            rubro:'Digital',     fecha:'02/01/2024', cecos:3,  historico:true},
+      {num:'700015', nombre:'Search Engine Marketing',       rubro:'Digital',     fecha:'02/01/2024', cecos:2,  historico:true},
+      {num:'700020', nombre:'Pauta Programática',            rubro:'Digital',     fecha:'02/01/2024', cecos:2,  historico:true},
+      {num:'700025', nombre:'Redes Sociales',                rubro:'Digital',     fecha:'03/01/2024', cecos:1,  historico:false},
+      {num:'700030', nombre:'Producción de Contenido',       rubro:'Producción',  fecha:'03/01/2024', cecos:2,  historico:true},
+      {num:'700035', nombre:'Influencer Marketing',          rubro:'Marketing',   fecha:'03/01/2024', cecos:1,  historico:false},
+      {num:'700040', nombre:'Logística y Distribución',      rubro:'Operaciones', fecha:'05/01/2024', cecos:0,  historico:false},
+      {num:'700041', nombre:'Costo de Plataforma',           rubro:'Tecnología',  fecha:'05/01/2024', cecos:2,  historico:false},
+      {num:'700045', nombre:'Investigación de Mercado',      rubro:'Estrategia',  fecha:'06/01/2024', cecos:0,  historico:false},
+      {num:'700050', nombre:'Pruebas A/B',                   rubro:'Digital',     fecha:'06/01/2024', cecos:2,  historico:false},
+      {num:'800010', nombre:'Publicidad Medios Digitales',   rubro:'Digital',     fecha:'10/01/2024', cecos:5,  historico:true},
+      {num:'800020', nombre:'Marketing App Banco Azteca',    rubro:'Digital',     fecha:'10/01/2024', cecos:2,  historico:true},
+      {num:'800030', nombre:'Publicidad Código QR',          rubro:'Digital',     fecha:'12/01/2024', cecos:1,  historico:false},
+      {num:'800099', nombre:'Otros Gastos Mercadotecnia',    rubro:'General',     fecha:'15/01/2024', cecos:1,  historico:false},
+    ];
+
+    let ordenAsc = true;
+    let ordenCampo = 'num';
+    let cuentaActual = null;
+
+    function renderTabla(datos) {
+      const tbody = document.getElementById('tablaCuentas');
+      const sinR = document.getElementById('sinResultados');
+      if (!datos.length) { tbody.innerHTML = ''; sinR.classList.remove('d-none'); return; }
+      sinR.classList.add('d-none');
+      tbody.innerHTML = datos.map(c => {
+        const puedeEliminar = c.cecos === 0 && !c.historico;
+        const cecoBadge = c.cecos === 0
+          ? '<span class="badge bg-warning-subtle text-warning border border-warning-subtle">Sin vincular</span>'
+          : '<span class="badge bg-primary-subtle text-primary border border-primary-subtle">' + c.cecos + ' Centro' + (c.cecos > 1 ? 's' : '') + ' de Costos</span>';
+        const title = c.historico ? 'No eliminable: tiene historial presupuestal' : 'No eliminable: vinculada a Centros de Costos';
+        const btnEl = puedeEliminar
+          ? '<button class="btn btn-sm btn-outline-danger border-0 shadow-none" title="Eliminar" onclick="abrirEliminar(\'' + c.num + '\',\'' + c.nombre.replace(/'/g, "\\'") + '\',false)" data-bs-toggle="modal" data-bs-target="#modalEliminarCuenta"><i class="bi bi-trash fs-5"></i></button>'
+          : '<button class="btn btn-sm btn-outline-secondary border-0 shadow-none" title="' + title + '" disabled><i class="bi bi-trash fs-5"></i></button>';
+        return '<tr>'
+          + '<td class="ps-3 fw-bold text-dark small">' + c.num + '</td>'
+          + '<td class="fw-semibold text-dark">' + c.nombre + '</td>'
+          + '<td class="text-center"><span class="badge bg-light border text-dark small">' + c.rubro + '</span></td>'
+          + '<td class="text-center">' + cecoBadge + '</td>'
+          + '<td class="text-center small text-dark">' + c.fecha + '</td>'
+          + '<td class="text-center pe-3"><div class="d-flex justify-content-center gap-1">'
+          + '<a href="DetalleCuenta.html" class="btn btn-sm btn-outline-secondary border-0 shadow-none text-dark" title="Ver detalle"><i class="bi bi-eye fs-5"></i></a>'
+          + btnEl
+          + '</div></td>'
+          + '</tr>';
+      }).join('');
+    }
+
+    function filtrarTabla() {
+      const busq = document.getElementById('filtroBusqueda').value.toLowerCase();
+      const rubro = document.getElementById('filtroRubro').value;
+      const vinculo = document.getElementById('filtroVinculo').value;
+      let r = CUENTAS.filter(c => {
+        const mb = !busq || c.num.includes(busq) || c.nombre.toLowerCase().includes(busq);
+        const mr = !rubro || c.rubro === rubro;
+        const mv = !vinculo || (vinculo === 'vinculada' ? c.cecos > 0 : c.cecos === 0);
+        return mb && mr && mv;
+      });
+      renderTabla(ordenarDatos(r));
+    }
+
+    function ordenarDatos(datos) {
+      return [...datos].sort((a, b) => {
+        const va = String(a[ordenCampo]), vb = String(b[ordenCampo]);
+        return ordenAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+      });
+    }
+
+    function ordenarPor(campo) {
+      if (ordenCampo === campo) ordenAsc = !ordenAsc;
+      else { ordenCampo = campo; ordenAsc = true; }
+      filtrarTabla();
+    }
+
+    function limpiarFiltros() {
+      document.getElementById('filtroBusqueda').value = '';
+      document.getElementById('filtroRubro').value = '';
+      document.getElementById('filtroVinculo').value = '';
+      filtrarTabla();
+    }
+
+    function abrirEliminar(num, nombre, bloqueado) {
+      cuentaActual = num;
+      document.getElementById('casoEliminarOk').classList.toggle('d-none', bloqueado);
+      document.getElementById('casoEliminarBloqueado').classList.toggle('d-none', !bloqueado);
+      document.getElementById('btnConfirmarEliminarCuenta').classList.toggle('d-none', bloqueado);
+      document.getElementById('elNumCuenta').textContent = num;
+      document.getElementById('elNombreCuenta').textContent = nombre;
+      document.getElementById('elNumCuentaB').textContent = num;
+      document.getElementById('elNombreCuentaB').textContent = nombre;
+    }
+
+    document.getElementById('btnConfirmarEliminarCuenta').addEventListener('click', function() {
+      const idx = CUENTAS.findIndex(c => c.num === cuentaActual);
+      if (idx !== -1) CUENTAS.splice(idx, 1);
+      bootstrap.Modal.getInstance(document.getElementById('modalEliminarCuenta')).hide();
+      filtrarTabla();
+      actualizarResumen();
+    });
+
+    function actualizarResumen() {
+      document.getElementById('cntTotal').textContent = CUENTAS.length;
+      document.getElementById('cntVinculadas').textContent = CUENTAS.filter(c => c.cecos > 0).length;
+      document.getElementById('cntSinVincular').textContent = CUENTAS.filter(c => c.cecos === 0).length;
+    }
+
+    renderTabla(CUENTAS);
+  </script>
+
+</body>
 </html>
