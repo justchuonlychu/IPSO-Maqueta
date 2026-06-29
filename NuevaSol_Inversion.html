@@ -405,6 +405,14 @@
                 </div>
 
                 <div class="card-body px-4 pb-4 pt-3">
+                  <!-- Resumen División/Negocio seleccionados -->
+                  <div class="alert alert-info py-2 px-3 mb-3 small d-flex justify-content-between align-items-center" id="npResumenDivNeg" style="display:none;">
+                    <div>
+                      <i class="bi bi-info-circle me-2"></i>
+                      División: <strong id="npDivResumen">—</strong> · Negocio: <strong id="npNegResumen">—</strong>
+                    </div>
+                  </div>
+
                   <div class="row g-3 align-items-end mb-4">
                     <div class="col-lg-6">
                       <div class="d-flex align-items-center gap-2 mb-2">
@@ -1651,6 +1659,15 @@
       const negocio = document.getElementById('npNegocio').value;
       const cecosDis = document.getElementById('cecos-disponibles');
 
+      // Mostrar resumen de División/Negocio seleccionados
+      if (division && negocio) {
+        document.getElementById('npDivResumen').textContent = division;
+        document.getElementById('npNegResumen').textContent = negocio;
+        document.getElementById('npResumenDivNeg').style.display = 'flex';
+      } else {
+        document.getElementById('npResumenDivNeg').style.display = 'none';
+      }
+
       // Actualizar lista de disponibles filtrando por División y Negocio
       Array.from(cecosDis.options).forEach(opt => {
         opt.hidden = !(opt.dataset.div === division && opt.dataset.neg === negocio);
@@ -1760,13 +1777,29 @@
       // Registrar en catálogo
       numerosProyectosExistentes.add(nuevoProyecto.id);
 
-      // Auto-seleccionar el nuevo proyecto y avanzar al paso 2
+      // Auto-seleccionar el nuevo proyecto
       seleccionarProyecto(div);
       proyectoSeleccionado = nuevoProyecto;
       npProyectoDraft = {};
 
+      // Pre-cargar División en paso 2
+      cargarDivisionesEnPaso2(division);
+
       // Avanzar al paso 2
       irPaso(2);
+    }
+
+    function cargarDivisionesEnPaso2(divisionSeleccionada) {
+      // Activar los chips de División según lo que se seleccionó en paso-0
+      document.querySelectorAll('#divChips .div-chip').forEach(btn => {
+        if (btn.dataset.div === divisionSeleccionada) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      // Filtrar CeCos por la División seleccionada
+      filtrarCecosPorDivision([divisionSeleccionada]);
     }
 
     function volverASeleccionProyecto() {
