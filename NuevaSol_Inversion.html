@@ -1,11 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es" data-bs-theme="semi-dark">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nueva Solicitud de Inversión | IPSO ODTs</title>
+  <title>Nueva Solicitud · Proyecto de Inversión | IPSO ODTs</title>
 
+  <!-- Plugins y Estilos Base -->
   <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
   <link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet">
   <link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet">
@@ -13,6 +13,7 @@
   <link href="assets/css/pace.min.css" rel="stylesheet">
   <script src="assets/js/pace.min.js"></script>
 
+  <!--Styles-->
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="assets/css/icons.css">
@@ -22,10 +23,8 @@
   <link href="assets/css/semi-dark-theme.css" rel="stylesheet">
 
   <style>
-    /* ── Stepper ─────────────────────────────────── */
     .step-circle {
-      width: 28px; height: 28px;
-      border-radius: 50%;
+      width: 28px; height: 28px; border-radius: 50%;
       display: inline-flex; align-items: center; justify-content: center;
       font-size: 0.78rem; font-weight: 700; flex-shrink: 0;
     }
@@ -35,69 +34,41 @@
     .step-line { flex: 1; height: 2px; background: #dee2e6; margin: 0 8px; }
     .step-line.done { background: #198754; }
 
-    /* ── División chips ──────────────────────────── */
     .div-chip {
       display: inline-flex; align-items: center;
       border: 1px solid #dee2e6; border-radius: 20px;
       padding: 4px 14px; cursor: pointer; font-size: 0.8rem;
-      background: #fff; color: #212529;
-      transition: all .15s; user-select: none; outline: none; box-shadow: none;
+      background: #fff; color: #212529; transition: all .15s;
+      user-select: none; outline: none; box-shadow: none;
     }
     .div-chip.active { background: #0d6efd; color: #fff; border-color: #0d6efd; }
 
-    .paso-label {
-      font-size: 0.7rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.03em; color: #6c757d;
-    }
+    .paso-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; color: #6c757d; }
 
-    /* ── Matriz de presupuesto ───────────────────── */
-    .matrix-input {
-      width: 80px; text-align: right; font-size: 0.78rem;
-      padding: 3px 5px; border: 1px solid #dee2e6;
-      border-radius: 4px; background: #fff; color: #212529;
-    }
-    .matrix-input:focus {
-      border-color: #86b7fe; outline: 0;
-      box-shadow: 0 0 0 .2rem rgba(13,110,253,.2);
-    }
+    .negocio-card { border: 1.5px solid #dee2e6; border-radius: 10px; cursor: pointer; transition: all .15s; background: #fff; }
+    .negocio-card:hover { border-color: #86b7fe; }
+    .negocio-card.active { border-color: #0d6efd; background: #f0f4ff; box-shadow: 0 0 0 .15rem rgba(13,110,253,.12); }
+
+    .proyecto-row { cursor: pointer; transition: background .1s; }
+    .proyecto-row:hover { background: rgba(13,110,253,.05); }
+    .proyecto-row.active { background: rgba(13,110,253,.1); box-shadow: inset 3px 0 0 #0d6efd; }
+
+    .matrix-input { width: 80px; text-align: right; font-size: 0.78rem; padding: 3px 5px; border: 1px solid #dee2e6; border-radius: 4px; background: #fff; color: #212529; }
+    .matrix-input:focus { border-color: #86b7fe; outline: 0; box-shadow: 0 0 0 .2rem rgba(13,110,253,.2); }
     .matrix-input.has-value { border-color: #0d6efd; font-weight: 600; }
 
-    /* ── Catálogo de cuentas ─────────────────────── */
-    .cuenta-item {
-      display: flex; align-items: center; gap: 10px;
-      cursor: pointer; transition: background .1s;
+    .negocio-badge-lg {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg,#6f42c1 0%,#5a32a3 100%);
+      color: #fff; border-radius: 10px; padding: 8px 18px;
+      font-weight: 700; font-size: 1.05rem; box-shadow: 0 2px 8px rgba(111,66,193,.25);
     }
-    .cuenta-item:hover { background: rgba(13,110,253,.04); }
-    .cuenta-item:has(.cuenta-checkbox:checked) {
-      background: rgba(13,110,253,.07);
-      box-shadow: inset 3px 0 0 #0d6efd;
+    .proyecto-badge-lg {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; border: 1.5px solid #6f42c1; color: #6f42c1;
+      border-radius: 10px; padding: 8px 18px; font-weight: 700; font-size: .95rem;
     }
-    .cta-cod {
-      display: block; font-size: .67rem; font-weight: 600;
-      color: #6c757d; line-height: 1.1; letter-spacing: .02em;
-    }
-    .cta-nom { display: block; font-size: .8rem; color: #212529; line-height: 1.3; }
 
-    /* ── Selector de proyecto ────────────────────── */
-    .proyecto-item {
-      display: flex; align-items: center; gap: 14px;
-      padding: 12px 16px; border-radius: 10px;
-      border: 1.5px solid #dee2e6; cursor: pointer;
-      transition: all .15s; background: #fff; margin-bottom: 8px;
-    }
-    .proyecto-item:hover { border-color: #86b7fe; background: #f0f4ff; }
-    .proyecto-item.selected {
-      border-color: #0d6efd; background: #eef3ff;
-      box-shadow: 0 0 0 3px rgba(13,110,253,.12);
-    }
-    .proyecto-item .proy-icon {
-      width: 38px; height: 38px; border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-      background: #e9f0fe; flex-shrink: 0; font-size: 1.1rem;
-    }
-    .proyecto-item.selected .proy-icon { background: #0d6efd; color: #fff; }
-
-    /* Fix scroll template */
     .page-content { overflow-y: auto !important; }
   </style>
 </head>
@@ -107,53 +78,14 @@
   <!--start header-->
   <header class="top-header">
     <nav class="navbar navbar-expand justify-content-between">
-      <div class="btn-toggle-menu">
-        <span class="material-symbols-outlined">menu</span>
-      </div>
+      <div class="btn-toggle-menu"><span class="material-symbols-outlined">menu</span></div>
       <div class="position-relative search-bar d-lg-block d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <input class="form-control form-control-sm rounded-5 px-5" disabled type="search" placeholder="Search">
+        <input class="form-control form-control-sm rounded-5 px-5" disabled="" type="search" placeholder="Search">
         <span class="material-symbols-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
       </div>
       <ul class="navbar-nav top-right-menu gap-2">
-        <li class="nav-item d-lg-none d-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <a class="nav-link" href="javascript:;"><span class="material-symbols-outlined">search</span></a>
-        </li>
-        <li class="nav-item dark-mode">
-          <a class="nav-link dark-mode-icon" href="javascript:;"><span class="material-symbols-outlined">light_mode</span></a>
-        </li>
-        <li class="nav-item dropdown dropdown-large">
-          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown">
-            <div class="position-relative">
-              <span class="notify-badge">8</span>
-              <span class="material-symbols-outlined">notifications_none</span>
-            </div>
-          </a>
-          <div class="dropdown-menu dropdown-menu-end mt-lg-2">
-            <a href="javascript:;">
-              <div class="msg-header">
-                <p class="msg-header-title">Notifications</p>
-                <p class="msg-header-clear ms-auto">Marks all as read</p>
-              </div>
-            </a>
-            <div class="header-notifications-list ps">
-              <a class="dropdown-item" href="javascript:;">
-                <div class="d-flex align-items-center">
-                  <div class="notify text-primary border"><span class="material-symbols-outlined">add_shopping_cart</span></div>
-                  <div class="flex-grow-1">
-                    <h6 class="msg-name">New Orders <span class="msg-time float-end">2 min ago</span></h6>
-                    <p class="msg-info">You have recived new orders</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <a href="javascript:;"><div class="text-center msg-footer">View All</div></a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="offcanvas" href="#ThemeCustomizer">
-            <span class="material-symbols-outlined">settings</span>
-          </a>
-        </li>
+        <li class="nav-item dark-mode"><a class="nav-link dark-mode-icon" href="javascript:;"><span class="material-symbols-outlined">light_mode</span></a></li>
+        <li class="nav-item"><a class="nav-link" data-bs-toggle="offcanvas" href="#ThemeCustomizer"><span class="material-symbols-outlined">settings</span></a></li>
       </ul>
     </nav>
   </header>
@@ -175,15 +107,12 @@
               <div class="simplebar-content mm-active" style="padding: 0px;">
                 <ul class="metismenu mm-show" id="menu">
                   <li><a href="index.html" aria-expanded="false"><div class="parent-icon"><span class="material-symbols-outlined">home</span></div><div class="menu-title">Home</div></a></li>
-                  <li><a href="SIPRES.html" aria-expanded="false"><div class="parent-icon"><span class="material-symbols-outlined">redeem</span></div><div class="menu-title">Forecast</div></a></li>
+                  <li class=""><a href="SIPRES.html" aria-expanded="false"><div class="parent-icon"><span class="material-symbols-outlined">redeem</span></div><div class="menu-title">Forecast</div></a></li>
                   <li class="menu-label mb-0 text-light">Gestion de Presupuestos</li>
                   <li class="mm-active">
-                    <a href="javascript:;" class="has-arrow" aria-expanded="true">
-                      <div class="parent-icon"><span class="material-symbols-outlined">apps</span></div>
-                      <div class="menu-title">Planeacion<br>Presupuestal</div>
-                    </a>
+                    <a href="javascript:;" class="has-arrow" aria-expanded="true"><div class="parent-icon"><span class="material-symbols-outlined">apps</span></div><div class="menu-title">Planeacion<br>Presupuestal</div></a>
                     <ul class="mm-collapse mm-show">
-                      <li><a href="Parametros.html"><span class="material-symbols-outlined">arrow_right</span>Parametros</a></li>
+                      <li><a href="Parametros.html" aria-expanded="false"><span class="material-symbols-outlined">arrow_right</span>Parametros</a></li>
                       <li>
                         <a class="has-arrow" href="javascript:;" aria-expanded="false"><span class="material-symbols-outlined">arrow_right</span>Base Presupuestal</a>
                         <ul class="mm-collapse">
@@ -191,28 +120,22 @@
                           <li><a href="BPRegistros.html"><span class="material-symbols-outlined">arrow_right</span>Registro de Bases Presupuestales</a></li>
                         </ul>
                       </li>
-                      <li class="mm-active"><a href="AEjercicio.html"><span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a></li>
-                      <li><a href="Autorizaciones.html"><span class="material-symbols-outlined">arrow_right</span>Autorizaciones</a></li>
-                      <li><a href="Liberaciones.html"><span class="material-symbols-outlined">arrow_right</span>Liberaciones</a></li>
+                      <li class="mm-active"><a href="SelGrupoEmpresarial.html" aria-expanded="true"><span class="material-symbols-outlined">arrow_right</span>Carga Presupuestal</a></li>
+                      <li><a href="Autorizaciones.html" aria-expanded="false"><span class="material-symbols-outlined">arrow_right</span>Autorizaciones</a></li>
+                      <li><a href="Liberaciones.html" aria-expanded="true"><span class="material-symbols-outlined">arrow_right</span>Liberaciones</a></li>
                     </ul>
                   </li>
-                  <li>
-                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
-                      <div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div>
-                      <div class="menu-title">Ejercicio Presupuestal</div>
-                    </a>
-                    <ul class="mm-collapse" style="height:0px;">
+                  <li class="">
+                    <a href="javascript:;" class="has-arrow" aria-expanded="false"><div class="parent-icon"><span class="material-symbols-outlined">widgets</span></div><div class="menu-title">Ejercicio Presupuestal</div></a>
+                    <ul class="mm-collapse" style="height: 0px;">
                       <li><a href="SCarga.html"><span class="material-symbols-outlined">arrow_right</span>Movimientos Presupuestales</a></li>
                       <li><a href="Reportes.html"><span class="material-symbols-outlined">arrow_right</span>Reportes</a></li>
                     </ul>
                   </li>
                   <li class="menu-label mb-0 text-light">Configuracion General</li>
-                  <li>
-                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
-                      <div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span></div>
-                      <div class="menu-title">Sistema</div>
-                    </a>
-                    <ul class="mm-collapse" style="height:0px;">
+                  <li class="">
+                    <a href="javascript:;" class="has-arrow" aria-expanded="false"><div class="parent-icon"><span class="material-symbols-outlined">shopping_cart</span></div><div class="menu-title">Sistema</div></a>
+                    <ul class="mm-collapse" style="height: 0px;">
                       <li><a href="PUsuarios.html"><span class="material-symbols-outlined">arrow_right</span>Usuarios/Perfiles</a></li>
                       <li><a href="CeCos.html"><span class="material-symbols-outlined">arrow_right</span>Centros de Costos</a></li>
                       <li><a href="GCuentas.html"><span class="material-symbols-outlined">arrow_right</span>Grupo de Cuentas</a></li>
@@ -228,15 +151,12 @@
         <div class="simplebar-placeholder" style="width: auto; height: 369px;"></div>
       </div>
       <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div>
-      <div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; display: none;"></div></div>
+      <div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div></div>
     </div>
     <div class="sidebar-bottom dropdown dropup-center dropup">
       <div class="dropdown-toggle d-flex align-items-center px-3 gap-3 w-100 h-100" data-bs-toggle="dropdown">
         <div class="user-img"><img src="assets/images/avatars/01.png" alt=""></div>
-        <div class="user-info">
-          <h5 class="mb-0 user-name">Edgar Grande</h5>
-          <p class="mb-0 user-designation">P2</p>
-        </div>
+        <div class="user-info"><h5 class="mb-0 user-name">Edgar Grande</h5><p class="mb-0 user-designation">P2</p></div>
       </div>
       <ul class="dropdown-menu dropdown-menu-end">
         <li><a class="dropdown-item" href="javascript:;"><span class="material-symbols-outlined me-2">account_circle</span><span>Profile</span></a></li>
@@ -247,33 +167,24 @@
   </aside>
   <!--end sidebar-->
 
-  <!-- ═══════════════ CONTENIDO PRINCIPAL ═══════════════ -->
+  <!-- ================= CONTENIDO PRINCIPAL ================= -->
   <main class="page-content">
 
     <!-- Breadcrumb + título -->
     <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-3">
       <div>
-        <h4 class="fw-bold text-dark mb-0">
-          <i class="bi bi-graph-up-arrow text-primary me-2"></i>Nueva Solicitud de Proyecto de Inversión
-        </h4>
+        <h4 class="fw-bold text-dark mb-0"><i class="bi bi-rocket-takeoff text-primary me-2"></i>Nueva Solicitud · Proyecto de Inversión</h4>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb small mb-0 mt-1">
-            <li class="breadcrumb-item"><a href="AEjercicio.html" class="text-decoration-none text-muted">Carga Presupuestal</a></li>
+            <li class="breadcrumb-item"><a href="SelGrupoEmpresarial.html" class="text-decoration-none text-muted">Carga Presupuestal</a></li>
             <li class="breadcrumb-item text-muted">Mis Solicitudes</li>
             <li class="breadcrumb-item active fw-bold" aria-current="page">Alta de Registro</li>
           </ol>
         </nav>
       </div>
       <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-warning btn-sm fw-bold text-dark shadow-sm" onclick="confirmarAccion('borrador')">
-          <i class="bi bi-floppy me-1"></i> Guardar borrador
-        </button>
-        <button class="btn btn-success btn-sm fw-bold shadow-sm" onclick="confirmarAccion('enviar')">
-          <i class="bi bi-send-fill me-1"></i> Enviar a autorización
-        </button>
-        <button class="btn btn-primary btn-sm shadow-sm" onclick="confirmarAccion('cancelar')">
-          <i class="bi bi-x-lg me-1"></i> Cancelar
-        </button>
+        <button class="btn btn-warning btn-sm fw-bold text-dark shadow-sm" onclick="confirmarAccion('borrador')"><i class="bi bi-floppy me-1"></i> Guardar borrador</button>
+        <button class="btn btn-primary btn-sm shadow-sm" onclick="confirmarAccion('cancelar')"><i class="bi bi-x-lg me-1"></i> Cancelar</button>
       </div>
     </div>
 
@@ -281,26 +192,11 @@
     <div class="card shadow-sm border-0 mb-3">
       <div class="card-body px-4 py-3">
         <div class="d-flex flex-wrap align-items-center gap-4">
-          <div>
-            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Categoría</div>
-            <div class="fw-bold text-dark">Proyecto de Inversión</div>
-          </div>
-          <div class="border-start ps-4">
-            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Proyecto</div>
-            <div class="text-muted fst-italic small" id="infoProyecto">Sin seleccionar</div>
-          </div>
-          <div class="border-start ps-4">
-            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Folio</div>
-            <div class="text-muted fst-italic" style="font-size:.85rem;">Se asignará al guardar</div>
-          </div>
-          <div class="border-start ps-4">
-            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Ejercicio Activo</div>
-            <div><span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">2026</span></div>
-          </div>
-          <div class="border-start ps-4">
-            <div class="text-muted" style="font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:600;">Estatus</div>
-            <div><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2 py-1">Nueva</span></div>
-          </div>
+          <div><div class="paso-label">Grupo Empresarial</div><div class="fw-bold text-dark">Grupo Salinas</div></div>
+          <div class="border-start ps-4"><div class="paso-label">Tipo de Presupuesto</div><div class="fw-bold text-dark">Proyecto de Inversión</div></div>
+          <div class="border-start ps-4"><div class="paso-label">Folio</div><div class="text-muted fst-italic" style="font-size:.85rem;">Se asignará al enviar</div></div>
+          <div class="border-start ps-4"><div class="paso-label">Ejercicio Activo</div><div><span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">2026</span></div></div>
+          <div class="border-start ps-4"><div class="paso-label">Estatus</div><div><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2 py-1">Nueva</span></div></div>
         </div>
       </div>
     </div>
@@ -308,676 +204,227 @@
     <!-- Card principal -->
     <div class="card shadow-sm border-0 mb-5">
 
-      <!-- ── Stepper (4 pasos) ─────────────────── -->
+      <!-- ── Stepper header (3 pasos) ─────────────── -->
       <div class="card-header bg-white border-bottom pt-4 pb-3 px-4">
         <div class="d-flex align-items-center">
-
           <div class="d-flex align-items-center flex-shrink-0">
             <span class="step-circle active" id="sc-1">1</span>
             <div class="ms-2 d-none d-md-block">
-              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Selección de Proyecto</div>
-              <div class="text-muted" style="font-size:0.7rem;">¿A qué proyecto destinas el gasto?</div>
+              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Proyecto</div>
+              <div class="text-muted" style="font-size:0.7rem;">Selección o alta</div>
             </div>
           </div>
-
           <div class="step-line" id="sl-1"></div>
-
           <div class="d-flex align-items-center flex-shrink-0">
             <span class="step-circle pending" id="sc-2">2</span>
             <div class="ms-2 d-none d-md-block">
               <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Información General</div>
-              <div class="text-muted" style="font-size:0.7rem;">Selección de CeCos</div>
+              <div class="text-muted" style="font-size:0.7rem;">División · Negocio · CeCos</div>
             </div>
           </div>
-
           <div class="step-line" id="sl-2"></div>
-
           <div class="d-flex align-items-center flex-shrink-0">
             <span class="step-circle pending" id="sc-3">3</span>
             <div class="ms-2 d-none d-md-block">
-              <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Cuentas Presupuestales</div>
-              <div class="text-muted" style="font-size:0.7rem;">Selección del catálogo</div>
-            </div>
-          </div>
-
-          <div class="step-line" id="sl-3"></div>
-
-          <div class="d-flex align-items-center flex-shrink-0">
-            <span class="step-circle pending" id="sc-4">4</span>
-            <div class="ms-2 d-none d-md-block">
               <div class="fw-bold text-dark" style="font-size:0.82rem; line-height:1.1;">Asignación de Presupuesto</div>
-              <div class="text-muted" style="font-size:0.7rem;">Distribución mensual</div>
+              <div class="text-muted" style="font-size:0.7rem;">Captura libre mensual</div>
             </div>
           </div>
-
         </div>
       </div>
 
       <div class="card-body p-4" style="background:#f3f4f6;">
 
         <!-- ════════════════════════════════════════
-             PASO 0 – Asignación de CeCos (Nuevo Proyecto)
+             PASO 1 – Selección o alta del Proyecto
         ════════════════════════════════════════ -->
-        <div id="paso-0" style="display:none;">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="card w-100 h-100 shadow-sm border-0">
-                <div class="card-body p-4 d-flex flex-column">
-                  <div class="text-start flex-grow-1">
-                    <h5 class="fw-bold text-dark mb-4"><i class="bi bi-building me-2 text-primary"></i>Nuevo Proyecto - Asigna Centros de Costos</h5>
-                    <div class="row g-3 mb-4">
-                      <div class="col-lg-3">
-                        <label class="form-label fw-bold text-dark">División <span class="text-danger">*</span></label>
-                        <select id="npDivision" class="form-select form-select-sm shadow-none" onchange="npDivChange()">
-                          <option value="" selected disabled>Seleccione...</option>
-                          <option value="Marca">Marca</option>
-                          <option value="Oferteo">Oferteo</option>
-                          <option value="Estrategia">Estrategia</option>
-                          <option value="Sin División">Sin División</option>
-                        </select>
-                      </div>
-                      <div class="col-lg-3">
-                        <label class="form-label fw-bold text-dark">Negocio <span class="text-danger">*</span></label>
-                        <select id="npNegocio" class="form-select form-select-sm shadow-none" onchange="npNegChange()" disabled>
-                          <option value="" selected disabled>Seleccione una División primero...</option>
-                        </select>
-                      </div>
-                      <div class="col-lg-2 text-center">
-                        <br>
-                        <button type="button" class="btn btn-secondary px-4 fw-bold shadow-sm" onclick="cancelarNuevoProyecto()">Cancelar</button>
-                      </div>
-                      <div class="col-lg-4">
-                        <br>
-                        <button type="button" class="btn btn-success px-5 fw-bold shadow-sm w-100" onclick="guardarNuevoProyectoCecos()">Registrar y continuar solicitud <i class="bi bi-save ms-2"></i></button>
-                      </div>
-                    </div>
-                    <div id="npErrorCecos" class="alert alert-danger py-2 px-3 mb-3 small" style="display:none;"></div>
-                  </div>
-                </div>
+        <div id="paso-1" style="display: block;">
+          <div class="card border-0 shadow-sm radius-10">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                <h6 class="fw-bold text-dark mb-0"><i class="bi bi-folder2-open text-primary me-2"></i>Elige el Proyecto de Inversión</h6>
+                <button class="btn btn-primary fw-bold px-4 shadow-sm btn-sm" onclick="validarPaso1()">Siguiente <i class="bi bi-arrow-right ms-1"></i></button>
               </div>
-            </div>
 
-            <div class="col-lg-12 mt-4">
-              <div class="card shadow-sm border-0">
-                <div class="card-header bg-white pt-4 pb-3 border-bottom-0 d-flex justify-content-between align-items-center">
-                  <h5 class="fw-bold text-dark mb-0"><i class="bi bi-diagram-3 me-2 text-primary"></i>Relaciona los CeCos</h5>
-                  <span class="text-danger small fw-bold" id="txt-validacion-cecos">Debe seleccionar al menos un Centro de Costos.</span>
-                </div>
+              <div class="alert alert-info py-2 px-3 small"><i class="bi bi-info-circle me-1"></i>Debes asociar un proyecto del catálogo (E4) o dar de alta uno nuevo antes de capturar la solicitud.</div>
 
-                <div class="card-body px-4 pb-4 pt-3">
-                  <!-- Resumen División/Negocio seleccionados -->
-                  <div class="alert alert-info py-2 px-3 mb-3 small d-flex justify-content-between align-items-center" id="npResumenDivNeg" style="display:none;">
-                    <div>
-                      <i class="bi bi-info-circle me-2"></i>
-                      División: <strong id="npDivResumen">—</strong> · Negocio: <strong id="npNegResumen">—</strong>
-                    </div>
-                  </div>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <label class="form-label small fw-bold text-dark mb-0">Proyectos existentes</label>
+                <button class="btn btn-outline-primary btn-sm fw-semibold" data-bs-toggle="modal" data-bs-target="#modalNuevoProyecto"><i class="bi bi-plus-circle me-1"></i>Nuevo Proyecto</button>
+              </div>
 
-                  <div class="row g-3 align-items-end mb-4">
-                    <div class="col-lg-6">
-                      <div class="d-flex align-items-center gap-2 mb-2">
-                        <label class="form-label small fw-bold text-dark mb-0">Centro de Costos </label>
-                      </div>
-                      <div class="position-relative">
-                        <input type="text" id="npBuscaCeco" class="form-control ps-4 radius-10 bg-light shadow-none border-secondary border-opacity-25" placeholder="Buscar CeCo (No. o Nombre)..." oninput="filtrarCecosDisponibles(this.value)">
-                        <span class="position-absolute top-50 translate-middle-y ms-2 text-muted"><i class="bi bi-search"></i></span>
-                      </div>
-                    </div>
-                  </div>
+              <!-- Buscador proyectos -->
+              <div class="input-group input-group-sm shadow-sm mb-2">
+                <span class="input-group-text bg-white border-secondary border-opacity-50 text-dark"><i class="bi bi-search"></i></span>
+                <input type="text" id="buscaProyecto" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none py-2" placeholder="Buscar por número o nombre de proyecto..." oninput="filtrarProyectos(this.value)">
+              </div>
 
-                  <div class="row align-items-center dual-listbox-container">
-                    <div class="col-md-5">
-                      <label class="small fw-bold mb-2 text-dark">CeCos Disponibles en el Sistema</label>
-                      <select multiple class="form-select shadow-sm" id="cecos-disponibles" style="height: 320px !important;">
-                        <option value="100901" data-div="Marca" data-neg="Banco Azteca">100901 - DIR GRAL CONECTIVIDAD (Marca)</option>
-                        <option value="100902" data-div="Marca" data-neg="Banco Azteca">100902 - DIR MARCA CORPORATIVA (Marca)</option>
-                        <option value="110050" data-div="Marca" data-neg="Elektra">110050 - DIR PUBLICIDAD ELEKTRA (Marca)</option>
-                        <option value="291374" data-div="Oferteo" data-neg="Marketing Digital">291374 - DIR MKT DIGITAL (Oferteo)</option>
-                        <option value="182310" data-div="Estrategia" data-neg="Estrategia Comercial">182310 - DIR ESTRATEGIA COMERCIAL (Estrategia)</option>
-                        <option value="109220" data-div="Estrategia" data-neg="Estrategia Comercial">109220 - PUBLICIDAD CONECTIVIDAD (Estrategia)</option>
-                        <option value="330100" data-div="Sin División" data-neg="Totalplay">330100 - TOTALPLAY PUBLICIDAD (Sin División)</option>
-                        <option value="330200" data-div="Sin División" data-neg="Totalplay">330200 - TOTALPLAY EXPANSION (Sin División)</option>
-                      </select>
-                    </div>
+              <div class="border border-secondary border-opacity-25 rounded bg-white shadow-sm" style="max-height:340px; overflow-y:auto;">
+                <table class="table align-middle mb-0" style="font-size:0.82rem;">
+                  <thead class="sticky-top z-1 bg-white shadow-sm">
+                    <tr>
+                      <th class="ps-3 text-dark fw-bold border-bottom" style="width:46px;"></th>
+                      <th class="text-dark fw-bold border-bottom" style="width:110px;">Número</th>
+                      <th class="text-dark fw-bold border-bottom">Nombre</th>
+                      <th class="text-dark fw-bold border-bottom" style="width:160px;">Vigencia</th>
+                    </tr>
+                  </thead>
+                  <tbody id="proyecto-tbody"></tbody>
+                </table>
+              </div>
 
-                    <div class="col-md-2 text-center d-grid gap-2 px-3">
-                      <button type="button" class="btn btn-outline-primary btn-sm shadow-none" title="Asignar seleccionados" onclick="agregarCecosSeleccionados()">
-                        Agregar <i class="bi bi-chevron-right fw-bold"></i>
-                      </button>
-                      <button type="button" class="btn btn-outline-danger btn-sm shadow-none mt-2" title="Retirar seleccionados" onclick="quitarCecosSeleccionados()">
-                        <i class="bi bi-chevron-left fw-bold"></i> Quitar
-                      </button>
-                    </div>
-
-                    <div class="col-md-5">
-                      <label class="small fw-bold mb-2 text-dark">CeCos relacionados al Proyecto</label>
-                      <select multiple class="form-select border-primary border-opacity-50 shadow-sm" id="cecos-asignados" style="height: 320px !important;">
-                      </select>
-                    </div>
-                  </div>
+              <!-- Proyecto seleccionado -->
+              <div id="proyecto-elegido" class="alert alert-primary py-2 px-3 mt-3 mb-0 d-flex align-items-center gap-2" style="display:none;">
+                <i class="bi bi-check-circle-fill"></i>
+                <div>
+                  <div class="paso-label text-primary mb-0">Proyecto asociado</div>
+                  <div class="fw-bold" id="proyecto-elegido-txt">—</div>
                 </div>
               </div>
             </div>
           </div>
-        </div><!-- /paso-0 -->
-
-        <!-- ════════════════════════════════════════
-             PASO 1 – Selección de Proyecto de Inversión
-        ════════════════════════════════════════ -->
-        <div id="paso-1">
-
-          <!-- ── Sub-vista A: Selección de proyecto ── -->
-          <div id="vistaSeleccionProyecto">
-          <div class="row g-4 justify-content-center">
-            <div class="col-12 col-lg-8">
-              <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-
-                  <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
-                    <div>
-                      <h6 class="fw-bold text-dark mb-1">
-                        <i class="bi bi-folder2-open text-primary me-2"></i>Selecciona el Proyecto de Inversión
-                      </h6>
-                      <p class="text-muted small mb-0">Elige el proyecto al que se destinará este presupuesto. Solo se puede asignar un proyecto por solicitud.</p>
-                    </div>
-                    <button class="btn btn-outline-primary btn-sm fw-semibold" onclick="abrirModalNuevoProyecto()">
-                      <i class="bi bi-plus-circle me-1"></i>Registrar nuevo
-                    </button>
-                  </div>
-
-                  <!-- Buscador -->
-                  <div class="input-group input-group-sm shadow-sm mb-3">
-                    <span class="input-group-text bg-white border-secondary border-opacity-50"><i class="bi bi-search text-muted"></i></span>
-                    <input type="text" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none py-2"
-                      placeholder="Buscar por nombre o número de proyecto..."
-                      oninput="filtrarProyectos(this.value)">
-                  </div>
-
-                  <!-- Lista de proyectos -->
-                  <div id="listaProyectos" style="max-height:420px; overflow-y:auto;">
-
-                    <div class="proyecto-item" data-id="134845" data-nombre="Transformación Digital 2026" onclick="seleccionarProyecto(this)">
-                      <div class="proy-icon"><i class="bi bi-cpu text-primary"></i></div>
-                      <div class="flex-grow-1">
-                        <div class="fw-bold text-dark" style="font-size:.88rem;">Transformación Digital 2026</div>
-                        <div class="text-muted" style="font-size:.75rem;">
-                          <span class="me-3"><i class="bi bi-hash me-1"></i>134845</span>
-                          <span class="me-3"><i class="bi bi-building me-1"></i>DIR GRAL CONECTIVIDAD · DIR MKT DIGITAL</span>
-                          <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: 2 años</span>
-                        </div>
-                      </div>
-                      <div class="flex-shrink-0 text-end">
-                        <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:.68rem;">Activo</span>
-                      </div>
-                    </div>
-
-                    <div class="proyecto-item" data-id="219033" data-nombre="Expansión Red Fibra Óptica" onclick="seleccionarProyecto(this)">
-                      <div class="proy-icon"><i class="bi bi-diagram-3 text-primary"></i></div>
-                      <div class="flex-grow-1">
-                        <div class="fw-bold text-dark" style="font-size:.88rem;">Expansión Red Fibra Óptica</div>
-                        <div class="text-muted" style="font-size:.75rem;">
-                          <span class="me-3"><i class="bi bi-hash me-1"></i>219033</span>
-                          <span class="me-3"><i class="bi bi-building me-1"></i>TOTALPLAY PUBLICIDAD</span>
-                          <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: 3 años</span>
-                        </div>
-                      </div>
-                      <div class="flex-shrink-0 text-end">
-                        <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:.68rem;">Activo</span>
-                      </div>
-                    </div>
-
-                    <div class="proyecto-item" data-id="305812" data-nombre="Plataforma CRM Retención" onclick="seleccionarProyecto(this)">
-                      <div class="proy-icon"><i class="bi bi-person-lines-fill text-primary"></i></div>
-                      <div class="flex-grow-1">
-                        <div class="fw-bold text-dark" style="font-size:.88rem;">Plataforma CRM Retención</div>
-                        <div class="text-muted" style="font-size:.75rem;">
-                          <span class="me-3"><i class="bi bi-hash me-1"></i>305812</span>
-                          <span class="me-3"><i class="bi bi-building me-1"></i>DIR ESTRATEGIA COMERCIAL</span>
-                          <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: 1 año</span>
-                        </div>
-                      </div>
-                      <div class="flex-shrink-0 text-end">
-                        <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:.68rem;">Activo</span>
-                      </div>
-                    </div>
-
-                    <div class="proyecto-item" data-id="412760" data-nombre="Lanzamiento App Móvil 2.0" onclick="seleccionarProyecto(this)">
-                      <div class="proy-icon"><i class="bi bi-phone text-primary"></i></div>
-                      <div class="flex-grow-1">
-                        <div class="fw-bold text-dark" style="font-size:.88rem;">Lanzamiento App Móvil 2.0</div>
-                        <div class="text-muted" style="font-size:.75rem;">
-                          <span class="me-3"><i class="bi bi-hash me-1"></i>412760</span>
-                          <span class="me-3"><i class="bi bi-building me-1"></i>DIR MKT DIGITAL</span>
-                          <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: 2 años</span>
-                        </div>
-                      </div>
-                      <div class="flex-shrink-0 text-end">
-                        <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:.68rem;">Activo</span>
-                      </div>
-                    </div>
-
-                    <div class="proyecto-item" data-id="098341" data-nombre="Infraestructura Cloud Marketing" onclick="seleccionarProyecto(this)" style="opacity:.65; pointer-events:none;">
-                      <div class="proy-icon"><i class="bi bi-cloud text-secondary"></i></div>
-                      <div class="flex-grow-1">
-                        <div class="fw-bold text-dark" style="font-size:.88rem;">Infraestructura Cloud Marketing</div>
-                        <div class="text-muted" style="font-size:.75rem;">
-                          <span class="me-3"><i class="bi bi-hash me-1"></i>098341</span>
-                          <span class="me-3"><i class="bi bi-building me-1"></i>DIR GRAL CONECTIVIDAD</span>
-                          <span><i class="bi bi-hourglass-split me-1"></i>Vigencia expirada</span>
-                        </div>
-                      </div>
-                      <div class="flex-shrink-0 text-end">
-                        <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2 py-1" style="font-size:.68rem;">Expirado</span>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div id="errProyecto" class="text-danger small mt-3" style="display:none;">
-                    <i class="bi bi-exclamation-triangle-fill me-1"></i>Debes seleccionar un proyecto para continuar.
-                  </div>
-
-                  <div class="d-flex justify-content-end mt-4 pt-3 border-top border-secondary border-opacity-25">
-                    <button class="btn btn-primary fw-bold px-5 shadow-sm" onclick="validarProyectoYAvanzar()">
-                      Siguiente <i class="bi bi-arrow-right ms-1"></i>
-                    </button>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-          </div><!-- /vistaSeleccionProyecto -->
-
-          <!-- ── Sub-vista B: Asignación de CeCos al nuevo proyecto ── -->
-          <div id="vistaAsignacionCecos" style="display:none;">
-            <div class="card border-0 shadow-sm">
-              <div class="card-header bg-white border-bottom py-3 px-4">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <h6 class="fw-bold text-dark mb-0">
-                      <i class="bi bi-building text-primary me-2"></i>Asignación de Centros de Costo
-                    </h6>
-                    <p class="text-muted small mb-0 mt-1">
-                      Proyecto: <strong id="npResumenNombre" class="text-dark">—</strong>
-                      &nbsp;·&nbsp; Núm: <strong id="npResumenNumero" class="text-dark">—</strong>
-                      &nbsp;·&nbsp; Vigencia: <strong id="npResumenVigencia" class="text-dark">—</strong>
-                    </p>
-                  </div>
-                  <div class="d-flex gap-2">
-                    <button class="btn btn-outline-secondary btn-sm" onclick="volverASeleccionProyecto()">
-                      <i class="bi bi-arrow-left me-1"></i>Regresar
-                    </button>
-                    <button class="btn btn-primary fw-bold btn-sm px-4 shadow-sm" onclick="confirmarAsignacionCecos()">
-                      <i class="bi bi-floppy me-1"></i>Guardar proyecto
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-body p-4">
-
-                <!-- Barra de herramientas: búsqueda + filtros -->
-                <div class="row g-2 mb-3 align-items-end">
-                  <div class="col-12 col-md-5">
-                    <div class="input-group input-group-sm shadow-sm">
-                      <span class="input-group-text bg-white border-secondary border-opacity-50"><i class="bi bi-search text-muted"></i></span>
-                      <input type="text" id="buscarCecoNP" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none"
-                        placeholder="Buscar por número o nombre de CeCo..."
-                        oninput="filtrarCecosNP(this.value)">
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <label class="form-label small fw-bold text-dark mb-1">División</label>
-                    <div class="d-flex gap-2" id="divChipsNP">
-                      <button type="button" class="div-chip active" data-div="Marca" onclick="toggleDivNP(this)">Marca</button>
-                      <button type="button" class="div-chip active" data-div="Oferteo" onclick="toggleDivNP(this)">Oferteo</button>
-                      <button type="button" class="div-chip active" data-div="Estrategia" onclick="toggleDivNP(this)">Estrategia</button>
-                      <button type="button" class="div-chip active" data-div="Sin División" onclick="toggleDivNP(this)">Sin División</button>
-                    </div>
-                  </div>
-                  <div class="col-auto ms-auto d-flex align-items-end">
-                    <span class="small text-muted">
-                      <span id="npCecoSelCount" class="fw-bold text-primary">0</span> CeCo(s) seleccionado(s)
-                    </span>
-                  </div>
-                </div>
-
-                <!-- Tabla de CeCos -->
-                <div class="border border-secondary border-opacity-25 rounded shadow-sm" style="max-height:460px; overflow-y:auto;">
-                  <table class="table table-hover align-middle mb-0" style="font-size:.82rem;" id="tablaCecosNP">
-                    <thead class="sticky-top z-1 bg-white shadow-sm">
-                      <tr>
-                        <th class="ps-3 border-bottom" style="width:40px;">
-                          <input class="form-check-input shadow-none border-secondary" type="checkbox" id="chkTodosCecosNP" onchange="seleccionarTodosCecosNP(this)">
-                        </th>
-                        <th class="text-dark fw-bold border-bottom" style="min-width:90px;">Número</th>
-                        <th class="text-dark fw-bold border-bottom">Nombre del Centro de Costo</th>
-                        <th class="text-dark fw-bold border-bottom text-center" style="width:110px;">División</th>
-                        <th class="text-dark fw-bold border-bottom text-center" style="width:90px;">País</th>
-                      </tr>
-                    </thead>
-                    <tbody id="bodyCecosNP">
-
-                      <tr class="ceco-np-row" data-div="Marca">
-                        <td class="ps-3">
-                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
-                        </td>
-                        <td class="fw-semibold text-dark">100901</td>
-                        <td class="text-dark">DIR GRAL CONECTIVIDAD</td>
-                        <td class="text-center"><span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2" style="font-size:.68rem;">Marca</span></td>
-                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
-                      </tr>
-
-                      <tr class="ceco-np-row" data-div="Oferteo">
-                        <td class="ps-3">
-                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
-                        </td>
-                        <td class="fw-semibold text-dark">291374</td>
-                        <td class="text-dark">DIR MKT DIGITAL</td>
-                        <td class="text-center"><span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 px-2" style="font-size:.68rem;">Oferteo</span></td>
-                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
-                      </tr>
-
-                      <tr class="ceco-np-row" data-div="Estrategia">
-                        <td class="ps-3">
-                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
-                        </td>
-                        <td class="fw-semibold text-dark">182310</td>
-                        <td class="text-dark">DIR ESTRATEGIA COMERCIAL</td>
-                        <td class="text-center"><span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-2" style="font-size:.68rem;">Estrategia</span></td>
-                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
-                      </tr>
-
-                      <tr class="ceco-np-row" data-div="Estrategia">
-                        <td class="ps-3">
-                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
-                        </td>
-                        <td class="fw-semibold text-dark">109220</td>
-                        <td class="text-dark">PUBLICIDAD CONECTIVIDAD</td>
-                        <td class="text-center"><span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-2" style="font-size:.68rem;">Estrategia</span></td>
-                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
-                      </tr>
-
-                      <tr class="ceco-np-row" data-div="Sin División">
-                        <td class="ps-3">
-                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
-                        </td>
-                        <td class="fw-semibold text-dark">330100</td>
-                        <td class="text-dark">TOTALPLAY PUBLICIDAD</td>
-                        <td class="text-center"><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2" style="font-size:.68rem;">Sin Div.</span></td>
-                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
-                      </tr>
-
-                      <tr class="ceco-np-row" data-div="Marca">
-                        <td class="ps-3">
-                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
-                        </td>
-                        <td class="fw-semibold text-dark">240090</td>
-                        <td class="text-dark">PUBLICIDAD TELEFONIA</td>
-                        <td class="text-center"><span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2" style="font-size:.68rem;">Marca</span></td>
-                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
-                      </tr>
-
-                      <tr class="ceco-np-row" data-div="Oferteo">
-                        <td class="ps-3">
-                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
-                        </td>
-                        <td class="fw-semibold text-dark">381205</td>
-                        <td class="text-dark">CAMPAÑAS OFERTA MASIVA</td>
-                        <td class="text-center"><span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 px-2" style="font-size:.68rem;">Oferteo</span></td>
-                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
-                      </tr>
-
-                      <tr class="ceco-np-row" data-div="Estrategia">
-                        <td class="ps-3">
-                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
-                        </td>
-                        <td class="fw-semibold text-dark">490118</td>
-                        <td class="text-dark">DIR MARKETING CLIENTE</td>
-                        <td class="text-center"><span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-2" style="font-size:.68rem;">Estrategia</span></td>
-                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
-                      </tr>
-
-                      <tr class="ceco-np-row" data-div="Sin División">
-                        <td class="ps-3">
-                          <input class="form-check-input shadow-none border-secondary ceco-np-check" type="checkbox" onchange="updateNPCecoCount()">
-                        </td>
-                        <td class="fw-semibold text-dark">512044</td>
-                        <td class="text-dark">EVENTOS CORPORATIVOS MKT</td>
-                        <td class="text-center"><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2" style="font-size:.68rem;">Sin Div.</span></td>
-                        <td class="text-center text-muted" style="font-size:.78rem;">MX</td>
-                      </tr>
-
-                    </tbody>
-                  </table>
-                </div>
-
-                <div id="errCecosNP" class="text-danger small mt-3" style="display:none;">
-                  <i class="bi bi-exclamation-triangle-fill me-1"></i>Debes seleccionar al menos un Centro de Costo para guardar el proyecto.
-                </div>
-
-              </div>
-            </div>
-          </div><!-- /vistaAsignacionCecos -->
-
         </div><!-- /paso-1 -->
 
 
         <!-- ════════════════════════════════════════
-             PASO 2 – Información General + CeCos
+             PASO 2 – Información General / Negocio / CeCos
         ════════════════════════════════════════ -->
-        <div id="paso-2" style="display:none;">
+        <div id="paso-2" style="display: none;">
           <div class="row g-4 align-items-start">
 
             <!-- Columna izquierda: Información General -->
             <div class="col-12 col-lg-4 border-end border-secondary border-opacity-25 pe-lg-4">
               <h6 class="fw-bold mb-3 text-dark border-bottom pb-2">Información General</h6>
-              <div class="row g-3">
 
-                <!-- Tipo de Gasto -->
+              <!-- Proyecto asociado (dato) -->
+              <div class="mb-3">
+                <span class="proyecto-badge-lg"><i class="bi bi-rocket-takeoff"></i><span id="igProyecto">—</span></span>
+                <div class="small text-muted mt-1">Vigencia del proyecto: <span class="fw-semibold text-dark" id="igProyVigencia">—</span></div>
+              </div>
+
+              <div class="row g-3">
+                <!-- Tipo de Gasto (sin Gasto Ordinario) -->
                 <div class="col-12">
                   <label class="form-label small fw-bold text-dark">Tipo de Gasto Publicitario <span class="text-danger">*</span></label>
-                  <select id="tipoGasto" class="form-select form-select-sm border-secondary border-opacity-50 text-dark shadow-none" onchange="actualizarCombo()">
-                    <option value="" selected disabled>Seleccione una opción...</option>
+                  <select id="tipoGasto" class="form-select form-select-sm border-secondary border-opacity-50 text-dark shadow-none">
+                    <option value="" selected="" disabled="">Seleccione una opción...</option>
                     <option value="Campana">Campaña</option>
                     <option value="Proyecto">Proyecto Especial Mkt</option>
-                    <option value="Ordinario">Gasto Ordinario</option>
                   </select>
+                  <div class="form-text" style="font-size:.7rem;">No aplica «Gasto Ordinario» en Proyectos de Inversión.</div>
                 </div>
 
-                <!-- División -->
-                <div class="mb-3" id="bloque-division" style="display:none;">
-                  <label class="form-label small fw-bold text-dark">División <span class="text-danger">*</span>
-                    <span class="fw-normal text-dark ms-1" style="font-size:0.7rem;">(filtra los CeCos disponibles)</span>
-                  </label>
-                  <div class="d-flex flex-wrap gap-2" id="divChips">
-                    <button type="button" class="div-chip" data-div="Marca" onclick="toggleDiv(this)">Marca</button>
-                    <button type="button" class="div-chip" data-div="Oferteo" onclick="toggleDiv(this)">Oferteo</button>
-                    <button type="button" class="div-chip" data-div="Estrategia" onclick="toggleDiv(this)">Estrategia</button>
-                    <button type="button" class="div-chip" data-div="Sin División" onclick="toggleDiv(this)">Sin División</button>
-                  </div>
+                <!-- División (informativa · heredada del proyecto) -->
+                <div class="col-12">
+                  <label class="form-label small fw-bold text-dark">División</label>
+                  <input type="text" id="igDivision" class="form-control form-control-sm bg-light text-dark fw-bold shadow-none" value="—" disabled="">
+                  <div class="form-text" style="font-size:.7rem;">Heredada del proyecto y sus CeCos asignados.</div>
                 </div>
 
-                <!-- Tipo de campaña -->
-                <div class="col-12" id="bloque-tipo-campana" style="display:none;">
-                  <label class="form-label small fw-bold text-dark">Tipo de Campaña <span class="text-danger">*</span></label>
-                  <div class="d-flex gap-3">
-                    <div class="form-check">
-                      <input class="form-check-input shadow-none" type="radio" name="tipoCampana" id="rbTransversal" value="Transversal" onchange="actualizarNombre()">
-                      <label class="form-check-label small text-dark" for="rbTransversal">Transversal</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input shadow-none" type="radio" name="tipoCampana" id="rbNegocio" value="Negocio" onchange="actualizarNombre()">
-                      <label class="form-check-label small text-dark" for="rbNegocio">Negocio</label>
-                    </div>
-                  </div>
+                <!-- Negocio (informativo · heredado del proyecto) -->
+                <div class="col-12">
+                  <label class="form-label small fw-bold text-dark">Negocio</label>
+                  <input type="text" id="igNegocio" class="form-control form-control-sm bg-light text-dark fw-bold shadow-none" value="—" disabled="">
                 </div>
 
-                <!-- Tipo de proyecto especial -->
-                <div class="col-12" id="bloque-tipo-proyecto" style="display:none;">
-                  <label class="form-label small fw-bold text-dark">Tipo de Proyecto <span class="text-danger">*</span></label>
-                  <div class="d-flex gap-3">
-                    <div class="form-check">
-                      <input class="form-check-input shadow-none" type="radio" name="tipoProyecto" id="rbProyTransversal" value="Transversal" onchange="actualizarNombreProyecto()">
-                      <label class="form-check-label small text-dark" for="rbProyTransversal">Transversal</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input shadow-none" type="radio" name="tipoProyecto" id="rbProyNegocio" value="Negocio" onchange="actualizarNombreProyecto()">
-                      <label class="form-check-label small text-dark" for="rbProyNegocio">Negocio</label>
-                    </div>
-                  </div>
+                <!-- Tipo de campaña: siempre De Negocio (dato) -->
+                <div class="col-12">
+                  <label class="form-label small fw-bold text-dark">Tipo de Campaña</label>
+                  <div><span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary border-opacity-25 px-2 py-1">De Negocio (default)</span></div>
                 </div>
 
-                <!-- Nombre -->
-                <div class="col-12" id="bloque-nombre" style="display:none;">
-                  <label class="form-label small fw-bold text-dark">Nombre <span class="text-danger">*</span></label>
-                  <select id="selectNombreTransversal" class="form-select form-select-sm border-primary text-dark shadow-none" style="display:none;">
-                    <option selected disabled>Seleccione del catálogo transversal...</option>
-                    <option>001TMX – Buen Fin Regional</option>
-                    <option>002TMX – Día de las Madres</option>
-                    <option>003TMX – Regreso a Clases</option>
-                  </select>
-                  <input type="text" id="inputNombreManual" class="form-control form-control-sm border-primary text-dark shadow-none" placeholder="Escriba el nombre de la campaña..." style="display:none;">
-                  <div id="inputNombreOrdinario" class="input-group input-group-sm" style="display:none;">
-                    <input type="text" class="form-control border-secondary border-opacity-50 text-muted shadow-none" value="Gasto ordinario" readonly>
+                <!-- Nombre automático (del proyecto) -->
+                <div class="col-12">
+                  <label class="form-label small fw-bold text-dark">Nombre de la solicitud</label>
+                  <div class="input-group input-group-sm">
+                    <input type="text" id="igNombre" class="form-control border-secondary border-opacity-50 text-muted shadow-none" value="—" readonly="">
                     <span class="input-group-text bg-light text-muted"><i class="bi bi-lock-fill" style="font-size:.7rem;"></i></span>
                   </div>
+                  <div class="form-text" style="font-size:.7rem;">Automático según el proyecto asociado.</div>
                 </div>
 
                 <!-- Fechas -->
-                <div class="col-12" id="bloque-fechas" style="display:none;">
+                <div class="col-12">
                   <div class="row g-2">
                     <div class="col-6">
                       <label class="form-label small fw-bold text-dark">Fecha Inicio <span class="text-danger">*</span></label>
-                      <input type="date" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none">
+                      <input type="date" min="2026-01-01" max="2026-12-31" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none">
                     </div>
                     <div class="col-6">
                       <label class="form-label small fw-bold text-dark">Fecha Fin <span class="text-danger">*</span></label>
-                      <input type="date" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none">
+                      <input type="date" min="2026-01-01" max="2026-12-31" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none">
                     </div>
                   </div>
+                  <div class="form-text" style="font-size:.7rem;">Las fechas deben quedar dentro del ejercicio 2026.</div>
                 </div>
 
-                <!-- Descripción -->
-                <div class="col-12" id="bloque-desc" style="display:none;">
-                  <label class="form-label small fw-bold text-dark">
-                    Descripción / Objetivo <span class="text-danger">*</span>
-                    <span id="charCount" class="fw-normal text-muted ms-1" style="font-size:0.7rem;">(0 / 50 mín.)</span>
-                  </label>
-                  <textarea id="descInput" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none" rows="3"
-                    placeholder="Mínimo 50 caracteres..." oninput="contarChars()"></textarea>
-                  <div class="progress mt-1" style="height:4px;">
-                    <div id="charBar" class="progress-bar bg-danger" style="width:0%;"></div>
-                  </div>
+                <!-- Objetivo / Alcance / KPI (mín. 50) -->
+                <div class="col-12">
+                  <label class="form-label small fw-bold text-dark">Objetivo <span class="text-danger">*</span>
+                    <span id="cc-objetivo" class="fw-normal text-muted ms-1" style="font-size:0.7rem;">(0 / 50 mín.)</span></label>
+                  <textarea data-min="50" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none campo-largo" rows="2" placeholder="Mínimo 50 caracteres..." oninput="contarChars(this,'cc-objetivo')"></textarea>
+                  <div class="progress mt-1" style="height:4px;"><div class="progress-bar bg-danger barra-largo" style="width:0%;"></div></div>
                 </div>
-
+                <div class="col-12">
+                  <label class="form-label small fw-bold text-dark">Alcance <span class="text-danger">*</span>
+                    <span id="cc-alcance" class="fw-normal text-muted ms-1" style="font-size:0.7rem;">(0 / 50 mín.)</span></label>
+                  <textarea data-min="50" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none campo-largo" rows="2" placeholder="Mínimo 50 caracteres..." oninput="contarChars(this,'cc-alcance')"></textarea>
+                  <div class="progress mt-1" style="height:4px;"><div class="progress-bar bg-danger barra-largo" style="width:0%;"></div></div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label small fw-bold text-dark">KPI's <span class="text-danger">*</span>
+                    <span id="cc-kpi" class="fw-normal text-muted ms-1" style="font-size:0.7rem;">(0 / 50 mín.)</span></label>
+                  <textarea data-min="50" class="form-control form-control-sm border-secondary border-opacity-50 text-dark shadow-none campo-largo" rows="2" placeholder="Mínimo 50 caracteres..." oninput="contarChars(this,'cc-kpi')"></textarea>
+                  <div class="progress mt-1" style="height:4px;"><div class="progress-bar bg-danger barra-largo" style="width:0%;"></div></div>
+                </div>
               </div>
             </div>
 
-            <!-- Columna derecha: Selección de CeCos (sin límites) -->
+            <!-- Columna derecha: Negocio + CeCos -->
             <div class="col-12 col-lg-8 ps-lg-4">
               <div class="card border-0 shadow-sm radius-10">
                 <div class="card-body p-4">
 
                   <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
                     <h6 class="fw-bold text-dark mb-0">
-                      <i class="bi bi-building text-primary me-2"></i>Selección de Centros de Costo
+                      <i class="bi bi-briefcase text-primary me-2"></i>Negocio y Centros de Costo
                       <span class="badge bg-warning bg-opacity-10 text-dark border border-warning border-opacity-25 px-2 py-1 ms-1" style="font-size:.7rem;">
-                        <i class="bi bi-check2-square me-1"></i><span id="cecoCount">0</span> seleccionado(s)
+                        <i class="bi bi-check2-square me-1"></i><span id="cecoCount">0</span> CeCo(s) seleccionado(s)
                       </span>
                     </h6>
                     <div class="d-flex gap-2">
-                      <button class="btn btn-dark fw-bold px-4 btn-sm" onclick="irPaso(1)">
-                        <i class="bi bi-arrow-left me-1"></i>Anterior
-                      </button>
-                      <button class="btn btn-primary fw-bold px-4 shadow-sm btn-sm" onclick="irPaso(3)">
-                        Siguiente <i class="bi bi-arrow-right ms-1"></i>
-                      </button>
+                      <button class="btn btn-dark fw-semibold px-3 shadow-sm btn-sm" onclick="irPaso(1)"><i class="bi bi-arrow-left me-1"></i>Anterior</button>
+                      <button class="btn btn-primary fw-bold px-4 shadow-sm btn-sm" onclick="validarPaso2()">Siguiente <i class="bi bi-arrow-right ms-1"></i></button>
                     </div>
                   </div>
 
-                  <!-- Buscador -->
-                  <div class="input-group input-group-sm shadow-sm mb-3">
-                    <span class="input-group-text bg-white border-secondary border-opacity-50"><i class="bi bi-search"></i></span>
-                    <input type="text" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none py-2" placeholder="Buscar por nombre o número de CeCo...">
+                  <!-- División y Negocio informativos (heredados del proyecto) -->
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <span class="badge bg-light text-dark border fw-bold">División: <span id="cecoInfoDivision">—</span></span>
+                    <span class="badge bg-light text-dark border fw-bold">Negocio: <span id="cecoInfoNegocio">—</span></span>
                   </div>
 
-                  <!-- Empty state -->
-                  <div id="ceco-empty-state" class="border border-secondary border-opacity-25 rounded bg-white shadow-sm text-center py-5">
-                    <i class="bi bi-diagram-3 text-secondary mb-2" style="font-size:2rem; display:block;"></i>
-                    <p class="text-muted mb-0 small">Selecciona una División para ver los centros de costo disponibles.</p>
-                  </div>
-
-                  <!-- Tabla CeCos — SIN columnas Límite/Disponible -->
-                  <div id="ceco-tabla-wrap" class="border border-secondary border-opacity-25 rounded bg-white shadow-sm" style="max-height:380px; overflow-y:auto; display:none;">
-                    <table class="table align-middle mb-0" style="font-size:0.82rem;">
-                      <thead class="sticky-top z-1 bg-white shadow-sm">
-                        <tr>
-                          <th class="ps-3 text-dark fw-bold border-bottom">Centro de Costo</th>
-                          <th class="text-muted fw-semibold border-bottom text-center" style="width:110px; font-size:.72rem;">CeCos asociados al proyecto</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-
-                        <!-- CeCo 100901 · Marca -->
-                        <tr class="ceco-row ceco-group" data-divs="Marca" id="tr-ceco1">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco1">
-                              <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>
-                              100901 – DIR GRAL CONECTIVIDAD
-                            </div>
-                          </td>
-                          <td class="text-center">
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2" style="font-size:.68rem;">En proyecto</span>
-                          </td>
-                        </tr>
-
-                        <!-- CeCo 291374 · Oferteo -->
-                        <tr class="ceco-row ceco-group" data-divs="Oferteo" id="tr-ceco2" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco2">
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              291374 – DIR MKT DIGITAL
-                            </div>
-                          </td>
-                          <td class="text-center">
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2" style="font-size:.68rem;">En proyecto</span>
-                          </td>
-                        </tr>
-
-                        <!-- CeCo 182310 · Estrategia -->
-                        <tr class="ceco-row ceco-group" data-divs="Estrategia" id="tr-ceco3" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco3">
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              182310 – DIR ESTRATEGIA COMERCIAL
-                            </div>
-                          </td>
-                          <td class="text-center">
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2" style="font-size:.68rem;">En proyecto</span>
-                          </td>
-                        </tr>
-
-                        <!-- CeCo 330100 · Sin División -->
-                        <tr class="ceco-row ceco-group" data-divs="Sin División" id="tr-ceco4" style="border-top:1px solid #dee2e6;">
-                          <td class="ps-3 fw-bold text-dark">
-                            <div class="d-flex align-items-center">
-                              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0" type="checkbox" onclick="updateCecoCount()" id="chk-ceco4">
-                              <i class="bi bi-building text-dark me-2 flex-shrink-0"></i>
-                              330100 – TOTALPLAY PUBLICIDAD
-                            </div>
-                          </td>
-                          <td class="text-center">
-                            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-2" style="font-size:.68rem;">En proyecto</span>
-                          </td>
-                        </tr>
-
-                      </tbody>
-                    </table>
+                  <!-- CeCos del proyecto -->
+                  <div id="bloque-cecos">
+                    <label class="form-label small fw-bold text-dark mb-2"><i class="bi bi-check2-square text-primary me-1"></i>Selecciona los Centros de Costo de la solicitud
+                      <span class="fw-normal text-muted ms-1" style="font-size:0.7rem;">(al menos uno · relacionados con el proyecto)</span></label>
+                    <div class="input-group input-group-sm shadow-sm mb-2">
+                      <span class="input-group-text bg-white border-secondary border-opacity-50 text-dark"><i class="bi bi-search"></i></span>
+                      <input type="text" class="form-control border-start-0 border-secondary border-opacity-50 shadow-none py-2" placeholder="Buscar por nombre o número de CeCo..." oninput="filtrarCecos(this.value)">
+                    </div>
+                    <div class="border border-secondary border-opacity-25 rounded bg-white shadow-sm" style="max-height:340px; overflow-y:auto;">
+                      <table class="table align-middle mb-0" style="font-size:0.82rem;">
+                        <thead class="sticky-top z-1 bg-white shadow-sm">
+                          <tr>
+                            <th class="ps-3 text-dark fw-bold border-bottom">Centro de Costo</th>
+                          </tr>
+                        </thead>
+                        <tbody id="ceco-tbody"></tbody>
+                      </table>
+                    </div>
+                    <div id="ceco-vacio-negocio" class="alert alert-warning py-2 px-3 mt-2 mb-0 small" style="display:none;">
+                      <i class="bi bi-exclamation-triangle me-1"></i>Este Negocio no tiene Centros de Costo relacionados a tu perfil en la División elegida.
+                    </div>
                   </div>
 
                 </div>
@@ -989,513 +436,324 @@
 
 
         <!-- ════════════════════════════════════════
-             PASO 3 – Cuentas Presupuestales
+             PASO 3 – Asignación (captura libre)
         ════════════════════════════════════════ -->
         <div id="paso-3" style="display:none;">
 
-          <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
-            <h6 class="fw-bold text-dark mb-0"><i class="bi bi-list-check text-primary me-2"></i>Catálogo de Cuentas Presupuestales</h6>
-            <div class="d-flex align-items-center gap-3">
-              <span class="text-muted small"><i class="bi bi-check2-square me-1"></i><span id="cuentaCount">0</span> seleccionadas</span>
-              <div class="form-check form-switch mb-0">
-                <input class="form-check-input shadow-none" type="checkbox" role="switch" id="switchTodasCuentas" onchange="toggleTodasCuentas(this)">
-                <label class="form-check-label small fw-bold text-primary" for="switchTodasCuentas">Seleccionar todas</label>
+          <!-- Badges identificadores -->
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+            <span class="negocio-badge-lg"><i class="bi bi-briefcase-fill"></i><span id="negocioBadge">—</span></span>
+            <span class="proyecto-badge-lg"><i class="bi bi-rocket-takeoff"></i><span id="proyectoBadge">—</span></span>
+            <span class="badge bg-light text-dark border fw-bold" id="badgeDivision">División —</span>
+            <span class="badge bg-light text-dark border fw-bold">Moneda local (MXN)</span>
+          </div>
+
+          <!-- Resumen de captura: horizontal en la parte superior -->
+          <div class="card border-0 shadow-sm bg-white mb-3">
+            <div class="card-body py-3 px-4">
+              <div class="row g-3 align-items-center">
+                <div class="col-12 col-md-4">
+                  <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2"><i class="bi bi-pie-chart text-primary"></i>Resumen de Captura</h6>
+                  <div class="text-muted small mt-1">Captura libre · sin Base Presupuestal</div>
+                </div>
+                <div class="col-6 col-md-4">
+                  <div class="border rounded px-3 py-2 text-center" style="background:#f8f9fa;">
+                    <div class="paso-label">CeCos con importe</div>
+                    <div class="fw-bold text-dark fs-5" id="panelCecos">0</div>
+                  </div>
+                </div>
+                <div class="col-6 col-md-4">
+                  <div class="border rounded px-3 py-2 text-center border-primary" style="background:#f0f4ff;">
+                    <div class="paso-label">Total Asignado</div>
+                    <div class="fw-bold text-primary fs-5" id="panelAsignado">$0.00 MXN</div>
+                  </div>
+                </div>
               </div>
-              <button class="btn btn-dark fw-bold px-4 btn-sm" onclick="irPaso(2)"><i class="bi bi-arrow-left me-1"></i> Anterior</button>
-              <button class="btn btn-primary fw-bold px-4 shadow-sm btn-sm" onclick="validarCuentasYAvanzar()">Siguiente <i class="bi bi-arrow-right ms-1"></i></button>
             </div>
           </div>
 
-          <div class="bg-white rounded border border-secondary border-opacity-10 shadow-sm mb-4" style="overflow:hidden;">
-            <div class="p-3 border-bottom border-secondary border-opacity-10" style="position:sticky; top:0; background:#fff; z-index:2;">
-              <div class="input-group input-group-sm">
-                <span class="input-group-text bg-light text-muted border-end-0"><i class="bi bi-search"></i></span>
-                <input type="text" class="form-control border-start-0 shadow-none" placeholder="Buscar cuenta presupuestal…" oninput="filtrarCuentas(this.value)">
-              </div>
-            </div>
-
-            <div id="gridCuentas" style="max-height:360px; overflow-y:auto; display:grid; grid-template-columns:repeat(3,1fr);">
-
-              <label for="cta1" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="60443" id="cta1" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">60443</span><span class="cta-nom">Sesiones y Eventos</span></span>
-              </label>
-              <label for="cta2" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="60444" id="cta2" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">60444</span><span class="cta-nom">Patrocinios</span></span>
-              </label>
-              <label for="cta3" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609010" id="cta3" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609010</span><span class="cta-nom">Radio</span></span>
-              </label>
-              <label for="cta4" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609011" id="cta4" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609011</span><span class="cta-nom">Televisión</span></span>
-              </label>
-              <label for="cta5" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609012" id="cta5" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609012</span><span class="cta-nom">Cine</span></span>
-              </label>
-              <label for="cta6" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609013" id="cta6" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609013</span><span class="cta-nom">Material punto de venta</span></span>
-              </label>
-              <label for="cta7" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609014" id="cta7" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609014</span><span class="cta-nom">Vía Pública</span></span>
-              </label>
-              <label for="cta8" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609015" id="cta8" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609015</span><span class="cta-nom">Prensa / Revistas</span></span>
-              </label>
-              <label for="cta9" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609016" id="cta9" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609016</span><span class="cta-nom">Relaciones Públicas</span></span>
-              </label>
-              <label for="cta10" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609017" id="cta10" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609017</span><span class="cta-nom">Influencer Marketing</span></span>
-              </label>
-              <label for="cta11" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609018" id="cta11" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609018</span><span class="cta-nom">Producción Creativa</span></span>
-              </label>
-              <label for="cta12" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609019" id="cta12" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609019</span><span class="cta-nom">Diseño y Arte</span></span>
-              </label>
-              <label for="cta13" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609020" id="cta13" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609020</span><span class="cta-nom">Investigación de Mercado</span></span>
-              </label>
-              <label for="cta14" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609021" id="cta14" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609021</span><span class="cta-nom">Redes Sociales</span></span>
-              </label>
-              <label for="cta15" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609022" id="cta15" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609022</span><span class="cta-nom">Email Marketing</span></span>
-              </label>
-              <label for="cta16" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609023" id="cta16" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609023</span><span class="cta-nom">Promociones</span></span>
-              </label>
-              <label for="cta17" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609024" id="cta17" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609024</span><span class="cta-nom">Sorteos y Concursos</span></span>
-              </label>
-              <label for="cta18" class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609025" id="cta18" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609025</span><span class="cta-nom">Activaciones BTL</span></span>
-              </label>
-              <label for="cta19" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609026" id="cta19" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609026</span><span class="cta-nom">Muestras y Demostraciones</span></span>
-              </label>
-              <label for="cta20" class="cuenta-item px-3 py-2 border-end border-bottom border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609027" id="cta20" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609027</span><span class="cta-nom">Merchandising</span></span>
-              </label>
-              <label class="cuenta-item px-3 py-2 border-bottom border-secondary border-opacity-10" style="pointer-events:none;"></label>
-              <label for="cta21" class="cuenta-item px-3 py-2 border-end border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609028" id="cta21" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609028</span><span class="cta-nom">Publicidad Digital</span></span>
-              </label>
-              <label for="cta22" class="cuenta-item px-3 py-2 border-end border-secondary border-opacity-10">
-                <input class="form-check-input cuenta-checkbox flex-shrink-0 border-secondary shadow-none" type="checkbox" value="609029" id="cta22" onchange="actualizarContCuentas()">
-                <span><span class="cta-cod">609029</span><span class="cta-nom">Programática</span></span>
-              </label>
-              <label class="cuenta-item px-3 py-2 border-secondary border-opacity-10" style="pointer-events:none;"></label>
-
-            </div>
-          </div>
-
-          <div id="errCuentas" class="text-danger small mb-3" style="display:none;">
-            <i class="bi bi-exclamation-triangle-fill me-1"></i>Debes seleccionar al menos una cuenta para continuar.
-          </div>
-
-        </div><!-- /paso-3 -->
-
-
-        <!-- ════════════════════════════════════════
-             PASO 4 – Asignación de Presupuesto (sin límites)
-        ════════════════════════════════════════ -->
-        <div id="paso-4" style="display:none;">
-
-          <!-- Aviso informativo: sin topes -->
-          <div class="d-flex align-items-start gap-2 p-3 rounded-3 mb-4" style="background:#f0f7ff; border:1px solid #b6d4fe;">
-            <i class="bi bi-info-circle-fill text-primary flex-shrink-0 mt-1"></i>
-            <span class="text-dark" style="font-size:.82rem;">
-              Esta solicitud es de <strong>Proyecto de Inversión</strong>. No aplica monitoreo de Límite de Carga.
-              Puedes distribuir el presupuesto libremente en los doce meses del ejercicio.
-            </span>
-          </div>
-
-          <div class="row g-4 align-items-start">
-
-            <!-- Acordeón (col-9) -->
-            <div class="col-lg-9">
+          <!-- Distribución a ancho completo -->
+          <div class="row g-4">
+            <div class="col-12">
               <div class="card border-0 shadow-sm bg-white">
                 <div class="card-header bg-white border-bottom py-3 px-4">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
-                      <i class="bi bi-calendar3 text-primary"></i>Distribución Mensual de Presupuesto
-                    </h6>
-                    <button class="btn btn-sm btn-dark fw-semibold px-4" onclick="irPaso(3)">
-                      <i class="bi bi-arrow-left me-1"></i>Anterior
-                    </button>
-                  </div>
+                  <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2"><i class="bi bi-calendar3 text-primary"></i>Distribución del Presupuesto / Centros de Costo</h6>
                 </div>
-
                 <div class="card-body p-4">
-                  <div class="accordion accordion-flush border border-secondary border-opacity-25 rounded shadow-sm bg-white mb-4" id="accPresupuesto">
-
-                    <!-- ── CeCo 100901 ── -->
-                    <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button py-3 bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dist-100901">
-                          <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
-                            <div class="d-flex align-items-center gap-2">
-                              <span class="badge bg-primary px-2">100901</span>
-                              <span class="fw-bold text-dark">DIR GRAL CONECTIVIDAD</span>
-                            </div>
-                            <div class="d-flex gap-4 align-items-center">
-                              <div class="text-end border-start ps-3">
-                                <div class="paso-label text-dark">Total Asignado</div>
-                                <div class="fw-bold text-primary" id="asignado-100901" style="font-size:.9rem;">0</div>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                      </h2>
-                      <div id="dist-100901" class="accordion-collapse collapse">
-                        <div class="accordion-body p-0">
-                          <div class="table-responsive">
-                            <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tbl-100901">
-                              <thead class="table-light">
-                                <tr>
-                                  <th style="width:32px;"></th>
-                                  <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
-                                  <th style="min-width:130px;">Campaña / Proyecto</th>
-                                  <th style="min-width:65px;">Ene</th><th style="min-width:65px;">Feb</th>
-                                  <th style="min-width:65px;">Mar</th><th style="min-width:65px;">Abr</th>
-                                  <th style="min-width:65px;">May</th><th style="min-width:65px;">Jun</th>
-                                  <th style="min-width:65px;">Jul</th><th style="min-width:65px;">Ago</th>
-                                  <th style="min-width:65px;">Sep</th><th style="min-width:65px;">Oct</th>
-                                  <th style="min-width:65px;">Nov</th><th style="min-width:65px;">Dic</th>
-                                  <th class="bg-light text-dark" style="min-width:95px;">Total</th>
-                                </tr>
-                              </thead>
-                              <tbody id="body-100901"></tbody>
-                              <tfoot>
-                                <tr>
-                                  <td colspan="16" class="text-start ps-2 py-2">
-                                    <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('body-100901','100901')" style="font-size:.78rem;">
-                                      <i class="bi bi-plus-circle me-1"></i>Agregar línea
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tfoot>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- ── CeCo 291374 ── -->
-                    <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button py-3 bg-light collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dist-291374">
-                          <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
-                            <div class="d-flex align-items-center gap-2">
-                              <span class="badge bg-primary px-2">291374</span>
-                              <span class="fw-bold text-dark">DIR MKT DIGITAL</span>
-                            </div>
-                            <div class="d-flex gap-4 align-items-center">
-                              <div class="text-end border-start ps-3">
-                                <div class="paso-label text-dark">Total Asignado</div>
-                                <div class="fw-bold text-primary" id="asignado-291374" style="font-size:.9rem;">0</div>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                      </h2>
-                      <div id="dist-291374" class="accordion-collapse collapse">
-                        <div class="accordion-body p-0">
-                          <div class="table-responsive">
-                            <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;" id="tbl-291374">
-                              <thead class="table-light">
-                                <tr>
-                                  <th style="width:32px;"></th>
-                                  <th class="text-start" style="min-width:155px;">Cuenta Presupuestal</th>
-                                  <th style="min-width:130px;">Campaña / Proyecto</th>
-                                  <th style="min-width:65px;">Ene</th><th style="min-width:65px;">Feb</th>
-                                  <th style="min-width:65px;">Mar</th><th style="min-width:65px;">Abr</th>
-                                  <th style="min-width:65px;">May</th><th style="min-width:65px;">Jun</th>
-                                  <th style="min-width:65px;">Jul</th><th style="min-width:65px;">Ago</th>
-                                  <th style="min-width:65px;">Sep</th><th style="min-width:65px;">Oct</th>
-                                  <th style="min-width:65px;">Nov</th><th style="min-width:65px;">Dic</th>
-                                  <th class="bg-light text-dark" style="min-width:95px;">Total</th>
-                                </tr>
-                              </thead>
-                              <tbody id="body-291374"></tbody>
-                              <tfoot>
-                                <tr>
-                                  <td colspan="16" class="text-start ps-2 py-2">
-                                    <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('body-291374','291374')" style="font-size:.78rem;">
-                                      <i class="bi bi-plus-circle me-1"></i>Agregar línea
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tfoot>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div><!-- /accordion -->
+                  <div class="alert alert-info py-2 px-3 small"><i class="bi bi-info-circle me-1"></i>Captura libre, sin Control de Carga ni validación de límite. Los Centros de Costo sin importe se descartan al enviar a Aprobación.</div>
+                  <div class="accordion accordion-flush border border-secondary border-opacity-25 rounded shadow-sm bg-white" id="accPresupuesto"></div>
                 </div>
               </div>
             </div>
-
-            <!-- Panel derecho: solo resumen global (col-3) -->
-            <div class="col-lg-3">
-              <div class="card border-0 shadow-sm bg-white sticky-top" style="top:20px;">
-                <div class="card-header bg-white border-bottom py-3 px-4">
-                  <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-2">
-                    <i class="bi bi-calculator text-primary"></i>Resumen de Asignación
-                  </h6>
-                </div>
-                <div class="card-body p-4">
-
-                  <div class="border border-secondary border-opacity-25 rounded p-3 mb-4" style="background:#f8f9fa;">
-                    <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-10">
-                      <span class="small fw-semibold text-dark">Total Asignado</span>
-                      <span class="fw-bold text-primary" id="panelAsignado">0</span>
-                    </div>
-                    <div class="d-flex justify-content-between py-2">
-                      <span class="small fw-semibold text-muted">CeCos con monto</span>
-                      <span class="fw-bold text-dark" id="panelCecos">0</span>
-                    </div>
-                  </div>
-
-                  <!-- Aviso: sin validación de límites -->
-                  <div class="d-flex align-items-start gap-2 p-3 rounded-3 mb-4" style="background:#f0f7ff; border:1px solid #b6d4fe;">
-                    <i class="bi bi-info-circle text-primary flex-shrink-0" style="font-size:.85rem;"></i>
-                    <span class="text-muted" style="font-size:.75rem;">Sin validación de topes. Captura libre.</span>
-                  </div>
-
-                  <div class="d-flex flex-column gap-2">
-                    <button class="btn btn-warning btn-sm fw-bold text-dark shadow-sm" onclick="confirmarAccion('borrador')">
-                      <i class="bi bi-floppy me-1"></i> Guardar borrador
-                    </button>
-                    <button class="btn btn-success btn-sm fw-bold shadow-sm" onclick="confirmarAccion('enviar')">
-                      <i class="bi bi-send-fill me-1"></i> Enviar a autorización
-                    </button>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
           </div>
-        </div><!-- /paso-4 -->
+
+          <!-- Navegación: el envío vive solo en el Resumen de Confirmación -->
+          <div class="d-flex justify-content-between align-items-center gap-2 mt-4">
+            <button class="btn btn-dark fw-semibold px-4" onclick="irPaso(2)"><i class="bi bi-arrow-left me-1"></i>Anterior</button>
+            <button class="btn btn-primary fw-bold px-4 shadow-sm" onclick="confirmarAccion('enviar')">Revisar y confirmar <i class="bi bi-arrow-right ms-1"></i></button>
+          </div>
+        </div><!-- /paso-3 -->
 
       </div><!-- /card-body -->
     </div><!-- /card principal -->
 
   </main>
-  <!-- ═══════════════ FIN CONTENIDO PRINCIPAL ═══════════════ -->
+  <!-- ================= FIN CONTENIDO PRINCIPAL ================= -->
 
-
-  <!-- ── Modal Registrar Nuevo Proyecto ──────────────────── -->
-  <!-- ── Modal Nuevo Proyecto (campos generales — sin CeCos) ── -->
+  <!-- Modal Nuevo Proyecto -->
   <div class="modal fade" id="modalNuevoProyecto" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" style="max-width:440px;">
-      <div class="modal-content border-0 shadow-lg" style="border-radius:14px; overflow:hidden;">
-
-        <div class="px-4 pt-4 pb-3" style="background: linear-gradient(135deg,#0d6efd 0%,#0a58ca 100%);">
-          <div class="d-flex justify-content-between align-items-start">
-            <div>
-              <h5 class="fw-bold text-white mb-0">Nuevo Proyecto de Inversión</h5>
-              <p class="text-white opacity-75 mb-0" style="font-size:.78rem;">Paso 1 de 2 — datos generales</p>
-            </div>
-            <button type="button" class="btn-close btn-close-white opacity-75" data-bs-dismiss="modal"></button>
-          </div>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-primary-subtle border-0">
+          <h5 class="modal-title fw-bold text-primary"><i class="bi bi-plus-circle me-2"></i>Nuevo Proyecto (E4)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-
         <div class="modal-body p-4">
           <div class="row g-3">
-
-            <div class="col-12">
-              <label class="form-label small fw-bold text-dark">Número de Proyecto <span class="text-danger">*</span></label>
-              <input type="number" class="form-control form-control-sm border-secondary border-opacity-50 shadow-none" id="npNumero"
-                placeholder="Dato numérico único, ej. 134846" min="1">
-              <div id="errNpNumero" class="text-danger small mt-1" style="display:none;"></div>
+            <div class="col-6">
+              <label class="form-label small fw-bold text-dark">Número <span class="text-danger">*</span></label>
+              <input type="text" id="npNumero" class="form-control form-control-sm shadow-none" placeholder="Ej. 40012">
             </div>
-
-            <div class="col-12">
-              <label class="form-label small fw-bold text-dark">
-                Nombre <span class="text-danger">*</span>
-                <span id="npNombreCount" class="fw-normal text-muted ms-1" style="font-size:.7rem;">(0/50)</span>
-              </label>
-              <input type="text" class="form-control form-control-sm border-secondary border-opacity-50 shadow-none" id="npNombre"
-                maxlength="50" placeholder="Máximo 50 caracteres"
-                oninput="document.getElementById('npNombreCount').textContent='('+this.value.length+'/50)'">
+            <div class="col-6">
+              <label class="form-label small fw-bold text-dark">Año de inicio <span class="text-danger">*</span></label>
+              <input type="number" id="npAnioInicio" class="form-control form-control-sm shadow-none" value="2026" min="2024" max="2035">
             </div>
-
             <div class="col-12">
-              <label class="form-label small fw-bold text-dark">Años de vigencia <span class="text-danger">*</span></label>
-              <select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none" id="npVigencia">
-                <option value="" selected disabled>Seleccione...</option>
-                <option value="1">1 año</option>
-                <option value="2">2 años</option>
-                <option value="3">3 años</option>
-                <option value="4">4 años</option>
-                <option value="5">5 años</option>
-              </select>
+              <label class="form-label small fw-bold text-dark">Nombre <span class="text-danger">*</span></label>
+              <input type="text" id="npNombre" class="form-control form-control-sm shadow-none" placeholder="Nombre del proyecto">
             </div>
-
+            <div class="col-12">
+              <label class="form-label small fw-bold text-dark">Años de vigencia <span class="text-danger">*</span> <span class="fw-normal text-muted" style="font-size:.7rem;">(máximo 5)</span></label>
+              <input type="number" id="npVigencia" class="form-control form-control-sm shadow-none" value="1" min="1" max="5">
+            </div>
+            <div class="col-12">
+              <label class="form-label small fw-bold text-dark">Descripción <span class="text-danger">*</span></label>
+              <textarea id="npDesc" class="form-control form-control-sm shadow-none" rows="2" placeholder="Describe el proyecto..."></textarea>
+            </div>
           </div>
-
-          <p class="text-muted mt-3 mb-0" style="font-size:.75rem;">
-            <i class="bi bi-arrow-right-circle me-1 text-primary"></i>
-            En el siguiente paso asignarás los Centros de Costo que usará este proyecto.
-          </p>
+          <div id="npError" class="alert alert-danger py-2 px-3 mt-3 mb-0 small" style="display: none;"></div>
         </div>
-
-        <div class="px-4 pb-4 d-flex gap-2">
-          <button class="btn btn-light fw-semibold flex-fill border" data-bs-dismiss="modal" style="border-radius:10px;">Cancelar</button>
-          <button class="btn btn-primary fw-bold flex-fill shadow-sm" onclick="continuarRegistroProyecto()" style="border-radius:10px;">
-            Continuar <i class="bi bi-arrow-right ms-1"></i>
-          </button>
+        <div class="modal-footer border-0">
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button class="btn btn-primary fw-bold" onclick="abrirAsignarCecos()"><i class="bi bi-diagram-3 me-1"></i>Asignar CeCos</button>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- ── Modal Confirmar Guardar Borrador ─────────────────── -->
+  <!-- Modal Asignar CeCos al Proyecto -->
+  <div class="modal fade" id="modalAsignarCecosProyecto" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-primary-subtle border-0">
+          <h5 class="modal-title fw-bold text-primary"><i class="bi bi-diagram-3 me-2"></i>Asignar Centros de Costo al Proyecto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="alert alert-info py-2 px-3 small"><i class="bi bi-info-circle me-1"></i>Los Centros de Costo seleccionados quedarán asignados al proyecto. La distribución se realizará únicamente sobre ellos.</div>
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label class="form-label small fw-bold text-dark">División <span class="text-danger">*</span></label>
+              <select id="acDivision" class="form-select form-select-sm shadow-none" onchange="acDivChange()">
+                <option value="" selected="" disabled="">Seleccione...</option>
+                <option value="Marca">Marca</option>
+                <option value="Oferteo">Oferteo</option>
+                <option value="Estrategia">Estrategia</option>
+                <option value="Sin División">Sin División</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold text-dark">Negocio <span class="text-danger">*</span></label>
+              <select id="acNegocio" class="form-select form-select-sm shadow-none" onchange="acNegChange()" disabled=""><option value="" selected="" disabled="">Seleccione una División primero...</option></select>
+            </div>
+          </div>
+
+          <!-- Resumen División/Negocio -->
+          <div class="alert alert-info py-2 px-3 mb-3 small d-flex justify-content-between align-items-center" id="acResumenDivNeg" style="display:none;">
+            <div>
+              <i class="bi bi-info-circle me-2"></i>
+              División: <strong id="acDivResumen">—</strong> · Negocio: <strong id="acNegResumen">—</strong>
+            </div>
+          </div>
+
+          <label class="form-label small fw-bold text-dark">Centros de Costo <span class="text-danger">*</span></label>
+          <div class="border border-secondary border-opacity-25 rounded bg-white" style="max-height:260px; overflow-y:auto;">
+            <table class="table align-middle mb-0" style="font-size:0.82rem;">
+              <thead class="sticky-top z-1 bg-light">
+                <tr><th class="ps-3 text-dark fw-bold border-bottom" style="width:46px;"></th><th class="text-dark fw-bold border-bottom">Centro de Costo</th></tr>
+              </thead>
+              <tbody id="acCecoTbody"><tr><td colspan="2" class="text-center text-muted small py-4">Selecciona División y Negocio para ver los Centros de Costo.</td></tr></tbody>
+            </table>
+          </div>
+          <div id="acError" class="alert alert-danger py-2 px-3 mt-3 mb-0 small" style="display:none;"></div>
+        </div>
+        <div class="modal-footer border-0">
+          <button class="btn btn-outline-secondary" onclick="volverNuevoProyecto()"><i class="bi bi-arrow-left me-1"></i>Atrás</button>
+          <button class="btn btn-primary fw-bold" onclick="guardarNuevoProyecto()"><i class="bi bi-check-lg me-1"></i>Guardar Proyecto</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal validación -->
+  <div class="modal fade" id="modalValidacion" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-5">
+          <i class="bi bi-exclamation-circle-fill text-warning mb-3" style="font-size:3rem;"></i>
+          <h5 class="fw-bold text-dark mb-2">Faltan datos por completar</h5>
+          <p class="small text-muted mb-4" id="msgValidacion">Revisa la información antes de continuar.</p>
+          <button class="btn btn-warning fw-bold text-dark px-4" data-bs-dismiss="modal">Entendido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal quitar CeCo -->
+  <div class="modal fade" id="modalQuitarCeco" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-5">
+          <i class="bi bi-trash3-fill text-danger mb-3" style="font-size:3rem;"></i>
+          <h5 class="fw-bold text-dark mb-2">¿Quitar este Centro de Costo?</h5>
+          <p class="small text-muted mb-4">Se borrará toda la información e importes capturados en la distribución de <strong id="quitarCecoNombre">—</strong>. El CeCo seguirá disponible para volver a seleccionarse.</p>
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Conservar</button>
+            <button class="btn btn-danger fw-bold px-4" onclick="ejecutarQuitarCeco()"><i class="bi bi-trash me-1"></i> Sí, quitar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Guardar Borrador -->
   <div class="modal fade" id="modalBorrador" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow-lg">
         <div class="modal-body text-center p-5">
           <i class="bi bi-floppy-fill text-warning mb-3" style="font-size:3rem;"></i>
           <h5 class="fw-bold text-dark mb-2">¿Guardar borrador?</h5>
-          <p class="small text-muted mb-4">La solicitud quedará guardada como borrador. Podrás retomar y completarla en otro momento.</p>
+          <p class="small text-muted mb-4">La solicitud quedará en estatus Borrador. Podrás retomarla dentro del periodo de carga.</p>
           <div class="d-flex justify-content-center gap-3">
             <button class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
-            <button class="btn btn-warning fw-bold text-dark px-4" onclick="ejecutarBorrador()">
-              <i class="bi bi-floppy me-1"></i> Guardar
-            </button>
+            <button class="btn btn-warning fw-bold text-dark px-4" onclick="ejecutarBorrador()"><i class="bi bi-floppy me-1"></i> Guardar</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ── Modal Borrador Exitoso ───────────────────────────── -->
+  <!-- Modal Borrador Exitoso -->
   <div class="modal fade" id="modalBorradorExito" tabindex="-1" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow-lg">
         <div class="modal-body text-center p-5">
           <i class="bi bi-floppy-fill text-warning mb-3" style="font-size:4rem;"></i>
-          <h5 class="fw-bold text-dark mb-1">Solicitud guardada en Borrador</h5>
-          <div class="my-3">
-            <span class="text-muted small">Folio asignado:</span>
-            <h4 class="fw-bold text-dark mt-1 mb-0">SOL-INV-26001</h4>
+          <h5 class="fw-bold text-dark mb-1">Solicitud guardada como borrador</h5>
+          <div class="my-3 border rounded p-3 bg-light text-start">
+            <div class="d-flex justify-content-between"><span class="text-muted small">Campaña</span><span class="fw-bold text-dark" id="borrCampana">—</span></div>
+            <div class="d-flex justify-content-between"><span class="text-muted small">División</span><span class="fw-bold text-dark" id="borrDivision">—</span></div>
+            <div class="d-flex justify-content-between"><span class="text-muted small">Vigencia</span><span class="fw-bold text-dark" id="borrVigencia">—</span></div>
+            <div class="d-flex justify-content-between"><span class="text-muted small">Total capturado</span><span class="fw-bold text-success" id="borrTotal">$0.00 MXN</span></div>
           </div>
-          <p class="small text-muted mb-4">Puedes retomar y completar esta solicitud desde el listado de Carga Presupuestal.</p>
-          <a href="AEjercicio.html" class="btn btn-warning fw-bold text-dark px-5 shadow-sm">
-            <i class="bi bi-list-ul me-1"></i> Ir al listado
-          </a>
+          <div class="d-flex justify-content-center gap-2">
+            <a href="SelGrupoEmpresarial.html" class="btn btn-warning fw-bold text-dark px-4 shadow-sm"><i class="bi bi-list-ul me-1"></i> Ver mis solicitudes</a>
+            <button class="btn btn-outline-secondary px-4" data-bs-dismiss="modal"><i class="bi bi-pencil me-1"></i> Continuar editando</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ── Modal Confirmar Cancelar ────────────────────────── -->
+  <!-- Modal Cancelar -->
   <div class="modal fade" id="modalCancelar" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow-lg">
         <div class="modal-body text-center p-5">
           <i class="bi bi-exclamation-triangle-fill text-warning mb-3" style="font-size:3rem;"></i>
           <h5 class="fw-bold text-dark mb-2">¿Cancelar la solicitud?</h5>
-          <p class="small text-muted mb-4">Si cancelas ahora, se perderán todos los cambios realizados y serás redirigido al listado de solicitudes.</p>
+          <p class="small text-muted mb-4">Si cancelas ahora, se perderán todos los cambios realizados.</p>
           <div class="d-flex justify-content-center gap-3">
             <button class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Seguir editando</button>
-            <a href="AEjercicio.html" class="btn btn-primary fw-bold px-4"><i class="bi bi-x-lg me-1"></i> Sí, cancelar</a>
+            <a href="SelGrupoEmpresarial.html" class="btn btn-primary fw-bold px-4"><i class="bi bi-x-lg me-1"></i> Sí, cancelar</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ── Modal Confirmar Envío ────────────────────────────── -->
+  <!-- Modal Confirmar Envío -->
   <div class="modal fade" id="modalConfirmarEnvio" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" style="max-width:420px;">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:460px;">
       <div class="modal-content border-0 shadow-lg" style="border-radius:16px; overflow:hidden;">
-
-        <div class="px-4 pt-4 pb-3" style="background: linear-gradient(135deg,#0d6efd 0%,#0a58ca 100%);">
+        <div class="px-4 pt-4 pb-3" style="background: linear-gradient(135deg,#6f42c1 0%,#5a32a3 100%);">
           <div class="d-flex justify-content-between align-items-start">
-            <h5 class="fw-bold text-white mb-0">Enviar a autorización</h5>
+            <h5 class="fw-bold text-white mb-0">Confirmar y enviar a aprobación</h5>
             <button type="button" class="btn-close btn-close-white opacity-75" data-bs-dismiss="modal"></button>
           </div>
         </div>
-
         <div class="modal-body p-4">
-          <div class="d-flex gap-3 mb-3">
-            <div class="flex-fill text-center rounded-3 py-3 px-2" style="background:#f0f4ff; border:1.5px solid #d0deff;">
-              <div class="fw-bold text-primary" style="font-size:2rem; line-height:1;" id="resumenCecosCard">–</div>
-              <div class="text-muted mt-1" style="font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.04em;">CeCos</div>
-            </div>
-            <div class="flex-fill text-center rounded-3 py-3 px-2" style="background:#f0fff6; border:1.5px solid #b6efd0;">
-              <div class="fw-bold text-success" style="font-size:1.5rem; line-height:1.2;" id="resumenTotalCard">–</div>
-              <div class="text-muted mt-1" style="font-size:.72rem; font-weight:600; text-transform:uppercase; letter-spacing:.04em;">Total Asignado</div>
-            </div>
+          <div class="border rounded p-3 mb-3 bg-light">
+            <div class="d-flex justify-content-between py-1"><span class="text-muted small">Nombre del gasto</span><span class="fw-bold text-dark text-end" id="rsNombre">—</span></div>
+            <div class="d-flex justify-content-between py-1"><span class="text-muted small">Proyecto asociado</span><span class="fw-bold text-dark text-end" id="rsProyecto">—</span></div>
+            <div class="d-flex justify-content-between py-1"><span class="text-muted small">Vigencia del proyecto</span><span class="fw-bold text-dark text-end" id="rsProyVig">—</span></div>
+            <div class="d-flex justify-content-between py-1"><span class="text-muted small">Tipo de Gasto</span><span class="fw-bold text-dark text-end" id="rsTipo">—</span></div>
+            <div class="d-flex justify-content-between py-1"><span class="text-muted small">División</span><span class="fw-bold text-dark text-end" id="rsDivision">—</span></div>
+            <div class="d-flex justify-content-between py-1"><span class="text-muted small">Negocio</span><span class="fw-bold text-dark text-end" id="rsNegocio">—</span></div>
+            <div class="d-flex justify-content-between py-1"><span class="text-muted small">Vigencia de la solicitud</span><span class="fw-bold text-dark text-end" id="rsVigencia">—</span></div>
+            <div class="d-flex justify-content-between py-1 border-top mt-1 pt-2"><span class="text-dark small fw-semibold">Importe total</span><span class="fw-bold text-success text-end" id="rsTotal">$0.00 MXN</span></div>
           </div>
-
-          <p class="text-dark mb-3" style="font-size:.88rem; line-height:1.6;">
-            Estás a punto de enviar la solicitud de <strong>Proyecto de Inversión</strong> con
-            <strong id="resumenCecos">–</strong> Centro(s) de Costo y un presupuesto total de
-            <strong class="text-success" id="resumenTotalInline">–</strong>.
-          </p>
-
+          <div class="mb-3">
+            <div class="paso-label mb-2">Flujo de autorización</div>
+            <div class="d-flex align-items-center gap-2 small text-dark"><span class="badge bg-primary">N1</span> Aprobación Marketing <span class="text-muted">· Edgar Grande</span></div>
+          </div>
           <div class="d-flex align-items-start gap-2 p-3 rounded-3" style="background:#fffbe6; border:1px solid #ffe58f;">
             <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0 mt-1" style="font-size:.9rem;"></i>
-            <span class="text-dark" style="font-size:.8rem;">Una vez enviada, la solicitud pasará al flujo de firmas y <strong>ya no podrá editarse</strong> sin aprobación.</span>
+            <span class="text-dark" style="font-size:.8rem;">Al enviar se descartan los CeCos y cuentas sin importe y la solicitud <strong>ya no podrá editarse</strong> sin aprobación.</span>
           </div>
         </div>
-
         <div class="px-4 pb-4 d-flex gap-2">
           <button class="btn btn-light fw-semibold flex-fill border" data-bs-dismiss="modal" style="border-radius:10px;">Cancelar</button>
-          <button class="btn btn-success fw-bold flex-fill shadow-sm" onclick="ejecutarEnvio()" style="border-radius:10px;">
-            <i class="bi bi-send-fill me-1"></i> Sí, enviar
-          </button>
+          <button class="btn btn-success fw-bold flex-fill shadow-sm" onclick="ejecutarEnvio()" style="border-radius:10px;"><i class="bi bi-send-fill me-1"></i> Enviar a aprobación</button>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- ── Modal Envío Exitoso ──────────────────────────────── -->
+  <!-- Modal envío bloqueado -->
+  <div class="modal fade" id="modalEnvioBloqueado" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-5">
+          <i class="bi bi-shield-exclamation text-danger mb-3" style="font-size:3rem;"></i>
+          <h5 class="fw-bold text-dark mb-2">No es posible enviar</h5>
+          <p class="small text-muted mb-4" id="msgBloqueo">La solicitud no tiene ningún importe mayor a cero. Captura al menos un importe para poder enviar.</p>
+          <button class="btn btn-danger fw-bold px-4" data-bs-dismiss="modal">Regresar a la distribución</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Envío Exitoso -->
   <div class="modal fade" id="modalEnvio" tabindex="-1" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow-lg">
         <div class="modal-body text-center p-5">
           <i class="bi bi-check-circle-fill text-success mb-3" style="font-size:4rem;"></i>
-          <h5 class="fw-bold text-dark mb-2">Solicitud enviada a autorización</h5>
-          <h4 class="text-primary fw-bold mb-4">Folio: SOL-INV-26001</h4>
-          <p class="small text-muted mb-4">Se notificó a los niveles de autorización correspondientes para su revisión.</p>
-          <a href="AEjercicio.html" class="btn btn-success px-5 shadow-sm">Salir</a>
+          <h5 class="fw-bold text-dark mb-2">Solicitud enviada a aprobación</h5>
+          <h4 class="text-primary fw-bold mb-1" id="folioEnvio">Folio: F-26-002</h4>
+          <p class="small text-muted mb-4">Estatus: <strong>Pendiente de Aprobación Marketing</strong>. Se notificó al Aprobador de Nivel 1.</p>
+          <a href="SelGrupoEmpresarial.html" class="btn btn-success px-5 shadow-sm">Salir</a>
         </div>
       </div>
     </div>
   </div>
 
+  <!--start overlay-->
   <div class="overlay btn-toggle-menu"></div>
+  <!--end overlay-->
 
+  <!--start theme customization-->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="ThemeCustomizer" aria-labelledby="ThemeCustomizerLable">
     <div class="offcanvas-header border-bottom">
       <h5 class="offcanvas-title" id="ThemeCustomizerLable">Theme Customizer</h5>
@@ -1503,22 +761,14 @@
     </div>
     <div class="offcanvas-body">
       <h6 class="mb-0">Theme Variation</h6><hr>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1">
-        <label class="form-check-label" for="LightTheme">Light</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2" checked>
-        <label class="form-check-label" for="DarkTheme">Dark</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" value="option3">
-        <label class="form-check-label" for="SemiDarkTheme">Semi Dark</label>
-      </div>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1"><label class="form-check-label" for="LightTheme">Light</label></div>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2" checked=""><label class="form-check-label" for="DarkTheme">Dark</label></div>
+      <div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" value="option3"><label class="form-check-label" for="SemiDarkTheme">Semi Dark</label></div>
     </div>
   </div>
+  <!--end theme customization-->
 
-  <!-- Scripts -->
+  <!-- Scripts base -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
   <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
@@ -1527,604 +777,441 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-    const TOTAL_PASOS = 4;
+    // ════════════════════════════════════════════════
+    //  Modelo de datos demo
+    // ════════════════════════════════════════════════
+    const NEGOCIOS = {
+      'Marca': [
+        { id:'BAZ', nombre:'Banco Azteca', cecos:[
+            { num:'100901', nombre:'DIR GRAL CONECTIVIDAD' },
+            { num:'100902', nombre:'DIR MARCA CORPORATIVA' },
+        ]},
+        { id:'ELK', nombre:'Elektra', cecos:[
+            { num:'110050', nombre:'DIR PUBLICIDAD ELEKTRA' },
+        ]},
+      ],
+      'Oferteo': [
+        { id:'DIG', nombre:'Marketing Digital', cecos:[
+            { num:'291374', nombre:'DIR MKT DIGITAL' },
+        ]},
+      ],
+      'Estrategia': [
+        { id:'EST', nombre:'Estrategia Comercial', cecos:[
+            { num:'182310', nombre:'DIR ESTRATEGIA COMERCIAL' },
+            { num:'109220', nombre:'PUBLICIDAD CONECTIVIDAD' },
+        ]},
+      ],
+      'Sin División': [
+        { id:'TP', nombre:'Totalplay', cecos:[
+            { num:'330100', nombre:'TOTALPLAY PUBLICIDAD' },
+            { num:'330200', nombre:'TOTALPLAY EXPANSION' },
+        ]},
+      ],
+    };
 
-    // ── Stepper ──────────────────────────────────────────
+    const CUENTAS = ['609011 – Televisión','609023 – Promociones','609028 – Pub. Digital','609040 – Radio','609055 – OOH / Exteriores'];
+
+    // Cada proyecto trae asignados División, Negocio y sus Centros de Costo (E4)
+    const PROYECTOS = [
+      { num:'19283', nombre:'Gemas', anioInicio:2025, vigencia:3, division:'Marca', negocio:'Banco Azteca',
+        cecos:[{num:'100901',nombre:'DIR GRAL CONECTIVIDAD'},{num:'100902',nombre:'DIR MARCA CORPORATIVA'}] },
+      { num:'21328', nombre:'Originación Crédito', anioInicio:2026, vigencia:2, division:'Estrategia', negocio:'Estrategia Comercial',
+        cecos:[{num:'182310',nombre:'DIR ESTRATEGIA COMERCIAL'}] },
+      { num:'30011', nombre:'Fibra 2026 Totalplay', anioInicio:2026, vigencia:4, division:'Sin División', negocio:'Totalplay',
+        cecos:[{num:'330100',nombre:'TOTALPLAY PUBLICIDAD'},{num:'330200',nombre:'TOTALPLAY EXPANSION'}] },
+      { num:'40005', nombre:'Expansión App Banca', anioInicio:2026, vigencia:5, division:'Oferteo', negocio:'Marketing Digital',
+        cecos:[{num:'291374',nombre:'DIR MKT DIGITAL'}] },
+    ];
+
+    let estado = { proyecto:null, division:null, negocio:null };
+
+    const fmt = n => '$' + Number(n).toLocaleString('es-MX', { minimumFractionDigits:2, maximumFractionDigits:2 }) + ' MXN';
+    const fmtCorto = n => Number(n).toLocaleString('es-MX', { maximumFractionDigits:0 });
+    const parseNum = v => parseFloat(String(v).replace(/,/g, '')) || 0;
+    const vigProyTexto = p => `${p.anioInicio} – ${p.anioInicio + p.vigencia - 1} (${p.vigencia} año/s)`;
+
+    // ── Stepper ──────────────────────────────────────
     function irPaso(n) {
-      // Ocultar paso-0 si se va a otro paso
-      const paso0 = document.getElementById('paso-0');
-      if (paso0) paso0.style.display = (n === 0) ? 'block' : 'none';
-
-      // Manejar pasos 1-4 normalmente
-      for (let i = 1; i <= TOTAL_PASOS; i++) {
-        const paso = document.getElementById(`paso-${i}`);
-        if (paso) paso.style.display = (i === n) ? 'block' : 'none';
+      for (let i = 1; i <= 3; i++) {
+        document.getElementById(`paso-${i}`).style.display = (i === n) ? 'block' : 'none';
         const sc = document.getElementById(`sc-${i}`);
-        if (!sc) continue;
         if (i < n) { sc.className = 'step-circle done'; sc.innerHTML = '<i class="bi bi-check-lg" style="font-size:.65rem;"></i>'; }
         else if (i === n) { sc.className = 'step-circle active'; sc.textContent = i; }
         else { sc.className = 'step-circle pending'; sc.textContent = i; }
-        if (i < TOTAL_PASOS) {
-          const sl = document.getElementById(`sl-${i}`);
-          if (sl) sl.className = 'step-line' + (i < n ? ' done' : '');
-        }
+        if (i < 3) document.getElementById(`sl-${i}`).className = 'step-line' + (i < n ? ' done' : '');
       }
+      window.scrollTo({ top:0, behavior:'smooth' });
     }
 
-    // ── Selección de Proyecto ────────────────────────────
-    let proyectoSeleccionado = null;
-
-    function seleccionarProyecto(el) {
-      document.querySelectorAll('.proyecto-item').forEach(p => p.classList.remove('selected'));
-      el.classList.add('selected');
-      proyectoSeleccionado = { id: el.dataset.id, nombre: el.dataset.nombre };
-      document.getElementById('infoProyecto').textContent = `${el.dataset.id} – ${el.dataset.nombre}`;
-      document.getElementById('errProyecto').style.display = 'none';
+    // ── Paso 1: Proyectos ─────────────────────────────
+    function renderProyectos() {
+      const tb = document.getElementById('proyecto-tbody');
+      tb.innerHTML = '';
+      PROYECTOS.forEach(p => {
+        const tr = document.createElement('tr');
+        tr.className = 'proyecto-row';
+        tr.dataset.num = p.num;
+        tr.onclick = () => seleccionarProyecto(p.num);
+        tr.innerHTML = `
+          <td class="ps-3"><input class="form-check-input shadow-none" type="radio" name="proy" ${estado.proyecto && estado.proyecto.num===p.num ? 'checked':''}></td>
+          <td class="fw-semibold text-dark">${p.num}</td>
+          <td class="text-dark">${p.nombre}</td>
+          <td class="text-dark small">${vigProyTexto(p)}</td>`;
+        tb.appendChild(tr);
+      });
     }
-
-    function validarProyectoYAvanzar() {
-      if (!proyectoSeleccionado) {
-        document.getElementById('errProyecto').style.display = 'block';
-        return;
-      }
-      irPaso(2);
+    function seleccionarProyecto(num) {
+      estado.proyecto = PROYECTOS.find(p => p.num === num);
+      estado.division = estado.proyecto.division;
+      estado.negocio = { nombre: estado.proyecto.negocio, cecos: estado.proyecto.cecos };
+      document.querySelectorAll('.proyecto-row').forEach(r => {
+        const on = r.dataset.num === num;
+        r.classList.toggle('active', on);
+        const rb = r.querySelector('input'); if (rb) rb.checked = on;
+      });
+      document.getElementById('proyecto-elegido').style.display = 'flex';
+      document.getElementById('proyecto-elegido-txt').textContent = `${estado.proyecto.num} – ${estado.proyecto.nombre}`;
     }
-
     function filtrarProyectos(q) {
-      const term = q.toLowerCase().trim();
-      document.querySelectorAll('.proyecto-item').forEach(item => {
-        const txt = item.textContent.toLowerCase();
-        item.style.display = (!term || txt.includes(term)) ? '' : 'none';
+      const t = q.toLowerCase().trim();
+      document.querySelectorAll('#proyecto-tbody .proyecto-row').forEach(tr => {
+        tr.style.display = (!t || tr.textContent.toLowerCase().includes(t)) ? '' : 'none';
       });
     }
 
-    // IDs de proyectos existentes (mock para validar duplicados)
-    const numerosProyectosExistentes = new Set(['134845','219033','305812','412760','098341']);
+    let proyectoDraft = null;
 
-    function abrirModalNuevoProyecto() {
-      // Limpiar campos
-      document.getElementById('npNumero').value = '';
-      document.getElementById('npNombre').value = '';
-      document.getElementById('npVigencia').value = '';
-      document.getElementById('npNombreCount').textContent = '(0/50)';
-      document.getElementById('errNpNumero').style.display = 'none';
+    function abrirAsignarCecos() {
+      const num = document.getElementById('npNumero').value.trim();
+      const nombre = document.getElementById('npNombre').value.trim();
+      const vig = parseInt(document.getElementById('npVigencia').value, 10);
+      const ini = parseInt(document.getElementById('npAnioInicio').value, 10);
+      const desc = document.getElementById('npDesc').value.trim();
+      const err = document.getElementById('npError');
+      const fallos = [];
+      if (!num) fallos.push('Número');
+      if (!nombre) fallos.push('Nombre');
+      if (!ini) fallos.push('Año de inicio');
+      if (!desc) fallos.push('Descripción');
+      if (!vig || vig < 1 || vig > 5) fallos.push('Años de vigencia (1 a 5)');
+      if (fallos.length) { err.style.display='block'; err.textContent = 'Captura: ' + fallos.join(', ') + '.'; return; }
+      err.style.display = 'none';
+      proyectoDraft = { num, nombre, anioInicio:ini, vigencia:vig, desc };
+      bootstrap.Modal.getInstance(document.getElementById('modalNuevoProyecto')).hide();
+      document.getElementById('acDivision').value = '';
+      document.getElementById('acNegocio').innerHTML = '<option value="" selected disabled>Seleccione una División primero...</option>';
+      document.getElementById('acNegocio').disabled = true;
+      document.getElementById('acCecoTbody').innerHTML = '<tr><td colspan="2" class="text-center text-muted small py-4">Selecciona División y Negocio para ver los Centros de Costo.</td></tr>';
+      document.getElementById('acError').style.display = 'none';
+      document.getElementById('acResumenDivNeg').style.display = 'none';
+      new bootstrap.Modal(document.getElementById('modalAsignarCecosProyecto')).show();
+    }
+
+    function volverNuevoProyecto() {
+      bootstrap.Modal.getInstance(document.getElementById('modalAsignarCecosProyecto')).hide();
       new bootstrap.Modal(document.getElementById('modalNuevoProyecto')).show();
     }
 
-    let npProyectoDraft = {};
+    function acDivChange() {
+      const div = document.getElementById('acDivision').value;
+      const selNeg = document.getElementById('acNegocio');
+      const negs = NEGOCIOS[div] || [];
+      selNeg.innerHTML = '<option value="" selected disabled>Seleccione...</option>' + negs.map((n,i)=>`<option value="${i}">${n.nombre}</option>`).join('');
+      selNeg.disabled = false;
+      document.getElementById('acCecoTbody').innerHTML = '<tr><td colspan="2" class="text-center text-muted small py-4">Selecciona el Negocio para ver los Centros de Costo.</td></tr>';
+      document.getElementById('acResumenDivNeg').style.display = 'none';
+    }
 
-    function continuarRegistroProyecto() {
-      const numero = document.getElementById('npNumero').value.trim();
-      const nombre = document.getElementById('npNombre').value.trim();
-      const vigencia = document.getElementById('npVigencia').value;
-      const errNum = document.getElementById('errNpNumero');
+    function acNegChange() {
+      const div = document.getElementById('acDivision').value;
+      const idx = document.getElementById('acNegocio').value;
+      const neg = (NEGOCIOS[div] || [])[idx];
 
-      errNum.style.display = 'none';
-      if (!numero || !nombre || !vigencia) return;
-
-      // Validar duplicado (E4 CA02)
-      if (numerosProyectosExistentes.has(numero)) {
-        errNum.textContent = 'Proyecto existente. Contacta a Administración MKT.';
-        errNum.style.display = 'block';
-        return;
+      // Mostrar resumen
+      if (div && neg) {
+        document.getElementById('acDivResumen').textContent = div;
+        document.getElementById('acNegResumen').textContent = neg.nombre;
+        document.getElementById('acResumenDivNeg').style.display = 'flex';
       }
 
-      // Guardar datos temporales
-      npProyectoDraft = { numero, nombre, vigencia: parseInt(vigencia) };
-
-      // Cerrar modal y mostrar paso-0
-      bootstrap.Modal.getInstance(document.getElementById('modalNuevoProyecto')).hide();
-
-      // Resetear selectores
-      document.getElementById('npDivision').value = '';
-      document.getElementById('npNegocio').value = '';
-      document.getElementById('npNegocio').disabled = true;
-      document.getElementById('cecos-disponibles').value = '';
-      document.getElementById('cecos-asignados').innerHTML = '';
-      document.getElementById('npErrorCecos').style.display = 'none';
-
-      // Mostrar paso-0
-      irPaso(0);
+      const tb = document.getElementById('acCecoTbody');
+      if (!neg) { tb.innerHTML = ''; return; }
+      tb.innerHTML = neg.cecos.map(c => `
+        <tr>
+          <td class="ps-3"><input class="form-check-input shadow-none ac-chk" type="checkbox" value="${c.num}" data-nombre="${c.nombre}"></td>
+          <td class="text-dark"><i class="bi bi-building text-primary me-2"></i>${c.num} – ${c.nombre}</td>
+        </tr>`).join('');
     }
 
-    function cancelarNuevoProyecto() {
-      npProyectoDraft = {};
-      irPaso(1);
-    }
-
-    function npDivChange() {
-      const division = document.getElementById('npDivision').value;
-      const negocioSel = document.getElementById('npNegocio');
-      const cecosDis = document.getElementById('cecos-disponibles');
-
-      if (!division) {
-        negocioSel.innerHTML = '<option value="" selected disabled>Seleccione una División primero...</option>';
-        negocioSel.disabled = true;
-        return;
-      }
-
-      // Obtener negocios únicos para esta división
-      const negocios = new Set();
-      Array.from(cecosDis.options).forEach(opt => {
-        if (opt.dataset.div === division) negocios.add(opt.dataset.neg);
-      });
-
-      negocioSel.innerHTML = '<option value="" selected disabled>Seleccione...</option>' +
-        Array.from(negocios).map(n => `<option value="${n}">${n}</option>`).join('');
-      negocioSel.disabled = false;
-    }
-
-    function npNegChange() {
-      const division = document.getElementById('npDivision').value;
-      const negocio = document.getElementById('npNegocio').value;
-      const cecosDis = document.getElementById('cecos-disponibles');
-
-      // Mostrar resumen de División/Negocio seleccionados
-      if (division && negocio) {
-        document.getElementById('npDivResumen').textContent = division;
-        document.getElementById('npNegResumen').textContent = negocio;
-        document.getElementById('npResumenDivNeg').style.display = 'flex';
-      } else {
-        document.getElementById('npResumenDivNeg').style.display = 'none';
-      }
-
-      // Actualizar lista de disponibles filtrando por División y Negocio
-      Array.from(cecosDis.options).forEach(opt => {
-        opt.hidden = !(opt.dataset.div === division && opt.dataset.neg === negocio);
-      });
-    }
-
-    function filtrarCecosDisponibles(q) {
-      const term = q.toLowerCase().trim();
-      const cecosDis = document.getElementById('cecos-disponibles');
-      Array.from(cecosDis.options).forEach(opt => {
-        if (opt.hidden) return;
-        opt.style.display = (!term || opt.text.toLowerCase().includes(term)) ? '' : 'none';
-      });
-    }
-
-    function agregarCecosSeleccionados() {
-      const cecosDis = document.getElementById('cecos-disponibles');
-      const cecosAsin = document.getElementById('cecos-asignados');
-      const seleccionados = Array.from(cecosDis.selectedOptions);
-
-      seleccionados.forEach(opt => {
-        const newOpt = document.createElement('option');
-        newOpt.value = opt.value;
-        newOpt.text = opt.text;
-        newOpt.dataset.div = opt.dataset.div || '';
-        newOpt.dataset.neg = opt.dataset.neg || '';
-        cecosAsin.appendChild(newOpt);
-        opt.remove();
-      });
-
-      cecosDis.value = '';
-      document.getElementById('npErrorCecos').style.display = 'none';
-    }
-
-    function quitarCecosSeleccionados() {
-      const cecosDis = document.getElementById('cecos-disponibles');
-      const cecosAsin = document.getElementById('cecos-asignados');
-      const seleccionados = Array.from(cecosAsin.selectedOptions);
-
-      seleccionados.forEach(opt => {
-        const newOpt = document.createElement('option');
-        newOpt.value = opt.value;
-        newOpt.text = opt.text;
-        newOpt.dataset.div = opt.dataset.div || '';
-        newOpt.dataset.neg = opt.dataset.neg || '';
-        cecosDis.appendChild(newOpt);
-        opt.remove();
-      });
-
-      cecosAsin.value = '';
-    }
-
-    function guardarNuevoProyectoCecos() {
-      const cecosAsin = document.getElementById('cecos-asignados');
-      const division = document.getElementById('npDivision').value;
-      const negocio = document.getElementById('npNegocio').value;
-      const err = document.getElementById('npErrorCecos');
-
-      if (!division || !negocio || cecosAsin.options.length === 0) {
-        err.textContent = 'Completa: División, Negocio y selecciona al menos un Centro de Costo.';
-        err.style.display = 'block';
-        return;
-      }
-
+    function guardarNuevoProyecto() {
+      const err = document.getElementById('acError');
+      const div = document.getElementById('acDivision').value;
+      const idx = document.getElementById('acNegocio').value;
+      const neg = (NEGOCIOS[div] || [])[idx];
+      const sel = [...document.querySelectorAll('.ac-chk:checked')];
+      const fallos = [];
+      if (!div) fallos.push('División');
+      if (!neg) fallos.push('Negocio');
+      if (!sel.length) fallos.push('al menos un Centro de Costo');
+      if (fallos.length) { err.style.display='block'; err.textContent = 'Selecciona: ' + fallos.join(', ') + '.'; return; }
       err.style.display = 'none';
 
-      // Recopilar CeCos elegidos
-      const cecos = Array.from(cecosAsin.options).map(opt => ({
-        num: opt.value,
-        nombre: opt.text.split(' - ')[1]?.split('(')[0]?.trim() || opt.text
-      }));
-
-      // Crear nuevo proyecto
-      const nuevoProyecto = {
-        id: npProyectoDraft.numero,
-        nombre: npProyectoDraft.nombre,
-        ...npProyectoDraft,
-        division,
-        negocio,
-        cecos
-      };
-
-      // Agregar a lista de proyectos
-      const lista = document.getElementById('listaProyectos');
-      const div = document.createElement('div');
-      div.className = 'proyecto-item';
-      div.dataset.id = nuevoProyecto.id;
-      div.dataset.nombre = nuevoProyecto.nombre;
-      div.setAttribute('onclick', 'seleccionarProyecto(this)');
-
-      const cecosLabel = cecos.slice(0, 2).map(c => c.num).join(', ') +
-        (cecos.length > 2 ? ` y ${cecos.length - 2} más` : '');
-
-      div.innerHTML = `
-        <div class="proy-icon"><i class="bi bi-folder-plus text-primary"></i></div>
-        <div class="flex-grow-1">
-          <div class="fw-bold text-dark" style="font-size:.88rem;">${nuevoProyecto.nombre}</div>
-          <div class="text-muted" style="font-size:.75rem;">
-            <span class="me-3"><i class="bi bi-hash me-1"></i>${nuevoProyecto.id}</span>
-            <span class="me-3"><i class="bi bi-building me-1"></i>${cecosLabel}</span>
-            <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: ${nuevoProyecto.vigencia} año(s)</span>
-          </div>
-        </div>
-        <div class="flex-shrink-0">
-          <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:.68rem;">Activo</span>
-        </div>`;
-      lista.insertBefore(div, lista.firstChild);
-
-      // Registrar en catálogo
-      numerosProyectosExistentes.add(nuevoProyecto.id);
-
-      // Auto-seleccionar el nuevo proyecto
-      seleccionarProyecto(div);
-      proyectoSeleccionado = nuevoProyecto;
-      npProyectoDraft = {};
-
-      // Pre-cargar División en paso 2
-      cargarDivisionesEnPaso2(division);
-
-      // Avanzar al paso 2
+      const nuevo = Object.assign({}, proyectoDraft, {
+        division: div,
+        negocio: neg.nombre,
+        cecos: sel.map(c => ({ num:c.value, nombre:c.dataset.nombre })),
+      });
+      PROYECTOS.unshift(nuevo);
+      proyectoDraft = null;
+      renderProyectos();
+      seleccionarProyecto(nuevo.num);
+      bootstrap.Modal.getInstance(document.getElementById('modalAsignarCecosProyecto')).hide();
       irPaso(2);
     }
 
-    function cargarDivisionesEnPaso2(divisionSeleccionada) {
-      // Activar los chips de División según lo que se seleccionó en paso-0
-      document.querySelectorAll('#divChips .div-chip').forEach(btn => {
-        if (btn.dataset.div === divisionSeleccionada) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-      // Filtrar CeCos por la División seleccionada
-      filtrarCecosPorDivision([divisionSeleccionada]);
-    }
-
-    function volverASeleccionProyecto() {
-      document.getElementById('vistaAsignacionCecos').style.display = 'none';
-      document.getElementById('vistaSeleccionProyecto').style.display = 'block';
-    }
-
-    function confirmarAsignacionCecos() {
-      const seleccionados = document.querySelectorAll('.ceco-np-check:checked');
-      const err = document.getElementById('errCecosNP');
-      if (seleccionados.length === 0) { err.style.display = 'block'; return; }
-      err.style.display = 'none';
-
-      const numero = document.getElementById('npResumenNumero').textContent;
-      const nombre = document.getElementById('npResumenNombre').textContent;
-      const vigencia = document.getElementById('npResumenVigencia').textContent;
-
-      // Recopilar CeCos elegidos para el label
-      const cecosNombres = [...seleccionados].map(c => c.closest('tr').querySelector('td:nth-child(3)').textContent.trim());
-      const cecosLabel = cecosNombres.slice(0,2).join(', ') + (cecosNombres.length > 2 ? ` y ${cecosNombres.length - 2} más` : '');
-
-      // Registrar en catálogo (mock)
-      numerosProyectosExistentes.add(numero);
-
-      // Agregar a la lista de proyectos
-      const lista = document.getElementById('listaProyectos');
-      const div = document.createElement('div');
-      div.className = 'proyecto-item';
-      div.dataset.id = numero;
-      div.dataset.nombre = nombre;
-      div.setAttribute('onclick', 'seleccionarProyecto(this)');
-      div.innerHTML = `
-        <div class="proy-icon"><i class="bi bi-folder-plus text-primary"></i></div>
-        <div class="flex-grow-1">
-          <div class="fw-bold text-dark" style="font-size:.88rem;">${nombre}</div>
-          <div class="text-muted" style="font-size:.75rem;">
-            <span class="me-3"><i class="bi bi-hash me-1"></i>${numero}</span>
-            <span class="me-3"><i class="bi bi-building me-1"></i>${cecosLabel}</span>
-            <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: ${vigencia}</span>
-          </div>
-        </div>
-        <div class="flex-shrink-0">
-          <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:.68rem;">Activo</span>
-        </div>`;
-      lista.insertBefore(div, lista.firstChild); // insertar al inicio
-
-      // Volver a la lista y auto-seleccionar
-      document.getElementById('vistaAsignacionCecos').style.display = 'none';
-      document.getElementById('vistaSeleccionProyecto').style.display = 'block';
-      seleccionarProyecto(div);
-    }
-
-    // ── Filtros de la tabla de CeCos en asignación de proyecto ──
-    function updateNPCecoCount() {
-      const n = document.querySelectorAll('.ceco-np-check:checked').length;
-      document.getElementById('npCecoSelCount').textContent = n;
-      if (n > 0) document.getElementById('errCecosNP').style.display = 'none';
-    }
-
-    function seleccionarTodosCecosNP(chk) {
-      document.querySelectorAll('.ceco-np-check').forEach(c => {
-        if (c.closest('tr').style.display !== 'none') c.checked = chk.checked;
-      });
-      updateNPCecoCount();
-    }
-
-    function filtrarCecosNP(q) {
-      const term = q.toLowerCase().trim();
-      document.querySelectorAll('#bodyCecosNP .ceco-np-row').forEach(row => {
-        const txt = row.textContent.toLowerCase();
-        row.style.display = (!term || txt.includes(term)) ? '' : 'none';
-      });
-    }
-
-    function toggleDivNP(btn) {
-      btn.classList.toggle('active');
-      const activas = [...document.querySelectorAll('#divChipsNP .div-chip.active')].map(b => b.dataset.div);
-      document.querySelectorAll('#bodyCecosNP .ceco-np-row').forEach(row => {
-        const divRow = row.dataset.div;
-        const visible = activas.length === 0 || activas.includes(divRow);
-        row.style.display = visible ? '' : 'none';
-        if (!visible) { const c = row.querySelector('.ceco-np-check'); if(c) c.checked = false; }
-      });
-      updateNPCecoCount();
-    }
-
-    // ── División chips ────────────────────────────────────
-    function toggleDiv(btn) {
-      btn.classList.toggle('active');
-      const activas = [...document.querySelectorAll('#divChips .div-chip.active')].map(b => b.dataset.div);
-      filtrarCecosPorDivision(activas);
-    }
-
-    function filtrarCecosPorDivision(activas) {
-      const wrap = document.getElementById('ceco-tabla-wrap');
-      const empty = document.getElementById('ceco-empty-state');
-
-      if (!activas.length) {
-        wrap.style.display = 'none';
-        empty.style.display = '';
-        document.querySelectorAll('[id^="chk-ceco"]').forEach(c => c.checked = false);
-        updateCecoCount();
+    function validarPaso1() {
+      if (!estado.proyecto) {
+        document.getElementById('msgValidacion').textContent = 'Selecciona un proyecto del listado o da de alta uno nuevo para continuar.';
+        new bootstrap.Modal(document.getElementById('modalValidacion')).show();
         return;
       }
+      document.getElementById('igNombre').value = estado.proyecto.nombre;
+      document.getElementById('igProyecto').textContent = `${estado.proyecto.num} – ${estado.proyecto.nombre}`;
+      document.getElementById('igProyVigencia').textContent = vigProyTexto(estado.proyecto);
+      document.getElementById('igDivision').value = estado.division || '—';
+      document.getElementById('igNegocio').value = estado.negocio ? estado.negocio.nombre : '—';
+      document.getElementById('cecoInfoDivision').textContent = estado.division || '—';
+      document.getElementById('cecoInfoNegocio').textContent = estado.negocio ? estado.negocio.nombre : '—';
+      renderCecos();
+      irPaso(2);
+    }
 
-      wrap.style.display = '';
-      empty.style.display = 'none';
+    function contarChars(ta, spanId) {
+      const min = parseInt(ta.dataset.min || 50, 10);
+      const v = ta.value.length;
+      const pct = Math.min(100, v / min * 100);
+      document.getElementById(spanId).textContent = `(${v} / ${min} mín.)`;
+      const bar = ta.parentElement.querySelector('.barra-largo');
+      bar.style.width = pct + '%';
+      bar.className = 'progress-bar barra-largo ' + (v >= min ? 'bg-success' : 'bg-danger');
+    }
 
-      document.querySelectorAll('.ceco-group').forEach(row => {
-        const divsCeco = (row.dataset.divs || '').split(',');
-        const visible = divsCeco.some(d => activas.includes(d.trim()));
-        row.style.display = visible ? '' : 'none';
-        if (!visible) {
-          const chk = row.querySelector('input[type="checkbox"]');
-          if (chk) chk.checked = false;
-        }
+    function renderCecos() {
+      const tbody = document.getElementById('ceco-tbody');
+      const vacio = document.getElementById('ceco-vacio-negocio');
+      tbody.innerHTML = '';
+      const cecos = estado.negocio ? estado.negocio.cecos : [];
+      if (!cecos.length) { vacio.style.display = 'block'; updateCecoCount(); return; }
+      vacio.style.display = 'none';
+      cecos.forEach(c => {
+        const tr = document.createElement('tr');
+        tr.className = 'ceco-fila'; tr.dataset.num = c.num;
+        tr.innerHTML = `
+          <td class="ps-3 fw-semibold text-dark">
+            <div class="d-flex align-items-center">
+              <input class="form-check-input border-secondary shadow-none me-3 flex-shrink-0 chk-ceco" type="checkbox" value="${c.num}" onchange="updateCecoCount()">
+              <i class="bi bi-building text-primary me-2 flex-shrink-0"></i>${c.num} – ${c.nombre}
+            </div>
+          </td>`;
+        tbody.appendChild(tr);
       });
-
       updateCecoCount();
     }
-
+    function filtrarCecos(q) {
+      const t = q.toLowerCase().trim();
+      document.querySelectorAll('#ceco-tbody .ceco-fila').forEach(tr => {
+        tr.style.display = (!t || tr.textContent.toLowerCase().includes(t)) ? '' : 'none';
+      });
+    }
     function updateCecoCount() {
-      const n = document.querySelectorAll('[id^="chk-ceco"]:checked').length;
-      document.getElementById('cecoCount').textContent = n;
+      document.getElementById('cecoCount').textContent = document.querySelectorAll('.chk-ceco:checked').length;
     }
 
-    // ── Combos dinámicos ──────────────────────────────────
-    function actualizarCombo() {
-      const tipo = document.getElementById('tipoGasto').value;
-      const show = id => document.getElementById(id).style.display = 'block';
-      const hide = id => document.getElementById(id).style.display = 'none';
-      if (!tipo) return;
-
-      show('bloque-division'); show('bloque-fechas'); show('bloque-desc');
-
-      if (tipo === 'Campana') {
-        show('bloque-tipo-campana');
-        hide('bloque-tipo-proyecto');
-        hide('bloque-nombre');
-        document.querySelectorAll('input[name="tipoCampana"]').forEach(r => r.checked = false);
-      } else if (tipo === 'Proyecto') {
-        hide('bloque-tipo-campana');
-        show('bloque-tipo-proyecto');
-        hide('bloque-nombre');
-        document.querySelectorAll('input[name="tipoProyecto"]').forEach(r => r.checked = false);
-      } else {
-        hide('bloque-tipo-campana');
-        hide('bloque-tipo-proyecto');
-        show('bloque-nombre');
-        document.getElementById('selectNombreTransversal').style.display = 'none';
-        document.getElementById('inputNombreManual').style.display = 'none';
-        document.getElementById('inputNombreOrdinario').style.display = 'flex';
+    function validarPaso2() {
+      const errs = [];
+      if (!document.getElementById('tipoGasto').value) errs.push('Selecciona el Tipo de Gasto Publicitario.');
+      document.querySelectorAll('.campo-largo').forEach(ta => {
+        if (ta.value.trim().length < parseInt(ta.dataset.min,10))
+          errs.push('Objetivo, Alcance y KPI\'s requieren mínimo 50 caracteres cada uno.');
+      });
+      const sel = [...document.querySelectorAll('.chk-ceco:checked')];
+      if (!sel.length) errs.push('Selecciona al menos un Centro de Costo para asignar presupuesto.');
+      if (errs.length) {
+        document.getElementById('msgValidacion').innerHTML = [...new Set(errs)].join('<br>');
+        new bootstrap.Modal(document.getElementById('modalValidacion')).show();
+        return;
       }
+      construirPaso3(sel.map(c => c.value));
+      irPaso(3);
     }
 
-    function actualizarNombre() {
-      const tc = document.querySelector('input[name="tipoCampana"]:checked');
-      if (!tc) return;
-      document.getElementById('bloque-nombre').style.display = 'block';
-      const esT = tc.value === 'Transversal';
-      document.getElementById('selectNombreTransversal').style.display = esT ? 'block' : 'none';
-      document.getElementById('inputNombreManual').style.display = esT ? 'none' : 'block';
-      document.getElementById('inputNombreOrdinario').style.display = 'none';
-    }
+    function construirPaso3(nums) {
+      const acc = document.getElementById('accPresupuesto');
+      acc.innerHTML = '';
+      document.getElementById('negocioBadge').textContent = estado.negocio.nombre;
+      document.getElementById('proyectoBadge').textContent = `${estado.proyecto.num} – ${estado.proyecto.nombre}`;
+      document.getElementById('badgeDivision').textContent = 'División ' + estado.division;
 
-    function actualizarNombreProyecto() {
-      const tp = document.querySelector('input[name="tipoProyecto"]:checked');
-      if (!tp) return;
-      document.getElementById('bloque-nombre').style.display = 'block';
-      const esT = tp.value === 'Transversal';
-      document.getElementById('selectNombreTransversal').style.display = esT ? 'block' : 'none';
-      document.getElementById('inputNombreManual').style.display = esT ? 'none' : 'block';
-      document.getElementById('inputNombreOrdinario').style.display = 'none';
-    }
-
-    function contarChars() {
-      const v = document.getElementById('descInput').value.length;
-      const pct = Math.min(100, v / 50 * 100);
-      document.getElementById('charCount').textContent = `(${v} / 50 mín.)`;
-      const bar = document.getElementById('charBar');
-      bar.style.width = pct + '%';
-      bar.className = 'progress-bar ' + (pct >= 100 ? 'bg-success' : 'bg-danger');
-    }
-
-    // ── Cuentas ───────────────────────────────────────────
-    function filtrarCuentas(q) {
-      const term = q.toLowerCase().trim();
-      document.querySelectorAll('.cuenta-item').forEach(label => {
-        const txt = label.textContent.toLowerCase();
-        label.style.display = (!term || txt.includes(term)) ? '' : 'none';
+      const cecosSel = estado.negocio.cecos.filter(c => nums.includes(c.num));
+      cecosSel.forEach(c => {
+        const item = document.createElement('div');
+        item.className = 'accordion-item'; item.id = 'acc-' + c.num;
+        item.innerHTML = `
+          <h2 class="accordion-header">
+            <button class="accordion-button py-3 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#dist-${c.num}">
+              <div class="d-flex justify-content-between w-100 pe-3 align-items-center flex-wrap gap-2">
+                <div class="d-flex align-items-center gap-2"><span class="badge bg-primary px-2">${c.num}</span><span class="fw-bold text-dark">${c.nombre}</span></div>
+                <div class="text-end"><div class="paso-label text-dark">Asignado</div><div class="fw-bold text-primary" id="asig-${c.num}" style="font-size:.85rem;">0</div></div>
+              </div>
+            </button>
+          </h2>
+          <div id="dist-${c.num}" class="accordion-collapse collapse show">
+            <div class="accordion-body p-0">
+              <div class="d-flex justify-content-end gap-2 px-3 py-2 border-bottom bg-white">
+                <button class="btn btn-sm btn-outline-secondary shadow-none" onclick="limpiarCeco('${c.num}')"><i class="bi bi-eraser me-1"></i>Limpiar</button>
+                <button class="btn btn-sm btn-outline-danger shadow-none" onclick="pedirQuitarCeco('${c.num}','${c.nombre.replace(/'/g,"")}')"><i class="bi bi-trash me-1"></i>Quitar CeCo</button>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-sm table-bordered align-middle text-center mb-0" style="font-size:.78rem;">
+                  <thead class="table-light">
+                    <tr>
+                      <th style="width:32px;"></th>
+                      <th class="text-start" style="min-width:170px;">Cuenta Presupuestal</th>
+                      <th style="min-width:62px;">Ene</th><th style="min-width:62px;">Feb</th><th style="min-width:62px;">Mar</th>
+                      <th style="min-width:62px;">Abr</th><th style="min-width:62px;">May</th><th style="min-width:62px;">Jun</th>
+                      <th style="min-width:62px;">Jul</th><th style="min-width:62px;">Ago</th><th style="min-width:62px;">Sep</th>
+                      <th style="min-width:62px;">Oct</th><th style="min-width:62px;">Nov</th><th style="min-width:62px;">Dic</th>
+                      <th class="bg-light text-dark" style="min-width:95px;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id="body-${c.num}"></tbody>
+                  <tfoot>
+                    <tr><td colspan="15" class="text-start ps-2 py-2">
+                      <button class="btn btn-sm btn-link text-primary p-0 shadow-none fw-semibold" onclick="agregarFila('${c.num}')" style="font-size:.78rem;"><i class="bi bi-plus-circle me-1"></i>Agregar línea</button>
+                    </td></tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>`;
+        acc.appendChild(item);
+        agregarFila(c.num);
       });
-    }
-    function toggleTodasCuentas(sw) {
-      document.querySelectorAll('.cuenta-checkbox').forEach(c => c.checked = sw.checked);
-      actualizarContCuentas();
-    }
-    function actualizarContCuentas() {
-      const n = document.querySelectorAll('.cuenta-checkbox:checked').length;
-      document.getElementById('cuentaCount').textContent = n;
-    }
-    document.addEventListener('change', e => {
-      if (e.target.classList.contains('cuenta-checkbox')) actualizarContCuentas();
-    });
-    function validarCuentasYAvanzar() {
-      const n = document.querySelectorAll('.cuenta-checkbox:checked').length;
-      const err = document.getElementById('errCuentas');
-      if (n === 0) { err.style.display = 'block'; return; }
-      err.style.display = 'none';
-      irPaso(4);
+      recalcular();
     }
 
-    // ── Matriz (sin validación de límites) ────────────────
-    const cecos = ['100901', '291374'];
-
-    function parseNum(v) {
-      return parseFloat(String(v).replace(/,/g, '')) || 0;
-    }
-
-    function recalcularCeco(ceco) {
-      const body = document.getElementById(`body-${ceco}`);
-      let total = 0;
-      body.querySelectorAll('.fila-dato').forEach(row => {
-        let suma = 0;
-        row.querySelectorAll('.matrix-input').forEach(inp => {
-          const v = parseNum(inp.value);
-          suma += v;
-          inp.classList.toggle('has-value', v > 0);
-        });
-        row.querySelector('.fila-total').textContent = suma.toLocaleString('es-MX', { maximumFractionDigits: 0 });
-        total += suma;
-      });
-
-      const el = document.getElementById(`asignado-${ceco}`);
-      if (el) el.textContent = total.toLocaleString('es-MX', { maximumFractionDigits: 0 });
-
-      actualizarResumenGlobal();
-    }
-
-    function actualizarResumenGlobal() {
-      let totalAsig = 0;
-      let cecosConMonto = 0;
-      cecos.forEach(ceco => {
-        const body = document.getElementById(`body-${ceco}`);
-        if (!body) return;
-        let suma = 0;
-        body.querySelectorAll('.fila-dato').forEach(row => {
-          row.querySelectorAll('.matrix-input').forEach(inp => suma += parseNum(inp.value));
-        });
-        if (suma > 0) cecosConMonto++;
-        totalAsig += suma;
-      });
-      const fmt = n => n.toLocaleString('es-MX', { maximumFractionDigits: 0 });
-      const pa = document.getElementById('panelAsignado');
-      const pc = document.getElementById('panelCecos');
-      if (pa) pa.textContent = fmt(totalAsig);
-      if (pc) pc.textContent = cecosConMonto;
-    }
-
-    function eliminarFila(btn) {
-      const row = btn.closest('tr');
-      const ceco = row.closest('table').id.replace('tbl-', '');
-      row.remove();
-      if (ceco) recalcularCeco(ceco);
-    }
-
-    function agregarFila(bodyId, ceco) {
-      const body = document.getElementById(bodyId);
+    function agregarFila(ceco) {
+      const body = document.getElementById('body-' + ceco);
       const tr = document.createElement('tr');
       tr.className = 'fila-dato';
       tr.innerHTML = `
         <td><button class="btn btn-sm btn-link text-danger p-0 shadow-none" onclick="eliminarFila(this)"><i class="bi bi-trash"></i></button></td>
-        <td><select class="form-select form-select-sm border-primary shadow-none" onchange="recalcularCeco('${ceco}')">
-          <option value="">— Cuenta —</option>
-          <option>609011 – Televisión</option><option>609023 – Promociones</option><option>609028 – Pub. Digital</option>
-        </select></td>
-        <td><select class="form-select form-select-sm border-secondary border-opacity-50 shadow-none">
-          <option value="">— Proyecto —</option>
-          <option>PI-2026-001 – Transformación Digital</option><option>PI-2026-002 – Fibra Óptica</option>
-        </select></td>
-        ${Array(12).fill(0).map(() => `<td><input type="text" class="matrix-input" placeholder="0" oninput="recalcularCeco('${ceco}')"></td>`).join('')}
-        <td class="fw-bold text-dark bg-light fila-total">0</td>`;
+        <td><select class="form-select form-select-sm border-primary shadow-none"><option value="">— Cuenta —</option>${CUENTAS.map(c=>`<option>${c}</option>`).join('')}</select></td>
+        ${Array(12).fill(0).map(()=>`<td><input type="text" class="matrix-input" placeholder="0.00" oninput="recalcular()"></td>`).join('')}
+        <td class="fw-bold text-dark bg-light fila-total">0.00</td>`;
       body.appendChild(tr);
     }
+    function eliminarFila(btn) { btn.closest('tr').remove(); recalcular(); }
+    function limpiarCeco(ceco) {
+      document.querySelectorAll(`#body-${ceco} .matrix-input`).forEach(i => { i.value=''; i.classList.remove('has-value'); });
+      recalcular();
+    }
 
-    // ── Modales de confirmación ────────────────────────────
+    let cecoAQuitar = null;
+    function pedirQuitarCeco(ceco, nombre) {
+      cecoAQuitar = ceco;
+      document.getElementById('quitarCecoNombre').textContent = ceco + ' – ' + nombre;
+      new bootstrap.Modal(document.getElementById('modalQuitarCeco')).show();
+    }
+    function ejecutarQuitarCeco() {
+      if (cecoAQuitar) {
+        const el = document.getElementById('acc-' + cecoAQuitar); if (el) el.remove();
+        const chk = document.querySelector(`.chk-ceco[value="${cecoAQuitar}"]`); if (chk) chk.checked = false;
+        updateCecoCount();
+      }
+      bootstrap.Modal.getInstance(document.getElementById('modalQuitarCeco')).hide();
+      cecoAQuitar = null;
+      if (!document.querySelectorAll('#accPresupuesto .accordion-item').length) irPaso(2);
+      else recalcular();
+    }
+
+    function recalcular() {
+      let total = 0, cecosConMonto = 0;
+      document.querySelectorAll('#accPresupuesto .accordion-item').forEach(item => {
+        const ceco = item.id.replace('acc-','');
+        let totalCeco = 0;
+        item.querySelectorAll('.fila-dato').forEach(row => {
+          let suma = 0;
+          row.querySelectorAll('.matrix-input').forEach(inp => { const v = parseNum(inp.value); suma += v; inp.classList.toggle('has-value', v>0); });
+          row.querySelector('.fila-total').textContent = suma.toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2});
+          totalCeco += suma;
+        });
+        const asig = document.getElementById('asig-'+ceco); if (asig) asig.textContent = fmtCorto(totalCeco);
+        if (totalCeco > 0) cecosConMonto++;
+        total += totalCeco;
+      });
+      document.getElementById('panelCecos').textContent = cecosConMonto;
+      document.getElementById('panelAsignado').textContent = fmt(total);
+    }
+
+    function tipoGastoTexto() {
+      const map = { Campana:'Campaña', Proyecto:'Proyecto Especial Mkt' };
+      return map[document.getElementById('tipoGasto').value] || '—';
+    }
+    function vigenciaTexto() {
+      const ds = document.querySelectorAll('#paso-2 input[type=date]');
+      const a = ds[0]?.value, b = ds[1]?.value;
+      return (a && b) ? `${a} — ${b}` : '—';
+    }
+    function totalGlobal() {
+      let t = 0; document.querySelectorAll('#accPresupuesto .matrix-input').forEach(i => t += parseNum(i.value)); return t;
+    }
+
     function confirmarAccion(tipo) {
       if (tipo === 'enviar') {
-        let cecosConMonto = 0, totalGlobal = 0;
-        cecos.forEach(ceco => {
-          const body = document.getElementById(`body-${ceco}`);
-          if (!body) return;
-          let suma = 0;
-          body.querySelectorAll('.fila-dato').forEach(row => {
-            row.querySelectorAll('.matrix-input').forEach(inp => suma += parseNum(inp.value));
-          });
-          if (suma > 0) cecosConMonto++;
-          totalGlobal += suma;
-        });
-        const fmt = n => n.toLocaleString('es-MX', { maximumFractionDigits: 0 });
-        document.getElementById('resumenCecos').textContent = cecosConMonto;
-        document.getElementById('resumenCecosCard').textContent = cecosConMonto;
-        document.getElementById('resumenTotalCard').textContent = fmt(totalGlobal);
-        document.getElementById('resumenTotalInline').textContent = fmt(totalGlobal);
+        if (!document.querySelectorAll('#accPresupuesto .accordion-item').length) {
+          document.getElementById('msgValidacion').textContent = 'Completa el proyecto, la información general y la distribución antes de enviar.';
+          new bootstrap.Modal(document.getElementById('modalValidacion')).show();
+          return;
+        }
+        if (totalGlobal() <= 0) {
+          document.getElementById('msgBloqueo').textContent = 'La solicitud no tiene ningún importe mayor a cero. Captura al menos un importe para poder enviar.';
+          new bootstrap.Modal(document.getElementById('modalEnvioBloqueado')).show();
+          return;
+        }
+        document.getElementById('rsNombre').textContent = estado.proyecto.nombre;
+        document.getElementById('rsProyecto').textContent = `${estado.proyecto.num} – ${estado.proyecto.nombre}`;
+        document.getElementById('rsProyVig').textContent = vigProyTexto(estado.proyecto);
+        document.getElementById('rsTipo').textContent = tipoGastoTexto();
+        document.getElementById('rsDivision').textContent = estado.division || '—';
+        document.getElementById('rsNegocio').textContent = estado.negocio.nombre;
+        document.getElementById('rsVigencia').textContent = vigenciaTexto();
+        document.getElementById('rsTotal').textContent = fmt(totalGlobal());
         new bootstrap.Modal(document.getElementById('modalConfirmarEnvio')).show();
         return;
       }
-      const map = { borrador: 'modalBorrador', cancelar: 'modalCancelar' };
-      new bootstrap.Modal(document.getElementById(map[tipo])).show();
+      if (tipo === 'borrador') {
+        document.getElementById('borrCampana').textContent = estado.proyecto ? estado.proyecto.nombre : '—';
+        document.getElementById('borrDivision').textContent = estado.division || '—';
+        document.getElementById('borrVigencia').textContent = vigenciaTexto();
+        document.getElementById('borrTotal').textContent = fmt(totalGlobal());
+        new bootstrap.Modal(document.getElementById('modalBorrador')).show();
+        return;
+      }
+      new bootstrap.Modal(document.getElementById('modalCancelar')).show();
     }
-
     function ejecutarBorrador() {
       bootstrap.Modal.getInstance(document.getElementById('modalBorrador')).hide();
       setTimeout(() => new bootstrap.Modal(document.getElementById('modalBorradorExito')).show(), 300);
     }
-
     function ejecutarEnvio() {
       bootstrap.Modal.getInstance(document.getElementById('modalConfirmarEnvio')).hide();
-      new bootstrap.Modal(document.getElementById('modalEnvio')).show();
+      setTimeout(() => new bootstrap.Modal(document.getElementById('modalEnvio')).show(), 300);
     }
 
     // Inicializar
+    renderProyectos();
     irPaso(1);
-    actualizarContCuentas();
   </script>
 
 </body>
