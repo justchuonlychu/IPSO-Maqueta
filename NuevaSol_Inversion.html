@@ -356,6 +356,104 @@
       <div class="card-body p-4" style="background:#f3f4f6;">
 
         <!-- ════════════════════════════════════════
+             PASO 0 – Asignación de CeCos (Nuevo Proyecto)
+        ════════════════════════════════════════ -->
+        <div id="paso-0" style="display:none;">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card w-100 h-100 shadow-sm border-0">
+                <div class="card-body p-4 d-flex flex-column">
+                  <div class="text-start flex-grow-1">
+                    <h5 class="fw-bold text-dark mb-4"><i class="bi bi-building me-2 text-primary"></i>Nuevo Proyecto - Asigna Centros de Costos</h5>
+                    <div class="row g-3 mb-4">
+                      <div class="col-lg-3">
+                        <label class="form-label fw-bold text-dark">División <span class="text-danger">*</span></label>
+                        <select id="npDivision" class="form-select form-select-sm shadow-none" onchange="npDivChange()">
+                          <option value="" selected disabled>Seleccione...</option>
+                          <option value="Marca">Marca</option>
+                          <option value="Oferteo">Oferteo</option>
+                          <option value="Estrategia">Estrategia</option>
+                          <option value="Sin División">Sin División</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-3">
+                        <label class="form-label fw-bold text-dark">Negocio <span class="text-danger">*</span></label>
+                        <select id="npNegocio" class="form-select form-select-sm shadow-none" onchange="npNegChange()" disabled>
+                          <option value="" selected disabled>Seleccione una División primero...</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-2 text-center">
+                        <br>
+                        <button type="button" class="btn btn-secondary px-4 fw-bold shadow-sm" onclick="cancelarNuevoProyecto()">Cancelar</button>
+                      </div>
+                      <div class="col-lg-4">
+                        <br>
+                        <button type="button" class="btn btn-success px-5 fw-bold shadow-sm w-100" onclick="guardarNuevoProyectoCecos()">Registrar y continuar solicitud <i class="bi bi-save ms-2"></i></button>
+                      </div>
+                    </div>
+                    <div id="npErrorCecos" class="alert alert-danger py-2 px-3 mb-3 small" style="display:none;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mt-4">
+              <div class="card shadow-sm border-0">
+                <div class="card-header bg-white pt-4 pb-3 border-bottom-0 d-flex justify-content-between align-items-center">
+                  <h5 class="fw-bold text-dark mb-0"><i class="bi bi-diagram-3 me-2 text-primary"></i>Relaciona los CeCos</h5>
+                  <span class="text-danger small fw-bold" id="txt-validacion-cecos">Debe seleccionar al menos un Centro de Costos.</span>
+                </div>
+
+                <div class="card-body px-4 pb-4 pt-3">
+                  <div class="row g-3 align-items-end mb-4">
+                    <div class="col-lg-6">
+                      <div class="d-flex align-items-center gap-2 mb-2">
+                        <label class="form-label small fw-bold text-dark mb-0">Centro de Costos </label>
+                      </div>
+                      <div class="position-relative">
+                        <input type="text" id="npBuscaCeco" class="form-control ps-4 radius-10 bg-light shadow-none border-secondary border-opacity-25" placeholder="Buscar CeCo (No. o Nombre)..." oninput="filtrarCecosDisponibles(this.value)">
+                        <span class="position-absolute top-50 translate-middle-y ms-2 text-muted"><i class="bi bi-search"></i></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row align-items-center dual-listbox-container">
+                    <div class="col-md-5">
+                      <label class="small fw-bold mb-2 text-dark">CeCos Disponibles en el Sistema</label>
+                      <select multiple class="form-select shadow-sm" id="cecos-disponibles" style="height: 320px !important;">
+                        <option value="100901" data-div="Marca" data-neg="Banco Azteca">100901 - DIR GRAL CONECTIVIDAD (Marca)</option>
+                        <option value="100902" data-div="Marca" data-neg="Banco Azteca">100902 - DIR MARCA CORPORATIVA (Marca)</option>
+                        <option value="110050" data-div="Marca" data-neg="Elektra">110050 - DIR PUBLICIDAD ELEKTRA (Marca)</option>
+                        <option value="291374" data-div="Oferteo" data-neg="Marketing Digital">291374 - DIR MKT DIGITAL (Oferteo)</option>
+                        <option value="182310" data-div="Estrategia" data-neg="Estrategia Comercial">182310 - DIR ESTRATEGIA COMERCIAL (Estrategia)</option>
+                        <option value="109220" data-div="Estrategia" data-neg="Estrategia Comercial">109220 - PUBLICIDAD CONECTIVIDAD (Estrategia)</option>
+                        <option value="330100" data-div="Sin División" data-neg="Totalplay">330100 - TOTALPLAY PUBLICIDAD (Sin División)</option>
+                        <option value="330200" data-div="Sin División" data-neg="Totalplay">330200 - TOTALPLAY EXPANSION (Sin División)</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-2 text-center d-grid gap-2 px-3">
+                      <button type="button" class="btn btn-outline-primary btn-sm shadow-none" title="Asignar seleccionados" onclick="agregarCecosSeleccionados()">
+                        Agregar <i class="bi bi-chevron-right fw-bold"></i>
+                      </button>
+                      <button type="button" class="btn btn-outline-danger btn-sm shadow-none mt-2" title="Retirar seleccionados" onclick="quitarCecosSeleccionados()">
+                        <i class="bi bi-chevron-left fw-bold"></i> Quitar
+                      </button>
+                    </div>
+
+                    <div class="col-md-5">
+                      <label class="small fw-bold mb-2 text-dark">CeCos relacionados al Proyecto</label>
+                      <select multiple class="form-select border-primary border-opacity-50 shadow-sm" id="cecos-asignados" style="height: 320px !important;">
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /paso-0 -->
+
+        <!-- ════════════════════════════════════════
              PASO 1 – Selección de Proyecto de Inversión
         ════════════════════════════════════════ -->
         <div id="paso-1">
@@ -1425,6 +1523,11 @@
 
     // ── Stepper ──────────────────────────────────────────
     function irPaso(n) {
+      // Ocultar paso-0 si se va a otro paso
+      const paso0 = document.getElementById('paso-0');
+      if (paso0) paso0.style.display = (n === 0) ? 'block' : 'none';
+
+      // Manejar pasos 1-4 normalmente
       for (let i = 1; i <= TOTAL_PASOS; i++) {
         const paso = document.getElementById(`paso-${i}`);
         if (paso) paso.style.display = (i === n) ? 'block' : 'none';
@@ -1480,6 +1583,8 @@
       new bootstrap.Modal(document.getElementById('modalNuevoProyecto')).show();
     }
 
+    let npProyectoDraft = {};
+
     function continuarRegistroProyecto() {
       const numero = document.getElementById('npNumero').value.trim();
       const nombre = document.getElementById('npNombre').value.trim();
@@ -1496,20 +1601,172 @@
         return;
       }
 
-      // Guardar datos temporales y mostrar sección de CeCos
+      // Guardar datos temporales
+      npProyectoDraft = { numero, nombre, vigencia: parseInt(vigencia) };
+
+      // Cerrar modal y mostrar paso-0
       bootstrap.Modal.getInstance(document.getElementById('modalNuevoProyecto')).hide();
-      document.getElementById('npResumenNumero').textContent = numero;
-      document.getElementById('npResumenNombre').textContent = nombre;
-      document.getElementById('npResumenVigencia').textContent = vigencia + ' año(s)';
 
-      // Resetear selección de CeCos
-      document.querySelectorAll('.ceco-np-check').forEach(c => c.checked = false);
-      document.getElementById('chkTodosCecosNP').checked = false;
-      updateNPCecoCount();
+      // Resetear selectores
+      document.getElementById('npDivision').value = '';
+      document.getElementById('npNegocio').value = '';
+      document.getElementById('npNegocio').disabled = true;
+      document.getElementById('cecos-disponibles').value = '';
+      document.getElementById('cecos-asignados').innerHTML = '';
+      document.getElementById('npErrorCecos').style.display = 'none';
 
-      // Mostrar sección de asignación
-      document.getElementById('vistaSeleccionProyecto').style.display = 'none';
-      document.getElementById('vistaAsignacionCecos').style.display = 'block';
+      // Mostrar paso-0
+      irPaso(0);
+    }
+
+    function cancelarNuevoProyecto() {
+      npProyectoDraft = {};
+      irPaso(1);
+    }
+
+    function npDivChange() {
+      const division = document.getElementById('npDivision').value;
+      const negocioSel = document.getElementById('npNegocio');
+      const cecosDis = document.getElementById('cecos-disponibles');
+
+      if (!division) {
+        negocioSel.innerHTML = '<option value="" selected disabled>Seleccione una División primero...</option>';
+        negocioSel.disabled = true;
+        return;
+      }
+
+      // Obtener negocios únicos para esta división
+      const negocios = new Set();
+      Array.from(cecosDis.options).forEach(opt => {
+        if (opt.dataset.div === division) negocios.add(opt.dataset.neg);
+      });
+
+      negocioSel.innerHTML = '<option value="" selected disabled>Seleccione...</option>' +
+        Array.from(negocios).map(n => `<option value="${n}">${n}</option>`).join('');
+      negocioSel.disabled = false;
+    }
+
+    function npNegChange() {
+      const division = document.getElementById('npDivision').value;
+      const negocio = document.getElementById('npNegocio').value;
+      const cecosDis = document.getElementById('cecos-disponibles');
+
+      // Actualizar lista de disponibles filtrando por División y Negocio
+      Array.from(cecosDis.options).forEach(opt => {
+        opt.hidden = !(opt.dataset.div === division && opt.dataset.neg === negocio);
+      });
+    }
+
+    function filtrarCecosDisponibles(q) {
+      const term = q.toLowerCase().trim();
+      const cecosDis = document.getElementById('cecos-disponibles');
+      Array.from(cecosDis.options).forEach(opt => {
+        if (opt.hidden) return;
+        opt.style.display = (!term || opt.text.toLowerCase().includes(term)) ? '' : 'none';
+      });
+    }
+
+    function agregarCecosSeleccionados() {
+      const cecosDis = document.getElementById('cecos-disponibles');
+      const cecosAsin = document.getElementById('cecos-asignados');
+      const seleccionados = Array.from(cecosDis.selectedOptions);
+
+      seleccionados.forEach(opt => {
+        const newOpt = document.createElement('option');
+        newOpt.value = opt.value;
+        newOpt.text = opt.text;
+        cecosAsin.appendChild(newOpt);
+        opt.remove();
+      });
+
+      cecosDis.value = '';
+      document.getElementById('npErrorCecos').style.display = 'none';
+    }
+
+    function quitarCecosSeleccionados() {
+      const cecosDis = document.getElementById('cecos-disponibles');
+      const cecosAsin = document.getElementById('cecos-asignados');
+      const seleccionados = Array.from(cecosAsin.selectedOptions);
+
+      seleccionados.forEach(opt => {
+        const newOpt = document.createElement('option');
+        newOpt.value = opt.value;
+        newOpt.text = opt.text;
+        newOpt.dataset.div = opt.dataset.div || '';
+        newOpt.dataset.neg = opt.dataset.neg || '';
+        cecosDis.appendChild(newOpt);
+        opt.remove();
+      });
+
+      cecosAsin.value = '';
+    }
+
+    function guardarNuevoProyectoCecos() {
+      const cecosAsin = document.getElementById('cecos-asignados');
+      const division = document.getElementById('npDivision').value;
+      const negocio = document.getElementById('npNegocio').value;
+      const err = document.getElementById('npErrorCecos');
+
+      if (!division || !negocio || cecosAsin.options.length === 0) {
+        err.textContent = 'Completa: División, Negocio y selecciona al menos un Centro de Costo.';
+        err.style.display = 'block';
+        return;
+      }
+
+      err.style.display = 'none';
+
+      // Recopilar CeCos elegidos
+      const cecos = Array.from(cecosAsin.options).map(opt => ({
+        num: opt.value,
+        nombre: opt.text.split(' - ')[1]?.split('(')[0]?.trim() || opt.text
+      }));
+
+      // Crear nuevo proyecto
+      const nuevoProyecto = {
+        id: npProyectoDraft.numero,
+        nombre: npProyectoDraft.nombre,
+        ...npProyectoDraft,
+        division,
+        negocio,
+        cecos
+      };
+
+      // Agregar a lista de proyectos
+      const lista = document.getElementById('listaProyectos');
+      const div = document.createElement('div');
+      div.className = 'proyecto-item';
+      div.dataset.id = nuevoProyecto.id;
+      div.dataset.nombre = nuevoProyecto.nombre;
+      div.setAttribute('onclick', 'seleccionarProyecto(this)');
+
+      const cecosLabel = cecos.slice(0, 2).map(c => c.num).join(', ') +
+        (cecos.length > 2 ? ` y ${cecos.length - 2} más` : '');
+
+      div.innerHTML = `
+        <div class="proy-icon"><i class="bi bi-folder-plus text-primary"></i></div>
+        <div class="flex-grow-1">
+          <div class="fw-bold text-dark" style="font-size:.88rem;">${nuevoProyecto.nombre}</div>
+          <div class="text-muted" style="font-size:.75rem;">
+            <span class="me-3"><i class="bi bi-hash me-1"></i>${nuevoProyecto.id}</span>
+            <span class="me-3"><i class="bi bi-building me-1"></i>${cecosLabel}</span>
+            <span><i class="bi bi-hourglass-split me-1"></i>Vigencia: ${nuevoProyecto.vigencia} año(s)</span>
+          </div>
+        </div>
+        <div class="flex-shrink-0">
+          <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-2 py-1" style="font-size:.68rem;">Activo</span>
+        </div>`;
+      lista.insertBefore(div, lista.firstChild);
+
+      // Registrar en catálogo
+      numerosProyectosExistentes.add(nuevoProyecto.id);
+
+      // Auto-seleccionar el nuevo proyecto y avanzar al paso 2
+      seleccionarProyecto(div);
+      proyectoSeleccionado = nuevoProyecto;
+      npProyectoDraft = {};
+
+      // Avanzar al paso 2
+      irPaso(2);
     }
 
     function volverASeleccionProyecto() {
