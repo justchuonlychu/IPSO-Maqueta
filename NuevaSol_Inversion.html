@@ -553,18 +553,28 @@
           <div class="alert alert-info py-2 px-3 small"><i class="bi bi-info-circle me-1"></i>Los Centros de Costo seleccionados quedarán asignados al proyecto. La distribución se realizará únicamente sobre ellos.</div>
           <div class="row g-3 mb-3">
             <div class="col-md-6">
-              <label class="form-label small fw-bold text-dark">División <span class="text-danger">*</span></label>
-              <select id="acDivision" class="form-select form-select-sm shadow-none" onchange="acDivChange()">
+              <label class="form-label small fw-bold text-dark">Grupo Empresarial <span class="text-danger">*</span></label>
+              <select id="acGrupoEmp" class="form-select form-select-sm shadow-none" onchange="acGrupoEmpChange()">
                 <option value="" selected="" disabled="">Seleccione...</option>
-                <option value="Marca">Marca</option>
-                <option value="Oferteo">Oferteo</option>
-                <option value="Estrategia">Estrategia</option>
-                <option value="Sin División">Sin División</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold text-dark">País <span class="text-danger">*</span></label>
+              <select id="acPais" class="form-select form-select-sm shadow-none" onchange="acPaisChange()" disabled="">
+                <option value="" selected="" disabled="">Seleccione Grupo Empresarial primero...</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small fw-bold text-dark">División <span class="text-danger">*</span></label>
+              <select id="acDivision" class="form-select form-select-sm shadow-none" onchange="acDivChange()" disabled="">
+                <option value="" selected="" disabled="">Seleccione País primero...</option>
               </select>
             </div>
             <div class="col-md-6">
               <label class="form-label small fw-bold text-dark">Negocio <span class="text-danger">*</span></label>
-              <select id="acNegocio" class="form-select form-select-sm shadow-none" onchange="acNegChange()" disabled=""><option value="" selected="" disabled="">Seleccione una División primero...</option></select>
+              <select id="acNegocio" class="form-select form-select-sm shadow-none" onchange="acNegChange()" disabled="">
+                <option value="" selected="" disabled="">Seleccione División primero...</option>
+              </select>
             </div>
           </div>
 
@@ -780,6 +790,18 @@
     // ════════════════════════════════════════════════
     //  Modelo de datos demo
     // ════════════════════════════════════════════════
+    const GRUPOS_EMPRESARIALES = {
+      'GE001': { nombre: 'Grupo Corporativo', paises: ['México', 'Colombia'] },
+      'GE002': { nombre: 'Grupo Minoritario', paises: ['Perú', 'Chile'] },
+    };
+
+    const PAISES = {
+      'México': { divisiones: ['Marca', 'Oferteo', 'Estrategia', 'Sin División'] },
+      'Colombia': { divisiones: ['Marca', 'Oferteo', 'Estrategia'] },
+      'Perú': { divisiones: ['Marca', 'Estrategia'] },
+      'Chile': { divisiones: ['Oferteo'] },
+    };
+
     const NEGOCIOS = {
       'Marca': [
         { id:'BAZ', nombre:'Banco Azteca', cecos:[
@@ -898,10 +920,24 @@
       err.style.display = 'none';
       proyectoDraft = { num, nombre, anioInicio:ini, vigencia:vig, desc };
       bootstrap.Modal.getInstance(document.getElementById('modalNuevoProyecto')).hide();
+
+      // Inicializar cascada de filtros
+      document.getElementById('acGrupoEmp').value = '';
+      document.getElementById('acPais').value = '';
       document.getElementById('acDivision').value = '';
-      document.getElementById('acNegocio').innerHTML = '<option value="" selected disabled>Seleccione una División primero...</option>';
+      document.getElementById('acNegocio').value = '';
+      document.getElementById('acNegocio').innerHTML = '<option value="" selected disabled>Seleccione División primero...</option>';
       document.getElementById('acNegocio').disabled = true;
-      document.getElementById('acCecoTbody').innerHTML = '<tr><td colspan="2" class="text-center text-muted small py-4">Selecciona División y Negocio para ver los Centros de Costo.</td></tr>';
+      document.getElementById('acDivision').disabled = true;
+      document.getElementById('acPais').disabled = true;
+
+      // Llenar Grupos Empresariales
+      const selGE = document.getElementById('acGrupoEmp');
+      selGE.innerHTML = '<option value="" selected disabled>Seleccione...</option>' +
+        Object.entries(GRUPOS_EMPRESARIALES).map(([k,v]) => `<option value="${k}">${v.nombre}</option>`).join('');
+      selGE.disabled = false;
+
+      document.getElementById('acCecoTbody').innerHTML = '<tr><td colspan="2" class="text-center text-muted small py-4">Selecciona Grupo Empresarial, País, División y Negocio para ver los Centros de Costo.</td></tr>';
       document.getElementById('acError').style.display = 'none';
       document.getElementById('acResumenDivNeg').style.display = 'none';
       new bootstrap.Modal(document.getElementById('modalAsignarCecosProyecto')).show();
@@ -912,11 +948,49 @@
       new bootstrap.Modal(document.getElementById('modalNuevoProyecto')).show();
     }
 
+    function acGrupoEmpChange() {
+      const geKey = document.getElementById('acGrupoEmp').value;
+      const ge = GRUPOS_EMPRESARIALES[geKey];
+      const selPais = document.getElementById('acPais');
+      const paises = ge ? ge.paises : [];
+      selPais.innerHTML = '<option value="" selected disabled>Seleccione...</option>' +
+        paises.map(p => `<option value="${p}">${p}</option>`).join('');
+      selPais.disabled = !ge;
+
+      // Limpiar niveles inferiores
+      document.getElementById('acDivision').value = '';
+      document.getElementById('acDivision').innerHTML = '<option value="" selected disabled>Seleccione País primero...</option>';
+      document.getElementById('acDivision').disabled = true;
+      document.getElementById('acNegocio').value = '';
+      document.getElementById('acNegocio').innerHTML = '<option value="" selected disabled>Seleccione División primero...</option>';
+      document.getElementById('acNegocio').disabled = true;
+      document.getElementById('acCecoTbody').innerHTML = '<tr><td colspan="2" class="text-center text-muted small py-4">Selecciona Grupo Empresarial, País, División y Negocio para ver los Centros de Costo.</td></tr>';
+      document.getElementById('acResumenDivNeg').style.display = 'none';
+    }
+
+    function acPaisChange() {
+      const pais = document.getElementById('acPais').value;
+      const paisData = PAISES[pais];
+      const selDiv = document.getElementById('acDivision');
+      const divisiones = paisData ? paisData.divisiones : [];
+      selDiv.innerHTML = '<option value="" selected disabled>Seleccione...</option>' +
+        divisiones.map(d => `<option value="${d}">${d}</option>`).join('');
+      selDiv.disabled = !paisData;
+
+      // Limpiar niveles inferiores
+      document.getElementById('acNegocio').value = '';
+      document.getElementById('acNegocio').innerHTML = '<option value="" selected disabled>Seleccione División primero...</option>';
+      document.getElementById('acNegocio').disabled = true;
+      document.getElementById('acCecoTbody').innerHTML = '<tr><td colspan="2" class="text-center text-muted small py-4">Selecciona Grupo Empresarial, País, División y Negocio para ver los Centros de Costo.</td></tr>';
+      document.getElementById('acResumenDivNeg').style.display = 'none';
+    }
+
     function acDivChange() {
       const div = document.getElementById('acDivision').value;
       const selNeg = document.getElementById('acNegocio');
       const negs = NEGOCIOS[div] || [];
-      selNeg.innerHTML = '<option value="" selected disabled>Seleccione...</option>' + negs.map((n,i)=>`<option value="${i}">${n.nombre}</option>`).join('');
+      selNeg.innerHTML = '<option value="" selected disabled>Seleccione...</option>' +
+        negs.map((n, i) => `<option value="${i}">${n.nombre}</option>`).join('');
       selNeg.disabled = false;
       document.getElementById('acCecoTbody').innerHTML = '<tr><td colspan="2" class="text-center text-muted small py-4">Selecciona el Negocio para ver los Centros de Costo.</td></tr>';
       document.getElementById('acResumenDivNeg').style.display = 'none';
@@ -945,11 +1019,15 @@
 
     function guardarNuevoProyecto() {
       const err = document.getElementById('acError');
+      const geKey = document.getElementById('acGrupoEmp').value;
+      const pais = document.getElementById('acPais').value;
       const div = document.getElementById('acDivision').value;
       const idx = document.getElementById('acNegocio').value;
       const neg = (NEGOCIOS[div] || [])[idx];
       const sel = [...document.querySelectorAll('.ac-chk:checked')];
       const fallos = [];
+      if (!geKey) fallos.push('Grupo Empresarial');
+      if (!pais) fallos.push('País');
       if (!div) fallos.push('División');
       if (!neg) fallos.push('Negocio');
       if (!sel.length) fallos.push('al menos un Centro de Costo');
