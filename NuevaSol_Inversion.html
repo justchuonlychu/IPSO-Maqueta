@@ -1692,6 +1692,8 @@
         const newOpt = document.createElement('option');
         newOpt.value = opt.value;
         newOpt.text = opt.text;
+        newOpt.dataset.div = opt.dataset.div || '';
+        newOpt.dataset.neg = opt.dataset.neg || '';
         cecosAsin.appendChild(newOpt);
         opt.remove();
       });
